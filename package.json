@@ -1,0 +1,86 @@
+{
+  "name": "suanPan-vs",
+  "displayName": "suanPan",
+  "description": "Support for suanPan models",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.83.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "suanPan",
+      "properties": {
+        "suanPan-vs.path": {
+          "type": "string",
+          "default": "suanpan",
+          "description": "Path to the suanPan executable."
+        },
+        "suanPan-vs.directory": {
+          "type": "string",
+          "default": "",
+          "description": "Working directory, leave empty to use the folder of the model file."
+        },
+        "suanPan-vs.color": {
+          "type": "boolean",
+          "default": true,
+          "description": "Colorized output."
+        },
+        "suanPan-vs.verbose": {
+          "type": "boolean",
+          "default": false,
+          "description": "Verbose output."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "suanPan-vs.run",
+        "title": "Run this model in suanPan"
+      }
+    ],
+    "languages": [
+      {
+        "id": "suanPan",
+        "aliases": [
+          "suanPan"
+        ],
+        "extensions": [
+          ".sp",
+          ".supan"
+        ]
+      }
+    ],
+    "grammars": [
+      {
+        "language": "suanPan",
+        "scopeName": "source.sp",
+        "path": "./syntaxes/.tmLanguage.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "pnpm run compile && pnpm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.83.0",
+    "@types/mocha": "^10.0.3",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0",
+    "eslint": "^8.52.0",
+    "glob": "^10.3.10",
+    "mocha": "^10.2.0",
+    "typescript": "^5.2.2",
+    "@vscode/test-electron": "^2.3.6"
+  }
+}
