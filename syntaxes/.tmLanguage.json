@@ -34,11 +34,11 @@
 			"patterns": [
 				{
 					"name": "support.constant",
-					"match": "\\b(?i)(NZ|US|EU)(2|3)D\\b"
+					"match": "(?i)(?<=section\\s*)(NZ|US|EU)(2|3)D\\b"
 				},
 				{
 					"name": "support.constant",
-					"match": "\\b(?!^)(?i)node|element\\b"
+					"match": "(?i)(?<=peek\\s*)node|element\\b"
 				}
 			]
 		},
@@ -46,11 +46,127 @@
 			"patterns": [
 				{
 					"name": "entity.name.type.element",
-					"match": "\\b(?i)T[2-3]D2S?\\b"
+					"match": "(?i)(?<=element\\s*)T[2-3]D2S?\\b"
 				},
 				{
 					"name": "entity.name.type.element",
-					"match": "\\b(?i)CP[3-8]\\b"
+					"match": "(?i)(?<=element\\s*)CP[3-8]\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)Allman\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)B21(H|EL|EH)?\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)B31(OS)?\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)NM21(EL|EH)?\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)NMB31\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)C3D(20|4|8|8R|8I)\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)CAX(3|4|8)\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)CIN3D8\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)CINP4\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)Contact[2-3]D\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)PCPE[48][DU]C\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)CP4[IR]\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)CPE8R?\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)CPS8\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)CSMT[36]\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)CSMQ[4-8]\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)Damper0[1-6]\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)DC3D[48]\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)DKT[34]\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)DKTS3\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)Embedded[23]D\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)EB21\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)EB31OS\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)F21H?\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)F31\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)GCMQ[ILG]?\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)GQ12\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)Joint\\b"
+				},
+				{
+					"name": "entity.name.type.element",
+					"match": "(?i)(?<=element\\s*)Mass[23]D\\b"
 				}
 			]
 		},

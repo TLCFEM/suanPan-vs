@@ -1,5 +1,5 @@
 {
-  "name": "suanPan-vs",
+  "name": "suanpan-vs",
   "displayName": "suanPan",
   "description": "Support for suanPan models",
   "version": "0.0.1",
@@ -9,28 +9,28 @@
   "categories": [
     "Programming Languages"
   ],
-  "activationEvents": [],
+  "activationEvents": ["onLanguage:suanPan"],
   "main": "./out/extension.js",
   "contributes": {
     "configuration": {
       "title": "suanPan",
       "properties": {
-        "suanPan-vs.path": {
+        "suanpan.path": {
           "type": "string",
           "default": "suanpan",
           "description": "Path to the suanPan executable."
         },
-        "suanPan-vs.directory": {
+        "suanpan.directory": {
           "type": "string",
           "default": "",
           "description": "Working directory, leave empty to use the folder of the model file."
         },
-        "suanPan-vs.color": {
+        "suanpan.color": {
           "type": "boolean",
           "default": true,
           "description": "Colorized output."
         },
-        "suanPan-vs.verbose": {
+        "suanpan.verbose": {
           "type": "boolean",
           "default": false,
           "description": "Verbose output."
@@ -39,7 +39,7 @@
     },
     "commands": [
       {
-        "command": "suanPan-vs.run",
+        "command": "suanpan.run",
         "title": "Run this model in suanPan"
       }
     ],
