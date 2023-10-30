@@ -40,7 +40,7 @@
     "commands": [
       {
         "command": "suanpan.run",
-        "title": "Run this model in suanPan"
+        "title": "suanPan: Run this model in suanPan"
       }
     ],
     "languages": [
