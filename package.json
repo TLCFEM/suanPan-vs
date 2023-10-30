@@ -2,6 +2,10 @@
   "name": "suanpan-vs",
   "displayName": "suanPan",
   "description": "Support for suanPan models",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TLCFEM/suanPan-vs"
+  },
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.83.0"
@@ -9,7 +13,9 @@
   "categories": [
     "Programming Languages"
   ],
-  "activationEvents": ["onLanguage:suanPan"],
+  "activationEvents": [
+    "onLanguage:suanPan"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "configuration": {

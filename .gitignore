@@ -1,6 +1,7 @@
-out
-dist
-node_modules
 .vscode-test/
 *.vsix
+dist
 examples
+node_modules
+out
+pnpm-lock.yaml
