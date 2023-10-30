@@ -9,6 +9,9 @@
       "include": "#constants"
     },
     {
+      "include": "#entities.amplitude"
+    },
+    {
       "include": "#entities.constraint"
     },
     {
@@ -68,8 +71,20 @@
           "match": "(?i)(?<=recorder\\s+\\d+\\s+((hdf5|plain)\\s+)?)(node|element)\\b"
         },
         {
+          "name": "entity.name.tag",
+          "match": "(?i)(\\s|^)-type[0-4]\\b"
+        },
+        {
+          "name": "entity.name.tag",
+          "match": "(?i)(?<=system_solver\\s+)(LAPACK|SPIKE|SUPERLU|MUMPS|LIS|CUDA|MAGMA|PARDISO|F?GMRES|BICGSTAB)\\b"
+        },
+        {
+          "name": "entity.name.tag",
+          "match": "(?i)(?<=preconditioner\\s+)(JACOBI|ILU)\\b"
+        },
+        {
           "name": "string.unquoted",
-          "match": "(?i)(?<=peek\\s+)(node|element)\\b"
+          "match": "(?i)(?<=peek\\s+)(node|element|material|constraint|recorder|solver|integrator|group|nodegroup|amplitude|expression|eigenvalue|output_folder|num_threads|num_nodes|stat(istic)?s)\\b"
         },
         {
           "name": "string.unquoted",
@@ -825,7 +840,7 @@
         },
         {
           "name": "entity.name.type.solver",
-          "match": "(?i)(?<=solver\\s+)(Quadratic)FEAST\\b"
+          "match": "(?i)(?<=solver\\s+)(Quadratic)?FEAST\\b"
         },
         {
           "name": "entity.name.type.solver",
