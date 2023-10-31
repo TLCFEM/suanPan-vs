@@ -12,14 +12,18 @@ jobs:
     steps:
       - name: Clone
         uses: actions/checkout@v4
-      - name: Node
+      - name: node
         uses: actions/setup-node@v3
         with:
           node-version: 20
+      - name: pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
       - name: Install
         run: |
-          npm install
           npm install --global @vscode/vsce
+          pnpm install
           vsce package
       - name: Publish
         uses: actions/upload-artifact@v3
