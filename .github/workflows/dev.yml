@@ -19,7 +19,7 @@ jobs:
       - name: Install
         run: |
           npm install
-          vsce package
+          node_modules/.bin/vsce package
       - name: Publish
         uses: actions/upload-artifact@v3
         with:
