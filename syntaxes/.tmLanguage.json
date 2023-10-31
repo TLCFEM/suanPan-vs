@@ -49,6 +49,9 @@
     },
     {
       "include": "#variables"
+    },
+    {
+      "include": "#outputs"
     }
   ],
   "repository": {
@@ -62,6 +65,30 @@
           "name": "comment.inline",
           "match": "!.*$"
         }
+      ]
+    },
+    "outputs":{
+      "patterns": [ 
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+)[RDI](F[1-6]?|M[1-3])\\b"
+        },
+        
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+)[UVA]([1-6]?|R[1-3])\\b"
+        },
+        
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+)\\b"
+        },
+        
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+)\\b"
+        },
+        
       ]
     },
     "constants": {
@@ -492,7 +519,7 @@
       "patterns": [
         {
           "name": "entity.name.type.integrator",
-          "match": "(?i)(?<=integrator\\s+)(Rayleigh|Lee(Elemental)?|WilsonPenzien|Nonviscous)Newmark\\b"
+          "match": "(?i)(?<=integrator\\s+)(Rayleigh|Lee(Elemental)?|WilsonPenzien|Nonviscous)?Newmark\\b"
         },
         {
           "name": "entity.name.type.integrator",
