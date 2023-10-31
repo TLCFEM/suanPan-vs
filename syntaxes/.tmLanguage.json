@@ -21,6 +21,9 @@
       "include": "#entities.element"
     },
     {
+      "include": "#entities.expression"
+    },
+    {
       "include": "#entities.group"
     },
     {
@@ -31,6 +34,12 @@
     },
     {
       "include": "#entities.material"
+    },
+    {
+      "include": "#entities.modifier"
+    },
+    {
+      "include": "#entities.orientation"
     },
     {
       "include": "#entities.section"
@@ -45,13 +54,13 @@
       "include": "#keywords"
     },
     {
+      "include": "#outputs"
+    },
+    {
       "include": "#support.constant.section"
     },
     {
       "include": "#variables"
-    },
-    {
-      "include": "#outputs"
     }
   ],
   "repository": {
@@ -67,35 +76,15 @@
         }
       ]
     },
-    "outputs":{
-      "patterns": [ 
-        {
-          "name": "string.unquoted",
-          "match": "(?i)(?<=recorder.+)[RDI](F[1-6]?|M[1-3])\\b"
-        },
-        
-        {
-          "name": "string.unquoted",
-          "match": "(?i)(?<=recorder.+)[UVA]([1-6]?|R[1-3])\\b"
-        },
-        
-        {
-          "name": "string.unquoted",
-          "match": "(?i)(?<=recorder.+)\\b"
-        },
-        
-        {
-          "name": "string.unquoted",
-          "match": "(?i)(?<=recorder.+)\\b"
-        },
-        
-      ]
-    },
     "constants": {
       "patterns": [
         {
           "name": "entity.name.tag",
-          "match": "(?i)(?<=recorder\\s+\\d+\\s+((hdf5|plain)\\s+)?)(node|element)\\b"
+          "match": "(?i)(?<=recorder\\s+\\d+\\s+((hdf5|plain)\\s+)?)(node|element|amplitude|global|visualisation|frame|eigen)\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder\\s+\\d+\\s+)(hdf5|plain)\\b"
         },
         {
           "name": "entity.name.tag",
@@ -107,11 +96,27 @@
         },
         {
           "name": "entity.name.tag",
+          "match": "(?i)(?<=^(fix2?|bc)\\s+\\d+\\s+)([1-7]|[XYZEP])\\b"
+        },
+        {
+          "name": "entity.name.tag",
+          "match": "(?i)(?<=^node\\s+)\\d+\\b"
+        },
+        {
+          "name": "entity.name.tag",
+          "match": "(?i)(?<=^(material|element|step|converger|load|constraint|modifier|expression|solver)\\s+\\w+\\s+)\\d+\\b"
+        },
+        {
+          "name": "entity.name.tag",
           "match": "(?i)(?<=preconditioner\\s+)(JACOBI|ILU)\\b"
         },
         {
           "name": "string.unquoted",
           "match": "(?i)(?<=peek\\s+)(node|element|material|constraint|recorder|solver|integrator|group|nodegroup|amplitude|expression|eigenvalue|output_folder|num_threads|num_nodes|stat(istic)?s)\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=(list|disable|enable)\\s+)(amplitude|constraint|converger|criterion|domain|element|expression|group|integrator|load|material|modifier|node|orientation|recorder|section|solver|step|print)\\b"
         },
         {
           "name": "string.unquoted",
@@ -316,6 +321,10 @@
         {
           "name": "entity.name.type.converger",
           "match": "(?i)(?<=converger\\s+)FixedNumber\\b"
+        },
+        {
+          "name": "entity.name.type.converger",
+          "match": "(?i)(?<=converger\\s+)Logic(AND|OR|XOR)\\b"
         }
       ]
     },
@@ -495,6 +504,14 @@
         }
       ]
     },
+    "entities.expression": {
+      "patterns": [
+        {
+          "name": "entity.name.type.expression",
+          "match": "(?i)(?<=expression\\s+)Simple(Scalar|Vector)\\b"
+        }
+      ]
+    },
     "entities.group": {
       "patterns": [
         {
@@ -599,7 +616,7 @@
         },
         {
           "name": "entity.name.type.material",
-          "match": "(?i)(?<=material\\s+)Bilinear(1D|2D|CC|DP|Elastic1D|Hoffman|J2|Mises1D|OO|Peric|PO|Biscosity)\\b"
+          "match": "(?i)(?<=material\\s+)Bilinear(1D|CC|DP|Elastic1D|Hoffman|J2|Mises1D|OO|Peric|PO|Viscosity)\\b"
         },
         {
           "name": "entity.name.type.material",
@@ -647,7 +664,7 @@
         },
         {
           "name": "entity.name.type.material",
-          "match": "(?i)(?<=material\\s+)Exp(CC|DP|Gursion(1D)?|Hoffman|J2|Mises1D)\\b"
+          "match": "(?i)(?<=material\\s+)Exp(CC|DP|Gurson(1D)?|Hoffman|J2|Mises1D)\\b"
         },
         {
           "name": "entity.name.type.material",
@@ -799,6 +816,46 @@
         }
       ]
     },
+    "entities.modifier": {
+      "patterns": [
+        {
+          "name": "entity.name.type.modifier",
+          "match": "(?i)(?<=modifier\\s+)LumpedSimple\\b"
+        },
+        {
+          "name": "entity.name.type.modifier",
+          "match": "(?i)(?<=modifier\\s+)LumpedScale\\b"
+        },
+        {
+          "name": "entity.name.type.modifier",
+          "match": "(?i)(?<=modifier\\s+)Rayleigh\\b"
+        },
+        {
+          "name": "entity.name.type.modifier",
+          "match": "(?i)(?<=modifier\\s+)ElementalLee\\b"
+        },
+        {
+          "name": "entity.name.type.modifier",
+          "match": "(?i)(?<=modifier\\s+)LinearViscosity\\b"
+        },
+        {
+          "name": "entity.name.type.modifier",
+          "match": "(?i)(?<=modifier\\s+)ElementalModal\\b"
+        },
+        {
+          "name": "entity.name.type.modifier",
+          "match": "(?i)(?<=modifier\\s+)ElementalNonviscous(Group)?\\b"
+        }
+      ]
+    },
+    "entities.orientation": {
+      "patterns": [
+        {
+          "name": "entity.name.type.orientation",
+          "match": "(?i)(?<=orientation\\s+)B3D(OS)?[LC]\\b"
+        }
+      ]
+    },
     "entities.section": {
       "patterns": [
         {
@@ -914,6 +971,30 @@
           "match": "^amplitude\\b"
         },
         {
+          "name": "keyword.initial",
+          "match": "^initial\\b"
+        },
+        {
+          "name": "keyword.disable",
+          "match": "^disable\\b"
+        },
+        {
+          "name": "keyword.enable",
+          "match": "^enable\\b"
+        },
+        {
+          "name": "keyword.precheck",
+          "match": "^precheck\\b"
+        },
+        {
+          "name": "keyword.summary",
+          "match": "^summary\\b"
+        },
+        {
+          "name": "keyword.remove",
+          "match": "^remove\\b"
+        },
+        {
           "name": "keyword.analyse",
           "match": "^analy(s|z)e\\b"
         },
@@ -956,6 +1037,10 @@
         {
           "name": "keyword.load",
           "match": "^load\\b"
+        },
+        {
+          "name": "keyword.suspend",
+          "match": "^suspend\\b"
         },
         {
           "name": "keyword.material",
@@ -1002,8 +1087,80 @@
           "match": "^set\\b"
         },
         {
+          "name": "keyword.benchmark",
+          "match": "^benchmark\\b"
+        },
+        {
           "name": "keyword.step",
           "match": "^step\\b"
+        }
+      ]
+    },
+    "outputs": {
+      "patterns": [
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+\\s+)(R|D|I|GD|GI)(F[1-6]?|M[1-3])\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+\\s+)(U|V|A|MM)([1-6]?|R[1-3])\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+\\s+)(S|E|EE|PE)([1-3][1-3])?\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+\\s+)(SP|EP|EEP|PEP)[1-3]?\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+\\s+)(K|S|V|NV)E\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+\\s+)[EP]?EEQ\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+\\s+)K|M\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+\\s+)HYDRO\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+\\s+)MISES\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+\\s+)[EVS][DS]\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+\\s+)(DAMAGE|DT|DC)\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+\\s+)PP\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+\\s+)VF\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+\\s+)HIST\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+\\s+)LITR\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+\\s+)BEAM[SE]?\\b"
         }
       ]
     },
