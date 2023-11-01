@@ -116,7 +116,7 @@
         },
         {
           "name": "string.unquoted",
-          "match": "(?i)(?<=(list|disable|enable)\\s+)(amplitude|constraint|converger|criterion|domain|element|expression|group|integrator|load|material|modifier|node|orientation|recorder|section|solver|step|print)\\b"
+          "match": "(?i)(?<=(save|list|disable|enable)\\s+)(amplitude|constraint|converger|criterion|domain|element|expression|group|integrator|load|material|modifier|node|orientation|recorder|section|solver|step|print)\\b"
         },
         {
           "name": "string.unquoted",
