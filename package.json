@@ -8,6 +8,7 @@
     "email": "tlcfem@gmail.com"
   },
   "pricing": "Free",
+  "publisher": "tlc",
   "repository": {
     "type": "git",
     "url": "https://github.com/TLCFEM/suanPan-vs"
