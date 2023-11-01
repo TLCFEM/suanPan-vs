@@ -4,8 +4,9 @@ import re
 
 if __name__ == "__main__":
     a = r"""
-set tolerance (1)
-# (1) double, tolerance of the iterative solver
+group GroupGroup (1) (2...)
+# (1) int, unique group tag
+# (2...) int, tags of groups to be included
 """
 
     b = [x for x in a.split("\n") if x.strip() != ""]
