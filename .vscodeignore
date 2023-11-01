@@ -8,5 +8,7 @@
 **/tsconfig.json
 examples/**
 node_modules/**
+out/test/**
+scripts/**
 src/**
 vsc-extension-quickstart.md
