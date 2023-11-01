@@ -1,0 +1,4904 @@
+{
+    "AFC": {
+        "prefix": "AFC",
+        "body": [
+            "material AFC ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)}",
+            "# (1) int, unique tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, tension yield stress",
+            "# (4) double, tension hardening modulus",
+            "# (5) double, tension unloading modulus",
+            "# (6) double, compression yield stress",
+            "# (7) double, compression hardening modulus",
+            "# (8) double, compression unloading modulus"
+        ],
+        "description": "asymmetrical friction connection"
+    },
+    "AFC01": {
+        "prefix": "AFC01",
+        "body": [
+            "material AFC01 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)}",
+            "# (1) int, unique tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, tension yield stress",
+            "# (4) double, tension hardening modulus",
+            "# (5) double, tension unloading modulus",
+            "# (6) double, compression yield stress",
+            "# (7) double, compression hardening modulus",
+            "# (8) double, compression unloading modulus"
+        ],
+        "description": "asymmetrical friction connection"
+    },
+    "AFC02": {
+        "prefix": "AFC02",
+        "body": [
+            "material AFC02 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)}",
+            "# (1) int, unique tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, yield stress",
+            "# (4) double, hardening modulus",
+            "# (5) double, unloading modulus"
+        ],
+        "description": "symmetrical friction connection"
+    },
+    "AFC03": {
+        "prefix": "AFC03",
+        "body": [
+            "material AFC03 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:[9]} ${10:[10]}",
+            "# (1) int, unique tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, tension yield stress",
+            "# (4) double, tension hardening modulus",
+            "# (5) double, tension unloading modulus",
+            "# (6) double, compression yield stress",
+            "# (7) double, compression hardening modulus",
+            "# (8) double, compression unloading modulus",
+            "# [9] double, non-negative degradation paramater, default: 0.0",
+            "# [10] double, density, default: 0.0"
+        ],
+        "description": "asymmetrical friction connection"
+    },
+    "AFCN": {
+        "prefix": "AFCN",
+        "body": [
+            "material AFCN ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:[9]} ${10:[10]}",
+            "# (1) int, unique tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, tension yield stress",
+            "# (4) double, tension hardening modulus",
+            "# (5) double, tension unloading modulus",
+            "# (6) double, compression yield stress",
+            "# (7) double, compression hardening modulus",
+            "# (8) double, compression unloading modulus",
+            "# [9] double, non-negative degradation paramater, default: 0.0",
+            "# [10] double, density, default: 0.0"
+        ],
+        "description": "nonlinear version of afc"
+    },
+    "AFCS": {
+        "prefix": "AFCS",
+        "body": [
+            "material AFC02 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)}",
+            "# (1) int, unique tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, yield stress",
+            "# (4) double, hardening modulus",
+            "# (5) double, unloading modulus"
+        ],
+        "description": "symmetrical friction connection"
+    },
+    "AICN": {
+        "prefix": "AICN",
+        "body": [
+            "solver AICN ${1:(1)} ${2:[2]}",
+            "# (1) int, unique solver tag",
+            "# [2] double, approx. length, default: 1.0"
+        ],
+        "description": "aicn solver"
+    },
+    "AbsDisp": {
+        "prefix": "AbsDisp",
+        "body": [
+            "converger AbsDisp ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]}",
+            "# (1) int, unique tag",
+            "# (2) double, tolerance",
+            "# [3] int, maximum iteration, default: 10",
+            "# [4] bool string, print switch, default: false",
+            ""
+        ],
+        "description": "converger absdisp"
+    },
+    "AbsError": {
+        "prefix": "AbsError",
+        "body": [
+            "converger AbsError ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]}",
+            "# (1) int, unique tag",
+            "# (2) double, tolerance",
+            "# [3] int, maximum iteration, default: 10",
+            "# [4] bool string, print switch, default: false",
+            ""
+        ],
+        "description": "converger abserror"
+    },
+    "AbsIncreAcc": {
+        "prefix": "AbsIncreAcc",
+        "body": [
+            "converger AbsIncreAcc ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]}",
+            "# (1) int, unique tag",
+            "# (2) double, tolerance",
+            "# [3] int, maximum iteration, default: 10",
+            "# [4] bool string, print switch, default: false",
+            ""
+        ],
+        "description": "converger absincreacc"
+    },
+    "AbsIncreDisp": {
+        "prefix": "AbsIncreDisp",
+        "body": [
+            "converger AbsIncreDisp ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]}",
+            "# (1) int, unique tag",
+            "# (2) double, tolerance",
+            "# [3] int, maximum iteration, default: 10",
+            "# [4] bool string, print switch, default: false",
+            ""
+        ],
+        "description": "converger absincredisp"
+    },
+    "AbsIncreEnergy": {
+        "prefix": "AbsIncreEnergy",
+        "body": [
+            "converger AbsIncreEnergy ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]}",
+            "# (1) int, unique tag",
+            "# (2) double, tolerance",
+            "# [3] int, maximum iteration, default: 10",
+            "# [4] bool string, print switch, default: false",
+            ""
+        ],
+        "description": "converger absincreenergy"
+    },
+    "AbsResidual": {
+        "prefix": "AbsResidual",
+        "body": [
+            "converger AbsResidual ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]}",
+            "# (1) int, unique tag",
+            "# (2) double, tolerance",
+            "# [3] int, maximum iteration, default: 10",
+            "# [4] bool string, print switch, default: false",
+            ""
+        ],
+        "description": "converger absresidual"
+    },
+    "Allman": {
+        "prefix": "Allman",
+        "body": [
+            "element Allman ${1:(1)} ${2:(2...4)} ${5:(5)} ${6:[6]}",
+            "# (1) int, unique element tag",
+            "# (2...4) int, node i, j, k",
+            "# (5) int, material tag",
+            "# [6] double, thickness, default: 1.0"
+        ],
+        "description": "allman's triangle with drilling dofs"
+    },
+    "ArcLength": {
+        "prefix": "ArcLength",
+        "body": [
+            "step arclength ${1:(1)}",
+            "# (1) int, unique step tag"
+        ],
+        "description": "arc-length step"
+    },
+    "ArmstrongFrederick": {
+        "prefix": "ArmstrongFrederick",
+        "body": [
+            "material ArmstrongFrederick ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:[(8) (9)...]} ${10:[10]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, poissons ratio",
+            "# (4) double, yield stress",
+            "# (5) double, saturated stress",
+            "# (6) double, linear hardening modulus",
+            "# (7) double, m",
+            "# (8) double, a",
+            "# (9) double, b",
+            "# [10] double, density, default: 0.0"
+        ],
+        "description": "armstrong frederick material"
+    },
+    "ArmstrongFrederick1D": {
+        "prefix": "ArmstrongFrederick1D",
+        "body": [
+            "material ArmstrongFrederick1D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:[(7) (8)...]} ${9:[9]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, yield stress",
+            "# (4) double, saturated stress",
+            "# (5) double, linear hardening modulus",
+            "# (6) double, m",
+            "# (7) double, a",
+            "# (8) double, b",
+            "# [9] double, density, default: 0.0"
+        ],
+        "description": "uniaxial armstrong frederick material"
+    },
+    "AsymmElastic1D": {
+        "prefix": "AsymmElastic1D",
+        "body": [
+            "material AsymmElastic1D ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]}",
+            "# (1) int, unique material tag",
+            "# (2) double, tension elastic modulus",
+            "# (3) double, compression elastic modulus",
+            "# [4] double, density, default: 0.0"
+        ],
+        "description": "uniaxial asymmetric elastic material"
+    },
+    "Axisymmetric": {
+        "prefix": "Axisymmetric",
+        "body": [
+            "material Axisymmetric ${1:(1)} ${2:(2)}",
+            "# (1) int, unique material tag",
+            "# (2) int, 3D material tag"
+        ],
+        "description": "axisymmetric wrapper"
+    },
+    "AxisymmetricElastic": {
+        "prefix": "AxisymmetricElastic",
+        "body": [
+            "material AxisymmetricElastic ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, poissons ratio",
+            "# [4] double, density, default: 0.0"
+        ],
+        "description": "axisymmetric elastic material"
+    },
+    "B21": {
+        "prefix": "B21",
+        "body": [
+            "element B21 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique element tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) int, section tag",
+            "# [5] int, number of integration points, default: 6",
+            "# [6] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "2d displacement based bernoulli beam"
+    },
+    "B21EH": {
+        "prefix": "B21EH",
+        "body": [
+            "element B21EH ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique element tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) int, section tag",
+            "# [5] int, number of integration points, default: 6",
+            "# [6] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "2d displacement based bernoulli beam with end moment release"
+    },
+    "B21EL": {
+        "prefix": "B21EL",
+        "body": [
+            "element B21EL ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique element tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) int, section tag",
+            "# [5] int, number of integration points, default: 6",
+            "# [6] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "2d displacement based bernoulli beam with end moment release"
+    },
+    "B21H": {
+        "prefix": "B21H",
+        "body": [
+            "element B21H ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique element tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) int, section tag",
+            "# [5] double, normalized length of each end hinge, default: 0.2",
+            "# [6] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "2d displacement based bernoulli beam with lumped end hinges"
+    },
+    "B31": {
+        "prefix": "B31",
+        "body": [
+            "element B31 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:[6]} ${7:[7]}",
+            "# (1) int, unique element tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) int, section tag",
+            "# (5) int, orientation tag",
+            "# [6] int, number of integration points, default: 5",
+            "# [7] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "3d displacement based bernoulli beam"
+    },
+    "B31OS": {
+        "prefix": "B31OS",
+        "body": [
+            "element B31OS ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:[6]} ${7:[7]}",
+            "# (1) int, unique element tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) int, section tag",
+            "# (5) int, orientation tag",
+            "# [6] int, number of integration points, default: 5",
+            "# [7] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "3d displacement based beam with open section"
+    },
+    "B3DC": {
+        "prefix": "B3DC",
+        "body": [
+            "orientation B3DC ${1:(1)} ${2:(2..4)}",
+            "# (1) int, unique orientation tag",
+            "# (2..4) double, three components of local z axis"
+        ],
+        "description": "corotational transformation for 3d beam elements"
+    },
+    "B3DL": {
+        "prefix": "B3DL",
+        "body": [
+            "orientation B3DL ${1:(1)} ${2:(2..4)}",
+            "# (1) int, unique orientation tag",
+            "# (2..4) double, three components of local z axis"
+        ],
+        "description": "linear transformation for 3d beam elements"
+    },
+    "B3DOSC": {
+        "prefix": "B3DOSC",
+        "body": [
+            "orientation B3DOSC ${1:(1)} ${2:(2..4)}",
+            "# (1) int, unique orientation tag",
+            "# (2..4) double, three components of local z axis"
+        ],
+        "description": "corotational transformation for 3d beam elements with open sections"
+    },
+    "B3DOSL": {
+        "prefix": "B3DOSL",
+        "body": [
+            "orientation B3DOSL ${1:(1)} ${2:(2..4)}",
+            "# (1) int, unique orientation tag",
+            "# (2..4) double, three components of local z axis"
+        ],
+        "description": "linear transformation for 3d beam elements with open sections"
+    },
+    "BICGSTAB": {
+        "prefix": "BICGSTAB",
+        "body": [
+            "set system_solver BICGSTAB"
+        ],
+        "description": "bicgstab solver"
+    },
+    "BWBN": {
+        "prefix": "BWBN",
+        "body": [
+            "material BWBN ${1:(1)} ${2:[2...18]}",
+            "# (1) int, unique material tag",
+            "# [2] double, elastic modulus, default: 2E5",
+            "# [3] double, yield stress, default: 4E2",
+            "# [4] double, hardening ratio, default: 1E-2",
+            "# [5] double, beta (>0), default: 0.5",
+            "# [6] double, exponent n (>0, normally >=1), default: 1.0",
+            "# [7] double, initial \\nu (>0), default: 1.0",
+            "# [8] double, slope of \\nu (>0), default: 0.0",
+            "# [9] double, initial eta (>0), default: 1.0",
+            "# [10] double, slope of eta (>0), default: 0.0",
+            "# [11] double, initial phi (>0), default: 1.0",
+            "# [12] double, slope of phi (>0), default: 0.0",
+            "# [13] double, zeta ${1>zeta>0:(1>zeta>0)}, default: 0.0",
+            "# [14] double, slope of A (>0), default: 0.0",
+            "# [15] double, p (>0), default: 0.0",
+            "# [16] double, q (>0), default: 0.0",
+            "# [17] double, lambda (>0), default: 1.0",
+            "# [18] double, density, default: 0.0"
+        ],
+        "description": "bouc-wen-baber-noori model"
+    },
+    "Bar2D": {
+        "prefix": "Bar2D",
+        "body": [
+            "section Bar2D ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]}",
+            "# (1) int, unique section tag",
+            "# (2) double, area",
+            "# (3) int, material tag",
+            "# [4] double, eccentricity, default: 0.0"
+        ],
+        "description": "2d reinforcing bar section"
+    },
+    "Bar3D": {
+        "prefix": "Bar3D",
+        "body": [
+            "section Bar3D ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique section tag",
+            "# (2) double, area",
+            "# (3) int, material tag",
+            "# [4] double, eccentricity along y axis, default: 0.0",
+            "# [5] double, eccentricity along z axis, default: 0.0"
+        ],
+        "description": "3d reinforcing bar section"
+    },
+    "BatheExplicit": {
+        "prefix": "BatheExplicit",
+        "body": [
+            "integrator BatheExplicit ${1:(1)} ${2:(2)}",
+            "# (1) int, unique integrator tag",
+            "# [2] double, spectral radius, default: 0.5"
+        ],
+        "description": "explicit bathe time integration method"
+    },
+    "BatheTwoStep": {
+        "prefix": "BatheTwoStep",
+        "body": [
+            "integrator BatheTwoStep ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) int, unique integrator tag",
+            "# [2] double, spectral radius, default: 0",
+            "# [3] double, sub-step size, default: 0.5"
+        ],
+        "description": "two-step bathe time integration method"
+    },
+    "Bilinear1D": {
+        "prefix": "Bilinear1D",
+        "body": [
+            "material Bilinear1D ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, initial yield stress",
+            "# [4] double, hardening ratio, default: 0.0",
+            "# [5] double, beta, default: 1.0",
+            "# [6] double, density, default: 0.0"
+        ],
+        "description": "uniaxial bilinear material"
+    },
+    "BilinearCC": {
+        "prefix": "BilinearCC",
+        "body": [
+            "material BilinearCC ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:[9]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, poissons ratio",
+            "# (4) double, beta, controls compression side shape",
+            "# (5) double, m, slope of CSL",
+            "# (6) double, p_t, initial tension strength",
+            "# (7) double, a_0, initial a_0",
+            "# (8) double, H",
+            "# [9] double, density, default: 0.0"
+        ],
+        "description": "cam-clay model with bilinear hardening model"
+    },
+    "BilinearDP": {
+        "prefix": "BilinearDP",
+        "body": [
+            "material BilinearDP ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:[9]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, poissons ratio",
+            "# (4) double, \\eta_y",
+            "# (5) double, \\eta_f",
+            "# (6) double, \\xi",
+            "# (7) double, cohesion",
+            "# (8) double, hardening ratio",
+            "# [9] double, density, default: 0.0"
+        ],
+        "description": "dp model with bilinear hardening function"
+    },
+    "BilinearElastic1D": {
+        "prefix": "BilinearElastic1D",
+        "body": [
+            "material BilinearElastic1D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, yield stress",
+            "# (4) double, hardening modulus",
+            "# [5] double, density, default: 0.0"
+        ],
+        "description": "uniaxial bilinear elastic material"
+    },
+    "BilinearHoffman": {
+        "prefix": "BilinearHoffman",
+        "body": [
+            "material BilinearHoffman ${1:(1)} ${2:(2...7)} ${3:(8...10)} ${4:(11...19)} ${5:[20]} ${6:[21]}",
+            "# (1) int, unique material tag",
+            "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, E_{xy}, E_{yz}, E_{zx}",
+            "# (8...10) double, three poissions ratios: v_{xy}, v_{yz}, v_{zx}",
+            "# (11...19) double, nine yield stresses",
+            "# [20] double, hardening ratio, default: 0.0",
+            "# [21] double, density, default: 0.0"
+        ],
+        "description": "bilinear hoffman material"
+    },
+    "BilinearJ2": {
+        "prefix": "BilinearJ2",
+        "body": [
+            "material BilinearJ2 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]} ${6:[6]} ${7:[7]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, poissons ratio",
+            "# (4) double, yield stress",
+            "# [5] double, hardening ratio, default: 0.0",
+            "# [6] double, beta, default: 1.0",
+            "# [7] double, density, default: 0.0"
+        ],
+        "description": "bilinear j2 material"
+    },
+    "BilinearMises1D": {
+        "prefix": "BilinearMises1D",
+        "body": [
+            "material BilinearMises1D ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, initial yield stress",
+            "# [4] double, hardening ratio, default: 0.0",
+            "# [5] double, density, default: 0.0"
+        ],
+        "description": "uniaxial bilinear material with no kinematic hardening"
+    },
+    "BilinearOO": {
+        "prefix": "BilinearOO",
+        "body": [
+            "material BilinearOO ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:[7]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, tension yield strain",
+            "# (4) double, tension hardening ratio",
+            "# (5) double, compression yield strain",
+            "# (6) double, compression hardening ratio",
+            "# [7] double, density, default: 0.0"
+        ],
+        "description": "bilinear origin oriented model"
+    },
+    "BilinearPO": {
+        "prefix": "BilinearPO",
+        "body": [
+            "material BilinearPO ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:[7]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, tension yield strain",
+            "# (4) double, tension hardening ratio",
+            "# (5) double, compression yield strain",
+            "# (6) double, compression hardening ratio",
+            "# [7] double, density, default: 0.0"
+        ],
+        "description": "bilinear peak oriented model"
+    },
+    "BilinearPeric": {
+        "prefix": "BilinearPeric",
+        "body": [
+            "material BilinearPeric ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:[8]}",
+            "# (1) int, unique tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, poissons ratio",
+            "# (4) double, yield stress",
+            "# (5) double, hardening modulus",
+            "# (6) double, mu",
+            "# (7) double, epsilon",
+            "# [8] double, density, default: 0.0"
+        ],
+        "description": "bilinear peric viscoplastic material"
+    },
+    "BilinearViscosity": {
+        "prefix": "BilinearViscosity",
+        "body": [
+            "material BilinearViscosity ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]}",
+            "# (1) int, unique material tag",
+            "# (2) double, damping coefficient",
+            "# (3) double, yield stress",
+            "# [4] double, hardening ratio, default: 0.0"
+        ],
+        "description": "viscosity with bilinear hardening"
+    },
+    "BlatzKo": {
+        "prefix": "BlatzKo",
+        "body": [
+            "material BlatzKo ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]}",
+            "# (1) int, unique tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, poissons ratio",
+            "# [4] double, density, default: 0.0"
+        ],
+        "description": "blatz ko hyperelastic material"
+    },
+    "BouncWen": {
+        "prefix": "BouncWen",
+        "body": [
+            "material BoucWen ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, yield stress",
+            "# (4) double, hardening ratio",
+            "# (5) double, beta, a positive parameter",
+            "# (6) double, n, a positive exponent"
+        ],
+        "description": "bouc-wen model"
+    },
+    "Box2D": {
+        "prefix": "Box2D",
+        "body": [
+            "section Box2D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:[6]} ${7:[7]}",
+            "# (1) int, unique section tag",
+            "# (2) double, width",
+            "# (3) double, height",
+            "# (4) double, thickness",
+            "# (5) int, material tag",
+            "# [6] int, number of integration points, default: 6",
+            "# [7] double, eccentricity, default: 0.0"
+        ],
+        "description": "2d box section"
+    },
+    "Box3D": {
+        "prefix": "Box3D",
+        "body": [
+            "section Box3D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:[6]} ${7:[7]} ${8:[8]}",
+            "# (1) int, unique section tag",
+            "# (2) double, width",
+            "# (3) double, height",
+            "# (4) double, thickness",
+            "# (5) int, material tag",
+            "# [6] int, number of integration points, default: 6",
+            "# [7] double, eccentricity along y axis, default: 0.0",
+            "# [8] double, eccentricity along z axis, default: 0.0"
+        ],
+        "description": "3d box section"
+    },
+    "Buckle": {
+        "prefix": "Buckle",
+        "body": [
+            "step Buckle ${1:(1)}",
+            "step Buckling ${1:(1)}",
+            "# (1) int, unique step tag"
+        ],
+        "description": "buckling step"
+    },
+    "C3D20": {
+        "prefix": "C3D20",
+        "body": [
+            "element C3D20 ${1:(1)} ${2:(2...21)} ${22:(22)} ${23:[23]} ${24:[24]}",
+            "# (1) int, unique element tag",
+            "# (2...21) int, eight corner nodes with conventional order",
+            "# (22) int, material tag",
+            "# [23] bool string, reduced integration scheme switch, default: true",
+            "# [24] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "second order cube/brick"
+    },
+    "C3D4": {
+        "prefix": "C3D4",
+        "body": [
+            "element C3D4 ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, four corner nodes with conventional order",
+            "# (6) int, material tag",
+            "# [7] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "linear tetrahedral"
+    },
+    "C3D8": {
+        "prefix": "C3D8",
+        "body": [
+            "element C3D8 ${1:(1)} ${2:(2...9)} ${10:(10)} ${11:[11]} ${12:[12]}",
+            "# (1) int, unique element tag",
+            "# (2...9) int, eight corner nodes with conventional order",
+            "# (10) int, material tag",
+            "# [11] string, integration scheme, default: 'I'",
+            "# [12] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "linear cube/brick"
+    },
+    "C3D8I": {
+        "prefix": "C3D8I",
+        "body": [
+            "element C3D8I ${1:(1)} ${2:(2...9)} ${10:(10)}",
+            "# (1) int, unique element tag",
+            "# (2...9) int, eight corner nodes with conventional order",
+            "# (10) int, material tag"
+        ],
+        "description": "linear cube/brick with incompatible modes"
+    },
+    "C3D8R": {
+        "prefix": "C3D8R",
+        "body": [
+            "element C3D8R ${1:(1)} ${2:(2...9)} ${10:(10)} ${11:[11]}",
+            "# (1) int, unique element tag",
+            "# (2...9) int, eight corner nodes with conventional order",
+            "# (10) int, material tag",
+            "# [11] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "linear cube/brick with reduced integration"
+    },
+    "CAX3": {
+        "prefix": "CAX3",
+        "body": [
+            "element CAX3 ${1:(1)} ${2:(2...4)} ${5:(5)} ${6:[6]}",
+            "# (1) int, unique element tag",
+            "# (2...4) int, node tags",
+            "# (5) int, material tag",
+            "# [6] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "axisymmetric linear triangle"
+    },
+    "CAX4": {
+        "prefix": "CAX4",
+        "body": [
+            "element CAX4 ${1:(1)} ${2:(2...5)} ${6:(6)}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, node i, j, k, l",
+            "# (6) int, material tag"
+        ],
+        "description": "axisymmetric linear quadrilateral"
+    },
+    "CAX8": {
+        "prefix": "CAX8",
+        "body": [
+            "element CAX8 ${1:(1)} ${2:(2...9)} ${10:(10)}",
+            "# (1) int, unique element tag",
+            "# (2...9) int, node tags",
+            "# (10) int, material tag"
+        ],
+        "description": "axisymmetric quadratic quadrilateral"
+    },
+    "CDP": {
+        "prefix": "CDP",
+        "body": [
+            "material CDP ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:(10)} ${11:(11)} ${12:(12)} ${13:(13)} ${14:(14)} ${15:[15]}",
+            "# (1) int, unique tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, poissons ratio",
+            "# (4) double, crack stress f_t",
+            "# (5) double, crush stress f_c",
+            "# (6) double, normalized crack energy g_t",
+            "# (7) double, normalized crush energy g_c",
+            "# (8) double, initial tension hardening a_t<1",
+            "# (9) double, initial compression hardening a_c>1",
+            "# (10) double, damage factor at half crack stress d_t",
+            "# (11) double, damage factor at peak crush stress d_c",
+            "# (12) double, dilatancy parameter",
+            "# (13) double, biaxial compression ratio",
+            "# (14) double, initial stiffness recovery factor",
+            "# [15] double, density, default: 2400E-12"
+        ],
+        "description": "concrete damage plasticity material"
+    },
+    "CDPM2": {
+        "prefix": "CDPM2",
+        "body": [
+            "material CDPM2 ${1:(1)} ${2:[2-16]}",
+            "# (1) int, unique material tag",
+            "# [2] double, elastic modulus, default: 3E4",
+            "# [3] double, poissons ratio, default: 0.3",
+            "# [4] double, tension strength (positive), default: 3.0",
+            "# [5] double, compression strength (positive), default: 30.0",
+            "# [6] double, q_h0, initial hardening factor, default: 0.3",
+            "# [7] double, h_p hardening ratio, default: .01",
+            "# [8] double, d_f, default: .85",
+            "# [9] double, a_h, hardening related parameter, default: 0.08",
+            "# [10] double, b_h, hardening related parameter, default: 0.003",
+            "# [11] double, c_h, hardening related parameter, default: 2.0",
+            "# [12] double, d_h, hardening related parameter, default: 1E-6",
+            "# [13] double, a_s, ductility related parameter, default: 5.0",
+            "# [14] double, e_ft, tension softening parameter, default: 5E-4",
+            "# [15] double, e_fc, compression softening parameter, default: 5E-4",
+            "# [16] double, density, default: 0.0"
+        ],
+        "description": "cdpm2 isotropic damage"
+    },
+    "CDPM2ANISO": {
+        "prefix": "CDPM2ANISO",
+        "body": [
+            "material CDPM2ANISO ${1:(1)} ${2:[2-16]}",
+            "# (1) int, unique material tag",
+            "# [2] double, elastic modulus, default: 3E4",
+            "# [3] double, poissons ratio, default: 0.3",
+            "# [4] double, tension strength (positive), default: 3.0",
+            "# [5] double, compression strength (positive), default: 30.0",
+            "# [6] double, q_h0, initial hardening factor, default: 0.3",
+            "# [7] double, h_p hardening ratio, default: .01",
+            "# [8] double, d_f, default: .85",
+            "# [9] double, a_h, hardening related parameter, default: 0.08",
+            "# [10] double, b_h, hardening related parameter, default: 0.003",
+            "# [11] double, c_h, hardening related parameter, default: 2.0",
+            "# [12] double, d_h, hardening related parameter, default: 1E-6",
+            "# [13] double, a_s, ductility related parameter, default: 5.0",
+            "# [14] double, e_ft, tension softening parameter, default: 5E-4",
+            "# [15] double, e_fc, compression softening parameter, default: 5E-4",
+            "# [16] double, density, default: 0.0"
+        ],
+        "description": "cdpm2 aniotropic damage"
+    },
+    "CDPM2ISO": {
+        "prefix": "CDPM2ISO",
+        "body": [
+            "material CDPM2ISO ${1:(1)} ${2:[2-16]}",
+            "# (1) int, unique material tag",
+            "# [2] double, elastic modulus, default: 3E4",
+            "# [3] double, poissons ratio, default: 0.3",
+            "# [4] double, tension strength (positive), default: 3.0",
+            "# [5] double, compression strength (positive), default: 30.0",
+            "# [6] double, q_h0, initial hardening factor, default: 0.3",
+            "# [7] double, h_p hardening ratio, default: .01",
+            "# [8] double, d_f, default: .85",
+            "# [9] double, a_h, hardening related parameter, default: 0.08",
+            "# [10] double, b_h, hardening related parameter, default: 0.003",
+            "# [11] double, c_h, hardening related parameter, default: 2.0",
+            "# [12] double, d_h, hardening related parameter, default: 1E-6",
+            "# [13] double, a_s, ductility related parameter, default: 5.0",
+            "# [14] double, e_ft, tension softening parameter, default: 5E-4",
+            "# [15] double, e_fc, compression softening parameter, default: 5E-4",
+            "# [16] double, density, default: 0.0"
+        ],
+        "description": "cdpm2 isotropic damage"
+    },
+    "CIN3D8": {
+        "prefix": "CIN3D8",
+        "body": [
+            "element CIN3D8 ${1:(1)} ${2:(2...9)} ${10:(10)}",
+            "# (1) int, unique element tag",
+            "# (2...9) int, eight corner nodes with conventional order",
+            "# (10) int, material tag"
+        ],
+        "description": "linear infinite cube/brick"
+    },
+    "CINP4": {
+        "prefix": "CINP4",
+        "body": [
+            "element CINP4 ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, node i, j, k, l",
+            "# (6) int, material tag",
+            "# [7] double, element thickness, default: 1.0"
+        ],
+        "description": "bilinear infinite quadrilateral"
+    },
+    "CP3": {
+        "prefix": "CP3",
+        "body": [
+            "element CP3 ${1:(1)} ${2:(2...4)} ${5:(5)} ${6:[6]} ${7:[7]}",
+            "# (1) int, unique element tag",
+            "# (2...4) int, node i, j, k",
+            "# (5) int, material tag",
+            "# [6] double, element thickness, default: 1.0",
+            "# [7] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "constant strain triangle"
+    },
+    "CP4": {
+        "prefix": "CP4",
+        "body": [
+            "element CP4 ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]} ${8:[8]} ${9:[9]}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, node i, j, k, l",
+            "# (6) int, material tag",
+            "# [7] double, element thickness, default: 1.0",
+            "# [8] bool string, reduced integration switch, default: false",
+            "# [9] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "bilinear quadrilateral"
+    },
+    "CP4I": {
+        "prefix": "CP4I",
+        "body": [
+            "element CP4I ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, node i, j, k, l",
+            "# (6) int, material tag",
+            "# [7] double, element thickness, default: 1.0"
+        ],
+        "description": "bilinear incompatible quadrilateral"
+    },
+    "CP4R": {
+        "prefix": "CP4R",
+        "body": [
+            "element CP4R ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]} ${8:[8]}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, node i, j, k, l",
+            "# (6) int, material tag",
+            "# [7] double, element thickness, default: 1.0",
+            "# [8] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "bilinear quadrilateral with reduced integration"
+    },
+    "CP5": {
+        "prefix": "CP5",
+        "body": [
+            "element CP5 ${1:(1)} ${2:(2...6)} ${7:(7)} ${8:[8]} ${9:[9]}",
+            "# (1) int, unique element tag",
+            "# (2...6) int, node tags that define the element",
+            "# (7) int, material tag",
+            "# [8] double, element thickness, default: 1.0",
+            "# [9] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "five-point quadrilateral"
+    },
+    "CP6": {
+        "prefix": "CP6",
+        "body": [
+            "element CP6 ${1:(1)} ${2:(2...7)} ${8:(8)} ${9:[9]} ${10:[10]}",
+            "# (1) int, unique element tag",
+            "# (2...7) int, node tags that define the element",
+            "# (8) int, material tag",
+            "# [9] double, element thickness, default: 1.0",
+            "# [10] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "quadratic triangle"
+    },
+    "CP7": {
+        "prefix": "CP7",
+        "body": [
+            "element CP7 ${1:(1)} ${2:(2...8)} ${9:(9)} ${10:[10]} ${11:[11]}",
+            "# (1) int, unique element tag",
+            "# (2...8) int, node tags that define the element",
+            "# (9) int, material tag",
+            "# [10] double, element thickness, default: 1.0",
+            "# [11] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "seven-point quadrilateral"
+    },
+    "CP8": {
+        "prefix": "CP8",
+        "body": [
+            "element CP8 ${1:(1)} ${2:(2...9)} ${10:(10)} ${11:[11]} ${12:[12]} ${13:[13]}",
+            "# (1) int, unique element tag",
+            "# (2...9) int, node 1 to node 8",
+            "# (10) int, material tag",
+            "# [11] double, element thickness, default: 1.0",
+            "# [12] bool string, reduced integration switch, default: false",
+            "# [13] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "second order quadrilateral"
+    },
+    "CPE8": {
+        "prefix": "CPE8",
+        "body": [
+            "element CPE8 ${1:(1)} ${2:(2...9)} ${10:(10)} ${11:[11]} ${12:[12]}",
+            "# (1) int, unique element tag",
+            "# (2...9) int, node 1 to node 8",
+            "# (10) int, material tag",
+            "# [11] bool string, reduced integration switch, default: false",
+            "# [12] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "second order quadrilateral with unit thickness"
+    },
+    "CPE8R": {
+        "prefix": "CPE8R",
+        "body": [
+            "element CPCPE8RE8 ${1:(1)} ${2:(2...9)} ${10:(10)} ${11:[11]}",
+            "# (1) int, unique element tag",
+            "# (2...9) int, node 1 to node 8",
+            "# (10) int, material tag",
+            "# [1] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "second order quadrilateral with unit thickness and reduced integration"
+    },
+    "CPS8": {
+        "prefix": "CPS8",
+        "body": [
+            "element CPS8 ${1:(1)} ${2:(2...9)} ${10:(10)} ${11:[11]} ${12:[12]} ${13:[13]}",
+            "# (1) int, unique element tag",
+            "# (2...9) int, node 1 to node 8",
+            "# (10) int, material tag",
+            "# [11] double, element thickness, default: 1.0",
+            "# [12] bool string, reduced integration switch, default: false",
+            "# [13] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "second order quadrilateral"
+    },
+    "CSMQ4": {
+        "prefix": "CSMQ4",
+        "body": [
+            "element CSMQ4 ${1:(1)} (2...*) ${3:(3)} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique element tag",
+            "# (2...*) int, corresponding number of node tags",
+            "# (3) int, material tag",
+            "# [4] double, thickness, default: 1.0",
+            "# [5] double, characteristic length, default: -1.0"
+        ],
+        "description": "couple stress mixed quadrilateral"
+    },
+    "CSMQ5": {
+        "prefix": "CSMQ5",
+        "body": [
+            "element CSMQ5 ${1:(1)} (2...*) ${3:(3)} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique element tag",
+            "# (2...*) int, corresponding number of node tags",
+            "# (3) int, material tag",
+            "# [4] double, thickness, default: 1.0",
+            "# [5] double, characteristic length, default: -1.0"
+        ],
+        "description": "couple stress mixed quadrilateral"
+    },
+    "CSMQ6": {
+        "prefix": "CSMQ6",
+        "body": [
+            "element CSMQ6 ${1:(1)} (2...*) ${3:(3)} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique element tag",
+            "# (2...*) int, corresponding number of node tags",
+            "# (3) int, material tag",
+            "# [4] double, thickness, default: 1.0",
+            "# [5] double, characteristic length, default: -1.0"
+        ],
+        "description": "couple stress mixed quadrilateral"
+    },
+    "CSMQ7": {
+        "prefix": "CSMQ7",
+        "body": [
+            "element CSMQ7 ${1:(1)} (2...*) ${3:(3)} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique element tag",
+            "# (2...*) int, corresponding number of node tags",
+            "# (3) int, material tag",
+            "# [4] double, thickness, default: 1.0",
+            "# [5] double, characteristic length, default: -1.0"
+        ],
+        "description": "couple stress mixed quadrilateral"
+    },
+    "CSMQ8": {
+        "prefix": "CSMQ8",
+        "body": [
+            "element CSMQ8 ${1:(1)} (2...*) ${3:(3)} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique element tag",
+            "# (2...*) int, corresponding number of node tags",
+            "# (3) int, material tag",
+            "# [4] double, thickness, default: 1.0",
+            "# [5] double, characteristic length, default: -1.0"
+        ],
+        "description": "couple stress mixed quadrilateral"
+    },
+    "CSMT3": {
+        "prefix": "CSMT3",
+        "body": [
+            "element CSMT3 ${1:(1)} (2...*) ${3:(3)} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique element tag",
+            "# (2...*) int, corresponding number of node tags",
+            "# (3) int, material tag",
+            "# [4] double, thickness, default: 1.0",
+            "# [5] double, characteristic length, default: -1.0"
+        ],
+        "description": "couple stress mixed triangle"
+    },
+    "CSMT6": {
+        "prefix": "CSMT6",
+        "body": [
+            "element CSMT6 ${1:(1)} (2...*) ${3:(3)} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique element tag",
+            "# (2...*) int, corresponding number of node tags",
+            "# (3) int, material tag",
+            "# [4] double, thickness, default: 1.0",
+            "# [5] double, characteristic length, default: -1.0"
+        ],
+        "description": "couple stress mixed triangle"
+    },
+    "CUDA": {
+        "prefix": "CUDA",
+        "body": [
+            "set system_solver CUDA"
+        ],
+        "description": "cuda solver"
+    },
+    "Cell3DOS": {
+        "prefix": "Cell3DOS",
+        "body": [
+            "section Cell3DOS ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:[7]} ${8:[8]}",
+            "# (1) int, unique section tag",
+            "# (2) double, area",
+            "# (3) double, sectional coordinate",
+            "# (4) double, py",
+            "# (5) double, pz",
+            "# (6) int, material tag",
+            "# [7] double, eccentricity along y-axis, default: 0",
+            "# [8] double, eccentricity along z-axis, default: 0"
+        ],
+        "description": "3d fibre open section building block"
+    },
+    "Circle1D": {
+        "prefix": "Circle1D",
+        "body": [
+            "section Circle1D ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) int, unique section tag",
+            "# (2) double, radius",
+            "# (3) int, material tag"
+        ],
+        "description": "1d circle section"
+    },
+    "Circle2D": {
+        "prefix": "Circle2D",
+        "body": [
+            "section Circle2D ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique section tag",
+            "# (2) double, radius",
+            "# (3) int, material tag",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0"
+        ],
+        "description": "2d circle section"
+    },
+    "Circle3D": {
+        "prefix": "Circle3D",
+        "body": [
+            "section Circle3D ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique section tag",
+            "# (2) double, radius",
+            "# (3) int, material tag",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity along y axis, default: 0.0",
+            "# [6] double, eccentricity along z axis, default: 0.0"
+        ],
+        "description": "3d circle section"
+    },
+    "CircularHollow2D": {
+        "prefix": "CircularHollow2D",
+        "body": [
+            "section CircularHollow2D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique section tag",
+            "# (2) double, radius",
+            "# (3) double, thickness",
+            "# (4) int, material tag",
+            "# [5] int, number of integration points, default: 6",
+            "# [6] double, eccentricity, default: 0.0"
+        ],
+        "description": "2d hollow circular section"
+    },
+    "CircularHollow3D": {
+        "prefix": "CircularHollow3D",
+        "body": [
+            "section CircularHollow3D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]} ${6:[6]} ${7:[7]}",
+            "# (1) int, unique section tag",
+            "# (2) double, radius",
+            "# (3) double, thickness",
+            "# (4) int, material tag",
+            "# [5] int, number of integration points, default: 6",
+            "# [6] double, eccentricity along y axis, default: 0.0",
+            "# [7] double, eccentricity along z axis, default: 0.0"
+        ],
+        "description": "3d hollow circular section"
+    },
+    "Combine": {
+        "prefix": "Combine",
+        "body": [
+            "amplitude Combine ${1:(1)} [${2:(2)}...]",
+            "# (1) int, unique amplitude tag",
+            "# [(2)...] int, tags of amplitude that need to be combined"
+        ],
+        "description": "amplitude combining multiple amplitudes"
+    },
+    "Concrete21": {
+        "prefix": "Concrete21",
+        "body": [
+            "material Concrete21 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:(10)} ${11:[11]}",
+            "# (1) int, unique material tag",
+            "# (2) double, compression strength, should be negative but sign insensitive",
+            "# (3) double, tension strength, should be positive but sign insensitive",
+            "# (4) double, MC",
+            "# (5) double, NC",
+            "# (6) double, MT",
+            "# (7) double, NT",
+            "# (8) double, middle point",
+            "# (9) double, strain at compression strength",
+            "# (10) double, strain at tension strength",
+            "# [11] double, density, default: 0.0"
+        ],
+        "description": "rotating crack concrete material"
+    },
+    "Concrete22": {
+        "prefix": "Concrete22",
+        "body": [
+            "material Concrete22 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:(10)} ${11:(11)} ${12:(12)} ${13:[13]}",
+            "# (1) int, unique material tag",
+            "# (2) double, compression strength, should be negative but sign insensitive",
+            "# (3) double, tension strength, should be positive but sign insensitive",
+            "# (4) double, MC",
+            "# (5) double, NC",
+            "# (6) double, MT",
+            "# (7) double, NT",
+            "# (8) double, middle point",
+            "# (9) double, strain at compression strength",
+            "# (10) double, strain at tension strength",
+            "# (11) double, shear stress",
+            "# (12) double, shear retention factor",
+            "# [13] double, density, default: 0.0"
+        ],
+        "description": "fixed crack concrete material"
+    },
+    "ConcreteCM": {
+        "prefix": "ConcreteCM",
+        "body": [
+            "material ConcreteCM ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:[7]} ${8:[8]} ${9:[9]} ${10:[10]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, compression strength, should be negative but sign insensitive",
+            "# (4) double, tension strength, should be positive but sign insensitive",
+            "# (5) double, NC",
+            "# (6) double, NT",
+            "# [7] double, strain at compression strength, default: -2E-3",
+            "# [8] double, strain at tension strength, default: 1E-4",
+            "# [9] bool string, linear transition switch, default: false",
+            "# [10] double, density, default: 0.0"
+        ],
+        "description": "chang-mander concrete model"
+    },
+    "ConcreteExp": {
+        "prefix": "ConcreteExp",
+        "body": [
+            "material ConcreteExp ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:[9]} ${10:[10]}",
+            "# (1) int, unique tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, f_t",
+            "# (4) double, a_t",
+            "# (5) double, g_t",
+            "# (6) double, f_{c,m}",
+            "# (7) double, a_c",
+            "# (8) double, g_c",
+            "# [9] double, middle point, default: 0.2",
+            "# [10] double, density, default: 0.0"
+        ],
+        "description": "objective concrete model"
+    },
+    "ConcreteK4": {
+        "prefix": "ConcreteK4",
+        "body": [
+            "material ConcreteK4 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:(10)} ${11:(11)} ${12:[12]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus (+), typical: 30000 (in MPa)",
+            "# (3) double, crack closing stiffness ratio (+), typical: ~0.1",
+            "# (4) double, tensile hardening ratio (+), typical: [0,1]",
+            "# (5) double, compressive hardening ratio (+), typical: [0,1]",
+            "# (6) double, tensile strength (+), typical: 3 (in MPa)",
+            "# (7) double, crush (compressive) strength (+), typical: 40 (in MPa)",
+            "# (8) double, crush (compressive) strain (+), typical: 0.002",
+            "# (9) double, yield (compressive) strength ratio (<1), typical: ~0.7",
+            "# (10) double, reference tensile zeta ratio",
+            "# (11) double, reference compressive zeta ratio",
+            "# [12] double, density, default: 0.0"
+        ],
+        "description": "k4 concrete model"
+    },
+    "ConcreteTable": {
+        "prefix": "ConcreteTable",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "ConcreteTsai": {
+        "prefix": "ConcreteTsai",
+        "body": [
+            "material ConcreteTsai ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:(10)} ${11:[11]}",
+            "# (1) int, unique material tag",
+            "# (2) double, compression strength, should be negative but sign insensitive",
+            "# (3) double, tension strength, should be positive but sign insensitive",
+            "# (4) double, MC",
+            "# (5) double, NC",
+            "# (6) double, MT",
+            "# (7) double, NT",
+            "# (8) double, middle point, typical: 0.2",
+            "# (9) double, strain at compression strength, typical: -2E-3",
+            "# (10) double, strain at tension strength, typical: 1E-4",
+            "# [11] double, density, default: 0.0"
+        ],
+        "description": "uniaxial concrete model using tsai's equation"
+    },
+    "Constant": {
+        "prefix": "Constant",
+        "body": [
+            "amplitude Constant ${1:(1)}",
+            "# (1) int, unique amplitude tag"
+        ],
+        "description": "constant amplitude"
+    },
+    "Contact2D": {
+        "prefix": "Contact2D",
+        "body": [
+            "element Contact2D ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]}",
+            "# (1) int, unique element tag",
+            "# (2) int, master group tag",
+            "# (3) int, slave group tag",
+            "# [4] double, penalty factor"
+        ],
+        "description": "2d node(slave)-line(master) contact element"
+    },
+    "Contact3D": {
+        "prefix": "Contact3D",
+        "body": [
+            "element Contact3D ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]}",
+            "# (1) int, unique element tag",
+            "# (2) int, master group tag",
+            "# (3) int, slave group tag",
+            "# [4] double, penalty factor"
+        ],
+        "description": "3d node(slave)-triangular facet(master) contact element"
+    },
+    "Cosine": {
+        "prefix": "Cosine",
+        "body": [
+            "amplitude Cosine ${1:(1)} ${2:(2)} ${3:(3)} [${4:(4)}...]",
+            "# (1) int, unique tag",
+            "# (2) double, base period T_0",
+            "# (3) double, amplitude at base period/frequency a_0",
+            "# [(4)...] double, optional amplitudes at higher periods a_i"
+        ],
+        "description": "cosine amplitude"
+    },
+    "CoulombFriction": {
+        "prefix": "CoulombFriction",
+        "body": [
+            "material CoulombFriction ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) int, unique material tag",
+            "# (2) double, C",
+            "# (3) double, alpha"
+        ],
+        "description": "culomb friction material"
+    },
+    "Custom": {
+        "prefix": "Custom",
+        "body": [
+            "amplitude Custom ${1:(1)} ${2:(2)}",
+            "# (1) int, unique amplitude tag",
+            "# (2) int, expression tag"
+        ],
+        "description": "amplitude using custom function"
+    },
+    "CustomCC": {
+        "prefix": "CustomCC",
+        "body": [
+            "material CustomCC ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:[8]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, poissons ratio",
+            "# (4) double, beta, controls compression side shape",
+            "# (5) double, m, slope of CSL",
+            "# (6) double, p_t, initial tension strength",
+            "# (7) int, hardening expression tag",
+            "# [8] double, density, default: 0.0"
+        ],
+        "description": "cam-clay model with custom hardening function"
+    },
+    "CustomDP": {
+        "prefix": "CustomDP",
+        "body": [
+            "material CustomDP ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:[8]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, poissons ratio",
+            "# (4) double, \\eta_y",
+            "# (5) double, \\eta_f",
+            "# (6) double, \\xi",
+            "# (7) int, cohesion expression tag",
+            "# [8] double, density, default: 0.0"
+        ],
+        "description": "dp model with custom hardening function"
+    },
+    "CustomElastic1D": {
+        "prefix": "CustomElastic1D",
+        "body": [
+            "element CustomElastic1D ${1:(1)} ${2:(2)} ${3:[3]}",
+            "# (1) int, unique element tag",
+            "# (2) int, expression tag",
+            "# (3) double, density, default: 0"
+        ],
+        "description": ""
+    },
+    "CustomGurson": {
+        "prefix": "CustomGurson",
+        "body": [
+            "material CustomGurson ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]} ${6:[6]} ${7:[7]} ${8:[8]} ${9:[9]} ${10:[10]}",
+            "# (1) int, unique material tag",
+            "# (2) int, expression tag",
+            "# (3) double, elastic modulus",
+            "# (4) double, poissons ratio",
+            "# [5] double, q1, default: 1.0",
+            "# [6] double, q2, default: 1.0",
+            "# [7] double, fn, default: 0.0",
+            "# [8] double, sn, default: 1.0",
+            "# [9] double, en, default: 0.0",
+            "# [10] double, density, default: 0.0"
+        ],
+        "description": "gurson model using custom hardening function"
+    },
+    "CustomGurson1D": {
+        "prefix": "CustomGurson1D",
+        "body": [
+            "material CustomGurson1D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]} ${6:[6]} ${7:[7]} ${8:[8]} ${9:[9]} ${10:[10]}",
+            "# (1) int, unique material tag",
+            "# (2) int, expression tag",
+            "# (3) double, elastic modulus",
+            "# (4) double, poissons ratio",
+            "# [5] double, q1, default: 1.0",
+            "# [6] double, q2, default: 1.0",
+            "# [7] double, fn, default: 0.0",
+            "# [8] double, sn, default: 1.0",
+            "# [9] double, en, default: 0.0",
+            "# [10] double, density, default: 0.0"
+        ],
+        "description": "uniaxial gurson model using custom hardening function"
+    },
+    "CustomHoffman": {
+        "prefix": "CustomHoffman",
+        "body": [
+            "material CustomHoffman ${1:(1)} ${2:(2...7)} ${3:(8...10)} ${4:(11...19)} ${5:(20)} ${6:[21]}",
+            "# (1) int, unique material tag",
+            "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, E_{xy}, E_{yz}, E_{zx}",
+            "# (8...10) double, three poissions ratios: v_{xx}, v_{yy}, v_{zz}",
+            "# (11...19) double, nine yield stress",
+            "# (20) int, hardening expression tag",
+            "# [21] double, density, default: 0.0"
+        ],
+        "description": "hoffman model with custom isotropic hardening"
+    },
+    "CustomJ2": {
+        "prefix": "CustomJ2",
+        "body": [
+            "material CustomJ2 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:[6]}",
+            "#(1) int, unique material tag",
+            "#(2) double, elastic modulus",
+            "#(3) double, poissons ratio",
+            "#(4) int, isotropic hardening expression tag",
+            "#(5) int, kinematic hardening expression tag",
+            "#[6] double, density, default: 0"
+        ],
+        "description": "j2 model with exponential isotropic hardening"
+    },
+    "CustomMises1D": {
+        "prefix": "CustomMises1D",
+        "body": [
+            "element CustomMises1D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]}",
+            "# (1) int, unique element tag",
+            "# (2) double, elastic modulus",
+            "# (3) int, isotropic hardening expression tag",
+            "# (4) int, kinematic hardening expression tag",
+            "# (5) double, density, default: 0"
+        ],
+        "description": ""
+    },
+    "CustomStrainDegradation": {
+        "prefix": "CustomStrainDegradation",
+        "body": [
+            "material CustomStrainDegradation ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) int, unique material tag",
+            "# (2) int, host material tag",
+            "# (3) int, positive region degradation expression tag",
+            "# [4] int, negative region degradation expression tag, default: (3)"
+        ],
+        "description": "uniaxial degradation with custom rules"
+    },
+    "CustomStressDegradation": {
+        "prefix": "CustomStressDegradation",
+        "body": [
+            "material CustomStressDegradation ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) int, unique material tag",
+            "# (2) int, host material tag",
+            "# (3) int, positive region degradation expression tag",
+            "# [4] int, negative region degradation expression tag, default: (3)"
+        ],
+        "description": "uniaxial degradation with custom rules"
+    },
+    "CustomViscosity": {
+        "prefix": "CustomViscosity",
+        "body": [
+            "material CustomViscosity (1) (2)",
+            "# (1) int, unique tag",
+            "# (2) int, viscosity expression tag"
+        ],
+        "description": "viscosity with custom hardening"
+    },
+    "DC3D4": {
+        "prefix": "DC3D4",
+        "body": [
+            "element DC3D4 ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:(7)} ${8:(8)}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, four corner nodes with conventional order",
+            "# (6) int, material tag",
+            "# (7) double, characteristic length",
+            "# (8) double, energy release rate"
+        ],
+        "description": "linear tetrahedral with phase field damage"
+    },
+    "DC3D8": {
+        "prefix": "DC3D8",
+        "body": [
+            "element DC3D8 ${1:(1)} ${2:(2...9)} ${10:(10)} ${11:(11)} ${12:(12)}",
+            "# (1) int, unique element tag",
+            "# (2...9) int, eight corner nodes with conventional order",
+            "# (10) int, material tag",
+            "# (11) double, characteristic length",
+            "# (12) double, energy release rate"
+        ],
+        "description": "linear cube/brick with phase field damage"
+    },
+    "DCP3": {
+        "prefix": "DCP3",
+        "body": [
+            "element DCP3 ${1:(1)} ${2:(2...4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:[8]}",
+            "# (1) int, unique element tag",
+            "# (2...4) int, node i, j, k",
+            "# (5) int, material tag",
+            "# (6) double, characteristic length",
+            "# (7) double, energy release rate",
+            "# [8] double, element thickness, default: 1.0"
+        ],
+        "description": "constant strain triangle with crack phase"
+    },
+    "DCP4": {
+        "prefix": "DCP4",
+        "body": [
+            "element DCP4 ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:[9]}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, node i, j, k, l",
+            "# (6) int, material tag",
+            "# (7) double, characteristic length",
+            "# (8) double, energy release rate",
+            "# [9] double, element thickness, default: 1.0"
+        ],
+        "description": "bilinear quadrilateral with crack phase"
+    },
+    "DKT3": {
+        "prefix": "DKT3",
+        "body": [
+            "element DKT3 ${1:(1)} ${2:(2...4)} ${5:(5)} ${6:(6)} ${7:[7]}",
+            "# (1) int, unique element tag",
+            "# (2...4) int, node i, j, k",
+            "# (5) int, material tag",
+            "# (6) double, thickness",
+            "# [7] int, number of integration points, default: 3"
+        ],
+        "description": "dkt triangle plate"
+    },
+    "DKT4": {
+        "prefix": "DKT4",
+        "body": [
+            "element DKT4 ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:(7)} ${8:[8]}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, node i, j, k, l",
+            "# (6) int, material tag",
+            "# (7) double, thickness",
+            "# [8] int, number of integration points along thickness, default: 3"
+        ],
+        "description": "dkt quadrilateral plate"
+    },
+    "DKTS3": {
+        "prefix": "DKTS3",
+        "body": [
+            "element DKTS3 ${1:(1)} ${2:(2...4)} ${5:(5)} ${6:(6)} ${7:[7]} ${8:[8]}",
+            "# (1) int, unique element tag",
+            "# (2...4) int, node i, j, k",
+            "# (5) int, material tag",
+            "# (6) double, thickness",
+            "# [7] int, number of integration points, default: 3",
+            "# [7] bool, nonlinear geometry switch, default: false"
+        ],
+        "description": "dkt triangle shell"
+    },
+    "DKTS4": {
+        "prefix": "DKTS4",
+        "body": [
+            "element DKTS4 ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:(7)} ${8:[8]} ${9:[9]}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, node i, j, k, l",
+            "# (6) int, material tag",
+            "# (7) double, thickness",
+            "# [8] int, number of integration points, default: 3",
+            "# [9] bool, nonlinear geometry switch, default: false"
+        ],
+        "description": "dkt quadrilateral shell"
+    },
+    "DafaliasManzari": {
+        "prefix": "DafaliasManzari",
+        "body": [
+            "material DafaliasMazanri ${1:(1)} ${2:(2-18)} ${19:[19]}",
+            "# (1) int, unique material tag",
+            "# (2) double, reference shear modulus G_0 ==> 125",
+            "# (3) double, poissons ratio \\nu",
+            "# (4) double, \\alpha^c ==> 1.5",
+            "# (5) double, slope of critical state line \\lambda_c ==> 0.02",
+            "# (6) double, initial void ratio e_0",
+            "# (7) double, exponent \\xi ==> 0.7",
+            "# (8) double, initial yield surface size m ==> 0.01",
+            "# (9) double, hardening constant h_0",
+            "# (10) double, hardening constant h_1 ==> 0.1",
+            "# (11) double, hardening constant c_h ==> 0.9",
+            "# (12) double, n^b ==> 1.1",
+            "# (13) double, dilatancy constant A_0 ==> -0.7",
+            "# (14) double, n^d ==> 3.5",
+            "# (15) double, z_{max} ==> 4",
+            "# (16) double, c_z ==> 600",
+            "# (17) double, atmospheric pressure p_{at} ==> -130",
+            "# (18) double, threshold G_r ==> 0.1",
+            "# [19] double, density, default: 0.0"
+        ],
+        "description": "dafalias manzari sand material"
+    },
+    "Damper01": {
+        "prefix": "Damper01",
+        "body": [
+            "element Damper01 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) int, material tag of associated viscosity material"
+        ],
+        "description": "2d viscous damper"
+    },
+    "Damper02": {
+        "prefix": "Damper02",
+        "body": [
+            "element Damper02 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:[6]} ${7:[7]} ${8:[8]}",
+            "# (1) int, unique tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) int, damper tag",
+            "# (5) int, spring tag",
+            "# [6] bool string, if to use matrix in iteration, default: true",
+            "# [7] int, the maximum delay number, default: 0",
+            "# [8] double, beta, default: 0.5"
+        ],
+        "description": "2d viscous damper using the maxwell model"
+    },
+    "Damper03": {
+        "prefix": "Damper03",
+        "body": [
+            "element Damper03 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) int, material tag of associated viscosity material"
+        ],
+        "description": "3d viscous damper"
+    },
+    "Damper04": {
+        "prefix": "Damper04",
+        "body": [
+            "element Damper04 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:[6]} ${7:[7]} ${8:[8]}",
+            "# (1) int, unique tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) int, damper tag",
+            "# (5) int, spring tag",
+            "# [6] bool string, if to use matrix in iteration, default: true",
+            "# [7] int, the maximum delay number, default: 0",
+            "# [8] double, beta, default: 0.5"
+        ],
+        "description": "3d viscous damper using the maxwell model"
+    },
+    "Decay": {
+        "prefix": "Decay",
+        "body": [
+            "amplitude Decay ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) int, unique amplitude tag",
+            "# (2) double, initial amplitude A_0",
+            "# (3) double, speed control parameter t_d"
+        ],
+        "description": "decay amplitude"
+    },
+    "Dhakal": {
+        "prefix": "Dhakal",
+        "body": [
+            "material Dhakal ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique material tag",
+            "# (2) int, host material tag",
+            "# (3) double, yield strain",
+            "# (4) double, geometry parameter"
+        ],
+        "description": "dhakal rebar degradation model"
+    },
+    "Dynamic": {
+        "prefix": "Dynamic",
+        "body": [
+            "step dynamic ${1:(1)} ${2:(2)}",
+            "# (1) int, unique step tag",
+            "# (2) double, step size"
+        ],
+        "description": "dynamic step"
+    },
+    "EB21": {
+        "prefix": "EB21",
+        "body": [
+            "element EB21 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:[7]}",
+            "# (1) int, unique element tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) double, area",
+            "# (5) double, moment inertia",
+            "# (6) int, material tag",
+            "# [7] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "2d elastic bernoulli beam"
+    },
+    "Elastic1D": {
+        "prefix": "Elastic1D",
+        "body": [
+            "material Elastic1D ${1:(1)} ${2:(2)} ${3:[3]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# [3] double, density, default: 0.0"
+        ],
+        "description": "uniaxial elastic material"
+    },
+    "Elastic2D": {
+        "prefix": "Elastic2D",
+        "body": [
+            "material Elastic2D ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, poissons ratio",
+            "# [4] double, density, default: 0.0",
+            "# [5] int, material type, plane stress = 0, plane strain = 1,, default: 0"
+        ],
+        "description": "2d elastic material"
+    },
+    "Elastic3D": {
+        "prefix": "Elastic3D",
+        "body": [
+            "material IsotropicElastic3D ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]}",
+            "# (1) int, unique tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, poissons ratio",
+            "# [4] double, density, default: 0.0"
+        ],
+        "description": "3d isotropic elastic material"
+    },
+    "ElasticOS": {
+        "prefix": "ElasticOS",
+        "body": [
+            "material ElasticOS ${1:(1)} ${2:(2)} ${3:[3]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# [3] double, density, default: 0"
+        ],
+        "description": "elastic material or beam sections"
+    },
+    "ElementalLee": {
+        "prefix": "ElementalLee",
+        "body": [
+            "modifier ElementalLee ${1:(1)} ${2:(2)} [${3:(3)}...]",
+            "# (1) int, unique modifier tag",
+            "# (2) double, damping ratio",
+            "# [(3)...] int, element tags"
+        ],
+        "description": "lee's elemental damping"
+    },
+    "ElementalModal": {
+        "prefix": "ElementalModal",
+        "body": [
+            "modifier ElementalModal ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4...)}",
+            "# (1) int, unique modifier tag",
+            "# (2) double, cut-off frequency",
+            "# (3) double, damping ratio",
+            "# (4...) int, element tags"
+        ],
+        "description": "wilson penzien elemental damping"
+    },
+    "Embed2D": {
+        "prefix": "Embed2D",
+        "body": [
+            "constraint Embed2D ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) int, unique constraint tag",
+            "# (2) int, host element tag",
+            "# (3) int, embedded node tag"
+        ],
+        "description": "2d embed constraint"
+    },
+    "Embed3D": {
+        "prefix": "Embed3D",
+        "body": [
+            "constraint Embed3D ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) int, unique constraint tag",
+            "# (2) int, host element tag",
+            "# (3) int, embedded node tag"
+        ],
+        "description": "3d embed constraint"
+    },
+    "Embedded2D": {
+        "prefix": "Embedded2D",
+        "body": [
+            "element Embedded2D ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]}",
+            "# (1) int, unique element tag",
+            "# (2) int, host element tag",
+            "# (3) int, slave node tag",
+            "# [4] double, penalty factor, default: 1E4"
+        ],
+        "description": "2d embedded element"
+    },
+    "Embedded3D": {
+        "prefix": "Embedded3D",
+        "body": [
+            "element Embedded3D ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]}",
+            "# (1) int, unique element tag",
+            "# (2) int, host element tag",
+            "# (3) int, slave node tag",
+            "# [4] double, penalty factor, default: 1E4"
+        ],
+        "description": "3d embedded element"
+    },
+    "ExpCC": {
+        "prefix": "ExpCC",
+        "body": [
+            "material ExpCC ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:(10)} ${11:[11]}",
+            "# (1) nt, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, poissons ratio",
+            "# (4) double, beta, controls compression side shapen# (5) double, m, slope of CSL",
+            "# (6) double, p_t, initial tension strength",
+            "# (7) double, a_0, initial a_0",
+            "# (8) double, e_0, nitial void ratio",
+            "# (9) double, lambda",
+            "# (10) double, kappa",
+            "# [11] double, density, default: 0.0"
+        ],
+        "description": "cam-clay model with exponential hardening"
+    },
+    "ExpDP": {
+        "prefix": "ExpDP",
+        "body": [
+            "material ExpDP ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:[10]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, poissons ratio",
+            "# (4) double, \\eta_y",
+            "# (5) double, \\eta_f",
+            "# (6) double, \\xi",
+            "# (7) double, cohesion",
+            "# (8) double, cohesion_a",
+            "# (9) double, cohesion_b",
+            "# [10] double, density, default: 0.0"
+        ],
+        "description": "dp model with exponential hardening function"
+    },
+    "ExpGurson": {
+        "prefix": "ExpGurson",
+        "body": [
+            "material ExpGurson ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:[6]} ${7:[7]} ${8:[8]} ${9:[9]} ${10:[10]} ${11:[11]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, poissons ratio",
+            "# (4) double, yield stress",
+            "# (5) double, n",
+            "# [6] double, q1, default: 1.0",
+            "# [7] double, q2, default: 1.0",
+            "# [8] double, fn, default: 0.0",
+            "# [9] double, sn, default: 1.0",
+            "# [10] double, en, default: 0.0",
+            "# [11] double, density, default: 0.0"
+        ],
+        "description": "gurson model using exponential hardening function"
+    },
+    "ExpGurson1D": {
+        "prefix": "ExpGurson1D",
+        "body": [
+            "material ExpGurson1D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:[6]} ${7:[7]} ${8:[8]} ${9:[9]} ${10:[10]} ${11:[11]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, poissons ratio",
+            "# (4) double, yield stress",
+            "# (5) double, n",
+            "# [6] double, q1, default: 1.0",
+            "# [7] double, q2, default: 1.0",
+            "# [8] double, fn, default: 0.0",
+            "# [9] double, sn, default: 1.0",
+            "# [10] double, en, default: 0.0",
+            "# [11] double, density, default: 0.0"
+        ],
+        "description": "uniaxial gurson model using exponential hardening function"
+    },
+    "ExpHoffman": {
+        "prefix": "ExpHoffman",
+        "body": [
+            "material ExpHoffman ${1:(1)} ${2:(2...7)} ${3:(8...10)} ${4:(11...19)} ${5:(20)} ${6:(21)} ${7:[22]}",
+            "# (1) int, unique material tag",
+            "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, E_{xy}, E_{yz}, E_{zx}",
+            "# (8...10) double, three poissions ratios: v_{xx}, v_{yy}, v_{zz}",
+            "# (11...19) double, nine yield stress",
+            "# (20) double, a",
+            "# (21) double, b",
+            "# [22] double, density, default: 0.0"
+        ],
+        "description": "hoffman model with exponential isotropic hardening"
+    },
+    "ExpJ2": {
+        "prefix": "ExpJ2",
+        "body": [
+            "material ExpJ2 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:[7]}",
+            "#(1) int, unique material tag",
+            "#(2) double, elastic modulus",
+            "#(3) double, poissons ratio",
+            "#(4) double, yield stress",
+            "#(5) double, a",
+            "#(6) double, b",
+            "#[7] double, density, default: 0"
+        ],
+        "description": "j2 model with exponential isotropic hardening"
+    },
+    "ExpMises1D": {
+        "prefix": "ExpMises1D",
+        "body": [
+            "material ExpMises1D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:[7]}",
+            "# (1) int, unique tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, yield stress",
+            "# (4) double, a",
+            "# (5) double, b",
+            "# (6) double, c",
+            "# [7] double, density, default: 0"
+        ],
+        "description": "uniaxial j2 material with exponential isotropic hardening"
+    },
+    "ExplicitDynamic": {
+        "prefix": "ExplicitDynamic",
+        "body": [
+            "step explicitdynamic ${1:(1)} ${2:(2)}",
+            "# (1) int, unique step tag",
+            "# (2) double, step size"
+        ],
+        "description": "explicit dynamic step"
+    },
+    "F21": {
+        "prefix": "F21",
+        "body": [
+            "element F21 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique element tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) int, section tag",
+            "# [5] int, number of integration points, default: 6",
+            "# [6] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "2d force based bernoulli beam"
+    },
+    "F21H": {
+        "prefix": "F21H",
+        "body": [
+            "element F21H ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique element tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) int, section tag",
+            "# [5] double, normalized length of each end hinge, default: 0.2 ",
+            "# [6] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "2d force based bernoulli beam with lumped end hinges"
+    },
+    "F31": {
+        "prefix": "F31",
+        "body": [
+            "element F31 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:[6]} ${7:[7]}",
+            "# (1) int, unique element tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) int, section tag",
+            "# (5) int, orientation tag",
+            "# [6] int, number of integration points, default: 5",
+            "# [7] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "3d displacement based bernoulli beam"
+    },
+    "FEAST": {
+        "prefix": "FEAST",
+        "body": [
+            "solver FEAST ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) int, unique solver tag",
+            "# (2) int, number of eigen modes",
+            "# (3) double, radius"
+        ],
+        "description": "feast eigen solver"
+    },
+    "FGMRES": {
+        "prefix": "FGMRES",
+        "body": [
+            "set system_solver FGMRES"
+        ],
+        "description": "fgmres solver"
+    },
+    "Fibre1D": {
+        "prefix": "Fibre1D",
+        "body": [
+            "section Fibre1D ${1:(1)} [${2:(2)}...]",
+            "# (1) int, unique section tag",
+            "# [(2)...] int, associated section tags"
+        ],
+        "description": "1d fibre section"
+    },
+    "Fibre2D": {
+        "prefix": "Fibre2D",
+        "body": [
+            "section Fibre2D ${1:(1)} [${2:(2)}...]",
+            "# (1) int, unique section tag",
+            "# [(2)...] int, associated section tags"
+        ],
+        "description": "2d fibre section"
+    },
+    "Fibre3D": {
+        "prefix": "Fibre3D",
+        "body": [
+            "section Fibre3D ${1:(1)} [${2:(2)}...]",
+            "# (1) int, unique section tag",
+            "# [(2)...] int, associated section tags"
+        ],
+        "description": "3d fibre section"
+    },
+    "Fibre3DOS": {
+        "prefix": "Fibre3DOS",
+        "body": [
+            "section Fibre3DOS ${1:(1)} [${2:(2)}...]",
+            "# (1) int, unique section tag",
+            "# [(2)...] int, associated section tags"
+        ],
+        "description": "3d fibre open section"
+    },
+    "FixedLength2D": {
+        "prefix": "FixedLength2D",
+        "body": [
+            "fixedlength2d ${1:(1)} ${2:(2)} ${3:(3)}",
+            "constraint fixedlength2d ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) int, unique constraint tag",
+            "# (2) int, node tag",
+            "# (3) int, node tag"
+        ],
+        "description": "2d fixed length constraint"
+    },
+    "FixedLength3D": {
+        "prefix": "FixedLength3D",
+        "body": [
+            "fixedlength3d ${1:(1)} ${2:(2)} ${3:(3)}",
+            "constraint fixedlength3d ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) int, unique constraint tag",
+            "# (2) int, node tag",
+            "# (3) int, node tag"
+        ],
+        "description": "3d fixed length constraint"
+    },
+    "FixedNumber": {
+        "prefix": "FixedNumber",
+        "body": [
+            "converger FixedNumber ${1:(1)} ${2:(2)} ${3:[3]}",
+            "# (1) int, unique tag",
+            "# (2) int, maximum iteration",
+            "# [3] bool string, print switch, default: false"
+        ],
+        "description": "fixed number of iterations converger"
+    },
+    "Flag01": {
+        "prefix": "Flag01",
+        "body": [
+            "material Flag01 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, yield stress, positive",
+            "# (4) double, residual stress, can be either positive or negative",
+            "# (5) double, hardening ratio"
+        ],
+        "description": "flag shaped material"
+    },
+    "Flag02": {
+        "prefix": "Flag02",
+        "body": [
+            "material Flag02 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, tension yield stress, positive",
+            "# (4) double, tension residual stress, can be either positive or negative",
+            "# (5) double, tension hardening ratio",
+            "# (6) double, compression yield stress, negative",
+            "# (7) double, compression residual stress, can be either positive or negative",
+            "# (8) double, compression hardening ratio"
+        ],
+        "description": "flag shaped material"
+    },
+    "Fluid": {
+        "prefix": "Fluid",
+        "body": [
+            "material Fluid ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) int, unique material tag",
+            "# (2) double, bulk modulus",
+            "# (3) double, density"
+        ],
+        "description": "fluid material"
+    },
+    "Frequency": {
+        "prefix": "Frequency",
+        "body": [
+            "step frequency ${1:(1)} ${2:(2)}",
+            "# (1) int, unique step tag",
+            "# (2) int, number of eigen modes to be solved"
+        ],
+        "description": "frequency step"
+    },
+    "GCMQ": {
+        "prefix": "GCMQ",
+        "body": [
+            "element GCMQI ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]} ${8:[8]}",
+            "element GCMQL ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]} ${8:[8]}",
+            "element GCMQG ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]} ${8:[8]}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, node i, j, k, l",
+            "# (6) int, material tag",
+            "# [7] double, element thickness, default: 1.0"
+        ],
+        "description": "generalized conforming mixed quadrilateral with drilling dofs"
+    },
+    "GCMQG": {
+        "prefix": "GCMQG",
+        "body": [
+            "element GCMQG ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]} ${8:[8]}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, node i, j, k, l",
+            "# (6) int, material tag",
+            "# [7] double, element thickness, default: 1.0"
+        ],
+        "description": "generalized conforming mixed quadrilateral with drilling dofs"
+    },
+    "GCMQI": {
+        "prefix": "GCMQI",
+        "body": [
+            "element GCMQI ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]} ${8:[8]}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, node i, j, k, l",
+            "# (6) int, material tag",
+            "# [7] double, element thickness, default: 1.0"
+        ],
+        "description": "generalized conforming mixed quadrilateral with drilling dofs"
+    },
+    "GCMQL": {
+        "prefix": "GCMQL",
+        "body": [
+            "element GCMQL ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]} ${8:[8]}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, node i, j, k, l",
+            "# (6) int, material tag",
+            "# [7] double, element thickness, default: 1.0"
+        ],
+        "description": "generalized conforming mixed quadrilateral with drilling dofs"
+    },
+    "GMRES": {
+        "prefix": "GMRES",
+        "body": [
+            "set system_solver GMRES"
+        ],
+        "description": "gmres solver"
+    },
+    "GQ12": {
+        "prefix": "GQ12",
+        "body": [
+            "element GQ12 ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, node i, j, k, l",
+            "# (6) int, material tag",
+            "# [7] double, element thickness, default: 1.0"
+        ],
+        "description": "quadrilateral with drilling dofs"
+    },
+    "GSSSSOptimal": {
+        "prefix": "GSSSSOptimal",
+        "body": [
+            "integrator GSSSSOptimal ${1:(1)} ${2:[2]}",
+            "# (1) int, unique integrator tag",
+            "# [2] double, spectral radius, default: 0.5"
+        ],
+        "description": "optimal scheme for gssss"
+    },
+    "GSSSSU0": {
+        "prefix": "GSSSSU0",
+        "body": [
+            "integrator GSSSSU0 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique integrator tag",
+            "# (2-4) double, three spectral radii"
+        ],
+        "description": "u0 family scheme for gssss"
+    },
+    "GSSSSV0": {
+        "prefix": "GSSSSV0",
+        "body": [
+            "integrator GSSSSV0 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique integrator tag",
+            "# (2-4) double, three spectral radii"
+        ],
+        "description": "v0 family scheme for gssss"
+    },
+    "Gap01": {
+        "prefix": "Gap01",
+        "body": [
+            "material Gap01 ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, yield stress",
+            "# [4] double, gap strain, default: 0.0",
+            "# [5] double, density, default: 0.0"
+        ],
+        "description": "a gap material"
+    },
+    "GeneralisedAlpha": {
+        "prefix": "GeneralisedAlpha",
+        "body": [
+            "integrator GeneralisedAlpha ${1:(1)} ${2:[2]}",
+            "# (1) int, unique tag",
+            "# [2] double, spectral radius at infinite frequency, default: 0.5",
+            "",
+            "integrator GeneralisedAlpha ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) int, unique tag",
+            "# (2) double, \\alpha_f",
+            "# (3) double, \\alpha_m"
+        ],
+        "description": "generalized-alpha time integration"
+    },
+    "GeneralisedAlphaExplicit": {
+        "prefix": "GeneralisedAlphaExplicit",
+        "body": [
+            "integrator GeneralisedAlphaExplicit ${1:(1)} ${2:[2]}",
+            "# (1) int, unique tag",
+            "# [2] double, spectral radius at infinite frequency, default: 0.5"
+        ],
+        "description": "explicit generalized-alpha time integration"
+    },
+    "GeneralizedAlpha": {
+        "prefix": "GeneralizedAlpha",
+        "body": [
+            "integrator GeneralisedAlpha ${1:(1)} ${2:[2]}",
+            "# (1) int, unique tag",
+            "# [2] double, spectral radius at infinite frequency, default: 0.5",
+            "",
+            "integrator GeneralisedAlpha ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) int, unique tag",
+            "# (2) double, \\alpha_f",
+            "# (3) double, \\alpha_m"
+        ],
+        "description": "generalized-alpha time integration"
+    },
+    "GroupMultiplierBC": {
+        "prefix": "GroupMultiplierBC",
+        "body": [
+            "groupmultiplierbc ${1:(1)} ${2:(2)} ${3:(3...)}",
+            "# (1) int, unique tag",
+            "# (2) string, dof identifier",
+            "# (3...) int, tags of groups that shall be constrained"
+        ],
+        "description": "boundary condition"
+    },
+    "GroupPenaltyBC": {
+        "prefix": "GroupPenaltyBC",
+        "body": [
+            "grouppenaltybc ${1:(1)} ${2:(2)} ${3:(3...)}",
+            "# (1) int, unique tag",
+            "# (2) string, dof identifier",
+            "# (3...) int, tags of groups that shall be constrained"
+        ],
+        "description": "boundary condition"
+    },
+    "HSection2D": {
+        "prefix": "HSection2D",
+        "body": [
+            "section HSection2D ${1:(1)} ${2:(2...7)} ${8:(8)} ${9:[9]} ${10:[10]}",
+            "# (1) int, unique tag",
+            "# (2...7) double, section dimensions",
+            "# (8) int, material tag",
+            "# [9] int, number of integration points, default: 6",
+            "# [10] double, eccentricity measured from the centre, default: 0.0"
+        ],
+        "description": "2d h-section"
+    },
+    "ILU": {
+        "prefix": "ILU",
+        "body": [
+            "set preconditioner ILU"
+        ],
+        "description": "ilu preconditioner"
+    },
+    "ISection2D": {
+        "prefix": "ISection2D",
+        "body": [
+            "section ISection2D ${1:(1)} ${2:(2...7)} ${8:(8)} ${9:[9]} ${10:[10]}",
+            "# (1) int, unique tag",
+            "# (2...7) double, section dimensions",
+            "# (8) int, material tag",
+            "# [9] int, number of integration points, default: 6",
+            "# [10] double, eccentricity measured from the centre, default: 0.0"
+        ],
+        "description": "2d i-section"
+    },
+    "ISection3D": {
+        "prefix": "ISection3D",
+        "body": [
+            "section ISection3D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:[9]} ${10:[10]} ${11:[11]}",
+            "# (1) int, unique section tag",
+            "# (2) double, top flange width",
+            "# (3) double, top flange thickness",
+            "# (4) double, bottom flange width",
+            "# (5) double, bottom flange thickness",
+            "# (6) double, web height",
+            "# (7) double, web thickness",
+            "# (8) int, material tag",
+            "# [9] int, number of integration points, default: 6",
+            "# [10] double, eccentricity along y axis, default: 0.0",
+            "# [11] double, eccentricity along z axis, default: 0.0"
+        ],
+        "description": "3d i-section"
+    },
+    "ImplicitDynamic": {
+        "prefix": "ImplicitDynamic",
+        "body": [
+            "step implicitdynamic ${1:(1)} ${2:(2)}",
+            "# (1) int, unique step tag",
+            "# (2) double, step size"
+        ],
+        "description": "implicit dynamic step"
+    },
+    "IsotropicElastic3D": {
+        "prefix": "IsotropicElastic3D",
+        "body": [
+            "material IsotropicElastic3D ${1:(1)} ${2:(2)} ${3:[3]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# [3] double, density, default: 0"
+        ],
+        "description": "3d isotropic elastic material"
+    },
+    "Jacobi": {
+        "prefix": "Jacobi",
+        "body": [
+            "set preconditioner Jacobi"
+        ],
+        "description": "jacobi preconditioner"
+    },
+    "Joint": {
+        "prefix": "Joint",
+        "body": [
+            "element Joint ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4...)}",
+            "# (1) int, unique element tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4...) int, material tags"
+        ],
+        "description": "joint element"
+    },
+    "Kelvin": {
+        "prefix": "Kelvin",
+        "body": [
+            "material Kelvin ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) int, unique material tag",
+            "# (2) int, damper tag",
+            "# (3) int, spring tag"
+        ],
+        "description": "kelvin material"
+    },
+    "LAPACK": {
+        "prefix": "LAPACK",
+        "body": [
+            "set system_solver LAPACK"
+        ],
+        "description": "lapack solver"
+    },
+    "LBFGS": {
+        "prefix": "LBFGS",
+        "body": [
+            "solver LBFGS ${1:(1)} ${2:[2]}",
+            "# (1) int, unique solver tag",
+            "# [2] int, maximum number of history, default: 20"
+        ],
+        "description": "lbfgs solver"
+    },
+    "LJPotential2D": {
+        "prefix": "LJPotential2D",
+        "body": [
+            "constraint LJPotential2D ${1:(1)} ${2:[2]} ${3:[3]}",
+            "# (1) int, unique constraint tag",
+            "# [2] double, spacing, default: 1.0",
+            "# [3] double, alpha, default: 1.0"
+        ],
+        "description": "2d lj potential constraint"
+    },
+    "Laminated": {
+        "prefix": "Laminated",
+        "body": [
+            "material Laminated ${1:(1)} ${2:(2...)}",
+            "# (1) int, unique material tag",
+            "# (2...) int, material tags of 2D models need to be contained"
+        ],
+        "description": "parallel wrapper for 2d material models"
+    },
+    "LeeElementalNewmark": {
+        "prefix": "LeeElementalNewmark",
+        "body": [
+            "integrator LeeElementalNewmark ${1:(1)} ${2:(2)} ${3:(3)} (${4:(4)} ${5:(5)}...)",
+            "# (1) int, unique integrator tag",
+            "# (2) double, alpha",
+            "# (3) double, beta",
+            "# (4) double, reference damping ratio \\zeta_p at the peak of each mode",
+            "# (5) double, circular frequency \\omega_p at the peak of each mode"
+        ],
+        "description": "elemental damping using lee's method"
+    },
+    "LeeNewmark": {
+        "prefix": "LeeNewmark",
+        "body": [
+            "integrator LeeNewmark ${1:(1)} ${2:(2)} ${3:(3)} (${4:(4)} ${5:(5)}...)",
+            "# (1) int, unique integrator tag",
+            "# (2) double, alpha",
+            "# (3) double, beta",
+            "# (4) double, damping ratio \\zeta_p at the peak of each mode",
+            "# (5) double, circular frequency \\omega_p at the peak of each mode"
+        ],
+        "description": "newmark with lee's damping model"
+    },
+    "LeeNewmarkFull": {
+        "prefix": "LeeNewmarkFull",
+        "body": [
+            "integrator LeeNewmarkFull ${1:(1)} ${2:(2)} ${3:(3)} (${4:(4)} ${5:(5)} ${6:(6)} ${7:[7...]}...)",
+            "# (1) int, unique integrator tag",
+            "# (2) double, alpha in Newmark method",
+            "# (3) double, beta in Newmark method",
+            "# (4) string, type identifier",
+            "# (5) double, \\zeta_p",
+            "# (6) double, \\omega_p",
+            "# (7...) double/int, parameters associated with the mode"
+        ],
+        "description": "newmark with lee's damping model (full mode)"
+    },
+    "LineUDL2D": {
+        "prefix": "LineUDL2D",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "LineUDL3D": {
+        "prefix": "LineUDL3D",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "Linear": {
+        "prefix": "Linear",
+        "body": [
+            "amplitutde Linear ${1:(1)} ${2:(2)}",
+            "# (1) int, unique amplitude tag",
+            "# (2) double, slope V"
+        ],
+        "description": "linear amplitude"
+    },
+    "LinearDamage": {
+        "prefix": "LinearDamage",
+        "body": [
+            "material LinearDamage ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]}",
+            "# (1) int, unique material tag",
+            "# (2) int, associated material tag",
+            "# (3) double, start strain",
+            "# (4) double, end strain",
+            "# [5] double, end damage value, default: 0.0"
+        ],
+        "description": "linear damage model"
+    },
+    "LinearViscosity": {
+        "prefix": "LinearViscosity",
+        "body": [
+            "modifier LinearViscosity ${1:(1)} ${2:(2)} [${3:(3)}...]",
+            "# (1) int, unique modifier tag",
+            "# (2) double, \\mu",
+            "# [(3)...] int, element tags"
+        ],
+        "description": "linear viscosity modifier"
+    },
+    "LogicAND": {
+        "prefix": "LogicAND",
+        "body": [
+            "converger LogicAND ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) int, unique converger tag",
+            "# (2) int, tag of first converger in logical operation",
+            "# (3) int, tag of second converger in logical operation"
+        ],
+        "description": "apply logical operations to two convergers."
+    },
+    "LogicOR": {
+        "prefix": "LogicOR",
+        "body": [
+            "converger LogicOR ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) int, unique converger tag",
+            "# (2) int, tag of first converger in logical operation",
+            "# (3) int, tag of second converger in logical operation"
+        ],
+        "description": "apply logical operations to two convergers."
+    },
+    "LogicXOR": {
+        "prefix": "LogicXOR",
+        "body": [
+            "converger LogicXOR ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) int, unique converger tag",
+            "# (2) int, tag of first converger in logical operation",
+            "# (3) int, tag of second converger in logical operation"
+        ],
+        "description": "apply logical operations to two convergers."
+    },
+    "LumpedScale": {
+        "prefix": "LumpedScale",
+        "body": [
+            "modifier LumpedScale ${1:(1)} (2...)",
+            "# (1) int, unique modifier tag",
+            "# (2...) int, element tags"
+        ],
+        "description": "lumped mass by scaling diagonals"
+    },
+    "LumpedSimple": {
+        "prefix": "LumpedSimple",
+        "body": [
+            "modifier LumpedSimple ${1:(1)} (2...)",
+            "# (1) int, unique modifier tag",
+            "# (2...) int, element tags"
+        ],
+        "description": "lumped mass simple"
+    },
+    "MPC": {
+        "prefix": "MPC",
+        "body": [
+            "mpc ${1:(1)} ${2:(2)} ${3:(3)} [${4:(4)} ${5:(5)} ${6:(6)})...]",
+            "constraint mpc ${1:(1)} ${2:(2)} ${3:(3)} [${4:(4)} ${5:(5)} ${6:(6)})...]",
+            "# (1) int, unique constraint tag",
+            "# (2) int, amplitude tag, can be zero",
+            "# (3) double, right hand side of the constraint equation, the constraint is homogeneous if this parameter is zero",
+            "# (4) int, node tag",
+            "# (5) int, dof tag",
+            "# (6) double, weight"
+        ],
+        "description": "multi-point constraint"
+    },
+    "MPDC": {
+        "prefix": "MPDC",
+        "body": [
+            "solver MPDC ${1:(1)}",
+            "solver DisplacementControl ${1:(1)}",
+            "# (1) int, unique solver tag"
+        ],
+        "description": "displacement controlled solver"
+    },
+    "MPF": {
+        "prefix": "MPF",
+        "body": [
+            "material MPF ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]} ${5:[5]} ${6:[6]} ${7:[7]} ${8:[8]} ${9:[9]} ${10:[10]} ${11:[11]} ${12:[12]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, initial yield stress",
+            "# [4] double, hardening ratio, default: 0.05",
+            "# [5] double, R0, default: 20.0",
+            "# [6] double, A1, default: 18.5",
+            "# [7] double, A2, default: 0.15",
+            "# [8] double, A3, default: 0.01",
+            "# [9] double, A4, default: 7.0",
+            "# [10] bool string, isotropic hardening switch, default: false",
+            "# [11] bool string, constant radius switch, default: false",
+            "# [12] double, density, default: 0.0"
+        ],
+        "description": "menegotto-pinto-filippou steel model"
+    },
+    "MUMPS": {
+        "prefix": "MUMPS",
+        "body": [
+            "set system_solver MUMPS"
+        ],
+        "description": "mumps solver"
+    },
+    "MVLEM": {
+        "prefix": "MVLEM",
+        "body": [
+            "element MVLEM ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} (${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:(10)}...)",
+            "# (1) int, unique element tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) int, material tag of shear spring",
+            "# (5) double, height of shear spring, ranges from 0 to 1",
+            "# (6) double, fibre width",
+            "# (7) double, fibre thickness",
+            "# (8) double, reinforcement ratio of target fibre",
+            "# (9) int, concrete material ${host:(host)} tag",
+            "# (10) int, steel material tag"
+        ],
+        "description": "multiple vertical line element model"
+    },
+    "Mass": {
+        "prefix": "Mass",
+        "body": [
+            "Mass ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4...)}",
+            "element Mass ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4...)}",
+            "# (1) int, unique element tag",
+            "# (2) int, node tag",
+            "# (3) double, magnitude",
+            "# (4...) int, dof tag"
+        ],
+        "description": "point mass"
+    },
+    "Mass2D": {
+        "prefix": "Mass2D",
+        "body": [
+            "element Mass2D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4...)}",
+            "# (1) int, unique element tag",
+            "# (2) int, node tag",
+            "# (3) double, magnitude",
+            "# (4...) int, dof tag"
+        ],
+        "description": "2d mass"
+    },
+    "Mass3D": {
+        "prefix": "Mass3D",
+        "body": [
+            "element Mass3D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4...)}",
+            "# (1) int, unique element tag",
+            "# (2) int, node tag",
+            "# (3) double, magnitude",
+            "# (4...) int, dof tag"
+        ],
+        "description": "3d mass"
+    },
+    "MassPoint2D": {
+        "prefix": "MassPoint2D",
+        "body": [
+            "element MassPoint2D ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]}",
+            "# (1) int, unique element tag",
+            "# (2) int, node tag",
+            "# (3) double, translational mass magnitude",
+            "# [4] double, optional, rotational inertia magnitude"
+        ],
+        "description": "uniform 2d mass point"
+    },
+    "MassPoint3D": {
+        "prefix": "MassPoint3D",
+        "body": [
+            "element MassPoint3D ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]}",
+            "# (1) int, unique element tag",
+            "# (2) int, node tag",
+            "# (3) double, translational mass magnitude",
+            "# [4] double, optional, rotational inertia magnitude"
+        ],
+        "description": "uniform 3d mass point"
+    },
+    "MaxDisplacement": {
+        "prefix": "MaxDisplacement",
+        "body": [
+            "criterion MaxDisplacement ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique criterion tag",
+            "# (2) int, node",
+            "# (3) int, dof",
+            "# (4) double, limit"
+        ],
+        "description": "max displacement criterion"
+    },
+    "MaxGap2D": {
+        "prefix": "MaxGap2D",
+        "body": [
+            "constraint MaxGap2D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique constraint tag",
+            "# (2) int, node tag",
+            "# (3) int, node tag",
+            "# (4) double, gap"
+        ],
+        "description": "gap constraint"
+    },
+    "MaxGap3D": {
+        "prefix": "MaxGap3D",
+        "body": [
+            "constraint MaxGap3D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique constraint tag",
+            "# (2) int, node tag",
+            "# (3) int, node tag",
+            "# (4) double, gap"
+        ],
+        "description": "gap constraint"
+    },
+    "MaxHistory": {
+        "prefix": "MaxHistory",
+        "body": [
+            "criterion MaxHisotry ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) int, unique criterion tag",
+            "# (2) string, history vairable type",
+            "# (3) double, limit"
+        ],
+        "description": "max history criterion"
+    },
+    "MaxResistance": {
+        "prefix": "MaxResistance",
+        "body": [
+            "criterion MaxResistance ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique criterion tag",
+            "# (2) int, node",
+            "# (3) int, dof",
+            "# (4) double, limit"
+        ],
+        "description": "max resistance criterion"
+    },
+    "MaximumGap2D": {
+        "prefix": "MaximumGap2D",
+        "body": [
+            "constraint MaximumGap2D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique constraint tag",
+            "# (2) int, node tag",
+            "# (3) int, node tag",
+            "# (4) double, gap"
+        ],
+        "description": "gap constraint"
+    },
+    "MaximumGap3D": {
+        "prefix": "MaximumGap3D",
+        "body": [
+            "constraint MaximumGap3D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique constraint tag",
+            "# (2) int, node tag",
+            "# (3) int, node tag",
+            "# (4) double, gap"
+        ],
+        "description": "gap constraint"
+    },
+    "Maxwell": {
+        "prefix": "Maxwell",
+        "body": [
+            "material Maxwell ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, damper tag",
+            "# (3) int, spring tag",
+            "# [4] bool string, if to use matrix formulation, default: false",
+            "# [5] int, the maximum unconverged substep allowed, default: 1",
+            "# [6] double, local time integration parameter, default: 0.0"
+        ],
+        "description": "maxwell material"
+    },
+    "MinDisplacement": {
+        "prefix": "MinDisplacement",
+        "body": [
+            "criterion MinDisplacement ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique criterion tag",
+            "# (2) int, node",
+            "# (3) int, dof",
+            "# (4) double, limit"
+        ],
+        "description": "min displacement criterion"
+    },
+    "MinGap2D": {
+        "prefix": "MinGap2D",
+        "body": [
+            "constraint MinGap2D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique constraint tag",
+            "# (2) int, node tag",
+            "# (3) int, node tag",
+            "# (4) double, gap"
+        ],
+        "description": "gap constraint"
+    },
+    "MinGap3D": {
+        "prefix": "MinGap3D",
+        "body": [
+            "constraint MinGap3D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique constraint tag",
+            "# (2) int, node tag",
+            "# (3) int, node tag",
+            "# (4) double, gap"
+        ],
+        "description": "gap constraint"
+    },
+    "MinResistance": {
+        "prefix": "MinResistance",
+        "body": [
+            "criterion MinResistance ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique criterion tag",
+            "# (2) int, node",
+            "# (3) int, dof",
+            "# (4) double, limit"
+        ],
+        "description": "min resistance criterion"
+    },
+    "Mindlin": {
+        "prefix": "Mindlin",
+        "body": [
+            "element Mindlin ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:(7)} ${8:[8]}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, node i, j, k, l",
+            "# (6) int, material tag",
+            "# (7) double, thickness",
+            "# [8] int, numer of integration points, default: 5"
+        ],
+        "description": "mindlin plate element"
+    },
+    "MinimumGap2D": {
+        "prefix": "MinimumGap2D",
+        "body": [
+            "constraint MinimumGap2D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique constraint tag",
+            "# (2) int, node tag",
+            "# (3) int, node tag",
+            "# (4) double, gap"
+        ],
+        "description": "gap constraint"
+    },
+    "MinimumGap3D": {
+        "prefix": "MinimumGap3D",
+        "body": [
+            "constraint MinimumGap3D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique constraint tag",
+            "# (2) int, node tag",
+            "# (3) int, node tag",
+            "# (4) double, gap"
+        ],
+        "description": "gap constraint"
+    },
+    "Modulated": {
+        "prefix": "Modulated",
+        "body": [
+            "amplitude Modulated ${1:(1)} ${2:(2)} ${3:(3)} [${4:(4)}...]",
+            "# (1) int, unique tag",
+            "# (2) double, base amplitude A_0",
+            "# (3) double, first frequency \\omega_0",
+            "# [(4)...] double, optional frequencies for higher modes"
+        ],
+        "description": "modulated amplitude"
+    },
+    "MooneyRivlin": {
+        "prefix": "MooneyRivlin",
+        "body": [
+            "material MoonetRivlin ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) double, bulk modulus",
+            "# (3) double, A_{10}",
+            "# (4) double, A_{01}",
+            "# [5] double, density, default: 0.0"
+        ],
+        "description": "mooney rivlin rubber material"
+    },
+    "MultilinearElastic1D": {
+        "prefix": "MultilinearElastic1D",
+        "body": [
+            "material MultilinearElastic1D ${1:(1)} ${2:(2 3...)} ${4:[4]}",
+            "# (1) int, unique material tag",
+            "# (2) double, strain of the data point",
+            "# (3) double, stress of the data point",
+            "# [4] double, density, default: 0.0"
+        ],
+        "description": "uniaxial multilinear elastic material"
+    },
+    "MultilinearJ2": {
+        "prefix": "MultilinearJ2",
+        "body": [
+            "material MultilinearJ2 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} (${5:(5)} ${6:(6)}...)",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, Poisson's ratio",
+            "# (4) double, density",
+            "# (5) double, plastic strain of control point",
+            "# (6) double, stress of control point"
+        ],
+        "description": "multilinear j2 material"
+    },
+    "MultilinearMises1D": {
+        "prefix": "MultilinearMises1D",
+        "body": [
+            "material MultilinearMises1D ${1:(1)} ${2:(2)} ${3:(3)} (${4:(4)} ${5:(5)}...)",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, density",
+            "# (4) double, plastic strain of control point",
+            "# (5) double, stress of control point"
+        ],
+        "description": "uniaxial multiliear j2 material"
+    },
+    "MultilinearOO": {
+        "prefix": "MultilinearOO",
+        "body": [
+            "material MultilinearOO ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]}",
+            "# (1) int, unique material tag",
+            "# (2) string, file name of tension backbone",
+            "# (3) string, file name of compression backbone",
+            "# [4] double, density, default: 0.0"
+        ],
+        "description": "multilinear origin oriented hysteresis model"
+    },
+    "MultilinearPO": {
+        "prefix": "MultilinearPO",
+        "body": [
+            "material multilinearpo ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]}",
+            "# (1) int, unique material tag",
+            "# (2) string, file name of tension backbone",
+            "# (3) string, file name of compression backbone",
+            "# [4] double, density, default: 0.0"
+        ],
+        "description": "multilinear peak oriented hysteresis model"
+    },
+    "MultiplierBC": {
+        "prefix": "MultiplierBC",
+        "body": [
+            "multiplierbc ${1:(1)} ${2:(2)} ${3:(3...)}",
+            "# (1) int, unique tag",
+            "# (2) string, dof identifier",
+            "# (3...) int, tags of nodes that shall be constrained"
+        ],
+        "description": "boundary condition"
+    },
+    "NLE1D01": {
+        "prefix": "NLE1D01",
+        "body": [
+            "material NLE1D01 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, turning stress",
+            "# (4) double, hardening ratio",
+            "# [5] double, radius of transition, default: 20",
+            "# [6] double, density, default: 0.0"
+        ],
+        "description": "nonlinear elastic 1d type 01"
+    },
+    "NLE3D01": {
+        "prefix": "NLE3D01",
+        "body": [
+            "material NLE3D01 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:[6]}",
+            "# (1) int, unique material tag",
+            "# (2) double, bulk modulus",
+            "# (3) double, reference strain",
+            "# (4) double, reference stress",
+            "# (5) double, m",
+            "# [6] double, density, default: 0.0"
+        ],
+        "description": "3d nonlinear elastic material"
+    },
+    "NM2D1": {
+        "prefix": "NM2D1",
+        "body": [
+            "section NM2D1 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique section tag",
+            "# (2) double, EA",
+            "# (3) double, EI",
+            "# (4) double, linear density"
+        ],
+        "description": "n-m interaction elastic section"
+    },
+    "NM2D2": {
+        "prefix": "NM2D2",
+        "body": [
+            "section NM2D2 ${1:(1)} ${2:(2...9)} [${10:(10)} ${11:(11)} ${12:(12)}...]",
+            "# (1) int, unique section tag",
+            "# (2) double, EA",
+            "# (3) double, EI",
+            "# (4) double, yielding axial force",
+            "# (5) double, yielding strong axis moment",
+            "# (6) double, d",
+            "# (7) double, isotropic hardening parameter H",
+            "# (8) double, kinematic hardening parameter K",
+            "# (9) double, linear density",
+            "# (10) double, a_i",
+            "# (11) double, b_i",
+            "# (12) double, c_i"
+        ],
+        "description": "n-m interaction elastic section"
+    },
+    "NM2D3": {
+        "prefix": "NM2D3",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "NM2D3K": {
+        "prefix": "NM2D3K",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "NM3D1": {
+        "prefix": "NM3D1",
+        "body": [
+            "section NM3D1 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique section tag",
+            "# (2) double, EA",
+            "# (3) double, EI of strong axis",
+            "# (4) double, EI of weak axis",
+            "# (5) double, linear density"
+        ],
+        "description": "n-m interaction elastic section"
+    },
+    "NM3D2": {
+        "prefix": "NM3D2",
+        "body": [
+            "section NM3D2 ${1:(1)} ${2:(2...11)}",
+            "# (1) int, unique section tag",
+            "# (2) double, EA",
+            "# (3) double, strong axis EI",
+            "# (4) double, weak axis EI",
+            "# (5) double, yielding axial force",
+            "# (6) double, yielding strong axis moment",
+            "# (7) double, yielding weak axis moment",
+            "# (8) double, c",
+            "# (9) double, isotropic hardening parameter H",
+            "# (10) double, kinematic hardening parameter K",
+            "# (11) double, linear density"
+        ],
+        "description": "n-m interaction elastic section"
+    },
+    "NM3D3": {
+        "prefix": "NM3D3",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "NM3D3K": {
+        "prefix": "NM3D3K",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "NMB21": {
+        "prefix": "NMB21",
+        "body": [
+            "element NMB21 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]}",
+            "# (1) int, unique element tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) int, section tag",
+            "# [5] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "2d displacement based bernoulli beam with n-m interaction sections"
+    },
+    "NMB21EH": {
+        "prefix": "NMB21EH",
+        "body": [
+            "element NMB21EH ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]}",
+            "# (1) int, unique element tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) int, section tag",
+            "# [5] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "2d displacement based bernoulli beam with n-m interaction sections and high end moment release"
+    },
+    "NMB21EL": {
+        "prefix": "NMB21EL",
+        "body": [
+            "element NMB21EL ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]}",
+            "# (1) int, unique element tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) int, section tag",
+            "# [5] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "2d displacement based bernoulli beam with n-m interaction sections and low end moment release"
+    },
+    "NMB31": {
+        "prefix": "NMB31",
+        "body": [
+            "element NMB31 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:[6]}",
+            "# (1) int, unique element tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) int, section tag",
+            "# (5) int, orientation tag",
+            "# [6] bool string, nonlinear geometry switch, default: false"
+        ],
+        "description": "3d displacement based bernoulli beam with n-m interaction sections"
+    },
+    "NZStrongMotion": {
+        "prefix": "NZStrongMotion",
+        "body": [
+            "amplitude NZStrongMotion ${1:(1)} ${2:(2)}",
+            "# (1) int, unique amplitude tag",
+            "# (2) string, record name"
+        ],
+        "description": "strong motion amplitude"
+    },
+    "Newmark": {
+        "prefix": "Newmark",
+        "body": [
+            "integrator Newmark ${1:(1)} ${2:[2]} ${3:[3]}",
+            "# (1) int, unique tag",
+            "# [2] double, alpha, default: 0.25",
+            "# [3] double, beta, default: 0.5"
+        ],
+        "description": "newmark time integration"
+    },
+    "NodeFacet": {
+        "prefix": "NodeFacet",
+        "body": [
+            "constraint NodeFacet ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)}",
+            "# (1) int, unique constraint tag",
+            "# (2) int, master node i tag",
+            "# (3) int, master node j tag",
+            "# (4) int, master node k tag",
+            "# (5) int, slave node l tag"
+        ],
+        "description": "node facet constraint"
+    },
+    "NodeLine": {
+        "prefix": "NodeLine",
+        "body": [
+            "constraint NodeLine ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique constraint tag",
+            "# (2) int, master node i tag",
+            "# (3) int, master node j tag",
+            "# (4) int, slave node k tag"
+        ],
+        "description": "node line constraint"
+    },
+    "NonviscousNewmark": {
+        "prefix": "NonviscousNewmark",
+        "body": [
+            "integrator NonviscousNewmark ${1:(1)} ${2:(2)} ${3:(3)} (${4:(4)} ${5:(5)})...",
+            "# (1) int, unique tag",
+            "# (2) double, alpha, typical: 0.25",
+            "# (3) double, beta, typical: 0.5",
+            "# (4) double, m",
+            "# (5) double, s"
+        ],
+        "description": "newmark method with nonviscous damping"
+    },
+    "OALTS": {
+        "prefix": "OALTS",
+        "body": [
+            "integrator OALTS ${1:(1)} ${2:[2]}",
+            "# (1) int, unique integrator tag",
+            "# [2] double, spectral radius, default: 0.5"
+        ],
+        "description": "oalts doi:10.1002/nme.6188"
+    },
+    "OS146": {
+        "prefix": "OS146",
+        "body": [
+            "material OS146 ${1:(1)} ${2:(2)}",
+            "# (1) int, unique tag",
+            "# (2) int, 3D material tag"
+        ],
+        "description": "wrapper 3d -> os"
+    },
+    "OS146S": {
+        "prefix": "OS146S",
+        "body": [
+            "material OS146S ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) int, unique tag",
+            "# (2) int, 1D material tag",
+            "# (3) double, shear modulus"
+        ],
+        "description": "wrapper 1d -> os"
+    },
+    "Optimisation": {
+        "prefix": "Optimisation",
+        "body": [
+            "step Optimisation ${1:(1)}",
+            "# (1) int, unique step tag"
+        ],
+        "description": "optimisation step"
+    },
+    "Orientation": {
+        "prefix": "Orientation",
+        "body": [
+            "orientation ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)}",
+            "# (1) int, unique orientation tag",
+            "# (2) string, orientation type",
+            "# (3) double, x component of local z axis",
+            "# (4) double, y component of local z axis",
+            "# (5) double, z component of local z axis"
+        ],
+        "description": "section orientation for 3d beams"
+    },
+    "OrthotropicElastic3D": {
+        "prefix": "OrthotropicElastic3D",
+        "body": [
+            "material OrthotropicElastic3D ${1:(1)} ${2:(2...7)} ${8:(8...10)} ${11:[11]}",
+            "# (1) int, unique tag",
+            "# (2..7) double, six moduli",
+            "# (8...10) double, three poissons ratio",
+            "# [11] double, density, default: 0.0"
+        ],
+        "description": "3d orthotropic elastic material"
+    },
+    "PARDISO": {
+        "prefix": "PARDISO",
+        "body": [
+            "set system_solver PARDISO"
+        ],
+        "description": "pardiso solver"
+    },
+    "PCPE4DC": {
+        "prefix": "PCPE4DC",
+        "body": [
+            "element PCPE4DC ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:(10)}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, node i, j, k, l",
+            "# (6) int, solid material tag",
+            "# (7) int, fluid material tag",
+            "# (8) double, alpha",
+            "# (9) double, porosity n",
+            "# (10) double, permeability k"
+        ],
+        "description": "bilinear quadrilateral with pore pressure"
+    },
+    "PCPE4UC": {
+        "prefix": "PCPE4UC",
+        "body": [
+            "element PCPE4UC ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, node i, j, k, l",
+            "# (6) int, solid material tag",
+            "# (7) int, fluid material tag",
+            "# (8) double, alpha",
+            "# (9) double, porosity n"
+        ],
+        "description": "bilinear quadrilateral with pore pressure"
+    },
+    "PCPE8DC": {
+        "prefix": "PCPE8DC",
+        "body": [
+            "element PCPE8DC ${1:(1)} ${2:(2...9)} ${10:(10)} ${11:(11)} ${12:(12)} ${13:(13)} ${14:(14)}",
+            "# (1) int, unique element tag",
+            "# (2...9) int, node i, j, k, l",
+            "# (10) int, solid material tag",
+            "# (11) int, fluid material tag",
+            "# (12) double, alpha",
+            "# (13) double, porosity n",
+            "# (14) double, permeability k"
+        ],
+        "description": "quadratic quadrilateral with pore pressure"
+    },
+    "PCPE8UC": {
+        "prefix": "PCPE8UC",
+        "body": [
+            "element PCPE8UC ${1:(1)} ${2:(2...9)} ${10:(10)} ${11:(11)} ${12:(12)} ${13:(13)}",
+            "# (1) int, unique element tag",
+            "# (2...9) int, node i, j, k, l",
+            "# (10) int, solid material tag",
+            "# (11) int, fluid material tag",
+            "# (12) double, alpha",
+            "# (13) double, porosity n"
+        ],
+        "description": "quadratic quadrilateral with pore pressure"
+    },
+    "PS": {
+        "prefix": "PS",
+        "body": [
+            "element PS ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, node i, j, k, l",
+            "# (6) int, material tag",
+            "# [7] double, element thickness, default: 1.0"
+        ],
+        "description": "pian-sumihara quadrilateral element"
+    },
+    "ParabolicCC": {
+        "prefix": "ParabolicCC",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "Parallel": {
+        "prefix": "Parallel",
+        "body": [
+            "material Parallel ${1:(1)} ${2:(2...)}",
+            "# (1) int, unique material tag",
+            "# (2...) int, material tags of 1D models need to be contained"
+        ],
+        "description": "parallel wrapper for 1d material models"
+    },
+    "ParticleCollision2D": {
+        "prefix": "ParticleCollision2D",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "ParticleCollision3D": {
+        "prefix": "ParticleCollision3D",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "PatchCube": {
+        "prefix": "PatchCube",
+        "body": [
+            "element PatchCube ${1:(1)} -node ${2:(2...)} -knotx ${3:(3...)} -knoty ${4:(4...)} -knotz ${5:(5...)} -material ${6:(6)} ${-thickness (7:[-thickness (7)}]",
+            "# (1) int, unique element ${patch:(patch)} tag",
+            "# (2...) int, node tags of control node polygon",
+            "# (3...) double, knot vector along x axis",
+            "# (4...) double, knot vector along y axis",
+            "# (5...) double, knot vector along z axis",
+            "# (6) int, material tag",
+            "# (7) double, thickness"
+        ],
+        "description": "patch of hexahedron elements"
+    },
+    "PatchQuad": {
+        "prefix": "PatchQuad",
+        "body": [
+            "element PatchQuad ${1:(1)} -node ${2:(2...)} -knotx ${3:(3...)} -knoty ${4:(4...)} -material ${5:(5)} ${-thickness (6:[-thickness (6)}]",
+            "# (1) int, unique element ${patch:(patch)} tag",
+            "# (2...) int, node tags of control node polygon",
+            "# (3...) double, knot vector along x axis",
+            "# (4...) double, knot vector along y axis",
+            "# (5) int, material tag",
+            "# (6) double, thickness"
+        ],
+        "description": "patch of quadrilateral elements"
+    },
+    "PenaltyBC": {
+        "prefix": "PenaltyBC",
+        "body": [
+            "penaltybc ${1:(1)} ${2:(2)} ${3:(3...)}",
+            "# (1) int, unique tag",
+            "# (2) string, dof identifier",
+            "# (3...) int, tags of nodes that shall be constrained"
+        ],
+        "description": "boundary condition"
+    },
+    "PlaneStrain": {
+        "prefix": "PlaneStrain",
+        "body": [
+            "material PlaneStrain ${1:(1)} ${2:(2)}",
+            "# (1) int, unique tag",
+            "# (2) int, 3D material tag"
+        ],
+        "description": "plane strain wrapper"
+    },
+    "PlaneStress": {
+        "prefix": "PlaneStress",
+        "body": [
+            "material PlaneStress ${1:(1)} ${2:(2)}",
+            "# (1) int, unique tag",
+            "# (2) int, 3D material tag"
+        ],
+        "description": "plane stress wrapper"
+    },
+    "PlaneSymmetric13": {
+        "prefix": "PlaneSymmetric13",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "PlaneSymmetric23": {
+        "prefix": "PlaneSymmetric23",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "PolyElastic1D": {
+        "prefix": "PolyElastic1D",
+        "body": [
+            "material PolyElastic1D ${1:(1)} [${2:(2)}...]",
+            "# (1) int, unique material tag",
+            "# (2) double, polynomial parameters, a_n"
+        ],
+        "description": "polynomial based uniaxial nonlinear elastic"
+    },
+    "PolyJ2": {
+        "prefix": "PolyJ2",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "QE2": {
+        "prefix": "QE2",
+        "body": [
+            "element QE2 ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, node i, j, k, l",
+            "# (6) int, material tag",
+            "# [7] double, element thickness, default: 1.0"
+        ],
+        "description": "mixed four-node quadrilateral element"
+    },
+    "R2D2": {
+        "prefix": "R2D2",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "R3D2": {
+        "prefix": "R3D2",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "RambergOsgood": {
+        "prefix": "RambergOsgood",
+        "body": [
+            "material RambergOsgood ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, initial yield stress",
+            "# [4] double, offset alpha, default: 1.0",
+            "# [5] double, n, default: 4.0",
+            "# [6] double, density, default: 0.0"
+        ],
+        "description": "ramberg-osgood steel model"
+    },
+    "Ramm": {
+        "prefix": "Ramm",
+        "body": [
+            "solver Ramm (1)",
+            "# (1) int, unique solver tag"
+        ],
+        "description": "ramm's arc-length algorithm"
+    },
+    "Ramp": {
+        "prefix": "Ramp",
+        "body": [
+            "amplitude Ramp ${1:(1)}",
+            "# (1) int, unique amplitude tag"
+        ],
+        "description": "ramp amplitude"
+    },
+    "Rayleigh": {
+        "prefix": "Rayleigh",
+        "body": [
+            "modifier Rayleigh ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6...)}",
+            "# (1) int, unique modifier tag",
+            "# (2) double, a",
+            "# (3) double, b",
+            "# (4) double, c",
+            "# (5) double, d",
+            "# (6...) int, element tags"
+        ],
+        "description": "rayleigh damping"
+    },
+    "RayleighNewmark": {
+        "prefix": "RayleighNewmark",
+        "body": [
+            "integrator RayleighNewmark ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)}",
+            "# (1) int, unique tag",
+            "# (2) double, alpha (beta in some references) in Newmark method, normally 0.25",
+            "# (3) double, beta (gamma in some references) in Newmark method, normally 0.5",
+            "# (4) double, alpha",
+            "# (5) double, beta",
+            "# (6) double, theta",
+            "# (7) double, eta"
+        ],
+        "description": ""
+    },
+    "Rebar2D": {
+        "prefix": "Rebar2D",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "Rebar3D": {
+        "prefix": "Rebar3D",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "Rectangle1D": {
+        "prefix": "Rectangle1D",
+        "body": [
+            "section Rectangle1D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique section tag",
+            "# (2) double, section width",
+            "# (3) double, section height",
+            "# (4) int, material tag"
+        ],
+        "description": "1d rectangle section"
+    },
+    "Rectangle2D": {
+        "prefix": "Rectangle2D",
+        "body": [
+            "section Rectangle2D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) double, section width",
+            "# (3) double, section height",
+            "# (4) int, material tag",
+            "# [5] int, number of integration points, default: 6",
+            "# [6] double, eccentricity measured from the centre, default: 0.0"
+        ],
+        "description": "2d rectangle section"
+    },
+    "Rectangle3D": {
+        "prefix": "Rectangle3D",
+        "body": [
+            "section Rectangle3D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]} ${6:[6]} ${7:[7]}",
+            "# (1) int, unique section tag",
+            "# (2) double, section width",
+            "# (3) double, section height",
+            "# (4) int, material tag",
+            "# [5] int, number of integration points, default: 3",
+            "# [6] double, eccentricity along y axis, default: 0.0",
+            "# [7] double, eccentricity along z axis, default: 0.0"
+        ],
+        "description": "3d rectangle section"
+    },
+    "RelDisp": {
+        "prefix": "RelDisp",
+        "body": [
+            "converger RelDisp ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]}",
+            "# (1) int, unique tag",
+            "# (2) double, tolerance",
+            "# [3] int, maximum iteration, default: 10",
+            "# [4] bool string, print switch, default: false",
+            ""
+        ],
+        "description": "converger reldisp"
+    },
+    "RelError": {
+        "prefix": "RelError",
+        "body": [
+            "converger RelError ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]}",
+            "# (1) int, unique tag",
+            "# (2) double, tolerance",
+            "# [3] int, maximum iteration, default: 10",
+            "# [4] bool string, print switch, default: false",
+            ""
+        ],
+        "description": "converger relerror"
+    },
+    "RelIncreAcc": {
+        "prefix": "RelIncreAcc",
+        "body": [
+            "converger RelIncreAcc ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]}",
+            "# (1) int, unique tag",
+            "# (2) double, tolerance",
+            "# [3] int, maximum iteration, default: 10",
+            "# [4] bool string, print switch, default: false",
+            ""
+        ],
+        "description": "converger relincreacc"
+    },
+    "RelIncreDisp": {
+        "prefix": "RelIncreDisp",
+        "body": [
+            "converger RelIncreDisp ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]}",
+            "# (1) int, unique tag",
+            "# (2) double, tolerance",
+            "# [3] int, maximum iteration, default: 10",
+            "# [4] bool string, print switch, default: false",
+            ""
+        ],
+        "description": "converger relincredisp"
+    },
+    "RelIncreEnergy": {
+        "prefix": "RelIncreEnergy",
+        "body": [
+            "converger RelIncreEnergy ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]}",
+            "# (1) int, unique tag",
+            "# (2) double, tolerance",
+            "# [3] int, maximum iteration, default: 10",
+            "# [4] bool string, print switch, default: false",
+            ""
+        ],
+        "description": "converger relincreenergy"
+    },
+    "RelResidual": {
+        "prefix": "RelResidual",
+        "body": [
+            "converger RelResidual ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]}",
+            "# (1) int, unique tag",
+            "# (2) double, tolerance",
+            "# [3] int, maximum iteration, default: 10",
+            "# [4] bool string, print switch, default: false",
+            ""
+        ],
+        "description": "converger relresidual"
+    },
+    "Rotation2D": {
+        "prefix": "Rotation2D",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "Rotation3D": {
+        "prefix": "Rotation3D",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "S4": {
+        "prefix": "S4",
+        "body": [
+            "element S4 ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:(7)} ${8:[8]}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, node i, j, k, l",
+            "# (6) int, material tag",
+            "# (7) double, thickness",
+            "# [8] bool, nonlinear geometry switch, default: false"
+        ],
+        "description": "four node shell element"
+    },
+    "SGCMQ": {
+        "prefix": "SGCMQ",
+        "body": [
+            "element SGCMQI ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]} ${8:[8]}",
+            "element SGCMQL ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]} ${8:[8]}",
+            "element SGCMQG ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]} ${8:[8]}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, node i, j, k, l",
+            "# (6) int, material tag",
+            "# [7] double, element thickness, default: 1.0"
+        ],
+        "description": "generalized conforming mixed quadrilateral with drilling dofs"
+    },
+    "SGCMQG": {
+        "prefix": "SGCMQG",
+        "body": [
+            "element SGCMQG ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]} ${8:[8]}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, node i, j, k, l",
+            "# (6) int, material tag",
+            "# [7] double, element thickness, default: 1.0"
+        ],
+        "description": "generalized conforming mixed quadrilateral with drilling dofs"
+    },
+    "SGCMQI": {
+        "prefix": "SGCMQI",
+        "body": [
+            "element SGCMQI ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]} ${8:[8]}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, node i, j, k, l",
+            "# (6) int, material tag",
+            "# [7] double, element thickness, default: 1.0"
+        ],
+        "description": "generalized conforming mixed quadrilateral with drilling dofs"
+    },
+    "SGCMQL": {
+        "prefix": "SGCMQL",
+        "body": [
+            "element SGCMQL ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]} ${8:[8]}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, node i, j, k, l",
+            "# (6) int, material tag",
+            "# [7] double, element thickness, default: 1.0"
+        ],
+        "description": "generalized conforming mixed quadrilateral with drilling dofs"
+    },
+    "SGCMS": {
+        "prefix": "SGCMS",
+        "body": [
+            "element SGCMS ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:(7)} ${8:[8]}",
+            "# (1) int, unique element tag",
+            "# (2...5) int, node i, j, k, l",
+            "# (6) int, material tag",
+            "# (7) double, thickness",
+            "# [8] bool, nonlinear geometry switch, default: false"
+        ],
+        "description": "simplified generalized conforming mixed shell element"
+    },
+    "Sequential": {
+        "prefix": "Sequential",
+        "body": [
+            "material Sequential ${1:(1)} ${2:(2...)}",
+            "# (1) int, unique material tag",
+            "# (2...) int, material tags of 1D models need to be contained"
+        ],
+        "description": ""
+    },
+    "SimpleSand": {
+        "prefix": "SimpleSand",
+        "body": [
+            "material SimpleSand ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:(10)} ${11:(11)} ${12:(12)} ${13:(13)} ${14:[14]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, poissons ratio",
+            "# (4) double, m, size of yield surface",
+            "# (5) double, A, dilatancy related parameter, often negative",
+            "# (6) double, h, dilatancy related hardening parameter",
+            "# (7) double, alpha_c, critical alpha",
+            "# (8) double, n_b, bounding surface evolution parameter",
+            "# (9) double, n_d, dilatancy surface evolution parameter",
+            "# (10) double, v_c, critical specific volume",
+            "# (11) double, p_c, critical hydrostatic stress, should be negative",
+            "# (12) double, lambda_c, the slope of critical state line",
+            "# (13) double, v_0, initial specific volume",
+            "# [14] double, density, default: 0.0"
+        ],
+        "description": "simple sand material"
+    },
+    "Sine": {
+        "prefix": "Sine",
+        "body": [
+            "amplitude Sine ${1:(1)} ${2:(2)} ${3:(3)} [${4:(4)}...]",
+            "# (1) int, unique tag",
+            "# (2) double, base period T_0",
+            "# (3) double, amplitude at base period/frequency a_0",
+            "# [(4)...] double, optional amplitudes at higher periods a_i"
+        ],
+        "description": "sine amplitude"
+    },
+    "SingleSection2D": {
+        "prefix": "SingleSection2D",
+        "body": [
+            "element SingleSection2D ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) int, unique tag",
+            "# (2) int, node tag",
+            "# (3) int, section tag"
+        ],
+        "description": "2d single section"
+    },
+    "SingleSection3D": {
+        "prefix": "SingleSection3D",
+        "body": [
+            "element SingleSection3D ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) int, unique tag",
+            "# (2) int, node tag",
+            "# (3) int, section tag"
+        ],
+        "description": "3d single section"
+    },
+    "Sinh1D": {
+        "prefix": "Sinh1D",
+        "body": [
+            "material Sinh1D ${1:(1)} ${2:(2)} ${3:[3]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# [3] double, density, default: 0.0"
+        ],
+        "description": "uniaxial nonlinear elastic material using sinh"
+    },
+    "Sleeve2D": {
+        "prefix": "Sleeve2D",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "Sleeve3D": {
+        "prefix": "Sleeve3D",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "SlipLock": {
+        "prefix": "SlipLock",
+        "body": [
+            "material SlipLock ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, initial yield strain",
+            "# (4) double, hardening ratio",
+            "# [5] double, radius, default: 20.0",
+            "# [6] double, density, default: 0.0"
+        ],
+        "description": "slip-lock material"
+    },
+    "Spike": {
+        "prefix": "Spike",
+        "body": [
+            "set system_solver Spike"
+        ],
+        "description": "spike solver"
+    },
+    "Spring01": {
+        "prefix": "Spring01",
+        "body": [
+            "element Spring01 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) int, tag of associated material"
+        ],
+        "description": ""
+    },
+    "Spring02": {
+        "prefix": "Spring02",
+        "body": [
+            "element Spring02 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) int, tag of associated material"
+        ],
+        "description": ""
+    },
+    "Stacked": {
+        "prefix": "Stacked",
+        "body": [
+            "material Stacked ${1:(1)} ${2:(2...)}",
+            "# (1) int, unique material tag",
+            "# (2...) int, material tags of 3D models need to be contained"
+        ],
+        "description": "parallel wrapper for 3d material models"
+    },
+    "Static": {
+        "prefix": "Static",
+        "body": [
+            "step static ${1:(1)} ${2:[2]}",
+            "# (1) int, unique step tag",
+            "# [2] double, step length, default: 1.0"
+        ],
+        "description": "static step"
+    },
+    "SteelBRB": {
+        "prefix": "SteelBRB",
+        "body": [
+            "material SteelBRB ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:(10)} ${11:[11]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, yield stress",
+            "# (4) double, plastic modulus",
+            "# (5) double, tension saturated stress",
+            "# (6) double, tension delta_r",
+            "# (7) double, tension alpha",
+            "# (8) double, compression saturated stress",
+            "# (9) double, compression delta_r",
+            "# (10) double, compression alpha",
+            "# [11] double, density, default: 0.0"
+        ],
+        "description": "steel model for modelling brb"
+    },
+    "StrainEnergyEvolution": {
+        "prefix": "StrainEnergyEvolution",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "Substepping": {
+        "prefix": "Substepping",
+        "body": [
+            "material Substepping ${1:(1)} ${2:(2)} ${3:[3]}",
+            "# (1) int, unique material tag",
+            "# (2) int, associated material tag",
+            "# [3] int, maximum iteration, default: 20"
+        ],
+        "description": "substepping wrapper"
+    },
+    "SuperLU": {
+        "prefix": "SuperLU",
+        "body": [
+            "set system_solver SuperLU"
+        ],
+        "description": "superlu solver"
+    },
+    "T2D2": {
+        "prefix": "T2D2",
+        "body": [
+            "element T2D2 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:[6]} ${7:[7]} ${8:[8]} ${9:[9]}",
+            "# (1) int, unique element tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) int, material tag",
+            "# (5) double, cross sectional area",
+            "# [6] bool string, nonlinear geometry switch, default: false",
+            "# [7] bool string, if to update sectional area, default: false",
+            "# [8] bool string, if to use log strain, default: false",
+            "# [9] double, flexural rigidity, -1.0"
+        ],
+        "description": "2d linear truss"
+    },
+    "T2D2S": {
+        "prefix": "T2D2S",
+        "body": [
+            "element T2D2S ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${6:[6]} ${7:[7]} ${8:[8]}",
+            "# (1) int, unique element tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) int, section tag",
+            "# [5] bool string, nonlinear geometry switch, default: false",
+            "# [6] bool string, if to use log strain, default: false"
+        ],
+        "description": "2d linear truss using section"
+    },
+    "T3D2": {
+        "prefix": "T3D2",
+        "body": [
+            "element T3D2 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:[6]} ${7:[7]} ${8:[8]}",
+            "# (1) int, unique element tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) int, material tag",
+            "# (5) double, cross sectional area",
+            "# [6] bool string, nonlinear geometry switch, default: false",
+            "# [7] bool string, if to update sectional area, default: false",
+            "# [8] bool string, if to use log strain, default: false"
+        ],
+        "description": "3d linear truss"
+    },
+    "T3D2S": {
+        "prefix": "T3D2S",
+        "body": [
+            "element T3D2S ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${6:[6]} ${7:[7]} ${8:[8]}",
+            "# (1) int, unique element tag",
+            "# (2) int, node i",
+            "# (3) int, node j",
+            "# (4) int, section tag",
+            "# [5] bool string, nonlinear geometry switch, default: false",
+            "# [6] bool string, if to use log strain, default: false"
+        ],
+        "description": "3d linear truss using section"
+    },
+    "TSection2D": {
+        "prefix": "TSection2D",
+        "body": [
+            "section TSection2D ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]} ${8:[8]}",
+            "# (1) int, unique tag",
+            "# (2...5) double, section dimensions",
+            "# (6) int, material tag",
+            "# [7] int, number of integration points, default: 6",
+            "# [8] double, eccentricity measured from the centre, default: 0.0"
+        ],
+        "description": "2d t-section"
+    },
+    "TSection3D": {
+        "prefix": "TSection3D",
+        "body": [
+            "section TSection3D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:[7]} ${8:[8]} ${9:[9]}",
+            "# (1) int, unique section tag",
+            "# (2) double, top flange width",
+            "# (3) double, top flange thickness",
+            "# (4) double, web height",
+            "# (5) double, web thickness",
+            "# (6) int, material tag",
+            "# [7] int, number of integration points, default: 6",
+            "# [8] double, eccentricity along y axis, default: 0.0",
+            "# [9] double, eccentricity along z axis, default: 0.0"
+        ],
+        "description": "3d t-section"
+    },
+    "TableCDP": {
+        "prefix": "TableCDP",
+        "body": [
+            "material TableCDP ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:[8]} ${9:[9]} ${10:[10]} ${11:[11]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, poisson's ratio",
+            "# (4) string, file name of tension backbone table",
+            "# (5) string, file name of compression backbone table",
+            "# (6) string, file name of tension damage table",
+            "# (7) string, file name of compression damage table",
+            "# [8] double, dilatancy parameter, default: 0.2",
+            "# [9] double, biaxial compression strength ratio, default: 1.16",
+            "# [10] double, stiffness recovery ratio, default: 0.5",
+            "# [11] double, density, default: 0"
+        ],
+        "description": "cdp model with tabular data support"
+    },
+    "TableGurson": {
+        "prefix": "TableGurson",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "Tabular": {
+        "prefix": "Tabular",
+        "body": [
+            "amplitude Tabular ${1:(1)} ${2:(2)}",
+            "# (1) int, unique amplitude tag",
+            "# (2) string, file name of tabular data"
+        ],
+        "description": "amplitude using tabular data"
+    },
+    "Tanh1D": {
+        "prefix": "Tanh1D",
+        "body": [
+            "material Tanh1D ${1:(1)} ${2:(2)} ${3:[3]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# [3] double, density, default: 0.0"
+        ],
+        "description": "uniaxial nonlinear elastic material using tanh"
+    },
+    "Tchamwa": {
+        "prefix": "Tchamwa",
+        "body": [
+            "integrator Tchamwa ${1:(1)} ${2:(2)}",
+            "# (1) int, unique integrator tag",
+            "# [2] double, spectral radius, default: 0.5"
+        ],
+        "description": ""
+    },
+    "Tie": {
+        "prefix": "Tie",
+        "body": [
+            "element Tie ${1:(1)} ${2:(2)} ${3:(3)} [${4:(4)} ${5:(5)} ${6:(6)}...]",
+            "# (1) int, unique element tag",
+            "# (2) double, right hand side of the constraint equation, the constraint is homogeneous if this parameter is zero",
+            "# (3) double, penalty number, a relatively large number",
+            "# (4) int, node tag",
+            "# (5) int, dof tag",
+            "# (6) double, weight"
+        ],
+        "description": ""
+    },
+    "TimberPD": {
+        "prefix": "TimberPD",
+        "body": [
+            "material TimberPD ${1:(1)} ${2:(2...7)} ${3:(8...10)} ${4:(11...19)} ${5:(20...26)} ${6:[27]}",
+            "# (1) int, unique material tag",
+            "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, E_{xy}, E_{yz}, E_{zx}",
+            "# (8...10) double, three poissions ratios: v_{xy}, v_{yz}, v_{zx}",
+            "# (11...19) double, nine yield stresses",
+            "# (20...26) double, hardening parameters",
+            "# [27] double, density, default: 0.0"
+        ],
+        "description": ""
+    },
+    "TranslationConnector2D": {
+        "prefix": "TranslationConnector2D",
+        "body": [
+            "element TranslationConnector2D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) integer, unique element tag",
+            "# (2) integer, node i",
+            "# (3) integer, node j",
+            "# (4) integer, node k"
+        ],
+        "description": "define 2d translation connector"
+    },
+    "TranslationConnector3D": {
+        "prefix": "TranslationConnector3D",
+        "body": [
+            "element TranslationConnector3D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) integer, unique element tag",
+            "# (2) integer, node i",
+            "# (3) integer, node j",
+            "# (4) integer, node k"
+        ],
+        "description": "define 3d translation connector"
+    },
+    "TrilinearStrainDegradation": {
+        "prefix": "TrilinearStrainDegradation",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "Trivial": {
+        "prefix": "Trivial",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "TrussSection": {
+        "prefix": "TrussSection",
+        "body": [
+            "section TrussSection ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) int, unique section tag",
+            "# (2) double, section area",
+            "# (3) int, material tag"
+        ],
+        "description": "1d truss section"
+    },
+    "Uniaxial": {
+        "prefix": "Uniaxial",
+        "body": [
+            "material Uniaxial ${1:(1)} ${2:(2)} ${3:[3]}",
+            "# (1) int, unique material tag",
+            "# (2) int, associated 3D material tag",
+            "# [3] int, maximum iteration allowed, default: 1"
+        ],
+        "description": "uniaxial wrapper"
+    },
+    "VAFCRP": {
+        "prefix": "VAFCRP",
+        "body": [
+            "material VAFCRP ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} [${10:(10)} ${11:(11)...] ${12:[12]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, poissons ratio",
+            "# (4) double, yield stress",
+            "# (5) double, saturated stress",
+            "# (6) double, linear hardening modulus",
+            "# (7) double, m",
+            "# (8) double, mu",
+            "# (9) double, epsilon",
+            "# (10) double, a",
+            "# (11) double, b",
+            "# [12] double, density, default: 0.0"
+        ],
+        "description": "vafcrp material"
+    },
+    "VAFCRP1D": {
+        "prefix": "VAFCRP1D",
+        "body": [
+            "material VAFCRP1D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} [${9:(9)} ${10:(10)}...] ${11:[11]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, yield stress",
+            "# (4) double, saturated stress",
+            "# (5) double, linear hardening modulus",
+            "# (6) double, m",
+            "# (7) double, mu",
+            "# (8) double, epsilon",
+            "# (9) double, a",
+            "# (10) double, b",
+            "# [11] double, density, default: 0.0"
+        ],
+        "description": "uniaxial vafcrp material"
+    },
+    "Viscosity01": {
+        "prefix": "Viscosity01",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "Viscosity02": {
+        "prefix": "Viscosity02",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "WilsonPenzienNewmark": {
+        "prefix": "WilsonPenzienNewmark",
+        "body": [
+            "integrator WilsonPenzienNewmark ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4...]}",
+            "# (1) int, unique integrator tag",
+            "# (2) double, alpha in Newmark algorithm",
+            "# (3) double, beta in Newmark algorithm",
+            "# [4...] double, damping ratios on the first n modes"
+        ],
+        "description": ""
+    },
+    "Yeoh": {
+        "prefix": "Yeoh",
+        "body": [
+            "material Yeoh ${1:(1)} ${2:(2...)}",
+            "# (1) int, unique material tag",
+            "# (2...) double, material constants with possible density"
+        ],
+        "description": "yeoh material"
+    },
+    "acceleration": {
+        "prefix": "acceleration",
+        "body": [
+            "acceleration ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5...]}",
+            "load acceleration ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5...]}",
+            "# (1) int, unique tag",
+            "# (2) int, amplitude tag, 0 to use a default `Ramp` amplitude",
+            "# (3) double, nominal magnitude",
+            "# (4) int, dof tag",
+            "# [5...] int, node tags"
+        ],
+        "description": "acceleration load"
+    },
+    "band_mat": {
+        "prefix": "band_mat",
+        "body": [
+            "set band_mat ${1:(1)}",
+            "# (1) bool, true of false"
+        ],
+        "description": "enable/disable banded storage"
+    },
+    "bodyforce": {
+        "prefix": "bodyforce",
+        "body": [
+            "bodyforce ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5...]}",
+            "load clbodyforcead ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5...]}",
+            "# (1) int, unique tag",
+            "# (2) int, amplitude tag, 0 to use a default `Ramp` amplitude",
+            "# (3) double, nominal magnitude",
+            "# (4) int, dof tag",
+            "# (5...) int, element tags"
+        ],
+        "description": "body force load"
+    },
+    "clear": {
+        "prefix": "clear",
+        "body": [
+            "clear"
+        ],
+        "description": "clear domain"
+    },
+    "cload": {
+        "prefix": "cload",
+        "body": [
+            "cload ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5...]}",
+            "load cload ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5...]}",
+            "# (1) int, unique tag",
+            "# (2) int, amplitude tag, 0 to use a default `Ramp` amplitude",
+            "# (3) double, nominal magnitude",
+            "# (4) int, dof tag",
+            "# (5...) int, node tags"
+        ],
+        "description": "concentrated nodal load"
+    },
+    "color_model": {
+        "prefix": "color_model",
+        "body": [
+            "set color_model ${1:(1)}",
+            "# (1) string, color algorithm, one of WP, MIS and false"
+        ],
+        "description": "set coloring algorithm"
+    },
+    "command": {
+        "prefix": "command",
+        "body": [
+            "command"
+        ],
+        "description": "show all commands"
+    },
+    "constraint_multiplier": {
+        "prefix": "constraint_multiplier",
+        "body": [
+            "set constraint_multiplier ${1:(1)}",
+            "# (1) double, multiplier"
+        ],
+        "description": "set multiplier for constraint"
+    },
+    "converger": {
+        "prefix": "converger",
+        "body": [
+            "converger ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]}",
+            "# (1) string, converger type",
+            "# (2) int, unique tag",
+            "# (3) double, tolerance",
+            "# (4) int, maximum iteration",
+            "# [5] bool string, print switch, default: false"
+        ],
+        "description": "convergence tester"
+    },
+    "customnodegroup": {
+        "prefix": "customnodegroup",
+        "body": [
+            "customnodegroup ${1:(1)} ${2:(2)}",
+            "# (1) integer, unique tag",
+            "# (2) integer, tag of expression"
+        ],
+        "description": ""
+    },
+    "displacement": {
+        "prefix": "displacement",
+        "body": [
+            "displacement ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5...]}",
+            "load displacement ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5...]}",
+            "# (1) int, unique tag",
+            "# (2) int, amplitude tag, 0 to use a default `Ramp` amplitude",
+            "# (3) double, nominal magnitude",
+            "# (4) int, dof tag",
+            "# (5...) int, node tags"
+        ],
+        "description": ""
+    },
+    "domain": {
+        "prefix": "domain",
+        "body": [
+            "domain ${1:(1)}",
+            "# (1) integer, domain tag"
+        ],
+        "description": "switch to target domain"
+    },
+    "eigen_number": {
+        "prefix": "eigen_number",
+        "body": [
+            "set eigen_number ${1:(1)}",
+            "# (1) int, number of eigenvalues"
+        ],
+        "description": "set eigen number"
+    },
+    "eigenvalue": {
+        "prefix": "eigenvalue",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "elementgroup": {
+        "prefix": "elementgroup",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "exit": {
+        "prefix": "exit",
+        "body": [
+            "exit"
+        ],
+        "description": "exit/quit"
+    },
+    "expression": {
+        "prefix": "expression",
+        "body": [
+            "expression SimpleScalar ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) int, unique expression tag",
+            "# (2) string, variable list, vertical line separated",
+            "# (3) string, expression or name of file containing expression"
+        ],
+        "description": "simple scalar valued maths expression"
+    },
+    "file": {
+        "prefix": "file",
+        "body": [
+            "file ${1:(1)}",
+            "# (1) string, file name with or without suffix .sp"
+        ],
+        "description": "load external file"
+    },
+    "finiterestitutionwall": {
+        "prefix": "finiterestitutionwall",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "finiterestitutionwallpenalty": {
+        "prefix": "finiterestitutionwallpenalty",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "finiterigidwall": {
+        "prefix": "finiterigidwall",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "finiterigidwallmultiplier": {
+        "prefix": "finiterigidwallmultiplier",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "finiterigidwallpenalty": {
+        "prefix": "finiterigidwallpenalty",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "fix": {
+        "prefix": "fix",
+        "body": [
+            "fix ${1:(1)} ${2:(2)} ${3:(3...)}",
+            "# (1) int, unique tag",
+            "# (2) string, dof identifier",
+            "# (3...) int, tags of nodes that shall be constrained"
+        ],
+        "description": "boundary condition"
+    },
+    "fix2": {
+        "prefix": "fix2",
+        "body": [
+            "fix2 ${1:(1)} ${2:(2)} ${3:(3...)}",
+            "# (1) int, unique tag",
+            "# (2) string, dof identifier",
+            "# (3...) int, tags of nodes that shall be constrained"
+        ],
+        "description": "boundary condition"
+    },
+    "fixed_step_size": {
+        "prefix": "fixed_step_size",
+        "body": [
+            "set fixed_step_size ${1:(1)}",
+            "# (1) bool, true or false"
+        ],
+        "description": "set if to use fixed step size or allow automatic adjustment"
+    },
+    "fixedlength2d": {
+        "prefix": "fixedlength2d",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "fixedlength3d": {
+        "prefix": "fixedlength3d",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "fullname": {
+        "prefix": "fullname",
+        "body": [
+            "fullname"
+        ],
+        "description": "print full name (including path) of the executable"
+    },
+    "generate": {
+        "prefix": "generate",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "generatebyplane": {
+        "prefix": "generatebyplane",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "generatebypoint": {
+        "prefix": "generatebypoint",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "generatebyrule": {
+        "prefix": "generatebyrule",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "group": {
+        "prefix": "group",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "groupbodyforce": {
+        "prefix": "groupbodyforce",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "groupcload": {
+        "prefix": "groupcload",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "groupdisplacement": {
+        "prefix": "groupdisplacement",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "groupgroup": {
+        "prefix": "groupgroup",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "hdf5recorder": {
+        "prefix": "hdf5recorder",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "help": {
+        "prefix": "help",
+        "body": [
+            "help"
+        ],
+        "description": "print help information"
+    },
+    "import": {
+        "prefix": "import",
+        "body": [
+            "import ${1:(1)}",
+            "# (1) string, external module name"
+        ],
+        "description": "import external module"
+    },
+    "ini_step_size": {
+        "prefix": "ini_step_size",
+        "body": [
+            "set ini_step_size ${1:(1)}",
+            "# (1) double, step size"
+        ],
+        "description": "set initial step size"
+    },
+    "initial": {
+        "prefix": "initial",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "iterative_refinement": {
+        "prefix": "iterative_refinement",
+        "body": [
+            "set iterative_refinement ${1:(1)}",
+            "# (1) integer, number of refinement steps"
+        ],
+        "description": "set iterative refinement number"
+    },
+    "load_multiplier": {
+        "prefix": "load_multiplier",
+        "body": [
+            "set load_multiplier ${1:(1)}",
+            "# (1) double, multiplier"
+        ],
+        "description": "set multiplier for load"
+    },
+    "materialtest1d": {
+        "prefix": "materialtest1d",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "materialtest2d": {
+        "prefix": "materialtest2d",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "materialtest3d": {
+        "prefix": "materialtest3d",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "materialtestbyload1d": {
+        "prefix": "materialtestbyload1d",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "materialtestbyload2d": {
+        "prefix": "materialtestbyload2d",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "materialtestbyload3d": {
+        "prefix": "materialtestbyload3d",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "materialtestbyloadwithbase3d": {
+        "prefix": "materialtestbyloadwithbase3d",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "materialtestbystrainhistory": {
+        "prefix": "materialtestbystrainhistory",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "materialtestbystresshistory": {
+        "prefix": "materialtestbystresshistory",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "materialtestwithbase3d": {
+        "prefix": "materialtestwithbase3d",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "max_iteration": {
+        "prefix": "max_iteration",
+        "body": [
+            "set max_iteration ${1:(1)}",
+            "# (1) integer, number of iterations"
+        ],
+        "description": "set maximum iteration"
+    },
+    "max_step_size": {
+        "prefix": "max_step_size",
+        "body": [
+            "set max_step_size ${1:(1)}",
+            "# (1) double, step size"
+        ],
+        "description": "set maximum step size"
+    },
+    "min_step_size": {
+        "prefix": "min_step_size",
+        "body": [
+            "set min_step_size ${1:(1)}",
+            "# (1) double, step size"
+        ],
+        "description": "set minimum step size"
+    },
+    "node": {
+        "prefix": "node",
+        "body": [
+            "node ${1:(1)} ${2:[2...]}",
+            "# (1) int, unique tag",
+            "# [2...] double, coordinates"
+        ],
+        "description": ""
+    },
+    "nodegroup": {
+        "prefix": "nodegroup",
+        "body": [
+            "nodegroup ${1:(1)} ${2:(2...)}",
+            "# (1) integer, unique tag",
+            "# (2...) integer, tags of nodes to be included"
+        ],
+        "description": ""
+    },
+    "num_threads": {
+        "prefix": "num_threads",
+        "body": [
+            "set num_threads ${1:(1)}",
+            "# (1) integer, thread number"
+        ],
+        "description": "set number of threads used by openmp"
+    },
+    "output_folder": {
+        "prefix": "output_folder",
+        "body": [
+            "set output_folder ${1:(1)}",
+            "# (1) string, absolute/relative path to the output folder"
+        ],
+        "description": "change output folder"
+    },
+    "peek": {
+        "prefix": "peek",
+        "body": [
+            "peek ${1:(1)} ${2:(2...)}",
+            "# (1) string, object type",
+            "# (2...) integer, tags"
+        ],
+        "description": "quick check"
+    },
+    "plainrecorder": {
+        "prefix": "plainrecorder",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "plot": {
+        "prefix": "plot",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "precheck": {
+        "prefix": "precheck",
+        "body": [
+            "precheck"
+        ],
+        "description": "dry-run analysis"
+    },
+    "precision": {
+        "prefix": "precision",
+        "body": [
+            "set precision ${1:(1)}",
+            "# (1) string, preconditioner type, full or mixed"
+        ],
+        "description": "set solving precision"
+    },
+    "preconditioner": {
+        "prefix": "preconditioner",
+        "body": [
+            "set preconditioner ${1:(1)}",
+            "# (1) string, preconditioner type, one of Jacobi, ILU and None"
+        ],
+        "description": "set preconditioner algorithm"
+    },
+    "print": {
+        "prefix": "print",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "protect": {
+        "prefix": "protect",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "pwd": {
+        "prefix": "pwd",
+        "body": [
+            "pwd ${1:[1]}",
+            "# [1] string, path name"
+        ],
+        "description": "print or change current working folder"
+    },
+    "quit": {
+        "prefix": "quit",
+        "body": [
+            "quit"
+        ],
+        "description": "exit/quit"
+    },
+    "recorder": {
+        "prefix": "recorder",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "reset": {
+        "prefix": "reset",
+        "body": [
+            "reset"
+        ],
+        "description": "reset domain"
+    },
+    "response_spectrum": {
+        "prefix": "response_spectrum",
+        "body": [
+            "response_spectrum ${1:(motion_file_name)} ${2:(period_file_name)} ${3:[interval]} ${4:(damping_ratio)}"
+        ],
+        "description": "compute response spectrum of a target ground motion over given periods"
+    },
+    "restitutionwall": {
+        "prefix": "restitutionwall",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "restitutionwallpenalty": {
+        "prefix": "restitutionwallpenalty",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "rigidwall": {
+        "prefix": "rigidwall",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "rigidwallmultiplier": {
+        "prefix": "rigidwallmultiplier",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "rigidwallpenalty": {
+        "prefix": "rigidwallpenalty",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "save": {
+        "prefix": "save",
+        "body": [
+            "save recorder ${1:(1...)}",
+            "# (1...) integer, tags of recorders need to be saved"
+        ],
+        "description": "save recorded data to disk"
+    },
+    "screen_output": {
+        "prefix": "screen_output",
+        "body": [
+            "set screen_output ${1:(1)}",
+            "# (1) bool string, true or false"
+        ],
+        "description": "turn on/off screen output"
+    },
+    "sdof_response": {
+        "prefix": "sdof_response",
+        "body": [
+            "sdof_response ${1:(motion_file_name)} ${2:[interval]} ${3:(natural_frequency)} ${4:(damping_ratio)}"
+        ],
+        "description": "perform response history analysis on a sdof system with target natural frequency and damping ratio"
+    },
+    "sectiontest1d": {
+        "prefix": "sectiontest1d",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "sectiontest2d": {
+        "prefix": "sectiontest2d",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "sectiontest3d": {
+        "prefix": "sectiontest3d",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "sectiontestbydeformationhistory": {
+        "prefix": "sectiontestbydeformationhistory",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "sparse_mat": {
+        "prefix": "sparse_mat",
+        "body": [
+            "set sparse_mat ${1:(1)}",
+            "# (1) bool string, true of false"
+        ],
+        "description": "switch on/off sparse storage"
+    },
+    "summary": {
+        "prefix": "summary",
+        "body": [
+            "summary"
+        ],
+        "description": "print a summary of the domain"
+    },
+    "supportacceleration": {
+        "prefix": "supportacceleration",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "supportdisplacement": {
+        "prefix": "supportdisplacement",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "supportvelocity": {
+        "prefix": "supportvelocity",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "symm_mat": {
+        "prefix": "symm_mat",
+        "body": [
+            "set symm_mat ${1:(1)}",
+            "# (1) bool string, true of false"
+        ],
+        "description": "enable/disable symmetric storage"
+    },
+    "system_solver": {
+        "prefix": "system_solver",
+        "body": [
+            "set system_solver ${1:(1)}",
+            "# (1) string, solver type"
+        ],
+        "description": "set system solver type"
+    },
+    "tabularspline": {
+        "prefix": "tabularspline",
+        "body": [
+            ""
+        ],
+        "description": ""
+    },
+    "terminal": {
+        "prefix": "terminal",
+        "body": [
+            "terminal ${1:(1)}",
+            "# (1) string, commands to be executed"
+        ],
+        "description": "execute terminal command"
+    },
+    "tolerance": {
+        "prefix": "tolerance",
+        "body": [
+            "set tolerance ${1:(1)}",
+            "# (1) double, tolerance of the iterative solver"
+        ],
+        "description": "set tolerance of the iterative solver"
+    },
+    "upsampling": {
+        "prefix": "upsampling",
+        "body": [
+            "upsampling ${1:(1)} ${2:(2)} ${3:(3)}",
+            "# (1) string, file name",
+            "# (2) integer, upsampling ratio",
+            "# (3) string, window type, one of Hamming, Hann, Blackman, BlackmanNuttall, BlackmanHarris and FlatTop"
+        ],
+        "description": "upsample a given ground motion using a specific window type"
+    },
+    "version": {
+        "prefix": "version",
+        "body": [
+            "version"
+        ],
+        "description": "output version information"
+    }
+}

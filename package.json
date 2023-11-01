@@ -67,6 +67,16 @@
         "scopeName": "source.sp",
         "path": "./syntaxes/.tmLanguage.json"
       }
+    ],
+    "snippets": [
+      {
+        "language": "suanPan",
+        "path": "./syntaxes/snippets.json"
+      },
+      {
+        "language": "suanPan",
+        "path": "./syntaxes/sections.json"
+      }
     ]
   },
   "scripts": {
