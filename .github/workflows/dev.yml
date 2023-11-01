@@ -21,6 +21,11 @@ jobs:
           npm install
           node_modules/.bin/vsce package
       - name: Publish
+        run: |
+          node_modules/.bin/vsce publish
+        env:
+          VSCE_PAT: ${{ secrets.PUB_TOKEN }}
+      - name: Upload
         uses: actions/upload-artifact@v3
         with:
           name: vscode-plugin

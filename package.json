@@ -2,6 +2,12 @@
   "name": "suanpan",
   "displayName": "suanPan",
   "description": "Syntax highlighting and autocompletion for suanPan models",
+  "icon": "images/suanPan-ua.png",
+  "author": {
+    "name": "Theodore Chang",
+    "email": "tlcfem@gmail.com"
+  },
+  "pricing": "Free",
   "repository": {
     "type": "git",
     "url": "https://github.com/TLCFEM/suanPan-vs"
