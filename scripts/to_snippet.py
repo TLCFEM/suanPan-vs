@@ -37,7 +37,7 @@ if __name__ == "__main__":
         snippets = json.load(f)
     with open("syntaxes/sections.json", "r") as f:
         sections = json.load(f)
-    all_snippets = process(snippets) + process(sections) 
+    all_snippets = process(snippets) + process(sections)
     with open("syntaxes/suanPan.sublime-completions", "w") as f:
         json.dump(
             {
