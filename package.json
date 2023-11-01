@@ -1,12 +1,12 @@
 {
-  "name": "suanpan-vs",
+  "name": "suanpan",
   "displayName": "suanPan",
-  "description": "Support for suanPan models",
+  "description": "Syntax highlighting and autocompletion for suanPan models",
   "repository": {
     "type": "git",
     "url": "https://github.com/TLCFEM/suanPan-vs"
   },
-  "version": "0.0.1",
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.83.0"
   },
@@ -23,7 +23,7 @@
       "properties": {
         "suanpan.path": {
           "type": "string",
-          "default": "suanpan",
+          "default": "",
           "description": "Path to the suanPan executable."
         },
         "suanpan.directory": {
