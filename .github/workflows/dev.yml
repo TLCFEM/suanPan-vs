@@ -21,6 +21,7 @@ jobs:
           npm install
           node_modules/.bin/vsce package
       - name: Publish
+        if: contains(github.event.head_commit.message, '[publish]')
         run: |
           node_modules/.bin/vsce publish
         env:
