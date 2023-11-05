@@ -107,6 +107,10 @@
           "match": "(?i)(?<=^(material|element|step|converger|load|constraint|modifier|expression|solver)\\s+\\w+\\s+)\\d+\\b"
         },
         {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=^load\\s+\\w+\\s+\\d+\\s+)\\d+\\b"
+        },
+        {
           "name": "entity.name.tag",
           "match": "(?i)(?<=preconditioner\\s+)(JACOBI|ILU)\\b"
         },
@@ -1001,6 +1005,10 @@
         {
           "name": "keyword.clear",
           "match": "^clear\\b"
+        },
+        {
+          "name": "keyword.constraint",
+          "match": "^constraint\\b"
         },
         {
           "name": "keyword.converger",
