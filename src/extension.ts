@@ -39,7 +39,10 @@ export function activate(context: vscode.ExtensionContext) {
 
 		if (!sp_path) return vscode.window.showErrorMessage("suanPan executable not found. Please set the path in the settings.");
 
-		if ("" === sp_pwd) sp_pwd = sp_file.substring(0, sp_file.lastIndexOf("/"));
+		if ("" === sp_pwd) {
+			const delimiter = process.platform === "win32" ? "\\" : "/";
+			sp_pwd = sp_file.substring(0, sp_file.lastIndexOf(delimiter));
+		}
 		if (!sp_color) sp_path += " -nc";
 		if (sp_verbose) sp_path += " -vb";
 
