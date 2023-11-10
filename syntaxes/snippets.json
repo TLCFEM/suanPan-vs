@@ -1158,38 +1158,36 @@
     },
     "Concrete21": {
         "body": [
-            "material Concrete21 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:(10)} ${11:[11]}",
+            "material Concrete21 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:[10]}",
             "# (1) int, unique material tag",
-            "# (2) double, compression strength, should be negative but sign insensitive",
-            "# (3) double, tension strength, should be positive but sign insensitive",
-            "# (4) double, MC",
+            "# (2) double, elastic modulus",
+            "# (3) double, compression strength, should be negative but sign insensitive",
+            "# (4) double, tension strength, should be positive but sign insensitive",
             "# (5) double, NC",
-            "# (6) double, MT",
-            "# (7) double, NT",
-            "# (8) double, middle point",
-            "# (9) double, strain at compression strength",
-            "# (10) double, strain at tension strength",
-            "# [11] double, density, default: 0.0"
+            "# (6) double, NT",
+            "# (7) double, middle point",
+            "# (8) double, strain at compression strength",
+            "# (9) double, strain at tension strength",
+            "# [10] double, density, default: 0.0"
         ],
         "description": "rotating crack concrete material",
         "prefix": "Concrete21"
     },
     "Concrete22": {
         "body": [
-            "material Concrete22 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:(10)} ${11:(11)} ${12:(12)} ${13:[13]}",
+            "material Concrete22 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:(10)} ${11:(11)} ${12:[12]}",
             "# (1) int, unique material tag",
-            "# (2) double, compression strength, should be negative but sign insensitive",
-            "# (3) double, tension strength, should be positive but sign insensitive",
-            "# (4) double, MC",
+            "# (2) double, elastic modulus",
+            "# (3) double, compression strength, should be negative but sign insensitive",
+            "# (4) double, tension strength, should be positive but sign insensitive",
             "# (5) double, NC",
-            "# (6) double, MT",
-            "# (7) double, NT",
-            "# (8) double, middle point",
-            "# (9) double, strain at compression strength",
-            "# (10) double, strain at tension strength",
-            "# (11) double, shear stress",
-            "# (12) double, shear retention factor",
-            "# [13] double, density, default: 0.0"
+            "# (6) double, NT",
+            "# (7) double, middle point",
+            "# (8) double, strain at compression strength",
+            "# (9) double, strain at tension strength",
+            "# (10) double, shear stress",
+            "# (11) double, shear retention factor",
+            "# [12] double, density, default: 0.0"
         ],
         "description": "fixed crack concrete material",
         "prefix": "Concrete22"
@@ -1261,18 +1259,17 @@
     },
     "ConcreteTsai": {
         "body": [
-            "material ConcreteTsai ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:(10)} ${11:[11]}",
+            "material ConcreteTsai ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:[10]}",
             "# (1) int, unique material tag",
-            "# (2) double, compression strength, should be negative but sign insensitive",
-            "# (3) double, tension strength, should be positive but sign insensitive",
-            "# (4) double, MC",
+            "# (2) double, elastic modulus",
+            "# (3) double, compression strength, should be negative but sign insensitive",
+            "# (4) double, tension strength, should be positive but sign insensitive",
             "# (5) double, NC",
-            "# (6) double, MT",
-            "# (7) double, NT",
-            "# (8) double, middle point, typical: 0.2",
-            "# (9) double, strain at compression strength, typical: -2E-3",
-            "# (10) double, strain at tension strength, typical: 1E-4",
-            "# [11] double, density, default: 0.0"
+            "# (6) double, NT",
+            "# (7) double, middle point, typical: 0.2",
+            "# (8) double, strain at compression strength, typical: -2E-3",
+            "# (9) double, strain at tension strength, typical: 1E-4",
+            "# [10] double, density, default: 0.0"
         ],
         "description": "uniaxial concrete model using tsai's equation",
         "prefix": "ConcreteTsai"
