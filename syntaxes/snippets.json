@@ -4986,10 +4986,11 @@
     },
     "upsampling": {
         "body": [
-            "upsampling ${1:(1)} ${2:(2)} ${3:(3)}",
+            "upsampling ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]}",
             "# (1) string, file name",
             "# (2) int, upsampling ratio",
-            "# (3) string, window type, one of Hamming, Hann, Blackman, BlackmanNuttall, BlackmanHarris and FlatTop"
+            "# (3) string, window type, one of Hamming, Hann, Blackman, BlackmanNuttall, BlackmanHarris and FlatTop",
+            "# [4] int, window length, default: 8"
         ],
         "description": "upsample a given ground motion using a specific window type",
         "prefix": "upsampling"
