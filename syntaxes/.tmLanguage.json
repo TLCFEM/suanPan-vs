@@ -80,7 +80,7 @@
       "patterns": [
         {
           "name": "entity.name.tag",
-          "match": "(?i)(?<=recorder\\s+\\d+\\s+((hdf5|plain)\\s+)?)(node|element|amplitude|global|visualisation|frame|eigen)\\b"
+          "match": "(?i)(?<=recorder\\s+\\d+\\s+((hdf5|plain)\\s+)?)(node|element|amplitude|global|visualisation|frame|eigen|sum)\\b"
         },
         {
           "name": "string.unquoted",
