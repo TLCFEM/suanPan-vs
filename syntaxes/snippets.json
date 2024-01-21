@@ -2409,7 +2409,7 @@
             "# (4) double, damping ratio \\zeta_p at the peak of each mode",
             "# (5) double, circular frequency \\omega_p at the peak of each mode"
         ],
-        "description": "newmark with lee's damping model",
+        "description": "Newmark with lee's damping model",
         "prefix": "LeeNewmark"
     },
     "LeeNewmarkFull": {
@@ -2423,8 +2423,22 @@
             "# (6) double, \\omega_p",
             "# (7...) double/int, parameters associated with the mode"
         ],
-        "description": "newmark with lee's damping model (full mode)",
+        "description": "Newmark with lee's damping model (full mode)",
         "prefix": "LeeNewmarkFull"
+    },
+    "LeeNewmarkIterative": {
+        "body": [
+            "integrator LeeNewmarkIterative ${1:(1)} ${2:(2)} ${3:(3)} (${4:(4)} ${5:(5)} ${6:(6)} ${7:[7...]}...)",
+            "# (1) int, unique integrator tag",
+            "# (2) double, alpha in Newmark method",
+            "# (3) double, beta in Newmark method",
+            "# (4) string, type identifier",
+            "# (5) double, \\zeta_p",
+            "# (6) double, \\omega_p",
+            "# (7...) double/int, parameters associated with the mode"
+        ],
+        "description": "Newmark with lee's damping model (full mode) with iterative solving",
+        "prefix": "LeeNewmarkIterative"
     },
     "LineUDL2D": {
         "body": [
