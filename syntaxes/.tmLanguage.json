@@ -668,6 +668,10 @@
         },
         {
           "name": "entity.name.type.material",
+          "match": "(?i)(?<=material\\s+)DuncanSelig\\b"
+        },
+        {
+          "name": "entity.name.type.material",
           "match": "(?i)(?<=material\\s+)Elastic(1D|2D|3D|OS)\\b"
         },
         {

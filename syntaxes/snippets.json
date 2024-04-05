@@ -1676,6 +1676,24 @@
         "description": "dhakal rebar degradation model",
         "prefix": "Dhakal"
     },
+    "DuncanSelig": {
+        "body": [
+            "material DuncanSelig ${1:(1) ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:(10)} ${11:[11]}",
+            "# (1) int, unique material tag",
+            "# (2) double, reference atmospheric pressure, postive, p_a",
+            "# (3) double, reference elatic modulus, E_r",
+            "# (4) double, elastic modulus exponent, n",
+            "# (5) double, reference bulk modulus, B_r",
+            "# (6) double, bulk modulus exponent, m",
+            "# (7) double, initial friction angle, \\phi_i",
+            "# (8) double, friction angle slope, \\Delta\\phi",
+            "# (9) double, ratio of actual failure to ultimate failure, r_f",
+            "# (10) double, cohesion, c",
+            "# [11] double, density, default: 0.0"
+        ],
+        "description": "duncan selig plane strain soil model",
+        "prefix": "DuncanSelig"
+    },
     "Dynamic": {
         "body": [
             "step dynamic ${1:(1)} ${2:(2)}",
