@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 
 
 def process(a):
@@ -33,12 +34,14 @@ def process(a):
 
 
 if __name__ == "__main__":
-    with open("syntaxes/snippets.json", "r") as f:
+    parent_folder = Path(__file__).parent.parent / "syntaxes"
+
+    with open(parent_folder / "snippets.json", "r") as f:
         snippets = json.load(f)
-    with open("syntaxes/sections.json", "r") as f:
+    with open(parent_folder / "sections.json", "r") as f:
         sections = json.load(f)
     all_snippets = process(snippets) + process(sections)
-    with open("syntaxes/suanPan.sublime-completions", "w") as f:
+    with open(parent_folder / "suanPan.sublime-completions", "w") as f:
         json.dump(
             {
                 "completions": all_snippets,
