@@ -284,6 +284,10 @@
         },
         {
           "name": "entity.name.type.constraint",
+          "match": "(?i)(?<=constraint\\s+|^)Max(imum)?Force[23]D\\b"
+        },
+        {
+          "name": "entity.name.type.constraint",
           "match": "(?i)(?<=constraint\\s+|^)LinearSpring2D\\b"
         },
         {

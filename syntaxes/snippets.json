@@ -2696,6 +2696,30 @@
         "description": "max displacement criterion",
         "prefix": "MaxDisplacement"
     },
+    "MaxForce2D": {
+        "body": [
+            "maxforce2d ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "constraint maxforce2d ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique constraint tag",
+            "# (2) int, node tag",
+            "# (3) int, node tag",
+            "# (4) double, maximum force magnitude"
+        ],
+        "description": "2d maximum force constraint",
+        "prefix": "MaxForce2D"
+    },
+    "MaxForce3D": {
+        "body": [
+            "maxforce3d ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "constraint maxforce3d ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique constraint tag",
+            "# (2) int, node tag",
+            "# (3) int, node tag",
+            "# (4) double, maximum force magnitude"
+        ],
+        "description": "3d maximum force constraint",
+        "prefix": "MaxForce3D"
+    },
     "MaxGap2D": {
         "body": [
             "constraint MaxGap2D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
