@@ -26,7 +26,7 @@ function setPath() {
 export function activate(context: vscode.ExtensionContext) {
 	setPath();
 
-	let disposable = vscode.commands.registerCommand('suanpan.run', () => {
+	let disposable = vscode.commands.registerCommand('suanpan.run', async () => {
 		const editor = vscode.window.activeTextEditor;
 		if (!editor) return;
 
@@ -39,17 +39,21 @@ export function activate(context: vscode.ExtensionContext) {
 
 		if (!sp_path) return vscode.window.showErrorMessage("suanPan executable not found. Please set the path in the settings.");
 
+		const delimiter = process.platform === "win32" ? "\\" : "/";
+
 		if ("" === sp_pwd) {
-			const delimiter = process.platform === "win32" ? "\\" : "/";
 			sp_pwd = sp_file.substring(0, sp_file.lastIndexOf(delimiter));
 		}
 		if (!sp_color) sp_path += " -nc";
 		if (sp_verbose) sp_path += " -vb";
 
-		const terminal = vscode.window.createTerminal('suanPan');
-		terminal.sendText(`cd ${sp_pwd}`);
-		terminal.sendText(`${sp_path} -f ${sp_file}`);
-		terminal.show();
+		const task = new vscode.Task(
+			{ type: 'shell' },
+			vscode.TaskScope.Workspace,
+			sp_file.split(delimiter).pop() || 'suanPan model',
+			'suanPan', new vscode.ShellExecution(`cd ${sp_pwd} && ${sp_path} -f ${sp_file}`));
+
+		await vscode.tasks.executeTask(task);
 	});
 
 	context.subscriptions.push(disposable);
