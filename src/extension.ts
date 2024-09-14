@@ -51,7 +51,7 @@ export function activate(context: vscode.ExtensionContext) {
 			{ type: 'shell' },
 			vscode.TaskScope.Workspace,
 			sp_file.split(delimiter).pop() || 'suanPan model',
-			'suanPan', new vscode.ShellExecution(`cd ${sp_pwd} && ${sp_path} -f ${sp_file}`));
+			'suanPan', new vscode.ShellExecution(process.platform === "win32" ? `cd ${sp_pwd}; ${sp_path} -f ${sp_file}` : `cd ${sp_pwd} && ${sp_path} -f ${sp_file}`));
 
 		await vscode.tasks.executeTask(task);
 	});
