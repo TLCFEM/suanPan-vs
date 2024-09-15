@@ -620,6 +620,10 @@
         },
         {
           "name": "entity.name.type.material",
+          "match": "(?i)(?<=material\\s+)AFCO1D\\b"
+        },
+        {
+          "name": "entity.name.type.material",
           "match": "(?i)(?<=material\\s+)AsymmElastic1D\\b"
         },
         {
