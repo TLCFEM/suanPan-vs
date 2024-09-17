@@ -1,9 +1,10 @@
+.idea
+.venv
 .vscode-test/
 *.vsix
 dist
 examples
 node_modules
 out
-pnpm-lock.yaml
 package-lock.json
-.idea
+pnpm-lock.yaml
