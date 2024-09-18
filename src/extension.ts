@@ -30,6 +30,9 @@ export function activate(context: vscode.ExtensionContext) {
 		const editor = vscode.window.activeTextEditor;
 		if (!editor) return;
 
+		const saved = await editor.document.save();
+		if (!saved) return;
+
 		const sp_file = editor.document.fileName;
 		const sp_config = vscode.workspace.getConfiguration('suanpan');
 		const sp_color = sp_config.get('color');
