@@ -4020,6 +4020,51 @@
         "description": "strain energy evolution criterion",
         "prefix": "StrainEnergyEvolution"
     },
+    "Subloading1D": {
+        "body": [
+            "material Subloading1D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:(10)} ${11:(11)} ${12:(12)} ${13:(13)} ${14:(14)} ${15:[15]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, isotropic initial stress",
+            "# (4) double, isotropic linear hardening modulus",
+            "# (5) double, isotropic saturation stress",
+            "# (6) double, isotropic saturation rate",
+            "# (7) double, kinematic initial stress",
+            "# (8) double, kinematic linear hardening modulus",
+            "# (9) double, kinematic saturation stress",
+            "# (10) double, kinematic saturation rate",
+            "# (11) double, yield ratio evolution rate",
+            "# (12) double, kinematic hardening rate",
+            "# (13) double, elastic core evolution rate",
+            "# (14) double, elastic core size",
+            "# [15] double, density, default: 0.0"
+        ],
+        "description": "uniaxial subloading surface model for metal",
+        "prefix": "Subloading1D"
+    },
+    "SubloadingMetal": {
+        "body": [
+            "material SubloadingMetal ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:(10)} ${11:(11)} ${12:(12)} ${13:(13)} ${14:(14)} ${15:(15)} ${16:[16]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, poisson's ratio",
+            "# (4) double, isotropic initial stress",
+            "# (5) double, isotropic linear hardening modulus",
+            "# (6) double, isotropic saturation stress",
+            "# (7) double, isotropic saturation rate",
+            "# (8) double, kinematic initial stress",
+            "# (9) double, kinematic linear hardening modulus",
+            "# (10) double, kinematic saturation stress",
+            "# (11) double, kinematic saturation rate",
+            "# (12) double, yield ratio evolution rate",
+            "# (13) double, kinematic hardening rate",
+            "# (14) double, elastic core evolution rate",
+            "# (15) double, elastic core size",
+            "# [16] double, density, default: 0.0"
+        ],
+        "description": "3d subloading surface model for metal",
+        "prefix": "SubloadingMetal"
+    },
     "Substepping": {
         "body": [
             "material Substepping ${1:(1)} ${2:(2)} ${3:[3]}",

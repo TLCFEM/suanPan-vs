@@ -67,40 +67,24 @@
     "comments": {
       "patterns": [
         {
-          "name": "comment.line",
-          "match": "^#.*$"
-        },
-        {
           "name": "comment.inline",
           "match": "!.*$"
+        },
+        {
+          "name": "comment.line",
+          "match": "^#.*$"
         }
       ]
     },
     "constants": {
       "patterns": [
         {
-          "name": "entity.name.tag",
-          "match": "(?i)(?<=recorder\\s+\\d+\\s+((hdf5|plain)\\s+)?)(node|element|amplitude|global|visualisation|frame|eigen|sum)\\b"
-        },
-        {
           "name": "string.unquoted",
-          "match": "(?i)(?<=recorder\\s+\\d+\\s+)(hdf5|plain)\\b"
-        },
-        {
-          "name": "entity.name.tag",
-          "match": "(?i)(\\s|^)-type[0-4]\\b"
-        },
-        {
-          "name": "entity.name.tag",
-          "match": "(?i)(?<=system_solver\\s+)(LAPACK|SPIKE|SUPERLU|MUMPS|LIS|CUDA|MAGMA|PARDISO|F?GMRES|BICGSTAB)\\b"
+          "match": "(?i)(?<=(save|list|disable|enable)\\s+)(amplitude|constraint|converger|criterion|domain|element|expression|group|integrator|load|material|modifier|node|orientation|recorder|section|solver|step|print)\\b"
         },
         {
           "name": "entity.name.tag",
           "match": "(?i)(?<=^(fix2?|bc)\\s+\\d+\\s+)([1-7]|[XYZEP])\\b"
-        },
-        {
-          "name": "entity.name.tag",
-          "match": "(?i)(?<=^node\\s+)\\d+\\b"
         },
         {
           "name": "entity.name.tag",
@@ -112,35 +96,31 @@
         },
         {
           "name": "entity.name.tag",
-          "match": "(?i)(?<=preconditioner\\s+)(JACOBI|ILU)\\b"
+          "match": "(?i)(?<=^node\\s+)\\d+\\b"
         },
         {
           "name": "string.unquoted",
           "match": "(?i)(?<=peek\\s+)(node|element|material|constraint|recorder|solver|integrator|group|nodegroup|amplitude|expression|eigenvalue|output_folder|num_threads|num_nodes|stat(istic)?s)\\b"
         },
         {
-          "name": "string.unquoted",
-          "match": "(?i)(?<=(save|list|disable|enable)\\s+)(amplitude|constraint|converger|criterion|domain|element|expression|group|integrator|load|material|modifier|node|orientation|recorder|section|solver|step|print)\\b"
+          "name": "entity.name.tag",
+          "match": "(?i)(?<=preconditioner\\s+)(JACOBI|ILU)\\b"
+        },
+        {
+          "name": "entity.name.tag",
+          "match": "(?i)(?<=recorder\\s+\\d+\\s+((hdf5|plain)\\s+)?)(node|element|amplitude|global|visualisation|frame|eigen|sum)\\b"
         },
         {
           "name": "string.unquoted",
-          "match": "(?i)(?<=set\\s+)output_folder\\b"
+          "match": "(?i)(?<=recorder\\s+\\d+\\s+)(hdf5|plain)\\b"
         },
         {
           "name": "string.unquoted",
-          "match": "(?i)(?<=set\\s+)num_threads\\b"
+          "match": "(?i)(?<=set\\s+)(ini|min|max)_step_size\\b"
         },
         {
           "name": "string.unquoted",
-          "match": "(?i)(?<=set\\s+)num_nodes\\b"
-        },
-        {
-          "name": "string.unquoted",
-          "match": "(?i)(?<=set\\s+)screen_output\\b"
-        },
-        {
-          "name": "string.unquoted",
-          "match": "(?i)(?<=set\\s+)verbose_output\\b"
+          "match": "(?i)(?<=set\\s+)band_mat\\b"
         },
         {
           "name": "string.unquoted",
@@ -152,47 +132,7 @@
         },
         {
           "name": "string.unquoted",
-          "match": "(?i)(?<=set\\s+)load_multiplier\\b"
-        },
-        {
-          "name": "string.unquoted",
-          "match": "(?i)(?<=set\\s+)linear_system\\b"
-        },
-        {
-          "name": "string.unquoted",
-          "match": "(?i)(?<=set\\s+)fixed_step_size\\b"
-        },
-        {
-          "name": "string.unquoted",
-          "match": "(?i)(?<=set\\s+)symm_mat\\b"
-        },
-        {
-          "name": "string.unquoted",
-          "match": "(?i)(?<=set\\s+)band_mat\\b"
-        },
-        {
-          "name": "string.unquoted",
-          "match": "(?i)(?<=set\\s+)sparse_mat\\b"
-        },
-        {
-          "name": "string.unquoted",
-          "match": "(?i)(?<=set\\s+)iterative_refinement\\b"
-        },
-        {
-          "name": "string.unquoted",
-          "match": "(?i)(?<=set\\s+)system_solver\\b"
-        },
-        {
-          "name": "string.unquoted",
-          "match": "(?i)(?<=set\\s+)preconditioner\\b"
-        },
-        {
-          "name": "string.unquoted",
-          "match": "(?i)(?<=set\\s+)precision\\b"
-        },
-        {
-          "name": "string.unquoted",
-          "match": "(?i)(?<=set\\s+)tolerance\\b"
+          "match": "(?i)(?<=set\\s+)eigen_number\\b"
         },
         {
           "name": "string.unquoted",
@@ -200,7 +140,19 @@
         },
         {
           "name": "string.unquoted",
-          "match": "(?i)(?<=set\\s+)(ini|min|max)_step_size\\b"
+          "match": "(?i)(?<=set\\s+)fixed_step_size\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=set\\s+)iterative_refinement\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=set\\s+)linear_system\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=set\\s+)load_multiplier\\b"
         },
         {
           "name": "string.unquoted",
@@ -208,7 +160,55 @@
         },
         {
           "name": "string.unquoted",
-          "match": "(?i)(?<=set\\s+)eigen_number\\b"
+          "match": "(?i)(?<=set\\s+)num_nodes\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=set\\s+)num_threads\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=set\\s+)output_folder\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=set\\s+)precision\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=set\\s+)preconditioner\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=set\\s+)screen_output\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=set\\s+)sparse_mat\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=set\\s+)symm_mat\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=set\\s+)system_solver\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=set\\s+)tolerance\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=set\\s+)verbose_output\\b"
+        },
+        {
+          "name": "entity.name.tag",
+          "match": "(?i)(?<=system_solver\\s+)(LAPACK|SPIKE|SUPERLU|MUMPS|LIS|CUDA|MAGMA|PARDISO|F?GMRES|BICGSTAB)\\b"
+        },
+        {
+          "name": "entity.name.tag",
+          "match": "(?i)(\\s|^)-type[0-4]\\b"
         }
       ]
     },
@@ -216,15 +216,19 @@
       "patterns": [
         {
           "name": "entity.name.type.amplitude",
+          "match": "(?i)(?<=amplitude\\s+)(Cos|S)ine\\b"
+        },
+        {
+          "name": "entity.name.type.amplitude",
+          "match": "(?i)(?<=amplitude\\s+)Combine\\b"
+        },
+        {
+          "name": "entity.name.type.amplitude",
           "match": "(?i)(?<=amplitude\\s+)Constant\\b"
         },
         {
           "name": "entity.name.type.amplitude",
-          "match": "(?i)(?<=amplitude\\s+)Ramp\\b"
-        },
-        {
-          "name": "entity.name.type.amplitude",
-          "match": "(?i)(?<=amplitude\\s+)Tabular(Spline)?\\b"
+          "match": "(?i)(?<=amplitude\\s+)Custom\\b"
         },
         {
           "name": "entity.name.type.amplitude",
@@ -236,32 +240,24 @@
         },
         {
           "name": "entity.name.type.amplitude",
-          "match": "(?i)(?<=amplitude\\s+)Combine\\b"
-        },
-        {
-          "name": "entity.name.type.amplitude",
-          "match": "(?i)(?<=amplitude\\s+)Custom\\b"
-        },
-        {
-          "name": "entity.name.type.amplitude",
           "match": "(?i)(?<=amplitude\\s+)Modulated\\b"
         },
         {
           "name": "entity.name.type.amplitude",
-          "match": "(?i)(?<=amplitude\\s+)(Cos|S)ine\\b"
+          "match": "(?i)(?<=amplitude\\s+)NZStrongMotion\\b"
         },
         {
           "name": "entity.name.type.amplitude",
-          "match": "(?i)(?<=amplitude\\s+)NZStrongMotion\\b"
+          "match": "(?i)(?<=amplitude\\s+)Ramp\\b"
+        },
+        {
+          "name": "entity.name.type.amplitude",
+          "match": "(?i)(?<=amplitude\\s+)Tabular(Spline)?\\b"
         }
       ]
     },
     "entities.constraint": {
       "patterns": [
-        {
-          "name": "entity.name.type.constraint",
-          "match": "(?i)(?<=constraint\\s+|^)Embed[23]D\\b"
-        },
         {
           "name": "entity.name.type.constraint",
           "match": "(?i)(?<=constraint\\s+|^)(Finite)?RestitutionWall(Penalty)?\\b"
@@ -272,11 +268,15 @@
         },
         {
           "name": "entity.name.type.constraint",
-          "match": "(?i)(?<=constraint\\s+|^)Fix2?\\b"
+          "match": "(?i)(?<=constraint\\s+|^)(Group)?(Penalty|Multiplier)BC\\b"
         },
         {
           "name": "entity.name.type.constraint",
-          "match": "(?i)(?<=constraint\\s+|^)(Group)?(Penalty|Multiplier)BC\\b"
+          "match": "(?i)(?<=constraint\\s+|^)Embed[23]D\\b"
+        },
+        {
+          "name": "entity.name.type.constraint",
+          "match": "(?i)(?<=constraint\\s+|^)Fix2?\\b"
         },
         {
           "name": "entity.name.type.constraint",
@@ -284,15 +284,11 @@
         },
         {
           "name": "entity.name.type.constraint",
-          "match": "(?i)(?<=constraint\\s+|^)Max(imum)?Force[23]D\\b"
+          "match": "(?i)(?<=constraint\\s+|^)LJPotential2D\\b"
         },
         {
           "name": "entity.name.type.constraint",
           "match": "(?i)(?<=constraint\\s+|^)LinearSpring2D\\b"
-        },
-        {
-          "name": "entity.name.type.constraint",
-          "match": "(?i)(?<=constraint\\s+|^)LJPotential2D\\b"
         },
         {
           "name": "entity.name.type.constraint",
@@ -301,6 +297,10 @@
         {
           "name": "entity.name.type.constraint",
           "match": "(?i)(?<=constraint\\s+|^)MPC\\b"
+        },
+        {
+          "name": "entity.name.type.constraint",
+          "match": "(?i)(?<=constraint\\s+|^)Max(imum)?Force[23]D\\b"
         },
         {
           "name": "entity.name.type.constraint",
@@ -532,11 +532,11 @@
         },
         {
           "name": "entity.name.type.group",
-          "match": "(?i)(?<=group\\s+|^)GroupGroup\\b"
+          "match": "(?i)(?<=group\\s+|^)Generate(By(Rule|Point|Plane))?\\b"
         },
         {
           "name": "entity.name.type.group",
-          "match": "(?i)(?<=group\\s+|^)Generate(By(Rule|Point|Plane))?\\b"
+          "match": "(?i)(?<=group\\s+|^)GroupGroup\\b"
         }
       ]
     },
@@ -548,6 +548,18 @@
         },
         {
           "name": "entity.name.type.integrator",
+          "match": "(?i)(?<=integrator\\s+)Bathe(TwoStep|Explicit)\\b"
+        },
+        {
+          "name": "entity.name.type.integrator",
+          "match": "(?i)(?<=integrator\\s+)GSSSS(U0|V0|Optimal)\\b"
+        },
+        {
+          "name": "entity.name.type.integrator",
+          "match": "(?i)(?<=integrator\\s+)Generali[sz]edAlpha(Explicit)?\\b"
+        },
+        {
+          "name": "entity.name.type.integrator",
           "match": "(?i)(?<=integrator\\s+)LeeNewmarkFull(Trial|Current|Initial)?\\b"
         },
         {
@@ -556,19 +568,7 @@
         },
         {
           "name": "entity.name.type.integrator",
-          "match": "(?i)(?<=integrator\\s+)Generali[sz]edAlpha(Explicit)?\\b"
-        },
-        {
-          "name": "entity.name.type.integrator",
-          "match": "(?i)(?<=integrator\\s+)GSSSS(U0|V0|Optimal)\\b"
-        },
-        {
-          "name": "entity.name.type.integrator",
           "match": "(?i)(?<=integrator\\s+)OALTS\\b"
-        },
-        {
-          "name": "entity.name.type.integrator",
-          "match": "(?i)(?<=integrator\\s+)Bathe(TwoStep|Explicit)\\b"
         },
         {
           "name": "entity.name.type.integrator",
@@ -578,10 +578,6 @@
     },
     "entities.load": {
       "patterns": [
-        {
-          "name": "entity.name.type.load",
-          "match": "(?i)(?<=load\\s+|^)Acceleration\\b"
-        },
         {
           "name": "entity.name.type.load",
           "match": "(?i)(?<=load\\s+|^)(Group)?BodyForce\\b"
@@ -596,11 +592,15 @@
         },
         {
           "name": "entity.name.type.load",
-          "match": "(?i)(?<=load\\s+|^)LineUDL[23]D\\b"
+          "match": "(?i)(?<=load\\s+|^)(ReferenceLoad|Ref(Load|Force))\\b"
         },
         {
           "name": "entity.name.type.load",
-          "match": "(?i)(?<=load\\s+|^)(ReferenceLoad|Ref(Load|Force))\\b"
+          "match": "(?i)(?<=load\\s+|^)Acceleration\\b"
+        },
+        {
+          "name": "entity.name.type.load",
+          "match": "(?i)(?<=load\\s+|^)LineUDL[23]D\\b"
         },
         {
           "name": "entity.name.type.load",
@@ -612,15 +612,23 @@
       "patterns": [
         {
           "name": "entity.name.type.material",
+          "match": "(?i)(?<=material\\s+)(Iso|Ortho)tropicElastic3D\\b"
+        },
+        {
+          "name": "entity.name.type.material",
+          "match": "(?i)(?<=material\\s+)(Table)?CDP\\b"
+        },
+        {
+          "name": "entity.name.type.material",
           "match": "(?i)(?<=material\\s+)AFC([NS]|(0[1-3]))?\\b"
         },
         {
           "name": "entity.name.type.material",
-          "match": "(?i)(?<=material\\s+)ArmstrongFrederick(1D)?\\b"
+          "match": "(?i)(?<=material\\s+)AFCO1D\\b"
         },
         {
           "name": "entity.name.type.material",
-          "match": "(?i)(?<=material\\s+)AFCO1D\\b"
+          "match": "(?i)(?<=material\\s+)ArmstrongFrederick(1D)?\\b"
         },
         {
           "name": "entity.name.type.material",
@@ -629,6 +637,10 @@
         {
           "name": "entity.name.type.material",
           "match": "(?i)(?<=material\\s+)Axisymmetric(Elastic)?\\b"
+        },
+        {
+          "name": "entity.name.type.material",
+          "match": "(?i)(?<=material\\s+)BWBN\\b"
         },
         {
           "name": "entity.name.type.material",
@@ -641,14 +653,6 @@
         {
           "name": "entity.name.type.material",
           "match": "(?i)(?<=material\\s+)BoucWen\\b"
-        },
-        {
-          "name": "entity.name.type.material",
-          "match": "(?i)(?<=material\\s+)BWBN\\b"
-        },
-        {
-          "name": "entity.name.type.material",
-          "match": "(?i)(?<=material\\s+)(Table)?CDP\\b"
         },
         {
           "name": "entity.name.type.material",
@@ -700,10 +704,6 @@
         },
         {
           "name": "entity.name.type.material",
-          "match": "(?i)(?<=material\\s+)(Iso|Ortho)tropicElastic3D\\b"
-        },
-        {
-          "name": "entity.name.type.material",
           "match": "(?i)(?<=material\\s+)Kelvin\\b"
         },
         {
@@ -716,15 +716,15 @@
         },
         {
           "name": "entity.name.type.material",
+          "match": "(?i)(?<=material\\s+)MPF\\b"
+        },
+        {
+          "name": "entity.name.type.material",
           "match": "(?i)(?<=material\\s+)Maxwell\\b"
         },
         {
           "name": "entity.name.type.material",
           "match": "(?i)(?<=material\\s+)MooneyRivlin\\b"
-        },
-        {
-          "name": "entity.name.type.material",
-          "match": "(?i)(?<=material\\s+)MPF\\b"
         },
         {
           "name": "entity.name.type.material",
@@ -796,6 +796,10 @@
         },
         {
           "name": "entity.name.type.material",
+          "match": "(?i)(?<=material\\s+)Subloading(1D|Metal)\\b"
+        },
+        {
+          "name": "entity.name.type.material",
           "match": "(?i)(?<=material\\s+)Substepping\\b"
         },
         {
@@ -840,23 +844,7 @@
       "patterns": [
         {
           "name": "entity.name.type.modifier",
-          "match": "(?i)(?<=modifier\\s+)LumpedSimple\\b"
-        },
-        {
-          "name": "entity.name.type.modifier",
-          "match": "(?i)(?<=modifier\\s+)LumpedScale\\b"
-        },
-        {
-          "name": "entity.name.type.modifier",
-          "match": "(?i)(?<=modifier\\s+)Rayleigh\\b"
-        },
-        {
-          "name": "entity.name.type.modifier",
           "match": "(?i)(?<=modifier\\s+)ElementalLee\\b"
-        },
-        {
-          "name": "entity.name.type.modifier",
-          "match": "(?i)(?<=modifier\\s+)LinearViscosity\\b"
         },
         {
           "name": "entity.name.type.modifier",
@@ -865,6 +853,22 @@
         {
           "name": "entity.name.type.modifier",
           "match": "(?i)(?<=modifier\\s+)ElementalNonviscous(Group)?\\b"
+        },
+        {
+          "name": "entity.name.type.modifier",
+          "match": "(?i)(?<=modifier\\s+)LinearViscosity\\b"
+        },
+        {
+          "name": "entity.name.type.modifier",
+          "match": "(?i)(?<=modifier\\s+)LumpedScale\\b"
+        },
+        {
+          "name": "entity.name.type.modifier",
+          "match": "(?i)(?<=modifier\\s+)LumpedSimple\\b"
+        },
+        {
+          "name": "entity.name.type.modifier",
+          "match": "(?i)(?<=modifier\\s+)Rayleigh\\b"
         }
       ]
     },
@@ -912,11 +916,11 @@
         },
         {
           "name": "entity.name.type.section",
-          "match": "(?i)(?<=section\\s+)Rectangle[1-3]D\\b"
+          "match": "(?i)(?<=section\\s+)NM(2D[1-3]|3D[1-3]|[23]D3K)\\b"
         },
         {
           "name": "entity.name.type.section",
-          "match": "(?i)(?<=section\\s+)TrussSection\\b"
+          "match": "(?i)(?<=section\\s+)Rectangle[1-3]D\\b"
         },
         {
           "name": "entity.name.type.section",
@@ -924,12 +928,20 @@
         },
         {
           "name": "entity.name.type.section",
-          "match": "(?i)(?<=section\\s+)NM(2D[1-3]|3D[1-3]|[23]D3K)\\b"
+          "match": "(?i)(?<=section\\s+)TrussSection\\b"
         }
       ]
     },
     "entities.solver": {
       "patterns": [
+        {
+          "name": "entity.name.type.solver",
+          "match": "(?i)(?<=solver\\s+)(DisplacementControl|MPDC)\\b"
+        },
+        {
+          "name": "entity.name.type.solver",
+          "match": "(?i)(?<=solver\\s+)(Quadratic)?FEAST\\b"
+        },
         {
           "name": "entity.name.type.solver",
           "match": "(?i)(?<=solver\\s+)(m(odified)?)?Newton\\b"
@@ -944,14 +956,6 @@
         },
         {
           "name": "entity.name.type.solver",
-          "match": "(?i)(?<=solver\\s+)(Quadratic)?FEAST\\b"
-        },
-        {
-          "name": "entity.name.type.solver",
-          "match": "(?i)(?<=solver\\s+)(DisplacementControl|MPDC)\\b"
-        },
-        {
-          "name": "entity.name.type.solver",
           "match": "(?i)(?<=solver\\s+)Ramm\\b"
         }
       ]
@@ -960,11 +964,19 @@
       "patterns": [
         {
           "name": "entity.name.type.step",
-          "match": "(?i)(?<=step\\s+)Frequency\\b"
+          "match": "(?i)(?<=step\\s+)((Im|Ex)plicit)?Dynamic\\b"
+        },
+        {
+          "name": "entity.name.type.step",
+          "match": "(?i)(?<=step\\s+)ArcLength\\b"
         },
         {
           "name": "entity.name.type.step",
           "match": "(?i)(?<=step\\s+)Buckl(e|ing)\\b"
+        },
+        {
+          "name": "entity.name.type.step",
+          "match": "(?i)(?<=step\\s+)Frequency\\b"
         },
         {
           "name": "entity.name.type.step",
@@ -973,50 +985,26 @@
         {
           "name": "entity.name.type.step",
           "match": "(?i)(?<=step\\s+)Static\\b"
-        },
-        {
-          "name": "entity.name.type.step",
-          "match": "(?i)(?<=step\\s+)((Im|Ex)plicit)?Dynamic\\b"
-        },
-        {
-          "name": "entity.name.type.step",
-          "match": "(?i)(?<=step\\s+)ArcLength\\b"
         }
       ]
     },
     "keywords": {
       "patterns": [
         {
+          "name": "keyword.recorder",
+          "match": "^(plain|hdf5)?recorder\\b"
+        },
+        {
           "name": "keyword.amplitude",
           "match": "^amplitude\\b"
         },
         {
-          "name": "keyword.initial",
-          "match": "^initial\\b"
-        },
-        {
-          "name": "keyword.disable",
-          "match": "^disable\\b"
-        },
-        {
-          "name": "keyword.enable",
-          "match": "^enable\\b"
-        },
-        {
-          "name": "keyword.precheck",
-          "match": "^precheck\\b"
-        },
-        {
-          "name": "keyword.summary",
-          "match": "^summary\\b"
-        },
-        {
-          "name": "keyword.remove",
-          "match": "^remove\\b"
-        },
-        {
           "name": "keyword.analyse",
           "match": "^analy(s|z)e\\b"
+        },
+        {
+          "name": "keyword.benchmark",
+          "match": "^benchmark\\b"
         },
         {
           "name": "keyword.clear",
@@ -1031,24 +1019,36 @@
           "match": "^converger\\b"
         },
         {
+          "name": "keyword.disable",
+          "match": "^disable\\b"
+        },
+        {
           "name": "keyword.element",
           "match": "^element\\b"
+        },
+        {
+          "name": "keyword.enable",
+          "match": "^enable\\b"
         },
         {
           "name": "keyword.exit",
           "match": "^exit\\b"
         },
         {
+          "name": "keyword.expression",
+          "match": "^expression\\b"
+        },
+        {
           "name": "keyword.file",
           "match": "^file\\b"
         },
         {
-          "name": "keyword.solver",
-          "match": "^solver\\b"
-        },
-        {
           "name": "keyword.group",
           "match": "^group\\b"
+        },
+        {
+          "name": "keyword.initial",
+          "match": "^initial\\b"
         },
         {
           "name": "keyword.integrator",
@@ -1063,16 +1063,8 @@
           "match": "^load\\b"
         },
         {
-          "name": "keyword.suspend",
-          "match": "^suspend\\b"
-        },
-        {
           "name": "keyword.material",
           "match": "^material\\b"
-        },
-        {
-          "name": "keyword.expression",
-          "match": "^expression\\b"
         },
         {
           "name": "keyword.modifier",
@@ -1091,8 +1083,12 @@
           "match": "^peek\\b"
         },
         {
-          "name": "keyword.recorder",
-          "match": "^(plain|hdf5)?recorder\\b"
+          "name": "keyword.precheck",
+          "match": "^precheck\\b"
+        },
+        {
+          "name": "keyword.remove",
+          "match": "^remove\\b"
         },
         {
           "name": "keyword.reset",
@@ -1111,12 +1107,20 @@
           "match": "^set\\b"
         },
         {
-          "name": "keyword.benchmark",
-          "match": "^benchmark\\b"
+          "name": "keyword.solver",
+          "match": "^solver\\b"
         },
         {
           "name": "keyword.step",
           "match": "^step\\b"
+        },
+        {
+          "name": "keyword.summary",
+          "match": "^summary\\b"
+        },
+        {
+          "name": "keyword.suspend",
+          "match": "^suspend\\b"
         }
       ]
     },
@@ -1124,19 +1128,7 @@
       "patterns": [
         {
           "name": "string.unquoted",
-          "match": "(?i)(?<=recorder.+\\s+)(R|D|I|GD|GI)(F[1-6]?|M[1-3])\\b"
-        },
-        {
-          "name": "string.unquoted",
-          "match": "(?i)(?<=recorder.+\\s+)(U|V|A|MM)([1-6]?|R[1-3])\\b"
-        },
-        {
-          "name": "string.unquoted",
-          "match": "(?i)(?<=recorder.+\\s+)(S|E|EE|PE)([1-3][1-3])?\\b"
-        },
-        {
-          "name": "string.unquoted",
-          "match": "(?i)(?<=recorder.+\\s+)(SP|EP|EEP|PEP)[1-3]?\\b"
+          "match": "(?i)(?<=recorder.+\\s+)(DAMAGE|DT|DC)\\b"
         },
         {
           "name": "string.unquoted",
@@ -1144,11 +1136,27 @@
         },
         {
           "name": "string.unquoted",
-          "match": "(?i)(?<=recorder.+\\s+)[EP]?EEQ\\b"
+          "match": "(?i)(?<=recorder.+\\s+)(R|D|I|GD|GI)(F[1-6]?|M[1-3])\\b"
         },
         {
           "name": "string.unquoted",
-          "match": "(?i)(?<=recorder.+\\s+)K|M\\b"
+          "match": "(?i)(?<=recorder.+\\s+)(SP|EP|EEP|PEP)[1-3]?\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+\\s+)(S|E|EE|PE)([1-3][1-3])?\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+\\s+)(U|V|A|MM)([1-6]?|R[1-3])\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+\\s+)BEAM[SE]?\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+\\s+)HIST\\b"
         },
         {
           "name": "string.unquoted",
@@ -1156,15 +1164,15 @@
         },
         {
           "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+\\s+)K|M\\b"
+        },
+        {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+\\s+)LITR\\b"
+        },
+        {
+          "name": "string.unquoted",
           "match": "(?i)(?<=recorder.+\\s+)MISES\\b"
-        },
-        {
-          "name": "string.unquoted",
-          "match": "(?i)(?<=recorder.+\\s+)[EVS][DS]\\b"
-        },
-        {
-          "name": "string.unquoted",
-          "match": "(?i)(?<=recorder.+\\s+)(DAMAGE|DT|DC)\\b"
         },
         {
           "name": "string.unquoted",
@@ -1176,15 +1184,11 @@
         },
         {
           "name": "string.unquoted",
-          "match": "(?i)(?<=recorder.+\\s+)HIST\\b"
+          "match": "(?i)(?<=recorder.+\\s+)[EP]?EEQ\\b"
         },
         {
           "name": "string.unquoted",
-          "match": "(?i)(?<=recorder.+\\s+)LITR\\b"
-        },
-        {
-          "name": "string.unquoted",
-          "match": "(?i)(?<=recorder.+\\s+)BEAM[SE]?\\b"
+          "match": "(?i)(?<=recorder.+\\s+)[EVS][DS]\\b"
         }
       ]
     },
@@ -2144,11 +2148,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HEA100\\b"
+          "match": "\\b(?i)HEA1000\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HEA1000\\b"
+          "match": "\\b(?i)HEA100\\b"
         },
         {
           "name": "support.constant.section",
@@ -2240,11 +2244,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HEB100\\b"
+          "match": "\\b(?i)HEB1000\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HEB1000\\b"
+          "match": "\\b(?i)HEB100\\b"
         },
         {
           "name": "support.constant.section",
@@ -2336,11 +2340,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HEM100\\b"
+          "match": "\\b(?i)HEM1000\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HEM1000\\b"
+          "match": "\\b(?i)HEM100\\b"
         },
         {
           "name": "support.constant.section",
@@ -2604,11 +2608,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)M12X10\\b"
+          "match": "\\b(?i)M12X10\\.8\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)M12X10\\.8\\b"
+          "match": "\\b(?i)M12X10\\b"
         },
         {
           "name": "support.constant.section",
@@ -2692,15 +2696,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)MT5X4\\b"
-        },
-        {
-          "name": "support.constant.section",
           "match": "\\b(?i)MT5X4\\.5\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)MT6X5\\b"
+          "match": "\\b(?i)MT5X4\\b"
         },
         {
           "name": "support.constant.section",
@@ -2709,6 +2709,10 @@
         {
           "name": "support.constant.section",
           "match": "\\b(?i)MT6X5\\.9\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)MT6X5\\b"
         },
         {
           "name": "support.constant.section",
@@ -3044,11 +3048,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)W12X19\\b"
+          "match": "\\b(?i)W12X190\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)W12X190\\b"
+          "match": "\\b(?i)W12X19\\b"
         },
         {
           "name": "support.constant.section",
@@ -3076,11 +3080,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)W12X30\\b"
+          "match": "\\b(?i)W12X305\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)W12X305\\b"
+          "match": "\\b(?i)W12X30\\b"
         },
         {
           "name": "support.constant.section",
@@ -3192,11 +3196,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)W14X34\\b"
+          "match": "\\b(?i)W14X342\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)W14X342\\b"
+          "match": "\\b(?i)W14X34\\b"
         },
         {
           "name": "support.constant.section",
@@ -4808,11 +4812,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT6X11\\b"
+          "match": "\\b(?i)WT6X115\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT6X115\\b"
+          "match": "\\b(?i)WT6X11\\b"
         },
         {
           "name": "support.constant.section",
@@ -4820,19 +4824,19 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT6X13\\b"
-        },
-        {
-          "name": "support.constant.section",
           "match": "\\b(?i)WT6X139\\.5\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT6X15\\b"
+          "match": "\\b(?i)WT6X13\\b"
         },
         {
           "name": "support.constant.section",
           "match": "\\b(?i)WT6X152\\.5\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)WT6X15\\b"
         },
         {
           "name": "support.constant.section",
@@ -4896,19 +4900,19 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT6X7\\b"
-        },
-        {
-          "name": "support.constant.section",
           "match": "\\b(?i)WT6X76\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT6X8\\b"
+          "match": "\\b(?i)WT6X7\\b"
         },
         {
           "name": "support.constant.section",
           "match": "\\b(?i)WT6X85\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)WT6X8\\b"
         },
         {
           "name": "support.constant.section",
@@ -4924,11 +4928,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT7X11\\b"
+          "match": "\\b(?i)WT7X116\\.5\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT7X116\\.5\\b"
+          "match": "\\b(?i)WT7X11\\b"
         },
         {
           "name": "support.constant.section",
@@ -4944,15 +4948,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT7X15\\b"
-        },
-        {
-          "name": "support.constant.section",
           "match": "\\b(?i)WT7X155\\.5\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT7X17\\b"
+          "match": "\\b(?i)WT7X15\\b"
         },
         {
           "name": "support.constant.section",
@@ -4960,15 +4960,19 @@
         },
         {
           "name": "support.constant.section",
+          "match": "\\b(?i)WT7X17\\b"
+        },
+        {
+          "name": "support.constant.section",
           "match": "\\b(?i)WT7X185\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT7X19\\b"
+          "match": "\\b(?i)WT7X199\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT7X199\\b"
+          "match": "\\b(?i)WT7X19\\b"
         },
         {
           "name": "support.constant.section",
@@ -5211,12 +5215,12 @@
     "variables": {
       "patterns": [
         {
-          "name": "constant.numeric",
-          "match": "\\b[-+]?[0-9]*\\.?[0-9]+([eEdDfF][-+]?[0-9]+)?\\b"
-        },
-        {
           "name": "constant.language",
           "match": "\\b(?i)(true|false)\\b"
+        },
+        {
+          "name": "constant.numeric",
+          "match": "\\b[-+]?[0-9]*\\.?[0-9]+([eEdDfF][-+]?[0-9]+)?\\b"
         }
       ]
     }

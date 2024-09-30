@@ -12,6 +12,8 @@ def sort_json(a):
                 return sorted(a, key=lambda x: x["include"])
             if "matches" in head:
                 return sorted(a, key=lambda x: x["matches"])
+            if "match" in head:
+                return sorted(a, key=lambda x: x["match"])
 
     return a
 
