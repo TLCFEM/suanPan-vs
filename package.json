@@ -15,7 +15,7 @@
   },
   "version": "0.1.4",
   "engines": {
-    "vscode": "^1.93.0"
+    "vscode": "^1.96.0"
   },
   "categories": [
     "Programming Languages"
