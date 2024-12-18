@@ -95,16 +95,19 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/mocha": "^10.0.8",
-    "@types/node": "~18.19.50",
-    "@types/vscode": "^1.93.0",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.10.2",
+    "@types/vscode": "^1.96.0",
+    "@typescript-eslint/eslint-plugin": "^8.18.1",
+    "@typescript-eslint/parser": "^8.18.1",
     "@vscode/test-electron": "^2.4.1",
-    "@vscode/vsce": "^2.32.0",
-    "eslint": "^8.57.0",
-    "glob": "^10.4.5",
-    "mocha": "^10.7.3",
-    "typescript": "~5.5.4"
+    "@vscode/vsce": "^3.2.1",
+    "eslint": "^9.17.0",
+    "glob": "^11.0.0",
+    "mocha": "^11.0.1",
+    "typescript": "^5.7.2"
+  },
+  "volta": {
+    "node": "22.12.0"
   }
 }
