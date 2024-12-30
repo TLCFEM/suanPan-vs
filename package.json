@@ -83,6 +83,10 @@
       {
         "language": "suanPan",
         "path": "./syntaxes/sections.json"
+      },
+      {
+        "language": "suanPan",
+        "path": "./syntaxes/us_sections.json"
       }
     ]
   },
