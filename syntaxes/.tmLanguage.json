@@ -2507,7 +2507,7 @@
           "match": "\\b(?i)IPE80\\b"
         },
         {
-          "name": "support.constant.section",
+            "name": "support.constant.section",
             "match": "\\b(?i)HP10X42\\b"
         },
         {
@@ -2597,2020 +2597,2776 @@
         {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS1-1/2X1-1/2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS1-1/2X1-1/2X1/8\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS1-1/2X1-1/2X3/16\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS1\\.660X0\\.140\\b"
           },
           {
             "name": "support.constant.section",
-            "match": "\\b(?i)HSS1-1/2X1-1/2X3/16\\b"
+            "match": "\\b(?i)HSS1\\.900X0\\.120\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS1\\.900X0\\.145\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS1\\.900X0\\.188\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS10\\.000X0\\.188\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS10\\.000X0\\.250\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS10\\.000X0\\.312\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS10\\.000X0\\.375\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS10\\.000X0\\.500\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS10\\.000X0\\.625\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS10\\.750X0\\.188\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS10\\.750X0\\.250\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS10\\.750X0\\.313\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS10\\.750X0\\.375\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS10\\.750X0\\.500\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS10\\.750X0\\.625\\b"
           },
           {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X10X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X10X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X10X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X10X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X10X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X10X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X10X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X2X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X2X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X2X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X3-1/2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X3-1/2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X3-1/2X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X3-1/2X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X3X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X3X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X3X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X3X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X3X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X4X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X4X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X4X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X4X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X4X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X4X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X4X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X5X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X5X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X5X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X6X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X6X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X6X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X6X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X6X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X6X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X8X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X8X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X8X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X8X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS10X8X5/16\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS10X8X5/8\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS11\\.750X0\\.250\\b"
           },
           {
             "name": "support.constant.section",
-            "match": "\\b(?i)HSS10X8X5/8\\b"
+            "match": "\\b(?i)HSS11\\.750X0\\.337\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS11\\.750X0\\.375\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS11\\.750X0\\.500\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS11\\.750X0\\.625\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS12\\.000X0\\.250\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS12\\.000X0\\.375\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS12\\.000X0\\.500\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS12\\.000X0\\.625\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS12\\.750X0\\.188\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS12\\.750X0\\.250\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS12\\.750X0\\.375\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS12\\.750X0\\.500\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS12\\.750X0\\.625\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS12\\.750X0\\.750\\b"
           },
           {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X10X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X10X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X10X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X10X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X10X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X10X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X12X1\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X12X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X12X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X12X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X12X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X12X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X12X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X12X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X12X7/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X2X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X3X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X3X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X3X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X4X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X4X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X4X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X4X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X4X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X4X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X6X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X6X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X6X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X6X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X6X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X6X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X8X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X8X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X8X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X8X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS12X8X5/16\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS12X8X5/8\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS13\\.375X0\\.188\\b"
           },
           {
             "name": "support.constant.section",
-            "match": "\\b(?i)HSS12X8X5/8\\b"
+            "match": "\\b(?i)HSS13\\.375X0\\.250\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS13\\.375X0\\.313\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS13\\.375X0\\.375\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS13\\.375X0\\.500\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS13\\.375X0\\.625\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS14\\.000X0\\.188\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS14\\.000X0\\.250\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS14\\.000X0\\.312\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS14\\.000X0\\.375\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS14\\.000X0\\.500\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS14\\.000X0\\.625\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS14\\.000X0\\.750\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS14\\.000X0\\.875\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS14\\.000X1\\.000\\b"
           },
           {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X10X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X10X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X10X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X10X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X10X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X10X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X10X7/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X12X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X12X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X12X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X12X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X12X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X14X1\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X14X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X14X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X14X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X14X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X14X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X14X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X14X7/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X4X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X4X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X4X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X4X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X4X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X4X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X6X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X6X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X6X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X6X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X6X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X6X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X8X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X8X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X8X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X8X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS14X8X5/16\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS14X8X5/8\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS16\\.000X0\\.250\\b"
           },
           {
             "name": "support.constant.section",
-            "match": "\\b(?i)HSS14X8X5/8\\b"
+            "match": "\\b(?i)HSS16\\.000X0\\.312\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS16\\.000X0\\.375\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS16\\.000X0\\.438\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS16\\.000X0\\.500\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS16\\.000X0\\.625\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS16\\.000X0\\.750\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS16\\.000X0\\.875\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS16\\.000X1\\.000\\b"
           },
           {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X10X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X10X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X10X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X10X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X10X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X12X1\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X12X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X12X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X12X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X12X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X12X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X12X7/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X16X1\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X16X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X16X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X16X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X16X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X16X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X16X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X16X7/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X4X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X4X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X4X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X4X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X4X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X4X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X6X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X6X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X6X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X6X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X6X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X6X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X8X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X8X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X8X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X8X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X8X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS16X8X5/8\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS16X8X7/8\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS18\\.000X0\\.250\\b"
           },
           {
             "name": "support.constant.section",
-            "match": "\\b(?i)HSS16X8X7/8\\b"
+            "match": "\\b(?i)HSS18\\.000X0\\.313\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS18\\.000X0\\.375\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS18\\.000X0\\.500\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS18\\.000X0\\.625\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS18\\.000X0\\.750\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS18\\.000X0\\.875\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS18\\.000X1\\.000\\b"
           },
           {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS18X10X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS18X10X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS18X10X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS18X10X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS18X10X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS18X18X1\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS18X18X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS18X18X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS18X18X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS18X18X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS18X18X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS18X18X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS18X18X7/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS18X6X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS18X6X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS18X6X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS18X6X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS18X6X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS18X6X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS18X8X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS18X8X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS18X8X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS18X8X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS18X8X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS2-1/2X1-1/2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS2-1/2X1-1/2X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS2-1/2X1-1/2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS2-1/2X1X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS2-1/2X1X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS2-1/2X2-1/2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS2-1/2X2-1/2X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS2-1/2X2-1/2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS2-1/2X2-1/2X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS2-1/2X2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS2-1/2X2X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS2-1/2X2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS2-1/4X2-1/4X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS2-1/4X2-1/4X1/8\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS2-1/4X2-1/4X3/16\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS2\\.375X0\\.125\\b"
           },
           {
             "name": "support.constant.section",
-            "match": "\\b(?i)HSS2-1/4X2-1/4X3/16\\b"
+            "match": "\\b(?i)HSS2\\.375X0\\.154\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS2\\.375X0\\.188\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS2\\.375X0\\.218\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS2\\.375X0\\.250\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS2\\.500X0\\.125\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS2\\.500X0\\.188\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS2\\.500X0\\.250\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS2\\.875X0\\.125\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS2\\.875X0\\.188\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS2\\.875X0\\.203\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS2\\.875X0\\.250\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS20\\.000X0\\.250\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS20\\.000X0\\.313\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS20\\.000X0\\.375\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS20\\.000X0\\.500\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS20\\.000X0\\.625\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS20\\.000X0\\.750\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS20\\.000X0\\.875\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS20\\.000X1\\.000\\b"
           },
           {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X12X1\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X12X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X12X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X12X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X12X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X12X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X12X7/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X16X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X16X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X16X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X16X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X16X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X16X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X20X1\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X20X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X20X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X20X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X20X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X20X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X20X7/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X4X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X4X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X4X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X4X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X6X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X6X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X6X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X6X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X6X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X8X1\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X8X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X8X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X8X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X8X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS20X8X5/8\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS20X8X7/8\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS22\\.000X0\\.313\\b"
           },
           {
             "name": "support.constant.section",
-            "match": "\\b(?i)HSS20X8X7/8\\b"
+            "match": "\\b(?i)HSS22\\.000X0\\.375\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS22\\.000X0\\.500\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS22\\.000X0\\.625\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS22\\.000X0\\.750\\b"
           },
           {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X10X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X10X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X10X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X10X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X10X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X14X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X14X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X14X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X14X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X14X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X14X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X16X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X16X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X16X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X16X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X16X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X16X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X18X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X18X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X18X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X18X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X18X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X20X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X20X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X20X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X20X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X20X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X22X1\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X22X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X22X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS22X22X5/8\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS22X22X7/8\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS24\\.000X0\\.313\\b"
           },
           {
             "name": "support.constant.section",
-            "match": "\\b(?i)HSS22X22X7/8\\b"
+            "match": "\\b(?i)HSS24\\.000X0\\.375\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS24\\.000X0\\.500\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS24\\.000X0\\.625\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS24\\.000X0\\.750\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS24\\.000X0\\.875\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS24\\.000X1\\.000\\b"
           },
           {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X12X1\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X12X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X12X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X12X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X12X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X12X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X12X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X12X7/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X14X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X14X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X14X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X14X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X14X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X14X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X16X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X16X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X16X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X16X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X16X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X18X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X18X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X18X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X18X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X18X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X20X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X20X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X20X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X20X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X20X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X8X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X8X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS24X8X3/8\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS24X8X5/16\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS26\\.000X0\\.313\\b"
           },
           {
             "name": "support.constant.section",
-            "match": "\\b(?i)HSS24X8X5/16\\b"
+            "match": "\\b(?i)HSS26\\.000X0\\.375\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS26\\.000X0\\.500\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS26\\.000X0\\.625\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS26\\.000X0\\.750\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS28\\.000X0\\.375\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS28\\.000X0\\.500\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS28\\.000X0\\.625\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS28\\.000X0\\.750\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS28\\.000X0\\.875\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS28\\.000X1\\.000\\b"
           },
           {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS2X1-1/2X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS2X1-1/2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS2X1X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS2X1X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS2X2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS2X2X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS2X2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3-1/2X1-1/2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3-1/2X1-1/2X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3-1/2X1-1/2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3-1/2X2-1/2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3-1/2X2-1/2X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3-1/2X2-1/2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3-1/2X2-1/2X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3-1/2X2-1/2X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3-1/2X2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3-1/2X2X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3-1/2X2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3-1/2X3-1/2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3-1/2X3-1/2X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3-1/2X3-1/2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3-1/2X3-1/2X3/8\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS3-1/2X3-1/2X5/16\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS3\\.000X0\\.125\\b"
           },
           {
             "name": "support.constant.section",
-            "match": "\\b(?i)HSS3-1/2X3-1/2X5/16\\b"
+            "match": "\\b(?i)HSS3\\.000X0\\.134\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS3\\.000X0\\.152\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS3\\.000X0\\.188\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS3\\.000X0\\.203\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS3\\.000X0\\.216\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS3\\.000X0\\.250\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS3\\.500X0\\.125\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS3\\.500X0\\.188\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS3\\.500X0\\.203\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS3\\.500X0\\.216\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS3\\.500X0\\.250\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS3\\.500X0\\.300\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS3\\.500X0\\.313\\b"
           },
           {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS30X10X1\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS30X10X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS30X10X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS30X10X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS30X10X7/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS34X10X1\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS34X10X3/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS34X10X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS34X10X7/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3X1-1/2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3X1-1/2X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3X1-1/2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3X1X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3X1X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3X2-1/2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3X2-1/2X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3X2-1/2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3X2-1/2X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3X2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3X2X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3X2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3X2X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3X3X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3X3X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3X3X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3X3X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS3X3X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4-1/2X4-1/2X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4-1/2X4-1/2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4-1/2X4-1/2X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4-1/2X4-1/2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4-1/2X4-1/2X3/8\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS4-1/2X4-1/2X5/16\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS4\\.000X0\\.125\\b"
           },
           {
             "name": "support.constant.section",
-            "match": "\\b(?i)HSS4-1/2X4-1/2X5/16\\b"
+            "match": "\\b(?i)HSS4\\.000X0\\.188\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS4\\.000X0\\.220\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS4\\.000X0\\.226\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS4\\.000X0\\.237\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS4\\.000X0\\.250\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS4\\.000X0\\.313\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS4\\.500X0\\.125\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS4\\.500X0\\.188\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS4\\.500X0\\.237\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS4\\.500X0\\.337\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS4\\.500X0\\.375\\b"
           },
           {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4X1-1/2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4X1-1/2X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4X1-1/2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4X2-1/2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4X2-1/2X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4X2-1/2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4X2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4X2X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4X2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4X2X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4X2X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4X3X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4X3X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4X3X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4X3X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4X3X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4X4X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4X4X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4X4X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4X4X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4X4X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS4X4X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5-1/2X5-1/2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5-1/2X5-1/2X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5-1/2X5-1/2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5-1/2X5-1/2X3/8\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS5-1/2X5-1/2X5/16\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS5\\.000X0\\.125\\b"
           },
           {
             "name": "support.constant.section",
-            "match": "\\b(?i)HSS5-1/2X5-1/2X5/16\\b"
+            "match": "\\b(?i)HSS5\\.000X0\\.188\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS5\\.000X0\\.250\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS5\\.000X0\\.258\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS5\\.000X0\\.312\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS5\\.000X0\\.375\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS5\\.000X0\\.500\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS5\\.500X0\\.258\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS5\\.500X0\\.375\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS5\\.500X0\\.500\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS5\\.563X0\\.134\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS5\\.563X0\\.188\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS5\\.563X0\\.258\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS5\\.563X0\\.375\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS5\\.563X0\\.500\\b"
           },
           {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X2-1/2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X2-1/2X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X2-1/2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X2X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X2X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X2X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X3X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X3X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X3X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X3X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X3X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X3X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X4X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X4X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X4X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X4X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X4X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X4X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X5X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X5X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X5X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X5X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS5X5X3/8\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS5X5X5/16\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS6\\.000X0\\.125\\b"
           },
           {
             "name": "support.constant.section",
-            "match": "\\b(?i)HSS5X5X5/16\\b"
+            "match": "\\b(?i)HSS6\\.000X0\\.188\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS6\\.000X0\\.250\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS6\\.000X0\\.280\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS6\\.000X0\\.312\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS6\\.000X0\\.375\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS6\\.000X0\\.500\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS6\\.625X0\\.125\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS6\\.625X0\\.188\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS6\\.625X0\\.250\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS6\\.625X0\\.280\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS6\\.625X0\\.312\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS6\\.625X0\\.375\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS6\\.625X0\\.432\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS6\\.625X0\\.500\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS6\\.875X0\\.188\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS6\\.875X0\\.250\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS6\\.875X0\\.312\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS6\\.875X0\\.375\\b"
           },
           {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X2X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X2X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X2X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X3X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X3X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X3X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X3X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X3X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X3X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X4X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X4X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X4X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X4X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X4X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X4X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X5X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X5X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X5X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X5X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X5X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X5X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X6X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X6X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X6X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X6X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X6X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS6X6X5/16\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS6X6X5/8\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS7\\.000X0\\.125\\b"
           },
           {
             "name": "support.constant.section",
-            "match": "\\b(?i)HSS6X6X5/8\\b"
+            "match": "\\b(?i)HSS7\\.000X0\\.188\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS7\\.000X0\\.250\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS7\\.000X0\\.312\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS7\\.000X0\\.375\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS7\\.000X0\\.500\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS7\\.500X0\\.188\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS7\\.500X0\\.250\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS7\\.500X0\\.312\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS7\\.500X0\\.375\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS7\\.500X0\\.500\\b"
           },
           {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X2X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X3X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X3X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X3X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X3X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X3X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X3X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X4X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X4X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X4X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X4X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X4X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X4X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X5X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X5X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X5X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X5X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X5X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X5X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X7X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X7X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X7X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X7X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X7X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS7X7X5/16\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS7X7X5/8\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS8\\.625X0\\.188\\b"
           },
           {
             "name": "support.constant.section",
-            "match": "\\b(?i)HSS7X7X5/8\\b"
+            "match": "\\b(?i)HSS8\\.625X0\\.250\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS8\\.625X0\\.322\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS8\\.625X0\\.375\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS8\\.625X0\\.500\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS8\\.625X0\\.625\\b"
           },
           {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X2X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X2X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X2X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X2X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X2X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X2X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X3X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X3X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X3X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X3X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X3X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X3X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X4X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X4X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X4X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X4X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X4X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X4X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X4X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X6X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X6X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X6X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X6X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X6X5/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X6X5/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X8X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X8X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X8X1/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X8X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X8X3/8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS8X8X5/16\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS8X8X5/8\\b"
+        },
+        {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS9\\.625X0\\.188\\b"
           },
           {
             "name": "support.constant.section",
-            "match": "\\b(?i)HSS8X8X5/8\\b"
+            "match": "\\b(?i)HSS9\\.625X0\\.250\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS9\\.625X0\\.312\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS9\\.625X0\\.375\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS9\\.625X0\\.500\\b"
+          },
+          {
+            "name": "support.constant.section",
+            "match": "\\b(?i)HSS9\\.625X0\\.625\\b"
           },
           {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS9X3X1/2\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS9X3X1/4\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS9X3X3/16\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)HSS9X3X3/8\\b"
         },
@@ -4725,8 +5481,8 @@
         {
             "name": "support.constant.section",
             "match": "\\b(?i)M12X11\\.8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)M3X2\\.9\\b"
         },
@@ -4929,12 +5685,12 @@
         {
             "name": "support.constant.section",
             "match": "\\b(?i)ST1\\.5X2\\.85\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)ST1\\.5X3\\.75\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)ST10X33\\b"
         },
@@ -5921,32 +6677,32 @@
         {
             "name": "support.constant.section",
             "match": "\\b(?i)W36X286\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)W36X302\\b"
         },
         {
             "name": "support.constant.section",
             "match": "\\b(?i)W36X318\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)W36X330\\b"
         },
         {
             "name": "support.constant.section",
             "match": "\\b(?i)W36X350\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)W36X361\\b"
         },
         {
             "name": "support.constant.section",
             "match": "\\b(?i)W36X387\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)W36X395\\b"
         },
@@ -6097,12 +6853,12 @@
         {
             "name": "support.constant.section",
             "match": "\\b(?i)W44X368\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)W44X408\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)W4X13\\b"
         },
@@ -6649,12 +7405,12 @@
         {
             "name": "support.constant.section",
             "match": "\\b(?i)WT2\\.5X8\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)WT2\\.5X9\\.5\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)WT20X105\\.5\\b"
         },
@@ -7017,8 +7773,8 @@
         {
             "name": "support.constant.section",
             "match": "\\b(?i)WT6X7\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)WT6X76\\b"
         },
@@ -7065,8 +7821,8 @@
         {
             "name": "support.constant.section",
             "match": "\\b(?i)WT7X15\\b"
-          },
-          {
+        },
+        {
             "name": "support.constant.section",
             "match": "\\b(?i)WT7X155\\.5\\b"
         },
