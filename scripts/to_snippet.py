@@ -38,11 +38,18 @@ if __name__ == "__main__":
 
     with open(parent_folder / "snippets.json", "r") as f:
         snippets = json.load(f)
-    with open(parent_folder / "sections.json", "r") as f:
-        sections = json.load(f)
+    with open(parent_folder / "nz_sections.json", "r") as f:
+        nz_sections = json.load(f)
+    with open(parent_folder / "eu_sections.json", "r") as f:
+        eu_sections = json.load(f)
     with open(parent_folder / "us_sections.json", "r") as f:
         us_sections = json.load(f)
-    all_snippets = process(snippets) + process(sections) + process(us_sections)
+    all_snippets = (
+        process(snippets)
+        + process(nz_sections)
+        + process(eu_sections)
+        + process(us_sections)
+    )
     with open(parent_folder / "suanPan.sublime-completions", "w") as f:
         json.dump(
             {

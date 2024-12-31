@@ -82,7 +82,11 @@
       },
       {
         "language": "suanPan",
-        "path": "./syntaxes/sections.json"
+        "path": "./syntaxes/nz_sections.json"
+      },
+      {
+        "language": "suanPan",
+        "path": "./syntaxes/eu_sections.json"
       },
       {
         "language": "suanPan",

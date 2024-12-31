@@ -1,0 +1,2432 @@
+{
+    "HEA100-2D": {
+        "prefix": "HEA100",
+        "description": "EU 2D section HEA100, accuracy: 0.94/0.95",
+        "body": [
+            "section EU2D HEA100 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEA100-3D": {
+        "prefix": "HEA100",
+        "description": "EU 3D section HEA100, accuracy: 0.94/0.95/1.00",
+        "body": [
+            "section EU3D HEA100 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEA1000-2D": {
+        "prefix": "HEA1000",
+        "description": "EU 2D section HEA1000, accuracy: 0.98/0.97",
+        "body": [
+            "section EU2D HEA1000 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEA1000-3D": {
+        "prefix": "HEA1000",
+        "description": "EU 3D section HEA1000, accuracy: 0.98/0.97/1.00",
+        "body": [
+            "section EU3D HEA1000 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEA120-2D": {
+        "prefix": "HEA120",
+        "description": "EU 2D section HEA120, accuracy: 0.95/0.95",
+        "body": [
+            "section EU2D HEA120 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEA120-3D": {
+        "prefix": "HEA120",
+        "description": "EU 3D section HEA120, accuracy: 0.95/0.95/1.00",
+        "body": [
+            "section EU3D HEA120 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEA140-2D": {
+        "prefix": "HEA140",
+        "description": "EU 2D section HEA140, accuracy: 0.96/0.96",
+        "body": [
+            "section EU2D HEA140 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEA140-3D": {
+        "prefix": "HEA140",
+        "description": "EU 3D section HEA140, accuracy: 0.96/0.96/1.00",
+        "body": [
+            "section EU3D HEA140 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEA160-2D": {
+        "prefix": "HEA160",
+        "description": "EU 2D section HEA160, accuracy: 0.95/0.95",
+        "body": [
+            "section EU2D HEA160 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEA160-3D": {
+        "prefix": "HEA160",
+        "description": "EU 3D section HEA160, accuracy: 0.95/0.95/1.00",
+        "body": [
+            "section EU3D HEA160 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEA180-2D": {
+        "prefix": "HEA180",
+        "description": "EU 2D section HEA180, accuracy: 0.96/0.96",
+        "body": [
+            "section EU2D HEA180 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEA180-3D": {
+        "prefix": "HEA180",
+        "description": "EU 3D section HEA180, accuracy: 0.96/0.96/1.00",
+        "body": [
+            "section EU3D HEA180 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEA200-2D": {
+        "prefix": "HEA200",
+        "description": "EU 2D section HEA200, accuracy: 0.95/0.95",
+        "body": [
+            "section EU2D HEA200 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEA200-3D": {
+        "prefix": "HEA200",
+        "description": "EU 3D section HEA200, accuracy: 0.95/0.95/1.00",
+        "body": [
+            "section EU3D HEA200 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEA220-2D": {
+        "prefix": "HEA220",
+        "description": "EU 2D section HEA220, accuracy: 0.96/0.96",
+        "body": [
+            "section EU2D HEA220 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEA220-3D": {
+        "prefix": "HEA220",
+        "description": "EU 3D section HEA220, accuracy: 0.96/0.96/1.00",
+        "body": [
+            "section EU3D HEA220 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEA240-2D": {
+        "prefix": "HEA240",
+        "description": "EU 2D section HEA240, accuracy: 0.95/0.95",
+        "body": [
+            "section EU2D HEA240 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEA240-3D": {
+        "prefix": "HEA240",
+        "description": "EU 3D section HEA240, accuracy: 0.95/0.95/1.00",
+        "body": [
+            "section EU3D HEA240 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEA260-2D": {
+        "prefix": "HEA260",
+        "description": "EU 2D section HEA260, accuracy: 0.94/0.95",
+        "body": [
+            "section EU2D HEA260 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEA260-3D": {
+        "prefix": "HEA260",
+        "description": "EU 3D section HEA260, accuracy: 0.94/0.95/1.00",
+        "body": [
+            "section EU3D HEA260 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEA280-2D": {
+        "prefix": "HEA280",
+        "description": "EU 2D section HEA280, accuracy: 0.95/0.95",
+        "body": [
+            "section EU2D HEA280 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEA280-3D": {
+        "prefix": "HEA280",
+        "description": "EU 3D section HEA280, accuracy: 0.95/0.95/1.00",
+        "body": [
+            "section EU3D HEA280 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEA300-2D": {
+        "prefix": "HEA300",
+        "description": "EU 2D section HEA300, accuracy: 0.94/0.95",
+        "body": [
+            "section EU2D HEA300 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEA300-3D": {
+        "prefix": "HEA300",
+        "description": "EU 3D section HEA300, accuracy: 0.94/0.95/1.00",
+        "body": [
+            "section EU3D HEA300 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEA320-2D": {
+        "prefix": "HEA320",
+        "description": "EU 2D section HEA320, accuracy: 0.95/0.95",
+        "body": [
+            "section EU2D HEA320 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEA320-3D": {
+        "prefix": "HEA320",
+        "description": "EU 3D section HEA320, accuracy: 0.95/0.95/1.00",
+        "body": [
+            "section EU3D HEA320 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEA340-2D": {
+        "prefix": "HEA340",
+        "description": "EU 2D section HEA340, accuracy: 0.95/0.95",
+        "body": [
+            "section EU2D HEA340 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEA340-3D": {
+        "prefix": "HEA340",
+        "description": "EU 3D section HEA340, accuracy: 0.95/0.95/1.00",
+        "body": [
+            "section EU3D HEA340 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEA360-2D": {
+        "prefix": "HEA360",
+        "description": "EU 2D section HEA360, accuracy: 0.96/0.96",
+        "body": [
+            "section EU2D HEA360 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEA360-3D": {
+        "prefix": "HEA360",
+        "description": "EU 3D section HEA360, accuracy: 0.96/0.96/1.00",
+        "body": [
+            "section EU3D HEA360 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEA400-2D": {
+        "prefix": "HEA400",
+        "description": "EU 2D section HEA400, accuracy: 0.96/0.96",
+        "body": [
+            "section EU2D HEA400 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEA400-3D": {
+        "prefix": "HEA400",
+        "description": "EU 3D section HEA400, accuracy: 0.96/0.96/1.00",
+        "body": [
+            "section EU3D HEA400 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEA450-2D": {
+        "prefix": "HEA450",
+        "description": "EU 2D section HEA450, accuracy: 0.96/0.96",
+        "body": [
+            "section EU2D HEA450 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEA450-3D": {
+        "prefix": "HEA450",
+        "description": "EU 3D section HEA450, accuracy: 0.96/0.96/1.00",
+        "body": [
+            "section EU3D HEA450 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEA500-2D": {
+        "prefix": "HEA500",
+        "description": "EU 2D section HEA500, accuracy: 0.97/0.97",
+        "body": [
+            "section EU2D HEA500 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEA500-3D": {
+        "prefix": "HEA500",
+        "description": "EU 3D section HEA500, accuracy: 0.97/0.97/1.00",
+        "body": [
+            "section EU3D HEA500 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEA550-2D": {
+        "prefix": "HEA550",
+        "description": "EU 2D section HEA550, accuracy: 0.97/0.97",
+        "body": [
+            "section EU2D HEA550 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEA550-3D": {
+        "prefix": "HEA550",
+        "description": "EU 3D section HEA550, accuracy: 0.97/0.97/1.00",
+        "body": [
+            "section EU3D HEA550 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEA600-2D": {
+        "prefix": "HEA600",
+        "description": "EU 2D section HEA600, accuracy: 0.97/0.97",
+        "body": [
+            "section EU2D HEA600 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEA600-3D": {
+        "prefix": "HEA600",
+        "description": "EU 3D section HEA600, accuracy: 0.97/0.97/1.00",
+        "body": [
+            "section EU3D HEA600 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEA650-2D": {
+        "prefix": "HEA650",
+        "description": "EU 2D section HEA650, accuracy: 0.97/0.97",
+        "body": [
+            "section EU2D HEA650 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEA650-3D": {
+        "prefix": "HEA650",
+        "description": "EU 3D section HEA650, accuracy: 0.97/0.97/1.00",
+        "body": [
+            "section EU3D HEA650 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEA700-2D": {
+        "prefix": "HEA700",
+        "description": "EU 2D section HEA700, accuracy: 0.98/0.97",
+        "body": [
+            "section EU2D HEA700 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEA700-3D": {
+        "prefix": "HEA700",
+        "description": "EU 3D section HEA700, accuracy: 0.98/0.97/1.00",
+        "body": [
+            "section EU3D HEA700 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEA800-2D": {
+        "prefix": "HEA800",
+        "description": "EU 2D section HEA800, accuracy: 0.97/0.97",
+        "body": [
+            "section EU2D HEA800 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEA800-3D": {
+        "prefix": "HEA800",
+        "description": "EU 3D section HEA800, accuracy: 0.97/0.97/1.00",
+        "body": [
+            "section EU3D HEA800 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEA900-2D": {
+        "prefix": "HEA900",
+        "description": "EU 2D section HEA900, accuracy: 0.98/0.97",
+        "body": [
+            "section EU2D HEA900 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEA900-3D": {
+        "prefix": "HEA900",
+        "description": "EU 3D section HEA900, accuracy: 0.98/0.97/1.00",
+        "body": [
+            "section EU3D HEA900 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEB100-2D": {
+        "prefix": "HEB100",
+        "description": "EU 2D section HEB100, accuracy: 0.95/0.96",
+        "body": [
+            "section EU2D HEB100 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEB100-3D": {
+        "prefix": "HEB100",
+        "description": "EU 3D section HEB100, accuracy: 0.95/0.96/1.00",
+        "body": [
+            "section EU3D HEB100 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEB1000-2D": {
+        "prefix": "HEB1000",
+        "description": "EU 2D section HEB1000, accuracy: 0.98/0.97",
+        "body": [
+            "section EU2D HEB1000 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEB1000-3D": {
+        "prefix": "HEB1000",
+        "description": "EU 3D section HEB1000, accuracy: 0.98/0.97/1.00",
+        "body": [
+            "section EU3D HEB1000 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEB120-2D": {
+        "prefix": "HEB120",
+        "description": "EU 2D section HEB120, accuracy: 0.96/0.97",
+        "body": [
+            "section EU2D HEB120 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEB120-3D": {
+        "prefix": "HEB120",
+        "description": "EU 3D section HEB120, accuracy: 0.96/0.97/1.00",
+        "body": [
+            "section EU3D HEB120 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEB140-2D": {
+        "prefix": "HEB140",
+        "description": "EU 2D section HEB140, accuracy: 0.97/0.97",
+        "body": [
+            "section EU2D HEB140 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEB140-3D": {
+        "prefix": "HEB140",
+        "description": "EU 3D section HEB140, accuracy: 0.97/0.97/1.00",
+        "body": [
+            "section EU3D HEB140 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEB160-2D": {
+        "prefix": "HEB160",
+        "description": "EU 2D section HEB160, accuracy: 0.96/0.97",
+        "body": [
+            "section EU2D HEB160 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEB160-3D": {
+        "prefix": "HEB160",
+        "description": "EU 3D section HEB160, accuracy: 0.96/0.97/1.00",
+        "body": [
+            "section EU3D HEB160 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEB180-2D": {
+        "prefix": "HEB180",
+        "description": "EU 2D section HEB180, accuracy: 0.97/0.97",
+        "body": [
+            "section EU2D HEB180 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEB180-3D": {
+        "prefix": "HEB180",
+        "description": "EU 3D section HEB180, accuracy: 0.97/0.97/1.00",
+        "body": [
+            "section EU3D HEB180 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEB200-2D": {
+        "prefix": "HEB200",
+        "description": "EU 2D section HEB200, accuracy: 0.96/0.97",
+        "body": [
+            "section EU2D HEB200 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEB200-3D": {
+        "prefix": "HEB200",
+        "description": "EU 3D section HEB200, accuracy: 0.96/0.97/1.00",
+        "body": [
+            "section EU3D HEB200 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEB220-2D": {
+        "prefix": "HEB220",
+        "description": "EU 2D section HEB220, accuracy: 0.97/0.97",
+        "body": [
+            "section EU2D HEB220 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEB220-3D": {
+        "prefix": "HEB220",
+        "description": "EU 3D section HEB220, accuracy: 0.97/0.97/1.00",
+        "body": [
+            "section EU3D HEB220 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEB240-2D": {
+        "prefix": "HEB240",
+        "description": "EU 2D section HEB240, accuracy: 0.96/0.97",
+        "body": [
+            "section EU2D HEB240 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEB240-3D": {
+        "prefix": "HEB240",
+        "description": "EU 3D section HEB240, accuracy: 0.96/0.97/1.00",
+        "body": [
+            "section EU3D HEB240 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEB260-2D": {
+        "prefix": "HEB260",
+        "description": "EU 2D section HEB260, accuracy: 0.96/0.96",
+        "body": [
+            "section EU2D HEB260 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEB260-3D": {
+        "prefix": "HEB260",
+        "description": "EU 3D section HEB260, accuracy: 0.96/0.96/1.00",
+        "body": [
+            "section EU3D HEB260 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEB280-2D": {
+        "prefix": "HEB280",
+        "description": "EU 2D section HEB280, accuracy: 0.96/0.96",
+        "body": [
+            "section EU2D HEB280 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEB280-3D": {
+        "prefix": "HEB280",
+        "description": "EU 3D section HEB280, accuracy: 0.96/0.96/1.00",
+        "body": [
+            "section EU3D HEB280 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEB300-2D": {
+        "prefix": "HEB300",
+        "description": "EU 2D section HEB300, accuracy: 0.96/0.96",
+        "body": [
+            "section EU2D HEB300 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEB300-3D": {
+        "prefix": "HEB300",
+        "description": "EU 3D section HEB300, accuracy: 0.96/0.96/1.00",
+        "body": [
+            "section EU3D HEB300 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEB320-2D": {
+        "prefix": "HEB320",
+        "description": "EU 2D section HEB320, accuracy: 0.96/0.96",
+        "body": [
+            "section EU2D HEB320 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEB320-3D": {
+        "prefix": "HEB320",
+        "description": "EU 3D section HEB320, accuracy: 0.96/0.96/1.00",
+        "body": [
+            "section EU3D HEB320 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEB340-2D": {
+        "prefix": "HEB340",
+        "description": "EU 2D section HEB340, accuracy: 0.96/0.96",
+        "body": [
+            "section EU2D HEB340 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEB340-3D": {
+        "prefix": "HEB340",
+        "description": "EU 3D section HEB340, accuracy: 0.96/0.96/1.00",
+        "body": [
+            "section EU3D HEB340 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEB360-2D": {
+        "prefix": "HEB360",
+        "description": "EU 2D section HEB360, accuracy: 0.97/0.97",
+        "body": [
+            "section EU2D HEB360 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEB360-3D": {
+        "prefix": "HEB360",
+        "description": "EU 3D section HEB360, accuracy: 0.97/0.97/1.00",
+        "body": [
+            "section EU3D HEB360 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEB400-2D": {
+        "prefix": "HEB400",
+        "description": "EU 2D section HEB400, accuracy: 0.97/0.97",
+        "body": [
+            "section EU2D HEB400 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEB400-3D": {
+        "prefix": "HEB400",
+        "description": "EU 3D section HEB400, accuracy: 0.97/0.97/1.00",
+        "body": [
+            "section EU3D HEB400 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEB450-2D": {
+        "prefix": "HEB450",
+        "description": "EU 2D section HEB450, accuracy: 0.97/0.97",
+        "body": [
+            "section EU2D HEB450 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEB450-3D": {
+        "prefix": "HEB450",
+        "description": "EU 3D section HEB450, accuracy: 0.97/0.97/1.00",
+        "body": [
+            "section EU3D HEB450 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEB500-2D": {
+        "prefix": "HEB500",
+        "description": "EU 2D section HEB500, accuracy: 0.97/0.97",
+        "body": [
+            "section EU2D HEB500 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEB500-3D": {
+        "prefix": "HEB500",
+        "description": "EU 3D section HEB500, accuracy: 0.97/0.97/1.00",
+        "body": [
+            "section EU3D HEB500 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEB550-2D": {
+        "prefix": "HEB550",
+        "description": "EU 2D section HEB550, accuracy: 0.98/0.97",
+        "body": [
+            "section EU2D HEB550 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEB550-3D": {
+        "prefix": "HEB550",
+        "description": "EU 3D section HEB550, accuracy: 0.98/0.97/1.00",
+        "body": [
+            "section EU3D HEB550 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEB600-2D": {
+        "prefix": "HEB600",
+        "description": "EU 2D section HEB600, accuracy: 0.98/0.97",
+        "body": [
+            "section EU2D HEB600 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEB600-3D": {
+        "prefix": "HEB600",
+        "description": "EU 3D section HEB600, accuracy: 0.98/0.97/1.00",
+        "body": [
+            "section EU3D HEB600 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEB650-2D": {
+        "prefix": "HEB650",
+        "description": "EU 2D section HEB650, accuracy: 0.98/0.97",
+        "body": [
+            "section EU2D HEB650 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEB650-3D": {
+        "prefix": "HEB650",
+        "description": "EU 3D section HEB650, accuracy: 0.98/0.97/1.00",
+        "body": [
+            "section EU3D HEB650 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEB700-2D": {
+        "prefix": "HEB700",
+        "description": "EU 2D section HEB700, accuracy: 0.98/0.98",
+        "body": [
+            "section EU2D HEB700 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEB700-3D": {
+        "prefix": "HEB700",
+        "description": "EU 3D section HEB700, accuracy: 0.98/0.98/1.00",
+        "body": [
+            "section EU3D HEB700 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEB800-2D": {
+        "prefix": "HEB800",
+        "description": "EU 2D section HEB800, accuracy: 0.98/0.97",
+        "body": [
+            "section EU2D HEB800 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEB800-3D": {
+        "prefix": "HEB800",
+        "description": "EU 3D section HEB800, accuracy: 0.98/0.97/1.00",
+        "body": [
+            "section EU3D HEB800 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEB900-2D": {
+        "prefix": "HEB900",
+        "description": "EU 2D section HEB900, accuracy: 0.98/0.97",
+        "body": [
+            "section EU2D HEB900 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEB900-3D": {
+        "prefix": "HEB900",
+        "description": "EU 3D section HEB900, accuracy: 0.98/0.97/1.00",
+        "body": [
+            "section EU3D HEB900 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEM100-2D": {
+        "prefix": "HEM100",
+        "description": "EU 2D section HEM100, accuracy: 0.98/0.97",
+        "body": [
+            "section EU2D HEM100 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEM100-3D": {
+        "prefix": "HEM100",
+        "description": "EU 3D section HEM100, accuracy: 0.98/0.97/0.99",
+        "body": [
+            "section EU3D HEM100 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEM1000-2D": {
+        "prefix": "HEM1000",
+        "description": "EU 2D section HEM1000, accuracy: 0.98/0.98",
+        "body": [
+            "section EU2D HEM1000 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEM1000-3D": {
+        "prefix": "HEM1000",
+        "description": "EU 3D section HEM1000, accuracy: 0.98/0.98/0.99",
+        "body": [
+            "section EU3D HEM1000 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEM120-2D": {
+        "prefix": "HEM120",
+        "description": "EU 2D section HEM120, accuracy: 0.98/0.98",
+        "body": [
+            "section EU2D HEM120 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEM120-3D": {
+        "prefix": "HEM120",
+        "description": "EU 3D section HEM120, accuracy: 0.98/0.98/1.00",
+        "body": [
+            "section EU3D HEM120 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEM140-2D": {
+        "prefix": "HEM140",
+        "description": "EU 2D section HEM140, accuracy: 0.98/0.98",
+        "body": [
+            "section EU2D HEM140 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEM140-3D": {
+        "prefix": "HEM140",
+        "description": "EU 3D section HEM140, accuracy: 0.98/0.98/1.00",
+        "body": [
+            "section EU3D HEM140 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEM160-2D": {
+        "prefix": "HEM160",
+        "description": "EU 2D section HEM160, accuracy: 0.98/0.98",
+        "body": [
+            "section EU2D HEM160 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEM160-3D": {
+        "prefix": "HEM160",
+        "description": "EU 3D section HEM160, accuracy: 0.98/0.98/1.00",
+        "body": [
+            "section EU3D HEM160 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEM180-2D": {
+        "prefix": "HEM180",
+        "description": "EU 2D section HEM180, accuracy: 0.98/0.98",
+        "body": [
+            "section EU2D HEM180 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEM180-3D": {
+        "prefix": "HEM180",
+        "description": "EU 3D section HEM180, accuracy: 0.98/0.98/1.00",
+        "body": [
+            "section EU3D HEM180 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEM200-2D": {
+        "prefix": "HEM200",
+        "description": "EU 2D section HEM200, accuracy: 0.98/0.98",
+        "body": [
+            "section EU2D HEM200 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEM200-3D": {
+        "prefix": "HEM200",
+        "description": "EU 3D section HEM200, accuracy: 0.98/0.98/1.00",
+        "body": [
+            "section EU3D HEM200 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEM220-2D": {
+        "prefix": "HEM220",
+        "description": "EU 2D section HEM220, accuracy: 0.98/0.98",
+        "body": [
+            "section EU2D HEM220 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEM220-3D": {
+        "prefix": "HEM220",
+        "description": "EU 3D section HEM220, accuracy: 0.98/0.98/1.00",
+        "body": [
+            "section EU3D HEM220 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEM240-2D": {
+        "prefix": "HEM240",
+        "description": "EU 2D section HEM240, accuracy: 0.98/0.98",
+        "body": [
+            "section EU2D HEM240 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEM240-3D": {
+        "prefix": "HEM240",
+        "description": "EU 3D section HEM240, accuracy: 0.98/0.98/1.00",
+        "body": [
+            "section EU3D HEM240 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEM260-2D": {
+        "prefix": "HEM260",
+        "description": "EU 2D section HEM260, accuracy: 0.98/0.98",
+        "body": [
+            "section EU2D HEM260 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEM260-3D": {
+        "prefix": "HEM260",
+        "description": "EU 3D section HEM260, accuracy: 0.98/0.98/1.00",
+        "body": [
+            "section EU3D HEM260 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEM280-2D": {
+        "prefix": "HEM280",
+        "description": "EU 2D section HEM280, accuracy: 0.98/0.98",
+        "body": [
+            "section EU2D HEM280 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEM280-3D": {
+        "prefix": "HEM280",
+        "description": "EU 3D section HEM280, accuracy: 0.98/0.98/1.00",
+        "body": [
+            "section EU3D HEM280 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEM300-2D": {
+        "prefix": "HEM300",
+        "description": "EU 2D section HEM300, accuracy: 0.98/0.98",
+        "body": [
+            "section EU2D HEM300 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEM300-3D": {
+        "prefix": "HEM300",
+        "description": "EU 3D section HEM300, accuracy: 0.98/0.98/1.00",
+        "body": [
+            "section EU3D HEM300 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEM320-2D": {
+        "prefix": "HEM320",
+        "description": "EU 2D section HEM320, accuracy: 0.98/0.98",
+        "body": [
+            "section EU2D HEM320 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEM320-3D": {
+        "prefix": "HEM320",
+        "description": "EU 3D section HEM320, accuracy: 0.98/0.98/1.00",
+        "body": [
+            "section EU3D HEM320 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEM340-2D": {
+        "prefix": "HEM340",
+        "description": "EU 2D section HEM340, accuracy: 0.98/0.98",
+        "body": [
+            "section EU2D HEM340 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEM340-3D": {
+        "prefix": "HEM340",
+        "description": "EU 3D section HEM340, accuracy: 0.98/0.98/1.00",
+        "body": [
+            "section EU3D HEM340 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEM360-2D": {
+        "prefix": "HEM360",
+        "description": "EU 2D section HEM360, accuracy: 0.98/0.98",
+        "body": [
+            "section EU2D HEM360 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEM360-3D": {
+        "prefix": "HEM360",
+        "description": "EU 3D section HEM360, accuracy: 0.98/0.98/1.00",
+        "body": [
+            "section EU3D HEM360 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEM400-2D": {
+        "prefix": "HEM400",
+        "description": "EU 2D section HEM400, accuracy: 0.98/0.98",
+        "body": [
+            "section EU2D HEM400 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEM400-3D": {
+        "prefix": "HEM400",
+        "description": "EU 3D section HEM400, accuracy: 0.98/0.98/1.00",
+        "body": [
+            "section EU3D HEM400 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEM450-2D": {
+        "prefix": "HEM450",
+        "description": "EU 2D section HEM450, accuracy: 0.98/0.98",
+        "body": [
+            "section EU2D HEM450 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEM450-3D": {
+        "prefix": "HEM450",
+        "description": "EU 3D section HEM450, accuracy: 0.98/0.98/1.00",
+        "body": [
+            "section EU3D HEM450 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEM500-2D": {
+        "prefix": "HEM500",
+        "description": "EU 2D section HEM500, accuracy: 0.98/0.98",
+        "body": [
+            "section EU2D HEM500 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEM500-3D": {
+        "prefix": "HEM500",
+        "description": "EU 3D section HEM500, accuracy: 0.98/0.98/1.00",
+        "body": [
+            "section EU3D HEM500 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEM550-2D": {
+        "prefix": "HEM550",
+        "description": "EU 2D section HEM550, accuracy: 0.98/0.98",
+        "body": [
+            "section EU2D HEM550 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEM550-3D": {
+        "prefix": "HEM550",
+        "description": "EU 3D section HEM550, accuracy: 0.98/0.98/1.00",
+        "body": [
+            "section EU3D HEM550 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEM600-2D": {
+        "prefix": "HEM600",
+        "description": "EU 2D section HEM600, accuracy: 0.98/0.98",
+        "body": [
+            "section EU2D HEM600 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEM600-3D": {
+        "prefix": "HEM600",
+        "description": "EU 3D section HEM600, accuracy: 0.98/0.98/1.00",
+        "body": [
+            "section EU3D HEM600 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEM650-2D": {
+        "prefix": "HEM650",
+        "description": "EU 2D section HEM650, accuracy: 0.98/0.98",
+        "body": [
+            "section EU2D HEM650 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEM650-3D": {
+        "prefix": "HEM650",
+        "description": "EU 3D section HEM650, accuracy: 0.98/0.98/1.00",
+        "body": [
+            "section EU3D HEM650 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEM700-2D": {
+        "prefix": "HEM700",
+        "description": "EU 2D section HEM700, accuracy: 0.98/0.98",
+        "body": [
+            "section EU2D HEM700 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEM700-3D": {
+        "prefix": "HEM700",
+        "description": "EU 3D section HEM700, accuracy: 0.98/0.98/1.00",
+        "body": [
+            "section EU3D HEM700 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEM800-2D": {
+        "prefix": "HEM800",
+        "description": "EU 2D section HEM800, accuracy: 0.98/0.98",
+        "body": [
+            "section EU2D HEM800 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEM800-3D": {
+        "prefix": "HEM800",
+        "description": "EU 3D section HEM800, accuracy: 0.98/0.98/1.00",
+        "body": [
+            "section EU3D HEM800 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "HEM900-2D": {
+        "prefix": "HEM900",
+        "description": "EU 2D section HEM900, accuracy: 0.98/0.98",
+        "body": [
+            "section EU2D HEM900 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "HEM900-3D": {
+        "prefix": "HEM900",
+        "description": "EU 3D section HEM900, accuracy: 0.98/0.98/1.00",
+        "body": [
+            "section EU3D HEM900 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "IPE100-2D": {
+        "prefix": "IPE100",
+        "description": "EU 2D section IPE100, accuracy: 0.96/0.95",
+        "body": [
+            "section EU2D IPE100 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "IPE100-3D": {
+        "prefix": "IPE100",
+        "description": "EU 3D section IPE100, accuracy: 0.96/0.95/0.99",
+        "body": [
+            "section EU3D IPE100 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "IPE120-2D": {
+        "prefix": "IPE120",
+        "description": "EU 2D section IPE120, accuracy: 0.97/0.96",
+        "body": [
+            "section EU2D IPE120 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "IPE120-3D": {
+        "prefix": "IPE120",
+        "description": "EU 3D section IPE120, accuracy: 0.97/0.96/0.99",
+        "body": [
+            "section EU3D IPE120 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "IPE140-2D": {
+        "prefix": "IPE140",
+        "description": "EU 2D section IPE140, accuracy: 0.98/0.97",
+        "body": [
+            "section EU2D IPE140 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "IPE140-3D": {
+        "prefix": "IPE140",
+        "description": "EU 3D section IPE140, accuracy: 0.98/0.97/1.00",
+        "body": [
+            "section EU3D IPE140 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "IPE160-2D": {
+        "prefix": "IPE160",
+        "description": "EU 2D section IPE160, accuracy: 0.96/0.96",
+        "body": [
+            "section EU2D IPE160 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "IPE160-3D": {
+        "prefix": "IPE160",
+        "description": "EU 3D section IPE160, accuracy: 0.96/0.96/1.00",
+        "body": [
+            "section EU3D IPE160 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "IPE180-2D": {
+        "prefix": "IPE180",
+        "description": "EU 2D section IPE180, accuracy: 0.97/0.97",
+        "body": [
+            "section EU2D IPE180 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "IPE180-3D": {
+        "prefix": "IPE180",
+        "description": "EU 3D section IPE180, accuracy: 0.97/0.97/0.99",
+        "body": [
+            "section EU3D IPE180 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "IPE200-2D": {
+        "prefix": "IPE200",
+        "description": "EU 2D section IPE200, accuracy: 0.96/0.95",
+        "body": [
+            "section EU2D IPE200 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "IPE200-3D": {
+        "prefix": "IPE200",
+        "description": "EU 3D section IPE200, accuracy: 0.96/0.95/1.00",
+        "body": [
+            "section EU3D IPE200 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "IPE220-2D": {
+        "prefix": "IPE220",
+        "description": "EU 2D section IPE220, accuracy: 0.96/0.96",
+        "body": [
+            "section EU2D IPE220 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "IPE220-3D": {
+        "prefix": "IPE220",
+        "description": "EU 3D section IPE220, accuracy: 0.96/0.96/1.00",
+        "body": [
+            "section EU3D IPE220 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "IPE240-2D": {
+        "prefix": "IPE240",
+        "description": "EU 2D section IPE240, accuracy: 0.95/0.94",
+        "body": [
+            "section EU2D IPE240 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "IPE240-3D": {
+        "prefix": "IPE240",
+        "description": "EU 3D section IPE240, accuracy: 0.95/0.94/0.99",
+        "body": [
+            "section EU3D IPE240 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "IPE270-2D": {
+        "prefix": "IPE270",
+        "description": "EU 2D section IPE270, accuracy: 0.96/0.95",
+        "body": [
+            "section EU2D IPE270 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "IPE270-3D": {
+        "prefix": "IPE270",
+        "description": "EU 3D section IPE270, accuracy: 0.96/0.95/1.00",
+        "body": [
+            "section EU3D IPE270 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "IPE300-2D": {
+        "prefix": "IPE300",
+        "description": "EU 2D section IPE300, accuracy: 0.96/0.96",
+        "body": [
+            "section EU2D IPE300 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "IPE300-3D": {
+        "prefix": "IPE300",
+        "description": "EU 3D section IPE300, accuracy: 0.96/0.96/1.00",
+        "body": [
+            "section EU3D IPE300 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "IPE330-2D": {
+        "prefix": "IPE330",
+        "description": "EU 2D section IPE330, accuracy: 0.96/0.95",
+        "body": [
+            "section EU2D IPE330 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "IPE330-3D": {
+        "prefix": "IPE330",
+        "description": "EU 3D section IPE330, accuracy: 0.96/0.95/1.00",
+        "body": [
+            "section EU3D IPE330 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "IPE360-2D": {
+        "prefix": "IPE360",
+        "description": "EU 2D section IPE360, accuracy: 0.96/0.95",
+        "body": [
+            "section EU2D IPE360 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "IPE360-3D": {
+        "prefix": "IPE360",
+        "description": "EU 3D section IPE360, accuracy: 0.96/0.95/1.00",
+        "body": [
+            "section EU3D IPE360 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "IPE400-2D": {
+        "prefix": "IPE400",
+        "description": "EU 2D section IPE400, accuracy: 0.95/0.95",
+        "body": [
+            "section EU2D IPE400 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "IPE400-3D": {
+        "prefix": "IPE400",
+        "description": "EU 3D section IPE400, accuracy: 0.95/0.95/1.00",
+        "body": [
+            "section EU3D IPE400 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "IPE450-2D": {
+        "prefix": "IPE450",
+        "description": "EU 2D section IPE450, accuracy: 0.96/0.95",
+        "body": [
+            "section EU2D IPE450 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "IPE450-3D": {
+        "prefix": "IPE450",
+        "description": "EU 3D section IPE450, accuracy: 0.96/0.95/1.00",
+        "body": [
+            "section EU3D IPE450 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "IPE500-2D": {
+        "prefix": "IPE500",
+        "description": "EU 2D section IPE500, accuracy: 0.97/0.96",
+        "body": [
+            "section EU2D IPE500 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "IPE500-3D": {
+        "prefix": "IPE500",
+        "description": "EU 3D section IPE500, accuracy: 0.97/0.96/1.00",
+        "body": [
+            "section EU3D IPE500 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "IPE550-2D": {
+        "prefix": "IPE550",
+        "description": "EU 2D section IPE550, accuracy: 0.96/0.95",
+        "body": [
+            "section EU2D IPE550 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "IPE550-3D": {
+        "prefix": "IPE550",
+        "description": "EU 3D section IPE550, accuracy: 0.96/0.95/1.00",
+        "body": [
+            "section EU3D IPE550 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "IPE600-2D": {
+        "prefix": "IPE600",
+        "description": "EU 2D section IPE600, accuracy: 0.97/0.96",
+        "body": [
+            "section EU2D IPE600 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "IPE600-3D": {
+        "prefix": "IPE600",
+        "description": "EU 3D section IPE600, accuracy: 0.97/0.96/1.00",
+        "body": [
+            "section EU3D IPE600 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    },
+    "IPE80-2D": {
+        "prefix": "IPE80",
+        "description": "EU 2D section IPE80, accuracy: 0.98/0.97",
+        "body": [
+            "section EU2D IPE80 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity, default: 0.0",
+            ""
+        ]
+    },
+    "IPE80-3D": {
+        "prefix": "IPE80",
+        "description": "EU 3D section IPE80, accuracy: 0.98/0.97/0.99",
+        "body": [
+            "section EU3D IPE80 ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]} ${5:[5]} ${6:[6]}",
+            "# (1) int, unique tag",
+            "# (2) int, material tag",
+            "# [3] double, scale, default: 1.0",
+            "# [4] int, number of integration points, default: 6",
+            "# [5] double, eccentricity of y axis, default: 0.0",
+            "# [6] double, eccentricity of z axis, default: 0.0",
+            ""
+        ]
+    }
+}
