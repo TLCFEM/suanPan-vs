@@ -494,8 +494,8 @@
             "# (4) double, \\eta_y",
             "# (5) double, \\eta_f",
             "# (6) double, \\xi",
-            "# (7) double, cohesion",
-            "# (8) double, hardening ratio",
+            "# (7) double, initial cohesion",
+            "# (8) double, hardening modulus",
             "# [9] double, density, default: 0.0"
         ],
         "description": "dp model with bilinear hardening function",
