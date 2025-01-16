@@ -31,7 +31,8 @@
         "suanpan.path": {
           "type": "string",
           "default": "",
-          "description": "Path to the suanPan executable."
+          "description": "Path to the suanPan executable.",
+          "ignoreSync": true
         },
         "suanpan.directory": {
           "type": "string",
@@ -51,7 +52,8 @@
         "suanpan.docker": {
           "type": "boolean",
           "default": false,
-          "description": "Run the model in a docker container."
+          "description": "Run the model in a docker container.",
+          "ignoreSync": true
         },
         "suanpan.image": {
           "type": "string",
