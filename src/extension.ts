@@ -42,7 +42,11 @@ export function activate(context: vscode.ExtensionContext) {
 		let sp_path: string | undefined = sp_config.get('path');
 		let sp_pwd: string | undefined = sp_config.get('directory');
 
-		if (!sp_docker && !sp_path) return vscode.window.showErrorMessage("suanPan executable not found. Please set the path in the settings.");
+		if (!sp_docker) {
+			if (!sp_path) return vscode.window.showErrorMessage("suanPan executable not found. Please set the path in the settings.");
+		} else {
+			sp_path = "sp";
+		}
 
 		const delimiter = process.platform === "win32" ? "\\" : "/";
 
@@ -58,7 +62,7 @@ export function activate(context: vscode.ExtensionContext) {
 		if (sp_docker) {
 			if (sp_file_name === undefined) return vscode.window.showErrorMessage("File name not found.");
 
-			command = `docker run --rm -v ${sp_pwd}:/dirty -w /dirty ${sp_image || 'tlcfem/suanpan'} sp -f ${sp_file_name}`;
+			command = `docker run --rm -v ${sp_pwd}:/dirty -w /dirty ${sp_image || 'tlcfem/suanpan'} ${sp_path} -f ${sp_file_name}`;
 		} else {
 			command = process.platform === "win32" ? `cd ${sp_pwd}; ${sp_path} -f ${sp_file}` : `cd ${sp_pwd} && ${sp_path} -f ${sp_file}`;
 		}
