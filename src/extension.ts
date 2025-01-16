@@ -33,16 +33,20 @@ export function activate(context: vscode.ExtensionContext) {
 		const saved = await editor.document.save();
 		if (!saved) return;
 
-		const sp_file = editor.document.fileName;
+		const sp_file: string = editor.document.fileName; 
 		const sp_config = vscode.workspace.getConfiguration('suanpan');
-		const sp_color = sp_config.get('color');
-		const sp_verbose = sp_config.get('verbose');
-		let sp_path = sp_config.get('path');
-		let sp_pwd = sp_config.get('directory');
+		const sp_color: boolean | undefined = sp_config.get('color');
+		const sp_verbose: boolean | undefined = sp_config.get('verbose');
+		const sp_docker: boolean | undefined = sp_config.get('docker');
+		const sp_image: string | undefined = sp_config.get('image');
+		let sp_path: string | undefined = sp_config.get('path');
+		let sp_pwd: string | undefined = sp_config.get('directory');
 
-		if (!sp_path) return vscode.window.showErrorMessage("suanPan executable not found. Please set the path in the settings.");
+		if (!sp_docker && !sp_path) return vscode.window.showErrorMessage("suanPan executable not found. Please set the path in the settings.");
 
 		const delimiter = process.platform === "win32" ? "\\" : "/";
+
+		const sp_file_name: string | undefined = sp_file.split(delimiter).pop();
 
 		if ("" === sp_pwd) {
 			sp_pwd = sp_file.substring(0, sp_file.lastIndexOf(delimiter));
@@ -50,11 +54,20 @@ export function activate(context: vscode.ExtensionContext) {
 		if (!sp_color) sp_path += " -nc";
 		if (sp_verbose) sp_path += " -vb";
 
+		let command: string;
+		if (sp_docker) {
+			if (sp_file_name === undefined) return vscode.window.showErrorMessage("File name not found.");
+
+			command = `docker run --rm -v ${sp_pwd}:/dirty -w /dirty ${sp_image || 'tlcfem/suanpan'} sp -f ${sp_file_name}`;
+		} else {
+			command = process.platform === "win32" ? `cd ${sp_pwd}; ${sp_path} -f ${sp_file}` : `cd ${sp_pwd} && ${sp_path} -f ${sp_file}`;
+		}
+
 		const task = new vscode.Task(
 			{ type: 'shell' },
 			vscode.TaskScope.Workspace,
-			sp_file.split(delimiter).pop() || 'suanPan model',
-			'suanPan', new vscode.ShellExecution(process.platform === "win32" ? `cd ${sp_pwd}; ${sp_path} -f ${sp_file}` : `cd ${sp_pwd} && ${sp_path} -f ${sp_file}`));
+			sp_file_name || 'suanPan model',
+			'suanPan', new vscode.ShellExecution(command));
 
 		await vscode.tasks.executeTask(task);
 	});

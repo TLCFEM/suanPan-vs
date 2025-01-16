@@ -47,6 +47,16 @@
           "type": "boolean",
           "default": false,
           "description": "Verbose output."
+        },
+        "suanpan.docker": {
+          "type": "boolean",
+          "default": false,
+          "description": "Run the model in a docker container."
+        },
+        "suanpan.image": {
+          "type": "string",
+          "default": "tlcfem/suanpan",
+          "description": "Docker image to use."
         }
       }
     },
