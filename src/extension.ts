@@ -2,6 +2,9 @@ import * as vscode from 'vscode';
 
 function setPath() {
 	const sp_config = vscode.workspace.getConfiguration('suanpan');
+
+	if (sp_config.get('docker')) return;
+
 	let sp_path = sp_config.get('path');
 
 	if ("" !== sp_path) return;
@@ -33,7 +36,7 @@ export function activate(context: vscode.ExtensionContext) {
 		const saved = await editor.document.save();
 		if (!saved) return;
 
-		const sp_file: string = editor.document.fileName; 
+		const sp_file: string = editor.document.fileName;
 		const sp_config = vscode.workspace.getConfiguration('suanpan');
 		const sp_color: boolean | undefined = sp_config.get('color');
 		const sp_verbose: boolean | undefined = sp_config.get('verbose');
