@@ -382,13 +382,6 @@
         "description": "linear transformation for 3d beam elements with open sections",
         "prefix": "B3DOSL"
     },
-    "BICGSTAB": {
-        "body": [
-            "set system_solver BICGSTAB"
-        ],
-        "description": "bicgstab solver",
-        "prefix": "BICGSTAB"
-    },
     "BWBN": {
         "body": [
             "material BWBN ${1:(1)} ${2:[2...18]}",
@@ -2182,13 +2175,6 @@
         "description": "generalized conforming mixed quadrilateral with drilling dofs",
         "prefix": "GCMQL"
     },
-    "GMRES": {
-        "body": [
-            "set system_solver GMRES"
-        ],
-        "description": "gmres solver",
-        "prefix": "GMRES"
-    },
     "GQ12": {
         "body": [
             "element GQ12 ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]}",
@@ -2308,13 +2294,6 @@
         "description": "2d h-section",
         "prefix": "HSection2D"
     },
-    "ILU": {
-        "body": [
-            "set preconditioner ILU"
-        ],
-        "description": "ilu preconditioner",
-        "prefix": "ILU"
-    },
     "ISection2D": {
         "body": [
             "section ISection2D ${1:(1)} ${2:(2...7)} ${8:(8)} ${9:[9]} ${10:[10]}",
@@ -2363,13 +2342,6 @@
         ],
         "description": "3d isotropic elastic material",
         "prefix": "IsotropicElastic3D"
-    },
-    "Jacobi": {
-        "body": [
-            "set preconditioner Jacobi"
-        ],
-        "description": "jacobi preconditioner",
-        "prefix": "Jacobi"
     },
     "Joint": {
         "body": [
@@ -4927,18 +4899,10 @@
     "precision": {
         "body": [
             "set precision ${1:(1)}",
-            "# (1) string, preconditioner type, full or mixed"
+            "# (1) string, precision type, full or mixed"
         ],
         "description": "set solving precision",
         "prefix": "precision"
-    },
-    "preconditioner": {
-        "body": [
-            "set preconditioner ${1:(1)}",
-            "# (1) string, preconditioner type, one of Jacobi, ILU and None"
-        ],
-        "description": "set preconditioner algorithm",
-        "prefix": "preconditioner"
     },
     "protect": {
         "body": [

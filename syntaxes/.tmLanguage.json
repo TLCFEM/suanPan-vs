@@ -104,10 +104,6 @@
         },
         {
           "name": "entity.name.tag",
-          "match": "(?i)(?<=preconditioner\\s+)(JACOBI|ILU)\\b"
-        },
-        {
-          "name": "entity.name.tag",
           "match": "(?i)(?<=recorder\\s+\\d+\\s+((hdf5|plain)\\s+)?)(node|element|amplitude|global|visualisation|frame|eigen|sum)\\b"
         },
         {
@@ -176,10 +172,6 @@
         },
         {
           "name": "string.unquoted",
-          "match": "(?i)(?<=set\\s+)preconditioner\\b"
-        },
-        {
-          "name": "string.unquoted",
           "match": "(?i)(?<=set\\s+)screen_output\\b"
         },
         {
@@ -204,7 +196,7 @@
         },
         {
           "name": "entity.name.tag",
-          "match": "(?i)(?<=system_solver\\s+)(LAPACK|SPIKE|SUPERLU|MUMPS|LIS|CUDA|MAGMA|PARDISO|F?GMRES|BICGSTAB)\\b"
+          "match": "(?i)(?<=system_solver\\s+)(LAPACK|SPIKE|SUPERLU|MUMPS|LIS|CUDA|MAGMA|PARDISO|FGMRES)\\b"
         },
         {
           "name": "entity.name.tag",
