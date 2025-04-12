@@ -13,9 +13,9 @@
     "type": "git",
     "url": "https://github.com/TLCFEM/suanPan-vs"
   },
-  "version": "0.1.6",
+  "version": "0.1.7",
   "engines": {
-    "vscode": "^1.98.0"
+    "vscode": "^1.99.1"
   },
   "categories": [
     "Programming Languages"
@@ -116,18 +116,18 @@
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
-    "@types/node": "^22.13.11",
-    "@types/vscode": "^1.98.0",
-    "@typescript-eslint/eslint-plugin": "^8.27.0",
-    "@typescript-eslint/parser": "^8.27.0",
-    "@vscode/test-electron": "^2.4.1",
-    "@vscode/vsce": "^3.3.0",
-    "eslint": "^9.23.0",
+    "@types/node": "^22.14.1",
+    "@types/vscode": "^1.99.1",
+    "@typescript-eslint/eslint-plugin": "^8.29.1",
+    "@typescript-eslint/parser": "^8.29.1",
+    "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^3.3.2",
+    "eslint": "^9.24.0",
     "glob": "^11.0.1",
     "mocha": "^11.1.0",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.3"
   },
   "volta": {
-    "node": "22.12.0"
+    "node": "22.14.0"
   }
 }
