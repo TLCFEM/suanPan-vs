@@ -18,6 +18,9 @@
       "include": "#entities.converger"
     },
     {
+      "include": "#entities.criterion"
+    },
+    {
       "include": "#entities.element"
     },
     {
@@ -88,7 +91,7 @@
         },
         {
           "name": "entity.name.tag",
-          "match": "(?i)(?<=^(material|element|step|converger|load|constraint|modifier|expression|solver)\\s+\\w+\\s+)\\d+\\b"
+          "match": "(?i)(?<=^(material|element|step|converger|load|constraint|criterion|modifier|expression|solver)\\s+\\w+\\s+)\\d+\\b"
         },
         {
           "name": "string.unquoted",
@@ -325,6 +328,14 @@
         {
           "name": "entity.name.type.converger",
           "match": "(?i)(?<=converger\\s+)Logic(AND|OR|XOR)\\b"
+        }
+      ]
+    },
+    "entities.criterion": {
+      "patterns": [
+        {
+          "name": "entity.name.type.criterion",
+          "match": "(?i)(?<=criterion\\s+)(Max|Min)(Displacement|Resistance)\\b"
         }
       ]
     },
