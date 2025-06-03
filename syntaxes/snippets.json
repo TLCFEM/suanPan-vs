@@ -686,12 +686,13 @@
     },
     "C3D8": {
         "body": [
-            "element C3D8 ${1:(1)} ${2:(2...9)} ${10:(10)} ${11:[11]} ${12:[12]}",
+            "element C3D8 ${1:(1)} ${2:(2...9)} ${10:(10)} ${11:[11]} ${12:[12]} ${13:[13]}",
             "# (1) int, unique element tag",
             "# (2...9) int, eight corner nodes with conventional order",
             "# (10) int, material tag",
             "# [11] string, integration scheme, default: 'I'",
-            "# [12] bool string, nonlinear geometry switch, default: false"
+            "# [12] bool string, nonlinear geometry switch, default: false",
+            "# [13] double, hourglassing penalty multiplier, default: 1.0"
         ],
         "description": "linear cube/brick",
         "prefix": "C3D8"
@@ -708,11 +709,12 @@
     },
     "C3D8R": {
         "body": [
-            "element C3D8R ${1:(1)} ${2:(2...9)} ${10:(10)} ${11:[11]}",
+            "element C3D8R ${1:(1)} ${2:(2...9)} ${10:(10)} ${11:[11]} ${12:[12]}",
             "# (1) int, unique element tag",
             "# (2...9) int, eight corner nodes with conventional order",
             "# (10) int, material tag",
-            "# [11] bool string, nonlinear geometry switch, default: false"
+            "# [11] bool string, nonlinear geometry switch, default: false",
+            "# [12] double, hourglassing penalty multiplier, default: 1.0"
         ],
         "description": "linear cube/brick with reduced integration",
         "prefix": "C3D8R"
@@ -874,13 +876,14 @@
     },
     "CP4": {
         "body": [
-            "element CP4 ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]} ${8:[8]} ${9:[9]}",
+            "element CP4 ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]} ${8:[8]} ${9:[9]} ${10:[10]}",
             "# (1) int, unique element tag",
             "# (2...5) int, node i, j, k, l",
             "# (6) int, material tag",
             "# [7] double, element thickness, default: 1.0",
             "# [8] bool string, reduced integration switch, default: false",
-            "# [9] bool string, nonlinear geometry switch, default: false"
+            "# [9] bool string, nonlinear geometry switch, default: false",
+            "# [10] double, hourglassing penalty multiplier, default: 1.0"
         ],
         "description": "bilinear quadrilateral",
         "prefix": "CP4"
@@ -898,12 +901,13 @@
     },
     "CP4R": {
         "body": [
-            "element CP4R ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]} ${8:[8]}",
+            "element CP4R ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:[7]} ${8:[8]} ${9:[9]}",
             "# (1) int, unique element tag",
             "# (2...5) int, node i, j, k, l",
             "# (6) int, material tag",
             "# [7] double, element thickness, default: 1.0",
-            "# [8] bool string, nonlinear geometry switch, default: false"
+            "# [8] bool string, nonlinear geometry switch, default: false",
+            "# [9] double, hourglassing penalty multiplier, default: 1.0"
         ],
         "description": "bilinear quadrilateral with reduced integration",
         "prefix": "CP4R"
