@@ -763,6 +763,10 @@
         },
         {
           "name": "entity.name.type.material",
+          "match": "(?i)(?<=material\\s+)Prestrain\\b"
+        },
+        {
+          "name": "entity.name.type.material",
           "match": "(?i)(?<=material\\s+)RambergOsgood\\b"
         },
         {

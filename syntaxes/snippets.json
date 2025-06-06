@@ -3497,6 +3497,17 @@
         "description": "polynomial based uniaxial nonlinear elastic",
         "prefix": "PolyElastic1D"
     },
+    "Prestrain": {
+        "body": [
+            "material Prestrain ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+            "# (1) int, unique material tag",
+            "# (2) int, underlying material tag",
+            "# (3) int, amplitude tag, set to 0 to use a ramp function",
+            "# (4) double, maginutde"
+        ],
+        "description": "prestrain wrapper for uniaxial materials",
+        "prefix": "Prestrain"
+    },
     "PolyJ2": {
         "body": [
             "material PolyJ2 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} [${5:(5)}...]",
