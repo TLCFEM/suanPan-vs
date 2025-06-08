@@ -576,6 +576,10 @@
         {
           "name": "entity.name.type.integrator",
           "match": "(?i)(?<=integrator\\s+)Tchamwa\\b"
+        },
+        {
+          "name": "entity.name.type.integrator",
+          "match": "(?i)(?<=integrator\\s+)WAT2\\b"
         }
       ]
     },
@@ -2155,11 +2159,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HEA100\\b"
+          "match": "\\b(?i)HEA1000\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HEA1000\\b"
+          "match": "\\b(?i)HEA100\\b"
         },
         {
           "name": "support.constant.section",
@@ -2251,11 +2255,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HEB100\\b"
+          "match": "\\b(?i)HEB1000\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HEB1000\\b"
+          "match": "\\b(?i)HEB100\\b"
         },
         {
           "name": "support.constant.section",
@@ -2347,11 +2351,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HEM100\\b"
+          "match": "\\b(?i)HEM1000\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HEM1000\\b"
+          "match": "\\b(?i)HEM100\\b"
         },
         {
           "name": "support.constant.section",
@@ -2440,78 +2444,6 @@
         {
           "name": "support.constant.section",
           "match": "\\b(?i)HEM900\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)IPE100\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)IPE120\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)IPE140\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)IPE160\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)IPE180\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)IPE200\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)IPE220\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)IPE240\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)IPE270\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)IPE300\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)IPE330\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)IPE360\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)IPE400\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)IPE450\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)IPE500\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)IPE550\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)IPE600\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)IPE80\\b"
         },
         {
           "name": "support.constant.section",
@@ -2612,70 +2544,6 @@
         {
           "name": "support.constant.section",
           "match": "\\b(?i)HSS1-1/2X1-1/2X3/16\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS1\\.660X0\\.140\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS1\\.900X0\\.120\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS1\\.900X0\\.145\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS1\\.900X0\\.188\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS10\\.000X0\\.188\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS10\\.000X0\\.250\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS10\\.000X0\\.312\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS10\\.000X0\\.375\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS10\\.000X0\\.500\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS10\\.000X0\\.625\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS10\\.750X0\\.188\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS10\\.750X0\\.250\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS10\\.750X0\\.313\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS10\\.750X0\\.375\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS10\\.750X0\\.500\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS10\\.750X0\\.625\\b"
         },
         {
           "name": "support.constant.section",
@@ -2851,6 +2719,54 @@
         },
         {
           "name": "support.constant.section",
+          "match": "\\b(?i)HSS10\\.000X0\\.188\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS10\\.000X0\\.250\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS10\\.000X0\\.312\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS10\\.000X0\\.375\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS10\\.000X0\\.500\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS10\\.000X0\\.625\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS10\\.750X0\\.188\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS10\\.750X0\\.250\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS10\\.750X0\\.313\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS10\\.750X0\\.375\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS10\\.750X0\\.500\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS10\\.750X0\\.625\\b"
+        },
+        {
+          "name": "support.constant.section",
           "match": "\\b(?i)HSS11\\.750X0\\.250\\b"
         },
         {
@@ -2868,46 +2784,6 @@
         {
           "name": "support.constant.section",
           "match": "\\b(?i)HSS11\\.750X0\\.625\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS12\\.000X0\\.250\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS12\\.000X0\\.375\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS12\\.000X0\\.500\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS12\\.000X0\\.625\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS12\\.750X0\\.188\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS12\\.750X0\\.250\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS12\\.750X0\\.375\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS12\\.750X0\\.500\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS12\\.750X0\\.625\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS12\\.750X0\\.750\\b"
         },
         {
           "name": "support.constant.section",
@@ -2935,15 +2811,15 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS12X12X1\\b"
-        },
-        {
-          "name": "support.constant.section",
           "match": "\\b(?i)HSS12X12X1/2\\b"
         },
         {
           "name": "support.constant.section",
           "match": "\\b(?i)HSS12X12X1/4\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS12X12X1\\b"
         },
         {
           "name": "support.constant.section",
@@ -3067,6 +2943,46 @@
         },
         {
           "name": "support.constant.section",
+          "match": "\\b(?i)HSS12\\.000X0\\.250\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS12\\.000X0\\.375\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS12\\.000X0\\.500\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS12\\.000X0\\.625\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS12\\.750X0\\.188\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS12\\.750X0\\.250\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS12\\.750X0\\.375\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS12\\.750X0\\.500\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS12\\.750X0\\.625\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS12\\.750X0\\.750\\b"
+        },
+        {
+          "name": "support.constant.section",
           "match": "\\b(?i)HSS13\\.375X0\\.188\\b"
         },
         {
@@ -3088,42 +3004,6 @@
         {
           "name": "support.constant.section",
           "match": "\\b(?i)HSS13\\.375X0\\.625\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS14\\.000X0\\.188\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS14\\.000X0\\.250\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS14\\.000X0\\.312\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS14\\.000X0\\.375\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS14\\.000X0\\.500\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS14\\.000X0\\.625\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS14\\.000X0\\.750\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS14\\.000X0\\.875\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS14\\.000X1\\.000\\b"
         },
         {
           "name": "support.constant.section",
@@ -3175,15 +3055,15 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS14X14X1\\b"
-        },
-        {
-          "name": "support.constant.section",
           "match": "\\b(?i)HSS14X14X1/2\\b"
         },
         {
           "name": "support.constant.section",
           "match": "\\b(?i)HSS14X14X1/4\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS14X14X1\\b"
         },
         {
           "name": "support.constant.section",
@@ -3279,39 +3159,39 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS16\\.000X0\\.250\\b"
+          "match": "\\b(?i)HSS14\\.000X0\\.188\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS16\\.000X0\\.312\\b"
+          "match": "\\b(?i)HSS14\\.000X0\\.250\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS16\\.000X0\\.375\\b"
+          "match": "\\b(?i)HSS14\\.000X0\\.312\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS16\\.000X0\\.438\\b"
+          "match": "\\b(?i)HSS14\\.000X0\\.375\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS16\\.000X0\\.500\\b"
+          "match": "\\b(?i)HSS14\\.000X0\\.500\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS16\\.000X0\\.625\\b"
+          "match": "\\b(?i)HSS14\\.000X0\\.625\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS16\\.000X0\\.750\\b"
+          "match": "\\b(?i)HSS14\\.000X0\\.750\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS16\\.000X0\\.875\\b"
+          "match": "\\b(?i)HSS14\\.000X0\\.875\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS16\\.000X1\\.000\\b"
+          "match": "\\b(?i)HSS14\\.000X1\\.000\\b"
         },
         {
           "name": "support.constant.section",
@@ -3335,11 +3215,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS16X12X1\\b"
+          "match": "\\b(?i)HSS16X12X1/2\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS16X12X1/2\\b"
+          "match": "\\b(?i)HSS16X12X1\\b"
         },
         {
           "name": "support.constant.section",
@@ -3363,15 +3243,15 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS16X16X1\\b"
-        },
-        {
-          "name": "support.constant.section",
           "match": "\\b(?i)HSS16X16X1/2\\b"
         },
         {
           "name": "support.constant.section",
           "match": "\\b(?i)HSS16X16X1/4\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS16X16X1\\b"
         },
         {
           "name": "support.constant.section",
@@ -3471,35 +3351,39 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS18\\.000X0\\.250\\b"
+          "match": "\\b(?i)HSS16\\.000X0\\.250\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS18\\.000X0\\.313\\b"
+          "match": "\\b(?i)HSS16\\.000X0\\.312\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS18\\.000X0\\.375\\b"
+          "match": "\\b(?i)HSS16\\.000X0\\.375\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS18\\.000X0\\.500\\b"
+          "match": "\\b(?i)HSS16\\.000X0\\.438\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS18\\.000X0\\.625\\b"
+          "match": "\\b(?i)HSS16\\.000X0\\.500\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS18\\.000X0\\.750\\b"
+          "match": "\\b(?i)HSS16\\.000X0\\.625\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS18\\.000X0\\.875\\b"
+          "match": "\\b(?i)HSS16\\.000X0\\.750\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS18\\.000X1\\.000\\b"
+          "match": "\\b(?i)HSS16\\.000X0\\.875\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS16\\.000X1\\.000\\b"
         },
         {
           "name": "support.constant.section",
@@ -3523,15 +3407,15 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS18X18X1\\b"
-        },
-        {
-          "name": "support.constant.section",
           "match": "\\b(?i)HSS18X18X1/2\\b"
         },
         {
           "name": "support.constant.section",
           "match": "\\b(?i)HSS18X18X1/4\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS18X18X1\\b"
         },
         {
           "name": "support.constant.section",
@@ -3599,6 +3483,54 @@
         },
         {
           "name": "support.constant.section",
+          "match": "\\b(?i)HSS18\\.000X0\\.250\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS18\\.000X0\\.313\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS18\\.000X0\\.375\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS18\\.000X0\\.500\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS18\\.000X0\\.625\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS18\\.000X0\\.750\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS18\\.000X0\\.875\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS18\\.000X1\\.000\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS1\\.660X0\\.140\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS1\\.900X0\\.120\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS1\\.900X0\\.145\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS1\\.900X0\\.188\\b"
+        },
+        {
+          "name": "support.constant.section",
           "match": "\\b(?i)HSS2-1/2X1-1/2X1/4\\b"
         },
         {
@@ -3659,91 +3591,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS2\\.375X0\\.125\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS2\\.375X0\\.154\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS2\\.375X0\\.188\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS2\\.375X0\\.218\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS2\\.375X0\\.250\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS2\\.500X0\\.125\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS2\\.500X0\\.188\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS2\\.500X0\\.250\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS2\\.875X0\\.125\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS2\\.875X0\\.188\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS2\\.875X0\\.203\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS2\\.875X0\\.250\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS20\\.000X0\\.250\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS20\\.000X0\\.313\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS20\\.000X0\\.375\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS20\\.000X0\\.500\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS20\\.000X0\\.625\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS20\\.000X0\\.750\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS20\\.000X0\\.875\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS20\\.000X1\\.000\\b"
+          "match": "\\b(?i)HSS20X12X1/2\\b"
         },
         {
           "name": "support.constant.section",
           "match": "\\b(?i)HSS20X12X1\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS20X12X1/2\\b"
         },
         {
           "name": "support.constant.section",
@@ -3791,11 +3643,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS20X20X1\\b"
+          "match": "\\b(?i)HSS20X20X1/2\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS20X20X1/2\\b"
+          "match": "\\b(?i)HSS20X20X1\\b"
         },
         {
           "name": "support.constant.section",
@@ -3855,11 +3707,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS20X8X1\\b"
+          "match": "\\b(?i)HSS20X8X1/2\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS20X8X1/2\\b"
+          "match": "\\b(?i)HSS20X8X1\\b"
         },
         {
           "name": "support.constant.section",
@@ -3883,23 +3735,35 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS22\\.000X0\\.313\\b"
+          "match": "\\b(?i)HSS20\\.000X0\\.250\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS22\\.000X0\\.375\\b"
+          "match": "\\b(?i)HSS20\\.000X0\\.313\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS22\\.000X0\\.500\\b"
+          "match": "\\b(?i)HSS20\\.000X0\\.375\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS22\\.000X0\\.625\\b"
+          "match": "\\b(?i)HSS20\\.000X0\\.500\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS22\\.000X0\\.750\\b"
+          "match": "\\b(?i)HSS20\\.000X0\\.625\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS20\\.000X0\\.750\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS20\\.000X0\\.875\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS20\\.000X1\\.000\\b"
         },
         {
           "name": "support.constant.section",
@@ -4011,11 +3875,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS22X22X1\\b"
+          "match": "\\b(?i)HSS22X22X1/2\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS22X22X1/2\\b"
+          "match": "\\b(?i)HSS22X22X1\\b"
         },
         {
           "name": "support.constant.section",
@@ -4031,35 +3895,23 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS24\\.000X0\\.313\\b"
+          "match": "\\b(?i)HSS22\\.000X0\\.313\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS24\\.000X0\\.375\\b"
+          "match": "\\b(?i)HSS22\\.000X0\\.375\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS24\\.000X0\\.500\\b"
+          "match": "\\b(?i)HSS22\\.000X0\\.500\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS24\\.000X0\\.625\\b"
+          "match": "\\b(?i)HSS22\\.000X0\\.625\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS24\\.000X0\\.750\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS24\\.000X0\\.875\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS24\\.000X1\\.000\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS24X12X1\\b"
+          "match": "\\b(?i)HSS22\\.000X0\\.750\\b"
         },
         {
           "name": "support.constant.section",
@@ -4068,6 +3920,10 @@
         {
           "name": "support.constant.section",
           "match": "\\b(?i)HSS24X12X1/4\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS24X12X1\\b"
         },
         {
           "name": "support.constant.section",
@@ -4191,6 +4047,34 @@
         },
         {
           "name": "support.constant.section",
+          "match": "\\b(?i)HSS24\\.000X0\\.313\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS24\\.000X0\\.375\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS24\\.000X0\\.500\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS24\\.000X0\\.625\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS24\\.000X0\\.750\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS24\\.000X0\\.875\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS24\\.000X1\\.000\\b"
+        },
+        {
+          "name": "support.constant.section",
           "match": "\\b(?i)HSS26\\.000X0\\.313\\b"
         },
         {
@@ -4263,6 +4147,54 @@
         },
         {
           "name": "support.constant.section",
+          "match": "\\b(?i)HSS2\\.375X0\\.125\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS2\\.375X0\\.154\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS2\\.375X0\\.188\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS2\\.375X0\\.218\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS2\\.375X0\\.250\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS2\\.500X0\\.125\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS2\\.500X0\\.188\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS2\\.500X0\\.250\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS2\\.875X0\\.125\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS2\\.875X0\\.188\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS2\\.875X0\\.203\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS2\\.875X0\\.250\\b"
+        },
+        {
+          "name": "support.constant.section",
           "match": "\\b(?i)HSS3-1/2X1-1/2X1/4\\b"
         },
         {
@@ -4327,67 +4259,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS3\\.000X0\\.125\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS3\\.000X0\\.134\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS3\\.000X0\\.152\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS3\\.000X0\\.188\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS3\\.000X0\\.203\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS3\\.000X0\\.216\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS3\\.000X0\\.250\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS3\\.500X0\\.125\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS3\\.500X0\\.188\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS3\\.500X0\\.203\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS3\\.500X0\\.216\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS3\\.500X0\\.250\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS3\\.500X0\\.300\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS3\\.500X0\\.313\\b"
+          "match": "\\b(?i)HSS30X10X1/2\\b"
         },
         {
           "name": "support.constant.section",
           "match": "\\b(?i)HSS30X10X1\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS30X10X1/2\\b"
         },
         {
           "name": "support.constant.section",
@@ -4491,6 +4367,62 @@
         },
         {
           "name": "support.constant.section",
+          "match": "\\b(?i)HSS3\\.000X0\\.125\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS3\\.000X0\\.134\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS3\\.000X0\\.152\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS3\\.000X0\\.188\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS3\\.000X0\\.203\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS3\\.000X0\\.216\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS3\\.000X0\\.250\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS3\\.500X0\\.125\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS3\\.500X0\\.188\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS3\\.500X0\\.203\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS3\\.500X0\\.216\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS3\\.500X0\\.250\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS3\\.500X0\\.300\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS3\\.500X0\\.313\\b"
+        },
+        {
+          "name": "support.constant.section",
           "match": "\\b(?i)HSS4-1/2X4-1/2X1/2\\b"
         },
         {
@@ -4512,54 +4444,6 @@
         {
           "name": "support.constant.section",
           "match": "\\b(?i)HSS4-1/2X4-1/2X5/16\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS4\\.000X0\\.125\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS4\\.000X0\\.188\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS4\\.000X0\\.220\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS4\\.000X0\\.226\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS4\\.000X0\\.237\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS4\\.000X0\\.250\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS4\\.000X0\\.313\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS4\\.500X0\\.125\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS4\\.500X0\\.188\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS4\\.500X0\\.237\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS4\\.500X0\\.337\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS4\\.500X0\\.375\\b"
         },
         {
           "name": "support.constant.section",
@@ -4651,6 +4535,54 @@
         },
         {
           "name": "support.constant.section",
+          "match": "\\b(?i)HSS4\\.000X0\\.125\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS4\\.000X0\\.188\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS4\\.000X0\\.220\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS4\\.000X0\\.226\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS4\\.000X0\\.237\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS4\\.000X0\\.250\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS4\\.000X0\\.313\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS4\\.500X0\\.125\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS4\\.500X0\\.188\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS4\\.500X0\\.237\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS4\\.500X0\\.337\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS4\\.500X0\\.375\\b"
+        },
+        {
+          "name": "support.constant.section",
           "match": "\\b(?i)HSS5-1/2X5-1/2X1/4\\b"
         },
         {
@@ -4668,66 +4600,6 @@
         {
           "name": "support.constant.section",
           "match": "\\b(?i)HSS5-1/2X5-1/2X5/16\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS5\\.000X0\\.125\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS5\\.000X0\\.188\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS5\\.000X0\\.250\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS5\\.000X0\\.258\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS5\\.000X0\\.312\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS5\\.000X0\\.375\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS5\\.000X0\\.500\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS5\\.500X0\\.258\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS5\\.500X0\\.375\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS5\\.500X0\\.500\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS5\\.563X0\\.134\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS5\\.563X0\\.188\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS5\\.563X0\\.258\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS5\\.563X0\\.375\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS5\\.563X0\\.500\\b"
         },
         {
           "name": "support.constant.section",
@@ -4835,79 +4707,63 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS6\\.000X0\\.125\\b"
+          "match": "\\b(?i)HSS5\\.000X0\\.125\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS6\\.000X0\\.188\\b"
+          "match": "\\b(?i)HSS5\\.000X0\\.188\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS6\\.000X0\\.250\\b"
+          "match": "\\b(?i)HSS5\\.000X0\\.250\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS6\\.000X0\\.280\\b"
+          "match": "\\b(?i)HSS5\\.000X0\\.258\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS6\\.000X0\\.312\\b"
+          "match": "\\b(?i)HSS5\\.000X0\\.312\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS6\\.000X0\\.375\\b"
+          "match": "\\b(?i)HSS5\\.000X0\\.375\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS6\\.000X0\\.500\\b"
+          "match": "\\b(?i)HSS5\\.000X0\\.500\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS6\\.625X0\\.125\\b"
+          "match": "\\b(?i)HSS5\\.500X0\\.258\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS6\\.625X0\\.188\\b"
+          "match": "\\b(?i)HSS5\\.500X0\\.375\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS6\\.625X0\\.250\\b"
+          "match": "\\b(?i)HSS5\\.500X0\\.500\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS6\\.625X0\\.280\\b"
+          "match": "\\b(?i)HSS5\\.563X0\\.134\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS6\\.625X0\\.312\\b"
+          "match": "\\b(?i)HSS5\\.563X0\\.188\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS6\\.625X0\\.375\\b"
+          "match": "\\b(?i)HSS5\\.563X0\\.258\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS6\\.625X0\\.432\\b"
+          "match": "\\b(?i)HSS5\\.563X0\\.375\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS6\\.625X0\\.500\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS6\\.875X0\\.188\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS6\\.875X0\\.250\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS6\\.875X0\\.312\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)HSS6\\.875X0\\.375\\b"
+          "match": "\\b(?i)HSS5\\.563X0\\.500\\b"
         },
         {
           "name": "support.constant.section",
@@ -5031,47 +4887,79 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS7\\.000X0\\.125\\b"
+          "match": "\\b(?i)HSS6\\.000X0\\.125\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS7\\.000X0\\.188\\b"
+          "match": "\\b(?i)HSS6\\.000X0\\.188\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS7\\.000X0\\.250\\b"
+          "match": "\\b(?i)HSS6\\.000X0\\.250\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS7\\.000X0\\.312\\b"
+          "match": "\\b(?i)HSS6\\.000X0\\.280\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS7\\.000X0\\.375\\b"
+          "match": "\\b(?i)HSS6\\.000X0\\.312\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS7\\.000X0\\.500\\b"
+          "match": "\\b(?i)HSS6\\.000X0\\.375\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS7\\.500X0\\.188\\b"
+          "match": "\\b(?i)HSS6\\.000X0\\.500\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS7\\.500X0\\.250\\b"
+          "match": "\\b(?i)HSS6\\.625X0\\.125\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS7\\.500X0\\.312\\b"
+          "match": "\\b(?i)HSS6\\.625X0\\.188\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS7\\.500X0\\.375\\b"
+          "match": "\\b(?i)HSS6\\.625X0\\.250\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS7\\.500X0\\.500\\b"
+          "match": "\\b(?i)HSS6\\.625X0\\.280\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS6\\.625X0\\.312\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS6\\.625X0\\.375\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS6\\.625X0\\.432\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS6\\.625X0\\.500\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS6\\.875X0\\.188\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS6\\.875X0\\.250\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS6\\.875X0\\.312\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS6\\.875X0\\.375\\b"
         },
         {
           "name": "support.constant.section",
@@ -5187,27 +5075,47 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS8\\.625X0\\.188\\b"
+          "match": "\\b(?i)HSS7\\.000X0\\.125\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS8\\.625X0\\.250\\b"
+          "match": "\\b(?i)HSS7\\.000X0\\.188\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS8\\.625X0\\.322\\b"
+          "match": "\\b(?i)HSS7\\.000X0\\.250\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS8\\.625X0\\.375\\b"
+          "match": "\\b(?i)HSS7\\.000X0\\.312\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS8\\.625X0\\.500\\b"
+          "match": "\\b(?i)HSS7\\.000X0\\.375\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS8\\.625X0\\.625\\b"
+          "match": "\\b(?i)HSS7\\.000X0\\.500\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS7\\.500X0\\.188\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS7\\.500X0\\.250\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS7\\.500X0\\.312\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS7\\.500X0\\.375\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS7\\.500X0\\.500\\b"
         },
         {
           "name": "support.constant.section",
@@ -5339,27 +5247,27 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS9\\.625X0\\.188\\b"
+          "match": "\\b(?i)HSS8\\.625X0\\.188\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS9\\.625X0\\.250\\b"
+          "match": "\\b(?i)HSS8\\.625X0\\.250\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS9\\.625X0\\.312\\b"
+          "match": "\\b(?i)HSS8\\.625X0\\.322\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS9\\.625X0\\.375\\b"
+          "match": "\\b(?i)HSS8\\.625X0\\.375\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS9\\.625X0\\.500\\b"
+          "match": "\\b(?i)HSS8\\.625X0\\.500\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)HSS9\\.625X0\\.625\\b"
+          "match": "\\b(?i)HSS8\\.625X0\\.625\\b"
         },
         {
           "name": "support.constant.section",
@@ -5459,6 +5367,102 @@
         },
         {
           "name": "support.constant.section",
+          "match": "\\b(?i)HSS9\\.625X0\\.188\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS9\\.625X0\\.250\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS9\\.625X0\\.312\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS9\\.625X0\\.375\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS9\\.625X0\\.500\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)HSS9\\.625X0\\.625\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)IPE100\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)IPE120\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)IPE140\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)IPE160\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)IPE180\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)IPE200\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)IPE220\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)IPE240\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)IPE270\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)IPE300\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)IPE330\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)IPE360\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)IPE400\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)IPE450\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)IPE500\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)IPE550\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)IPE600\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)IPE80\\b"
+        },
+        {
+          "name": "support.constant.section",
           "match": "\\b(?i)M10X7\\.5\\b"
         },
         {
@@ -5471,11 +5475,7 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)M12\\.5X11\\.6\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)M12\\.5X12\\.4\\b"
+          "match": "\\b(?i)M12X10\\.8\\b"
         },
         {
           "name": "support.constant.section",
@@ -5483,11 +5483,15 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)M12X10\\.8\\b"
+          "match": "\\b(?i)M12X11\\.8\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)M12X11\\.8\\b"
+          "match": "\\b(?i)M12\\.5X11\\.6\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)M12\\.5X12\\.4\\b"
         },
         {
           "name": "support.constant.section",
@@ -5523,11 +5527,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)MT2\\.5X9\\.45\\b"
+          "match": "\\b(?i)MT2X3\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)MT2X3\\b"
+          "match": "\\b(?i)MT2\\.5X9\\.45\\b"
         },
         {
           "name": "support.constant.section",
@@ -5551,23 +5555,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)MT5X4\\b"
-        },
-        {
-          "name": "support.constant.section",
           "match": "\\b(?i)MT5X4\\.5\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)MT6\\.25X5\\.8\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)MT6\\.25X6\\.2\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)MT6X5\\b"
+          "match": "\\b(?i)MT5X4\\b"
         },
         {
           "name": "support.constant.section",
@@ -5576,6 +5568,18 @@
         {
           "name": "support.constant.section",
           "match": "\\b(?i)MT6X5\\.9\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)MT6X5\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)MT6\\.25X5\\.8\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)MT6\\.25X6\\.2\\b"
         },
         {
           "name": "support.constant.section",
@@ -5691,14 +5695,6 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)ST1\\.5X2\\.85\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)ST1\\.5X3\\.75\\b"
-        },
-        {
-          "name": "support.constant.section",
           "match": "\\b(?i)ST10X33\\b"
         },
         {
@@ -5735,7 +5731,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)ST2\\.5X5\\b"
+          "match": "\\b(?i)ST1\\.5X2\\.85\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)ST1\\.5X3\\.75\\b"
         },
         {
           "name": "support.constant.section",
@@ -5744,6 +5744,10 @@
         {
           "name": "support.constant.section",
           "match": "\\b(?i)ST2X4\\.75\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)ST2\\.5X5\\b"
         },
         {
           "name": "support.constant.section",
@@ -5903,11 +5907,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)W12X19\\b"
+          "match": "\\b(?i)W12X190\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)W12X190\\b"
+          "match": "\\b(?i)W12X19\\b"
         },
         {
           "name": "support.constant.section",
@@ -5935,11 +5939,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)W12X30\\b"
+          "match": "\\b(?i)W12X305\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)W12X305\\b"
+          "match": "\\b(?i)W12X30\\b"
         },
         {
           "name": "support.constant.section",
@@ -6051,11 +6055,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)W14X34\\b"
+          "match": "\\b(?i)W14X342\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)W14X342\\b"
+          "match": "\\b(?i)W14X34\\b"
         },
         {
           "name": "support.constant.section",
@@ -7411,14 +7415,6 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT2\\.5X8\\b"
-        },
-        {
-          "name": "support.constant.section",
-          "match": "\\b(?i)WT2\\.5X9\\.5\\b"
-        },
-        {
-          "name": "support.constant.section",
           "match": "\\b(?i)WT20X105\\.5\\b"
         },
         {
@@ -7532,6 +7528,14 @@
         {
           "name": "support.constant.section",
           "match": "\\b(?i)WT2X6\\.5\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)WT2\\.5X8\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)WT2\\.5X9\\.5\\b"
         },
         {
           "name": "support.constant.section",
@@ -7691,11 +7695,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT6X11\\b"
+          "match": "\\b(?i)WT6X115\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT6X115\\b"
+          "match": "\\b(?i)WT6X11\\b"
         },
         {
           "name": "support.constant.section",
@@ -7703,19 +7707,19 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT6X13\\b"
-        },
-        {
-          "name": "support.constant.section",
           "match": "\\b(?i)WT6X139\\.5\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT6X15\\b"
+          "match": "\\b(?i)WT6X13\\b"
         },
         {
           "name": "support.constant.section",
           "match": "\\b(?i)WT6X152\\.5\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)WT6X15\\b"
         },
         {
           "name": "support.constant.section",
@@ -7779,15 +7783,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT6X7\\b"
-        },
-        {
-          "name": "support.constant.section",
           "match": "\\b(?i)WT6X76\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT6X8\\b"
+          "match": "\\b(?i)WT6X7\\b"
         },
         {
           "name": "support.constant.section",
@@ -7795,7 +7795,7 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT6X9\\.5\\b"
+          "match": "\\b(?i)WT6X8\\b"
         },
         {
           "name": "support.constant.section",
@@ -7803,15 +7803,19 @@
         },
         {
           "name": "support.constant.section",
+          "match": "\\b(?i)WT6X9\\.5\\b"
+        },
+        {
+          "name": "support.constant.section",
           "match": "\\b(?i)WT7X105\\.5\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT7X11\\b"
+          "match": "\\b(?i)WT7X116\\.5\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT7X116\\.5\\b"
+          "match": "\\b(?i)WT7X11\\b"
         },
         {
           "name": "support.constant.section",
@@ -7827,15 +7831,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT7X15\\b"
-        },
-        {
-          "name": "support.constant.section",
           "match": "\\b(?i)WT7X155\\.5\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT7X17\\b"
+          "match": "\\b(?i)WT7X15\\b"
         },
         {
           "name": "support.constant.section",
@@ -7843,11 +7843,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT7X185\\b"
+          "match": "\\b(?i)WT7X17\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT7X19\\b"
+          "match": "\\b(?i)WT7X185\\b"
         },
         {
           "name": "support.constant.section",
@@ -7855,11 +7855,15 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT7X21\\.5\\b"
+          "match": "\\b(?i)WT7X19\\b"
         },
         {
           "name": "support.constant.section",
           "match": "\\b(?i)WT7X213\\b"
+        },
+        {
+          "name": "support.constant.section",
+          "match": "\\b(?i)WT7X21\\.5\\b"
         },
         {
           "name": "support.constant.section",
@@ -7883,11 +7887,11 @@
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT7X30\\.5\\b"
+          "match": "\\b(?i)WT7X302\\.5\\b"
         },
         {
           "name": "support.constant.section",
-          "match": "\\b(?i)WT7X302\\.5\\b"
+          "match": "\\b(?i)WT7X30\\.5\\b"
         },
         {
           "name": "support.constant.section",

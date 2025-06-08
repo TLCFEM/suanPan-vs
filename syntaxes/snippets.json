@@ -4380,6 +4380,15 @@
         "description": "newmark time integration with wilson penzien damping model",
         "prefix": "WilsonPenzienNewmark"
     },
+    "WAT2": {
+        "body": [
+            "integrator WAT2 ${1:(1)} ${2:[2]}",
+            "# (1) int, unique tag",
+            "# [2] double, parameter, default: 1/3"
+        ],
+        "description": "generalized explicit RKN time integration",
+        "prefix": "WAT2"
+    },
     "Yeoh": {
         "body": [
             "material Yeoh ${1:(1)} ${2:(2...)}",
