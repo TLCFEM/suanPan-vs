@@ -48,8 +48,8 @@ export function activate(context: vscode.ExtensionContext) {
 		const sp_verbose: boolean | undefined = sp_config.get('verbose');
 		const sp_docker: boolean | undefined = sp_config.get('docker');
 		const sp_image: string | undefined = sp_config.get('image');
-		let sp_path: string | undefined = sp_config.get('path');
-		let sp_pwd: string | undefined = sp_config.get('directory');
+		let sp_path: string = sp_config.get('path') || '';
+		let sp_pwd: string = sp_config.get('directory') || '';
 
 		if (!sp_docker) {
 			if (!sp_path) return vscode.window.showErrorMessage("suanPan executable not found. Please set the path in the settings.");
