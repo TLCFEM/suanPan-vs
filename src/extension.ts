@@ -26,6 +26,12 @@ function setPath() {
 	});
 }
 
+function ensureQuotes(path: string): string {
+	if (!path.startsWith('"')) path = `"${path}`;
+	if (!path.endsWith('"')) path += '"';
+	return path;
+}
+
 export function activate(context: vscode.ExtensionContext) {
 	setPath();
 
@@ -47,6 +53,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 		if (!sp_docker) {
 			if (!sp_path) return vscode.window.showErrorMessage("suanPan executable not found. Please set the path in the settings.");
+			sp_path = ensureQuotes(sp_path);
 		} else {
 			sp_path = "sp";
 		}
@@ -60,6 +67,8 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 		if (!sp_color) sp_path += " -nc";
 		if (sp_verbose) sp_path += " -vb";
+
+		sp_pwd = ensureQuotes(sp_pwd);
 
 		let command: string;
 		if (sp_docker) {
