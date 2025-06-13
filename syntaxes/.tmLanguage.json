@@ -202,6 +202,10 @@
           "match": "(?i)(?<=system_solver\\s+)(LAPACK|SPIKE|SUPERLU|MUMPS|LIS|CUDA|MAGMA|PARDISO|FGMRES)\\b"
         },
         {
+          "name": "string.unquoted",
+          "match": "(?i)(?<=terminal\\s+).*\\b"
+        },
+        {
           "name": "entity.name.tag",
           "match": "(?i)(\\s|^)-type[0-4]\\b"
         }
@@ -1132,6 +1136,10 @@
         {
           "name": "keyword.suspend",
           "match": "^suspend\\b"
+        },
+        {
+          "name": "keyword.terminal",
+          "match": "^terminal\\b"
         }
       ]
     },
