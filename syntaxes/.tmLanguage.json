@@ -819,7 +819,7 @@
         },
         {
           "name": "entity.name.type.material",
-          "match": "(?i)(?<=material\\s+)Subloading(1D|Metal)\\b"
+          "match": "(?i)(?<=material\\s+)Subloading(1D)?\\b"
         },
         {
           "name": "entity.name.type.material",
