@@ -4217,6 +4217,24 @@
         "description": "tchamwa explicit time integration",
         "prefix": "Tchamwa"
     },
+    "GSSE": {
+        "body": [
+            "integrator GSSE ${1:(1)} ${2:(2)}",
+            "# (1) int, unique integrator tag",
+            "# [2] double, spectral radius, default: 0.5"
+        ],
+        "description": "gsse explicit time integration",
+        "prefix": "GSSE"
+    },
+    "ICL": {
+        "body": [
+            "integrator ICL ${1:(1)} ${2:(2)}",
+            "# (1) int, unique integrator tag",
+            "# [2] double, spectral radius, default: 0.5"
+        ],
+        "description": "icl explicit time integration",
+        "prefix": "ICL"
+    },
     "Tie": {
         "body": [
             "element Tie ${1:(1)} ${2:(2)} ${3:(3)} [${4:(4)} ${5:(5)} ${6:(6)}...]",

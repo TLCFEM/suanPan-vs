@@ -559,11 +559,19 @@
         },
         {
           "name": "entity.name.type.integrator",
+          "match": "(?i)(?<=integrator\\s+)GSSE\\b"
+        },
+        {
+          "name": "entity.name.type.integrator",
           "match": "(?i)(?<=integrator\\s+)GSSSS(U0|V0|Optimal)\\b"
         },
         {
           "name": "entity.name.type.integrator",
           "match": "(?i)(?<=integrator\\s+)Generali[sz]edAlpha(Explicit)?\\b"
+        },
+        {
+          "name": "entity.name.type.integrator",
+          "match": "(?i)(?<=integrator\\s+)ICL\\b"
         },
         {
           "name": "entity.name.type.integrator",
