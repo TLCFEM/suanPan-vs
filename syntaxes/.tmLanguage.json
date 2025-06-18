@@ -1211,6 +1211,10 @@
         },
         {
           "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+\\s+)YF\\b"
+        },
+        {
+          "name": "string.unquoted",
           "match": "(?i)(?<=recorder.+\\s+)[EP]?EEQ\\b"
         },
         {
