@@ -911,6 +911,10 @@
         },
         {
           "name": "entity.name.type.section",
+          "match": "(?i)(?<=section\\s+)Bar[23]D\\b"
+        },
+        {
+          "name": "entity.name.type.section",
           "match": "(?i)(?<=section\\s+)Box[23]D\\b"
         },
         {
