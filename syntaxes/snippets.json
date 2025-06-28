@@ -1844,10 +1844,11 @@
     "ExpCC": {
         "body": [
             "material ExpCC ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:(10)} ${11:[11]}",
-            "# (1) nt, unique material tag",
+            "# (1) int, unique material tag",
             "# (2) double, elastic modulus",
             "# (3) double, poissons ratio",
-            "# (4) double, beta, controls compression side shapen# (5) double, m, slope of CSL",
+            "# (4) double, beta, controls compression side shape",
+            "# (5) double, m, slope of CSL",
             "# (6) double, p_t, initial tension strength",
             "# (7) double, a_0, initial a_0",
             "# (8) double, e_0, nitial void ratio",
