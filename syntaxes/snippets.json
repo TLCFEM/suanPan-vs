@@ -1851,7 +1851,7 @@
             "# (5) double, m, slope of CSL",
             "# (6) double, p_t, initial tension strength",
             "# (7) double, a_0, initial a_0",
-            "# (8) double, e_0, nitial void ratio",
+            "# (8) double, e_0, initial void ratio",
             "# (9) double, lambda",
             "# (10) double, kappa",
             "# [11] double, density, default: 0.0"
