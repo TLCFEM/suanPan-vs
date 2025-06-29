@@ -663,7 +663,7 @@
         },
         {
           "name": "entity.name.type.material",
-          "match": "(?i)(?<=material\\s+)Bilinear(1D|CC|DP|Elastic1D|Hoffman|J2|Mises1D|OO|Peric|PO|Viscosity)\\b"
+          "match": "(?i)(?<=material\\s+)Bilinear(1D|CC|DP|Elastic1D|Hoffman|TsaiWu|J2|Mises1D|OO|Peric|PO|Viscosity)\\b"
         },
         {
           "name": "entity.name.type.material",
