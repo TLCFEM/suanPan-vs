@@ -707,7 +707,7 @@
         },
         {
           "name": "entity.name.type.material",
-          "match": "(?i)(?<=material\\s+)Exp(CC|DP|Gurson(1D)?|Hoffman|J2|Mises1D)\\b"
+          "match": "(?i)(?<=material\\s+)Exp(CC|DP|Gurson(1D)?|Hoffman|TsaiWu|J2|Mises1D)\\b"
         },
         {
           "name": "entity.name.type.material",

@@ -1932,12 +1932,26 @@
             "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, E_{xy}, E_{yz}, E_{zx}",
             "# (8...10) double, three poissions ratios: v_{xx}, v_{yy}, v_{zz}",
             "# (11...19) double, nine yield stress",
-            "# (20) double, a",
-            "# (21) double, b",
+            "# (20) double, a, saturation",
+            "# (21) double, b, saturation rate",
             "# [22] double, density, default: 0.0"
         ],
         "description": "hoffman model with exponential isotropic hardening",
         "prefix": "ExpHoffman"
+    },
+    "ExpTsaiWu": {
+        "body": [
+            "material ExpTsaiWu ${1:(1)} ${2:(2...7)} ${3:(8...10)} ${4:(11...19)} ${5:(20)} ${6:(21)} ${7:[22]}",
+            "# (1) int, unique material tag",
+            "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, E_{xy}, E_{yz}, E_{zx}",
+            "# (8...10) double, three poissions ratios: v_{xx}, v_{yy}, v_{zz}",
+            "# (11...19) double, nine yield stress",
+            "# (20) double, a, saturation",
+            "# (21) double, b, saturation rate",
+            "# [22] double, density, default: 0.0"
+        ],
+        "description": "tsai-wu model with exponential isotropic hardening",
+        "prefix": "ExpTsaiWu"
     },
     "ExpJ2": {
         "body": [
