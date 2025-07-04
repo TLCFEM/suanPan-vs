@@ -510,8 +510,8 @@
         "body": [
             "material BilinearHoffman ${1:(1)} ${2:(2...7)} ${3:(8...10)} ${4:(11...19)} ${5:[20]} ${6:[21]}",
             "# (1) int, unique material tag",
-            "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, E_{xy}, E_{yz}, E_{zx}",
-            "# (8...10) double, three poissions ratios: v_{xy}, v_{yz}, v_{zx}",
+            "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, G_{xy}, G_{yz}, G_{zx}",
+            "# (8...10) double, three poissions ratios: v_{xy}, v_{yz}, v_{xz}",
             "# (11...19) double, nine yield stresses",
             "# [20] double, hardening ratio, default: 0.0",
             "# [21] double, density, default: 0.0"
@@ -523,8 +523,8 @@
         "body": [
             "material BilinearTsaiWu ${1:(1)} ${2:(2...7)} ${3:(8...10)} ${4:(11...19)} ${5:[20]} ${6:[21]}",
             "# (1) int, unique material tag",
-            "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, E_{xy}, E_{yz}, E_{zx}",
-            "# (8...10) double, three poissions ratios: v_{xy}, v_{yz}, v_{zx}",
+            "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, G_{xy}, G_{yz}, G_{zx}",
+            "# (8...10) double, three poissions ratios: v_{xy}, v_{yz}, v_{xz}",
             "# (11...19) double, nine yield stresses",
             "# [20] double, hardening ratio, default: 0.0",
             "# [21] double, density, default: 0.0"
@@ -1443,8 +1443,8 @@
         "body": [
             "material CustomHoffman ${1:(1)} ${2:(2...7)} ${3:(8...10)} ${4:(11...19)} ${5:(20)} ${6:[21]}",
             "# (1) int, unique material tag",
-            "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, E_{xy}, E_{yz}, E_{zx}",
-            "# (8...10) double, three poissions ratios: v_{xx}, v_{yy}, v_{zz}",
+            "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, G_{xy}, G_{yz}, G_{zx}",
+            "# (8...10) double, three poissions ratios: v_{xy}, v_{yz}, v_{xz}",
             "# (11...19) double, nine yield stress",
             "# (20) int, hardening expression tag",
             "# [21] double, density, default: 0.0"
@@ -1929,8 +1929,8 @@
         "body": [
             "material ExpHoffman ${1:(1)} ${2:(2...7)} ${3:(8...10)} ${4:(11...19)} ${5:(20)} ${6:(21)} ${7:[22]}",
             "# (1) int, unique material tag",
-            "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, E_{xy}, E_{yz}, E_{zx}",
-            "# (8...10) double, three poissions ratios: v_{xx}, v_{yy}, v_{zz}",
+            "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, G_{xy}, G_{yz}, G_{zx}",
+            "# (8...10) double, three poissions ratios: v_{xy}, v_{yz}, v_{xz}",
             "# (11...19) double, nine yield stress",
             "# (20) double, a, saturation",
             "# (21) double, b, saturation rate",
@@ -1943,8 +1943,8 @@
         "body": [
             "material ExpTsaiWu ${1:(1)} ${2:(2...7)} ${3:(8...10)} ${4:(11...19)} ${5:(20)} ${6:(21)} ${7:[22]}",
             "# (1) int, unique material tag",
-            "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, E_{xy}, E_{yz}, E_{zx}",
-            "# (8...10) double, three poissions ratios: v_{xx}, v_{yy}, v_{zz}",
+            "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, G_{xy}, G_{yz}, G_{zx}",
+            "# (8...10) double, three poissions ratios: v_{xy}, v_{yz}, v_{xz}",
             "# (11...19) double, nine yield stress",
             "# (20) double, a, saturation",
             "# (21) double, b, saturation rate",
@@ -4280,8 +4280,8 @@
         "body": [
             "material TimberPD ${1:(1)} ${2:(2...7)} ${3:(8...10)} ${4:(11...19)} ${5:(20...26)} ${6:[27]}",
             "# (1) int, unique material tag",
-            "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, E_{xy}, E_{yz}, E_{zx}",
-            "# (8...10) double, three poissions ratios: v_{xy}, v_{yz}, v_{zx}",
+            "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, G_{xy}, G_{yz}, G_{zx}",
+            "# (8...10) double, three poissions ratios: v_{xy}, v_{yz}, v_{xz}",
             "# (11...19) double, nine yield stresses",
             "# (20...26) double, hardening parameters",
             "# [27] double, density, default: 0.0"
