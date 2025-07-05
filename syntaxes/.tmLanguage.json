@@ -687,7 +687,7 @@
         },
         {
           "name": "entity.name.type.material",
-          "match": "(?i)(?<=material\\s+)Custom(CC|CDP|DP|Elastic1D|Gurson(1D)?|Hoffman|J2|Mises1D|Str(ain|ess)Degradation|Viscosity)\\b"
+          "match": "(?i)(?<=material\\s+)Custom(CC|CDP|DP|Elastic1D|Gurson(1D)?|Hoffman|TsaiWu|J2|Mises1D|Str(ain|ess)Degradation|Viscosity)\\b"
         },
         {
           "name": "entity.name.type.material",

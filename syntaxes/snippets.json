@@ -1452,6 +1452,19 @@
         "description": "hoffman model with custom isotropic hardening",
         "prefix": "CustomHoffman"
     },
+    "CustomTsaiWu": {
+        "body": [
+            "material CustomTsaiWu ${1:(1)} ${2:(2...7)} ${3:(8...10)} ${4:(11...19)} ${5:(20)} ${6:[21]}",
+            "# (1) int, unique material tag",
+            "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, G_{xy}, G_{yz}, G_{zx}",
+            "# (8...10) double, three poissions ratios: v_{xy}, v_{yz}, v_{xz}",
+            "# (11...19) double, nine yield stress",
+            "# (20) int, hardening expression tag",
+            "# [21] double, density, default: 0.0"
+        ],
+        "description": "tsai-wu model with custom isotropic hardening",
+        "prefix": "CustomTsaiWu"
+    },
     "CustomJ2": {
         "body": [
             "material CustomJ2 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:[6]}",
