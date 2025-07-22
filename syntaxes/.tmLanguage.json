@@ -859,11 +859,11 @@
         },
         {
           "name": "entity.name.type.material",
-          "match": "(?i)(?<=material\\s+)Yeoh\\b"
+          "match": "(?i)(?<=material\\s+)YLD0418P(ISO)?\\b"
         },
         {
           "name": "entity.name.type.material",
-          "match": "(?i)(?<=material\\s+)YLD0418P(ISO)?\\b"
+          "match": "(?i)(?<=material\\s+)Yeoh\\b"
         }
       ]
     },
