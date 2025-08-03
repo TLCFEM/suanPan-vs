@@ -4459,7 +4459,7 @@
     },
     "YLD0418P": {
         "body": [
-            "material YLD0418P ${1:(1)} ${2:(2...7)} ${3:(8...10)} ${4:(11...28)} ${5:(29)} ${6:(30)} ${7:(31)} ${8:[32]}",
+            "material YLD0418P ${1:(1)} ${2:(2...7)} ${3:(8...10)} ${4:(11...28)} ${5:(29)} ${6:(30)} ${7:(31)} ${8:(32)} ${9:(33)} ${10:[34]}",
             "# (1) int, unique material tag",
             "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, G_{xy}, G_{yz}, G_{zx}",
             "# (8...10) double, three poissions ratios: v_{xy}, v_{yz}, v_{xz}",
@@ -4467,14 +4467,16 @@
             "# (29) double, exponent",
             "# (30) double, reference stress",
             "# (31) int, hardening backbone expression tag",
-            "# [32] double, density, default: 0.0"
+            "# (32) double, kinematic hardening rate",
+            "# (33) double, kinematic hardening bound",
+            "# [34] double, density, default: 0.0"
         ],
         "description": "anisotropic yld0418p material",
         "prefix": "YLD0418P"
     },
     "YLD0418PISO": {
         "body": [
-            "material YLD0418PISO ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4...21)} ${5:(22)} ${6:(23)} ${7:(24)} ${8:[25]}",
+            "material YLD0418PISO ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4...21)} ${5:(22)} ${6:(23)} ${7:(24)} ${8:(25)} ${9:(26)} ${10:[27]}",
             "# (1) int, unique material tag",
             "# (2) double, elastic modulus",
             "# (3) double, poissions ratio",
@@ -4482,7 +4484,9 @@
             "# (22) double, exponent",
             "# (23) double, reference stress",
             "# (24) int, hardening backbone expression tag",
-            "# [25] double, density, default: 0.0"
+            "# (25) double, kinematic hardening rate",
+            "# (26) double, kinematic hardening bound",
+            "# [27] double, density, default: 0.0"
         ],
         "description": "isotropic yld0418p material",
         "prefix": "YLD0418PISO"
