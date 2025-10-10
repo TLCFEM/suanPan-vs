@@ -47,7 +47,8 @@ export function activate(context: vscode.ExtensionContext) {
 		const sp_color: boolean | undefined = sp_config.get('color');
 		const sp_verbose: boolean | undefined = sp_config.get('verbose');
 		const sp_docker: boolean | undefined = sp_config.get('docker');
-		const sp_image: string | undefined = sp_config.get('image');
+		const sp_image: string = sp_config.get('image') || 'tlcfem/suanpan';
+		let sp_cpus: number = sp_config.get('cpus') || 0;
 		let sp_path: string = sp_config.get('path') || '';
 		let sp_pwd: string = sp_config.get('directory') || '';
 
@@ -57,6 +58,9 @@ export function activate(context: vscode.ExtensionContext) {
 		} else {
 			sp_path = "sp";
 		}
+
+		const cpuCount = require('os').cpus().length;
+		if (sp_cpus <= 0 || sp_cpus > cpuCount) sp_cpus = cpuCount;
 
 		const delimiter = process.platform === "win32" ? "\\" : "/";
 
@@ -74,7 +78,7 @@ export function activate(context: vscode.ExtensionContext) {
 		if (sp_docker) {
 			if (sp_file_name === undefined) return vscode.window.showErrorMessage("File name not found.");
 
-			command = `docker run --rm -v ${sp_pwd}:/dirty -w /dirty ${sp_image || 'tlcfem/suanpan'} ${sp_path} -f ${sp_file_name}`;
+			command = `docker run --rm --cpus=${sp_cpus} -v ${sp_pwd}:/dirty -w /dirty ${sp_image} ${sp_path} -f ${sp_file_name}`;
 		} else {
 			command = process.platform === "win32" ? `cd ${sp_pwd}; ${sp_path} -f ${sp_file}` : `cd ${sp_pwd} && ${sp_path} -f ${sp_file}`;
 		}

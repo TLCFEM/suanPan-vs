@@ -58,6 +58,12 @@
           "description": "Run the model in a docker container.",
           "ignoreSync": true
         },
+        "suanpan.cpus": {
+          "type": "integer",
+          "default": 0,
+          "description": "Number of logical cores to use in docker. 0 means using all available cores.",
+          "ignoreSync": true
+        },
         "suanpan.image": {
           "type": "string",
           "default": "tlcfem/suanpan",
