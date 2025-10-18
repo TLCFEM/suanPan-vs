@@ -467,7 +467,7 @@
         },
         {
           "name": "entity.name.type.element",
-          "match": "(?i)(?<=element\\s+)NMB31\\b"
+          "match": "(?i)(?<=element\\s+)NMB[23]1\\b"
         },
         {
           "name": "entity.name.type.element",
