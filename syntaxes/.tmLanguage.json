@@ -667,6 +667,10 @@
         },
         {
           "name": "entity.name.type.material",
+          "match": "(?i)(?<=material\\s+)Balloon1D\\b"
+        },
+        {
+          "name": "entity.name.type.material",
           "match": "(?i)(?<=material\\s+)BlatzKo\\b"
         },
         {

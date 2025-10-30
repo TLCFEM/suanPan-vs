@@ -407,6 +407,26 @@
         "description": "bouc-wen-baber-noori model",
         "prefix": "BWBN"
     },
+    "Balloon1D": {
+        "body": [
+            "material Balloon1D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5 6 7 8)} ${6:(9 10 11 12)} ${7:(13 14 15 16)} ${8:(17 18 19 20)} ${9:(21 22 23 24)} ${10:(25 26)} ${11:(27 28)} ${12:(29 30)} ${13:[31]}",
+            "# (1) int, unique material tag",
+            "# (2) double, elastic modulus",
+            "# (3) double, k_r",
+            "# (4) double, load reversal memory size",
+            "# (5 6 7 8) double, u bound, initial, linear, saturation, rate",
+            "# (9 10 11 12) double, fm bound, initial, linear, saturation, rate",
+            "# (13 14 15 16) double, fc bound, initial, linear, saturation, rate",
+            "# (17 18 19 20) double, back stress bound, initial, linear, saturation, rate",
+            "# (21 22 23 24) double, similarity bound, initial, linear, saturation, rate",
+            "# (25 26) double, fc saturation, rate",
+            "# (27 28) double, back stress saturation, rate",
+            "# (29 30) double, similarity saturation, rate",
+            "# [31] double, density, default: 0.0"
+        ],
+        "description": "uniaxial balloon-v1 model",
+        "prefix": "Balloon1D"
+    },
     "Bar2D": {
         "body": [
             "section Bar2D ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]}",
