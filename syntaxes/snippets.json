@@ -409,7 +409,7 @@
     },
     "Balloon1D": {
         "body": [
-            "material Balloon1D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5 6 7 8)} ${6:(9 10 11 12)} ${7:(13 14 15 16)} ${8:(17 18 19 20)} ${9:(21 22 23 24)} ${10:(25 26)} ${11:(27 28)} ${12:(29 30)} ${13:[31]}",
+            "material Balloon1D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5 6 7 8)} ${6:(9 10 11 12)} ${7:(13 14 15 16)} ${8:(17 18 19 20)} ${9:(21 22 23 24)} ${10:(25)} ${11:[(26 27 28)...]}",
             "# (1) int, unique material tag",
             "# (2) double, elastic modulus",
             "# (3) double, k_r",
@@ -419,10 +419,9 @@
             "# (13 14 15 16) double, fc bound, initial, linear, saturation, rate",
             "# (17 18 19 20) double, back stress bound, initial, linear, saturation, rate",
             "# (21 22 23 24) double, similarity bound, initial, linear, saturation, rate",
-            "# (25 26) double, fc saturation, rate",
-            "# (27 28) double, back stress saturation, rate",
-            "# (29 30) double, similarity saturation, rate",
-            "# [31] double, density, default: 0.0"
+            "# (25) double, density",
+            "# (26) string, token, one of '-fc', '-ac', '-na', '-nd'",
+            "# (27 28) double, saturation, rate"
         ],
         "description": "uniaxial balloon-v1 model",
         "prefix": "Balloon1D"
@@ -1200,9 +1199,9 @@
     },
     "Combine": {
         "body": [
-            "amplitude Combine ${1:(1)} [${2:(2)}...]",
+            "amplitude Combine ${1:(1)} ${2:(2...)}",
             "# (1) int, unique amplitude tag",
-            "# [(2)...] int, tags of amplitude that need to be combined"
+            "# (2...) int, tags of amplitude that need to be combined"
         ],
         "description": "amplitude combining multiple amplitudes",
         "prefix": "Combine"
@@ -1357,11 +1356,11 @@
     },
     "Cosine": {
         "body": [
-            "amplitude Cosine ${1:(1)} ${2:(2)} ${3:(3)} [${4:(4)}...]",
+            "amplitude Cosine ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4...]}",
             "# (1) int, unique tag",
             "# (2) double, base period T_0",
             "# (3) double, amplitude at base period/frequency a_0",
-            "# [(4)...] double, optional amplitudes at higher periods a_i"
+            "# [4...] double, optional amplitudes at higher periods a_i"
         ],
         "description": "cosine amplitude",
         "prefix": "Cosine"
@@ -1826,10 +1825,10 @@
     },
     "ElementalLee": {
         "body": [
-            "modifier ElementalLee ${1:(1)} ${2:(2)} [${3:(3)}...]",
+            "modifier ElementalLee ${1:(1)} ${2:(2)} ${3:[3...]}",
             "# (1) int, unique modifier tag",
             "# (2) double, damping ratio",
-            "# [(3)...] int, element tags"
+            "# [3...] int, element tags"
         ],
         "description": "lee's elemental damping",
         "prefix": "ElementalLee"
@@ -2082,36 +2081,36 @@
     },
     "Fibre1D": {
         "body": [
-            "section Fibre1D ${1:(1)} [${2:(2)}...]",
+            "section Fibre1D ${1:(1)} ${2:(2...)}",
             "# (1) int, unique section tag",
-            "# [(2)...] int, associated section tags"
+            "# (2...) int, associated section tags"
         ],
         "description": "1d fibre section",
         "prefix": "Fibre1D"
     },
     "Fibre2D": {
         "body": [
-            "section Fibre2D ${1:(1)} [${2:(2)}...]",
+            "section Fibre2D ${1:(1)} ${2:(2...)}",
             "# (1) int, unique section tag",
-            "# [(2)...] int, associated section tags"
+            "# (2...) int, associated section tags"
         ],
         "description": "2d fibre section",
         "prefix": "Fibre2D"
     },
     "Fibre3D": {
         "body": [
-            "section Fibre3D ${1:(1)} [${2:(2)}...]",
+            "section Fibre3D ${1:(1)} ${2:(2...)}",
             "# (1) int, unique section tag",
-            "# [(2)...] int, associated section tags"
+            "# (2...) int, associated section tags"
         ],
         "description": "3d fibre section",
         "prefix": "Fibre3D"
     },
     "Fibre3DOS": {
         "body": [
-            "section Fibre3DOS ${1:(1)} [${2:(2)}...]",
+            "section Fibre3DOS ${1:(1)} ${2:(2...)}",
             "# (1) int, unique section tag",
-            "# [(2)...] int, associated section tags"
+            "# (2...) int, associated section tags"
         ],
         "description": "3d fibre open section",
         "prefix": "Fibre3DOS"
@@ -2565,10 +2564,10 @@
     },
     "LinearViscosity": {
         "body": [
-            "modifier LinearViscosity ${1:(1)} ${2:(2)} [${3:(3)}...]",
+            "modifier LinearViscosity ${1:(1)} ${2:(2)} ${3:(3...)}",
             "# (1) int, unique modifier tag",
             "# (2) double, \\mu",
-            "# [(3)...] int, element tags"
+            "# (3...) int, element tags"
         ],
         "description": "linear viscosity modifier",
         "prefix": "LinearViscosity"
@@ -2936,11 +2935,11 @@
     },
     "Modulated": {
         "body": [
-            "amplitude Modulated ${1:(1)} ${2:(2)} ${3:(3)} [${4:(4)}...]",
+            "amplitude Modulated ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4...]}",
             "# (1) int, unique tag",
             "# (2) double, base amplitude A_0",
             "# (3) double, first frequency \\omega_0",
-            "# [(4)...] double, optional frequencies for higher modes"
+            "# [4...] double, optional frequencies for higher modes"
         ],
         "description": "modulated amplitude",
         "prefix": "Modulated"
@@ -3083,7 +3082,7 @@
     },
     "NM2D3": {
         "body": [
-            "section NM2D3 ${1:(1)} ${2:(2...12)} [${13:(13)} ${14:(14)} ${15:(15)}) ...]",
+            "section NM2D3 ${1:(1)} ${2:(2...12)} [${13:(13)} ${14:(14)} ${15:(15)})...]",
             "# (1) int, unique section tag",
             "# (2) double, EA",
             "# (3) double, EI",
@@ -3105,7 +3104,7 @@
     },
     "NM2D3K": {
         "body": [
-            "section NM2D3K ${1:(1)} (2...14) [${15:(15)} ${16:(16)} ${17:(17)} ...]",
+            "section NM2D3K ${1:(1)} (2...14) [${15:(15)} ${16:(16)} ${17:(17)}...]",
             "# (1) int, unique section tag",
             "# (2) double, EA",
             "# (3) double, EI",
@@ -3304,7 +3303,7 @@
     },
     "NonviscousNewmark": {
         "body": [
-            "integrator NonviscousNewmark ${1:(1)} ${2:(2)} ${3:(3)} (${4:(4)} ${5:(5)})...",
+            "integrator NonviscousNewmark ${1:(1)} ${2:(2)} ${3:(3)} (${4:(4)} ${5:(5)}...)",
             "# (1) int, unique tag",
             "# (2) double, alpha, typical: 0.25",
             "# (3) double, beta, typical: 0.5",
@@ -3551,7 +3550,7 @@
     },
     "PolyElastic1D": {
         "body": [
-            "material PolyElastic1D ${1:(1)} [${2:(2)}...]",
+            "material PolyElastic1D ${1:(1)} ${2:(2...)}",
             "# (1) int, unique material tag",
             "# (2) double, polynomial parameters, a_n"
         ],
@@ -3571,12 +3570,12 @@
     },
     "PolyJ2": {
         "body": [
-            "material PolyJ2 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} [${5:(5)}...]",
+            "material PolyJ2 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5...)}",
             "# (1) int, unique material tag",
             "# (2) double, elastic modulus",
             "# (3) double, poisson's ratio",
             "# (4) double, density",
-            "# [(5)...] double, parameters in polynomial"
+            "# (5...) double, parameters in polynomial"
         ],
         "description": "j2 material with polynomial hardening",
         "prefix": "PolyJ2"
@@ -3922,11 +3921,11 @@
     },
     "Sine": {
         "body": [
-            "amplitude Sine ${1:(1)} ${2:(2)} ${3:(3)} [${4:(4)}...]",
+            "amplitude Sine ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4...]}",
             "# (1) int, unique tag",
             "# (2) double, base period T_0",
             "# (3) double, amplitude at base period/frequency a_0",
-            "# [(4)...] double, optional amplitudes at higher periods a_i"
+            "# [4...] double, optional amplitudes at higher periods a_i"
         ],
         "description": "sine amplitude",
         "prefix": "Sine"
@@ -4386,7 +4385,7 @@
     },
     "VAFCRP": {
         "body": [
-            "material VAFCRP ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} [${10:(10)} ${11:(11)...] ${12:[12]}",
+            "material VAFCRP ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} [${10:(10)} ${11:(11)}...] ${12:[12]}",
             "# the following applies to v3.6 and later only, see documentation for older syntax",
             "# (1) int, unique material tag",
             "# (2) double, elastic modulus",
@@ -4733,28 +4732,28 @@
     },
     "generatebyplane": {
         "body": [
-            "generatebyplane nodegroup ${1:(1)} [${2:(2)}...]",
+            "generatebyplane nodegroup ${1:(1)} ${2:(2...)}",
             "# (1) int, unique group tag",
-            "# [(2)...] double, parameters that define a plane"
+            "# (2...) double, parameters that define a plane"
         ],
         "description": "generate node groups based on plane",
         "prefix": "generatebyplane"
     },
     "generatebypoint": {
         "body": [
-            "generatebypoint nodegroup ${1:(1)} [${2:(2)}...]",
+            "generatebypoint nodegroup ${1:(1)} ${2:(2...)}",
             "# (1) int, unique group tag",
-            "# [(2)...] double, coordinates of two end points"
+            "# (2...) double, coordinates of two end points"
         ],
         "description": "generate node groups based on the line segment",
         "prefix": "generatebypoint"
     },
     "generatebyrule": {
         "body": [
-            "generatebyrule nodegroup ${1:(1)} ${2:(2)} [${3:(3)}...]",
+            "generatebyrule nodegroup ${1:(1)} ${2:(2)} ${3:(3...)}",
             "# (1) int, unique group tag",
             "# (2) int, DoF tag that polynomial shall be applied on",
-            "# [(3)...] double, parameters a_n, a_{n-1}, a_{n-2},..., a_0"
+            "# (3...) double, parameters a_n, a_{n-1}, a_{n-2},..., a_0"
         ],
         "description": "generate node groups by rule",
         "prefix": "generatebyrule"
