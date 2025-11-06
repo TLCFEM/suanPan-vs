@@ -2,14 +2,17 @@ import json
 from pathlib import Path
 
 
-def process(a):
-    b = []
-    for i in a.values():
-        command = "\n".join(i["body"])
-        b.append(
+def process(file: Path):
+    with open(file, "r") as f:
+        data = json.load(f)
+
+    item_list = []
+    for item in data.values():
+        command = "\n".join(item["body"])
+        item_list.append(
             {
-                "trigger": i["prefix"],
-                "details": i["description"],
+                "trigger": item["prefix"],
+                "details": item["description"],
                 "kind": "type"
                 if command.startswith(
                     (
@@ -30,30 +33,25 @@ def process(a):
                 "contents": command,
             }
         )
-    return b
+    return item_list
+
+
+def collect(folder: Path):
+    all_snippets = []
+    all_snippets.extend(process(folder / "snippets.json"))
+    all_snippets.extend(process(folder / "nz_sections.json"))
+    all_snippets.extend(process(folder / "eu_sections.json"))
+    all_snippets.extend(process(folder / "us_sections.json"))
+    return all_snippets
 
 
 if __name__ == "__main__":
     parent_folder = Path(__file__).parent.parent / "syntaxes"
 
-    with open(parent_folder / "snippets.json", "r") as f:
-        snippets = json.load(f)
-    with open(parent_folder / "nz_sections.json", "r") as f:
-        nz_sections = json.load(f)
-    with open(parent_folder / "eu_sections.json", "r") as f:
-        eu_sections = json.load(f)
-    with open(parent_folder / "us_sections.json", "r") as f:
-        us_sections = json.load(f)
-    all_snippets = (
-        process(snippets)
-        + process(nz_sections)
-        + process(eu_sections)
-        + process(us_sections)
-    )
     with open(parent_folder / "suanPan.sublime-completions", "w") as f:
         json.dump(
             {
-                "completions": all_snippets,
+                "completions": collect(parent_folder),
                 "scope": ["source.supan"],
             },
             f,
