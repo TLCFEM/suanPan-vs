@@ -1207,6 +1207,10 @@
         },
         {
           "name": "string.unquoted",
+          "match": "(?i)(?<=recorder.+\\s+)KAPPA[T|C]\\b"
+        },
+        {
+          "name": "string.unquoted",
           "match": "(?i)(?<=recorder.+\\s+)LITR\\b"
         },
         {
