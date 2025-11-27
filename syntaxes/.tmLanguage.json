@@ -87,7 +87,7 @@
         },
         {
           "name": "entity.name.tag",
-          "match": "(?i)(?<=^(fix2?|bc)\\s+\\d+\\s+)([1-6]|[XYZEP]|F?UR?[1-3]|RADIAL|AXIAL|RS|RW|DAMAGE|PRESSURE|TEMPERATURE|WARP)\\b"
+          "match": "(?i)(?<=^(fix2?|\\w+bc|cload)\\s+\\d+\\s+)([1-6]|[XYZEP]|F?UR?[1-3]|RADIAL|AXIAL|RS|RW|DAMAGE|PRESSURE|TEMPERATURE|WARP)\\b"
         },
         {
           "name": "entity.name.tag",
