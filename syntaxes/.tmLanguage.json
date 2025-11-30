@@ -463,11 +463,7 @@
         },
         {
           "name": "entity.name.type.element",
-          "match": "(?i)(?<=element\\s+)NM21(EL|EH)?\\b"
-        },
-        {
-          "name": "entity.name.type.element",
-          "match": "(?i)(?<=element\\s+)NMB[23]1\\b"
+          "match": "(?i)(?<=element\\s+)NMB[23]1(EL|EH)?\\b"
         },
         {
           "name": "entity.name.type.element",
@@ -951,7 +947,7 @@
         },
         {
           "name": "entity.name.type.section",
-          "match": "(?i)(?<=section\\s+)NM(2D[1-3]|3D[1-3]|[23]D3K)\\b"
+          "match": "(?i)(?<=section\\s+)NM([23]D[1-3]|[23]D3K)\\b"
         },
         {
           "name": "entity.name.type.section",
