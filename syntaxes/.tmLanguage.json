@@ -45,6 +45,12 @@
       "include": "#entities.orientation"
     },
     {
+      "include": "#entities.initial"
+    },
+    {
+      "include": "#entities.interaction"
+    },
+    {
       "include": "#entities.section"
     },
     {
@@ -312,6 +318,10 @@
         {
           "name": "entity.name.type.constraint",
           "match": "(?i)(?<=constraint\\s+|^)Sleeve[23]D\\b"
+        },
+        {
+          "name": "entity.name.type.constraint",
+          "match": "(?i)(?<=constraint\\s+|^)MolecularDynamics[23]D\\b"
         }
       ]
     },
@@ -512,6 +522,10 @@
         {
           "name": "entity.name.type.element",
           "match": "(?i)(?<=element\\s+)TranslationConnector[23]D\\b"
+        },
+        {
+          "name": "entity.name.type.element",
+          "match": "(?i)(?<=element\\s+)SphericalParticle[23]D\\b"
         }
       ]
     },
@@ -904,6 +918,26 @@
         {
           "name": "entity.name.type.orientation",
           "match": "(?i)(?<=orientation\\s+)B3D(OS)?[LC]\\b"
+        }
+      ]
+    },
+    "entities.initial": {
+      "patterns": [
+        {
+          "name": "entity.name.type.initial",
+          "match": "(?i)(?<=initial\\s+)(displacement|Velocity|acceleration)\\b"
+        }
+      ]
+    },
+    "entities.interaction": {
+      "patterns": [
+        {
+          "name": "entity.name.type.interaction",
+          "match": "(?i)(?<=interaction\\s+)Hertzian(Damped)?\\b"
+        },
+        {
+          "name": "entity.name.type.interaction",
+          "match": "(?i)(?<=interaction\\s+)FixedParticle\\b"
         }
       ]
     },
