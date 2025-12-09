@@ -925,7 +925,7 @@
       "patterns": [
         {
           "name": "entity.name.type.initial",
-          "match": "(?i)(?<=initial\\s+)(displacement|Velocity|acceleration)\\b"
+          "match": "(?i)(?<=initial\\s+)(displacement|velocity|acceleration)\\b"
         }
       ]
     },
