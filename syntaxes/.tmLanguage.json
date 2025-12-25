@@ -1233,11 +1233,11 @@
         },
         {
           "name": "string.unquoted",
-          "match": "(?i)(?<=recorder.+\\s+)K|M\\b"
+          "match": "(?i)(?<=recorder.+\\s+)[KM]\\b"
         },
         {
           "name": "string.unquoted",
-          "match": "(?i)(?<=recorder.+\\s+)KAPPA[T|C]\\b"
+          "match": "(?i)(?<=recorder.+\\s+)KAPPA[TC]\\b"
         },
         {
           "name": "string.unquoted",
