@@ -3333,6 +3333,30 @@
         "description": "newmark method with nonviscous damping",
         "prefix": "NonviscousNewmark"
     },
+    "UDDNewmark": {
+        "body": [
+            "integrator UDDNewmark ${1:(1)} ${2:(2)} ${3:(3)} (${4:(4)} ${5:(5)}...)",
+            "# (1) int, unique tag",
+            "# (2) double, alpha, typical: 0.25",
+            "# (3) double, beta, typical: 0.5",
+            "# (4) double, m",
+            "# (5) double, s"
+        ],
+        "description": "newmark method with uniform/universal damping (displacement)",
+        "prefix": "UDDNewmark"
+    },
+    "UDANewmark": {
+        "body": [
+            "integrator UDANewmark ${1:(1)} ${2:(2)} ${3:(3)} (${4:(4)} ${5:(5)}...)",
+            "# (1) int, unique tag",
+            "# (2) double, alpha, typical: 0.25",
+            "# (3) double, beta, typical: 0.5",
+            "# (4) double, m",
+            "# (5) double, s"
+        ],
+        "description": "newmark method with uniform/universal damping (acceleration)",
+        "prefix": "UDANewmark"
+    },
     "OALTS": {
         "body": [
             "integrator OALTS ${1:(1)} ${2:[2]}",
