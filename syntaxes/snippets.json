@@ -3323,36 +3323,42 @@
     },
     "NonviscousNewmark": {
         "body": [
-            "integrator NonviscousNewmark ${1:(1)} ${2:(2)} ${3:(3)} (${4:(4)} ${5:(5)}...)",
+            "integrator NonviscousNewmark ${1:(1)} ${2:(2)} ${3:(3)} (${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)}...)",
             "# (1) int, unique tag",
             "# (2) double, alpha, typical: 0.25",
             "# (3) double, beta, typical: 0.5",
-            "# (4) double, m",
-            "# (5) double, s"
+            "# (4) double, real part of m",
+            "# (5) double, imaginary part of m",
+            "# (6) double, real part of s",
+            "# (7) double, imaginary part of s"
         ],
         "description": "newmark method with nonviscous damping",
         "prefix": "NonviscousNewmark"
     },
     "UDDNewmark": {
         "body": [
-            "integrator UDDNewmark ${1:(1)} ${2:(2)} ${3:(3)} (${4:(4)} ${5:(5)}...)",
+            "integrator UDDNewmark ${1:(1)} ${2:(2)} ${3:(3)} (${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)}...)",
             "# (1) int, unique tag",
             "# (2) double, alpha, typical: 0.25",
             "# (3) double, beta, typical: 0.5",
-            "# (4) double, m",
-            "# (5) double, s"
+            "# (4) double, real part of m",
+            "# (5) double, imaginary part of m",
+            "# (6) double, real part of s",
+            "# (7) double, imaginary part of s"
         ],
         "description": "newmark method with uniform/universal damping (displacement)",
         "prefix": "UDDNewmark"
     },
     "UDANewmark": {
         "body": [
-            "integrator UDANewmark ${1:(1)} ${2:(2)} ${3:(3)} (${4:(4)} ${5:(5)}...)",
+            "integrator UDANewmark ${1:(1)} ${2:(2)} ${3:(3)} (${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)}...)",
             "# (1) int, unique tag",
             "# (2) double, alpha, typical: 0.25",
             "# (3) double, beta, typical: 0.5",
-            "# (4) double, m",
-            "# (5) double, s"
+            "# (4) double, real part of m",
+            "# (5) double, imaginary part of m",
+            "# (6) double, real part of s",
+            "# (7) double, imaginary part of s"
         ],
         "description": "newmark method with uniform/universal damping (acceleration)",
         "prefix": "UDANewmark"
