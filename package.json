@@ -15,7 +15,7 @@
   },
   "version": "0.1.11",
   "engines": {
-    "vscode": "^1.107.0"
+    "vscode": "^1.120.0"
   },
   "categories": [
     "Programming Languages"
@@ -125,21 +125,21 @@
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
-    "@types/node": "^25.0.3",
-    "@types/vscode": "^1.107.0",
-    "@typescript-eslint/eslint-plugin": "^8.51.0",
-    "@typescript-eslint/parser": "^8.51.0",
+    "@types/node": "^25.9.1",
+    "@types/vscode": "^1.120.0",
+    "@typescript-eslint/eslint-plugin": "^8.60.0",
+    "@typescript-eslint/parser": "^8.60.0",
     "@vscode/test-electron": "^2.5.2",
-    "@vscode/vsce": "^3.7.1",
-    "eslint": "^9.39.2",
-    "glob": "^13.0.0",
-    "mocha": "^11.7.5",
-    "typescript": "^5.9.3"
+    "@vscode/vsce": "^3.9.1",
+    "eslint": "^10.4.0",
+    "glob": "^13.0.6",
+    "mocha": "^11.7.6",
+    "typescript": "^6.0.3"
   },
   "overrides": {
     "css-what": "6.1.0"
   },
   "volta": {
-    "node": "22.19.0"
+    "node": "24.16.0"
   }
 }
