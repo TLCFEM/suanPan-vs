@@ -561,7 +561,7 @@
       "patterns": [
         {
           "name": "entity.name.type.integrator",
-          "match": "(?i)(?<=integrator\\s+)(Rayleigh|Lee(Elemental)?|WilsonPenzien|Nonviscous)?Newmark\\b"
+          "match": "(?i)(?<=integrator\\s+)(Rayleigh|Lee(Elemental)?|WilsonPenzien|Nonviscous|UDD|UDA)?Newmark\\b"
         },
         {
           "name": "entity.name.type.integrator",
