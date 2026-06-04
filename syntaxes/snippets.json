@@ -52,7 +52,7 @@
             "# (6) double, compression yield stress",
             "# (7) double, compression hardening modulus",
             "# (8) double, compression unloading modulus",
-            "# [9] double, non-negative degradation paramater, default: 0.0",
+            "# [9] double, non-negative degradation parameter, default: 0.0",
             "# [10] double, density, default: 0.0"
         ],
         "description": "asymmetrical friction connection",
@@ -69,7 +69,7 @@
             "# (6) double, compression yield stress",
             "# (7) double, compression hardening modulus",
             "# (8) double, compression unloading modulus",
-            "# [9] double, non-negative degradation paramater, default: 0.0",
+            "# [9] double, non-negative degradation parameter, default: 0.0",
             "# [10] double, density, default: 0.0"
         ],
         "description": "nonlinear version of afc",
@@ -1761,10 +1761,10 @@
     },
     "DuncanSelig": {
         "body": [
-            "material DuncanSelig ${1:(1) ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:(10)} ${11:[11]}",
+            "material DuncanSelig ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:(10)} ${11:[11]}",
             "# (1) int, unique material tag",
-            "# (2) double, reference atmospheric pressure, postive, p_a",
-            "# (3) double, reference elatic modulus, E_r",
+            "# (2) double, reference atmospheric pressure, positive, p_a",
+            "# (3) double, reference elastic modulus, E_r",
             "# (4) double, elastic modulus exponent, n",
             "# (5) double, reference bulk modulus, B_r",
             "# (6) double, bulk modulus exponent, m",
@@ -2821,9 +2821,9 @@
     },
     "MaxHistory": {
         "body": [
-            "criterion MaxHisotry ${1:(1)} ${2:(2)} ${3:(3)}",
+            "criterion MaxHistory ${1:(1)} ${2:(2)} ${3:(3)}",
             "# (1) int, unique criterion tag",
-            "# (2) string, history vairable type",
+            "# (2) string, history variable type",
             "# (3) double, limit"
         ],
         "description": "max history criterion",
@@ -2926,7 +2926,7 @@
             "# (2...5) int, node i, j, k, l",
             "# (6) int, material tag",
             "# (7) double, thickness",
-            "# [8] int, numer of integration points, default: 5"
+            "# [8] int, number of integration points, default: 5"
         ],
         "description": "mindlin plate element",
         "prefix": "Mindlin"
@@ -4617,7 +4617,7 @@
     "color_model": {
         "body": [
             "set color_model ${1:(1)}",
-            "# (1) string, color algorithm, one of WP, MIS and false"
+            "# (1) string, color algorithm, one of WP, MIS, and false"
         ],
         "description": "set coloring algorithm",
         "prefix": "color_model"
