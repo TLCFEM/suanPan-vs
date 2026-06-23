@@ -221,7 +221,7 @@
       "patterns": [
         {
           "name": "entity.name.type.amplitude",
-          "match": "(?i)(?<=amplitude\\s+)(Cos|S)ine\\b"
+          "match": "(?i)(?<=amplitude\\s+)(?:Cos|S)ine\\b"
         },
         {
           "name": "entity.name.type.amplitude",
@@ -285,7 +285,7 @@
         },
         {
           "name": "entity.name.type.constraint",
-          "match": "(?i)(?<=constraint\\s+|^)FixedLength[23]D|R[23]D2\\b"
+          "match": "(?i)(?<=constraint\\s+|^)(?:FixedLength[23]D|R[23]D2)\\b"
         },
         {
           "name": "entity.name.type.constraint",
@@ -485,7 +485,7 @@
         },
         {
           "name": "entity.name.type.element",
-          "match": "(?i)(?<=element\\s+)Patch(Quad|Cude)\\b"
+          "match": "(?i)(?<=element\\s+)Patch(?:Quad|Cube)\\b"
         },
         {
           "name": "entity.name.type.element",
@@ -641,7 +641,7 @@
       "patterns": [
         {
           "name": "entity.name.type.material",
-          "match": "(?i)(?<=material\\s+)(Iso|Ortho)tropicElastic3D\\b"
+          "match": "(?i)(?<=material\\s+)(?:Iso|Ortho)tropicElastic3D\\b"
         },
         {
           "name": "entity.name.type.material",
@@ -1057,7 +1057,7 @@
       "patterns": [
         {
           "name": "keyword.recorder",
-          "match": "^(plain|hdf5)?recorder\\b"
+          "match": "^(?:plain|hdf5)?recorder\\b"
         },
         {
           "name": "keyword.amplitude",
@@ -8165,7 +8165,7 @@
       "patterns": [
         {
           "name": "constant.language",
-          "match": "\\b(?i)(true|false)\\b"
+          "match": "(?i)\\b(?:true|false)\\b"
         },
         {
           "name": "constant.numeric",
