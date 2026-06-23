@@ -10,3 +10,4 @@ out
 package-lock.json
 pnpm-lock.yaml
 syntaxes/suanPan.sublime-completions
+syntaxes/suanPan.sublime-syntax
