@@ -483,6 +483,27 @@
     "global": {
       "patterns": [
         {
+          "begin": "(?i)^(converger)\\s+(fixednumber|logicand|logicor|logicxor)\\s+(\\d+)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "support.constant"
+            },
+            "3": {
+              "name": "variable"
+            }
+          },
+          "end": "$",
+          "patterns": [
+            {
+              "match": "\\d+",
+              "name": "variable"
+            }
+          ]
+        },
+        {
           "begin": "(?i)^(disable)\\s+(amplitude|constraint|converger|criterion|domain|element|expression|group|integrator|load|material|modifier|node|orientation|recorder|section|solver|step|print)\\b",
           "beginCaptures": {
             "1": {
@@ -776,7 +797,7 @@
               "name": "variable"
             }
           },
-          "match": "(?i)^(converger)\\s+(absresidual|relresidual|absincredisp|relincredisp|absincreacc|relincreacc|absdisp|reldisp|abserror|relerror|absincreenergy|relincreenergy|fixednumber|logicand|logicor|logicxor)\\s+(\\d+)\\b"
+          "match": "(?i)^(converger)\\s+(absresidual|relresidual|absincredisp|relincredisp|absincreacc|relincreacc|absdisp|reldisp|abserror|relerror|absincreenergy|relincreenergy)\\s+(\\d+)\\b"
         },
         {
           "captures": {
