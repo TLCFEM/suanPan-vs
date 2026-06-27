@@ -48,12 +48,16 @@ def collect(folder: Path):
 if __name__ == "__main__":
     parent_folder = Path(__file__).parent.parent / "syntaxes"
 
-    with open(parent_folder / "suanPan.sublime-completions", "w") as f:
-        json.dump(
+    target_folder = parent_folder / "../../suanPan/Enhancement"
+    if not target_folder.exists():
+        target_folder = parent_folder
+
+    (target_folder / "suanPan.sublime-completions").write_text(
+        json.dumps(
             {
                 "completions": collect(parent_folder),
                 "scope": ["source.supan"],
             },
-            f,
             indent=2,
         )
+    )

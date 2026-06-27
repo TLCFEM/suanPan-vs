@@ -95,7 +95,12 @@ if __name__ == "__main__":
     parent = Path(__file__).parent.parent / "syntaxes"
 
     sublime = convert_textmate_to_sublime((parent / "syntax.json").read_text())
-    (parent / "suanPan.sublime-syntax").write_text(
+
+    target_folder = parent / "../../suanPan/Enhancement"
+    if not target_folder.exists():
+        target_folder = parent
+
+    (target_folder / "suanPan.sublime-syntax").write_text(
         """%YAML 1.2
 ---
 """
