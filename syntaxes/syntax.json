@@ -1,0 +1,955 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "suanPan",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#variables"
+    },
+    {
+      "include": "#global"
+    },
+    {
+      "include": "#demo"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment",
+          "match": "!.*$"
+        },
+        {
+          "name": "comment",
+          "match": "^#.*$"
+        }
+      ]
+    },
+    "variables": {
+      "patterns": [
+        {
+          "name": "string",
+          "match": "(?i)\\btrue|false\\b"
+        },
+        {
+          "name": "constant.numeric",
+          "match": "(?i)\\b[-+]?[0-9]*\\.?[0-9]+([edf][-+]?[0-9]+)?\\b"
+        }
+      ]
+    },
+    "global": {
+      "patterns": [
+        {
+          "match": "(?i)^(node)\\s+(\\d+)\\b",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "variable"
+            }
+          }
+        },
+        {
+          "match": "(?i)^(domain)\\s+(\\d+)$",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "variable"
+            }
+          }
+        },
+        {
+          "match": "(?i)^(enable)\\s+(amplitude|constraint|converger|criterion|domain|element|expression|group|integrator|load|material|modifier|node|orientation|recorder|section|solver|step|all|print)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "support.constant"
+            }
+          },
+          "end": "$",
+          "patterns": [
+            {
+              "match": "\\d+",
+              "name": "variable"
+            }
+          ]
+        },
+        {
+          "match": "(?i)^(disable)\\s+(amplitude|constraint|converger|criterion|domain|element|expression|group|integrator|load|material|modifier|node|orientation|recorder|section|solver|step|print)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "support.constant"
+            }
+          },
+          "end": "$",
+          "patterns": [
+            {
+              "match": "\\d+",
+              "name": "variable"
+            }
+          ]
+        },
+        {
+          "match": "(?i)^(erase|delete|remove)\\s+(amplitude|constraint|converger|criterion|domain|element|expression|group|integrator|load|material|modifier|node|orientation|recorder|section|solver|step)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "support.constant"
+            }
+          },
+          "end": "$",
+          "patterns": [
+            {
+              "match": "\\d+",
+              "name": "variable"
+            }
+          ]
+        },
+        {
+          "match": "(?i)^(list)\\s+(amplitude|constraint|converger|criterion|element|expression|group|integrator|load|material|modifier|node|orientation|recorder|section|solver|step)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "support.constant"
+            }
+          },
+          "end": "$",
+          "patterns": [
+            {
+              "match": "\\d+",
+              "name": "variable"
+            }
+          ]
+        },
+        {
+          "match": "(?i)^(protect)\\s+(element|node)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "support.constant"
+            }
+          },
+          "end": "$",
+          "patterns": [
+            {
+              "match": "\\d+",
+              "name": "variable"
+            }
+          ]
+        },
+        {
+          "match": "(?i)^(save)\\s+(recorder)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "support.constant"
+            }
+          },
+          "end": "$",
+          "patterns": [
+            {
+              "match": "\\d+",
+              "name": "variable"
+            }
+          ]
+        },
+        {
+          "match": "(?i)^(save)\\s+(stiffness|mass|damping|model)\\s+(\\S+)$",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "support.constant"
+            },
+            "3": {
+              "name": "string"
+            }
+          }
+        },
+        {
+          "match": "(?i)^(set)\\s+(output_folder|num_threads|num_nodes|screen_output|verbose_output|color_model|constraint_multiplier|load_multiplier|linear_system|fixed_step_size|symm_mat|band_mat|sparse_mat|iterative_refinement|system_solver|sub_system_solver|precision|tolerance|fgmres_tolerance|ini_step_size|min_step_size|max_step_size|max_iteration|eigen_number)\\b",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "support.constant"
+            }
+          }
+        },
+        {
+          "match": "(?i)^(suspend)\\s+(constraint|load)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "support.constant"
+            }
+          },
+          "end": "$",
+          "patterns": [
+            {
+              "match": "\\d+",
+              "name": "variable"
+            }
+          ]
+        },
+        {
+          "match": "(?i)^(use)\\s+(integrator|solver|converger)\\s+(\\d+)$",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "support.constant"
+            },
+            "3": {
+              "name": "variable"
+            }
+          }
+        },
+        {
+          "match": "(?i)^(amplitude)\\s+(constant|ramp|tabular|tabularspline|decay|linear|combine|custom|modulated|sine|cosine|nzstrongmotion)\\s+(\\d+)\\b",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "entity.name.type"
+            },
+            "3": {
+              "name": "variable"
+            }
+          }
+        },
+        {
+          "match": "(?i)^(converger)\\s+(absresidual|relresidual|absincredisp|relincredisp|absincreacc|relincreacc|absdisp|reldisp|abserror|relerror|absincreenergy|relincreenergy|fixednumber|logicand|logicor|logicxor)\\s+(\\d+)\\b",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "entity.name.type"
+            },
+            "3": {
+              "name": "variable"
+            }
+          }
+        },
+        {
+          "match": "(?i)^(criterion)\\s+(\\w+)\\s+(\\d+)\\b",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "entity.name.type"
+            },
+            "3": {
+              "name": "variable"
+            }
+          }
+        },
+        {
+          "match": "(?i)^(element)\\s+(allman|b21|b21eh|b21el|b21h|b31|b31os|c3d20|c3d4|c3d8|c3d8i|c3d8r|cax3|cax4|cax8|cin3d8|cinp4|contact2d|contact3d|cp3|cp4|cp4i|cp4r|cp5|cp6|cp7|cp8|cpe8|cpe8r|cps8|csmq4|csmq5|csmq6|csmq7|csmq8|csmt3|csmt6|damper01|damper02|damper03|damper04|damper05|damper06|dc3d4|dc3d8|dcp3|dcp4|dkt3|dkt4|dkts3|eb21|eb31os|embedded2d|embedded3d|f21|f21h|f31|gcmq|gcmqg|gcmqi|gcmql|gq12|joint|mass|mass2d|mass3d|masspoint2d|masspoint3d|mindlin|mvlem|nmb21|nmb21eh|nmb21el|nmb31|patchcube|patchquad|pcpe4dc|pcpe4uc|pcpe8dc|pcpe8uc|ps|qe2|s4|sgcmqg|sgcmqi|sgcmql|sgcms|singlesection2d|singlesection3d|sphericalparticle2d|sphericalparticle3d|spring01|spring02|t2d2|t2d2s|t3d2|t3d2s|tie|translationconnector2d|translationconnector3d)\\s+(\\d+)\\b",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "entity.name.type"
+            },
+            "3": {
+              "name": "variable"
+            }
+          }
+        },
+        {
+          "match": "(?i)^(expression)\\s+(simplescalar|simplevector)\\s+(\\d+)\\s+(.+)\\b",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "entity.name.type"
+            },
+            "3": {
+              "name": "variable"
+            },
+            "4": {
+              "name": "string"
+            }
+          }
+        },
+        {
+          "match": "(?i)^(import)\\s+(\\S+)$",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "string"
+            }
+          }
+        },
+        {
+          "match": "(?i)^(initial)\\s+(material|displacement|disp|velocity|vel|acceleration|acc|angularvelocity|avel)\\b",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "support.constant"
+            }
+          }
+        },
+        {
+          "match": "(?i)^(integrator)\\s+(newmark|rayleighnewmark|leenewmark|leenewmarkiterative|leelementalnewmark|leenewmarkfulltrial|leenewmarkfullcurrent|leenewmarkfull|leenewmarkfullInitial|wilsonpenziennewmark|nonviscousnewmark|uddnewmark|udanewmark|generalizedalpha|generalisedalpha|gssssu0|gssssv0|gssssoptimal|oalts|bathetwostep|tchamwa|batheexplicit|icl|gsse|wat2|generalizedalphaexplicit|generalisedalphaexplicit)\\s+(\\d+)\\b",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "entity.name.type"
+            },
+            "3": {
+              "name": "variable"
+            }
+          }
+        },
+        {
+          "match": "(?i)^(material)\\s+(afc|afc01|afc02|afcs|afc03|afcn|afco1d|armstrongfrederick|armstrongfrederick1d|asymmelastic1d|axisymmetric|axisymmetricelastic|balloon|balloon1d|bilinear1d|bilinearcc|bilineardp|bilinearelastic1d|bilinearhoffman|bilinearj2|bilinearmises1d|bilinearoo|bilinearperic|bilinearpo|bilineartsuiwu|bilinearviscosity|blatzko|boucwen|bwbn|cdp|cdpm2|cdpm2iso|cdpm2aniso|cdpm2no|concrete21|concrete22|concretecm|concreteexp|concretek4|concretetable|concretetsai|coulombfriction|customcc|customcdp|customdp|customelastic1d|customgurson|customgurson1d|customhoffman|customj2|custommises1d|customstraindegradation|customstressdegradation|customtsuiwu|customviscosity|dafaliasmanzari|dhakal|duncanselig|elastic1d|elastic2d|elastic3d|isotropicelastic3d|elasticos|expcc|expdp|expgurson|expgurson1d|exporthotropic|expj2|expmises1d|exptsuiwu|flag01|flag02|fluid|gap01|kelvin|laminated|lineardamage|maxwell|mooneyrivlin|mpf|multilinearelastic1d|multilinearj2|multilinearmises1d|multilinearoo|multilinearpo|multisubloading1d|nle1d01|nle3d01|nonviscous01|orthotropicelastic3d|os146|os146s|paraboliccc|parallel|planestrain|planestress|planesymmetric13|planesymmetric23|polyelastic1d|polyj2|prestrain|rambergosgood|rebar2d|rebar3d|rotation2d|rotation3d|sequential|simplesand|sinh1d|sliplock|stacked|steelbrb|subloading|subloading1d|subloadingviscous1d|substepping|tablecdp|tablegurson|tanh1d|timberpd|trilinearstraindegradation|trivial|uniaxial|vafcrp|vafcrp1d|viscosity01|viscosity02|yeoh|yld0418p|yld0418piso)\\s+(\\d+)\\b",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "entity.name.type"
+            },
+            "3": {
+              "name": "variable"
+            }
+          }
+        },
+        {
+          "match": "(?i)^(modifier)\\s+(lumpedsimple|lumpedscale|rayleigh|elementallee|linearviscosity|elementalmodal|elementalnonviscous|elementalnonviscousgroup)\\s+(\\d+)\\b",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "entity.name.type"
+            },
+            "3": {
+              "name": "variable"
+            }
+          }
+        },
+        {
+          "match": "(?i)^(orientation)\\s+(B3DL|B3DC|B3DOSL|B3DOSC)\\s+(\\d+)\\b",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "entity.name.type"
+            },
+            "3": {
+              "name": "variable"
+            }
+          }
+        },
+        {
+          "match": "(?i)^(section)\\s+(\\w+)\\s+(\\d+)\\b",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "entity.name.type"
+            },
+            "3": {
+              "name": "variable"
+            }
+          }
+        },
+        {
+          "match": "(?i)^(solver)\\s+(newton|modifiednewton|mnewton|aicn|bfgs|lbfgs|feast|quadraticfeast|displacementcontrol|mpdc|ramm)\\s+(\\d+)\\b",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "entity.name.type"
+            },
+            "3": {
+              "name": "variable"
+            }
+          }
+        },
+        {
+          "match": "(?i)^(step)\\s+(frequency|(?:buckl(?:ing|e))|(?:optimi[sz]ation)|static|(?:(?:implicit)?dynamic|explicitdynamic)|arclength)\\s+(\\d+)\\b",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "entity.name.type"
+            },
+            "3": {
+              "name": "variable"
+            }
+          }
+        },
+        {
+          "match": "(?i)^(constraint)\\s+(embed2d|embed3d|finiterestitutionwall|finiterestitutionwallpenalty|finiterigidwall|finiterigidwallpenalty|finiterigidwallmultiplier|fix|penaltybc|fix2|multiplierbc|fixedlength2d|r2d2|fixedlength3d|r3d2|groupmultiplierbc|grouppenaltybc|linearspring2d|ljpotential2d|maximumforce2d|maxforce2d|maximumforce3d|maxforce3d|maximumgap2d|maxgap2d|maximumgap3d|maxgap3d|minimumgap2d|mingap2d|minimumgap3d|mingap3d|mpc|nodefacet|nodeline|moleculardynamics2d|moleculardynamics3d|particlecollision2d|particlecollision3d|restitutionwall|restitutionwallpenalty|rigidwall|rigidwallpenalty|rigidwallmultiplier|sleeve2d|sleeve3d)\\s+(\\d+)\\b",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "entity.name.type"
+            },
+            "3": {
+              "name": "variable"
+            }
+          }
+        },
+        {
+          "match": "(?i)^(load)\\s+(acceleration|bodyforce|cload|disp|displacement|dispload|groupbodyforce|groupcload|groupdisp|groupdisplacement|groupdispload|lineudl2d|lineudl3d|referenceload|refload|refforce|supportacceleration|supportdisplacement|supportvelocity)\\s+(\\d+)\\s+(\\d+)\\b",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "entity.name.type"
+            },
+            "3": {
+              "name": "variable"
+            },
+            "4": {
+              "name": "support.constant"
+            }
+          }
+        },
+        {
+          "begin": "(?i)^(peek)\\s+(node|element|material|constraint|recorder|solver|integrator|group|nodegroup|amplitude|expression|eigenvalue|output_folder|num_threads|num_nodes|statistics|stats)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "support.constant"
+            }
+          },
+          "end": "$",
+          "patterns": [
+            {
+              "match": "\\d+",
+              "name": "variable"
+            }
+          ]
+        },
+        {
+          "match": "(?i)^(analyze|analyse)\\s+(.+)?$",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "string"
+            }
+          }
+        },
+        {
+          "name": "entity.name.tag",
+          "match": "(?i)^exit|quit|overview|qrcode|command|example|precheck|fullname|benchmark|clear|reset|summary|license|version$"
+        },
+        {
+          "match": "(?i)^(file)\\s+(\\S+)$",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "string"
+            }
+          }
+        }
+      ]
+    },
+    "demo": {
+      "patterns": [
+        {
+          "match": "^comment$",
+          "name": "comment"
+        },
+        {
+          "match": "^comment\\.block$",
+          "name": "comment.block"
+        },
+        {
+          "match": "^comment\\.block\\.documentation$",
+          "name": "comment.block.documentation"
+        },
+        {
+          "match": "^comment\\.line$",
+          "name": "comment.line"
+        },
+        {
+          "match": "^comment\\.line\\.double-dash$",
+          "name": "comment.line.double-dash"
+        },
+        {
+          "match": "^comment\\.line\\.double-slash$",
+          "name": "comment.line.double-slash"
+        },
+        {
+          "match": "^comment\\.line\\.number-sign$",
+          "name": "comment.line.number-sign"
+        },
+        {
+          "match": "^comment\\.line\\.percentage$",
+          "name": "comment.line.percentage"
+        },
+        {
+          "match": "^constant$",
+          "name": "constant"
+        },
+        {
+          "match": "^constant\\.character$",
+          "name": "constant.character"
+        },
+        {
+          "match": "^constant\\.character\\.escape$",
+          "name": "constant.character.escape"
+        },
+        {
+          "match": "^constant\\.language$",
+          "name": "constant.language"
+        },
+        {
+          "match": "^constant\\.numeric$",
+          "name": "constant.numeric"
+        },
+        {
+          "match": "^constant\\.other$",
+          "name": "constant.other"
+        },
+        {
+          "match": "^constant\\.regexp$",
+          "name": "constant.regexp"
+        },
+        {
+          "match": "^constant\\.rgb-value$",
+          "name": "constant.rgb-value"
+        },
+        {
+          "match": "^constant\\.sha\\.git-rebase$",
+          "name": "constant.sha.git-rebase"
+        },
+        {
+          "match": "^emphasis$",
+          "name": "emphasis"
+        },
+        {
+          "match": "^entity$",
+          "name": "entity"
+        },
+        {
+          "match": "^entity\\.name$",
+          "name": "entity.name"
+        },
+        {
+          "match": "^entity\\.name\\.class$",
+          "name": "entity.name.class"
+        },
+        {
+          "match": "^entity\\.name\\.function$",
+          "name": "entity.name.function"
+        },
+        {
+          "match": "^entity\\.name\\.method$",
+          "name": "entity.name.method"
+        },
+        {
+          "match": "^entity\\.name\\.section$",
+          "name": "entity.name.section"
+        },
+        {
+          "match": "^entity\\.name\\.selector$",
+          "name": "entity.name.selector"
+        },
+        {
+          "match": "^entity\\.name\\.tag$",
+          "name": "entity.name.tag"
+        },
+        {
+          "match": "^entity\\.name\\.type$",
+          "name": "entity.name.type"
+        },
+        {
+          "match": "^entity\\.other$",
+          "name": "entity.other"
+        },
+        {
+          "match": "^entity\\.other\\.attribute-name$",
+          "name": "entity.other.attribute-name"
+        },
+        {
+          "match": "^entity\\.other\\.inherited-class$",
+          "name": "entity.other.inherited-class"
+        },
+        {
+          "match": "^header$",
+          "name": "header"
+        },
+        {
+          "match": "^invalid$",
+          "name": "invalid"
+        },
+        {
+          "match": "^invalid\\.deprecated$",
+          "name": "invalid.deprecated"
+        },
+        {
+          "match": "^invalid\\.illegal$",
+          "name": "invalid.illegal"
+        },
+        {
+          "match": "^keyword$",
+          "name": "keyword"
+        },
+        {
+          "match": "^keyword\\.control$",
+          "name": "keyword.control"
+        },
+        {
+          "match": "^keyword\\.control\\.less$",
+          "name": "keyword.control.less"
+        },
+        {
+          "match": "^keyword\\.operator$",
+          "name": "keyword.operator"
+        },
+        {
+          "match": "^keyword\\.operator\\.new$",
+          "name": "keyword.operator.new"
+        },
+        {
+          "match": "^keyword\\.other$",
+          "name": "keyword.other"
+        },
+        {
+          "match": "^keyword\\.other\\.unit$",
+          "name": "keyword.other.unit"
+        },
+        {
+          "match": "^markup$",
+          "name": "markup"
+        },
+        {
+          "match": "^markup\\.bold$",
+          "name": "markup.bold"
+        },
+        {
+          "match": "^markup\\.changed$",
+          "name": "markup.changed"
+        },
+        {
+          "match": "^markup\\.deleted$",
+          "name": "markup.deleted"
+        },
+        {
+          "match": "^markup\\.heading$",
+          "name": "markup.heading"
+        },
+        {
+          "match": "^markup\\.inline\\.raw$",
+          "name": "markup.inline.raw"
+        },
+        {
+          "match": "^markup\\.inserted$",
+          "name": "markup.inserted"
+        },
+        {
+          "match": "^markup\\.italic$",
+          "name": "markup.italic"
+        },
+        {
+          "match": "^markup\\.list$",
+          "name": "markup.list"
+        },
+        {
+          "match": "^markup\\.list\\.numbered$",
+          "name": "markup.list.numbered"
+        },
+        {
+          "match": "^markup\\.list\\.unnumbered$",
+          "name": "markup.list.unnumbered"
+        },
+        {
+          "match": "^markup\\.other$",
+          "name": "markup.other"
+        },
+        {
+          "match": "^markup\\.punctuation\\.list\\.beginning$",
+          "name": "markup.punctuation.list.beginning"
+        },
+        {
+          "match": "^markup\\.punctuation\\.quote\\.beginning$",
+          "name": "markup.punctuation.quote.beginning"
+        },
+        {
+          "match": "^markup\\.quote$",
+          "name": "markup.quote"
+        },
+        {
+          "match": "^markup\\.raw$",
+          "name": "markup.raw"
+        },
+        {
+          "match": "^markup\\.underline$",
+          "name": "markup.underline"
+        },
+        {
+          "match": "^markup\\.underline\\.link$",
+          "name": "markup.underline.link"
+        },
+        {
+          "match": "^meta$",
+          "name": "meta"
+        },
+        {
+          "match": "^meta\\.cast$",
+          "name": "meta.cast"
+        },
+        {
+          "match": "^meta\\.parameter\\.type\\.variable$",
+          "name": "meta.parameter.type.variable"
+        },
+        {
+          "match": "^meta\\.preprocessor$",
+          "name": "meta.preprocessor"
+        },
+        {
+          "match": "^meta\\.preprocessor\\.numeric$",
+          "name": "meta.preprocessor.numeric"
+        },
+        {
+          "match": "^meta\\.preprocessor\\.string$",
+          "name": "meta.preprocessor.string"
+        },
+        {
+          "match": "^meta\\.return-type$",
+          "name": "meta.return-type"
+        },
+        {
+          "match": "^meta\\.selector$",
+          "name": "meta.selector"
+        },
+        {
+          "match": "^meta\\.structure\\.dictionary\\.key\\.python$",
+          "name": "meta.structure.dictionary.key.python"
+        },
+        {
+          "match": "^meta\\.tag$",
+          "name": "meta.tag"
+        },
+        {
+          "match": "^meta\\.type\\.annotation$",
+          "name": "meta.type.annotation"
+        },
+        {
+          "match": "^meta\\.type\\.name$",
+          "name": "meta.type.name"
+        },
+        {
+          "match": "^metatag\\.php$",
+          "name": "metatag.php"
+        },
+        {
+          "match": "^storage$",
+          "name": "storage"
+        },
+        {
+          "match": "^storage\\.modifier$",
+          "name": "storage.modifier"
+        },
+        {
+          "match": "^storage\\.modifier\\.import\\.java$",
+          "name": "storage.modifier.import.java"
+        },
+        {
+          "match": "^storage\\.modifier\\.package\\.java$",
+          "name": "storage.modifier.package.java"
+        },
+        {
+          "match": "^storage\\.type$",
+          "name": "storage.type"
+        },
+        {
+          "match": "^storage\\.type\\.cs$",
+          "name": "storage.type.cs"
+        },
+        {
+          "match": "^storage\\.type\\.java$",
+          "name": "storage.type.java"
+        },
+        {
+          "match": "^string$",
+          "name": "string"
+        },
+        {
+          "match": "^string\\.html$",
+          "name": "string.html"
+        },
+        {
+          "match": "^string\\.interpolated$",
+          "name": "string.interpolated"
+        },
+        {
+          "match": "^string\\.jade$",
+          "name": "string.jade"
+        },
+        {
+          "match": "^string\\.other$",
+          "name": "string.other"
+        },
+        {
+          "match": "^string\\.quoted$",
+          "name": "string.quoted"
+        },
+        {
+          "match": "^string\\.quoted\\.double$",
+          "name": "string.quoted.double"
+        },
+        {
+          "match": "^string\\.quoted\\.other$",
+          "name": "string.quoted.other"
+        },
+        {
+          "match": "^string\\.quoted\\.single$",
+          "name": "string.quoted.single"
+        },
+        {
+          "match": "^string\\.quoted\\.triple$",
+          "name": "string.quoted.triple"
+        },
+        {
+          "match": "^string\\.regexp$",
+          "name": "string.regexp"
+        },
+        {
+          "match": "^string\\.unquoted$",
+          "name": "string.unquoted"
+        },
+        {
+          "match": "^string\\.xml$",
+          "name": "string.xml"
+        },
+        {
+          "match": "^string\\.yaml$",
+          "name": "string.yaml"
+        },
+        {
+          "match": "^strong$",
+          "name": "strong"
+        },
+        {
+          "match": "^support$",
+          "name": "support"
+        },
+        {
+          "match": "^support\\.class$",
+          "name": "support.class"
+        },
+        {
+          "match": "^support\\.constant$",
+          "name": "support.constant"
+        },
+        {
+          "match": "^support\\.function$",
+          "name": "support.function"
+        },
+        {
+          "match": "^support\\.function\\.git-rebase$",
+          "name": "support.function.git-rebase"
+        },
+        {
+          "match": "^support\\.other$",
+          "name": "support.other"
+        },
+        {
+          "match": "^support\\.property-value$",
+          "name": "support.property-value"
+        },
+        {
+          "match": "^support\\.type$",
+          "name": "support.type"
+        },
+        {
+          "match": "^support\\.type\\.property-name$",
+          "name": "support.type.property-name"
+        },
+        {
+          "match": "^support\\.type\\.property-name\\.css$",
+          "name": "support.type.property-name.css"
+        },
+        {
+          "match": "^support\\.type\\.property-name\\.less$",
+          "name": "support.type.property-name.less"
+        },
+        {
+          "match": "^support\\.type\\.property-name\\.scss$",
+          "name": "support.type.property-name.scss"
+        },
+        {
+          "support\\.variable$": "support.variable"
+        },
+        {
+          "match": "^variable$",
+          "name": "variable"
+        },
+        {
+          "match": "^variable\\.language$",
+          "name": "variable.language"
+        },
+        {
+          "match": "^variable\\.name$",
+          "name": "variable.name"
+        },
+        {
+          "match": "^variable\\.other$",
+          "name": "variable.other"
+        },
+        {
+          "match": "^variable\\.parameter$",
+          "name": "variable.parameter"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.sp"
+}

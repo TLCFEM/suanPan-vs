@@ -15,7 +15,7 @@
   },
   "version": "0.1.12",
   "engines": {
-    "vscode": "^1.120.0"
+    "vscode": "^1.125.0"
   },
   "categories": [
     "Programming Languages"
@@ -93,7 +93,7 @@
       {
         "language": "suanPan",
         "scopeName": "source.sp",
-        "path": "./syntaxes/.tmLanguage.json"
+        "path": "./syntaxes/syntax.json"
       }
     ],
     "snippets": [
@@ -129,13 +129,13 @@
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
-    "@types/node": "^25.9.1",
-    "@types/vscode": "^1.120.0",
-    "@typescript-eslint/eslint-plugin": "^8.60.0",
-    "@typescript-eslint/parser": "^8.60.0",
-    "@vscode/test-electron": "^2.5.2",
-    "@vscode/vsce": "^3.9.1",
-    "eslint": "^10.4.0",
+    "@types/node": "^26.0.1",
+    "@types/vscode": "^1.125.0",
+    "@typescript-eslint/eslint-plugin": "^8.62.0",
+    "@typescript-eslint/parser": "^8.62.0",
+    "@vscode/test-electron": "^3.0.0",
+    "@vscode/vsce": "^3.9.2",
+    "eslint": "^10.6.0",
     "glob": "^13.0.6",
     "mocha": "^11.7.6",
     "typescript": "^6.0.3"
