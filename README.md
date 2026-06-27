@@ -4,6 +4,15 @@
 
 This extension provides syntax highlighting and autocompletion for `suanPan` model files.
 
+> [!IMPORTANT]
+> If you're using autocomplete tools such as Copilot, it’s advisable to turn the feature off to prevent potential conflicts.
+>
+> ```json
+> "github.copilot.enable": {
+>     "suanPan": false
+> }
+> ```
+
 ## Quick Start
 
 1. download `suanPan`
