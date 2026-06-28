@@ -483,6 +483,60 @@
     "global": {
       "patterns": [
         {
+          "begin": "(?i)^(?:(constraint)\\s+)?(fix|penaltybc|fix2|multiplierbc|groupmultiplierbc|grouppenaltybc)\\s+(\\d+)\\s+(\\S+)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "entity.name.type"
+            },
+            "3": {
+              "name": "variable"
+            },
+            "4": {
+              "name": "support.type"
+            }
+          },
+          "end": "$",
+          "patterns": [
+            {
+              "match": "\\d+",
+              "name": "variable"
+            }
+          ]
+        },
+        {
+          "begin": "(?i)^(?:(load)\\s+)?(acceleration|bodyforce|cload|dispload|disp|displacement|groupbodyforce|groupcload|groupdisp|groupdisplacement|groupdispload|lineudl2d|lineudl3d|referenceload|refload|refforce|supportacceleration|supportdisplacement|supportvelocity)\\s+(\\d+)\\s+(\\d+)\\s+(\\S+)\\s+(\\S+)\\b",
+          "beginCaptures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
+              "name": "entity.name.type"
+            },
+            "3": {
+              "name": "variable"
+            },
+            "4": {
+              "name": "support.constant"
+            },
+            "5": {
+              "name": "constant.numeric"
+            },
+            "6": {
+              "name": "support.type"
+            }
+          },
+          "end": "$",
+          "patterns": [
+            {
+              "match": "\\d+",
+              "name": "variable"
+            }
+          ]
+        },
+        {
           "begin": "(?i)^(converger)\\s+(fixednumber|logicand|logicor|logicxor)\\s+(\\d+)\\b",
           "beginCaptures": {
             "1": {
@@ -750,26 +804,9 @@
             },
             "3": {
               "name": "variable"
-            },
-            "4": {
-              "name": "support.constant"
             }
           },
-          "match": "(?i)^(?:(load)\\s+)?(acceleration|bodyforce|cload|disp|displacement|dispload|groupbodyforce|groupcload|groupdisp|groupdisplacement|groupdispload|lineudl2d|lineudl3d|referenceload|refload|refforce|supportacceleration|supportdisplacement|supportvelocity)\\s+(\\d+)\\s+(\\d+)\\b"
-        },
-        {
-          "captures": {
-            "1": {
-              "name": "entity.name.tag"
-            },
-            "2": {
-              "name": "entity.name.type"
-            },
-            "3": {
-              "name": "variable"
-            }
-          },
-          "match": "(?i)^(?:(constraint)\\s+)?(embed2d|embed3d|finiterestitutionwall|finiterestitutionwallpenalty|finiterigidwall|finiterigidwallpenalty|finiterigidwallmultiplier|fix|penaltybc|fix2|multiplierbc|fixedlength2d|r2d2|fixedlength3d|r3d2|groupmultiplierbc|grouppenaltybc|linearspring2d|ljpotential2d|maximumforce2d|maxforce2d|maximumforce3d|maxforce3d|maximumgap2d|maxgap2d|maximumgap3d|maxgap3d|minimumgap2d|mingap2d|minimumgap3d|mingap3d|mpc|nodefacet|nodeline|moleculardynamics2d|moleculardynamics3d|particlecollision2d|particlecollision3d|restitutionwall|restitutionwallpenalty|rigidwall|rigidwallpenalty|rigidwallmultiplier|sleeve2d|sleeve3d)\\s+(\\d+)\\b"
+          "match": "(?i)^(?:(constraint)\\s+)?(embed2d|embed3d|finiterestitutionwall|finiterestitutionwallpenalty|finiterigidwall|finiterigidwallpenalty|finiterigidwallmultiplier|fixedlength2d|r2d2|fixedlength3d|r3d2|linearspring2d|ljpotential2d|maximumforce2d|maxforce2d|maximumforce3d|maxforce3d|maximumgap2d|maxgap2d|maximumgap3d|maxgap3d|minimumgap2d|mingap2d|minimumgap3d|mingap3d|mpc|nodefacet|nodeline|moleculardynamics2d|moleculardynamics3d|particlecollision2d|particlecollision3d|restitutionwall|restitutionwallpenalty|rigidwall|rigidwallpenalty|rigidwallmultiplier|sleeve2d|sleeve3d)\\s+(\\d+)\\b"
         },
         {
           "captures": {
