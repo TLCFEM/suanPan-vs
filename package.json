@@ -1,99 +1,86 @@
 {
-  "name": "suanpan",
-  "displayName": "suanPan",
-  "description": "Syntax highlighting and autocompletion for suanPan models",
-  "icon": "images/suanPan-ua.png",
+  "allowScripts": {
+    "@vscode/vsce-sign": true,
+    "keytar": true
+  },
   "author": {
-    "name": "Theodore Chang",
-    "email": "tlcfem@gmail.com"
-  },
-  "pricing": "Free",
-  "publisher": "tlc",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/TLCFEM/suanPan-vs"
-  },
-  "version": "0.1.13",
-  "engines": {
-    "vscode": "^1.125.0"
+    "email": "tlcfem@gmail.com",
+    "name": "Theodore Chang"
   },
   "categories": [
     "Programming Languages"
   ],
-  "activationEvents": [
-    "onLanguage:suanPan"
-  ],
-  "main": "./out/extension.js",
   "contributes": {
-    "configuration": {
-      "title": "suanPan",
-      "properties": {
-        "suanpan.path": {
-          "type": "string",
-          "default": "",
-          "description": "Path to the suanPan executable.",
-          "ignoreSync": true
-        },
-        "suanpan.directory": {
-          "type": "string",
-          "default": "",
-          "description": "Working directory, leave empty to use the folder of the model file.",
-          "ignoreSync": true
-        },
-        "suanpan.color": {
-          "type": "boolean",
-          "default": true,
-          "description": "Enable colorized output.",
-          "ignoreSync": true
-        },
-        "suanpan.verbose": {
-          "type": "boolean",
-          "default": false,
-          "description": "Enable verbose output.",
-          "ignoreSync": true
-        },
-        "suanpan.docker": {
-          "type": "boolean",
-          "default": false,
-          "description": "Run the model in a docker container.",
-          "ignoreSync": true
-        },
-        "suanpan.cpus": {
-          "type": "integer",
-          "default": 0,
-          "description": "Number of logical cores to use in docker. 0 means using all available cores.",
-          "ignoreSync": true
-        },
-        "suanpan.image": {
-          "type": "string",
-          "default": "tlcfem/suanpan",
-          "description": "Docker image to use."
-        }
-      }
-    },
     "commands": [
       {
         "command": "suanpan.run",
         "title": "suanPan: Run this model in suanPan"
       }
     ],
-    "languages": [
-      {
-        "id": "suanPan",
-        "aliases": [
-          "suanPan"
-        ],
-        "extensions": [
-          ".sp",
-          ".supan"
-        ]
-      }
-    ],
+    "configuration": {
+      "properties": {
+        "suanpan.color": {
+          "default": true,
+          "description": "Enable colorized output.",
+          "ignoreSync": true,
+          "type": "boolean"
+        },
+        "suanpan.cpus": {
+          "default": 0,
+          "description": "Number of logical cores to use in docker. 0 means using all available cores.",
+          "ignoreSync": true,
+          "type": "integer"
+        },
+        "suanpan.directory": {
+          "default": "",
+          "description": "Working directory, leave empty to use the folder of the model file.",
+          "ignoreSync": true,
+          "type": "string"
+        },
+        "suanpan.docker": {
+          "default": false,
+          "description": "Run the model in a docker container.",
+          "ignoreSync": true,
+          "type": "boolean"
+        },
+        "suanpan.image": {
+          "default": "tlcfem/suanpan",
+          "description": "Docker image to use.",
+          "type": "string"
+        },
+        "suanpan.path": {
+          "default": "",
+          "description": "Path to the suanPan executable.",
+          "ignoreSync": true,
+          "type": "string"
+        },
+        "suanpan.verbose": {
+          "default": false,
+          "description": "Enable verbose output.",
+          "ignoreSync": true,
+          "type": "boolean"
+        }
+      },
+      "title": "suanPan"
+    },
     "grammars": [
       {
         "language": "suanPan",
-        "scopeName": "source.sp",
-        "path": "./syntaxes/syntax.json"
+        "path": "./syntaxes/syntax.json",
+        "scopeName": "source.sp"
+      }
+    ],
+    "languages": [
+      {
+        "aliases": [
+          "suanPan"
+        ],
+        "configuration": "./syntaxes/language-configuration.json",
+        "extensions": [
+          ".sp",
+          ".supan"
+        ],
+        "id": "suanPan"
       }
     ],
     "snippets": [
@@ -115,18 +102,7 @@
       }
     ]
   },
-  "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
-  },
-  "allowScripts": {
-    "keytar": true,
-    "@vscode/vsce-sign": true
-  },
+  "description": "Syntax highlighting and autocompletion for suanPan models",
   "devDependencies": {
     "@types/mocha": "^10.0.10",
     "@types/node": "^26.0.1",
@@ -140,9 +116,31 @@
     "mocha": "^11.7.6",
     "typescript": "^6.0.3"
   },
+  "displayName": "suanPan",
+  "engines": {
+    "vscode": "^1.125.0"
+  },
+  "icon": "images/suanPan-ua.png",
+  "main": "./out/extension.js",
+  "name": "suanpan",
   "overrides": {
     "css-what": "6.1.0"
   },
+  "pricing": "Free",
+  "publisher": "tlc",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TLCFEM/suanPan-vs"
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "lint": "eslint src --ext ts",
+    "pretest": "npm run compile && npm run lint",
+    "test": "node ./out/test/runTest.js",
+    "vscode:prepublish": "npm run compile",
+    "watch": "tsc --watch -p ./"
+  },
+  "version": "0.1.14",
   "volta": {
     "node": "24.18.0"
   }
