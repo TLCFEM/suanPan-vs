@@ -758,7 +758,7 @@
               "name": "variable"
             }
           },
-          "match": "(?i)^\\bWP|MIS|LAPACK|SPIKE|SUPERLU|LIS|MUMPS|CUDA|MAGMA|PARDISO|FGMRES|DOUBLE|FULL|SINGLE|MIXED\\b"
+          "match": "(?i)\\bWP|MIS|LAPACK|SPIKE|SUPERLU|LIS|MUMPS|CUDA|MAGMA|PARDISO|FGMRES|DOUBLE|FULL|SINGLE|MIXED\\b"
         },
         {
           "captures": {
