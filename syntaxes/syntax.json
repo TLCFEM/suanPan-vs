@@ -968,6 +968,20 @@
               "name": "entity.name.tag"
             },
             "2": {
+              "name": "string"
+            },
+            "3": {
+              "name": "string"
+            }
+          },
+          "match": "(?i)^(var|variable)\\s+(\\S+)\\s+(\\S+)$"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "entity.name.tag"
+            },
+            "2": {
               "name": "support.constant"
             },
             "3": {
