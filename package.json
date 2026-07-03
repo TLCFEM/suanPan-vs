@@ -105,10 +105,10 @@
   "description": "Syntax highlighting and autocompletion for suanPan models",
   "devDependencies": {
     "@types/mocha": "^10.0.10",
-    "@types/node": "^26.0.1",
+    "@types/node": "^26.1.0",
     "@types/vscode": "^1.125.0",
-    "@typescript-eslint/eslint-plugin": "^8.62.0",
-    "@typescript-eslint/parser": "^8.62.0",
+    "@typescript-eslint/eslint-plugin": "^8.62.1",
+    "@typescript-eslint/parser": "^8.62.1",
     "@vscode/test-electron": "^3.0.0",
     "@vscode/vsce": "^3.9.2",
     "eslint": "^10.6.0",
@@ -140,7 +140,7 @@
     "vscode:prepublish": "npm run compile",
     "watch": "tsc --watch -p ./"
   },
-  "version": "0.1.14",
+  "version": "0.1.15",
   "volta": {
     "node": "24.18.0"
   }
