@@ -968,7 +968,7 @@
               "name": "entity.name.tag"
             },
             "2": {
-              "name": "string"
+              "name": "variable"
             },
             "3": {
               "name": "string"
