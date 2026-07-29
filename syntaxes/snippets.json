@@ -2825,10 +2825,11 @@
     },
     "MaxHistory": {
         "body": [
-            "criterion MaxHistory ${1:(1)} ${2:(2)} ${3:(3)}",
+            "criterion MaxHistory ${1:(1)} ${2:(2)} ${3:(3)} ${4:[(4) ...]}",
             "# (1) int, unique criterion tag",
             "# (2) string, history variable type",
-            "# (3) double, limit"
+            "# (3) double, limit",
+            "# (4) int, optional indices"
         ],
         "description": "max history criterion",
         "prefix": "MaxHistory"
