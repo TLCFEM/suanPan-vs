@@ -2880,6 +2880,17 @@
         "description": "maxwell material",
         "prefix": "Maxwell"
     },
+    "MinHistory": {
+        "body": [
+            "criterion MinHistory ${1:(1)} ${2:(2)} ${3:(3)} ${4:[(4) ...]}",
+            "# (1) int, unique criterion tag",
+            "# (2) string, history variable type",
+            "# (3) double, limit",
+            "# (4) int, optional indices"
+        ],
+        "description": "min history criterion",
+        "prefix": "MinHistory"
+    },
     "MinDisplacement": {
         "body": [
             "criterion MinDisplacement ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
