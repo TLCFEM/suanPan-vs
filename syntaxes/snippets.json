@@ -2646,7 +2646,7 @@
   },
   "LogicCriterionAll": {
     "body": [
-      "criterion LogicAll ${1:(1)} ${2:((2)...)}",
+      "criterion LogicAll ${1:(1)} ${2:[(2)...]}",
       "# (1) int, unique criterion tag",
       "# (2) int, tags of criteria in logical operation"
     ],
@@ -2655,7 +2655,7 @@
   },
   "LogicCriterionAny": {
     "body": [
-      "criterion LogicAny ${1:(1)} ${2:((2)...)}",
+      "criterion LogicAny ${1:(1)} ${2:[(2)...]}",
       "# (1) int, unique criterion tag",
       "# (2) int, tags of criteria in logical operation"
     ],
