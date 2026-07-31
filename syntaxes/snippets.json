@@ -2644,25 +2644,23 @@
     "description": "apply logical operations to two convergers.",
     "prefix": "LogicConvergerXOR"
   },
-  "LogicCriterionAND": {
+  "LogicCriterionAll": {
     "body": [
-      "criterion LogicAND ${1:(1)} ${2:(2)} ${3:(3)}",
+      "criterion LogicAll ${1:(1)} ${2:((2)...)}",
       "# (1) int, unique criterion tag",
-      "# (2) int, tag of first criterion in logical operation",
-      "# (3) int, tag of second criterion in logical operation"
+      "# (2) int, tags of criteria in logical operation"
     ],
-    "description": "apply logical operations to two criteria.",
-    "prefix": "LogicCriterionAND"
+    "description": "apply logical operations to multiple criteria.",
+    "prefix": "LogicCriterionAll"
   },
-  "LogicCriterionOR": {
+  "LogicCriterionAny": {
     "body": [
-      "criterion LogicOR ${1:(1)} ${2:(2)} ${3:(3)}",
+      "criterion LogicAny ${1:(1)} ${2:((2)...)}",
       "# (1) int, unique criterion tag",
-      "# (2) int, tag of first criterion in logical operation",
-      "# (3) int, tag of second criterion in logical operation"
+      "# (2) int, tags of criteria in logical operation"
     ],
-    "description": "apply logical operations to two criteria.",
-    "prefix": "LogicCriterionOR"
+    "description": "apply logical operations to multiple criteria.",
+    "prefix": "LogicCriterionAny"
   },
   "LumpedScale": {
     "body": [
