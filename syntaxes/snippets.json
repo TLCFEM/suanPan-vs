@@ -2614,7 +2614,7 @@
     "description": "linear viscosity modifier",
     "prefix": "LinearViscosity"
   },
-  "LogicAND": {
+  "LogicConvergerAND": {
     "body": [
       "converger LogicAND ${1:(1)} ${2:(2)} ${3:(3)}",
       "# (1) int, unique converger tag",
@@ -2622,9 +2622,9 @@
       "# (3) int, tag of second converger in logical operation"
     ],
     "description": "apply logical operations to two convergers.",
-    "prefix": "LogicAND"
+    "prefix": "LogicConvergerAND"
   },
-  "LogicOR": {
+  "LogicConvergerOR": {
     "body": [
       "converger LogicOR ${1:(1)} ${2:(2)} ${3:(3)}",
       "# (1) int, unique converger tag",
@@ -2632,9 +2632,9 @@
       "# (3) int, tag of second converger in logical operation"
     ],
     "description": "apply logical operations to two convergers.",
-    "prefix": "LogicOR"
+    "prefix": "LogicConvergerOR"
   },
-  "LogicXOR": {
+  "LogicConvergerXOR": {
     "body": [
       "converger LogicXOR ${1:(1)} ${2:(2)} ${3:(3)}",
       "# (1) int, unique converger tag",
@@ -2642,7 +2642,27 @@
       "# (3) int, tag of second converger in logical operation"
     ],
     "description": "apply logical operations to two convergers.",
-    "prefix": "LogicXOR"
+    "prefix": "LogicConvergerXOR"
+  },
+  "LogicCriterionAND": {
+    "body": [
+      "criterion LogicAND ${1:(1)} ${2:(2)} ${3:(3)}",
+      "# (1) int, unique criterion tag",
+      "# (2) int, tag of first criterion in logical operation",
+      "# (3) int, tag of second criterion in logical operation"
+    ],
+    "description": "apply logical operations to two criteria.",
+    "prefix": "LogicCriterionAND"
+  },
+  "LogicCriterionOR": {
+    "body": [
+      "criterion LogicOR ${1:(1)} ${2:(2)} ${3:(3)}",
+      "# (1) int, unique criterion tag",
+      "# (2) int, tag of first criterion in logical operation",
+      "# (3) int, tag of second criterion in logical operation"
+    ],
+    "description": "apply logical operations to two criteria.",
+    "prefix": "LogicCriterionOR"
   },
   "LumpedScale": {
     "body": [
