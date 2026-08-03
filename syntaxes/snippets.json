@@ -2564,7 +2564,7 @@
       "# (1) int, unique tag",
       "# (2) int, amplitude tag, 0 to use a default `Ramp` amplitude",
       "# (3) double, nominal magnitude",
-      "# (4) int, dof tag",
+      "# (4) string, dof token",
       "# (5...) int, node tags"
     ],
     "description": "2d linear udl",
@@ -2577,7 +2577,7 @@
       "# (1) int, unique tag",
       "# (2) int, amplitude tag, 0 to use a default `Ramp` amplitude",
       "# (3) double, nominal magnitude",
-      "# (4) int, dof tag",
+      "# (4) string, dof token",
       "# (5...) int, node tags"
     ],
     "description": "3d linear udl",
@@ -4605,7 +4605,7 @@
       "# (1) int, unique tag",
       "# (2) int, amplitude tag, 0 to use a default `Ramp` amplitude",
       "# (3) double, nominal magnitude",
-      "# (4) int, dof tag",
+      "# (4) string, dof token",
       "# [5...] int, node tags"
     ],
     "description": "acceleration load",
@@ -4626,7 +4626,7 @@
       "# (1) int, unique tag",
       "# (2) int, amplitude tag, 0 to use a default `Ramp` amplitude",
       "# (3) double, nominal magnitude",
-      "# (4) int, dof tag",
+      "# (4) string, dof token",
       "# (5...) int, element tags"
     ],
     "description": "body force load",
@@ -4646,7 +4646,7 @@
       "# (1) int, unique tag",
       "# (2) int, amplitude tag, 0 to use a default `Ramp` amplitude",
       "# (3) double, nominal magnitude",
-      "# (4) int, dof tag",
+      "# (4) string, dof token",
       "# (5...) int, node tags"
     ],
     "description": "concentrated nodal load",
@@ -4703,7 +4703,7 @@
       "# (1) int, unique tag",
       "# (2) int, amplitude tag, 0 to use a default `Ramp` amplitude",
       "# (3) double, nominal magnitude",
-      "# (4) int, dof tag",
+      "# (4) string, dof token",
       "# (5...) int, node tags"
     ],
     "description": "prescribed displacement",
@@ -5164,6 +5164,19 @@
     "description": "recorder",
     "prefix": "recorder"
   },
+  "refload": {
+    "body": [
+      "refload ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5...]}",
+      "load refload ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5...]}",
+      "# (1) int, unique tag",
+      "# (2) int, amplitude tag, 0 to use a default `Ramp` amplitude",
+      "# (3) double, nominal magnitude",
+      "# (4) string, dof token",
+      "# (5...) int, node tags"
+    ],
+    "description": "reference nodal load",
+    "prefix": "refload"
+  },
   "reset": {
     "body": [
       "reset"
@@ -5223,7 +5236,7 @@
       "# (1) int, unique tag",
       "# (2) int, amplitude tag, 0 to use a default `Ramp` amplitude",
       "# (3) double, nominal magnitude",
-      "# (4) int, dof tag",
+      "# (4) string, dof token",
       "# (5...) int, node tags"
     ],
     "description": "acceleration load on support",
@@ -5236,7 +5249,7 @@
       "# (1) int, unique tag",
       "# (2) int, amplitude tag, 0 to use a default `Ramp` amplitude",
       "# (3) double, nominal magnitude",
-      "# (4) int, dof tag",
+      "# (4) string, dof token",
       "# (5...) int, node tags"
     ],
     "description": "displacement load on support",
@@ -5249,7 +5262,7 @@
       "# (1) int, unique tag",
       "# (2) int, amplitude tag, 0 to use a default `Ramp` amplitude",
       "# (3) double, nominal magnitude",
-      "# (4) int, dof tag",
+      "# (4) string, dof token",
       "# (5...) int, node tags"
     ],
     "description": "velocity load on support",
