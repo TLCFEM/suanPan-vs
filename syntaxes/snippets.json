@@ -3373,6 +3373,45 @@
     "description": "node line constraint",
     "prefix": "NodeLine"
   },
+  "NonlocalBilinearJ2": {
+    "body": [
+      "material NonlocalBilinearJ2 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:[7]} ${8:[8]} ${9:[9]}",
+      "# (1) int, unique material tag",
+      "# (2) double, elastic modulus",
+      "# (3) double, poissons ratio",
+      "# (4) double, yield stress",
+      "# (5) double, initial degradation threshold of equivalent plastic strain",
+      "# (6) double, degradation rate",
+      "# [7] double, hardening ratio, default: 0.0",
+      "# [8] double, beta, default: 1.0",
+      "# [9] double, density, default: 0.0"
+    ],
+    "description": "bilinear j2 material with nonlocal damage",
+    "prefix": "NonlocalBilinearJ2"
+  },
+  "NonlocalC3D8": {
+    "body": [
+      "element NonlocalC3D8 ${1:(1)} ${2:(2...9)} ${10:(10)} ${11:(11)}",
+      "# (1) int, unique element tag",
+      "# (2...9) int, eight corner nodes with conventional order",
+      "# (10) int, material tag",
+      "# (11) double, characteristic length"
+    ],
+    "description": "linear cube/brick with one nonlocal variable",
+    "prefix": "NonlocalC3D8"
+  },
+  "NonlocalCP4": {
+    "body": [
+      "element NonlocalCP4 ${1:(1)} ${2:(2...5)} ${6:(6)} ${7:(7)} ${8:[8]}",
+      "# (1) int, unique element tag",
+      "# (2...5) int, node i, j, k, l",
+      "# (6) int, material tag",
+      "# (7) double, characteristic length",
+      "# [8] double, element thickness, default: 1.0"
+    ],
+    "description": "bilinear quadrilateral with one nonlocal variable",
+    "prefix": "NonlocalCP4"
+  },
   "NonviscousNewmark": {
     "body": [
       "integrator NonviscousNewmark ${1:(1)} ${2:(2)} ${3:(3)} (${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)}...)",
