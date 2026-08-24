@@ -3412,6 +3412,19 @@
     "description": "bilinear quadrilateral with one nonlocal variable",
     "prefix": "NonlocalCP4"
   },
+  "NonlocalElastic3D": {
+    "body": [
+      "material NonlocalIsotropicElastic3D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:[6]}",
+      "# (1) int, unique tag",
+      "# (2) double, elastic modulus",
+      "# (3) double, poissons ratio",
+      "# (4) double, energy threshold",
+      "# (5) double, degradation rate",
+      "# [6] double, density, default: 0.0"
+    ],
+    "description": "3d isotropic elastic material with one nonlocal variable",
+    "prefix": "NonlocalElastic3D"
+  },
   "NonviscousNewmark": {
     "body": [
       "integrator NonviscousNewmark ${1:(1)} ${2:(2)} ${3:(3)} (${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)}...)",
