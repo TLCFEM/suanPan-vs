@@ -1002,7 +1002,7 @@
               "name": "string"
             }
           },
-          "match": "(?i)^(var|variable)\\s+(\\S+)\\s+(\\S+)$"
+          "match": "(?i)^(var|variable)\\s+(\\S+)\\s+(.+)$"
         },
         {
           "captures": {
