@@ -140,8 +140,8 @@
     "vscode:prepublish": "npm run compile",
     "watch": "tsc --watch -p ./"
   },
-  "version": "0.1.16",
+  "version": "0.1.17",
   "volta": {
-    "node": "24.18.0"
+    "node": "24.21.0"
   }
 }
