@@ -1,7 +1,6 @@
 import json
 import re
 
-
 if __name__ == "__main__":
     a = r"""
 group GroupGroup (1) (2...)
