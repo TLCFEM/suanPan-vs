@@ -115,6 +115,25 @@
     "description": "aicn solver",
     "prefix": "AICN"
   },
+  "AbaqusCDP": {
+    "body": [
+      "material AbaqusCDP ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:[8]} ${9:[9]} ${10:[10]} ${11:[11]} ${12:[12]}",
+      "# (1) int, unique material tag",
+      "# (2) double, elastic modulus",
+      "# (3) double, poisson's ratio",
+      "# (4) string, file name of tension backbone table",
+      "# (5) string, file name of compression backbone table",
+      "# (6) string, file name of tension damage table",
+      "# (7) string, file name of compression damage table",
+      "# [8] double, dilatancy parameter, default: 0.6",
+      "# [9] double, biaxial compression strength ratio, default: 1.16",
+      "# [10] double, ratio between tensile and compressive meridian stresses, default: 0.667",
+      "# [11] double, stiffness recovery ratio, default: 0",
+      "# [12] double, density, default: 2400e-12"
+    ],
+    "description": "abaqus' cdp model with tabular data support",
+    "prefix": "AbaqusCDP"
+  },
   "AbsDisp": {
     "body": [
       "converger AbsDisp ${1:(1)} ${2:(2)} ${3:[3]} ${4:[4]}",
@@ -4359,7 +4378,7 @@
       "# [8] double, dilatancy parameter, default: 0.2",
       "# [9] double, biaxial compression strength ratio, default: 1.16",
       "# [10] double, stiffness recovery ratio, default: 0.5",
-      "# [11] double, density, default: 0"
+      "# [11] double, density, default: 2400e-12"
     ],
     "description": "cdp model with tabular data support",
     "prefix": "TableCDP"
