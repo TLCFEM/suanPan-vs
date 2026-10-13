@@ -6,6 +6,7 @@ __pycache__/
 dist
 examples
 node_modules
+opencode.json
 out
 package-lock.json
 pnpm-lock.yaml
