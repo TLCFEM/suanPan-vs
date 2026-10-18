@@ -225,7 +225,7 @@
       "# the following applies to v3.6 and later only, see documentation for older syntax",
       "# (1) int, unique material tag",
       "# (2) double, elastic modulus",
-      "# (3) double, poissons ratio",
+      "# (3) double, Poisson's ratio",
       "# (4) double, yield stress",
       "# (5) double, linear isotropic hardening modulus",
       "# (6) double, saturation stress",
@@ -279,7 +279,7 @@
       "material AxisymmetricElastic ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]}",
       "# (1) int, unique material tag",
       "# (2) double, elastic modulus",
-      "# (3) double, poissons ratio",
+      "# (3) double, Poisson's ratio",
       "# [4] double, density, default: 0.0"
     ],
     "description": "axisymmetric elastic material",
@@ -525,7 +525,7 @@
       "material BilinearCC ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:[9]}",
       "# (1) int, unique material tag",
       "# (2) double, elastic modulus",
-      "# (3) double, poissons ratio",
+      "# (3) double, Poisson's ratio",
       "# (4) double, beta, controls compression side shape",
       "# (5) double, m, slope of CSL",
       "# (6) double, p_t, initial tension strength",
@@ -541,7 +541,7 @@
       "material BilinearDP ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:[9]}",
       "# (1) int, unique material tag",
       "# (2) double, elastic modulus",
-      "# (3) double, poissons ratio",
+      "# (3) double, Poisson's ratio",
       "# (4) double, \\eta_y",
       "# (5) double, \\eta_f",
       "# (6) double, \\xi",
@@ -569,7 +569,7 @@
       "material BilinearHoffman ${1:(1)} ${2:(2...7)} ${3:(8...10)} ${4:(11...19)} ${5:[20]} ${6:[21]}",
       "# (1) int, unique material tag",
       "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, G_{xy}, G_{yz}, G_{zx}",
-      "# (8...10) double, three poissions ratios: v_{xy}, v_{yz}, v_{xz}",
+      "# (8...10) double, three Poisson's ratios: v_{xy}, v_{yz}, v_{xz}",
       "# (11...19) double, nine yield stresses",
       "# [20] double, hardening ratio, default: 0.0",
       "# [21] double, density, default: 0.0"
@@ -582,7 +582,7 @@
       "material BilinearJ2 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]} ${6:[6]} ${7:[7]}",
       "# (1) int, unique material tag",
       "# (2) double, elastic modulus",
-      "# (3) double, poissons ratio",
+      "# (3) double, Poisson's ratio",
       "# (4) double, yield stress",
       "# [5] double, hardening ratio, default: 0.0",
       "# [6] double, beta, default: 1.0",
@@ -636,7 +636,7 @@
       "material BilinearPeric ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:[8]}",
       "# (1) int, unique tag",
       "# (2) double, elastic modulus",
-      "# (3) double, poissons ratio",
+      "# (3) double, Poisson's ratio",
       "# (4) double, yield stress",
       "# (5) double, hardening modulus",
       "# (6) double, mu",
@@ -651,7 +651,7 @@
       "material BilinearTsaiWu ${1:(1)} ${2:(2...7)} ${3:(8...10)} ${4:(11...19)} ${5:[20]} ${6:[21]}",
       "# (1) int, unique material tag",
       "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, G_{xy}, G_{yz}, G_{zx}",
-      "# (8...10) double, three poissions ratios: v_{xy}, v_{yz}, v_{xz}",
+      "# (8...10) double, three Poisson's ratios: v_{xy}, v_{yz}, v_{xz}",
       "# (11...19) double, nine yield stresses",
       "# [20] double, hardening ratio, default: 0.0",
       "# [21] double, density, default: 0.0"
@@ -675,7 +675,7 @@
       "material BlatzKo ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]}",
       "# (1) int, unique tag",
       "# (2) double, elastic modulus",
-      "# (3) double, poissons ratio",
+      "# (3) double, Poisson's ratio",
       "# [4] double, density, default: 0.0"
     ],
     "description": "blatz ko hyperelastic material",
@@ -826,7 +826,7 @@
       "material CDP ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:(10)} ${11:(11)} ${12:(12)} ${13:(13)} ${14:(14)} ${15:[15]}",
       "# (1) int, unique tag",
       "# (2) double, elastic modulus",
-      "# (3) double, poissons ratio",
+      "# (3) double, Poisson's ratio",
       "# (4) double, crack stress f_t",
       "# (5) double, crush stress f_c",
       "# (6) double, normalized crack energy g_t",
@@ -848,7 +848,7 @@
       "material CDPM2 ${1:(1)} ${2:[2-16]}",
       "# (1) int, unique material tag",
       "# [2] double, elastic modulus, default: 3E4",
-      "# [3] double, poissons ratio, default: 0.3",
+      "# [3] double, Poisson's ratio, default: 0.3",
       "# [4] double, tension strength (positive), default: 3.0",
       "# [5] double, compression strength (positive), default: 30.0",
       "# [6] double, q_h0, initial hardening factor, default: 0.3",
@@ -871,7 +871,7 @@
       "material CDPM2ANISO ${1:(1)} ${2:[2-16]}",
       "# (1) int, unique material tag",
       "# [2] double, elastic modulus, default: 3E4",
-      "# [3] double, poissons ratio, default: 0.3",
+      "# [3] double, Poisson's ratio, default: 0.3",
       "# [4] double, tension strength (positive), default: 3.0",
       "# [5] double, compression strength (positive), default: 30.0",
       "# [6] double, q_h0, initial hardening factor, default: 0.3",
@@ -886,7 +886,7 @@
       "# [15] double, e_fc, compression softening parameter, default: 5E-4",
       "# [16] double, density, default: 0.0"
     ],
-    "description": "cdpm2 aniotropic damage",
+    "description": "cdpm2 anisotropic damage",
     "prefix": "CDPM2ANISO"
   },
   "CDPM2ISO": {
@@ -894,7 +894,7 @@
       "material CDPM2ISO ${1:(1)} ${2:[2-16]}",
       "# (1) int, unique material tag",
       "# [2] double, elastic modulus, default: 3E4",
-      "# [3] double, poissons ratio, default: 0.3",
+      "# [3] double, Poisson's ratio, default: 0.3",
       "# [4] double, tension strength (positive), default: 3.0",
       "# [5] double, compression strength (positive), default: 30.0",
       "# [6] double, q_h0, initial hardening factor, default: 0.3",
@@ -1240,7 +1240,7 @@
     "body": [
       "amplitude Combine ${1:(1)} ${2:(2...)}",
       "# (1) int, unique amplitude tag",
-      "# (2...) int, tags of amplitude that need to be combined"
+      "# (2...) int, tags of amplitudes to be combined"
     ],
     "description": "amplitude combining multiple amplitudes",
     "prefix": "Combine"
@@ -1411,7 +1411,7 @@
       "# (2) double, C",
       "# (3) double, alpha"
     ],
-    "description": "culomb friction material",
+    "description": "Coulomb friction material",
     "prefix": "CoulombFriction"
   },
   "Custom": {
@@ -1428,7 +1428,7 @@
       "material CustomCC ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:[8]}",
       "# (1) int, unique material tag",
       "# (2) double, elastic modulus",
-      "# (3) double, poissons ratio",
+      "# (3) double, Poisson's ratio",
       "# (4) double, beta, controls compression side shape",
       "# (5) double, m, slope of CSL",
       "# (6) double, p_t, initial tension strength",
@@ -1443,7 +1443,7 @@
       "material CustomDP ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:[8]}",
       "# (1) int, unique material tag",
       "# (2) double, elastic modulus",
-      "# (3) double, poissons ratio",
+      "# (3) double, Poisson's ratio",
       "# (4) double, \\eta_y",
       "# (5) double, \\eta_f",
       "# (6) double, \\xi",
@@ -1469,7 +1469,7 @@
       "# (1) int, unique material tag",
       "# (2) int, expression tag",
       "# (3) double, elastic modulus",
-      "# (4) double, poissons ratio",
+      "# (4) double, Poisson's ratio",
       "# [5] double, q1, default: 1.0",
       "# [6] double, q2, default: 1.0",
       "# [7] double, fn, default: 0.0",
@@ -1486,7 +1486,7 @@
       "# (1) int, unique material tag",
       "# (2) int, expression tag",
       "# (3) double, elastic modulus",
-      "# (4) double, poissons ratio",
+      "# (4) double, Poisson's ratio",
       "# [5] double, q1, default: 1.0",
       "# [6] double, q2, default: 1.0",
       "# [7] double, fn, default: 0.0",
@@ -1502,8 +1502,8 @@
       "material CustomHoffman ${1:(1)} ${2:(2...7)} ${3:(8...10)} ${4:(11...19)} ${5:(20)} ${6:[21]}",
       "# (1) int, unique material tag",
       "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, G_{xy}, G_{yz}, G_{zx}",
-      "# (8...10) double, three poissions ratios: v_{xy}, v_{yz}, v_{xz}",
-      "# (11...19) double, nine yield stress",
+      "# (8...10) double, three Poisson's ratios: v_{xy}, v_{yz}, v_{xz}",
+      "# (11...19) double, nine yield stresses",
       "# (20) int, hardening expression tag",
       "# [21] double, density, default: 0.0"
     ],
@@ -1515,7 +1515,7 @@
       "material CustomJ2 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:[6]}",
       "#(1) int, unique material tag",
       "#(2) double, elastic modulus",
-      "#(3) double, poissons ratio",
+      "#(3) double, Poisson's ratio",
       "#(4) int, isotropic hardening expression tag",
       "#(5) int, kinematic hardening expression tag",
       "#[6] double, density, default: 0"
@@ -1562,8 +1562,8 @@
       "material CustomTsaiWu ${1:(1)} ${2:(2...7)} ${3:(8...10)} ${4:(11...19)} ${5:(20)} ${6:[21]}",
       "# (1) int, unique material tag",
       "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, G_{xy}, G_{yz}, G_{zx}",
-      "# (8...10) double, three poissions ratios: v_{xy}, v_{yz}, v_{xz}",
-      "# (11...19) double, nine yield stress",
+      "# (8...10) double, three Poisson's ratios: v_{xy}, v_{yz}, v_{xz}",
+      "# (11...19) double, nine yield stresses",
       "# (20) int, hardening expression tag",
       "# [21] double, density, default: 0.0"
     ],
@@ -1684,7 +1684,7 @@
       "material DafaliasMazanri ${1:(1)} ${2:(2-18)} ${19:[19]}",
       "# (1) int, unique material tag",
       "# (2) double, reference shear modulus G_0 ==> 125",
-      "# (3) double, poissons ratio \\nu",
+      "# (3) double, Poisson's ratio \\nu",
       "# (4) double, \\alpha^c ==> 1.5",
       "# (5) double, slope of critical state line \\lambda_c ==> 0.02",
       "# (6) double, initial void ratio e_0",
@@ -1724,7 +1724,7 @@
       "# (3) int, node j",
       "# (4) int, damper tag",
       "# (5) int, spring tag",
-      "# [6] bool string, if to use matrix in iteration, default: true",
+      "# [6] bool string, whether to use matrix in iteration, default: true",
       "# [7] int, the maximum delay number, default: 0",
       "# [8] double, beta, default: 0.5"
     ],
@@ -1750,7 +1750,7 @@
       "# (3) int, node j",
       "# (4) int, damper tag",
       "# (5) int, spring tag",
-      "# [6] bool string, if to use matrix in iteration, default: true",
+      "# [6] bool string, whether to use matrix in iteration, default: true",
       "# [7] int, the maximum delay number, default: 0",
       "# [8] double, beta, default: 0.5"
     ],
@@ -1812,7 +1812,7 @@
       "# (2) int, node i",
       "# (3) int, node j",
       "# (4) double, area",
-      "# (5) double, moment inertia",
+      "# (5) double, moment of inertia",
       "# (6) int, material tag",
       "# [7] bool string, nonlinear geometry switch, default: false"
     ],
@@ -1834,9 +1834,9 @@
       "material Elastic2D ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]} ${5:[5]}",
       "# (1) int, unique material tag",
       "# (2) double, elastic modulus",
-      "# (3) double, poissons ratio",
+      "# (3) double, Poisson's ratio",
       "# [4] double, density, default: 0.0",
-      "# [5] int, material type, plane stress = 0, plane strain = 1,, default: 0"
+      "# [5] int, material type, plane stress = 0, plane strain = 1, default: 0"
     ],
     "description": "2d elastic material",
     "prefix": "Elastic2D"
@@ -1846,7 +1846,7 @@
       "material IsotropicElastic3D ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4]}",
       "# (1) int, unique tag",
       "# (2) double, elastic modulus",
-      "# (3) double, poissons ratio",
+      "# (3) double, Poisson's ratio",
       "# [4] double, density, default: 0.0"
     ],
     "description": "3d isotropic elastic material",
@@ -1930,7 +1930,7 @@
       "material ExpCC ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:(10)} ${11:[11]}",
       "# (1) int, unique material tag",
       "# (2) double, elastic modulus",
-      "# (3) double, poissons ratio",
+      "# (3) double, Poisson's ratio",
       "# (4) double, beta, controls compression side shape",
       "# (5) double, m, slope of CSL",
       "# (6) double, p_t, initial tension strength",
@@ -1948,7 +1948,7 @@
       "material ExpDP ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:[10]}",
       "# (1) int, unique material tag",
       "# (2) double, elastic modulus",
-      "# (3) double, poissons ratio",
+      "# (3) double, Poisson's ratio",
       "# (4) double, \\eta_y",
       "# (5) double, \\eta_f",
       "# (6) double, \\xi",
@@ -1965,7 +1965,7 @@
       "material ExpGurson ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:[6]} ${7:[7]} ${8:[8]} ${9:[9]} ${10:[10]} ${11:[11]}",
       "# (1) int, unique material tag",
       "# (2) double, elastic modulus",
-      "# (3) double, poissons ratio",
+      "# (3) double, Poisson's ratio",
       "# (4) double, yield stress",
       "# (5) double, n",
       "# [6] double, q1, default: 1.0",
@@ -1983,7 +1983,7 @@
       "material ExpGurson1D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:[6]} ${7:[7]} ${8:[8]} ${9:[9]} ${10:[10]} ${11:[11]}",
       "# (1) int, unique material tag",
       "# (2) double, elastic modulus",
-      "# (3) double, poissons ratio",
+      "# (3) double, Poisson's ratio",
       "# (4) double, yield stress",
       "# (5) double, n",
       "# [6] double, q1, default: 1.0",
@@ -2001,8 +2001,8 @@
       "material ExpHoffman ${1:(1)} ${2:(2...7)} ${3:(8...10)} ${4:(11...19)} ${5:(20)} ${6:(21)} ${7:[22]}",
       "# (1) int, unique material tag",
       "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, G_{xy}, G_{yz}, G_{zx}",
-      "# (8...10) double, three poissions ratios: v_{xy}, v_{yz}, v_{xz}",
-      "# (11...19) double, nine yield stress",
+      "# (8...10) double, three Poisson's ratios: v_{xy}, v_{yz}, v_{xz}",
+      "# (11...19) double, nine yield stresses",
       "# (20) double, a, saturation",
       "# (21) double, b, saturation rate",
       "# [22] double, density, default: 0.0"
@@ -2015,7 +2015,7 @@
       "material ExpJ2 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:[7]}",
       "#(1) int, unique material tag",
       "#(2) double, elastic modulus",
-      "#(3) double, poissons ratio",
+      "#(3) double, Poisson's ratio",
       "#(4) double, yield stress",
       "#(5) double, a",
       "#(6) double, b",
@@ -2043,8 +2043,8 @@
       "material ExpTsaiWu ${1:(1)} ${2:(2...7)} ${3:(8...10)} ${4:(11...19)} ${5:(20)} ${6:(21)} ${7:[22]}",
       "# (1) int, unique material tag",
       "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, G_{xy}, G_{yz}, G_{zx}",
-      "# (8...10) double, three poissions ratios: v_{xy}, v_{yz}, v_{xz}",
-      "# (11...19) double, nine yield stress",
+      "# (8...10) double, three Poisson's ratios: v_{xy}, v_{yz}, v_{xz}",
+      "# (11...19) double, nine yield stresses",
       "# (20) double, a, saturation",
       "# (21) double, b, saturation rate",
       "# [22] double, density, default: 0.0"
@@ -2383,7 +2383,7 @@
       "groupmultiplierbc ${1:(1)} ${2:(2)} ${3:(3...)}",
       "# (1) int, unique tag",
       "# (2) string, dof identifier",
-      "# (3...) int, tags of groups that shall be constrained"
+      "# (3...) int, tags of groups to be constrained"
     ],
     "description": "boundary condition",
     "prefix": "GroupMultiplierBC"
@@ -2393,7 +2393,7 @@
       "grouppenaltybc ${1:(1)} ${2:(2)} ${3:(3...)}",
       "# (1) int, unique tag",
       "# (2) string, dof identifier",
-      "# (3...) int, tags of groups that shall be constrained"
+      "# (3...) int, tags of groups to be constrained"
     ],
     "description": "boundary condition",
     "prefix": "GroupPenaltyBC"
@@ -2519,7 +2519,7 @@
     "body": [
       "material Laminated ${1:(1)} ${2:(2...)}",
       "# (1) int, unique material tag",
-      "# (2...) int, material tags of 2D models need to be contained"
+      "# (2...) int, material tags of 2D models to be included"
     ],
     "description": "parallel wrapper for 2d material models",
     "prefix": "Laminated"
@@ -2604,7 +2604,7 @@
   },
   "Linear": {
     "body": [
-      "amplitutde Linear ${1:(1)} ${2:(2)}",
+      "amplitude Linear ${1:(1)} ${2:(2)}",
       "# (1) int, unique amplitude tag",
       "# (2) double, slope V"
     ],
@@ -2640,7 +2640,7 @@
       "# (2) int, tag of first converger in logical operation",
       "# (3) int, tag of second converger in logical operation"
     ],
-    "description": "apply logical operations to two convergers.",
+    "description": "apply logical operations to two convergers",
     "prefix": "LogicConvergerAND"
   },
   "LogicConvergerOR": {
@@ -2650,7 +2650,7 @@
       "# (2) int, tag of first converger in logical operation",
       "# (3) int, tag of second converger in logical operation"
     ],
-    "description": "apply logical operations to two convergers.",
+    "description": "apply logical operations to two convergers",
     "prefix": "LogicConvergerOR"
   },
   "LogicConvergerXOR": {
@@ -2660,7 +2660,7 @@
       "# (2) int, tag of first converger in logical operation",
       "# (3) int, tag of second converger in logical operation"
     ],
-    "description": "apply logical operations to two convergers.",
+    "description": "apply logical operations to two convergers",
     "prefix": "LogicConvergerXOR"
   },
   "LogicCriterionAll": {
@@ -2669,7 +2669,7 @@
       "# (1) int, unique criterion tag",
       "# (2) int, tags of criteria in logical operation"
     ],
-    "description": "apply logical operations to multiple criteria.",
+    "description": "apply logical operations to multiple criteria",
     "prefix": "LogicCriterionAll"
   },
   "LogicCriterionAny": {
@@ -2678,7 +2678,7 @@
       "# (1) int, unique criterion tag",
       "# (2) int, tags of criteria in logical operation"
     ],
-    "description": "apply logical operations to multiple criteria.",
+    "description": "apply logical operations to multiple criteria",
     "prefix": "LogicCriterionAny"
   },
   "LumpedScale": {
@@ -2928,7 +2928,7 @@
       "# (1) int, unique tag",
       "# (2) int, damper tag",
       "# (3) int, spring tag",
-      "# [4] bool string, if to use matrix formulation, default: false",
+      "# [4] bool string, whether to use matrix formulation, default: false",
       "# [5] int, the maximum unconverged substep allowed, default: 1",
       "# [6] double, local time integration parameter, default: 0.0"
     ],
@@ -3080,7 +3080,7 @@
       "# (4) double, plastic strain of control point",
       "# (5) double, stress of control point"
     ],
-    "description": "uniaxial multiliear j2 material",
+    "description": "uniaxial multilinear j2 material",
     "prefix": "MultilinearMises1D"
   },
   "MultilinearOO": {
@@ -3110,7 +3110,7 @@
       "multiplierbc ${1:(1)} ${2:(2)} ${3:(3...)}",
       "# (1) int, unique tag",
       "# (2) string, dof identifier",
-      "# (3...) int, tags of nodes that shall be constrained"
+      "# (3...) int, tags of nodes to be constrained"
     ],
     "description": "boundary condition",
     "prefix": "MultiplierBC"
@@ -3397,7 +3397,7 @@
       "material NonlocalBilinearJ2 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:[9]} ${10:[10]} ${11:[11]}",
       "# (1) int, unique material tag",
       "# (2) double, elastic modulus",
-      "# (3) double, poissons ratio",
+      "# (3) double, Poisson's ratio",
       "# (4) double, yield stress",
       "# (5) double, initial degradation threshold of equivalent plastic strain",
       "# (6) double, degradation rate",
@@ -3436,7 +3436,7 @@
       "material NonlocalIsotropicElastic3D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:[8]}",
       "# (1) int, unique tag",
       "# (2) double, elastic modulus",
-      "# (3) double, poissons ratio",
+      "# (3) double, Poisson's ratio",
       "# (4) double, energy threshold",
       "# (5) double, degradation rate",
       "# (6) double, reference length",
@@ -3513,7 +3513,7 @@
       "material OrthotropicElastic3D ${1:(1)} ${2:(2...7)} ${8:(8...10)} ${11:[11]}",
       "# (1) int, unique tag",
       "# (2..7) double, six moduli",
-      "# (8...10) double, three poissons ratio",
+      "# (8...10) double, three Poisson's ratios",
       "# [11] double, density, default: 0.0"
     ],
     "description": "3d orthotropic elastic material",
@@ -3595,7 +3595,7 @@
     "body": [
       "material Parallel ${1:(1)} ${2:(2...)}",
       "# (1) int, unique material tag",
-      "# (2...) int, material tags of 1D models need to be contained"
+      "# (2...) int, material tags of 1D models to be included"
     ],
     "description": "parallel wrapper for 1d material models",
     "prefix": "Parallel"
@@ -3654,7 +3654,7 @@
       "penaltybc ${1:(1)} ${2:(2)} ${3:(3...)}",
       "# (1) int, unique tag",
       "# (2) string, dof identifier",
-      "# (3...) int, tags of nodes that shall be constrained"
+      "# (3...) int, tags of nodes to be constrained"
     ],
     "description": "boundary condition",
     "prefix": "PenaltyBC"
@@ -3722,7 +3722,7 @@
       "# (1) int, unique material tag",
       "# (2) int, underlying material tag",
       "# (3) int, amplitude tag, set to 0 to use a ramp function",
-      "# (4) double, maginutde"
+      "# (4) double, magnitude"
     ],
     "description": "prestrain wrapper for uniaxial materials",
     "prefix": "Prestrain"
@@ -4044,7 +4044,7 @@
     "body": [
       "material Sequential ${1:(1)} ${2:(2...)}",
       "# (1) int, unique material tag",
-      "# (2...) int, material tags of 1D models need to be contained"
+      "# (2...) int, material tags of 1D models to be included"
     ],
     "description": "uniaxial wrapper",
     "prefix": "Sequential"
@@ -4054,7 +4054,7 @@
       "material SimpleSand ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:(6)} ${7:(7)} ${8:(8)} ${9:(9)} ${10:(10)} ${11:(11)} ${12:(12)} ${13:(13)} ${14:[14]}",
       "# (1) int, unique material tag",
       "# (2) double, elastic modulus",
-      "# (3) double, poissons ratio",
+      "# (3) double, Poisson's ratio",
       "# (4) double, m, size of yield surface",
       "# (5) double, A, dilatancy related parameter, often negative",
       "# (6) double, h, dilatancy related hardening parameter",
@@ -4171,7 +4171,7 @@
     "body": [
       "material Stacked ${1:(1)} ${2:(2...)}",
       "# (1) int, unique material tag",
-      "# (2...) int, material tags of 3D models need to be contained"
+      "# (2...) int, material tags of 3D models to be included"
     ],
     "description": "parallel wrapper for 3d material models",
     "prefix": "Stacked"
@@ -4289,8 +4289,8 @@
       "# (4) int, material tag",
       "# (5) double, cross sectional area",
       "# [6] bool string, nonlinear geometry switch, default: false",
-      "# [7] bool string, if to update sectional area, default: false",
-      "# [8] bool string, if to use log strain, default: false",
+      "# [7] bool string, whether to update the sectional area, default: false",
+      "# [8] bool string, whether to use log strain, default: false",
       "# [9] double, flexural rigidity, -1.0"
     ],
     "description": "2d linear truss",
@@ -4304,7 +4304,7 @@
       "# (3) int, node j",
       "# (4) int, section tag",
       "# [5] bool string, nonlinear geometry switch, default: false",
-      "# [6] bool string, if to use log strain, default: false"
+      "# [6] bool string, whether to use log strain, default: false"
     ],
     "description": "2d linear truss using section",
     "prefix": "T2D2S"
@@ -4318,8 +4318,8 @@
       "# (4) int, material tag",
       "# (5) double, cross sectional area",
       "# [6] bool string, nonlinear geometry switch, default: false",
-      "# [7] bool string, if to update sectional area, default: false",
-      "# [8] bool string, if to use log strain, default: false"
+      "# [7] bool string, whether to update the sectional area, default: false",
+      "# [8] bool string, whether to use log strain, default: false"
     ],
     "description": "3d linear truss",
     "prefix": "T3D2"
@@ -4332,7 +4332,7 @@
       "# (3) int, node j",
       "# (4) int, section tag",
       "# [5] bool string, nonlinear geometry switch, default: false",
-      "# [6] bool string, if to use log strain, default: false"
+      "# [6] bool string, whether to use log strain, default: false"
     ],
     "description": "3d linear truss using section",
     "prefix": "T3D2S"
@@ -4446,7 +4446,7 @@
       "material TimberPD ${1:(1)} ${2:(2...7)} ${3:(8...10)} ${4:(11...19)} ${5:(20...26)} ${6:[27]}",
       "# (1) int, unique material tag",
       "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, G_{xy}, G_{yz}, G_{zx}",
-      "# (8...10) double, three poissions ratios: v_{xy}, v_{yz}, v_{xz}",
+      "# (8...10) double, three Poisson's ratios: v_{xy}, v_{yz}, v_{xz}",
       "# (11...19) double, nine yield stresses",
       "# (20...26) double, hardening parameters",
       "# [27] double, density, default: 0.0"
@@ -4550,7 +4550,7 @@
       "# the following applies to v3.6 and later only, see documentation for older syntax",
       "# (1) int, unique material tag",
       "# (2) double, elastic modulus",
-      "# (3) double, poissons ratio",
+      "# (3) double, Poisson's ratio",
       "# (4) double, yield stress",
       "# (5) double, linear isotropic hardening modulus",
       "# (6) double, saturation stress",
@@ -4633,7 +4633,7 @@
       "material YLD0418P ${1:(1)} ${2:(2...7)} ${3:(8...10)} ${4:(11...28)} ${5:(29)} ${6:(30)} ${7:(31)} ${8:(32)} ${9:(33)} ${10:[34]}",
       "# (1) int, unique material tag",
       "# (2...7) double, six moduli: E_{xx}, E_{yy}, E_{zz}, G_{xy}, G_{yz}, G_{zx}",
-      "# (8...10) double, three poissions ratios: v_{xy}, v_{yz}, v_{xz}",
+      "# (8...10) double, three Poisson's ratios: v_{xy}, v_{yz}, v_{xz}",
       "# (11...28) double, 18 model parameters, see documentation for details",
       "# (29) double, exponent",
       "# (30) double, reference stress",
@@ -4650,7 +4650,7 @@
       "material YLD0418PISO ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4...21)} ${5:(22)} ${6:(23)} ${7:(24)} ${8:(25)} ${9:(26)} ${10:[27]}",
       "# (1) int, unique material tag",
       "# (2) double, elastic modulus",
-      "# (3) double, poissions ratio",
+      "# (3) double, Poisson's ratio",
       "# (4...21) double, 18 model parameters, see documentation for details",
       "# (22) double, exponent",
       "# (23) double, reference stress",
@@ -4687,7 +4687,7 @@
   "band_mat": {
     "body": [
       "set band_mat ${1:(1)}",
-      "# (1) bool, true of false"
+      "# (1) bool, true or false"
     ],
     "description": "enable/disable banded storage",
     "prefix": "band_mat"
@@ -4818,7 +4818,7 @@
     "body": [
       "expression SimpleScalar ${1:(1)} ${2:(2)} ${3:(3)}",
       "# (1) int, unique expression tag",
-      "# (2) string, variable list, vertical line separated",
+      "# (2) string, variable list separated by vertical lines",
       "# (3) string, expression or name of file containing expression"
     ],
     "description": "simple scalar valued maths expression",
@@ -4837,7 +4837,7 @@
       "fix ${1:(1)} ${2:(2)} ${3:(3...)}",
       "# (1) int, unique tag",
       "# (2) string, dof identifier",
-      "# (3...) int, tags of nodes that shall be constrained"
+      "# (3...) int, tags of nodes to be constrained"
     ],
     "description": "boundary condition",
     "prefix": "fix"
@@ -4847,7 +4847,7 @@
       "fix2 ${1:(1)} ${2:(2)} ${3:(3...)}",
       "# (1) int, unique tag",
       "# (2) string, dof identifier",
-      "# (3...) int, tags of nodes that shall be constrained"
+      "# (3...) int, tags of nodes to be constrained"
     ],
     "description": "boundary condition",
     "prefix": "fix2"
@@ -4857,7 +4857,7 @@
       "set fixed_step_size ${1:(1)}",
       "# (1) bool, true or false"
     ],
-    "description": "set if to use fixed step size or allow automatic adjustment",
+    "description": "set whether to use fixed step size or allow automatic adjustment",
     "prefix": "fixed_step_size"
   },
   "fullname": {
@@ -4913,7 +4913,7 @@
     "body": [
       "generatebyrule nodegroup ${1:(1)} ${2:(2)} ${3:(3...)}",
       "# (1) int, unique group tag",
-      "# (2) int, DoF tag that polynomial shall be applied on",
+      "# (2) int, DoF tag that the polynomial shall be applied to",
       "# (3...) double, parameters a_n, a_{n-1}, a_{n-2},..., a_0"
     ],
     "description": "generate node groups by rule",
@@ -5038,7 +5038,7 @@
     "body": [
       "materialTest1D ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4...]}",
       "# (1) int, unique tag of the material model to use",
-      "# (2) double, size of per strain increment",
+      "# (2) double, size of each strain increment",
       "# (3) int, number of steps along increment direction",
       "# [4...] int, optional numbers of steps for strain history"
     ],
@@ -5049,7 +5049,7 @@
     "body": [
       "materialTest2D ${1:(1)} (2...4) ${5:(5)} ${6:[6...]}",
       "# (1) int, unique tag of the material model to use",
-      "# (2...4) double, size of per strain increment",
+      "# (2...4) double, size of each strain increment",
       "# (5) int, number of steps along increment direction",
       "# [6...] int, optional numbers of steps for strain history"
     ],
@@ -5060,7 +5060,7 @@
     "body": [
       "materialTest3D ${1:(1)} (2...7) ${8:(8)} ${9:[9...]}",
       "# (1) int, unique tag of the material model to use",
-      "# (2...7) double, size of per strain increment",
+      "# (2...7) double, size of each strain increment",
       "# (8) int, number of steps along increment direction",
       "# [9...] int, optional numbers of steps for strain history"
     ],
@@ -5071,7 +5071,7 @@
     "body": [
       "materialTest1D ${1:(1)} ${2:(2)} ${3:(3)} ${4:[4...]}",
       "# (1) int, unique tag of the material model to use",
-      "# (2) double, size of per load increment",
+      "# (2) double, size of each load increment",
       "# (3) int, number of steps along increment direction",
       "# [4...] int, optional numbers of steps for load history"
     ],
@@ -5082,7 +5082,7 @@
     "body": [
       "materialTest2D ${1:(1)} (2...4) ${5:(5)} ${6:[6...]}",
       "# (1) int, unique tag of the material model to use",
-      "# (2...4) double, size of per load increment",
+      "# (2...4) double, size of each load increment",
       "# (5) int, number of steps along increment direction",
       "# [6...] int, optional numbers of steps for load history"
     ],
@@ -5093,7 +5093,7 @@
     "body": [
       "materialTest3D ${1:(1)} (2...7) ${8:(8)} ${9:[9...]}",
       "# (1) int, unique tag of the material model to use",
-      "# (2...7) double, size of per load increment",
+      "# (2...7) double, size of each load increment",
       "# (8) int, number of steps along increment direction",
       "# [9...] int, optional numbers of steps for load history"
     ],
@@ -5267,7 +5267,7 @@
   "save": {
     "body": [
       "save recorder ${1:(1...)}",
-      "# (1...) int, tags of recorders need to be saved"
+      "# (1...) int, tags of recorders to be saved"
     ],
     "description": "save recorded data to disk",
     "prefix": "save"
@@ -5290,7 +5290,7 @@
   "sparse_mat": {
     "body": [
       "set sparse_mat ${1:(1)}",
-      "# (1) bool string, true of false"
+      "# (1) bool string, true or false"
     ],
     "description": "switch on/off sparse storage",
     "prefix": "sparse_mat"
@@ -5344,7 +5344,7 @@
   "symm_mat": {
     "body": [
       "set symm_mat ${1:(1)}",
-      "# (1) bool string, true of false"
+      "# (1) bool string, true or false"
     ],
     "description": "enable/disable symmetric storage",
     "prefix": "symm_mat"
