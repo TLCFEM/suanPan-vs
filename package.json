@@ -48,6 +48,11 @@
           "description": "Docker image to use.",
           "type": "string"
         },
+        "suanpan.languageFeatures": {
+          "default": true,
+          "description": "Enable hover, completion, diagnostics, symbols and go-to-definition for suanPan model files.",
+          "type": "boolean"
+        },
         "suanpan.path": {
           "default": "",
           "description": "Path to the suanPan executable.",
@@ -135,7 +140,9 @@
   "scripts": {
     "compile": "tsc -p ./",
     "lint": "eslint src --ext ts",
+    "schema": "python3 scripts/extract_schema.py",
     "pretest": "npm run compile && npm run lint",
+    "smoke": "node scripts/smoke.js",
     "test": "node ./out/test/runTest.js",
     "vscode:prepublish": "npm run compile",
     "watch": "tsc --watch -p ./"

@@ -1,4 +1,6 @@
 import * as vscode from 'vscode';
+import { registerLanguageFeatures } from './providers';
+import { Registry } from './schema';
 
 function setPath() {
 	const sp_config = vscode.workspace.getConfiguration('suanpan');
@@ -94,27 +96,14 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(disposable);
 
-	let tooltip = vscode.languages.registerHoverProvider({ language: 'suanPan' }, {
-		provideHover(document, position, token) {
-			return handle_hover(document, position, token);
+	if (vscode.workspace.getConfiguration('suanpan').get<boolean>('languageFeatures')) {
+		try {
+			const registry = Registry.fromExtension(context);
+			registerLanguageFeatures(context, registry);
+		} catch (error) {
+			vscode.window.showWarningMessage(`suanPan: failed to load the command schema: ${error}`);
 		}
-	});
-
-	context.subscriptions.push(tooltip);
+	}
 }
 
 export function deactivate() { }
-
-function handle_hover(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken) {
-	const wordRange = document.getWordRangeAtPosition(position);
-	if (!wordRange) return new vscode.Hover(['']);
-
-	const word = document.getText(wordRange).toLowerCase();
-
-	const line = document.lineAt(position.line);
-	const lineText = line.text.toLowerCase();
-	const indexOfWord = lineText.indexOf(word);
-	if (indexOfWord === 0 && 'element' === word) return new vscode.Hover(['create elements']);
-
-	return new vscode.Hover(['']);
-}
