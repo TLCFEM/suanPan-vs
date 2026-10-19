@@ -558,7 +558,7 @@
       "# (1) int, unique material tag",
       "# (2) double, elastic modulus",
       "# (3) double, yield stress",
-      "# (4) double, hardening modulus",
+      "# [4] double, hardening modulus, default: 0.0",
       "# [5] double, density, default: 0.0"
     ],
     "description": "uniaxial bilinear elastic material",
@@ -3117,12 +3117,12 @@
   },
   "NLE1D01": {
     "body": [
-      "material NLE1D01 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:[5]} ${6:[6]}",
+      "material NLE1D01 ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)} ${6:[6]}",
       "# (1) int, unique material tag",
       "# (2) double, elastic modulus",
       "# (3) double, turning stress",
       "# (4) double, hardening ratio",
-      "# [5] double, radius of transition, default: 20",
+      "# (5) double, radius of transition",
       "# [6] double, density, default: 0.0"
     ],
     "description": "nonlinear elastic 1d type 01",
@@ -3499,8 +3499,8 @@
   "Orientation": {
     "body": [
       "orientation ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)}",
-      "# (1) int, unique orientation tag",
-      "# (2) string, orientation type",
+      "# (1) string, orientation type",
+      "# (2) int, unique orientation tag",
       "# (3) double, x component of local z axis",
       "# (4) double, y component of local z axis",
       "# (5) double, z component of local z axis"
@@ -3973,7 +3973,7 @@
       "# (2...5) int, node i, j, k, l",
       "# (6) int, material tag",
       "# (7) double, thickness",
-      "# [8] bool, nonlinear geometry switch, default: false"
+      "# [8] bool string, nonlinear geometry switch, default: false"
     ],
     "description": "four node shell element",
     "prefix": "S4"
@@ -4035,7 +4035,7 @@
       "# (2...5) int, node i, j, k, l",
       "# (6) int, material tag",
       "# (7) double, thickness",
-      "# [8] bool, nonlinear geometry switch, default: false"
+      "# [8] bool string, nonlinear geometry switch, default: false"
     ],
     "description": "simplified generalized conforming mixed shell element",
     "prefix": "SGCMS"
@@ -4456,22 +4456,24 @@
   },
   "TranslationConnector2D": {
     "body": [
-      "element TranslationConnector2D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+      "element TranslationConnector2D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)}",
       "# (1) int, unique element tag",
       "# (2) int, node i",
       "# (3) int, node j",
-      "# (4) int, node k"
+      "# (4) int, node k",
+      "# (5) double, penalty factor"
     ],
     "description": "define 2d translation connector",
     "prefix": "TranslationConnector2D"
   },
   "TranslationConnector3D": {
     "body": [
-      "element TranslationConnector3D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)}",
+      "element TranslationConnector3D ${1:(1)} ${2:(2)} ${3:(3)} ${4:(4)} ${5:(5)}",
       "# (1) int, unique element tag",
       "# (2) int, node i",
       "# (3) int, node j",
-      "# (4) int, node k"
+      "# (4) int, node k",
+      "# (5) double, penalty factor"
     ],
     "description": "define 3d translation connector",
     "prefix": "TranslationConnector3D"
