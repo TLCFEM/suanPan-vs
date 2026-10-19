@@ -5011,7 +5011,7 @@
       "# (2) int, dof",
       "# [3...] int, node tags",
       "",
-      "initial history ${1:(1)} ${2:[2...]}",
+      "initial material history ${1:(1)} ${2:[2...]}",
       "# (1) int, material model tag",
       "# [2...] double, initial history vector"
     ],
