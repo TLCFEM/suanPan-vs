@@ -12,3 +12,6 @@ out/test/**
 scripts/**
 src/**
 vsc-extension-quickstart.md
+
+# build tooling
+eslint.config.mjs

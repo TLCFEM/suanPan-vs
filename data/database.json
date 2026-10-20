@@ -1,0 +1,3164 @@
+{
+ "version": "4.2.1",
+ "commands": [
+  {
+   "name": "acceleration",
+   "aliases": [],
+   "category": "load",
+   "summary": "acceleration load"
+  },
+  {
+   "name": "amplitude",
+   "aliases": [],
+   "category": "amplitude",
+   "summary": "define amplitudes",
+   "types": [
+    {
+     "name": "Constant",
+     "aliases": [],
+     "summary": "constant amplitude"
+    },
+    {
+     "name": "Ramp",
+     "aliases": [],
+     "summary": "ramp amplitude"
+    },
+    {
+     "name": "Tabular",
+     "aliases": [],
+     "summary": "amplitude using tabular data"
+    },
+    {
+     "name": "TabularSpline",
+     "aliases": [],
+     "summary": "amplitude using tabular data with spline interpolation"
+    },
+    {
+     "name": "Decay",
+     "aliases": [],
+     "summary": "decay amplitude"
+    },
+    {
+     "name": "Linear",
+     "aliases": [],
+     "summary": "linear amplitude"
+    },
+    {
+     "name": "Combine",
+     "aliases": [],
+     "summary": "amplitude combining multiple amplitudes"
+    },
+    {
+     "name": "Custom",
+     "aliases": [],
+     "summary": "amplitude using custom function"
+    },
+    {
+     "name": "Modulated",
+     "aliases": [
+      "Sine",
+      "Cosine"
+     ],
+     "summary": "modulated amplitude"
+    },
+    {
+     "name": "NZStrongMotion",
+     "aliases": [],
+     "summary": "strong motion amplitude"
+    }
+   ]
+  },
+  {
+   "name": "analyze",
+   "aliases": [
+    "analyse"
+   ],
+   "category": null,
+   "summary": "analyse the model"
+  },
+  {
+   "name": "benchmark",
+   "aliases": [],
+   "category": null,
+   "summary": "benchmark the platform for comparisons"
+  },
+  {
+   "name": "bodyforce",
+   "aliases": [],
+   "category": "load",
+   "summary": "body force load"
+  },
+  {
+   "name": "clear",
+   "aliases": [],
+   "category": null,
+   "summary": "clear the model to the initial state"
+  },
+  {
+   "name": "cload",
+   "aliases": [],
+   "category": "load",
+   "summary": "concentrated nodal load"
+  },
+  {
+   "name": "command",
+   "aliases": [],
+   "category": null,
+   "summary": "list all commands"
+  },
+  {
+   "name": "constraint",
+   "aliases": [],
+   "category": "constraint",
+   "summary": "define constraints such as boundary conditions",
+   "types": [
+    {
+     "name": "Embed2D",
+     "aliases": [],
+     "summary": "2d embed constraint"
+    },
+    {
+     "name": "Embed3D",
+     "aliases": [],
+     "summary": "3d embed constraint"
+    },
+    {
+     "name": "FiniteRestitutionWall",
+     "aliases": [
+      "FiniteRestitutionWallPenalty"
+     ]
+    },
+    {
+     "name": "FiniteRigidWall",
+     "aliases": [
+      "FiniteRigidWallPenalty"
+     ]
+    },
+    {
+     "name": "FiniteRigidWallMultiplier",
+     "aliases": []
+    },
+    {
+     "name": "Fix",
+     "aliases": [
+      "PenaltyBC"
+     ],
+     "summary": "boundary condition"
+    },
+    {
+     "name": "Fix2",
+     "aliases": [
+      "MultiplierBC"
+     ],
+     "summary": "boundary condition"
+    },
+    {
+     "name": "FixedLength2D",
+     "aliases": [
+      "R2D2"
+     ],
+     "summary": "2d fixed length constraint"
+    },
+    {
+     "name": "FixedLength3D",
+     "aliases": [
+      "R3D2"
+     ],
+     "summary": "3d fixed length constraint"
+    },
+    {
+     "name": "GroupMultiplierBC",
+     "aliases": [],
+     "summary": "boundary condition"
+    },
+    {
+     "name": "GroupPenaltyBC",
+     "aliases": [],
+     "summary": "boundary condition"
+    },
+    {
+     "name": "LinearSpring2D",
+     "aliases": []
+    },
+    {
+     "name": "LJPotential2D",
+     "aliases": [],
+     "summary": "2d lj potential constraint"
+    },
+    {
+     "name": "MaximumForce2D",
+     "aliases": [
+      "MaxForce2D"
+     ],
+     "summary": "2d maximum force constraint"
+    },
+    {
+     "name": "MaximumForce3D",
+     "aliases": [
+      "MaxForce3D"
+     ],
+     "summary": "3d maximum force constraint"
+    },
+    {
+     "name": "MaximumGap2D",
+     "aliases": [
+      "MaxGap2D"
+     ],
+     "summary": "gap constraint"
+    },
+    {
+     "name": "MaximumGap3D",
+     "aliases": [
+      "MaxGap3D"
+     ],
+     "summary": "gap constraint"
+    },
+    {
+     "name": "MinimumGap2D",
+     "aliases": [
+      "MinGap2D"
+     ],
+     "summary": "gap constraint"
+    },
+    {
+     "name": "MinimumGap3D",
+     "aliases": [
+      "MinGap3D"
+     ],
+     "summary": "gap constraint"
+    },
+    {
+     "name": "MPC",
+     "aliases": [],
+     "summary": "multi-point constraint"
+    },
+    {
+     "name": "NodeFacet",
+     "aliases": [],
+     "summary": "node facet constraint"
+    },
+    {
+     "name": "NodeLine",
+     "aliases": [],
+     "summary": "node line constraint"
+    },
+    {
+     "name": "MolecularDynamics2D",
+     "aliases": []
+    },
+    {
+     "name": "MolecularDynamics3D",
+     "aliases": []
+    },
+    {
+     "name": "ParticleCollision2D",
+     "aliases": [],
+     "summary": "2d particle collision constraint"
+    },
+    {
+     "name": "ParticleCollision3D",
+     "aliases": [],
+     "summary": "3d particle collision constraint"
+    },
+    {
+     "name": "RestitutionWall",
+     "aliases": [
+      "RestitutionWallPenalty"
+     ]
+    },
+    {
+     "name": "RigidWall",
+     "aliases": [
+      "RigidWallPenalty"
+     ]
+    },
+    {
+     "name": "RigidWallMultiplier",
+     "aliases": []
+    },
+    {
+     "name": "Sleeve2D",
+     "aliases": [],
+     "summary": "2d sleeve constraint"
+    },
+    {
+     "name": "Sleeve3D",
+     "aliases": [],
+     "summary": "3d sleeve constraint"
+    }
+   ]
+  },
+  {
+   "name": "converger",
+   "aliases": [],
+   "category": "converger",
+   "summary": "define convergers",
+   "types": [
+    {
+     "name": "LogicAND",
+     "aliases": [
+      "LogicConvergerAND"
+     ],
+     "summary": "apply logical operations to two convergers"
+    },
+    {
+     "name": "LogicOR",
+     "aliases": [
+      "LogicConvergerOR"
+     ],
+     "summary": "apply logical operations to two convergers"
+    },
+    {
+     "name": "LogicXOR",
+     "aliases": [
+      "LogicConvergerXOR"
+     ],
+     "summary": "apply logical operations to two convergers"
+    },
+    {
+     "name": "FixedNumber",
+     "aliases": [],
+     "summary": "fixed number of iterations converger"
+    },
+    {
+     "name": "AbsResidual",
+     "aliases": [],
+     "summary": "converger absresidual"
+    },
+    {
+     "name": "RelResidual",
+     "aliases": [],
+     "summary": "converger relresidual"
+    },
+    {
+     "name": "AbsIncreDisp",
+     "aliases": [],
+     "summary": "converger absincredisp"
+    },
+    {
+     "name": "RelIncreDisp",
+     "aliases": [],
+     "summary": "converger relincredisp"
+    },
+    {
+     "name": "AbsIncreAcc",
+     "aliases": [],
+     "summary": "converger absincreacc"
+    },
+    {
+     "name": "RelIncreAcc",
+     "aliases": [],
+     "summary": "converger relincreacc"
+    },
+    {
+     "name": "AbsDisp",
+     "aliases": [],
+     "summary": "converger absdisp"
+    },
+    {
+     "name": "RelDisp",
+     "aliases": [],
+     "summary": "converger reldisp"
+    },
+    {
+     "name": "AbsError",
+     "aliases": [],
+     "summary": "converger abserror"
+    },
+    {
+     "name": "RelError",
+     "aliases": [],
+     "summary": "converger relerror"
+    },
+    {
+     "name": "AbsIncreEnergy",
+     "aliases": [],
+     "summary": "converger absincreenergy"
+    },
+    {
+     "name": "RelIncreEnergy",
+     "aliases": [],
+     "summary": "converger relincreenergy"
+    }
+   ]
+  },
+  {
+   "name": "criterion",
+   "aliases": [],
+   "category": "criterion",
+   "summary": "define stopping criteria",
+   "types": [
+    {
+     "name": "LogicAll",
+     "aliases": [
+      "LogicCriterionAll"
+     ],
+     "summary": "apply logical operations to multiple criteria"
+    },
+    {
+     "name": "LogicAny",
+     "aliases": [
+      "LogicCriterionAny"
+     ],
+     "summary": "apply logical operations to multiple criteria"
+    },
+    {
+     "name": "StrainEnergyEvolution",
+     "aliases": [],
+     "summary": "strain energy evolution criterion"
+    },
+    {
+     "name": "MaxHistory",
+     "aliases": [],
+     "summary": "max history criterion"
+    },
+    {
+     "name": "MinHistory",
+     "aliases": [],
+     "summary": "min history criterion"
+    },
+    {
+     "name": "MaxDisplacement",
+     "aliases": [],
+     "summary": "max displacement criterion"
+    },
+    {
+     "name": "MinDisplacement",
+     "aliases": [],
+     "summary": "min displacement criterion"
+    },
+    {
+     "name": "MaxResistance",
+     "aliases": [],
+     "summary": "max resistance criterion"
+    },
+    {
+     "name": "MinResistance",
+     "aliases": [],
+     "summary": "min resistance criterion"
+    }
+   ]
+  },
+  {
+   "name": "customnodegroup",
+   "aliases": [],
+   "category": "group",
+   "summary": "node group based on custom rule"
+  },
+  {
+   "name": "delete",
+   "aliases": [],
+   "category": null,
+   "summary": "delete objects"
+  },
+  {
+   "name": "disable",
+   "aliases": [],
+   "category": null,
+   "summary": "disable objects"
+  },
+  {
+   "name": "disp",
+   "aliases": [],
+   "category": "load",
+   "summary": ""
+  },
+  {
+   "name": "displacement",
+   "aliases": [],
+   "category": "load",
+   "summary": "prescribed displacement"
+  },
+  {
+   "name": "dispload",
+   "aliases": [],
+   "category": "load",
+   "summary": ""
+  },
+  {
+   "name": "domain",
+   "aliases": [],
+   "category": "domain",
+   "summary": "create/switch to other problem domains"
+  },
+  {
+   "name": "element",
+   "aliases": [],
+   "category": "element",
+   "summary": "define elements",
+   "types": [
+    {
+     "name": "Allman",
+     "aliases": [],
+     "summary": "allman's triangle with drilling dofs"
+    },
+    {
+     "name": "B21",
+     "aliases": [],
+     "summary": "2d displacement based bernoulli beam"
+    },
+    {
+     "name": "B21EH",
+     "aliases": [],
+     "summary": "2d displacement based bernoulli beam with end moment release"
+    },
+    {
+     "name": "B21EL",
+     "aliases": [],
+     "summary": "2d displacement based bernoulli beam with end moment release"
+    },
+    {
+     "name": "B21H",
+     "aliases": [],
+     "summary": "2d displacement based bernoulli beam with lumped end hinges"
+    },
+    {
+     "name": "B31",
+     "aliases": [],
+     "summary": "3d displacement based bernoulli beam"
+    },
+    {
+     "name": "B31OS",
+     "aliases": [],
+     "summary": "3d displacement based beam with open section"
+    },
+    {
+     "name": "C3D4",
+     "aliases": [],
+     "summary": "linear tetrahedral"
+    },
+    {
+     "name": "C3D8",
+     "aliases": [],
+     "summary": "linear cube/brick"
+    },
+    {
+     "name": "C3D8I",
+     "aliases": [],
+     "summary": "linear cube/brick with incompatible modes"
+    },
+    {
+     "name": "C3D8R",
+     "aliases": [],
+     "summary": "linear cube/brick with reduced integration"
+    },
+    {
+     "name": "C3D20",
+     "aliases": [],
+     "summary": "second order cube/brick"
+    },
+    {
+     "name": "CAX3",
+     "aliases": [],
+     "summary": "axisymmetric linear triangle"
+    },
+    {
+     "name": "CAX4",
+     "aliases": [],
+     "summary": "axisymmetric linear quadrilateral"
+    },
+    {
+     "name": "CAX8",
+     "aliases": [],
+     "summary": "axisymmetric quadratic quadrilateral"
+    },
+    {
+     "name": "CIN3D8",
+     "aliases": [],
+     "summary": "linear infinite cube/brick"
+    },
+    {
+     "name": "CINP4",
+     "aliases": [],
+     "summary": "bilinear infinite quadrilateral"
+    },
+    {
+     "name": "Contact2D",
+     "aliases": [],
+     "summary": "2d node(slave)-line(master) contact element"
+    },
+    {
+     "name": "Contact3D",
+     "aliases": [],
+     "summary": "3d node(slave)-triangular facet(master) contact element"
+    },
+    {
+     "name": "CP3",
+     "aliases": [],
+     "summary": "constant strain triangle"
+    },
+    {
+     "name": "CP4",
+     "aliases": [],
+     "summary": "bilinear quadrilateral"
+    },
+    {
+     "name": "CP4I",
+     "aliases": [],
+     "summary": "bilinear incompatible quadrilateral"
+    },
+    {
+     "name": "CP4R",
+     "aliases": [],
+     "summary": "bilinear quadrilateral with reduced integration"
+    },
+    {
+     "name": "CP5",
+     "aliases": [],
+     "summary": "five-point quadrilateral"
+    },
+    {
+     "name": "CP6",
+     "aliases": [],
+     "summary": "quadratic triangle"
+    },
+    {
+     "name": "CP7",
+     "aliases": [],
+     "summary": "seven-point quadrilateral"
+    },
+    {
+     "name": "CP8",
+     "aliases": [],
+     "summary": "second order quadrilateral"
+    },
+    {
+     "name": "CPE8",
+     "aliases": [],
+     "summary": "second order quadrilateral with unit thickness"
+    },
+    {
+     "name": "CPE8R",
+     "aliases": [],
+     "summary": "second order quadrilateral with unit thickness and reduced integration"
+    },
+    {
+     "name": "CPS8",
+     "aliases": [],
+     "summary": "second order quadrilateral"
+    },
+    {
+     "name": "CSMQ4",
+     "aliases": [],
+     "summary": "couple stress mixed quadrilateral"
+    },
+    {
+     "name": "CSMQ5",
+     "aliases": [],
+     "summary": "couple stress mixed quadrilateral"
+    },
+    {
+     "name": "CSMQ6",
+     "aliases": [],
+     "summary": "couple stress mixed quadrilateral"
+    },
+    {
+     "name": "CSMQ7",
+     "aliases": [],
+     "summary": "couple stress mixed quadrilateral"
+    },
+    {
+     "name": "CSMQ8",
+     "aliases": [],
+     "summary": "couple stress mixed quadrilateral"
+    },
+    {
+     "name": "CSMT3",
+     "aliases": [],
+     "summary": "couple stress mixed triangle"
+    },
+    {
+     "name": "CSMT6",
+     "aliases": [],
+     "summary": "couple stress mixed triangle"
+    },
+    {
+     "name": "Damper01",
+     "aliases": [],
+     "summary": "2d viscous damper"
+    },
+    {
+     "name": "Damper02",
+     "aliases": [],
+     "summary": "2d viscous damper using the maxwell model"
+    },
+    {
+     "name": "Damper03",
+     "aliases": [],
+     "summary": "3d viscous damper"
+    },
+    {
+     "name": "Damper04",
+     "aliases": [],
+     "summary": "3d viscous damper using the maxwell model"
+    },
+    {
+     "name": "Damper05",
+     "aliases": []
+    },
+    {
+     "name": "Damper06",
+     "aliases": []
+    },
+    {
+     "name": "DC3D4",
+     "aliases": [],
+     "summary": "linear tetrahedral with phase field damage"
+    },
+    {
+     "name": "DC3D4M",
+     "aliases": []
+    },
+    {
+     "name": "DC3D8",
+     "aliases": [],
+     "summary": "linear cube/brick with phase field damage"
+    },
+    {
+     "name": "DC3D8M",
+     "aliases": []
+    },
+    {
+     "name": "DCP3",
+     "aliases": [],
+     "summary": "constant strain triangle with crack phase"
+    },
+    {
+     "name": "DCP3M",
+     "aliases": []
+    },
+    {
+     "name": "DCP4",
+     "aliases": [],
+     "summary": "bilinear quadrilateral with crack phase"
+    },
+    {
+     "name": "DCP4M",
+     "aliases": []
+    },
+    {
+     "name": "DKT3",
+     "aliases": [],
+     "summary": "dkt triangle plate"
+    },
+    {
+     "name": "DKT4",
+     "aliases": [],
+     "summary": "dkt quadrilateral plate"
+    },
+    {
+     "name": "DKTS3",
+     "aliases": [],
+     "summary": "dkt triangle shell"
+    },
+    {
+     "name": "EB21",
+     "aliases": [],
+     "summary": "2d elastic bernoulli beam"
+    },
+    {
+     "name": "EB31OS",
+     "aliases": []
+    },
+    {
+     "name": "Embedded2D",
+     "aliases": [],
+     "summary": "2d embedded element"
+    },
+    {
+     "name": "Embedded3D",
+     "aliases": [],
+     "summary": "3d embedded element"
+    },
+    {
+     "name": "F21",
+     "aliases": [],
+     "summary": "2d force based bernoulli beam"
+    },
+    {
+     "name": "F21H",
+     "aliases": [],
+     "summary": "2d force based bernoulli beam with lumped end hinges"
+    },
+    {
+     "name": "F31",
+     "aliases": [],
+     "summary": "3d displacement based bernoulli beam"
+    },
+    {
+     "name": "GCMQ",
+     "aliases": [],
+     "summary": "generalized conforming mixed quadrilateral with drilling dofs"
+    },
+    {
+     "name": "GCMQG",
+     "aliases": [],
+     "summary": "generalized conforming mixed quadrilateral with drilling dofs"
+    },
+    {
+     "name": "GCMQI",
+     "aliases": [],
+     "summary": "generalized conforming mixed quadrilateral with drilling dofs"
+    },
+    {
+     "name": "GCMQL",
+     "aliases": [],
+     "summary": "generalized conforming mixed quadrilateral with drilling dofs"
+    },
+    {
+     "name": "GQ12",
+     "aliases": [],
+     "summary": "quadrilateral with drilling dofs"
+    },
+    {
+     "name": "Joint",
+     "aliases": [],
+     "summary": "joint element"
+    },
+    {
+     "name": "Mass",
+     "aliases": [],
+     "summary": "point mass"
+    },
+    {
+     "name": "Mass2D",
+     "aliases": [],
+     "summary": "2d mass"
+    },
+    {
+     "name": "Mass3D",
+     "aliases": [],
+     "summary": "3d mass"
+    },
+    {
+     "name": "MassPoint2D",
+     "aliases": [],
+     "summary": "uniform 2d mass point"
+    },
+    {
+     "name": "MassPoint3D",
+     "aliases": [],
+     "summary": "uniform 3d mass point"
+    },
+    {
+     "name": "Mindlin",
+     "aliases": [],
+     "summary": "mindlin plate element"
+    },
+    {
+     "name": "MVLEM",
+     "aliases": [],
+     "summary": "multiple vertical line element model"
+    },
+    {
+     "name": "NMB21",
+     "aliases": [],
+     "summary": "2d displacement based bernoulli beam with n-m interaction sections"
+    },
+    {
+     "name": "NMB21EH",
+     "aliases": [],
+     "summary": "2d displacement based bernoulli beam with n-m interaction sections and high end moment release"
+    },
+    {
+     "name": "NMB21EL",
+     "aliases": [],
+     "summary": "2d displacement based bernoulli beam with n-m interaction sections and low end moment release"
+    },
+    {
+     "name": "NMB31",
+     "aliases": [],
+     "summary": "3d displacement based bernoulli beam with n-m interaction sections"
+    },
+    {
+     "name": "NonlocalC3D8",
+     "aliases": [],
+     "summary": "linear cube/brick with one nonlocal variable"
+    },
+    {
+     "name": "NonlocalCP4",
+     "aliases": [],
+     "summary": "bilinear quadrilateral with one nonlocal variable"
+    },
+    {
+     "name": "PatchCube",
+     "aliases": [],
+     "summary": "patch of hexahedron elements"
+    },
+    {
+     "name": "PatchQuad",
+     "aliases": [],
+     "summary": "patch of quadrilateral elements"
+    },
+    {
+     "name": "PCPE4DC",
+     "aliases": [],
+     "summary": "bilinear quadrilateral with pore pressure"
+    },
+    {
+     "name": "PCPE4UC",
+     "aliases": [],
+     "summary": "bilinear quadrilateral with pore pressure"
+    },
+    {
+     "name": "PCPE8DC",
+     "aliases": [],
+     "summary": "quadratic quadrilateral with pore pressure"
+    },
+    {
+     "name": "PCPE8UC",
+     "aliases": [],
+     "summary": "quadratic quadrilateral with pore pressure"
+    },
+    {
+     "name": "PS",
+     "aliases": [],
+     "summary": "pian-sumihara quadrilateral element"
+    },
+    {
+     "name": "QE2",
+     "aliases": [],
+     "summary": "mixed four-node quadrilateral element"
+    },
+    {
+     "name": "S4",
+     "aliases": [],
+     "summary": "four node shell element"
+    },
+    {
+     "name": "SGCMQG",
+     "aliases": [],
+     "summary": "simplified generalized conforming mixed quadrilateral with objective drilling dofs"
+    },
+    {
+     "name": "SGCMQI",
+     "aliases": [],
+     "summary": "simplified generalized conforming mixed quadrilateral with objective drilling dofs"
+    },
+    {
+     "name": "SGCMQL",
+     "aliases": [],
+     "summary": "simplified generalized conforming mixed quadrilateral with objective drilling dofs"
+    },
+    {
+     "name": "SGCMS",
+     "aliases": [],
+     "summary": "simplified generalized conforming mixed shell element"
+    },
+    {
+     "name": "SingleSection2D",
+     "aliases": [],
+     "summary": "2d single section"
+    },
+    {
+     "name": "SingleSection3D",
+     "aliases": [],
+     "summary": "3d single section"
+    },
+    {
+     "name": "SphericalParticle2D",
+     "aliases": []
+    },
+    {
+     "name": "SphericalParticle3D",
+     "aliases": []
+    },
+    {
+     "name": "Spring01",
+     "aliases": [],
+     "summary": "spring using displacement"
+    },
+    {
+     "name": "Spring02",
+     "aliases": [],
+     "summary": "spring using strain"
+    },
+    {
+     "name": "T2D2",
+     "aliases": [],
+     "summary": "2d linear truss"
+    },
+    {
+     "name": "T2D2S",
+     "aliases": [],
+     "summary": "2d linear truss using section"
+    },
+    {
+     "name": "T3D2",
+     "aliases": [],
+     "summary": "3d linear truss"
+    },
+    {
+     "name": "T3D2S",
+     "aliases": [],
+     "summary": "3d linear truss using section"
+    },
+    {
+     "name": "Tie",
+     "aliases": [],
+     "summary": "tie constraint"
+    },
+    {
+     "name": "TranslationConnector2D",
+     "aliases": [],
+     "summary": "define 2d translation connector"
+    },
+    {
+     "name": "TranslationConnector3D",
+     "aliases": [],
+     "summary": "define 3d translation connector"
+    }
+   ]
+  },
+  {
+   "name": "elementgroup",
+   "aliases": [],
+   "category": "group",
+   "summary": "element group"
+  },
+  {
+   "name": "embed2d",
+   "aliases": [
+    "embed3d"
+   ],
+   "category": "constraint",
+   "summary": "2d embed constraint"
+  },
+  {
+   "name": "enable",
+   "aliases": [],
+   "category": null,
+   "summary": "enable objects"
+  },
+  {
+   "name": "erase",
+   "aliases": [],
+   "category": null,
+   "summary": "delete objects"
+  },
+  {
+   "name": "example",
+   "aliases": [],
+   "category": null,
+   "summary": "establish and execute a minimum example"
+  },
+  {
+   "name": "exit",
+   "aliases": [
+    "quit"
+   ],
+   "category": null,
+   "summary": "exit the program"
+  },
+  {
+   "name": "expression",
+   "aliases": [],
+   "category": "expression",
+   "summary": "define mathematical expressions to be used in other objects",
+   "types": [
+    {
+     "name": "SimpleScalar",
+     "aliases": []
+    },
+    {
+     "name": "SimpleVector",
+     "aliases": []
+    }
+   ]
+  },
+  {
+   "name": "file",
+   "aliases": [],
+   "category": null,
+   "summary": "load external files"
+  },
+  {
+   "name": "finiterestitutionwall",
+   "aliases": [
+    "finiterestitutionwallpenalty"
+   ],
+   "category": "constraint",
+   "summary": ""
+  },
+  {
+   "name": "finiterigidwall",
+   "aliases": [
+    "finiterigidwallpenalty"
+   ],
+   "category": "constraint",
+   "summary": ""
+  },
+  {
+   "name": "finiterigidwallmultiplier",
+   "aliases": [],
+   "category": "constraint",
+   "summary": ""
+  },
+  {
+   "name": "fix",
+   "aliases": [],
+   "category": "constraint",
+   "summary": "boundary condition"
+  },
+  {
+   "name": "fix2",
+   "aliases": [],
+   "category": "constraint",
+   "summary": "boundary condition"
+  },
+  {
+   "name": "fixedlength2d",
+   "aliases": [],
+   "category": "constraint",
+   "summary": "2d fixed length constraint"
+  },
+  {
+   "name": "fixedlength3d",
+   "aliases": [],
+   "category": "constraint",
+   "summary": "3d fixed length constraint"
+  },
+  {
+   "name": "fullname",
+   "aliases": [],
+   "category": null,
+   "summary": "print the full path of the program"
+  },
+  {
+   "name": "generate",
+   "aliases": [],
+   "category": "group",
+   "summary": "generate groups"
+  },
+  {
+   "name": "generatebyplane",
+   "aliases": [],
+   "category": "group",
+   "summary": "generate node groups based on plane"
+  },
+  {
+   "name": "generatebypoint",
+   "aliases": [],
+   "category": "group",
+   "summary": "generate node groups based on the line segment"
+  },
+  {
+   "name": "generatebyrule",
+   "aliases": [],
+   "category": "group",
+   "summary": "generate node groups by rule"
+  },
+  {
+   "name": "group",
+   "aliases": [],
+   "category": "group",
+   "summary": "define groups via various rules",
+   "types": [
+    {
+     "name": "nodegroup",
+     "aliases": [],
+     "summary": "define node group"
+    },
+    {
+     "name": "customnodegroup",
+     "aliases": [],
+     "summary": "node group based on custom rule"
+    },
+    {
+     "name": "elementgroup",
+     "aliases": [],
+     "summary": "element group"
+    },
+    {
+     "name": "groupgroup",
+     "aliases": [],
+     "summary": "group of groups"
+    },
+    {
+     "name": "generate",
+     "aliases": [],
+     "summary": "generate groups"
+    },
+    {
+     "name": "generatebyrule",
+     "aliases": [],
+     "summary": "generate node groups by rule"
+    },
+    {
+     "name": "generatebypoint",
+     "aliases": [],
+     "summary": "generate node groups based on the line segment"
+    },
+    {
+     "name": "generatebyplane",
+     "aliases": [],
+     "summary": "generate node groups based on plane"
+    }
+   ]
+  },
+  {
+   "name": "groupbodyforce",
+   "aliases": [],
+   "category": "load",
+   "summary": "body force load"
+  },
+  {
+   "name": "groupcload",
+   "aliases": [],
+   "category": "load",
+   "summary": "concentrated nodal load"
+  },
+  {
+   "name": "groupdisp",
+   "aliases": [],
+   "category": "load",
+   "summary": ""
+  },
+  {
+   "name": "groupdisplacement",
+   "aliases": [],
+   "category": "load",
+   "summary": "prescribed displacement"
+  },
+  {
+   "name": "groupdispload",
+   "aliases": [],
+   "category": "load",
+   "summary": ""
+  },
+  {
+   "name": "groupgroup",
+   "aliases": [],
+   "category": "group",
+   "summary": "group of groups"
+  },
+  {
+   "name": "groupmultiplierbc",
+   "aliases": [],
+   "category": "constraint",
+   "summary": "boundary condition"
+  },
+  {
+   "name": "grouppenaltybc",
+   "aliases": [],
+   "category": "constraint",
+   "summary": "boundary condition"
+  },
+  {
+   "name": "grouprefereceload",
+   "aliases": [],
+   "category": "load",
+   "summary": ""
+  },
+  {
+   "name": "grouprefforce",
+   "aliases": [],
+   "category": "load",
+   "summary": ""
+  },
+  {
+   "name": "grouprefload",
+   "aliases": [],
+   "category": "load",
+   "summary": ""
+  },
+  {
+   "name": "hdf5recorder",
+   "aliases": [],
+   "category": "recorder",
+   "summary": "recorder in hdf5 format"
+  },
+  {
+   "name": "import",
+   "aliases": [],
+   "category": "import",
+   "summary": "import external modules"
+  },
+  {
+   "name": "initial",
+   "aliases": [],
+   "category": "initial",
+   "summary": "define initial conditions for nodes and materials",
+   "types": [
+    {
+     "name": "material",
+     "aliases": []
+    },
+    {
+     "name": "angularvelocity",
+     "aliases": [
+      "avel"
+     ]
+    },
+    {
+     "name": "displacement",
+     "aliases": [
+      "disp"
+     ],
+     "summary": "prescribed displacement"
+    },
+    {
+     "name": "velocity",
+     "aliases": [
+      "vel"
+     ]
+    },
+    {
+     "name": "acceleration",
+     "aliases": [
+      "acc"
+     ],
+     "summary": "acceleration load"
+    }
+   ]
+  },
+  {
+   "name": "integrator",
+   "aliases": [],
+   "category": "integrator",
+   "summary": "define time integration algorithms",
+   "types": [
+    {
+     "name": "Newmark",
+     "aliases": [],
+     "summary": "newmark time integration"
+    },
+    {
+     "name": "RayleighNewmark",
+     "aliases": [],
+     "summary": "newmark time integration with rayleigh damping model"
+    },
+    {
+     "name": "LeeNewmark",
+     "aliases": [],
+     "summary": "newmark with lee's damping model"
+    },
+    {
+     "name": "LeeNewmarkIterative",
+     "aliases": [],
+     "summary": "newmark with lee's damping model (full mode) with iterative solving"
+    },
+    {
+     "name": "LeeElementalNewmark",
+     "aliases": [],
+     "summary": "elemental damping using lee's method"
+    },
+    {
+     "name": "LeeNewmarkFullTrial",
+     "aliases": []
+    },
+    {
+     "name": "LeeNewmarkFullCurrent",
+     "aliases": [
+      "LeeNewmarkFull"
+     ],
+     "summary": "newmark with lee's damping model (full mode)"
+    },
+    {
+     "name": "LeeNewmarkFullInitial",
+     "aliases": []
+    },
+    {
+     "name": "WilsonPenzienNewmark",
+     "aliases": [],
+     "summary": "newmark time integration with wilson penzien damping model"
+    },
+    {
+     "name": "NonviscousNewmark",
+     "aliases": [],
+     "summary": "newmark method with nonviscous damping"
+    },
+    {
+     "name": "UDDNewmark",
+     "aliases": [],
+     "summary": "newmark method with uniform/universal damping (displacement)"
+    },
+    {
+     "name": "UDANewmark",
+     "aliases": [],
+     "summary": "newmark method with uniform/universal damping (acceleration)"
+    },
+    {
+     "name": "GeneralizedAlpha",
+     "aliases": [
+      "GeneralisedAlpha"
+     ],
+     "summary": "generalized-alpha time integration"
+    },
+    {
+     "name": "GSSSSU0",
+     "aliases": [],
+     "summary": "u0 family scheme for gssss"
+    },
+    {
+     "name": "GSSSSV0",
+     "aliases": [],
+     "summary": "v0 family scheme for gssss"
+    },
+    {
+     "name": "GSSSSOptimal",
+     "aliases": [],
+     "summary": "optimal scheme for gssss"
+    },
+    {
+     "name": "OALTS",
+     "aliases": [],
+     "summary": "oalts doi:10.1002/nme.6188"
+    },
+    {
+     "name": "BatheTwoStep",
+     "aliases": [],
+     "summary": "two-step bathe time integration method"
+    },
+    {
+     "name": "Tchamwa",
+     "aliases": [],
+     "summary": "tchamwa explicit time integration"
+    },
+    {
+     "name": "BatheExplicit",
+     "aliases": [],
+     "summary": "explicit bathe time integration method"
+    },
+    {
+     "name": "ICL",
+     "aliases": [],
+     "summary": "icl explicit time integration"
+    },
+    {
+     "name": "GSSE",
+     "aliases": [],
+     "summary": "gsse explicit time integration"
+    },
+    {
+     "name": "WAT2",
+     "aliases": [],
+     "summary": "generalized explicit RKN time integration"
+    },
+    {
+     "name": "GeneralizedAlphaExplicit",
+     "aliases": [
+      "GeneralisedAlphaExplicit"
+     ],
+     "summary": "explicit generalized-alpha time integration"
+    }
+   ]
+  },
+  {
+   "name": "interaction",
+   "aliases": [],
+   "category": "interaction",
+   "summary": "define interactions used in contact analysis",
+   "types": [
+    {
+     "name": "Hertzian",
+     "aliases": []
+    },
+    {
+     "name": "FixedParticle",
+     "aliases": []
+    }
+   ]
+  },
+  {
+   "name": "license",
+   "aliases": [],
+   "category": null,
+   "summary": "print license information"
+  },
+  {
+   "name": "lineudl2d",
+   "aliases": [],
+   "category": "load",
+   "summary": "2d linear udl"
+  },
+  {
+   "name": "lineudl3d",
+   "aliases": [],
+   "category": "load",
+   "summary": "3d linear udl"
+  },
+  {
+   "name": "list",
+   "aliases": [],
+   "category": null,
+   "summary": "list objects in the current domain"
+  },
+  {
+   "name": "load",
+   "aliases": [],
+   "category": "load",
+   "summary": "define loads of various types",
+   "types": [
+    {
+     "name": "Acceleration",
+     "aliases": [],
+     "summary": "acceleration load"
+    },
+    {
+     "name": "BodyForce",
+     "aliases": [],
+     "summary": "body force load"
+    },
+    {
+     "name": "Cload",
+     "aliases": [],
+     "summary": "concentrated nodal load"
+    },
+    {
+     "name": "Disp",
+     "aliases": [
+      "Displacement",
+      "DispLoad"
+     ],
+     "summary": "prescribed displacement"
+    },
+    {
+     "name": "GroupBodyForce",
+     "aliases": [],
+     "summary": "body force load"
+    },
+    {
+     "name": "GroupCload",
+     "aliases": [],
+     "summary": "concentrated nodal load"
+    },
+    {
+     "name": "GroupDisp",
+     "aliases": [
+      "GroupDisplacement",
+      "GroupDispLoad"
+     ],
+     "summary": "prescribed displacement"
+    },
+    {
+     "name": "LineUDL2D",
+     "aliases": [],
+     "summary": "2d linear udl"
+    },
+    {
+     "name": "LineUDL3D",
+     "aliases": [],
+     "summary": "3d linear udl"
+    },
+    {
+     "name": "ReferenceLoad",
+     "aliases": [
+      "RefLoad",
+      "RefForce"
+     ],
+     "summary": "reference nodal load"
+    },
+    {
+     "name": "GroupReferenceLoad",
+     "aliases": [
+      "GroupRefLoad",
+      "GroupRefForce"
+     ]
+    },
+    {
+     "name": "SupportAcceleration",
+     "aliases": [],
+     "summary": "acceleration load on support"
+    },
+    {
+     "name": "SupportDisplacement",
+     "aliases": [],
+     "summary": "displacement load on support"
+    },
+    {
+     "name": "SupportVelocity",
+     "aliases": [],
+     "summary": "velocity load on support"
+    }
+   ]
+  },
+  {
+   "name": "mass",
+   "aliases": [],
+   "category": "mass",
+   "summary": "point mass"
+  },
+  {
+   "name": "material",
+   "aliases": [],
+   "category": "material",
+   "summary": "define materials",
+   "types": [
+    {
+     "name": "AbaqusCDP",
+     "aliases": [],
+     "summary": "abaqus' cdp model with tabular data support"
+    },
+    {
+     "name": "AFC",
+     "aliases": [
+      "AFC01"
+     ],
+     "summary": "asymmetrical friction connection"
+    },
+    {
+     "name": "AFC02",
+     "aliases": [
+      "AFCS"
+     ],
+     "summary": "symmetrical friction connection"
+    },
+    {
+     "name": "AFC03",
+     "aliases": [
+      "AFCN"
+     ],
+     "summary": "asymmetrical friction connection"
+    },
+    {
+     "name": "AFCO1D",
+     "aliases": [],
+     "summary": "uniaxial armstrong frederick material with chaboche type strain memory"
+    },
+    {
+     "name": "ArmstrongFrederick",
+     "aliases": [],
+     "summary": "armstrong frederick material (v3.6 and later)"
+    },
+    {
+     "name": "ArmstrongFrederick1D",
+     "aliases": [],
+     "summary": "uniaxial armstrong frederick material (v3.6 and later)"
+    },
+    {
+     "name": "AsymmElastic1D",
+     "aliases": [],
+     "summary": "uniaxial asymmetric elastic material"
+    },
+    {
+     "name": "Axisymmetric",
+     "aliases": [],
+     "summary": "axisymmetric wrapper"
+    },
+    {
+     "name": "AxisymmetricElastic",
+     "aliases": [],
+     "summary": "axisymmetric elastic material"
+    },
+    {
+     "name": "Balloon",
+     "aliases": [],
+     "summary": "balloon-v1 model"
+    },
+    {
+     "name": "Balloon1D",
+     "aliases": [],
+     "summary": "uniaxial balloon-v1 model"
+    },
+    {
+     "name": "Bilinear1D",
+     "aliases": [],
+     "summary": "uniaxial bilinear material"
+    },
+    {
+     "name": "BilinearCC",
+     "aliases": [],
+     "summary": "cam-clay model with bilinear hardening model"
+    },
+    {
+     "name": "BilinearDP",
+     "aliases": [],
+     "summary": "dp model with bilinear hardening function"
+    },
+    {
+     "name": "BilinearElastic1D",
+     "aliases": [],
+     "summary": "uniaxial bilinear elastic material"
+    },
+    {
+     "name": "BilinearHoffman",
+     "aliases": [],
+     "summary": "bilinear hoffman material"
+    },
+    {
+     "name": "BilinearJ2",
+     "aliases": [],
+     "summary": "bilinear j2 material"
+    },
+    {
+     "name": "NonlocalBilinearJ2",
+     "aliases": [],
+     "summary": "bilinear j2 material with nonlocal damage"
+    },
+    {
+     "name": "BilinearMises1D",
+     "aliases": [],
+     "summary": "uniaxial bilinear material with no kinematic hardening"
+    },
+    {
+     "name": "BilinearOO",
+     "aliases": [],
+     "summary": "bilinear origin oriented model"
+    },
+    {
+     "name": "BilinearPeric",
+     "aliases": [],
+     "summary": "bilinear peric viscoplastic material"
+    },
+    {
+     "name": "BilinearPO",
+     "aliases": [],
+     "summary": "bilinear peak oriented model"
+    },
+    {
+     "name": "BilinearTsaiWu",
+     "aliases": [],
+     "summary": "bilinear tsai-wu material"
+    },
+    {
+     "name": "BilinearViscosity",
+     "aliases": [],
+     "summary": "viscosity with bilinear hardening"
+    },
+    {
+     "name": "BlatzKo",
+     "aliases": [],
+     "summary": "blatz ko hyperelastic material"
+    },
+    {
+     "name": "BoucWen",
+     "aliases": []
+    },
+    {
+     "name": "BWBN",
+     "aliases": [],
+     "summary": "bouc-wen-baber-noori model"
+    },
+    {
+     "name": "CDP",
+     "aliases": [],
+     "summary": "concrete damage plasticity material"
+    },
+    {
+     "name": "CDPM2",
+     "aliases": [
+      "CDPM2ISO"
+     ],
+     "summary": "cdpm2 isotropic damage"
+    },
+    {
+     "name": "CDPM2ANISO",
+     "aliases": [],
+     "summary": "cdpm2 anisotropic damage"
+    },
+    {
+     "name": "CDPM2NO",
+     "aliases": []
+    },
+    {
+     "name": "Concrete21",
+     "aliases": [],
+     "summary": "rotating crack concrete material"
+    },
+    {
+     "name": "Concrete22",
+     "aliases": [],
+     "summary": "fixed crack concrete material"
+    },
+    {
+     "name": "ConcreteCM",
+     "aliases": [],
+     "summary": "chang-mander concrete model"
+    },
+    {
+     "name": "ConcreteExp",
+     "aliases": [],
+     "summary": "objective concrete model"
+    },
+    {
+     "name": "ConcreteK4",
+     "aliases": [],
+     "summary": "k4 concrete model"
+    },
+    {
+     "name": "ConcreteTable",
+     "aliases": [],
+     "summary": "concrete material with table input"
+    },
+    {
+     "name": "ConcreteTsai",
+     "aliases": [],
+     "summary": "uniaxial concrete model using tsai's equation"
+    },
+    {
+     "name": "CoulombFriction",
+     "aliases": [],
+     "summary": "Coulomb friction material"
+    },
+    {
+     "name": "CustomCC",
+     "aliases": [],
+     "summary": "cam-clay model with custom hardening function"
+    },
+    {
+     "name": "CustomCDP",
+     "aliases": []
+    },
+    {
+     "name": "CustomDP",
+     "aliases": [],
+     "summary": "dp model with custom hardening function"
+    },
+    {
+     "name": "CustomElastic1D",
+     "aliases": [],
+     "summary": "uniaxial elastic material with custom function"
+    },
+    {
+     "name": "CustomGurson",
+     "aliases": [],
+     "summary": "gurson model using custom hardening function"
+    },
+    {
+     "name": "CustomGurson1D",
+     "aliases": [],
+     "summary": "uniaxial gurson model using custom hardening function"
+    },
+    {
+     "name": "CustomHoffman",
+     "aliases": [],
+     "summary": "hoffman model with custom isotropic hardening"
+    },
+    {
+     "name": "CustomJ2",
+     "aliases": [],
+     "summary": "j2 model with exponential isotropic hardening"
+    },
+    {
+     "name": "CustomMises1D",
+     "aliases": [],
+     "summary": "uniaxial j2 model with custom hardening function"
+    },
+    {
+     "name": "CustomStrainDegradation",
+     "aliases": [],
+     "summary": "uniaxial degradation with custom rules"
+    },
+    {
+     "name": "CustomStressDegradation",
+     "aliases": [],
+     "summary": "uniaxial degradation with custom rules"
+    },
+    {
+     "name": "CustomTsaiWu",
+     "aliases": [],
+     "summary": "tsai-wu model with custom isotropic hardening"
+    },
+    {
+     "name": "CustomViscosity",
+     "aliases": [],
+     "summary": "viscosity with custom hardening"
+    },
+    {
+     "name": "DafaliasManzari",
+     "aliases": [],
+     "summary": "dafalias manzari sand material"
+    },
+    {
+     "name": "Dhakal",
+     "aliases": [],
+     "summary": "dhakal rebar degradation model"
+    },
+    {
+     "name": "DuncanSelig",
+     "aliases": [],
+     "summary": "duncan selig plane strain soil model"
+    },
+    {
+     "name": "Elastic1D",
+     "aliases": [],
+     "summary": "uniaxial elastic material"
+    },
+    {
+     "name": "Elastic2D",
+     "aliases": [],
+     "summary": "2d elastic material"
+    },
+    {
+     "name": "Elastic3D",
+     "aliases": [
+      "IsotropicElastic3D"
+     ],
+     "summary": "3d isotropic elastic material"
+    },
+    {
+     "name": "NonlocalElastic3D",
+     "aliases": [
+      "NonlocalIsotropicElastic3D"
+     ],
+     "summary": "3d isotropic elastic material with one nonlocal variable"
+    },
+    {
+     "name": "ElasticOS",
+     "aliases": [],
+     "summary": "elastic material or beam sections"
+    },
+    {
+     "name": "ExpCC",
+     "aliases": [],
+     "summary": "cam-clay model with exponential hardening"
+    },
+    {
+     "name": "ExpDP",
+     "aliases": [],
+     "summary": "dp model with exponential hardening function"
+    },
+    {
+     "name": "ExpGurson",
+     "aliases": [],
+     "summary": "gurson model using exponential hardening function"
+    },
+    {
+     "name": "ExpGurson1D",
+     "aliases": [],
+     "summary": "uniaxial gurson model using exponential hardening function"
+    },
+    {
+     "name": "ExpHoffman",
+     "aliases": [],
+     "summary": "hoffman model with exponential isotropic hardening"
+    },
+    {
+     "name": "ExpJ2",
+     "aliases": [],
+     "summary": "j2 model with exponential isotropic hardening"
+    },
+    {
+     "name": "ExpMises1D",
+     "aliases": [],
+     "summary": "uniaxial j2 material with exponential isotropic hardening"
+    },
+    {
+     "name": "ExpTsaiWu",
+     "aliases": [],
+     "summary": "tsai-wu model with exponential isotropic hardening"
+    },
+    {
+     "name": "Flag01",
+     "aliases": [],
+     "summary": "flag shaped material"
+    },
+    {
+     "name": "Flag02",
+     "aliases": [],
+     "summary": "flag shaped material"
+    },
+    {
+     "name": "Fluid",
+     "aliases": [],
+     "summary": "fluid material"
+    },
+    {
+     "name": "Gap01",
+     "aliases": [],
+     "summary": "a gap material"
+    },
+    {
+     "name": "Kelvin",
+     "aliases": [],
+     "summary": "kelvin material"
+    },
+    {
+     "name": "Laminated",
+     "aliases": [],
+     "summary": "parallel wrapper for 2d material models"
+    },
+    {
+     "name": "LinearDamage",
+     "aliases": [],
+     "summary": "linear damage model"
+    },
+    {
+     "name": "Maxwell",
+     "aliases": [],
+     "summary": "maxwell material"
+    },
+    {
+     "name": "MooneyRivlin",
+     "aliases": [],
+     "summary": "mooney rivlin rubber material"
+    },
+    {
+     "name": "MPF",
+     "aliases": [],
+     "summary": "menegotto-pinto-filippou steel model"
+    },
+    {
+     "name": "MultilinearElastic1D",
+     "aliases": [],
+     "summary": "uniaxial multilinear elastic material"
+    },
+    {
+     "name": "MultilinearJ2",
+     "aliases": [],
+     "summary": "multilinear j2 material"
+    },
+    {
+     "name": "MultilinearMises1D",
+     "aliases": [],
+     "summary": "uniaxial multilinear j2 material"
+    },
+    {
+     "name": "MultilinearOO",
+     "aliases": [],
+     "summary": "multilinear origin oriented hysteresis model"
+    },
+    {
+     "name": "MultilinearPO",
+     "aliases": [],
+     "summary": "multilinear peak oriented hysteresis model"
+    },
+    {
+     "name": "MultiSubloading1D",
+     "aliases": []
+    },
+    {
+     "name": "NLE1D01",
+     "aliases": [],
+     "summary": "nonlinear elastic 1d type 01"
+    },
+    {
+     "name": "NLE3D01",
+     "aliases": [],
+     "summary": "3d nonlinear elastic material"
+    },
+    {
+     "name": "Nonviscous01",
+     "aliases": []
+    },
+    {
+     "name": "OrthotropicElastic3D",
+     "aliases": [],
+     "summary": "3d orthotropic elastic material"
+    },
+    {
+     "name": "OS146",
+     "aliases": [],
+     "summary": "wrapper 3d -> os"
+    },
+    {
+     "name": "OS146S",
+     "aliases": [],
+     "summary": "wrapper 1d -> os"
+    },
+    {
+     "name": "ParabolicCC",
+     "aliases": []
+    },
+    {
+     "name": "Parallel",
+     "aliases": [],
+     "summary": "parallel wrapper for 1d material models"
+    },
+    {
+     "name": "PlaneStrain",
+     "aliases": [],
+     "summary": "plane strain wrapper"
+    },
+    {
+     "name": "PlaneStress",
+     "aliases": [],
+     "summary": "plane stress wrapper"
+    },
+    {
+     "name": "PlaneSymmetric13",
+     "aliases": [],
+     "summary": "plane wrapper"
+    },
+    {
+     "name": "PlaneSymmetric23",
+     "aliases": [],
+     "summary": "plane wrapper"
+    },
+    {
+     "name": "PolyElastic1D",
+     "aliases": [],
+     "summary": "polynomial based uniaxial nonlinear elastic"
+    },
+    {
+     "name": "PolyJ2",
+     "aliases": [],
+     "summary": "j2 material with polynomial hardening"
+    },
+    {
+     "name": "Prestrain",
+     "aliases": [],
+     "summary": "prestrain wrapper for uniaxial materials"
+    },
+    {
+     "name": "RambergOsgood",
+     "aliases": [],
+     "summary": "ramberg-osgood steel model"
+    },
+    {
+     "name": "Rebar2D",
+     "aliases": [],
+     "summary": "2d rebar layer"
+    },
+    {
+     "name": "Rebar3D",
+     "aliases": [],
+     "summary": "3d rebar layer"
+    },
+    {
+     "name": "Rotation2D",
+     "aliases": [],
+     "summary": "2d rotation wrapper"
+    },
+    {
+     "name": "Rotation3D",
+     "aliases": [],
+     "summary": "3d rotation wrapper"
+    },
+    {
+     "name": "Sequential",
+     "aliases": [],
+     "summary": "uniaxial wrapper"
+    },
+    {
+     "name": "SimpleSand",
+     "aliases": [],
+     "summary": "simple sand material"
+    },
+    {
+     "name": "Sinh1D",
+     "aliases": [],
+     "summary": "uniaxial nonlinear elastic material using sinh"
+    },
+    {
+     "name": "SlipLock",
+     "aliases": [],
+     "summary": "slip-lock material"
+    },
+    {
+     "name": "Stacked",
+     "aliases": [],
+     "summary": "parallel wrapper for 3d material models"
+    },
+    {
+     "name": "SteelBRB",
+     "aliases": [],
+     "summary": "steel model for modelling brb"
+    },
+    {
+     "name": "Subloading",
+     "aliases": [],
+     "summary": "3d subloading surface model for metal"
+    },
+    {
+     "name": "Subloading1D",
+     "aliases": [],
+     "summary": "uniaxial subloading surface model for metal"
+    },
+    {
+     "name": "SubloadingViscous1D",
+     "aliases": []
+    },
+    {
+     "name": "Substepping",
+     "aliases": [],
+     "summary": "substepping wrapper"
+    },
+    {
+     "name": "TableCDP",
+     "aliases": [],
+     "summary": "cdp model with tabular data support"
+    },
+    {
+     "name": "TableGurson",
+     "aliases": [],
+     "summary": "gurson material with table hardening"
+    },
+    {
+     "name": "Tanh1D",
+     "aliases": [],
+     "summary": "uniaxial nonlinear elastic material using tanh"
+    },
+    {
+     "name": "TimberPD",
+     "aliases": [],
+     "summary": "plastic damage model for timber"
+    },
+    {
+     "name": "TrilinearStrainDegradation",
+     "aliases": [],
+     "summary": "trilinear strain degradation"
+    },
+    {
+     "name": "Trivial",
+     "aliases": [],
+     "summary": "trivial material"
+    },
+    {
+     "name": "Uniaxial",
+     "aliases": [],
+     "summary": "uniaxial wrapper"
+    },
+    {
+     "name": "VAFCRP",
+     "aliases": [],
+     "summary": "vafcrp material (v3.6 and later)"
+    },
+    {
+     "name": "VAFCRP1D",
+     "aliases": [],
+     "summary": "uniaxial vafcrp material (v3.6 and later)"
+    },
+    {
+     "name": "Viscosity01",
+     "aliases": [],
+     "summary": "linear viscosity material"
+    },
+    {
+     "name": "Viscosity02",
+     "aliases": [],
+     "summary": "nonlinear viscosity material"
+    },
+    {
+     "name": "Yeoh",
+     "aliases": [],
+     "summary": "yeoh material"
+    },
+    {
+     "name": "YLD0418P",
+     "aliases": [],
+     "summary": "anisotropic yld0418p material"
+    },
+    {
+     "name": "YLD0418PISO",
+     "aliases": [],
+     "summary": "isotropic yld0418p material"
+    }
+   ]
+  },
+  {
+   "name": "materialtest1d",
+   "aliases": [],
+   "category": null,
+   "summary": "uniaxial material tester"
+  },
+  {
+   "name": "materialtest2d",
+   "aliases": [],
+   "category": null,
+   "summary": "2d material tester"
+  },
+  {
+   "name": "materialtest3d",
+   "aliases": [],
+   "category": null,
+   "summary": "3d material tester"
+  },
+  {
+   "name": "materialtestbyload1d",
+   "aliases": [],
+   "category": null,
+   "summary": "uniaxial material tester"
+  },
+  {
+   "name": "materialtestbyload2d",
+   "aliases": [],
+   "category": null,
+   "summary": "2d material tester"
+  },
+  {
+   "name": "materialtestbyload3d",
+   "aliases": [],
+   "category": null,
+   "summary": "3d material tester"
+  },
+  {
+   "name": "materialtestbyloadwithbase3d",
+   "aliases": [],
+   "category": null,
+   "summary": ""
+  },
+  {
+   "name": "materialtestbystrainhistory",
+   "aliases": [],
+   "category": null,
+   "summary": ""
+  },
+  {
+   "name": "materialtestbystresshistory",
+   "aliases": [],
+   "category": null,
+   "summary": ""
+  },
+  {
+   "name": "materialtestwithbase3d",
+   "aliases": [],
+   "category": null,
+   "summary": ""
+  },
+  {
+   "name": "maxforce2d",
+   "aliases": [
+    "maxforce3d"
+   ],
+   "category": "constraint",
+   "summary": "2d maximum force constraint"
+  },
+  {
+   "name": "maxgap2d",
+   "aliases": [
+    "maxgap3d"
+   ],
+   "category": "constraint",
+   "summary": "gap constraint"
+  },
+  {
+   "name": "mingap2d",
+   "aliases": [
+    "mingap3d"
+   ],
+   "category": "constraint",
+   "summary": "gap constraint"
+  },
+  {
+   "name": "modifier",
+   "aliases": [],
+   "category": "modifier",
+   "summary": "define modifiers that modify the existing model properties",
+   "types": [
+    {
+     "name": "LumpedSimple",
+     "aliases": [],
+     "summary": "lumped mass simple"
+    },
+    {
+     "name": "LumpedScale",
+     "aliases": [],
+     "summary": "lumped mass by scaling diagonals"
+    },
+    {
+     "name": "Rayleigh",
+     "aliases": [],
+     "summary": "rayleigh damping"
+    },
+    {
+     "name": "ElementalLee",
+     "aliases": [],
+     "summary": "lee's elemental damping"
+    },
+    {
+     "name": "LinearViscosity",
+     "aliases": [],
+     "summary": "linear viscosity modifier"
+    },
+    {
+     "name": "ElementalModal",
+     "aliases": [],
+     "summary": "wilson penzien elemental damping"
+    },
+    {
+     "name": "ElementalNonviscous",
+     "aliases": [
+      "ElementalNonviscousGroup"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "moleculardynamics2d",
+   "aliases": [
+    "moleculardynamics3d",
+    "particlecollision2d",
+    "particlecollision3d"
+   ],
+   "category": "constraint",
+   "summary": "2d particle collision constraint"
+  },
+  {
+   "name": "mpc",
+   "aliases": [],
+   "category": "constraint",
+   "summary": "multi-point constraint"
+  },
+  {
+   "name": "multiplierbc",
+   "aliases": [],
+   "category": "constraint",
+   "summary": "boundary condition"
+  },
+  {
+   "name": "mute",
+   "aliases": [],
+   "category": null,
+   "summary": "disable objects"
+  },
+  {
+   "name": "node",
+   "aliases": [],
+   "category": "node",
+   "summary": "define nodes"
+  },
+  {
+   "name": "nodefacet",
+   "aliases": [],
+   "category": "constraint",
+   "summary": "node facet constraint"
+  },
+  {
+   "name": "nodegroup",
+   "aliases": [],
+   "category": "load",
+   "summary": "define node group"
+  },
+  {
+   "name": "nodeline",
+   "aliases": [],
+   "category": "constraint",
+   "summary": "node line constraint"
+  },
+  {
+   "name": "orientation",
+   "aliases": [],
+   "category": "orientation",
+   "summary": "define beam section orientations",
+   "types": [
+    {
+     "name": "B3DL",
+     "aliases": [],
+     "summary": "linear transformation for 3d beam elements"
+    },
+    {
+     "name": "B3DC",
+     "aliases": [],
+     "summary": "corotational transformation for 3d beam elements"
+    },
+    {
+     "name": "B3DOSL",
+     "aliases": [],
+     "summary": "linear transformation for 3d beam elements with open sections"
+    },
+    {
+     "name": "B3DOSC",
+     "aliases": [],
+     "summary": "corotational transformation for 3d beam elements with open sections"
+    }
+   ]
+  },
+  {
+   "name": "overview",
+   "aliases": [],
+   "category": null,
+   "summary": "walk thorugh a quick overview of the application"
+  },
+  {
+   "name": "peek",
+   "aliases": [],
+   "category": null,
+   "summary": "peek the current information of the target object"
+  },
+  {
+   "name": "penaltybc",
+   "aliases": [],
+   "category": "constraint",
+   "summary": "boundary condition"
+  },
+  {
+   "name": "plainrecorder",
+   "aliases": [],
+   "category": "recorder",
+   "summary": "recorder in plain text format"
+  },
+  {
+   "name": "plot",
+   "aliases": [],
+   "category": null,
+   "summary": "plot and optionally save the model with VTK"
+  },
+  {
+   "name": "precheck",
+   "aliases": [],
+   "category": null,
+   "summary": "check the model without the actual analysis"
+  },
+  {
+   "name": "protect",
+   "aliases": [],
+   "category": null,
+   "summary": "protect objects from being disabled"
+  },
+  {
+   "name": "pwd",
+   "aliases": [],
+   "category": null,
+   "summary": "print/change the current working folder"
+  },
+  {
+   "name": "qrcode",
+   "aliases": [],
+   "category": null,
+   "summary": "print a qr code"
+  },
+  {
+   "name": "recorder",
+   "aliases": [],
+   "category": "recorder",
+   "summary": "define recorders to record data",
+   "types": [
+    {
+     "name": "Eigen",
+     "aliases": []
+    },
+    {
+     "name": "Amplitude",
+     "aliases": []
+    },
+    {
+     "name": "Frame",
+     "aliases": []
+    },
+    {
+     "name": "Visualisation",
+     "aliases": []
+    },
+    {
+     "name": "Node",
+     "aliases": [],
+     "summary": "define node"
+    },
+    {
+     "name": "GroupNode",
+     "aliases": []
+    },
+    {
+     "name": "Sum",
+     "aliases": []
+    },
+    {
+     "name": "GroupSum",
+     "aliases": []
+    },
+    {
+     "name": "Element",
+     "aliases": []
+    },
+    {
+     "name": "GroupElement",
+     "aliases": []
+    },
+    {
+     "name": "Global",
+     "aliases": []
+    }
+   ]
+  },
+  {
+   "name": "refereceload",
+   "aliases": [],
+   "category": "load",
+   "summary": ""
+  },
+  {
+   "name": "refforce",
+   "aliases": [],
+   "category": "load",
+   "summary": ""
+  },
+  {
+   "name": "refload",
+   "aliases": [],
+   "category": "load",
+   "summary": "reference nodal load"
+  },
+  {
+   "name": "remove",
+   "aliases": [],
+   "category": null,
+   "summary": "delete objects"
+  },
+  {
+   "name": "reset",
+   "aliases": [],
+   "category": null,
+   "summary": "reset the model to the previously converged state"
+  },
+  {
+   "name": "response_spectrum",
+   "aliases": [],
+   "category": null,
+   "summary": "compute the response spectrum of a given ground motion"
+  },
+  {
+   "name": "restitutionwall",
+   "aliases": [
+    "restitutionwallpenalty"
+   ],
+   "category": "constraint",
+   "summary": ""
+  },
+  {
+   "name": "rigidwall",
+   "aliases": [
+    "rigidwallpenalty"
+   ],
+   "category": "constraint",
+   "summary": ""
+  },
+  {
+   "name": "rigidwallmultiplier",
+   "aliases": [],
+   "category": "constraint",
+   "summary": ""
+  },
+  {
+   "name": "save",
+   "aliases": [],
+   "category": null,
+   "summary": "save objects"
+  },
+  {
+   "name": "sdof_response",
+   "aliases": [],
+   "category": null,
+   "summary": "compute the sdof response of a given ground motion"
+  },
+  {
+   "name": "section",
+   "aliases": [],
+   "category": "section",
+   "summary": "define truss/beam/plate/shell sections",
+   "types": [
+    {
+     "name": "Box2D",
+     "aliases": [],
+     "summary": "2d box section"
+    },
+    {
+     "name": "Box3D",
+     "aliases": [],
+     "summary": "3d box section"
+    },
+    {
+     "name": "Cell2D",
+     "aliases": [
+      "Bar2D"
+     ],
+     "summary": "2d reinforcing bar section"
+    },
+    {
+     "name": "Cell3D",
+     "aliases": [
+      "Bar3D"
+     ],
+     "summary": "3d reinforcing bar section"
+    },
+    {
+     "name": "Cell3DOS",
+     "aliases": [],
+     "summary": "3d fibre open section building block"
+    },
+    {
+     "name": "Circle1D",
+     "aliases": [],
+     "summary": "1d circle section"
+    },
+    {
+     "name": "Circle2D",
+     "aliases": [],
+     "summary": "2d circle section"
+    },
+    {
+     "name": "Circle3D",
+     "aliases": [],
+     "summary": "3d circle section"
+    },
+    {
+     "name": "CircularHollow2D",
+     "aliases": [],
+     "summary": "2d hollow circular section"
+    },
+    {
+     "name": "CircularHollow3D",
+     "aliases": [],
+     "summary": "3d hollow circular section"
+    },
+    {
+     "name": "Fibre1D",
+     "aliases": [],
+     "summary": "1d fibre section"
+    },
+    {
+     "name": "Fibre2D",
+     "aliases": [],
+     "summary": "2d fibre section"
+    },
+    {
+     "name": "Fibre3D",
+     "aliases": [],
+     "summary": "3d fibre section"
+    },
+    {
+     "name": "Fibre3DOS",
+     "aliases": [],
+     "summary": "3d fibre open section"
+    },
+    {
+     "name": "HSection2D",
+     "aliases": [],
+     "summary": "2d h-section"
+    },
+    {
+     "name": "ISection2D",
+     "aliases": [],
+     "summary": "2d i-section"
+    },
+    {
+     "name": "ISection3D",
+     "aliases": [],
+     "summary": "3d i-section"
+    },
+    {
+     "name": "ISection2DC",
+     "aliases": []
+    },
+    {
+     "name": "ISection3DC",
+     "aliases": []
+    },
+    {
+     "name": "Rectangle1D",
+     "aliases": [],
+     "summary": "1d rectangle section"
+    },
+    {
+     "name": "Rectangle2D",
+     "aliases": [],
+     "summary": "2d rectangle section"
+    },
+    {
+     "name": "Rectangle3D",
+     "aliases": [],
+     "summary": "3d rectangle section"
+    },
+    {
+     "name": "TrussSection",
+     "aliases": [],
+     "summary": "1d truss section"
+    },
+    {
+     "name": "TSection2D",
+     "aliases": [],
+     "summary": "2d t-section"
+    },
+    {
+     "name": "TSection3D",
+     "aliases": [],
+     "summary": "3d t-section"
+    },
+    {
+     "name": "TSection2DC",
+     "aliases": []
+    },
+    {
+     "name": "TSection3DC",
+     "aliases": []
+    },
+    {
+     "name": "NM2D1",
+     "aliases": [],
+     "summary": "n-m interaction elastic section"
+    },
+    {
+     "name": "NM2D2",
+     "aliases": [],
+     "summary": "n-m interaction inelastic section with linear hardening"
+    },
+    {
+     "name": "NM2D3",
+     "aliases": [],
+     "summary": "n-m interaction inelastic section with nonlinear hardening"
+    },
+    {
+     "name": "NM3D1",
+     "aliases": [],
+     "summary": "n-m interaction elastic section"
+    },
+    {
+     "name": "NM3D2",
+     "aliases": [],
+     "summary": "n-m interaction inelastic section with linear hardening"
+    },
+    {
+     "name": "NM3D3",
+     "aliases": [],
+     "summary": "n-m interaction inelastic section with nonlinear hardening"
+    },
+    {
+     "name": "NM2D3K",
+     "aliases": [],
+     "summary": "n-m interaction inelastic section with nonlinear hardening"
+    },
+    {
+     "name": "NM3D3K",
+     "aliases": [],
+     "summary": "n-m interaction inelastic section with nonlinear hardening"
+    },
+    {
+     "name": "EU2D",
+     "aliases": []
+    },
+    {
+     "name": "EU3D",
+     "aliases": []
+    },
+    {
+     "name": "NZ2D",
+     "aliases": []
+    },
+    {
+     "name": "NZ3D",
+     "aliases": []
+    },
+    {
+     "name": "US2D",
+     "aliases": []
+    },
+    {
+     "name": "US3D",
+     "aliases": []
+    },
+    {
+     "name": "US2DC",
+     "aliases": []
+    },
+    {
+     "name": "US3DC",
+     "aliases": []
+    }
+   ]
+  },
+  {
+   "name": "sectiontest1d",
+   "aliases": [],
+   "category": null,
+   "summary": ""
+  },
+  {
+   "name": "sectiontest2d",
+   "aliases": [],
+   "category": null,
+   "summary": ""
+  },
+  {
+   "name": "sectiontest3d",
+   "aliases": [],
+   "category": null,
+   "summary": ""
+  },
+  {
+   "name": "sectiontestbydeformationhistory",
+   "aliases": [],
+   "category": null,
+   "summary": ""
+  },
+  {
+   "name": "set",
+   "aliases": [],
+   "category": null,
+   "summary": "set properties of the analysis/model",
+   "types": [
+    {
+     "name": "output_folder",
+     "aliases": [],
+     "summary": "change output folder"
+    },
+    {
+     "name": "num_threads",
+     "aliases": [],
+     "summary": "set number of threads used by openmp"
+    },
+    {
+     "name": "num_nodes",
+     "aliases": []
+    },
+    {
+     "name": "screen_output",
+     "aliases": [],
+     "summary": "turn on/off screen output"
+    },
+    {
+     "name": "verbose_output",
+     "aliases": []
+    },
+    {
+     "name": "color_model",
+     "aliases": [],
+     "summary": "set coloring algorithm"
+    },
+    {
+     "name": "constraint_multiplier",
+     "aliases": [],
+     "summary": "set multiplier for constraint"
+    },
+    {
+     "name": "load_multiplier",
+     "aliases": [],
+     "summary": "set multiplier for load"
+    },
+    {
+     "name": "linear_system",
+     "aliases": []
+    },
+    {
+     "name": "fixed_step_size",
+     "aliases": [],
+     "summary": "set whether to use fixed step size or allow automatic adjustment"
+    },
+    {
+     "name": "symm_mat",
+     "aliases": [],
+     "summary": "enable/disable symmetric storage"
+    },
+    {
+     "name": "band_mat",
+     "aliases": [],
+     "summary": "enable/disable banded storage"
+    },
+    {
+     "name": "sparse_mat",
+     "aliases": [],
+     "summary": "switch on/off sparse storage"
+    },
+    {
+     "name": "iterative_refinement",
+     "aliases": [],
+     "summary": "set iterative refinement number"
+    },
+    {
+     "name": "system_solver",
+     "aliases": [],
+     "summary": "set system solver type"
+    },
+    {
+     "name": "sub_system_solver",
+     "aliases": []
+    },
+    {
+     "name": "precision",
+     "aliases": [],
+     "summary": "set solving precision"
+    },
+    {
+     "name": "tolerance",
+     "aliases": [
+      "fgmres_tolerance"
+     ],
+     "summary": "set tolerance of the iterative solver"
+    },
+    {
+     "name": "ini_step_size",
+     "aliases": [],
+     "summary": "set initial step size"
+    },
+    {
+     "name": "min_step_size",
+     "aliases": [],
+     "summary": "set minimum step size"
+    },
+    {
+     "name": "max_step_size",
+     "aliases": [],
+     "summary": "set maximum step size"
+    },
+    {
+     "name": "max_iteration",
+     "aliases": [],
+     "summary": "set maximum iteration"
+    },
+    {
+     "name": "eigen_number",
+     "aliases": [],
+     "summary": "set eigen number"
+    }
+   ]
+  },
+  {
+   "name": "sleep",
+   "aliases": [],
+   "category": null,
+   "summary": ""
+  },
+  {
+   "name": "sleeve2d",
+   "aliases": [
+    "sleeve3d"
+   ],
+   "category": "constraint",
+   "summary": "2d sleeve constraint"
+  },
+  {
+   "name": "solver",
+   "aliases": [],
+   "category": "solver",
+   "summary": "define solvers",
+   "types": [
+    {
+     "name": "Newton",
+     "aliases": []
+    },
+    {
+     "name": "modifiedNewton",
+     "aliases": [
+      "mNewton"
+     ]
+    },
+    {
+     "name": "AICN",
+     "aliases": [],
+     "summary": "aicn solver"
+    },
+    {
+     "name": "BFGS",
+     "aliases": []
+    },
+    {
+     "name": "LBFGS",
+     "aliases": [],
+     "summary": "lbfgs solver"
+    },
+    {
+     "name": "FEAST",
+     "aliases": [
+      "QuadraticFEAST"
+     ],
+     "summary": "feast eigen solver"
+    },
+    {
+     "name": "DisplacementControl",
+     "aliases": [
+      "MPDC"
+     ],
+     "summary": "displacement controlled solver"
+    },
+    {
+     "name": "Ramm",
+     "aliases": [],
+     "summary": "ramm's arc-length algorithm"
+    }
+   ]
+  },
+  {
+   "name": "step",
+   "aliases": [],
+   "category": "step",
+   "summary": "define analysis steps",
+   "types": [
+    {
+     "name": "Frequency",
+     "aliases": [],
+     "summary": "frequency step"
+    },
+    {
+     "name": "Buckling",
+     "aliases": [
+      "Buckle"
+     ],
+     "summary": "buckling step"
+    },
+    {
+     "name": "Optimization",
+     "aliases": [
+      "Optimisation"
+     ],
+     "summary": "optimisation step"
+    },
+    {
+     "name": "Static",
+     "aliases": [],
+     "summary": "static step"
+    },
+    {
+     "name": "Dynamic",
+     "aliases": [
+      "ImplicitDynamic"
+     ],
+     "summary": "dynamic step"
+    },
+    {
+     "name": "ExplicitDynamic",
+     "aliases": [],
+     "summary": "explicit dynamic step"
+    },
+    {
+     "name": "ArcLength",
+     "aliases": [],
+     "summary": "arc-length step"
+    }
+   ]
+  },
+  {
+   "name": "summary",
+   "aliases": [],
+   "category": null,
+   "summary": "print summary for the current problem domain"
+  },
+  {
+   "name": "supportacceleration",
+   "aliases": [],
+   "category": "load",
+   "summary": "acceleration load on support"
+  },
+  {
+   "name": "supportdisplacement",
+   "aliases": [],
+   "category": "load",
+   "summary": "displacement load on support"
+  },
+  {
+   "name": "supportvelocity",
+   "aliases": [],
+   "category": "constraint",
+   "summary": "velocity load on support"
+  },
+  {
+   "name": "suspend",
+   "aliases": [],
+   "category": null,
+   "summary": "suspend objects in the current step"
+  },
+  {
+   "name": "terminal",
+   "aliases": [
+    "t"
+   ],
+   "category": null,
+   "summary": "execute commands in terminal"
+  },
+  {
+   "name": "upsampling",
+   "aliases": [],
+   "category": null,
+   "summary": "upsample the given ground motion with various filters"
+  },
+  {
+   "name": "use",
+   "aliases": [],
+   "category": null,
+   "summary": "use the specific object in the current step"
+  },
+  {
+   "name": "var",
+   "aliases": [
+    "variable"
+   ],
+   "category": null,
+   "summary": "define variables"
+  },
+  {
+   "name": "version",
+   "aliases": [],
+   "category": null,
+   "summary": "print version information"
+  }
+ ]
+}

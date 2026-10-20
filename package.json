@@ -13,8 +13,24 @@
   "contributes": {
     "commands": [
       {
+        "category": "suanPan",
         "command": "suanpan.run",
-        "title": "suanPan: Run this model in suanPan"
+        "title": "Run this model in suanPan"
+      },
+      {
+        "category": "suanPan",
+        "command": "suanpan.insertCommand",
+        "title": "Insert a command template"
+      },
+      {
+        "category": "suanPan",
+        "command": "suanpan.setPath",
+        "title": "Set the executable path"
+      },
+      {
+        "category": "suanPan",
+        "command": "suanpan.showVersion",
+        "title": "Show the command database version"
       }
     ],
     "configuration": {
@@ -25,11 +41,32 @@
           "ignoreSync": true,
           "type": "boolean"
         },
+        "suanpan.container": {
+          "default": "docker",
+          "description": "Container runtime executable used when `suanpan.docker` is enabled. Set to `podman`, `nerdctl`, or a full path to any Docker-compatible executable.",
+          "ignoreSync": true,
+          "type": "string"
+        },
         "suanpan.cpus": {
           "default": 0,
-          "description": "Number of logical cores to use in docker. 0 means using all available cores.",
+          "description": "Number of logical cores to use in the container. 0 means using all available cores.",
           "ignoreSync": true,
           "type": "integer"
+        },
+        "suanpan.diagnostics.enable": {
+          "default": true,
+          "description": "Enable model diagnostics.",
+          "type": "boolean"
+        },
+        "suanpan.diagnostics.unknownReference": {
+          "default": false,
+          "description": "Report references to tags that are not defined in the same file. Disable when models load objects from other files.",
+          "type": "boolean"
+        },
+        "suanpan.diagnostics.unknownType": {
+          "default": true,
+          "description": "Report unknown type keywords. Disable when using externally imported object types.",
+          "type": "boolean"
         },
         "suanpan.directory": {
           "default": "",
@@ -39,13 +76,13 @@
         },
         "suanpan.docker": {
           "default": false,
-          "description": "Run the model in a docker container.",
+          "description": "Run the model in a container.",
           "ignoreSync": true,
           "type": "boolean"
         },
         "suanpan.image": {
           "default": "tlcfem/suanpan",
-          "description": "Docker image to use.",
+          "description": "Container image to use.",
           "type": "string"
         },
         "suanpan.path": {
@@ -62,6 +99,15 @@
         }
       },
       "title": "suanPan"
+    },
+    "menus": {
+      "editor/title": [
+        {
+          "command": "suanpan.run",
+          "group": "navigation",
+          "when": "resourceLangId == suanPan"
+        }
+      ]
     },
     "grammars": [
       {
@@ -134,13 +180,14 @@
   },
   "scripts": {
     "compile": "tsc -p ./",
-    "lint": "eslint src --ext ts",
+    "database": "python3 scripts/generate_database.py",
+    "lint": "eslint src",
     "pretest": "npm run compile && npm run lint",
     "test": "node ./out/test/runTest.js",
     "vscode:prepublish": "npm run compile",
     "watch": "tsc --watch -p ./"
   },
-  "version": "0.1.17",
+  "version": "0.2.1",
   "volta": {
     "node": "24.21.0"
   }
