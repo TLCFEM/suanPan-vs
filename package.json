@@ -48,9 +48,15 @@
           "ignoreSync": true,
           "type": "boolean"
         },
+        "suanpan.container": {
+          "default": "docker",
+          "description": "Container runtime executable used when `suanpan.docker` is enabled. Set to `podman`, `nerdctl`, or a full path to any Docker-compatible executable.",
+          "ignoreSync": true,
+          "type": "string"
+        },
         "suanpan.cpus": {
           "default": 0,
-          "description": "Number of logical cores to use in docker. 0 means using all available cores.",
+          "description": "Number of logical cores to use in the container. 0 means using all available cores.",
           "ignoreSync": true,
           "type": "integer"
         },
@@ -77,13 +83,13 @@
         },
         "suanpan.docker": {
           "default": false,
-          "description": "Run the model in a docker container.",
+          "description": "Run the model in a container.",
           "ignoreSync": true,
           "type": "boolean"
         },
         "suanpan.image": {
           "default": "tlcfem/suanpan",
-          "description": "Docker image to use.",
+          "description": "Container image to use.",
           "type": "string"
         },
         "suanpan.path": {
@@ -188,7 +194,7 @@
     "vscode:prepublish": "npm run compile",
     "watch": "tsc --watch -p ./"
   },
-  "version": "0.2.0",
+  "version": "0.2.1",
   "volta": {
     "node": "24.21.0"
   }

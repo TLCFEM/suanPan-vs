@@ -1,5 +1,9 @@
 # Change Log
 
+## v0.2.1
+
+1. allow customising the container runtime executable, so `podman`, `nerdctl` and other Docker-compatible runtimes can be used instead of `docker`.
+
 ## v0.2.0
 
 1. generate the command database directly from the suanPan parser,

@@ -69,10 +69,11 @@ load objects from other files or external modules.
 | Setting | Default | Description |
 | --- | --- | --- |
 | `suanpan.color` | `true` | Enable colorized output. |
-| `suanpan.cpus` | `0` | Logical cores used in docker (0 = all). |
+| `suanpan.container` | `docker` | Container runtime executable (`docker`, `podman`, `nerdctl`, or a full path). |
+| `suanpan.cpus` | `0` | Logical cores used in the container (0 = all). |
 | `suanpan.directory` | `""` | Working directory (empty = folder of the model). |
-| `suanpan.docker` | `false` | Run the model in a docker container. |
-| `suanpan.image` | `tlcfem/suanpan` | Docker image. |
+| `suanpan.docker` | `false` | Run the model in a container. |
+| `suanpan.image` | `tlcfem/suanpan` | Container image. |
 | `suanpan.path` | `""` | Path to the suanPan executable. |
 | `suanpan.verbose` | `false` | Enable verbose output. |
 | `suanpan.diagnostics.enable` | `true` | Enable model diagnostics. |

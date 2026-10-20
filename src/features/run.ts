@@ -8,6 +8,11 @@ function quote(value: string): string {
     return value;
 }
 
+/** Quote a command only when it contains whitespace. */
+function quoteExecutable(value: string): string {
+    return /\s/.test(value) ? quote(value) : value;
+}
+
 function configuration() {
     return vscode.workspace.getConfiguration('suanpan');
 }
@@ -75,6 +80,7 @@ export function registerRun(context: vscode.ExtensionContext): void {
             const color = config.get<boolean>('color');
             const verbose = config.get<boolean>('verbose');
             const docker = config.get<boolean>('docker');
+            const container = (config.get<string>('container') || 'docker').trim() || 'docker';
             const image = config.get<string>('image') || 'tlcfem/suanpan';
             const workingDirectory =
                 config.get<string>('directory') || path.dirname(modelFile);
@@ -105,7 +111,7 @@ export function registerRun(context: vscode.ExtensionContext): void {
             const fileName = path.basename(modelFile);
 
             const command = docker
-                ? `docker run --rm --cpus=${cpus} -v ${directory}:/dirty -w /dirty ${image} ${executable} -f ${fileName}`
+                ? `${quoteExecutable(container)} run --rm --cpus=${cpus} -v ${directory}:/dirty -w /dirty ${image} ${executable} -f ${fileName}`
                 : process.platform === 'win32'
                   ? `cd ${directory}; ${executable} -f ${quote(modelFile)}`
                   : `cd ${directory} && ${executable} -f ${quote(modelFile)}`;
