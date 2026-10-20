@@ -7,13 +7,6 @@
     "email": "tlcfem@gmail.com",
     "name": "Theodore Chang"
   },
-  "activationEvents": [
-    "onLanguage:suanPan",
-    "onCommand:suanpan.run",
-    "onCommand:suanpan.setPath",
-    "onCommand:suanpan.insertCommand",
-    "onCommand:suanpan.showVersion"
-  ],
   "categories": [
     "Programming Languages"
   ],
