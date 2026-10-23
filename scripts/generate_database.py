@@ -171,7 +171,7 @@ def parse_first_level_commands(source: Path) -> dict[str, dict]:
 
     # Resolve short lambdas such as ``auto group_handler = [&] { ... return create_new_group(...)``.
     handlers: dict[str, str] = {}
-    for m in re.finditer(r"auto\s+(\w+)\s*=\s*\[&\][^{]*\{(.*?)\}", process, re.S):
+    for m in re.finditer(r"auto\s+(\w+)\s*=\s*\[&\][^{]*\{(.*?)\}", process, re.DOTALL):
         called = re.search(r"return\s+(create_new_\w+)\(", m.group(2))
         if called:
             handlers[m.group(1)] = called.group(1)
