@@ -1,0 +1,156 @@
+# Machine-readable parsing spec extracted from suanPan source:
+#   - Domain/Group/GroupParser.cpp  (the `group` command family, dispatcher: create_new_group)
+#   - Toolbox/ExpressionParser.cpp  (the `expression` command, dispatcher: create_new_expression)
+#
+# All keyword matching is done via is_equal() => case-insensitive.
+# All handlers are dispatched on the FIRST token of the command line (group/expression type);
+# there are NO dash-style flags (-node, -generate, ...) anywhere in either file => flags is [] for every entry.
+
+groups:
+  - keyword: nodegroup
+    aliases: []
+    cpp: NodeGroup
+    params:
+      - {name: tag, type: int, req: true, meaning: 'group tag'}
+    flags: []
+    rest: {type: int_list, meaning: 'node tags'}
+    notes: >-
+      Handler new_nodegroup. tag read via get_input(command, tag); missing tag is fatal
+      ("A valid tag is required."). Remaining tokens consumed as a list via
+      get_remaining<uword> and passed to NodeGroup(unsigned, uvec&&). An empty remainder
+      is NOT rejected by the parser (no fatal check on the list).
+
+  - keyword: customnodegroup
+    aliases: []
+    cpp: CustomNodeGroup
+    params:
+      - {name: tag, type: int, req: true, meaning: 'group tag'}
+      - {name: expression, type: expression_tag, req: true, meaning: 'tag of an existing Expression object'}
+    flags: []
+    rest: null
+    notes: >-
+      Handler new_customnodegroup. Both values read in ONE call get_input(command, tag, expression);
+      failure of either is fatal ("A valid tag is required."). No remaining tokens are consumed.
+      Constructs CustomNodeGroup(unsigned, unsigned) - the second unsigned is an expression tag reference.
+
+  - keyword: elementgroup
+    aliases: []
+    cpp: ElementGroup
+    params:
+      - {name: tag, type: int, req: true, meaning: 'group tag'}
+    flags: []
+    rest: {type: int_list, meaning: 'element tags'}
+    notes: >-
+      Handler new_elementgroup. Identical shape to nodegroup: fatal get_input for tag,
+      then get_remaining<uword> into ElementGroup(unsigned, uvec&&). Empty remainder not rejected.
+
+  - keyword: groupgroup
+    aliases: []
+    cpp: GroupGroup
+    params:
+      - {name: tag, type: int, req: true, meaning: 'group tag'}
+    flags: []
+    rest: {type: int_list, meaning: 'tags of existing groups to merge into this group'}
+    notes: >-
+      Handler new_groupgroup. Fatal get_input for tag, then get_remaining<uword> into
+      GroupGroup(unsigned, uvec&&). Empty remainder not rejected.
+
+  - keyword: generate
+    aliases: []
+    cpp: NodeGroup
+    params:
+      - {name: type, type: str, req: true, meaning: 'generated group type; case-insensitive is_equal against "nodegroup" or "elementgroup"'}
+      - {name: tag, type: int, req: true, meaning: 'group tag'}
+      - {name: start, type: int, req: true, meaning: 'first tag in the generated range (signed)'}
+      - {name: interval, type: int, req: false, default: 1, meaning: 'step of the generated range (signed); corrected to 1 if 0'}
+      - {name: end, type: int, req: false, default: 'start (when interval omitted); interval value (when interval given but end omitted)', meaning: 'last tag in the generated range (signed)'}
+    flags: []
+    rest: null
+    notes: >-
+      Handler new_generate. Order of reads: type, tag (both fatal), then start (fatal),
+      then interval / end via plain `if(!get_input(...))` - i.e. optional with C++ fallbacks.
+      Two-argument form (start + one number): the second number is taken as end and interval is
+      auto-set to +1 if end > start else -1. Post-fixups: interval == 0 -> 1; start == end -> interval = 1;
+      sign flipped when it points away from end (start<end && interval<0, or start>end && interval>0).
+      Pool built with `while (start <= end) { push(start); start += interval; }`, hence a DESCENDING
+      range (start > end) always produces an EMPTY pool - a quirk worth flagging.
+      The object is pre-assigned as NodeGroup(tag, pool) BEFORE the type check, so an unrecognised
+      type silently falls back to NodeGroup; type "elementgroup" yields ElementGroup(tag, pool).
+
+  - keyword: generatebyrule
+    aliases: []
+    cpp: NodeGroup
+    params:
+      - {name: type, type: str, req: true, meaning: 'must case-insensitively equal "nodegroup" (is_equal); anything else is fatal'}
+      - {name: tag, type: int, req: true, meaning: 'group tag'}
+      - {name: dof, type: dof, req: true, meaning: 'dof identifier whose values drive node selection'}
+    flags: []
+    rest: {type: float_list, meaning: 'rule values (doubles) forwarded to NodeGroup(unsigned, int, vec&&) to select/generate nodes'}
+    notes: >-
+      Handler new_generatebyrule. Reads are all fatal: type (must be "nodegroup",
+      error "A valid type is required."), tag, dof (error "A valid dof identifier is required.").
+      Remaining tokens consumed via get_remaining<double>; an empty list is NOT rejected here
+      (passed straight to the NodeGroup constructor).
+
+  - keyword: generatebypoint
+    aliases: []
+    cpp: NodeGroup
+    params:
+      - {name: type, type: str, req: true, meaning: 'must case-insensitively equal "nodegroup" (is_equal); anything else is fatal'}
+      - {name: tag, type: int, req: true, meaning: 'group tag'}
+    flags: []
+    rest: {type: float_list, meaning: 'point coordinates; tokens are split into two EQUAL halves - first half -> one vec, second half -> the other vec (NodeGroup(unsigned, vec&&, vec&&))'}
+    notes: >-
+      Handler new_generatebypoint. type must be "nodegroup" (fatal otherwise); tag fatal.
+      Remaining tokens via get_remaining<double>. ODD number of remaining tokens -> silent
+      failure (return_obj stays null, dispatcher then reports "Fail to create new group").
+      With even count 2N: first N tokens form the first vector, last N tokens the second.
+
+  - keyword: generatebyplane
+    aliases: []
+    cpp: NodeGroup
+    params:
+      - {name: type, type: str, req: true, meaning: 'must case-insensitively equal "nodegroup" (is_equal); anything else is fatal'}
+      - {name: tag, type: int, req: true, meaning: 'group tag'}
+    flags: []
+    rest: {type: float_list, meaning: 'plane definition values (doubles) forwarded to NodeGroup(unsigned, vec&&)'}
+    notes: >-
+      Handler new_generatebyplane. type must be "nodegroup" (fatal otherwise); tag fatal.
+      Remaining tokens via get_remaining<double>; an EMPTY list -> silent failure
+      (return_obj stays null, dispatcher reports "Fail to create new group").
+
+expressions:
+  - keyword: SimpleScalar
+    aliases: []
+    cpp: SimpleScalarExpression
+    params:
+      - {name: tag, type: expression_tag, req: true, meaning: 'tag of the new expression'}
+      - {name: variable_list, type: str, req: true, meaning: 'vertical bar (|) separated input variable names'}
+      - {name: expression, type: str, req: true, meaning: 'expression source text OR path to an expression file'}
+    flags: []
+    rest: null
+    notes: >-
+      Handler new_simplescalar (dispatch literal "SimpleScalar", matched case-insensitively via is_equal).
+      tag, variable_list, expression are each read with fatal get_input (single space-delimited token).
+      The expression string is ONE token: because tokenisation splits on whitespace, expressions
+      containing spaces must be supplied as a file. check_file() replaces the string with the file
+      contents only if the path exists on disk; otherwise the string is used verbatim as the
+      expression source. Compiled via SimpleScalarExpression::compile(expression); compile failure
+      nulls the object (dispatcher then reports "Fail to create new expression").
+
+  - keyword: SimpleVector
+    aliases: []
+    cpp: SimpleVectorExpression
+    params:
+      - {name: tag, type: expression_tag, req: true, meaning: 'tag of the new expression'}
+      - {name: input_list, type: str, req: true, meaning: 'vertical bar (|) separated input variable names'}
+      - {name: output_list, type: str, req: true, meaning: 'vertical bar (|) separated output variable names'}
+      - {name: expression, type: str, req: true, meaning: 'expression source text OR path to an expression file'}
+    flags: []
+    rest: null
+    notes: >-
+      Handler new_simplevector (dispatch literal "SimpleVector", matched case-insensitively via is_equal).
+      input_list and output_list are read in ONE fatal call get_input(command, input_list, output_list) -
+      missing either is fatal. expression is one fatal space-delimited token, subject to the same
+      check_file() file-vs-inline logic as SimpleScalar. Compiled via
+      SimpleVectorExpression::compile(expression); compile failure nulls the object.

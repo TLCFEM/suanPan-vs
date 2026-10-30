@@ -1,0 +1,326 @@
+# Machine-readable parser spec extracted from suanPan /workspace/Load/LoadParser.cpp (414 lines, v2017-2026).
+#
+# Conventions applied:
+#   - req: true  => missing/malformed token is fatal (get_input).
+#   - req: false => optional via get_optional_input; 'default' records the C++ default.
+#   - type: dof  => token parsed by parse_dof(); a single token (e.g. "E", "P", "U1") may expand
+#                   to multiple DOFs; load handlers require a non-empty pool unless noted.
+#   - Trailing tag lists are consumed by get_remaining<uword>() (never fatal at parse time) and
+#     are recorded as the final positional param per the requested schema example; an empty
+#     list is not rejected by the parser itself but yields an invalid load downstream.
+#   - Keyword matching is case-insensitive (is_equal / is_equal_any). Variants sharing a
+#     handler are unfolded: primary keyword is the first in the dispatch, the rest are aliases.
+#   - FLAGS: this version contains NO mid-stream flag checks (no is_equal(para, "-XXX")).
+#     There is no "-generate" option for Tabular and no "-fitting" for Decay here, so
+#     flags is [] for every keyword.
+#   - Both dispatches read a leading type token: amplitude type (str) then tag (int) for
+#     create_new_amplitude; load type (str, variable misleadingly named load_id) for
+#     create_new_load. Unknown amplitude types are silently ignored; unknown load types fall
+#     through to external_module::object() (external modules may register more load types).
+#   - After successful load creation the load's start step is set to the current step tag:
+#     new_load->set_start_step(domain->get_current_step_tag()).
+
+amplitudes:
+  - keyword: Constant
+    aliases: []
+    cpp: Constant
+    params:
+      - {name: tag, type: int, req: true}
+    flags: []
+    rest: null
+    notes: 'Amplitude, tag only (inherited Amplitude(tag) ctor).'
+
+  - keyword: Ramp
+    aliases: []
+    cpp: Ramp
+    params:
+      - {name: tag, type: int, req: true}
+    flags: []
+    rest: null
+    notes: 'Amplitude, tag only (inherited Amplitude(tag) ctor).'
+
+  - keyword: Tabular
+    aliases: []
+    cpp: Tabular
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: file_name, type: str, req: true}
+      - {name: up_rate, type: int, req: true, default: null}
+      - {name: window_type, type: str, req: false, default: 'Hamming'}
+      - {name: window_size, type: int, req: false, default: 8}
+    flags: []
+    rest: null
+    notes: 'Two modes: if the stream is exhausted (command.eof()) after file_name, the file is used directly as Tabular(tag, file_name); otherwise up_rate is mandatory (fatal if missing) and upsampling(window_type, file_name, up_rate, window_size) is applied, so up_rate is conditional on remaining tokens. upsampling() failure is fatal.'
+
+  - keyword: TabularSpline
+    aliases: []
+    cpp: TabularSpline
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: file_name, type: str, req: true}
+    flags: []
+    rest: null
+    notes: 'Tabular data read from file_name and interpolated with spline interpolation; no upsampling path.'
+
+  - keyword: Decay
+    aliases: []
+    cpp: Decay
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: A, type: float, req: true}
+      - {name: TD, type: float, req: true}
+    flags: []
+    rest: null
+    notes: 'A and TD are read with a single get_input(command, A, TD) (both fatal). A = value, TD = decay time constant.'
+
+  - keyword: Linear
+    aliases: []
+    cpp: Linear
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: A, type: float, req: true}
+    flags: []
+    rest: null
+    notes: 'A = slope of the linear ramp (amplitude = A * step time).'
+
+  - keyword: Combine
+    aliases: []
+    cpp: Combine
+    params:
+      - {name: tag, type: int, req: true}
+    flags: []
+    rest: {type: int_list, meaning: 'tags of other amplitudes; their factors are multiplied together'}
+    notes: 'All remaining tokens consumed via get_remaining<uword>; the parser does not reject an empty list (Combine would then yield factor 1).'
+
+  - keyword: Custom
+    aliases: []
+    cpp: CustomAmplitude
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: expression, type: expression_tag, req: true}
+    flags: []
+    rest: null
+    notes: 'expression is the tag of a previously defined Expression object.'
+
+  - keyword: Modulated
+    aliases: []
+    cpp: Modulated
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: W, type: float, req: true}
+    flags: []
+    rest: {type: float_list, meaning: 'modulation frequencies f_i; amplitude = W * prod(sin(2*pi*f_i*t))'}
+    notes: 'Shares the is_equal_any(handler with Sine and Cosine; W here is the base amplitude.'
+
+  - keyword: Sine
+    aliases: []
+    cpp: Sine
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: W, type: float, req: true}
+    flags: []
+    rest: {type: float_list, meaning: 'harmonic coefficients A_i; amplitude = sum_i A_i*sin(i*pi*t/period) with period = 0.5*W'}
+    notes: 'Shares the is_equal_any handler with Modulated and Cosine; W here is the half-period parameter.'
+
+  - keyword: Cosine
+    aliases: []
+    cpp: Cosine
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: W, type: float, req: true}
+    flags: []
+    rest: {type: float_list, meaning: 'harmonic coefficients A_i; amplitude = sum_i A_i*cos(i*pi*t/period) with period = 0.5*W'}
+    notes: 'Shares the is_equal_any handler with Modulated and Sine; W here is the half-period parameter.'
+
+  - keyword: NZStrongMotion
+    aliases: []
+    cpp: NZStrongMotion
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: name, type: str, req: true}
+    flags: []
+    rest: null
+    notes: 'name selects a predefined NZ strong-motion record built into the class.'
+
+loads:
+  - keyword: Acceleration
+    aliases: []
+    cpp: NodalAcceleration
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: amplitude_tag, type: int, req: true}
+      - {name: magnitude, type: float, req: true}
+      - {name: dof, type: dof, req: true}
+      - {name: node_tags, type: int_list, req: true}
+    flags: []
+    rest: null
+    notes: 'dof token must expand to a non-empty DOF pool (fatal otherwise); node tags consumed from all remaining tokens via get_remaining<uword>.'
+
+  - keyword: BodyForce
+    aliases: []
+    cpp: BodyForce
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: amplitude_tag, type: int, req: true}
+      - {name: magnitude, type: float, req: true}
+      - {name: dof, type: dof, req: true}
+      - {name: element_tags, type: int_list, req: true}
+    flags: []
+    rest: null
+    notes: 'dof token must expand to a non-empty DOF pool; trailing tags are element tags (get_remaining<uword>).'
+
+  - keyword: Cload
+    aliases: []
+    cpp: NodalForce
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: amplitude_tag, type: int, req: true}
+      - {name: magnitude, type: float, req: true}
+      - {name: dof, type: dof, req: true}
+      - {name: node_tags, type: int_list, req: true}
+    flags: []
+    rest: null
+    notes: 'dof token must expand to a non-empty DOF pool; node tags consumed from all remaining tokens via get_remaining<uword>.'
+
+  - keyword: Disp
+    aliases: [Displacement, DispLoad]
+    cpp: NodalDisplacement
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: amplitude_tag, type: int, req: true}
+      - {name: magnitude, type: float, req: true}
+      - {name: dof, type: dof, req: true}
+      - {name: node_tags, type: int_list, req: true}
+    flags: []
+    rest: null
+    notes: 'Dispatched via is_equal_any(Disp, Displacement, DispLoad); dof token must expand to a non-empty DOF pool; node tags from remaining tokens.'
+
+  - keyword: GroupBodyForce
+    aliases: []
+    cpp: GroupBodyForce
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: amplitude_tag, type: int, req: true}
+      - {name: magnitude, type: float, req: true}
+      - {name: dof, type: dof, req: true}
+      - {name: group_tags, type: int_list, req: true}
+    flags: []
+    rest: null
+    notes: 'Same handler as BodyForce (flag=true branch); trailing tags are group tags, expanded via GroupModifier to member elements/nodes.'
+
+  - keyword: GroupCload
+    aliases: []
+    cpp: GroupNodalForce
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: amplitude_tag, type: int, req: true}
+      - {name: magnitude, type: float, req: true}
+      - {name: dof, type: dof, req: true}
+      - {name: group_tags, type: int_list, req: true}
+    flags: []
+    rest: null
+    notes: 'Same handler as Cload (flag=true branch); trailing tags are group tags.'
+
+  - keyword: GroupDisp
+    aliases: [GroupDisplacement, GroupDispLoad]
+    cpp: GroupNodalDisplacement
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: amplitude_tag, type: int, req: true}
+      - {name: magnitude, type: float, req: true}
+      - {name: dof, type: dof, req: true}
+      - {name: group_tags, type: int_list, req: true}
+    flags: []
+    rest: null
+    notes: 'Dispatched via is_equal_any(GroupDisp, GroupDisplacement, GroupDispLoad); same handler as Disp (flag=true branch); trailing tags are group tags.'
+
+  - keyword: LineUDL2D
+    aliases: []
+    cpp: LineUDL2D
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: amplitude_tag, type: int, req: true}
+      - {name: magnitude, type: float, req: true}
+      - {name: dof, type: dof, req: true}
+      - {name: node_tags, type: int_list, req: true}
+    flags: []
+    rest: null
+    notes: 'dof token must expand to EXACTLY ONE dof (dof_pool.size() == 1, fatal otherwise); node tags define line segments via consecutive pairs (validate_node is applied).'
+
+  - keyword: LineUDL3D
+    aliases: []
+    cpp: LineUDL3D
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: amplitude_tag, type: int, req: true}
+      - {name: magnitude, type: float, req: true}
+      - {name: dof, type: dof, req: true}
+      - {name: node_tags, type: int_list, req: true}
+    flags: []
+    rest: null
+    notes: 'Same handler as LineUDL2D (dimension=3); dof token must expand to EXACTLY ONE dof; node tags define line segments via consecutive pairs.'
+
+  - keyword: ReferenceLoad
+    aliases: [RefLoad, RefForce]
+    cpp: ReferenceForce
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: amplitude_tag, type: int, req: true}
+      - {name: magnitude, type: float, req: true}
+      - {name: dof, type: dof, req: true}
+      - {name: node_tags, type: int_list, req: true}
+    flags: []
+    rest: null
+    notes: 'amplitude_tag is parsed and MUST be present (fatal if missing) but is NOT forwarded to the object: ReferenceForce(tag, magnitude, node tags, dof) takes no amplitude; the load is scaled by the constraint multiplier. dof pool must be non-empty.'
+
+  - keyword: GroupReferenceLoad
+    aliases: [GroupRefLoad, GroupRefForce]
+    cpp: GroupReferenceForce
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: amplitude_tag, type: int, req: true}
+      - {name: magnitude, type: float, req: true}
+      - {name: dof, type: dof, req: true}
+      - {name: group_tags, type: int_list, req: true}
+    flags: []
+    rest: null
+    notes: 'Same handler as ReferenceLoad (flag=true branch); amplitude_tag parsed but not forwarded to the object; trailing tags are group tags.'
+
+  - keyword: SupportAcceleration
+    aliases: []
+    cpp: SupportAcceleration
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: amplitude_tag, type: int, req: true}
+      - {name: magnitude, type: float, req: true}
+      - {name: dof, type: dof, req: true}
+      - {name: node_tags, type: int_list, req: true}
+    flags: []
+    rest: null
+    notes: 'Shares the new_supportmotion handler (dispatch flag = 2); dof pool must be non-empty; node tags from remaining tokens.'
+
+  - keyword: SupportDisplacement
+    aliases: []
+    cpp: SupportDisplacement
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: amplitude_tag, type: int, req: true}
+      - {name: magnitude, type: float, req: true}
+      - {name: dof, type: dof, req: true}
+      - {name: node_tags, type: int_list, req: true}
+    flags: []
+    rest: null
+    notes: 'Shares the new_supportmotion handler (dispatch flag = 0); dof pool must be non-empty; node tags from remaining tokens.'
+
+  - keyword: SupportVelocity
+    aliases: []
+    cpp: SupportVelocity
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: amplitude_tag, type: int, req: true}
+      - {name: magnitude, type: float, req: true}
+      - {name: dof, type: dof, req: true}
+      - {name: node_tags, type: int_list, req: true}
+    flags: []
+    rest: null
+    notes: 'Shares the new_supportmotion handler (dispatch flag = 1); dof pool must be non-empty; node tags from remaining tokens.'

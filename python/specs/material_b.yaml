@@ -1,0 +1,903 @@
+# suanPan material parser spec (part B)
+# Source of truth: /workspace/Material/MaterialParser.cpp
+# Covers handler functions defined at lines 1958-3828, dispatched by
+# create_new_material() (lines 3676-3828).
+#
+# Conventions:
+#   req: true  -> parsed with get_input(); missing/invalid token aborts parsing (fatal) => required.
+#   req: false -> guarded by `!command.eof() && !get_input(...)` or get_optional_input();
+#                 missing token is fine, `default` is the C++ default value.
+#   expression_tag -> int referencing an `expression` object.
+#   int_list/float_list -> consumed via get_remaining<T>() / get_remaining<T1,T2,...>()
+#   Keyword matching is case-insensitive; aliases lists all matched spellings (lowercased)
+#   besides the primary `keyword`.
+
+- keyword: ExpMises1D
+  aliases: []
+  cpp: ExpMises1D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: elastic_modulus, type: float, req: true}
+    - {name: yield_stress, type: float, req: true}
+    - {name: a, type: float, req: true}
+    - {name: b, type: float, req: true}
+    - {name: c, type: float, req: true}
+    - {name: density, type: float, req: false, default: 0.0}
+  flags: []
+  rest: null
+  notes: 'a/b/c are read in one get_input(command, a, b, c) call. Handler: new_expmises1d (line 1958).'
+
+- keyword: DafaliasManzari
+  aliases: []
+  cpp: DafaliasManzari
+  params:
+    - {name: tag, type: int, req: true}
+    - name: parameters
+      type: float_list
+      req: false
+      size: 18
+      default: [125.0, 0.05, 1.25, 0.02, 0.9, 0.7, 0.01, 7.0, 0.1, 0.9, 1.1, -0.7, 3.5, 4.0, 600.0, -130.0, 0.2, 0.0]
+  flags: []
+  rest: null
+  notes: '18-element vec read via get_optional_input (per-element optional; missing tokens keep defaults). Ctor passes p(0)..p(17) individually. Handler: new_dafaliasmanzari (line 1990).'
+
+- keyword: Flag01
+  aliases: []
+  cpp: Flag
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: elastic_modulus, type: float, req: true}
+    - {name: yield_stress, type: float, req: true}
+    - {name: residual, type: float, req: true}
+    - {name: hardening_ratio, type: float, req: false, default: 0.0}
+    - {name: density, type: float, req: false, default: 0.0}
+  flags: []
+  rest: null
+  notes: 'Single-surface flag model. Ctor: Flag(tag, E, yield, residual, hardening_ratio, density). Handler: new_flag01 (line 2006).'
+
+- keyword: Flag02
+  aliases: []
+  cpp: Flag
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: elastic_modulus, type: float, req: true}
+    - {name: t_yield_stress, type: float, req: true}
+    - {name: t_residual, type: float, req: true}
+    - {name: t_hardening_ratio, type: float, req: true}
+    - {name: c_yield_stress, type: float, req: true}
+    - {name: c_residual, type: float, req: true}
+    - {name: c_hardening_ratio, type: float, req: true}
+    - {name: density, type: float, req: false, default: 0.0}
+  flags: []
+  rest: null
+  notes: 'Tension/compression asymmetric flag model, same Flag class. Handler: new_flag02 (line 2050).'
+
+- keyword: Fluid
+  aliases: []
+  cpp: Fluid
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: bulk_modulus, type: float, req: true}
+    - {name: density, type: float, req: true}
+  flags: []
+  rest: null
+  notes: 'Handler: new_fluid (line 2110).'
+
+- keyword: Gap01
+  aliases: []
+  cpp: Gap01
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: elastic_modulus, type: float, req: true}
+    - {name: yield_stress, type: float, req: true}
+    - {name: gap_strain, type: float, req: false, default: 0.0}
+    - {name: density, type: float, req: false, default: 0.0}
+  flags: []
+  rest: null
+  notes: 'Handler: new_gap01 (line 2132).'
+
+- keyword: Elastic3D
+  aliases: [isotropicelastic3d]
+  cpp: IsotropicElastic3D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: elastic_modulus, type: float, req: true}
+    - {name: poissons_ratio, type: float, req: true}
+    - {name: density, type: float, req: false, default: 0.0}
+  flags: []
+  rest: null
+  notes: 'Dispatch: is_equal_any(material_id, "Elastic3D", "IsotropicElastic3D"). Handler: new_isotropicelastic3d (line 2166).'
+
+- keyword: NonlocalElastic3D
+  aliases: [nonlocalisotropicelastic3d]
+  cpp: NonlocalIsotropicElastic3D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: elastic_modulus, type: float, req: true}
+    - {name: poissons_ratio, type: float, req: true}
+    - {name: maximum_energy, type: float, req: true}
+    - {name: evolution_rate, type: float, req: true}
+    - {name: reference_length, type: float, req: true}
+    - {name: diffusion_rate, type: float, req: true}
+    - {name: density, type: float, req: false, default: 0.0}
+  flags: []
+  rest: null
+  notes: 'Six parameters after tag read in one get_input call. Energy type fixed to NonlocalIsotropicElastic3D::EnergyType::DEV_TENSILE. Handler: new_nonlocalisotropicelastic3d (line 2196).'
+
+- keyword: ElasticOS
+  aliases: []
+  cpp: ElasticOS
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: elastic_modulus, type: float, req: true}
+    - {name: poissons_ratio, type: float, req: true}
+    - {name: density, type: float, req: false, default: 0.0}
+  flags: []
+  rest: null
+  notes: 'Handler: new_elasticos (line 2220).'
+
+- keyword: Kelvin
+  aliases: []
+  cpp: Kelvin
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: damper_tag, type: int, req: true}
+    - {name: spring_tag, type: int, req: true}
+  flags: []
+  rest: null
+  notes: 'damper_tag/spring_tag read in one get_input(command, damper_tag, spring_tag) call; reference existing damper/spring materials. Handler: new_kelvin (line 2250).'
+
+- keyword: LinearDamage
+  aliases: []
+  cpp: LinearDamage
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: mat_tag, type: int, req: true}
+    - {name: start_strain, type: float, req: true}
+    - {name: end_strain, type: float, req: true}
+    - {name: end_damage, type: float, req: false, default: 0.0}
+  flags: []
+  rest: null
+  notes: 'mat_tag = base material to degrade; values stored in vec(3, zeros), end damage optional. Handler: new_lineardamage (line 2266).'
+
+- keyword: Laminated
+  aliases: []
+  cpp: Laminated
+  params:
+    - {name: tag, type: int, req: true}
+  flags: []
+  rest:
+    type: int_list
+    description: 'layer material tags, consumed via get_remaining<uword>; no minimum-size check in parser'
+  notes: 'Handler: new_laminated (line 2296).'
+
+- keyword: Maxwell
+  aliases: []
+  cpp: Maxwell
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: damper_tag, type: int, req: true}
+    - {name: spring_tag, type: int, req: true}
+    - {name: matrix, type: bool, req: false, default: false}
+    - {name: proceed, type: int, req: false, default: 0}
+    - {name: beta, type: float, req: false, default: 0.5}
+  flags: []
+  rest: null
+  notes: 'matrix parsed with is_true(); all three tags read in one get_input call. Handler: new_maxwell (line 2306).'
+
+- keyword: MooneyRivlin
+  aliases: []
+  cpp: MooneyRivlin
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: bulk_modulus, type: float, req: true}
+    - {name: a10, type: float, req: true}
+    - {name: a01, type: float, req: true}
+    - {name: density, type: float, req: false, default: 0.0}
+  flags: []
+  rest: null
+  notes: 'Handler: new_mooneyrivlin (line 2334).'
+
+- keyword: MPF
+  aliases: []
+  cpp: MPF
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: elastic_modulus, type: float, req: true}
+    - {name: yield_stress, type: float, req: true}
+    - {name: hardening_ratio, type: float, req: false, default: 0.05}
+    - {name: R0, type: float, req: false, default: 20.0}
+    - {name: A1, type: float, req: false, default: 18.5}
+    - {name: A2, type: float, req: false, default: 0.15}
+    - {name: A3, type: float, req: false, default: 0.01}
+    - {name: A4, type: float, req: false, default: 7.0}
+    - {name: iso, type: bool, req: false, default: false}
+    - {name: con, type: float, req: false, default: false}
+    - {name: density, type: float, req: false, default: 0.0}
+  flags: []
+  rest: null
+  notes: 'iso/con parsed with is_true() (isotropic hardening switch / constant radius switch). Handler: new_mpf (line 2370).'
+
+- keyword: MultilinearOO
+  aliases: []
+  cpp: MultilinearOO
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: tension_backbone_file, type: str, req: true}
+    - {name: compression_backbone_file, type: str, req: true}
+    - {name: density, type: float, req: false, default: 0.0}
+  flags: []
+  rest: null
+  notes: 'Backbone files loaded with mat::load(name, raw_ascii) and must be non-empty; first row dropped when its second column is 0; ctor takes abs(t_backbone), -abs(c_backbone). Handler: new_multilinearoo (line 2446).'
+
+- keyword: MultilinearPO
+  aliases: []
+  cpp: MultilinearPO
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: tension_backbone_file, type: str, req: true}
+    - {name: compression_backbone_file, type: str, req: true}
+    - {name: density, type: float, req: false, default: 0.0}
+  flags: []
+  rest: null
+  notes: 'Same file handling as MultilinearOO. Handler: new_multilinearpo (line 2477).'
+
+- keyword: MultilinearElastic1D
+  aliases: []
+  cpp: MultilinearElastic1D
+  params:
+    - {name: tag, type: int, req: true}
+  flags: []
+  rest:
+    type: float_list
+    description: '(strain, stress) pairs via get_remaining<double>; if the count is odd the last token is density (default 0.0), remaining even count split into strain/stress columns'
+  notes: 'Handler: new_multilinearelastic1d (line 2508).'
+
+- keyword: MultilinearJ2
+  aliases: []
+  cpp: MultilinearJ2
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: elastic_modulus, type: float, req: true}
+    - {name: poissons_ratio, type: float, req: true}
+    - {name: density, type: float, req: true}
+  flags: []
+  rest:
+    type: float_list
+    description: 'interleaved (plastic_strain, plastic_stress) pairs via get_remaining<double, double>; joined as backbone table columns'
+  notes: 'Note: density is REQUIRED here (no eof guard). Handler: new_multilinearj2 (line 2533).'
+
+- keyword: MultilinearMises1D
+  aliases: []
+  cpp: MultilinearMises1D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: elastic_modulus, type: float, req: true}
+    - {name: density, type: float, req: true}
+  flags: []
+  rest:
+    type: float_list
+    description: 'interleaved (plastic_strain, plastic_stress) pairs via get_remaining<double, double>'
+  notes: 'Note: density is REQUIRED here (no eof guard). Handler: new_multilinearmises1d (line 2563).'
+
+- keyword: NLE3D01
+  aliases: []
+  cpp: NLE3D01
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: pool, type: float_list, req: true, size: 4}
+    - {name: density, type: float, req: false, default: 0.0}
+  flags: []
+  rest: null
+  notes: '4-element vec read in one get_input(command, pool) call (all 4 values required); ctor takes pool(0)..pool(3). Handler: new_nle3d01 (line 2587).'
+
+- keyword: Nonviscous01
+  aliases: []
+  cpp: Nonviscous01
+  params:
+    - {name: tag, type: int, req: true}
+  flags: []
+  rest:
+    type: float_list
+    description: 'four interleaved lists via get_remaining<double, double, double, double>: m real, m imaginary, s real, s imaginary (hereditary kernel m*exp(-s*t) parameters)'
+  notes: 'Validation: imaginary parts must cancel (|sum| <= 1E-10, conjugate pairs) and sum(m % exp(-1E8*s)) must vanish (kernel decays to zero). Handler: new_nonviscous01 (line 2611).'
+
+- keyword: OrthotropicElastic3D
+  aliases: []
+  cpp: OrthotropicElastic3D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: modulus, type: float_list, req: true, size: 6}
+    - {name: poissons_ratio, type: float_list, req: true, size: 3}
+    - {name: density, type: float, req: false, default: 0.0}
+  flags: []
+  rest: null
+  notes: '6 moduli then 3 Poisson ratios, each vec read in one get_input call. Handler: new_orthotropicelastic3d (line 2636).'
+
+- keyword: ParabolicCC
+  aliases: []
+  cpp: ParabolicCC
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: elastic_modulus, type: float, req: true}
+    - {name: poissons_ratio, type: float, req: true}
+    - {name: beta, type: float, req: true}
+    - {name: m, type: float, req: true}
+    - {name: pt, type: float, req: true}
+    - {name: a, type: float, req: true}
+    - {name: a_slope, type: float, req: true}
+    - {name: density, type: float, req: false, default: 0.0}
+  flags: []
+  rest: null
+  notes: 'Parabolic Cam-clay. beta/m/pt/a/a_slope each read with separate fatal get_input. Handler: new_paraboliccc (line 2666).'
+
+- keyword: Parallel
+  aliases: []
+  cpp: Parallel
+  params:
+    - {name: tag, type: int, req: true}
+  flags: []
+  rest:
+    type: int_list
+    description: 'tags of materials to combine in parallel, consumed via get_remaining<uword>; no minimum-size check in parser'
+  notes: 'Handler: new_parallel (line 2716).'
+
+- keyword: PlaneStrain
+  aliases: []
+  cpp: PlaneStrain
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: full_tag, type: int, req: true}
+  flags: []
+  rest: null
+  notes: 'Dispatch: new_planestrain(new_material, command, 0); internal constraint type = 0. full_tag = reference 3D material. Handler: new_planestrain (line 2726).'
+
+- keyword: PlaneSymmetric13
+  aliases: []
+  cpp: PlaneStrain
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: full_tag, type: int, req: true}
+  flags: []
+  rest: null
+  notes: 'Same handler as PlaneStrain but constraint type = 1. Handler: new_planestrain (line 2726).'
+
+- keyword: PlaneSymmetric23
+  aliases: []
+  cpp: PlaneStrain
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: full_tag, type: int, req: true}
+  flags: []
+  rest: null
+  notes: 'Same handler as PlaneStrain but constraint type = 2. Handler: new_planestrain (line 2726).'
+
+- keyword: OS146
+  aliases: []
+  cpp: OS146
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: full_tag, type: int, req: true}
+    - {name: max_iteration, type: int, req: false, default: 1}
+  flags: []
+  rest: null
+  notes: 'Instantiated via new_wrapper<OS146> (template handler, line 2742); wrapper over reference material full_tag.'
+
+- keyword: PlaneStress
+  aliases: []
+  cpp: PlaneStress
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: full_tag, type: int, req: true}
+    - {name: max_iteration, type: int, req: false, default: 1}
+  flags: []
+  rest: null
+  notes: 'Instantiated via new_wrapper<PlaneStress> (template handler, line 2742); wrapper over reference 3D material full_tag.'
+
+- keyword: Uniaxial
+  aliases: []
+  cpp: Uniaxial
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: full_tag, type: int, req: true}
+    - {name: max_iteration, type: int, req: false, default: 1}
+  flags: []
+  rest: null
+  notes: 'Instantiated via new_wrapper<Uniaxial> (template handler, line 2742); wrapper over reference material full_tag.'
+
+- keyword: OS146S
+  aliases: []
+  cpp: OS146S
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: full_tag, type: int, req: true}
+    - {name: shear_modulus, type: float, req: true}
+  flags: []
+  rest: null
+  notes: 'Distinct handler from OS146 (adds shear_modulus). Handler: new_os146s (line 2764).'
+
+- keyword: PolyElastic1D
+  aliases: []
+  cpp: PolyElastic1D
+  params:
+    - {name: tag, type: int, req: true}
+  flags: []
+  rest:
+    type: float_list
+    description: 'polynomial coefficients via get_remaining<double>; no size check'
+  notes: 'Ctor: PolyElastic1D(tag, coefficients, 0.) - second argument fixed to 0. Handler: new_polyelastic1d (line 2786).'
+
+- keyword: PolyJ2
+  aliases: []
+  cpp: PolyJ2
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: elastic_modulus, type: float, req: true}
+    - {name: poissons_ratio, type: float, req: true}
+    - {name: density, type: float, req: true}
+  flags: []
+  rest:
+    type: float_list
+    description: 'hardening polynomial parameters via get_remaining<double>; parser errors if fewer than 3 values ("At least two valid parameters for hardening are required.")'
+  notes: 'Note: density is REQUIRED here (no eof guard). Handler: new_polyj2 (line 2796).'
+
+- keyword: Prestrain
+  aliases: []
+  cpp: Prestrain
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: base_tag, type: int, req: true}
+    - {name: amplitude_tag, type: int, req: true}
+    - {name: magnitude, type: float, req: true}
+  flags: []
+  rest: null
+  notes: 'tag/base_tag/amplitude_tag read in one get_input call; amplitude_tag references an Amplitude object. Handler: new_prestrain (line 2831).'
+
+- keyword: RambergOsgood
+  aliases: []
+  cpp: RambergOsgood
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: elastic_modulus, type: float, req: true}
+    - {name: yield_stress, type: float, req: true}
+    - {name: offset, type: float, req: false, default: 1.0}
+    - {name: n, type: float, req: false, default: 4.0}
+    - {name: density, type: float, req: false, default: 0.0}
+  flags: []
+  rest: null
+  notes: 'Handler: new_rambergosgood (line 2847).'
+
+- keyword: Rebar2D
+  aliases: []
+  cpp: Rebar2D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: major_tag, type: int, req: true}
+    - {name: minor_tag, type: int, req: true}
+    - {name: major_ratio, type: float, req: true}
+    - {name: minor_ratio, type: float, req: true}
+  flags: []
+  rest: null
+  notes: 'major/minor material tags read in one get_input, then both reinforcement ratios in one get_input. Handler: new_rebar2d (line 2887).'
+
+- keyword: Rebar3D
+  aliases: []
+  cpp: Rebar3D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: tag_x, type: int, req: true}
+    - {name: tag_y, type: int, req: true}
+    - {name: tag_z, type: int, req: true}
+    - {name: ratio_x, type: float, req: true}
+    - {name: ratio_y, type: float, req: true}
+    - {name: ratio_z, type: float, req: true}
+  flags: []
+  rest: null
+  notes: 'x/y/z material tags in one get_input, then x/y/z reinforcement ratios in one get_input. Handler: new_rebar3d (line 2909).'
+
+- keyword: Sequential
+  aliases: []
+  cpp: Sequential
+  params:
+    - {name: tag, type: int, req: true}
+  flags: []
+  rest:
+    type: int_list
+    description: 'material tags of the sequential chain via get_remaining<uword>; parser errors if exactly 1 tag given ("At least two material models are required.")'
+  notes: 'Handler: new_sequential (line 2931).'
+
+- keyword: SlipLock
+  aliases: []
+  cpp: SlipLock
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: elastic_modulus, type: float, req: true}
+    - {name: yield_strain, type: float, req: true}
+    - {name: hardening_ratio, type: float, req: false, default: 100.0}
+    - {name: R0, type: float, req: false, default: 20.0}
+    - {name: density, type: float, req: false, default: 0.0}
+  flags: []
+  rest: null
+  notes: 'Handler: new_sliplock (line 2948).'
+
+- keyword: Stacked
+  aliases: []
+  cpp: Stacked
+  params:
+    - {name: tag, type: int, req: true}
+  flags: []
+  rest:
+    type: int_list
+    description: 'material tags to stack via get_remaining<uword>; no minimum-size check in parser'
+  notes: 'Handler: new_stacked (line 2988).'
+
+- keyword: Subloading1D
+  aliases: []
+  cpp: Subloading1D
+  params:
+    - {name: tag, type: int, req: true}
+    - name: parameters
+      type: float_list
+      req: false
+      size: 13
+      default: [200000.0, 200.0, 0.0, 200.0, 10.0, 200.0, 0.0, 200.0, 10.0, 10.0, 10.0, 10.0, 0.7]
+    - {name: density, type: float, req: false, default: 0.0}
+  flags: []
+  rest: null
+  notes: 'Mapping: p(0)=elastic; p(1..4)=iso_bound{initial,linear,saturation,rate}; p(5..8)=kin_bound{initial,linear,saturation,rate}; p(9)=u; cv=1 (fixed); b={p(10),1}; c={p(11),min(1-eps,p(12))}. Validation: iso/kin evolution rates must be >= 0. Handler: new_subloading1d (line 2998).'
+
+- keyword: SubloadingViscous1D
+  aliases: []
+  cpp: Subloading1D
+  params:
+    - {name: tag, type: int, req: true}
+    - name: parameters
+      type: float_list
+      req: false
+      size: 16
+      default: [200000.0, 200.0, 0.0, 200.0, 10.0, 200.0, 0.0, 200.0, 10.0, 10.0, 1.0, 0.0, 0.0, 10.0, 10.0, 0.7]
+    - {name: density, type: float, req: false, default: 0.0}
+  flags: []
+  rest: null
+  notes: 'Same Subloading1D class; viscous variant. Mapping: p(0)=elastic; p(1..4)=iso_bound; p(5..8)=kin_bound; p(9)=u; p(10)=cv; p(11)=mu; p(12)=nv; b={p(13),1}; c={p(14),min(1-eps,p(15))}. Validation: rates >= 0 and cv >= 1. Handler: new_subloadingviscous1d (line 3030).'
+
+- keyword: MultiSubloading1D
+  aliases: []
+  cpp: Subloading1D
+  params:
+    - {name: tag, type: int, req: true}
+    - name: parameters
+      type: float_list
+      req: true
+      size: 11
+      default: [200000.0, 200.0, 0.0, 200.0, 10.0, 200.0, 0.0, 200.0, 10.0, 10.0, 0.0]
+  flags:
+    - {name: '-back', reads: 'float a, float b', sets: 'appends SubloadingSaturation(a, b) to backbone (back) saturation list', default: 'empty list'}
+    - {name: '-core', reads: 'float a, float b', sets: 'appends SubloadingSaturation(a, b) to core saturation list', default: 'empty list'}
+  rest: null
+  notes: 'The 11-element vec is REQUIRED (plain get_input, not optional); p(10) (the 11th value) is used as density. Flags are read in a loop until eof (case-insensitive); any other token is an error ("Valid saturation type is required."). Mapping: p(0)=elastic; p(1..4)=iso_bound; p(5..8)=kin_bound; p(9)=u; cv=1, mu=0, nv=0 fixed. Handler: new_multisubloading1d (line 3062).'
+
+- keyword: Subloading
+  aliases: []
+  cpp: Subloading
+  params:
+    - {name: tag, type: int, req: true}
+    - name: parameters
+      type: float_list
+      req: false
+      size: 14
+      default: [200000.0, 0.3, 200.0, 0.0, 200.0, 10.0, 200.0, 0.0, 200.0, 10.0, 10.0, 10.0, 10.0, 0.7]
+    - {name: density, type: float, req: false, default: 0.0}
+  flags: []
+  rest: null
+  notes: '3D subloading surface. Mapping: p(0)=elastic; p(1)=poisson; p(2..5)=iso_bound{initial,linear,saturation,rate}; p(6..9)=kin_bound{initial,linear,saturation,rate}; p(10)=u; b={p(11),1}; c={p(12),min(1-eps,p(13))}. Validation: rates >= 0. Handler: new_subloading (line 3113).'
+
+- keyword: Substepping
+  aliases: []
+  cpp: Substepping
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: max_iteration, type: int, req: false, default: 20}
+  flags: []
+  rest: null
+  notes: 'max_iteration read via get_optional_input (unsigned). Handler: new_substepping (line 3141).'
+
+- keyword: Rotation2D
+  aliases: []
+  cpp: Rotation2D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: full_tag, type: int, req: true}
+    - {name: angle, type: float, req: true}
+  flags: []
+  rest: null
+  notes: 'Rotates reference material full_tag by a single in-plane angle. Handler: new_rotation2d (line 3163).'
+
+- keyword: SimpleSand
+  aliases: []
+  cpp: SimpleSand
+  params:
+    - {name: tag, type: int, req: true}
+    - name: parameters
+      type: float_list
+      req: false
+      size: 13
+      default: [100000.0, 0.2, 0.01, -0.7, 5.0, 1.25, 1.1, 3.5, 1.915, -130.0, 0.02, 2.0, 0.0]
+  flags: []
+  rest: null
+  notes: '13-element vec via get_optional_input; ctor passes pool(0)..pool(12) individually. Handler: new_simplesand (line 3185).'
+
+- keyword: SteelBRB
+  aliases: []
+  cpp: SteelBRB
+  params:
+    - {name: tag, type: int, req: true}
+  flags: []
+  rest:
+    type: float_list
+    description: '6, 7 or 9 parameters via get_remaining<double>, normalized internally to exactly 10; parser errors otherwise ("6 or 9 parameters are required.")'
+  notes: 'Normalization: 6 -> duplicate pool[3..5] appended then 0.0 appended (symmetric hardening); 7 -> copy of pool[3..5] inserted before the last element (density); 9 -> 0.0 appended. Handler: new_steelbrb (line 3201).'
+
+- keyword: Rotation3D
+  aliases: []
+  cpp: Rotation3D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: full_tag, type: int, req: true}
+    - {name: angle_a, type: float, req: true}
+    - {name: angle_b, type: float, req: true}
+    - {name: angle_c, type: float, req: true}
+  flags: []
+  rest: null
+  notes: 'Three rotation angles read in one get_input(command, a, b, c) call. Handler: new_rotation3d (line 3225).'
+
+- keyword: AbaqusCDP
+  aliases: []
+  cpp: TableCDP
+  params:
+    - {name: tag, type: int, req: true}
+    - name: leading_parameters
+      type: float_list
+      req: false
+      size: 2
+      default: [30000.0, 0.2]
+      description: 'overrides para_pool(0), para_pool(1) (elastic modulus, Poisson ratio); read in a loop before the file names, stops at first non-numeric token'
+    - {name: tension_backbone_file, type: str, req: true}
+    - {name: compression_backbone_file, type: str, req: true}
+    - {name: tension_damage_file, type: str, req: true}
+    - {name: compression_damage_file, type: str, req: true}
+    - name: trailing_parameters
+      type: float_list
+      req: false
+      size: 5
+      default: [0.6, 1.16, 0.6666666666666666, 0.0, 2.4e-9]
+      description: 'overrides para_pool(2)..para_pool(6) after the file names'
+  flags: []
+  rest: null
+  notes: 'Dispatch: new_tablecdp(new_material, command, true) (abaqus=true). Full default pool: {3E4, .2, .6, 1.16, 2/3, 0, 2400E-12}; ctor TableCDP(tag, p0, p1, t_table, c_table, dt_table, dc_table, g_t, g_c, p2, p3, p4, p5, p6). Each table must exist, load via raw_ascii, have >= 2 cols and >= 2 rows, and start with zero plastic strain. Plastic strain columns are converted to kappa by trapezoidal integration; backbone tail must have negative slope (exponential decay appended) else error. Handler: new_tablecdp (line 3247).'
+
+- keyword: TableCDP
+  aliases: []
+  cpp: TableCDP
+  params:
+    - {name: tag, type: int, req: true}
+    - name: leading_parameters
+      type: float_list
+      req: false
+      size: 2
+      default: [30000.0, 0.2]
+      description: 'overrides para_pool(0), para_pool(1) (elastic modulus, Poisson ratio)'
+    - {name: tension_backbone_file, type: str, req: true}
+    - {name: compression_backbone_file, type: str, req: true}
+    - {name: tension_damage_file, type: str, req: true}
+    - {name: compression_damage_file, type: str, req: true}
+    - name: trailing_parameters
+      type: float_list
+      req: false
+      size: 4
+      default: [0.2, 1.16, 0.5, 2.4e-9]
+      description: 'overrides para_pool(2)..para_pool(5) after the file names'
+  flags: []
+  rest: null
+  notes: 'Dispatch: new_tablecdp(new_material, command, false). Full default pool: {3E4, .2, .2, 1.16, .5, 2400E-12}; ctor TableCDP(tag, p0, p1, t_table, c_table, dt_table, dc_table, g_t, g_c, p2, p3, 1., p4, p5) - one parameter fixed to 1.0 (vs AbaqusCDP). Same table validation/conversion as AbaqusCDP. Handler: new_tablecdp (line 3247).'
+
+- keyword: TableGurson
+  aliases: []
+  cpp: TableGurson
+  params:
+    - {name: tag, type: int, req: true}
+    - name: leading_parameters
+      type: float_list
+      req: false
+      size: 2
+      default: [200.0, 0.3]
+      description: 'overrides para_pool(0), para_pool(1) before the table file name; loop stops at first non-numeric token'
+    - {name: hardening_table_file, type: str, req: true}
+    - name: trailing_parameters
+      type: float_list
+      req: false
+      size: 6
+      default: [1.0, 1.0, 0.0, 1.0, 0.0, 0.0]
+      description: 'overrides para_pool(2)..para_pool(7) after the table file name'
+  flags: []
+  rest: null
+  notes: 'Full default pool: {2E2, .3, 1., 1., 0., 1., 0., 0.}. Hardening table must exist and load via raw_ascii with >= 2 columns (no row minimum). Ctor: TableGurson(tag, p0, p1, hardening_table, p2..p7). Handler: new_tablegurson (line 3327).'
+
+- keyword: TrilinearStrainDegradation
+  aliases: []
+  cpp: TrilinearStrainDegradation
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: mat_tag, type: int, req: true}
+    - {name: s_strain, type: float, req: true}
+    - {name: e_strain, type: float, req: true}
+    - {name: e_damage, type: float, req: true}
+  flags: []
+  rest: null
+  notes: 'mat_tag = base material; all three degradation values required (unlike LinearDamage). Handler: new_trilinearstraindegradation (line 3359).'
+
+- keyword: CustomStrainDegradation
+  aliases: []
+  cpp: CustomStrainDegradation
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: mat_tag, type: int, req: true}
+    - {name: p_expression_tag, type: expression_tag, req: true}
+    - {name: n_expression_tag, type: expression_tag, req: false, default: 'p_expression_tag'}
+  flags: []
+  rest: null
+  notes: 'Dispatch: new_customdegradation(new_material, command, true). If no 4th tag is given, n_expression_tag defaults to p_expression_tag. Handler: new_customdegradation (line 3389).'
+
+- keyword: CustomStressDegradation
+  aliases: []
+  cpp: CustomStressDegradation
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: mat_tag, type: int, req: true}
+    - {name: p_expression_tag, type: expression_tag, req: true}
+    - {name: n_expression_tag, type: expression_tag, req: false, default: 'p_expression_tag'}
+  flags: []
+  rest: null
+  notes: 'Dispatch: new_customdegradation(new_material, command, false); same parsing as CustomStrainDegradation. Handler: new_customdegradation (line 3389).'
+
+- keyword: Trivial
+  aliases: []
+  cpp: Trivial
+  params:
+    - {name: tag, type: int, req: true}
+  flags: []
+  rest: null
+  notes: 'Does-nothing material. Handler: new_trivial (line 3406).'
+
+- keyword: VAFCRP
+  aliases: []
+  cpp: VAFCRP
+  params:
+    - {name: tag, type: int, req: true}
+    - name: parameters
+      type: float_list
+      req: false
+      size: 8
+      default: [200000.0, 0.2, 400.0, 0.0, 500.0, 10.0, 0.0, 0.0]
+      description: 'DataVAFCRP: elastic_modulus, poissons_ratio, yield, saturated, hardening, m, mu, epsilon'
+  flags: []
+  rest:
+    type: float_list
+    description: '(a_i, b_i) pairs via get_remaining<double>; if the count is odd the last token is density (default 0.0)'
+  notes: 'Viscoelastic Armstrong-Frederick with creep recovery. Handler: new_vafcrp (line 3416).'
+
+- keyword: VAFCRP1D
+  aliases: []
+  cpp: VAFCRP1D
+  params:
+    - {name: tag, type: int, req: true}
+    - name: parameters
+      type: float_list
+      req: false
+      size: 7
+      default: [200000.0, 400.0, 0.0, 100.0, 10.0, 0.0, 0.0]
+      description: 'DataVAFCRP1D: elastic_modulus, yield, hardening, saturated, m, mu, epsilon'
+  flags: []
+  rest:
+    type: float_list
+    description: '(a_i, b_i) pairs via get_remaining<double>; if the count is odd the last token is density (default 0.0)'
+  notes: '1D variant. Handler: new_vafcrp1d (line 3447).'
+
+- keyword: Viscosity01
+  aliases: []
+  cpp: Viscosity01
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: alpha, type: float, req: true}
+    - {name: damping, type: float, req: true}
+    - {name: limit, type: float, req: false, default: 1.0}
+  flags: []
+  rest: null
+  notes: 'Handler: new_viscosity01 (line 3478).'
+
+- keyword: Viscosity02
+  aliases: []
+  cpp: Viscosity02
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: alpha, type: float, req: true}
+    - {name: damping_a, type: float, req: true}
+    - {name: damping_b, type: float, req: false, default: 'damping_a'}
+    - {name: damping_c, type: float, req: false, default: 'damping_a'}
+    - {name: damping_d, type: float, req: false, default: 'damping_a'}
+    - {name: gap_a, type: float, req: false, default: 1000.0}
+    - {name: gap_b, type: float, req: false, default: 1000.0}
+    - {name: limit, type: float, req: false, default: 1.0}
+  flags: []
+  rest: null
+  notes: 'Per-quadrant damping coefficients default to damping_a; gap_a = gap size for strain axis, gap_b = gap size for strain rate axis. Handler: new_viscosity02 (line 3506).'
+
+- keyword: BilinearViscosity
+  aliases: []
+  cpp: BilinearViscosity
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: damping, type: float, req: true}
+    - {name: yield_stress, type: float, req: true}
+    - {name: hardening, type: float, req: false, default: 0.0}
+  flags: []
+  rest: null
+  notes: 'Handler: new_bilinearviscosity (line 3564).'
+
+- keyword: CustomViscosity
+  aliases: []
+  cpp: CustomViscosity
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: expression_tag, type: expression_tag, req: true}
+  flags: []
+  rest: null
+  notes: 'Both tags read in one get_input call. Handler: new_customviscosity (line 3592).'
+
+- keyword: Yeoh
+  aliases: []
+  cpp: Yeoh
+  params:
+    - {name: tag, type: int, req: true}
+  flags: []
+  rest:
+    type: float_list
+    description: 'via get_remaining<double>; split into two halves: first floor(n/2) values = A_i coefficients, next floor(n/2) values = B_i coefficients; if n is odd the last token is density (0.0 when n is even)'
+  notes: 'No size check in parser. Handler: new_yeoh (line 3602).'
+
+- keyword: YLD0418P
+  aliases: []
+  cpp: YLD0418P
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: modulus, type: float_list, req: true, size: 6}
+    - {name: poissons_ratio, type: float_list, req: true, size: 3}
+    - {name: parameter, type: float_list, req: true, size: 18}
+    - {name: exponent, type: float, req: true}
+    - {name: ref_stress, type: float, req: true}
+    - {name: hardening, type: expression_tag, req: true}
+    - {name: kin_rate, type: float, req: true}
+    - {name: kin_bound, type: float, req: true}
+    - {name: density, type: float, req: false, default: 0.0}
+  flags: []
+  rest: null
+  notes: 'Dispatch: new_yld0418p(new_material, command, false) (orthotropic: 6 moduli, 3 Poisson ratios). hardening parsed as unsigned expression tag ("A valid hardening expression tag is required."). kin_rate/kin_bound read in one get_input. Handler: new_yld0418p (line 3617).'
+
+- keyword: YLD0418PISO
+  aliases: []
+  cpp: YLD0418P
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: modulus, type: float_list, req: true, size: 1}
+    - {name: poissons_ratio, type: float_list, req: true, size: 1}
+    - {name: parameter, type: float_list, req: true, size: 18}
+    - {name: exponent, type: float, req: true}
+    - {name: ref_stress, type: float, req: true}
+    - {name: hardening, type: expression_tag, req: true}
+    - {name: kin_rate, type: float, req: true}
+    - {name: kin_bound, type: float, req: true}
+    - {name: density, type: float, req: false, default: 0.0}
+  flags: []
+  rest: null
+  notes: 'Dispatch: new_yld0418p(new_material, command, true) (isotropic: 1 modulus, 1 Poisson ratio); rest identical to YLD0418P. Handler: new_yld0418p (line 3617).'

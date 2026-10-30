@@ -1,0 +1,357 @@
+# Machine-readable parsing spec extracted from suanPan Solver/SolverParser.cpp
+# (create_new_integrator + create_new_solver). Helper semantics verified in
+# Toolbox/utility.h/.cpp:
+#   - get_input: stream >> var; failure => fatal => param required (req: true).
+#   - get_optional_input / "!"command.eof() && !get_input": missing tokens keep
+#     the C++ default => req: false with default; a present but unparsable token
+#     is still fatal.
+#   - get_input(stream, Col<T>) (pre-sized vec) reads EXACTLY n_elem values.
+#   - get_remaining<T> consumes ALL remaining tokens as a list;
+#     get_remaining<T1,T2,...> consumes remaining tokens in fixed-size groups
+#     (pairs/quadruples) returning one list per position.
+#   - is_equal/is_equal_any: case-insensitive (_strcmpi). if_contain on
+#     uppercased strings: case-insensitive substring test.
+# Common post-processing on successful insert (both dispatches): if the current
+# step tag != 0, step->set_integrator_tag/set_solver_tag(tag) is called, then
+# domain->set_current_integrator_tag/set_current_solver_tag(tag). On failure an
+# error mentioning the remaining command text is emitted.
+# NOTE: integrator_type tokens containing "newmark" (case-insensitive) enter the
+# Newmark-family branch; if they then match none of its exact sub-keywords the
+# creation fails. alpha/beta in that branch are read only if any token remains
+# and BOTH are required when present (guarded by !command.eof()).
+
+integrators:
+  - keyword: Newmark
+    aliases: []
+    cpp: Newmark
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: alpha, type: float, req: false, default: 0.25, meaning: 'Newmark alpha; read only if tokens remain after tag, in which case beta is also required'}
+      - {name: beta, type: float, req: false, default: 0.5, meaning: 'Newmark beta; read only if tokens remain after tag, in which case alpha is also required'}
+    flags: []
+    rest: null
+    notes: 'Dispatch: type contains "newmark" AND is_equal(type,"Newmark").'
+  - keyword: RayleighNewmark
+    aliases: []
+    cpp: RayleighNewmark
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: alpha, type: float, req: false, default: 0.25, meaning: 'paired with beta (both required if any token remains)'}
+      - {name: beta, type: float, req: false, default: 0.5, meaning: 'paired with alpha (both required if any token remains)'}
+      - {name: damping_alpha, type: float, req: false, default: 0.0, meaning: 'Rayleigh damping param 1 (mass, m1); up to 4 tokens consumed, present tokens are fatal if unparsable'}
+      - {name: damping_beta, type: float, req: false, default: 0.0, meaning: 'Rayleigh damping param 2 (stiffness, s1)'}
+      - {name: damping_zeta, type: float, req: false, default: 0.0, meaning: 'Rayleigh damping param 3 (mass, m2)'}
+      - {name: damping_eta, type: float, req: false, default: 0.0, meaning: 'Rayleigh damping param 4 (stiffness, s2)'}
+    flags: []
+    rest: null
+    notes: 'Reads up to 4 trailing floats (while !eof && idx<4; each read fatal on failure). suanpan_warning if sum of the 4 params == 0 ("consider use plain Newmark").'
+  - keyword: LeeNewmark
+    aliases: []
+    cpp: LeeNewmark
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: alpha, type: float, req: false, default: 0.25, meaning: 'paired with beta (both required if any token remains)'}
+      - {name: beta, type: float, req: false, default: 0.5, meaning: 'paired with alpha (both required if any token remains)'}
+    flags: []
+    rest: {type: float_list, req: false, grouping: 2, meaning: 'get_remaining<double,double>: tokens consumed in pairs; first of each pair -> damping coefficient list, second -> frequency list; each pair defines one internal damping mode (ctor LeeNewmark(tag, damping_coef[], frequency[], alpha, beta))'}
+    notes: ''
+  - keyword: LeeNewmarkIterative
+    aliases: []
+    cpp: LeeNewmarkIterative
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: alpha, type: float, req: false, default: 0.25, meaning: 'paired with beta (both required if any token remains)'}
+      - {name: beta, type: float, req: false, default: 0.5, meaning: 'paired with alpha (both required if any token remains)'}
+    flags:
+      - {name: '-type0', value_type: 'float[2]', default: null, meaning: 'block flag (case-insensitive): adds mode Type::T0 with p=[]; args: zeta_p (float, error text "zeta_p"), omega_p (float, error text "omega_p"); both required'}
+      - {name: '-type1', value_type: 'float[3]', default: null, meaning: 'block flag: adds mode Type::T1 with p=[trunc(a)]; args: zeta_p omega_p a; a truncated to unsigned integer (count)'}
+      - {name: '-type2', value_type: 'float[4]', default: null, meaning: 'block flag: adds mode Type::T2 with p=[trunc(a), trunc(b)]; args: zeta_p omega_p a b; a and b truncated to unsigned integers (counts)'}
+      - {name: '-type3', value_type: 'float[3]', default: null, meaning: 'block flag: adds mode Type::T3 with p=[a]; args: zeta_p omega_p a; a used as-is (float, NOT truncated)'}
+      - {name: '-type4', value_type: 'float[7]', default: null, meaning: 'block flag: adds mode Type::T4 with p=[trunc(a), trunc(b), trunc(c), trunc(d), e]; args: zeta_p omega_p a b c d e; a-d truncated to unsigned integers, e used as-is (float)'}
+    rest: {type: flag_blocks, req: false, meaning: 'zero or more repeating blocks while tokens remain; each block starts with one of the -typeN flags above followed by its args; every token (flag and args) is fatal if missing/unparsable; unknown flag -> fatal "A valid type is required."; trailing incomplete block is a fatal error'}
+    notes: ''
+  - keyword: LeeElementalNewmark
+    aliases: []
+    cpp: LeeElementalNewmark
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: alpha, type: float, req: false, default: 0.25, meaning: 'paired with beta (both required if any token remains)'}
+      - {name: beta, type: float, req: false, default: 0.5, meaning: 'paired with alpha (both required if any token remains)'}
+    flags: []
+    rest: {type: float_list, req: false, grouping: 2, meaning: 'get_remaining<double,double>: tokens consumed in pairs; first of each pair -> damping coefficient list, second -> frequency list (ctor LeeElementalNewmark(tag, damping_coef[], frequency[], alpha, beta))'}
+    notes: ''
+  - keyword: LeeNewmarkFullTrial
+    aliases: []
+    cpp: LeeNewmarkFull
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: alpha, type: float, req: false, default: 0.25, meaning: 'paired with beta (both required if any token remains)'}
+      - {name: beta, type: float, req: false, default: 0.5, meaning: 'paired with alpha (both required if any token remains)'}
+    flags:
+      - {name: '-type0', value_type: 'float[2]', default: null, meaning: 'block flag: mode Type::T0, p=[]; args: zeta_p omega_p'}
+      - {name: '-type1', value_type: 'float[3]', default: null, meaning: 'block flag: mode Type::T1, p=[trunc(a)]; args: zeta_p omega_p a (a truncated to unsigned integer)'}
+      - {name: '-type2', value_type: 'float[4]', default: null, meaning: 'block flag: mode Type::T2, p=[trunc(a), trunc(b)]; args: zeta_p omega_p a b (a,b truncated to unsigned integers)'}
+      - {name: '-type3', value_type: 'float[3]', default: null, meaning: 'block flag: mode Type::T3, p=[a]; args: zeta_p omega_p a (a used as-is, float)'}
+      - {name: '-type4', value_type: 'float[7]', default: null, meaning: 'block flag: mode Type::T4, p=[trunc(a), trunc(b), trunc(c), trunc(d), e]; args: zeta_p omega_p a b c d e (a-d truncated, e float)'}
+    rest: {type: flag_blocks, req: false, meaning: 'zero or more -typeN blocks (identical parsing to LeeNewmarkIterative); all block tokens fatal if missing/unparsable; unknown flag is fatal'}
+    notes: 'Branch entry: first 14 chars of type == "LeeNewmarkFull" (case-insensitive, size>=14). Final dispatch requires exact is_equal(type,"LeeNewmarkFullTrial") -> StiffnessType::TRIAL; a type entering the branch but matching no Full keyword fails after parsing blocks.'
+  - keyword: LeeNewmarkFullCurrent
+    aliases: [LeeNewmarkFull]
+    cpp: LeeNewmarkFull
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: alpha, type: float, req: false, default: 0.25, meaning: 'paired with beta (both required if any token remains)'}
+      - {name: beta, type: float, req: false, default: 0.5, meaning: 'paired with alpha (both required if any token remains)'}
+    flags:
+      - {name: '-type0', value_type: 'float[2]', default: null, meaning: 'block flag: mode Type::T0, p=[]; args: zeta_p omega_p'}
+      - {name: '-type1', value_type: 'float[3]', default: null, meaning: 'block flag: mode Type::T1, p=[trunc(a)]; args: zeta_p omega_p a (a truncated to unsigned integer)'}
+      - {name: '-type2', value_type: 'float[4]', default: null, meaning: 'block flag: mode Type::T2, p=[trunc(a), trunc(b)]; args: zeta_p omega_p a b (a,b truncated to unsigned integers)'}
+      - {name: '-type3', value_type: 'float[3]', default: null, meaning: 'block flag: mode Type::T3, p=[a]; args: zeta_p omega_p a (a used as-is, float)'}
+      - {name: '-type4', value_type: 'float[7]', default: null, meaning: 'block flag: mode Type::T4, p=[trunc(a), trunc(b), trunc(c), trunc(d), e]; args: zeta_p omega_p a b c d e (a-d truncated, e float)'}
+    rest: {type: flag_blocks, req: false, meaning: 'zero or more -typeN blocks (identical parsing to LeeNewmarkIterative); all block tokens fatal if missing/unparsable; unknown flag is fatal'}
+    notes: 'is_equal_any(type,"LeeNewmarkFullCurrent","LeeNewmarkFull") -> StiffnessType::CURRENT; bare "LeeNewmarkFull" is the default Full variant.'
+  - keyword: LeeNewmarkFullInitial
+    aliases: []
+    cpp: LeeNewmarkFull
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: alpha, type: float, req: false, default: 0.25, meaning: 'paired with beta (both required if any token remains)'}
+      - {name: beta, type: float, req: false, default: 0.5, meaning: 'paired with alpha (both required if any token remains)'}
+    flags:
+      - {name: '-type0', value_type: 'float[2]', default: null, meaning: 'block flag: mode Type::T0, p=[]; args: zeta_p omega_p'}
+      - {name: '-type1', value_type: 'float[3]', default: null, meaning: 'block flag: mode Type::T1, p=[trunc(a)]; args: zeta_p omega_p a (a truncated to unsigned integer)'}
+      - {name: '-type2', value_type: 'float[4]', default: null, meaning: 'block flag: mode Type::T2, p=[trunc(a), trunc(b)]; args: zeta_p omega_p a b (a,b truncated to unsigned integers)'}
+      - {name: '-type3', value_type: 'float[3]', default: null, meaning: 'block flag: mode Type::T3, p=[a]; args: zeta_p omega_p a (a used as-is, float)'}
+      - {name: '-type4', value_type: 'float[7]', default: null, meaning: 'block flag: mode Type::T4, p=[trunc(a), trunc(b), trunc(c), trunc(d), e]; args: zeta_p omega_p a b c d e (a-d truncated, e float)'}
+    rest: {type: flag_blocks, req: false, meaning: 'zero or more -typeN blocks (identical parsing to LeeNewmarkIterative); all block tokens fatal if missing/unparsable; unknown flag is fatal'}
+    notes: 'Exact is_equal(type,"LeeNewmarkFullInitial") -> StiffnessType::INITIAL.'
+  - keyword: WilsonPenzienNewmark
+    aliases: []
+    cpp: WilsonPenzienNewmark
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: alpha, type: float, req: false, default: 0.25, meaning: 'paired with beta (both required if any token remains)'}
+      - {name: beta, type: float, req: false, default: 0.5, meaning: 'paired with alpha (both required if any token remains)'}
+    flags: []
+    rest: {type: float_list, req: false, grouping: 1, meaning: 'get_remaining<double>: all remaining tokens consumed as a list of damping ratios (zeta) of the auxiliary SDOF Wilson-Penzien systems (ctor WilsonPenzienNewmark(tag, damping_ratio[], alpha, beta)); may be empty'}
+    notes: ''
+  - keyword: NonviscousNewmark
+    aliases: []
+    cpp: NonviscousNewmark
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: alpha, type: float, req: false, default: 0.25, meaning: 'paired with beta (both required if any token remains)'}
+      - {name: beta, type: float, req: false, default: 0.5, meaning: 'paired with alpha (both required if any token remains)'}
+    flags: []
+    rest: {type: float_list, req: false, grouping: 4, meaning: 'get_remaining<double,double,double,double>: tokens consumed in quadruples (m_real, m_imag, s_real, s_imag) per kernel term; built into complex weight vector m = {m_r, m_i} and complex pole vector s = {s_r, s_i} (ctor UDNewmark(tag, alpha, beta, m, s))'}
+    notes: 'Validations (fatal): sum of imaginary parts <= 1E-12 ("Parameters should be conjugate pairs."); |sum(m % exp(-1E8*s))| <= 1E-12 ("The provided kernel does not converge to zero.").'
+  - keyword: UDDNewmark
+    aliases: []
+    cpp: UDDNewmark
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: alpha, type: float, req: false, default: 0.25, meaning: 'paired with beta (both required if any token remains)'}
+      - {name: beta, type: float, req: false, default: 0.5, meaning: 'paired with alpha (both required if any token remains)'}
+    flags: []
+    rest: {type: float_list, req: false, grouping: 4, meaning: 'get_remaining<double,double,double,double>: tokens consumed in quadruples (m_real, m_imag, s_real, s_imag) per kernel term; complex weight vector m and complex pole vector s (ctor UDNewmark(tag, alpha, beta, m, s))'}
+    notes: 'Validations (fatal): sum of imaginary parts <= 1E-12 (conjugate pairs); error "UDD requires both weights (m_j) and poles (s_j) to have negative real parts." if any(m_real > 0) AND any(s_real > 0) (check is conjunctive).'
+  - keyword: UDANewmark
+    aliases: []
+    cpp: UDANewmark
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: alpha, type: float, req: false, default: 0.25, meaning: 'paired with beta (both required if any token remains)'}
+      - {name: beta, type: float, req: false, default: 0.5, meaning: 'paired with alpha (both required if any token remains)'}
+    flags: []
+    rest: {type: float_list, req: false, grouping: 4, meaning: 'get_remaining<double,double,double,double>: tokens consumed in quadruples (m_real, m_imag, s_real, s_imag) per kernel term; complex weight vector m and complex pole vector s (ctor UDNewmark(tag, alpha, beta, m, s))'}
+    notes: 'Validations (fatal): sum of imaginary parts <= 1E-12 (conjugate pairs); error "UDA requires weights (m_j) to have positive real parts and poles (s_j) to have negative real parts." if any(m_real < 0) AND any(s_real > 0) (check is conjunctive).'
+  - keyword: GeneralizedAlpha
+    aliases: [GeneralisedAlpha]
+    cpp: GeneralizedAlpha
+    params:
+      - {name: tag, type: int, req: true}
+    flags: []
+    rest: {type: float_list, req: false, grouping: 1, meaning: 'get_remaining<double>: 0 tokens -> GeneralizedAlpha(tag, 0.5); 1 token v -> alpha_f = clamp_unit(v); 2 tokens -> (alpha_f, alpha_m) = (v1, v2); more than 2 tokens -> no insert, creation fails'}
+    notes: 'Exact is_equal_any(type,"GeneralizedAlpha","GeneralisedAlpha").'
+  - keyword: GSSSSU0
+    aliases: []
+    cpp: GSSSSU0
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: pool, type: float_list, req: true, default: null, meaning: 'exactly 3 spectral radii; get_input on pre-sized vec(3) reads exactly 3 values, fatal if fewer/unparsable ("A valid spectral radius is required.")'}
+    flags: []
+    rest: null
+    notes: 'ctor GSSSSU0(tag, pool[3]).'
+  - keyword: GSSSSV0
+    aliases: []
+    cpp: GSSSSV0
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: pool, type: float_list, req: true, default: null, meaning: 'exactly 3 spectral radii; get_input on pre-sized vec(3) reads exactly 3 values, fatal if fewer/unparsable ("A valid spectral radius is required.")'}
+    flags: []
+    rest: null
+    notes: 'ctor GSSSSV0(tag, pool[3]).'
+  - keyword: GSSSSOptimal
+    aliases: []
+    cpp: GSSSSOptimal
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: radius, type: float, req: false, default: 0.5, meaning: 'spectral radius, optional via get_optional_input; clamped to [0,1] (clamp_unit)'}
+    flags: []
+    rest: null
+    notes: ''
+  - keyword: OALTS
+    aliases: []
+    cpp: OALTS
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: radius, type: float, req: false, default: 0.5, meaning: 'damping radius, optional via get_optional_input; clamped to [0,1] (clamp_unit)'}
+    flags: []
+    rest: null
+    notes: ''
+  - keyword: BatheTwoStep
+    aliases: []
+    cpp: BatheTwoStep
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: radius, type: float, req: false, default: 0.0, meaning: 'damping radius, optional via get_optional_input; clamped to [0,1] (clamp_unit); NOTE default is 0.0 (undamped), unlike most others'}
+      - {name: gamma, type: float, req: false, default: 0.5, meaning: 'optional via get_optional_input; reset to 0.5 if gamma <= 0 or gamma >= 1'}
+    flags: []
+    rest: null
+    notes: ''
+  - keyword: Tchamwa
+    aliases: []
+    cpp: Tchamwa
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: radius, type: float, req: false, default: 0.5, meaning: 'damping radius, optional via get_optional_input; clamped to [0,1] (clamp_unit)'}
+    flags: []
+    rest: null
+    notes: ''
+  - keyword: BatheExplicit
+    aliases: []
+    cpp: BatheExplicit
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: radius, type: float, req: false, default: 0.5, meaning: 'damping radius, optional via get_optional_input; clamped to [0,1] (clamp_unit)'}
+    flags: []
+    rest: null
+    notes: ''
+  - keyword: ICL
+    aliases: []
+    cpp: ICL
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: radius, type: float, req: false, default: 0.5, meaning: 'damping radius, optional via get_optional_input; clamped to [0.5, 1.0] (suanpan::clamp(radius, .5, 1.), NOT clamp_unit)'}
+    flags: []
+    rest: null
+    notes: ''
+  - keyword: GSSE
+    aliases: []
+    cpp: GSSE
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: radius, type: float, req: false, default: 0.5, meaning: 'damping radius, optional via get_optional_input; clamped to [0,1] (clamp_unit)'}
+    flags: []
+    rest: null
+    notes: ''
+  - keyword: WAT2
+    aliases: []
+    cpp: WAT2
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: para, type: float, req: false, default: 0.3333333333333333, meaning: 'optional via get_optional_input; default is C++ literal 1./3.; clamped to [0,1] (clamp_unit)'}
+    flags: []
+    rest: null
+    notes: ''
+  - keyword: GeneralizedAlphaExplicit
+    aliases: [GeneralisedAlphaExplicit]
+    cpp: GeneralizedAlphaExplicit
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: radius, type: float, req: false, default: 0.5, meaning: 'damping radius, optional via get_optional_input; clamped to [0,1] (clamp_unit)'}
+    flags: []
+    rest: null
+    notes: 'Exact is_equal_any(type,"GeneralizedAlphaExplicit","GeneralisedAlphaExplicit").'
+
+solvers:
+  - keyword: Newton
+    aliases: []
+    cpp: Newton
+    params:
+      - {name: tag, type: int, req: true}
+    flags: []
+    rest: null
+    notes: 'Full Newton (Newton(tag), constant-stiffness flag = false). modifiedNewton/mNewton are SEPARATE dispatch keywords (see below), not aliases.'
+  - keyword: modifiedNewton
+    aliases: [mNewton]
+    cpp: Newton
+    params:
+      - {name: tag, type: int, req: true}
+    flags: []
+    rest: null
+    notes: 'is_equal_any(type,"modifiedNewton","mNewton"); constructs Newton(tag, true) i.e. the modified/constant-stiffness variant. Not a true alias of Newton (different constructor argument).'
+  - keyword: AICN
+    aliases: []
+    cpp: AICN
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: length, type: float, req: false, default: 1.0, meaning: 'arc length, guarded by "!command.eof() && !get_input"'}
+    flags: []
+    rest: null
+    notes: ''
+  - keyword: BFGS
+    aliases: []
+    cpp: BFGS
+    params:
+      - {name: tag, type: int, req: true}
+    flags: []
+    rest: null
+    notes: ''
+  - keyword: LBFGS
+    aliases: []
+    cpp: BFGS
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: max_history, type: int, req: false, default: 20, meaning: 'guarded by "!command.eof() && !get_input"; error text "A valid maximum step number is required."; passed to BFGS(tag, max_history)'}
+    flags: []
+    rest: null
+    notes: 'Limited-memory variant implemented via BFGS with history length.'
+  - keyword: FEAST
+    aliases: []
+    cpp: FEAST
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: eigen_number, type: int, req: true, meaning: 'number of frequencies to extract; fatal if missing ("A valid number of frequencies is required.")'}
+      - {name: centre, type: float, req: true, meaning: 'centre of the search interval; fatal if missing (error text misleadingly says "A valid radius is required.")'}
+      - {name: radius, type: float, req: false, default: null, meaning: 'radius of the search interval; optional via get_optional_input; C++ default is the value of centre'}
+    flags: []
+    rest: null
+    notes: 'Quadratic flag = false (ctor FEAST(tag, eigen_number, centre, radius, false)).'
+  - keyword: QuadraticFEAST
+    aliases: []
+    cpp: FEAST
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: eigen_number, type: int, req: true, meaning: 'number of frequencies to extract; fatal if missing'}
+      - {name: centre, type: float, req: true, meaning: 'centre of the search interval; fatal if missing (error text says "A valid radius is required.")'}
+      - {name: radius, type: float, req: false, default: null, meaning: 'radius of the search interval; optional via get_optional_input; C++ default is the value of centre'}
+    flags: []
+    rest: null
+    notes: 'Shares handler with FEAST; Quadratic flag = true (ctor FEAST(tag, eigen_number, centre, radius, true)).'
+  - keyword: DisplacementControl
+    aliases: [MPDC]
+    cpp: MPDC
+    params:
+      - {name: tag, type: int, req: true}
+    flags: []
+    rest: null
+    notes: 'is_equal_any(type,"DisplacementControl","MPDC"); both construct MPDC(tag) with no further parsing.'
+  - keyword: Ramm
+    aliases: []
+    cpp: Ramm
+    params:
+      - {name: tag, type: int, req: true}
+    flags: []
+    rest: null
+    notes: ''

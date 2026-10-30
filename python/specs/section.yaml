@@ -1,0 +1,619 @@
+# =============================================================================
+# suanPan Section parsing spec — extracted from /workspace/Section/SectionParser.cpp
+# (3076 lines, read in full)
+#
+# - All keywords are matched case-insensitively (is_equal / is_equal_any).
+# - create_new_section reads the section type token first, then dispatches.
+# - Unlike other suanPan parsers, this file contains NO mid-stream option flags
+#   (verified: no is_equal(para, ...), is_true, get_optional_input or to_token
+#   anywhere in the file). Every argument is strictly positional, so every
+#   entry below has flags: [].
+# - Unknown section types fall through to external_module::object (plugin modules).
+# - "Handler" = the new_* free function that parses the arguments.
+# =============================================================================
+
+- keyword: Box2D
+  aliases: []
+  cpp: Box2D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: width, type: float, req: true}
+    - {name: height, type: float, req: true}
+    - {name: thickness, type: float, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: int_pt, type: int, req: false, default: 6}
+    - {name: eccentricity, type: float, req: false, default: 0.}
+  flags: []
+  rest: null
+  notes: 'Handler new_box2d. Ctor Box2D(tag, B=width, H=height, TH=thickness, M=material, S=int_pt, EC=eccentricity). int_pt default 6 announced via suanpan_debug("Six integration points assumed.").'
+
+- keyword: Box3D
+  aliases: []
+  cpp: Box3D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: width, type: float, req: true}
+    - {name: height, type: float, req: true}
+    - {name: thickness, type: float, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: int_pt, type: int, req: false, default: 6}
+    - {name: eccentricity_a, type: float, req: false, default: 0.}
+    - {name: eccentricity_b, type: float, req: false, default: 0.}
+  flags: []
+  rest: null
+  notes: 'Handler new_box3d. Same as Box2D plus two eccentricity components (passed as eccentricity_a, eccentricity_b).'
+
+- keyword: Cell2D
+  aliases: [bar2d]
+  cpp: Cell2D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: area, type: float, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: eccentricity, type: float, req: false, default: 0.}
+  flags: []
+  rest: null
+  notes: 'Handler new_cell2d. Dispatched via is_equal_any(section_id, "Cell2D", "Bar2D") — Bar2D is an exact alias keyword producing the identical Cell2D object.'
+
+- keyword: Cell3D
+  aliases: [bar3d]
+  cpp: Cell3D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: area, type: float, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: eccentricity_a, type: float, req: false, default: 0.}
+    - {name: eccentricity_b, type: float, req: false, default: 0.}
+  flags: []
+  rest: null
+  notes: 'Handler new_cell3d. Dispatched via is_equal_any(section_id, "Cell3D", "Bar3D") — Bar3D is an exact alias keyword producing the identical Cell3D object.'
+
+- keyword: Cell3DOS
+  aliases: []
+  cpp: Cell3DOS
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: area, type: float, req: true}
+    - {name: omega, type: float, req: true}
+    - {name: py, type: float, req: true}
+    - {name: pz, type: float, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: eccentricity_a, type: float, req: false, default: 0.}
+    - {name: eccentricity_b, type: float, req: false, default: 0.}
+  flags: []
+  rest: null
+  notes: 'Handler new_cell3dos. area/omega/py/pz are read by ONE get_input(command, area, omega, py, pz) call — all four required together ("A valid parameter is required."). omega = warping constant, py/pz = shear centre coordinates.'
+
+- keyword: Circle1D
+  aliases: []
+  cpp: Circle1D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: radius, type: float, req: true}
+    - {name: material_tag, type: int, req: true}
+  flags: []
+  rest: null
+  notes: 'Handler new_circle1d. No optional arguments.'
+
+- keyword: Circle2D
+  aliases: []
+  cpp: Circle2D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: radius, type: float, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: int_pt, type: int, req: false, default: 6}
+    - {name: eccentricity, type: float, req: false, default: 0.}
+  flags: []
+  rest: null
+  notes: 'Handler new_circle2d. Ctor Circle2D(tag, radius, material, int_pt, eccentricity).'
+
+- keyword: Circle3D
+  aliases: []
+  cpp: Circle3D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: radius, type: float, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: int_pt, type: int, req: false, default: 6}
+    - {name: eccentricity_y, type: float, req: false, default: 0.}
+    - {name: eccentricity_z, type: float, req: false, default: 0.}
+  flags: []
+  rest: null
+  notes: 'Handler new_circle3d. Eccentricity components are packed into vec{eccentricity_y, eccentricity_z} for the ctor.'
+
+- keyword: CircularHollow2D
+  aliases: []
+  cpp: CircularHollow2D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: radius, type: float, req: true}
+    - {name: thickness, type: float, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: int_pt, type: int, req: false, default: 6}
+    - {name: eccentricity, type: float, req: false, default: 0.}
+  flags: []
+  rest: null
+  notes: 'Handler new_circularhollow2D. Note: the thickness parse error message is a copy-paste of the radius one ("A valid radius is required.") but the parameter is thickness.'
+
+- keyword: CircularHollow3D
+  aliases: []
+  cpp: CircularHollow3D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: radius, type: float, req: true}
+    - {name: thickness, type: float, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: int_pt, type: int, req: false, default: 6}
+    - {name: eccentricity_y, type: float, req: false, default: 0.}
+    - {name: eccentricity_z, type: float, req: false, default: 0.}
+  flags: []
+  rest: null
+  notes: 'Handler new_circularhollow3D. Eccentricity components packed into vec{eccentricity_y, eccentricity_z}.'
+
+- keyword: Fibre1D
+  aliases: []
+  cpp: Fibre1D
+  params:
+    - {name: tag, type: int, req: true}
+  flags: []
+  rest: {type: int_list, required: false, meaning: 'all remaining tokens via get_remaining<uword> = list of fibre section tags (Fibre::fibre_tag), resolved against existing sections at initialize()'}
+  notes: 'Handler new_fibre1d. Only the tag is validated; the remaining tokens are consumed wholesale as uword (unsigned) section tags.'
+
+- keyword: Fibre2D
+  aliases: []
+  cpp: Fibre2D
+  params:
+    - {name: tag, type: int, req: true}
+  flags: []
+  rest: {type: int_list, required: false, meaning: 'all remaining tokens via get_remaining<uword> = list of fibre section tags (Fibre::fibre_tag)'}
+  notes: 'Handler new_fibre2d. Same shape as Fibre1D.'
+
+- keyword: Fibre3D
+  aliases: []
+  cpp: Fibre3D
+  params:
+    - {name: tag, type: int, req: true}
+  flags: []
+  rest: {type: int_list, required: false, meaning: 'all remaining tokens via get_remaining<uword> = list of fibre section tags (Fibre::fibre_tag)'}
+  notes: 'Handler new_fibre3d(new_section, command, if_os=false) — shares the handler with Fibre3DOS; the variant arg selects Fibre3D (non-OS) vs Fibre3DOS. Identical parsing.'
+
+- keyword: Fibre3DOS
+  aliases: []
+  cpp: Fibre3DOS
+  params:
+    - {name: tag, type: int, req: true}
+  flags: []
+  rest: {type: int_list, required: false, meaning: 'all remaining tokens via get_remaining<uword> = list of fibre section tags (Fibre::fibre_tag)'}
+  notes: 'Handler new_fibre3d(new_section, command, if_os=true). OS = open-section variant; parses identically to Fibre3D.'
+
+- keyword: HSection2D
+  aliases: []
+  cpp: HSection2D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: dim, type: float_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: int_pt, type: int, req: false, default: 6}
+    - {name: eccentricity, type: float, req: false, default: 0.}
+  flags: []
+  rest: null
+  notes: 'Handler new_hsection2d. dim is a vec(6) read in one get_input call (exactly 6 floats required). Order: [0]=top/left flange width (TFW), [1]=top/left flange thickness (TFT), [2]=bottom/right flange width (BFW), [3]=bottom/right flange thickness (BFT), [4]=web height (WH), [5]=web thickness (WT).'
+
+- keyword: ISection2D
+  aliases: []
+  cpp: ISection2D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: dim, type: float_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: int_pt, type: int, req: false, default: 6}
+    - {name: eccentricity, type: float, req: false, default: 0.}
+  flags: []
+  rest: null
+  notes: 'Handler new_isection2d(..., recenter=false). dim = vec(6): [TFW, TFT, BFW, BFT, WH, WT] (top flange width/thickness, bottom flange width/thickness, web height, web thickness). Shares handler with ISection2DC (recenter=true).'
+
+- keyword: ISection2DC
+  aliases: []
+  cpp: ISection2D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: dim, type: float_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: int_pt, type: int, req: false, default: 6}
+  flags: []
+  rest: null
+  notes: 'Handler new_isection2d(..., recenter=true). "C" = recenter: eccentricity is NOT parsed from input; it is computed as barycenter(dim) (elastic centroid of the I profile: -.5*(Af_t*(t_f+ h_w) + Af_b*(t_fb + h_w)) / (Af_t + Af_b + h_w*t_w) with dim(0..5) = [TFW, TFT, BFW, BFT, WH, WT]).'
+
+- keyword: ISection3D
+  aliases: []
+  cpp: ISection3D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: dim, type: float_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: int_pt, type: int, req: false, default: 6}
+    - {name: eccentricity_y, type: float, req: false, default: 0.}
+    - {name: eccentricity_z, type: float, req: false, default: 0.}
+  flags: []
+  rest: null
+  notes: 'Handler new_isection3d(..., recenter=false). dim = vec(6): [TFW, TFT, BFW, BFT, WH, WT]. Eccentricities packed into vec{eccentricity_y, eccentricity_z}. Shares handler with ISection3DC.'
+
+- keyword: ISection3DC
+  aliases: []
+  cpp: ISection3D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: dim, type: float_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: int_pt, type: int, req: false, default: 6}
+  flags: []
+  rest: null
+  notes: 'Handler new_isection3d(..., recenter=true). eccentricity_y = barycenter(dim) (computed), eccentricity_z stays 0; neither is read from input.'
+
+- keyword: Rectangle1D
+  aliases: []
+  cpp: Rectangle1D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: width, type: float, req: true}
+    - {name: height, type: float, req: true}
+    - {name: material_tag, type: int, req: true}
+  flags: []
+  rest: null
+  notes: 'Handler new_rectangle1d. No optional arguments.'
+
+- keyword: Rectangle2D
+  aliases: []
+  cpp: Rectangle2D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: width, type: float, req: true}
+    - {name: height, type: float, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: int_pt, type: int, req: false, default: 6}
+    - {name: eccentricity, type: float, req: false, default: 0.}
+  flags: []
+  rest: null
+  notes: 'Handler new_rectangle2d. int_pt default 6 announced via suanpan_debug("Six integration points assumed.").'
+
+- keyword: Rectangle3D
+  aliases: []
+  cpp: Rectangle3D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: width, type: float, req: true}
+    - {name: height, type: float, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: int_pt, type: int, req: false, default: 6}
+    - {name: eccentricity_a, type: float, req: false, default: 0.}
+    - {name: eccentricity_b, type: float, req: false, default: 0.}
+  flags: []
+  rest: null
+  notes: 'Handler new_rectangle3d. Two eccentricity components (a, b).'
+
+- keyword: TrussSection
+  aliases: []
+  cpp: TrussSection
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: area, type: float, req: true}
+    - {name: material_tag, type: int, req: true}
+  flags: []
+  rest: null
+  notes: 'Handler new_trusssection. No optional arguments.'
+
+- keyword: TSection2D
+  aliases: []
+  cpp: TSection2D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: dim, type: float_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: int_pt, type: int, req: false, default: 6}
+    - {name: eccentricity, type: float, req: false, default: 0.}
+  flags: []
+  rest: null
+  notes: 'Handler new_tsection2d(..., recenter=false). dim = vec(4): [0]=flange width, [1]=flange thickness, [2]=web height, [3]=web thickness (per barycenter() comments). Shares handler with TSection2DC.'
+
+- keyword: TSection2DC
+  aliases: []
+  cpp: TSection2D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: dim, type: float_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: int_pt, type: int, req: false, default: 6}
+  flags: []
+  rest: null
+  notes: 'Handler new_tsection2d(..., recenter=true). eccentricity = barycenter(dim) = -.5*Af*(t_f + h_w)/(Af + h_w*t_w); not read from input.'
+
+- keyword: TSection3D
+  aliases: []
+  cpp: TSection3D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: dim, type: float_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: int_pt, type: int, req: false, default: 6}
+    - {name: eccentricity_y, type: float, req: false, default: 0.}
+    - {name: eccentricity_z, type: float, req: false, default: 0.}
+  flags: []
+  rest: null
+  notes: 'Handler new_tsection3d(..., recenter=false). dim = vec(4): [flange width, flange thickness, web height, web thickness]. Shares handler with TSection3DC.'
+
+- keyword: TSection3DC
+  aliases: []
+  cpp: TSection3D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: dim, type: float_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: int_pt, type: int, req: false, default: 6}
+  flags: []
+  rest: null
+  notes: 'Handler new_tsection3d(..., recenter=true). eccentricity_y = barycenter(dim) (computed), eccentricity_z = 0; neither read from input.'
+
+- keyword: NM2D1
+  aliases: []
+  cpp: NM2D1
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: ea, type: float, req: true}
+    - {name: eis, type: float, req: true}
+    - {name: linear_density, type: float, req: true}
+  flags: []
+  rest: null
+  notes: 'Handler new_nm2d(..., size=3). P = vec(3) read in one get_input call (fatal if incomplete). Maps to SectionNM2D(tag, EA, EIS, LD): ea = axial stiffness, eis = bending stiffness, linear_density. Returns before any poly-set parsing — no trailing arguments accepted.'
+
+- keyword: NM2D2
+  aliases: []
+  cpp: NM2D2
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: ea, type: float, req: true}
+    - {name: eis, type: float, req: true}
+    - {name: np, type: float, req: true}
+    - {name: mp, type: float, req: true}
+    - {name: c, type: float, req: true}
+    - {name: h, type: float, req: true}
+    - {name: k, type: float, req: true}
+    - {name: linear_density, type: float, req: true}
+  flags: []
+  rest: {type: float_list, required: false, meaning: 'optional polygon set via get_remaining<double>; if non-empty its size must be a multiple of 3 ("A valid parameter set is required."), reshaped 3x(N/3) and transposed so each poly_set row is one group of 3 consecutive tokens'}
+  notes: 'Handler new_nm2d(..., size=8). P(0..7) = [EA, EIS, NP, MP, c, h, k, linear density] per NM2D2.h. Linear-hardening NM surface.'
+
+- keyword: NM2D3
+  aliases: []
+  cpp: NM2D3
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: ea, type: float, req: true}
+    - {name: eis, type: float, req: true}
+    - {name: np, type: float, req: true}
+    - {name: mp, type: float, req: true}
+    - {name: c, type: float, req: true}
+    - {name: h1, type: float, req: true}
+    - {name: h2, type: float, req: true}
+    - {name: h3, type: float, req: true}
+    - {name: k1, type: float, req: true}
+    - {name: k2, type: float, req: true}
+    - {name: linear_density, type: float, req: true}
+  flags: []
+  rest: {type: float_list, required: false, meaning: 'optional polygon set via get_remaining<double>; must be a multiple of 3; each poly_set row = 3 consecutive tokens'}
+  notes: 'Handler new_nm2d(..., size=11). P(0..7) = [EA, EIS, NP, MP, c, h, h, h]; k1 is broadcast to vec{P(8), P(8)} and k2 to vec{P(9), P(9)} (NM2D3 takes two 2-component k vectors); P(10) = linear density. VAF hardening. Shares handler with NM2D3 (K variant below uses new_nmk instead).'
+
+- keyword: NM2D3K
+  aliases: []
+  cpp: NM2D3
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: ea, type: float, req: true}
+    - {name: eis, type: float, req: true}
+    - {name: np, type: float, req: true}
+    - {name: mp, type: float, req: true}
+    - {name: c, type: float, req: true}
+    - {name: h1, type: float, req: true}
+    - {name: h2, type: float, req: true}
+    - {name: h3, type: float, req: true}
+    - {name: k1_a, type: float, req: true}
+    - {name: k1_b, type: float, req: true}
+    - {name: k2_a, type: float, req: true}
+    - {name: k2_b, type: float, req: true}
+    - {name: linear_density, type: float, req: true}
+  flags: []
+  rest: {type: float_list, required: false, meaning: 'optional polygon set via get_remaining<double>; must be a multiple of 3; each poly_set row = 3 consecutive tokens'}
+  notes: 'Handler new_nmk(..., size=13). Builds NM2D3 with independent k components: k vec1 = {P(8), P(9)}, k vec2 = {P(10), P(11)}, P(12) = linear density. "K" = per-component kinematic/hardening weights (unlike NM2D3 where each k vector is filled with one repeated scalar).'
+
+- keyword: NM3D1
+  aliases: []
+  cpp: NM3D1
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: ea, type: float, req: true}
+    - {name: eis, type: float, req: true}
+    - {name: eiw, type: float, req: true}
+    - {name: linear_density, type: float, req: true}
+  flags: []
+  rest: null
+  notes: 'Handler new_nm3d(..., size=4). P = vec(4) = [EA, EIS, EIW, LD] (SectionNM3D ctor): axial, strong-axis bending, weak-axis bending stiffnesses, linear density. Returns before poly-set parsing — no trailing arguments accepted.'
+
+- keyword: NM3D2
+  aliases: []
+  cpp: NM3D2
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: ea, type: float, req: true}
+    - {name: eis, type: float, req: true}
+    - {name: eiw, type: float, req: true}
+    - {name: np, type: float, req: true}
+    - {name: mps, type: float, req: true}
+    - {name: mpw, type: float, req: true}
+    - {name: c, type: float, req: true}
+    - {name: h, type: float, req: true}
+    - {name: k, type: float, req: true}
+    - {name: linear_density, type: float, req: true}
+  flags: []
+  rest: {type: float_list, required: false, meaning: 'optional polygon set via get_remaining<double>; if non-empty its size must be a multiple of 4; reshaped 4x(N/4) and transposed so each poly_set row = 4 consecutive tokens'}
+  notes: 'Handler new_nm3d(..., size=10). P(0..9) = [EA, EIS, EIW, NP, MPS, MPW, c, h, k, linear density] per NM3D2.h.'
+
+- keyword: NM3D3
+  aliases: []
+  cpp: NM3D3
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: ea, type: float, req: true}
+    - {name: eis, type: float, req: true}
+    - {name: eiw, type: float, req: true}
+    - {name: np, type: float, req: true}
+    - {name: mps, type: float, req: true}
+    - {name: mpw, type: float, req: true}
+    - {name: c, type: float, req: true}
+    - {name: h1, type: float, req: true}
+    - {name: h2, type: float, req: true}
+    - {name: h3, type: float, req: true}
+    - {name: k1, type: float, req: true}
+    - {name: k2, type: float, req: true}
+    - {name: linear_density, type: float, req: true}
+  flags: []
+  rest: {type: float_list, required: false, meaning: 'optional polygon set via get_remaining<double>; must be a multiple of 4; each poly_set row = 4 consecutive tokens'}
+  notes: 'Handler new_nm3d(..., size=13). P(0..9) = [EA, EIS, EIW, NP, MPS, MPW, c, h, h, h]; k1 broadcast to vec{P(10),P(10),P(10)}, k2 to vec{P(11),P(11),P(11)}; P(12) = linear density.'
+
+- keyword: NM3D3K
+  aliases: []
+  cpp: NM3D3
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: ea, type: float, req: true}
+    - {name: eis, type: float, req: true}
+    - {name: eiw, type: float, req: true}
+    - {name: np, type: float, req: true}
+    - {name: mps, type: float, req: true}
+    - {name: mpw, type: float, req: true}
+    - {name: c, type: float, req: true}
+    - {name: h1, type: float, req: true}
+    - {name: h2, type: float, req: true}
+    - {name: h3, type: float, req: true}
+    - {name: k1_a, type: float, req: true}
+    - {name: k1_b, type: float, req: true}
+    - {name: k1_c, type: float, req: true}
+    - {name: k2_a, type: float, req: true}
+    - {name: k2_b, type: float, req: true}
+    - {name: k2_c, type: float, req: true}
+    - {name: linear_density, type: float, req: true}
+  flags: []
+  rest: {type: float_list, required: false, meaning: 'optional polygon set via get_remaining<double>; must be a multiple of 4; each poly_set row = 4 consecutive tokens'}
+  notes: 'Handler new_nmk(..., size=17). Builds NM3D3 with independent k components: k vec1 = {P(10), P(11), P(12)}, k vec2 = {P(13), P(14), P(15)}, P(16) = linear density.'
+
+- keyword: EU2D
+  aliases: []
+  cpp: ISection2D
+  params:
+    - {name: designation, type: str, req: true}
+    - {name: tag, type: int, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: scale, type: float, req: false, default: 1.}
+    - {name: int_pt, type: int, req: false, default: 6}
+    - {name: eccentricity, type: float, req: false, default: 0.}
+  flags: []
+  rest: null
+  notes: 'Handler new_eu2d. NOTE: the designation string is parsed BEFORE the tag. Looks up euisection(designation) (case-insensitive); fatal "Cannot identify section type." if unknown. Table rows = [TFW, TFT, BFW, BFT, WH, WT], scaled by `scale`, built into ISection2D(tag, scale*dim, material, int_pt, eccentricity). Supported families: HEA100-HEA1000, HEB100-HEB1000, IPE80-IPE600, HEM100-HEM1000 (as coded; e.g. HEA320-HEA1000 rows all use TFW=BFW=300).'
+
+- keyword: EU3D
+  aliases: []
+  cpp: ISection3D
+  params:
+    - {name: designation, type: str, req: true}
+    - {name: tag, type: int, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: scale, type: float, req: false, default: 1.}
+    - {name: int_pt, type: int, req: false, default: 6}
+    - {name: eccentricity_y, type: float, req: false, default: 0.}
+    - {name: eccentricity_z, type: float, req: false, default: 0.}
+  flags: []
+  rest: null
+  notes: 'Handler new_eu3d. Same euisection() table as EU2D; builds ISection3D(tag, scale*dim, material, int_pt, vec{ecc_y, ecc_z}).'
+
+- keyword: NZ2D
+  aliases: []
+  cpp: ISection2D / CircularHollow2D / Box2D (per designation)
+  params:
+    - {name: designation, type: str, req: true}
+    - {name: tag, type: int, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: scale, type: float, req: false, default: 1.}
+    - {name: int_pt, type: int, req: false, default: 6}
+    - {name: eccentricity, type: float, req: false, default: 0.}
+  flags: []
+  rest: null
+  notes: 'Handler new_nz2d. Designation parsed BEFORE tag; matched case-insensitively against four tables in order: (1) nzisection (e.g. 1200WB455, 900WB282, 700WB150, 500WC440, 610UB125, 250UB37.3, 320UC158, 150UC30.0, 100UC14.8) -> ISection2D(tag, scale*dim[6], ...); (2) nzchsection (e.g. 610.0X12.7CHS, 48.3X3.2CHS; row = [outer radius, thickness]) -> CircularHollow2D(tag, scale*dim, ...); (3) nzrhsection (e.g. 250X150X9.0RHS; row = [width, height, thickness]) -> Box2D with dim[0]-=t and dim[1]-=t ("account for centroid"); (4) nzshsection (e.g. 250X9.0SHS; row = [size, size, thickness]) -> Box2D with same thickness subtraction. Fatal "Cannot identify section type." if none match.'
+
+- keyword: NZ3D
+  aliases: []
+  cpp: ISection3D / CircularHollow3D / Box3D (per designation)
+  params:
+    - {name: designation, type: str, req: true}
+    - {name: tag, type: int, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: scale, type: float, req: false, default: 1.}
+    - {name: int_pt, type: int, req: false, default: 6}
+    - {name: eccentricity_y, type: float, req: false, default: 0.}
+    - {name: eccentricity_z, type: float, req: false, default: 0.}
+  flags: []
+  rest: null
+  notes: 'Handler new_nz3d. Same tables/fallback order as NZ2D but produces ISection3D / CircularHollow3D / Box3D; eccentricities packed into vec{ecc_y, ecc_z}.'
+
+- keyword: US2D
+  aliases: []
+  cpp: ISection2D / Box2D / CircularHollow2D / TSection2D (per designation)
+  params:
+    - {name: designation, type: str, req: true}
+    - {name: tag, type: int, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: scale, type: float, req: false, default: 1.}
+    - {name: int_pt, type: int, req: false, default: 6}
+    - {name: eccentricity, type: float, req: false, default: 0.}
+  flags: []
+  rest: null
+  notes: 'Handler new_us2d(..., recenter=false). Designation parsed BEFORE tag; tables in order: (1) usisection (W/S/M/HP designations, e.g. W44X408, W14X873, S24X121, M12X11.8, HP18X204; row = [TFW, TFT, BFW, BFT, WH, WT]) -> ISection2D; (2) usrhssection (HSS AxBxc, e.g. HSS34X10X1, HSS12X3X3/16; row = [half-width-ish dim, height, thickness]) -> Box2D; (3) uschssection (HSS D.XXX, e.g. HSS28.000X1.000; row = [outer radius, thickness]) -> CircularHollow2D; (4) ustsection (WT/MT/ST, e.g. WT22X167.5, MT6X5.9, ST12X60.5; row = [flange width, flange thickness, web height, web thickness]) -> TSection2D. Fatal "Cannot identify section type." if none match. Shares handler with US2DC (recenter=true): with recenter, eccentricity is not parsed and is computed ONLY in the T-section branch as barycenter(scale*dim); I/HSS/CHS branches keep eccentricity = 0.'
+
+- keyword: US3D
+  aliases: []
+  cpp: ISection3D / Box3D / CircularHollow3D / TSection3D (per designation)
+  params:
+    - {name: designation, type: str, req: true}
+    - {name: tag, type: int, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: scale, type: float, req: false, default: 1.}
+    - {name: int_pt, type: int, req: false, default: 6}
+    - {name: eccentricity_y, type: float, req: false, default: 0.}
+    - {name: eccentricity_z, type: float, req: false, default: 0.}
+  flags: []
+  rest: null
+  notes: 'Handler new_us3d(..., recenter=false). Same tables/fallback order as US2D but produces ISection3D / Box3D / CircularHollow3D / TSection3D. Shares handler with US3DC (recenter=true): eccentricity_y = barycenter(scale*dim) only in the T-section branch, eccentricity_z stays 0.'
+
+- keyword: US2DC
+  aliases: []
+  cpp: ISection2D / Box2D / CircularHollow2D / TSection2D (per designation)
+  params:
+    - {name: designation, type: str, req: true}
+    - {name: tag, type: int, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: scale, type: float, req: false, default: 1.}
+    - {name: int_pt, type: int, req: false, default: 6}
+  flags: []
+  rest: null
+  notes: 'Handler new_us2d(..., recenter=true). "C" = recenter. NO eccentricity argument is parsed at all; it is computed as barycenter of the scaled dims only when the designation resolves to a T-section (ustsection); otherwise 0.'
+
+- keyword: US3DC
+  aliases: []
+  cpp: ISection3D / Box3D / CircularHollow3D / TSection3D (per designation)
+  params:
+    - {name: designation, type: str, req: true}
+    - {name: tag, type: int, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: scale, type: float, req: false, default: 1.}
+    - {name: int_pt, type: int, req: false, default: 6}
+  flags: []
+  rest: null
+  notes: 'Handler new_us3d(..., recenter=true). NO eccentricity arguments parsed; barycenter assigned to eccentricity_y only in the T-section branch; eccentricity_z = 0.'

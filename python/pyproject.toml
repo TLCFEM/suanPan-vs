@@ -1,0 +1,41 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = [ "hatchling" ]
+
+[project]
+classifiers = [ "Development Status :: 4 - Beta", "Intended Audience :: Science/Research", "License :: OSI Approved :: GNU General Public License v3 (GPLv3)", "Programming Language :: Python :: 3", "Programming Language :: Python :: 3.10", "Programming Language :: Python :: 3.11", "Programming Language :: Python :: 3.12", "Programming Language :: Python :: 3.13", "Topic :: Scientific/Engineering" ]
+dependencies = [ "pydantic" ]
+description = "Python object model for the suanPan finite element program: pydantic classes, input-file export and executable runner"
+keywords = [ "finite-element", "suanpan", "fem", "structural-analysis" ]
+name = "suanpan"
+readme = "README.md"
+requires-python = ">=3.10"
+version = "1.0.0"
+
+[[project.authors]]
+name = "Theodore Chang"
+email = "tlcfem@gmail.com"
+
+[[project.maintainers]]
+name = "Theodore Chang"
+email = "tlcfem@gmail.com"
+
+[project.license]
+file = "LICENSE"
+
+[project.optional-dependencies]
+dev = [ "pytest", "pyyaml", "ruff" ]
+test = [ "pytest" ]
+
+[project.urls]
+Homepage = "https://github.com/TLCFEM/suanPan"
+
+[tool.hatch.build.targets.wheel]
+packages = [ "src/suanpan" ]
+
+[tool.pytest.ini_options]
+testpaths = [ "tests" ]
+
+[tool.ruff.lint]
+ignore = ["B008", "B017", "E501"]
+select = ["E", "F", "UP", "B", "SIM", "I"]

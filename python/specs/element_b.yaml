@@ -1,0 +1,1203 @@
+# Machine-readable parser spec extracted from suanPan /workspace/Element/ElementParser.cpp
+# Range: lines 1400-2736 (handlers new_eb21..new_patchcube + dispatch entry points
+# create_new_element, create_new_modifier, create_new_orientation, create_new_mass).
+# Conventions: req: true = fatal get_input; req: false = optional (eof guard or
+# get_optional_input) with the C++ default recorded in `default`.
+# NOTE: element keyword entries whose handler body lies BEFORE line 1400 are listed in
+# dispatch order with params: [] (handler outside this extraction range; see part A).
+
+elements:
+  # ---- handlers defined before line 1400 (listed for dispatch completeness) ----
+  - keyword: Allman
+    aliases: []
+    cpp: Allman
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_allman (lines 28-55) outside assigned range; params not extracted here'
+
+  - keyword: B21
+    aliases: []
+    cpp: B21
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_b21(which=0) (lines 56-90) outside assigned range'
+
+  - keyword: B21EH
+    aliases: []
+    cpp: B21 (embedded hinge variant)
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_b21(which=2) (lines 56-90) outside assigned range'
+
+  - keyword: B21EL
+    aliases: []
+    cpp: B21 (localized variant)
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_b21(which=1) (lines 56-90) outside assigned range'
+
+  - keyword: B21H
+    aliases: []
+    cpp: B21H
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_b21h (lines 91-124) outside assigned range (distinct from in-range new_f21h)'
+
+  - keyword: B31
+    aliases: []
+    cpp: B31
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_b31(if_os=false) (lines 125-165) outside assigned range'
+
+  - keyword: B31OS
+    aliases: []
+    cpp: B31 (OS variant)
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_b31(if_os=true) (lines 125-165) outside assigned range'
+
+  - keyword: C3D4
+    aliases: []
+    cpp: C3D4
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_c3d4 (lines 263-290) outside assigned range'
+
+  - keyword: C3D8
+    aliases: []
+    cpp: C3D8
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_c3d8(force_reduced=false) (lines 291-334) outside assigned range'
+
+  - keyword: C3D8I
+    aliases: []
+    cpp: C3D8I
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_c3d8i (lines 335-356) outside assigned range'
+
+  - keyword: C3D8R
+    aliases: []
+    cpp: C3D8 (reduced)
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_c3d8(force_reduced=true) (lines 291-334) outside assigned range'
+
+  - keyword: C3D20
+    aliases: []
+    cpp: C3D20
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_c3d20 (lines 229-262) outside assigned range'
+
+  - keyword: CAX3
+    aliases: []
+    cpp: CAX3
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_cax3 (lines 357-384) outside assigned range'
+
+  - keyword: CAX4
+    aliases: []
+    cpp: CAX4
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_cax4 (lines 385-406) outside assigned range'
+
+  - keyword: CAX8
+    aliases: []
+    cpp: CAX8
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_cax8 (lines 407-428) outside assigned range'
+
+  - keyword: CIN3D8
+    aliases: []
+    cpp: CIN3D8
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_cin3d8 (lines 825-846) outside assigned range'
+
+  - keyword: CINP4
+    aliases: []
+    cpp: CINP4
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_cinp4 (lines 797-824) outside assigned range'
+
+  - keyword: Contact2D
+    aliases: []
+    cpp: Contact2D
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_contact2d (lines 429-454) outside assigned range'
+
+  - keyword: Contact3D
+    aliases: []
+    cpp: Contact3D
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_contact3d (lines 455-480) outside assigned range'
+
+  - keyword: CP3
+    aliases: []
+    cpp: CP3
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_cp3 (lines 481-514) outside assigned range'
+
+  - keyword: CP4
+    aliases: []
+    cpp: CP4
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_cp4(force_reduced=false) (lines 515-564) outside assigned range'
+
+  - keyword: CP4I
+    aliases: []
+    cpp: CP4I
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_cp4i (lines 565-592) outside assigned range'
+
+  - keyword: CP4R
+    aliases: []
+    cpp: CP4 (reduced)
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_cp4(force_reduced=true) (lines 515-564) outside assigned range'
+
+  - keyword: CP5
+    aliases: []
+    cpp: CP5
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_cp5 (lines 593-626) outside assigned range'
+
+  - keyword: CP6
+    aliases: []
+    cpp: CP6
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_cp6 (lines 627-660) outside assigned range'
+
+  - keyword: CP7
+    aliases: []
+    cpp: CP7
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_cp7 (lines 661-694) outside assigned range'
+
+  - keyword: CP8
+    aliases: []
+    cpp: CP8
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_cp8 (lines 695-734) outside assigned range'
+
+  - keyword: CPE8
+    aliases: []
+    cpp: CPE8
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_cpe8 (lines 735-768) outside assigned range'
+
+  - keyword: CPE8R
+    aliases: []
+    cpp: CPE8R
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_cpe8r (lines 769-796) outside assigned range'
+
+  - keyword: CPS8
+    aliases: []
+    cpp: CP8
+    params: []
+    flags: []
+    rest: null
+    notes: 'same handler new_cp8 (lines 695-734) as CP8; outside assigned range'
+
+  - keyword: CSMQ4
+    aliases: []
+    cpp: CSMQ
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_csmq(size=4) (lines 915-952) outside assigned range'
+
+  - keyword: CSMQ5
+    aliases: []
+    cpp: CSMQ
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_csmq(size=5) (lines 915-952) outside assigned range'
+
+  - keyword: CSMQ6
+    aliases: []
+    cpp: CSMQ
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_csmq(size=6) (lines 915-952) outside assigned range'
+
+  - keyword: CSMQ7
+    aliases: []
+    cpp: CSMQ
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_csmq(size=7) (lines 915-952) outside assigned range'
+
+  - keyword: CSMQ8
+    aliases: []
+    cpp: CSMQ
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_csmq(size=8) (lines 915-952) outside assigned range'
+
+  - keyword: CSMT3
+    aliases: []
+    cpp: CSMT3
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_csmt3 (lines 847-880) outside assigned range'
+
+  - keyword: CSMT6
+    aliases: []
+    cpp: CSMT6
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_csmt6 (lines 881-914) outside assigned range'
+
+  - keyword: Damper01
+    aliases: []
+    cpp: Damper01
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_damper01(dimension=2) (lines 953-974) outside assigned range'
+
+  - keyword: Damper02
+    aliases: []
+    cpp: Damper02
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_damper02(dimension=2) (lines 975-1020) outside assigned range'
+
+  - keyword: Damper03
+    aliases: []
+    cpp: Damper01
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_damper01(dimension=3) (lines 953-974) outside assigned range'
+
+  - keyword: Damper04
+    aliases: []
+    cpp: Damper02
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_damper02(dimension=3) (lines 975-1020) outside assigned range'
+
+  - keyword: Damper05
+    aliases: []
+    cpp: Damper05
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_damper05(dimension=2) (lines 1021-1110) outside assigned range'
+
+  - keyword: Damper06
+    aliases: []
+    cpp: Damper05
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_damper05(dimension=3) (lines 1021-1110) outside assigned range'
+
+  - keyword: DC3D4
+    aliases: []
+    cpp: DC3D4
+    params: []
+    flags: []
+    rest: null
+    notes: 'template handler new_dc3d4<false> (before line 1400) outside assigned range'
+
+  - keyword: DC3D4M
+    aliases: []
+    cpp: DC3D4 (M variant)
+    params: []
+    flags: []
+    rest: null
+    notes: 'template handler new_dc3d4<true> (before line 1400) outside assigned range'
+
+  - keyword: DC3D8
+    aliases: []
+    cpp: DC3D8
+    params: []
+    flags: []
+    rest: null
+    notes: 'template handler new_dc3d8<false> (before line 1400) outside assigned range'
+
+  - keyword: DC3D8M
+    aliases: []
+    cpp: DC3D8 (M variant)
+    params: []
+    flags: []
+    rest: null
+    notes: 'template handler new_dc3d8<true> (before line 1400) outside assigned range'
+
+  - keyword: DCP3
+    aliases: []
+    cpp: DCP3
+    params: []
+    flags: []
+    rest: null
+    notes: 'template handler new_dcp3<false> (before line 1400) outside assigned range'
+
+  - keyword: DCP3M
+    aliases: []
+    cpp: DCP3 (M variant)
+    params: []
+    flags: []
+    rest: null
+    notes: 'template handler new_dcp3<true> (before line 1400) outside assigned range'
+
+  - keyword: DCP4
+    aliases: []
+    cpp: DCP4
+    params: []
+    flags: []
+    rest: null
+    notes: 'template handler new_dcp4<false> (before line 1400) outside assigned range'
+
+  - keyword: DCP4M
+    aliases: []
+    cpp: DCP4 (M variant)
+    params: []
+    flags: []
+    rest: null
+    notes: 'template handler new_dcp4<true> (before line 1400) outside assigned range'
+
+  - keyword: DKT3
+    aliases: []
+    cpp: DKT3
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_dkt3 (lines 1241-1274) outside assigned range'
+
+  - keyword: DKT4
+    aliases: []
+    cpp: DKT4
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_dkt4 (lines 1275-1308) outside assigned range'
+
+  - keyword: DKTS3
+    aliases: []
+    cpp: DKTS3
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_dkts3 (lines 1309-1347) outside assigned range; constructor signature DKTS3(tag, node_tag(2), material_tag, thickness, num_ip, nlgeom bool) visible at line 1346'
+
+  # ---- handlers fully inside lines 1400-2736 ----
+  - keyword: EB21
+    aliases: []
+    cpp: EB21
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 2}
+      - {name: area, type: float, req: true}
+      - {name: moment_inertia, type: float, req: true}
+      - {name: material_tag, type: int, req: true}
+      - {name: nonlinear, type: bool, req: false, default: false}
+    flags: []
+    rest: null
+    notes: 'new_eb21 (lines 1377-1415); nonlinear uses eof-guard pattern (invalid token logs error but keeps default)'
+
+  - keyword: EB31OS
+    aliases: []
+    cpp: EB31OS
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 2}
+      - {name: property, type: float_list, req: true, count: 7}
+      - {name: orientation, type: int, req: true}
+      - {name: nonlinear, type: bool, req: false, default: false}
+    flags: []
+    rest: null
+    notes: 'new_eb31os (lines 1417-1449); property is a 7-component section/material property vector'
+
+  - keyword: Embedded2D
+    aliases: []
+    cpp: Embedded<2u>
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: element_tag, type: int, req: true}
+      - {name: node, type: int, req: true}
+      - {name: alpha, type: float, req: false, default: 1.0e4}
+    flags: []
+    rest: null
+    notes: 'template handler new_embedded<2u> (lines 1349-1375); head overlaps start of range; constructor Embedded<dof>(tag, element_tag, node_tag, alpha)'
+
+  - keyword: Embedded3D
+    aliases: []
+    cpp: Embedded<3u>
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: element_tag, type: int, req: true}
+      - {name: node, type: int, req: true}
+      - {name: alpha, type: float, req: false, default: 1.0e4}
+    flags: []
+    rest: null
+    notes: 'template handler new_embedded<3u> (lines 1349-1375); same body as Embedded2D; constructor Embedded<dof>(tag, element_tag, node_tag, alpha)'
+
+  - keyword: F21
+    aliases: []
+    cpp: F21
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 2}
+      - {name: section_id, type: int, req: true}
+      - {name: int_pt, type: int, req: false, default: 6}
+      - {name: nonlinear, type: bool, req: false, default: false}
+    flags: []
+    rest: null
+    notes: 'new_f21 (lines 1451-1483); int_pt via get_optional_input'
+
+  - keyword: F21H
+    aliases: []
+    cpp: F21H
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 2}
+      - {name: section_id, type: int, req: true}
+      - {name: elastic_length, type: float, req: false, default: 0.2}
+      - {name: nonlinear, type: bool, req: false, default: false}
+    flags: []
+    rest: null
+    notes: 'new_f21h (lines 1485-1517); elastic_length guarded by !command.eof() && !get_input (fatal on bad token)'
+
+  - keyword: F31
+    aliases: []
+    cpp: F31
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 2}
+      - {name: section_id, type: int, req: true}
+      - {name: orientation_id, type: int, req: true}
+      - {name: int_pt, type: int, req: false, default: 5}
+      - {name: nonlinear, type: bool, req: false, default: false}
+    flags: []
+    rest: null
+    notes: 'new_f31 (lines 1519-1557); int_pt and nonlinear guarded by !command.eof() && !get_input'
+
+  - keyword: GCMQ
+    aliases: []
+    cpp: GCMQ
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 4}
+      - {name: material_tag, type: int, req: true}
+      - {name: thickness, type: float, req: false, default: 1.0}
+      - {name: int_scheme, type: str, req: false, default: 'I'}
+    flags: []
+    rest: null
+    notes: 'non-template new_gcmq (lines 1559-1589); objective_length fixed at -1.0; first char of int_scheme uppercased (suanpan::to_upper(int_scheme[0]))'
+
+  - keyword: GCMQG
+    aliases: []
+    cpp: GCMQ
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 4}
+      - {name: material_tag, type: int, req: true}
+      - {name: thickness, type: float, req: false, default: 1.0}
+      - {name: objective_length, type: float, req: false, default: -1.0}
+    flags: []
+    rest: null
+    notes: 'template new_gcmq<simplified=false>(int_type=''G'') (lines 1591-1622); both optional params via get_optional_input'
+
+  - keyword: GCMQI
+    aliases: []
+    cpp: GCMQ
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 4}
+      - {name: material_tag, type: int, req: true}
+      - {name: thickness, type: float, req: false, default: 1.0}
+      - {name: objective_length, type: float, req: false, default: -1.0}
+    flags: []
+    rest: null
+    notes: 'template new_gcmq<simplified=false>(int_type=''I'') (lines 1591-1622)'
+
+  - keyword: GCMQL
+    aliases: []
+    cpp: GCMQ
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 4}
+      - {name: material_tag, type: int, req: true}
+      - {name: thickness, type: float, req: false, default: 1.0}
+      - {name: objective_length, type: float, req: false, default: -1.0}
+    flags: []
+    rest: null
+    notes: 'template new_gcmq<simplified=false>(int_type=''L'') (lines 1591-1622)'
+
+  - keyword: GQ12
+    aliases: []
+    cpp: GQ12
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 4}
+      - {name: material_tag, type: int, req: true}
+      - {name: thickness, type: float, req: false, default: 1.0}
+    flags: []
+    rest: null
+    notes: 'new_gq12 (lines 1658-1684); thickness uses eof-guard pattern (no return on bad token)'
+
+  - keyword: Joint
+    aliases: []
+    cpp: Joint
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 2}
+    flags: []
+    rest: 'dof_tags: int_list (get_remaining<uword>; dof indices)'
+    notes: 'new_joint (lines 1686-1700); Joint(tag, node_tag(2), dof list)'
+
+  - keyword: Mass
+    aliases: []
+    cpp: Mass3D
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node, type: int, req: true}
+      - {name: magnitude, type: float, req: true}
+    flags: []
+    rest: 'dof_tags: int_list (get_remaining<uword>; max dof index 6)'
+    notes: 'new_mass(which=3) (lines 1702-1734); Mass is a synonym of Mass3D (which=3); dof indices limited to 1-6'
+
+  - keyword: Mass2D
+    aliases: []
+    cpp: Mass2D
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node, type: int, req: true}
+      - {name: magnitude, type: float, req: true}
+    flags: []
+    rest: 'dof_tags: int_list (get_remaining<uword>; max dof index 3)'
+    notes: 'new_mass(which=2) (lines 1702-1734); dof indices limited to 1-3, else fatal'
+
+  - keyword: Mass3D
+    aliases: []
+    cpp: Mass3D
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node, type: int, req: true}
+      - {name: magnitude, type: float, req: true}
+    flags: []
+    rest: 'dof_tags: int_list (get_remaining<uword>; max dof index 6)'
+    notes: 'new_mass(which=3) (lines 1702-1734); dof indices limited to 1-6'
+
+  - keyword: MassPoint2D
+    aliases: []
+    cpp: MassPoint2D
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node, type: int, req: true}
+      - {name: translational_magnitude, type: float, req: true}
+      - {name: rotational_magnitude, type: float, req: false}
+    flags: []
+    rest: null
+    notes: 'new_masspoint(which=2) (lines 1736-1768); rotational_magnitude parsed only if tokens remain; 3-arg ctor when omitted'
+
+  - keyword: MassPoint3D
+    aliases: []
+    cpp: MassPoint3D
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node, type: int, req: true}
+      - {name: translational_magnitude, type: float, req: true}
+      - {name: rotational_magnitude, type: float, req: false}
+    flags: []
+    rest: null
+    notes: 'new_masspoint(which=3) (lines 1736-1768); same optional rotational magnitude as MassPoint2D'
+
+  - keyword: Mindlin
+    aliases: []
+    cpp: Mindlin
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 4}
+      - {name: material_tag, type: int, req: true}
+      - {name: thickness, type: float, req: true}
+      - {name: num_ip, type: int, req: false, default: 5}
+    flags: []
+    rest: null
+    notes: 'new_mindlin (lines 1770-1802); num_ip guarded by !command.eof() && !get_input'
+
+  - keyword: MVLEM
+    aliases: []
+    cpp: MVLEM
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 2}
+      - {name: shear_tag, type: int, req: true}
+      - {name: c_height, type: float, req: true}
+    flags: []
+    rest: 'B: float, H: float, R: float, CT: int, ST: int (get_remaining<double,double,double,uword,uword>)'
+    notes: 'new_mvlem (lines 1804-1832); ctor MVLEM(tag, node_tag, B, H, R, CT, ST, shear_tag, c_height)'
+
+  - keyword: NMB21
+    aliases: []
+    cpp: NMB21
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_nmb21(which=0) (lines 166-194) outside assigned range'
+
+  - keyword: NMB21EH
+    aliases: []
+    cpp: NMB21 (embedded hinge variant)
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_nmb21(which=2) (lines 166-194) outside assigned range'
+
+  - keyword: NMB21EL
+    aliases: []
+    cpp: NMB21 (localized variant)
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_nmb21(which=1) (lines 166-194) outside assigned range'
+
+  - keyword: NMB31
+    aliases: []
+    cpp: NMB31
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_nmb31 (lines 195-228) outside assigned range'
+
+  - keyword: NonlocalC3D8
+    aliases: []
+    cpp: NonlocalC3D8
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_nonlocalc3d8 (lines 1111-1212) outside assigned range'
+
+  - keyword: NonlocalCP4
+    aliases: []
+    cpp: NonlocalCP4
+    params: []
+    flags: []
+    rest: null
+    notes: 'handler new_nonlocalcp4 (lines 1213-1240) outside assigned range'
+
+  - keyword: PatchCube
+    aliases: []
+    cpp: PatchCube
+    params:
+      - {name: tag, type: int, req: true}
+    flags: ['-node', '-knotx', '-knoty', '-knotz', '-material']
+    rest: null
+    notes: 'new_patchcube (lines 2358-2416); unordered flag loop: -node int_list and -knotx/-knoty/-knotz float_list each consume values until next token starting with ''-''; -material int (default -1) and -thickness absent (3D has no thickness); node/knotx/knoty/knotz/material mandatory; no -thickness flag'
+
+  - keyword: PatchQuad
+    aliases: []
+    cpp: PatchQuad
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: thickness, type: float, req: false, default: 1.0}
+    flags: ['-node', '-knotx', '-knoty', '-material', '-thickness']
+    rest: null
+    notes: 'new_patchquad (lines 2295-2356); unordered flag loop: -node int_list and -knotx/-knoty float_list each consume values until next token starting with ''-''; -material int (default -1); node/knotx/knoty/material mandatory'
+
+  - keyword: PCPE4DC
+    aliases: []
+    cpp: PCPE4DC
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 4}
+      - {name: solid_tag, type: int, req: true}
+      - {name: fluid_tag, type: int, req: true}
+      - {name: alpha, type: float, req: true}
+      - {name: n, type: float, req: true}
+      - {name: k, type: float, req: true}
+    flags: []
+    rest: null
+    notes: 'new_pcpedc(node=4) (lines 1834-1866); alpha/n/k parsed in one get_input(command, alpha, n, k) call'
+
+  - keyword: PCPE4UC
+    aliases: []
+    cpp: PCPE4UC
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 4}
+      - {name: solid_tag, type: int, req: true}
+      - {name: fluid_tag, type: int, req: true}
+      - {name: alpha, type: float, req: true}
+      - {name: n, type: float, req: true}
+    flags: []
+    rest: null
+    notes: 'new_pcpeuc(node=4) (lines 1868-1900); alpha/n parsed in one get_input(command, alpha, n) call'
+
+  - keyword: PCPE8DC
+    aliases: []
+    cpp: PCPE8DC
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 8}
+      - {name: solid_tag, type: int, req: true}
+      - {name: fluid_tag, type: int, req: true}
+      - {name: alpha, type: float, req: true}
+      - {name: n, type: float, req: true}
+      - {name: k, type: float, req: true}
+    flags: []
+    rest: null
+    notes: 'new_pcpedc(node=8) (lines 1834-1866); 8-node version'
+
+  - keyword: PCPE8UC
+    aliases: []
+    cpp: PCPE8UC
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 8}
+      - {name: solid_tag, type: int, req: true}
+      - {name: fluid_tag, type: int, req: true}
+      - {name: alpha, type: float, req: true}
+      - {name: n, type: float, req: true}
+    flags: []
+    rest: null
+    notes: 'new_pcpeuc(node=8) (lines 1868-1900); 8-node version'
+
+  - keyword: PS
+    aliases: []
+    cpp: PS
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 4}
+      - {name: material_tag, type: int, req: true}
+      - {name: thickness, type: float, req: false, default: 1.0}
+    flags: []
+    rest: null
+    notes: 'new_ps (lines 1902-1928); thickness uses eof-guard pattern (no return on bad token)'
+
+  - keyword: QE2
+    aliases: []
+    cpp: QE2
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 4}
+      - {name: material_tag, type: int, req: true}
+      - {name: thickness, type: float, req: false, default: 1.0}
+    flags: []
+    rest: null
+    notes: 'new_qe2 (lines 1930-1956); same shape as PS'
+
+  - keyword: S4
+    aliases: []
+    cpp: S4
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 4}
+      - {name: material_tag, type: int, req: true}
+      - {name: thickness, type: float, req: false, default: 1.0}
+      - {name: nlgeom, type: bool, req: false, default: false}
+    flags: []
+    rest: null
+    notes: 'new_s4 (lines 1958-1990); thickness guarded by !command.eof() && !get_input; nlgeom via get_optional_input'
+
+  - keyword: SGCMQG
+    aliases: []
+    cpp: SGCMQ
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 4}
+      - {name: material_tag, type: int, req: true}
+      - {name: thickness, type: float, req: false, default: 1.0}
+      - {name: objective_length, type: float, req: false, default: -1.0}
+    flags: []
+    rest: null
+    notes: 'template new_gcmq<simplified=true>(int_type=''G'') (lines 1591-1622); simplified variant instantiates SGCMQ'
+
+  - keyword: SGCMQI
+    aliases: []
+    cpp: SGCMQ
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 4}
+      - {name: material_tag, type: int, req: true}
+      - {name: thickness, type: float, req: false, default: 1.0}
+      - {name: objective_length, type: float, req: false, default: -1.0}
+    flags: []
+    rest: null
+    notes: 'template new_gcmq<simplified=true>(int_type=''I'') (lines 1591-1622)'
+
+  - keyword: SGCMQL
+    aliases: []
+    cpp: SGCMQ
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 4}
+      - {name: material_tag, type: int, req: true}
+      - {name: thickness, type: float, req: false, default: 1.0}
+      - {name: objective_length, type: float, req: false, default: -1.0}
+    flags: []
+    rest: null
+    notes: 'template new_gcmq<simplified=true>(int_type=''L'') (lines 1591-1622)'
+
+  - keyword: SGCMS
+    aliases: []
+    cpp: SGCMS
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 4}
+      - {name: material_tag, type: int, req: true}
+      - {name: thickness, type: float, req: false, default: 1.0}
+      - {name: nlgeom, type: bool, req: false, default: false}
+    flags: []
+    rest: null
+    notes: 'new_sgcms (lines 1624-1656); thickness guarded by !command.eof() && !get_input; nlgeom via get_optional_input'
+
+  - keyword: SingleSection2D
+    aliases: []
+    cpp: SingleSection2D
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node, type: int, req: true}
+      - {name: section_tag, type: int, req: true}
+    flags: []
+    rest: null
+    notes: 'template new_singlesection<SingleSection2D> (lines 1992-2012); single-node element'
+
+  - keyword: SingleSection3D
+    aliases: []
+    cpp: SingleSection3D
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node, type: int, req: true}
+      - {name: section_tag, type: int, req: true}
+    flags: []
+    rest: null
+    notes: 'template new_singlesection<SingleSection3D> (lines 1992-2012); single-node element'
+
+  - keyword: SphericalParticle2D
+    aliases: []
+    cpp: SphericalParticle2D
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node, type: int, req: true}
+    flags: []
+    rest: 'pool: float_list (get_remaining<double>); exactly 5 or 6 values required'
+    notes: 'template new_sphericalparticle<2u> (lines 2014-2045); 5 values -> SphericalParticle2D, 6 values -> InertialSphericalParticle2D; otherwise fatal'
+
+  - keyword: SphericalParticle3D
+    aliases: []
+    cpp: SphericalParticle3D
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node, type: int, req: true}
+    flags: []
+    rest: 'pool: float_list (get_remaining<double>); exactly 5 or 6 values required'
+    notes: 'template new_sphericalparticle<3u> (lines 2014-2045); 5 values -> SphericalParticle3D, 6 values -> InertialSphericalParticle3D'
+
+  - keyword: Spring01
+    aliases: []
+    cpp: Spring01
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 2}
+      - {name: material_tag, type: int, req: true}
+    flags: []
+    rest: null
+    notes: 'new_spring01 (lines 2046-2066)'
+
+  - keyword: Spring02
+    aliases: []
+    cpp: Spring02
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 2}
+      - {name: material_tag, type: int, req: true}
+    flags: []
+    rest: null
+    notes: 'new_spring02 (lines 2068-2088); same shape as Spring01'
+
+  - keyword: T2D2
+    aliases: []
+    cpp: T2D2
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 2}
+      - {name: material_tag, type: int, req: true}
+      - {name: area, type: float, req: true}
+      - {name: nonlinear, type: bool, req: false, default: false}
+      - {name: update_area, type: bool, req: false, default: false}
+      - {name: log_strain, type: bool, req: false, default: false}
+      - {name: rigidity, type: float, req: false, default: -1.0}
+    flags: []
+    rest: null
+    notes: 'new_t2d2 (lines 2090-2139); all four optional switches use eof-guard pattern without return (defaults: linear geometry, constant area, engineering strain, no buckling check)'
+
+  - keyword: T2D2S
+    aliases: []
+    cpp: T2D2S
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 2}
+      - {name: section_tag, type: int, req: true}
+      - {name: nonlinear, type: bool, req: false, default: false}
+      - {name: log_strain, type: bool, req: false, default: false}
+    flags: []
+    rest: null
+    notes: 'new_t2d2s (lines 2141-2173); section/material tag; eof-guard pattern'
+
+  - keyword: T3D2
+    aliases: []
+    cpp: T3D2
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 2}
+      - {name: material_tag, type: int, req: true}
+      - {name: area, type: float, req: true}
+      - {name: nonlinear, type: bool, req: false, default: false}
+      - {name: update_area, type: bool, req: false, default: false}
+      - {name: log_strain, type: bool, req: false, default: false}
+    flags: []
+    rest: null
+    notes: 'new_t3d2 (lines 2175-2218); like T2D2 but no rigidity/buckling parameter'
+
+  - keyword: T3D2S
+    aliases: []
+    cpp: T3D2S
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true, count: 2}
+      - {name: section_tag, type: int, req: true}
+      - {name: nonlinear, type: bool, req: false, default: false}
+      - {name: log_strain, type: bool, req: false, default: false}
+    flags: []
+    rest: null
+    notes: 'new_t3d2s (lines 2220-2252); same shape as T2D2S'
+
+  - keyword: Tie
+    aliases: []
+    cpp: Tie
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: magnitude, type: float, req: true}
+      - {name: penalty, type: float, req: true}
+    flags: []
+    rest: 'node_tags: int_list, dof_tags: int_list, weights: float_list (get_remaining<uword,uword,double>)'
+    notes: 'new_tie (lines 2254-2270); ctor Tie(tag, node_tag, dof_tag, weight_tag, magnitude, penalty)'
+
+  - keyword: TranslationConnector2D
+    aliases: []
+    cpp: TranslationConnector2D
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: nodes, type: int_list, req: true, count: 3}
+      - {name: penalty, type: float, req: true}
+    flags: []
+    rest: null
+    notes: 'new_translationconnector(S=2) (lines 2272-2293); three nodes'
+
+  - keyword: TranslationConnector3D
+    aliases: []
+    cpp: TranslationConnector3D
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: nodes, type: int_list, req: true, count: 3}
+      - {name: penalty, type: float, req: true}
+    flags: []
+    rest: null
+    notes: 'new_translationconnector(S=3) (lines 2272-2293); three nodes'
+
+  # fallback (create_new_element line 2730): unknown element_id is delegated to
+  # external_module::object(new_element, domain, element_id, command) before failing.
+
+modifiers:
+  - keyword: LumpedSimple
+    aliases: []
+    cpp: LumpedSimple
+    params:
+      - {name: tag, type: int, req: true}
+    flags: []
+    rest: 'element_tags: int_list (get_remaining<uword>)'
+    notes: 'create_new_modifier (lines 2450-2586); first token of command selects the modifier type; unknown types fall back to external module lookup'
+
+  - keyword: LumpedScale
+    aliases: []
+    cpp: LumpedScale
+    params:
+      - {name: tag, type: int, req: true}
+    flags: []
+    rest: 'element_tags: int_list (get_remaining<uword>)'
+    notes: 'same shape as LumpedSimple'
+
+  - keyword: Rayleigh
+    aliases: []
+    cpp: Rayleigh
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: a, type: float, req: true}
+      - {name: b, type: float, req: true}
+      - {name: c, type: float, req: true}
+      - {name: d, type: float, req: true}
+    flags: []
+    rest: 'element_tags: int_list (get_remaining<uword>)'
+    notes: 'a, b, c, d parsed in one get_input(command, a, b, c, d) call (lines 2477-2491)'
+
+  - keyword: ElementalLee
+    aliases: []
+    cpp: ElementalLee
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: damping_ratio, type: float, req: false, default: 0.02}
+    flags: []
+    rest: 'element_tags: int_list (get_remaining<uword>)'
+    notes: 'damping_ratio guarded by !command.eof() && !get_input (lines 2492-2506)'
+
+  - keyword: LinearViscosity
+    aliases: []
+    cpp: LinearViscosity
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: mu, type: float, req: true}
+    flags: []
+    rest: 'element_tags: int_list (get_remaining<uword>)'
+    notes: 'mu is the viscosity coefficient (lines 2507-2521)'
+
+  - keyword: ElementalModal
+    aliases: []
+    cpp: ElementalModal
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: a, type: float, req: true}
+      - {name: b, type: float, req: true}
+    flags: []
+    rest: 'element_tags: int_list (get_remaining<uword>)'
+    notes: 'a, b parsed in one get_input(command, a, b) call (lines 2522-2536)'
+
+  - keyword: ElementalNonviscous
+    aliases: []
+    cpp: ElementalNonviscous
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: ele_tag, type: int, req: true}
+    flags: []
+    rest: 'm_r: float_list, m_i: float_list, s_r: float_list, s_i: float_list (get_remaining<double,double,double,double>)'
+    notes: 'parsed with ElementalNonviscousGroup via is_equal_any (lines 2537-2561); element tag wrapped as uvec{ele_tag}; m_i/s_i must be conjugate-compatible (accu check) and kernel must decay to zero'
+
+  - keyword: ElementalNonviscousGroup
+    aliases: []
+    cpp: ElementalNonviscousGroup
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: ele_tag, type: int, req: true}
+    flags: []
+    rest: 'm_r: float_list, m_i: float_list, s_r: float_list, s_i: float_list (get_remaining<double,double,double,double>)'
+    notes: 'same handler branch as ElementalNonviscous; ele_tag is a group tag passed un-wrapped (lines 2559-2560)'
+
+orientations:
+  - keyword: B3DL
+    aliases: []
+    cpp: B3DL
+    params:
+      - {name: type, type: str, req: true}
+      - {name: tag, type: int, req: true}
+      - {name: xyz, type: float_list, req: true, count: 3}
+    flags: []
+    rest: null
+    notes: 'create_new_orientation (lines 2588-2613); first token is the orientation type; xyz is a 3-component vector read via get_input(command, xyz) (NOT get_remaining); unknown types are silently ignored'
+  - keyword: B3DC
+    aliases: []
+    cpp: B3DC
+    params:
+      - {name: type, type: str, req: true}
+      - {name: tag, type: int, req: true}
+      - {name: xyz, type: float_list, req: true, count: 3}
+    flags: []
+    rest: null
+    notes: 'same shared parse as B3DL'
+  - keyword: B3DOSL
+    aliases: []
+    cpp: B3DOSL
+    params:
+      - {name: type, type: str, req: true}
+      - {name: tag, type: int, req: true}
+      - {name: xyz, type: float_list, req: true, count: 3}
+    flags: []
+    rest: null
+    notes: 'same shared parse as B3DL'
+  - keyword: B3DOSC
+    aliases: []
+    cpp: B3DOSC
+    params:
+      - {name: type, type: str, req: true}
+      - {name: tag, type: int, req: true}
+      - {name: xyz, type: float_list, req: true, count: 3}
+    flags: []
+    rest: null
+    notes: 'same shared parse as B3DL'
+
+mass:
+  keyword: mass
+  aliases: []
+  cpp: Mass3D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node, type: int, req: true}
+    - {name: magnitude, type: float, req: true}
+  flags: []
+  rest: 'dof_tags: int_list (get_remaining<uword>; max dof index 6)'
+  notes: 'standalone nodal mass command create_new_mass (lines 2419-2448); always inserts Mass3D(tag, node, magnitude, dof list) regardless of dimension; dof indices limited to 1-6'
+
+dispatch_notes:
+  create_new_element: 'lines 2615-2736; first token = element type string matched case-sensitively by is_equal against 107 keywords above; unknown type delegates to external_module::object(new_element, domain, element_id, command); failure (nullptr or insert failure) logs error'
+  create_new_modifier: 'lines 2450-2586; first token = modifier type; unknown type is treated as an external library/cpp module name: loaded via ExternalModule and invoked with I->new_object(new_modifier, command)'
+  create_new_orientation: 'lines 2588-2613; first token = orientation type (B3DL/B3DC/B3DOSL/B3DOSC only); unrecognized types do nothing and return SUANPAN_SUCCESS'
+  create_new_mass: 'lines 2419-2448; fixed syntax: mass <tag> <node> <magnitude> <dof...>; always Mass3D'

@@ -1,0 +1,587 @@
+# suanPan element parser spec — machine-readable extraction
+# Source of truth: /workspace/Element/ElementParser.cpp
+#   - Handler definitions: lines 1-1400 (new_eb21 spans lines 1377-1415; its tail was read to complete the entry)
+#   - Dispatch strings confirmed in create_new_element() (~lines 2624-2681)
+# NOT covered here: new_eb31os ("EB31OS"), defined at line 1417 (outside the assigned range).
+#
+# Conventions encoded below:
+#   - req: true  -> read via get_input(); missing token is fatal (element not created).
+#   - req: false -> optional (eof-guard pattern or get_optional_input); C++ default in `default`.
+#   - bool params are parsed with is_true(str); C++ default tokens are "false"/"true"/"N" ("N" parses to false).
+#   - node_tags is read as one uvec(N) via get_input(): exactly N space-separated node tags, in order.
+#   - Keyword matching is case-insensitive (is_equal uses _strcmpi); `aliases` lists the other matched
+#     spellings (lowercased) that hit the same handler.
+#   - No handler in this range uses is_equal(para, "XXX") body flags or get_remaining, hence
+#     flags: [] and rest: null throughout. Enumerated tokens are described in params/notes.
+
+- keyword: Allman
+  aliases: []
+  cpp: Allman
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: thickness, type: float, req: false, default: 1.0}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 3 node tags (uvec(3)). thickness uses a non-fatal eof-guard: if omitted, unit thickness assumed; if present but invalid, only a warning is printed and the default 1.0 is kept (element still created).'
+
+- keyword: B21
+  aliases: [b21eh, b21el]
+  cpp: B21 / B21E
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: section_tag, type: int, req: true}
+    - {name: int_pt, type: int, req: false, default: 6}
+    - {name: nonlinear, type: bool, req: false, default: false}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 2 node tags. Variant selected by C++ arg which: B21 -> B21 (which=0), B21EL -> B21E (which=1), B21EH -> B21E (which=2). All three keywords share the identical token stream. nonlinear parsed with is_true.'
+
+- keyword: B21H
+  aliases: []
+  cpp: B21H
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: section_tag, type: int, req: true}
+    - {name: elastic_length, type: float, req: false, default: 0.2}
+    - {name: nonlinear, type: bool, req: false, default: false}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 2 node tags. elastic_length is optional (eof-guard); an invalid token aborts creation. Its error message mentions integration points but it actually reads the elastic length. nonlinear parsed with is_true.'
+
+- keyword: B31
+  aliases: [b31os]
+  cpp: B31 / B31OS
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: section_tag, type: int, req: true}
+    - {name: orientation_tag, type: int, req: true}
+    - {name: int_pt, type: int, req: false, default: 6}
+    - {name: nonlinear, type: bool, req: false, default: false}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 2 node tags. C++ arg if_os selects the class: B31 -> B31, B31OS -> B31OS. Same token stream for both keywords. nonlinear parsed with is_true.'
+
+- keyword: NMB21
+  aliases: [nmb21eh, nmb21el]
+  cpp: NMB21 / NMB21E
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: section_tag, type: int, req: true}
+    - {name: nonlinear, type: bool, req: false, default: false}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 2 node tags. C++ arg which: NMB21 -> NMB21 (which=0), NMB21EL -> NMB21E (which=1), NMB21EH -> NMB21E (which=2). Same token stream. nonlinear parsed with is_true.'
+
+- keyword: NMB31
+  aliases: []
+  cpp: NMB31
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: section_tag, type: int, req: true}
+    - {name: orientation_tag, type: int, req: true}
+    - {name: nonlinear, type: bool, req: false, default: false}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 2 node tags. nonlinear parsed with is_true.'
+
+- keyword: C3D20
+  aliases: []
+  cpp: C3D20
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: reduced_scheme, type: bool, req: false, default: true}
+    - {name: nonlinear, type: bool, req: false, default: false}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 20 node tags (uvec(20)). reduced_scheme C++ default token is "true"; when omitted a debug message notes the standard Irons 14-point integration scheme. Both switches use a non-fatal eof-guard: an invalid token only warns and the default is kept.'
+
+- keyword: C3D4
+  aliases: []
+  cpp: C3D4
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: nonlinear, type: bool, req: false, default: false}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 4 node tags. nonlinear uses a non-fatal eof-guard: an invalid token only warns and false is kept.'
+
+- keyword: C3D8
+  aliases: []
+  cpp: C3D8
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: reduced_scheme, type: str, req: false, default: 'I'}
+    - {name: nonlinear, type: bool, req: false, default: false}
+    - {name: penalty, type: float, req: false, default: 1.0}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 8 node tags. reduced_scheme: only the first character is uppercased and forwarded to the constructor (default "I"; source debug message: standard 4-point Gaussian integration scheme assumed). C3D8R (separate entry) forces "R" and does not read this token. Invalid optional tokens abort creation.'
+
+- keyword: C3D8R
+  aliases: []
+  cpp: C3D8
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: nonlinear, type: bool, req: false, default: false}
+    - {name: penalty, type: float, req: false, default: 1.0}
+  flags: []
+  rest: null
+  notes: 'Same handler as C3D8 with force_reduced=true: reduced integration ("R") is forced and the integration-switch token is NOT read, so the positional stream after material_tag is [nonlinear] then [penalty]. node_tags: exactly 8 node tags.'
+
+- keyword: C3D8I
+  aliases: []
+  cpp: C3D8I
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 8 node tags. No optional tokens.'
+
+- keyword: CAX3
+  aliases: []
+  cpp: CAX3
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: nonlinear, type: bool, req: false, default: false}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 3 node tags. nonlinear uses a non-fatal eof-guard: an invalid token only warns and false is kept.'
+
+- keyword: CAX4
+  aliases: []
+  cpp: CAX4
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 4 node tags. No user-facing nonlinear switch: the constructor is invoked with a hardcoded false.'
+
+- keyword: CAX8
+  aliases: []
+  cpp: CAX8
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 8 node tags. No user-facing nonlinear switch: the constructor is invoked with a hardcoded false.'
+
+- keyword: Contact2D
+  aliases: []
+  cpp: Contact2D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: master_tag, type: int, req: true}
+    - {name: slave_tag, type: int, req: true}
+    - {name: alpha, type: float, req: false, default: 1.0E6}
+  flags: []
+  rest: null
+  notes: 'master_tag and slave_tag are group tags (master read first). alpha is the penalty multiplier, default 1E6.'
+
+- keyword: Contact3D
+  aliases: []
+  cpp: Contact3D
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: master_tag, type: int, req: true}
+    - {name: slave_tag, type: int, req: true}
+    - {name: alpha, type: float, req: false, default: 1.0E6}
+  flags: []
+  rest: null
+  notes: 'master_tag and slave_tag are group tags (master read first). alpha is the penalty multiplier, default 1E6.'
+
+- keyword: CP3
+  aliases: []
+  cpp: CP3
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: thickness, type: float, req: false, default: 1.0}
+    - {name: nonlinear, type: bool, req: false, default: false}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 3 node tags. nonlinear uses a non-fatal eof-guard: an invalid token only warns and false is kept.'
+
+- keyword: CP4
+  aliases: []
+  cpp: CP4
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: thickness, type: float, req: false, default: 1.0}
+    - {name: reduced_scheme, type: bool, req: false, default: false}
+    - {name: nonlinear, type: bool, req: false, default: false}
+    - {name: penalty, type: float, req: false, default: 1.0}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 4 node tags. reduced_scheme default token "false" means full integration (source debug message: full integration assumed); CP4R (separate entry) forces true and skips this token. Constructor arg order: (tag, node_tag, material_tag, thickness, penalty, reduced, nonlinear). Invalid optional tokens abort creation.'
+
+- keyword: CP4R
+  aliases: []
+  cpp: CP4
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: thickness, type: float, req: false, default: 1.0}
+    - {name: nonlinear, type: bool, req: false, default: false}
+    - {name: penalty, type: float, req: false, default: 1.0}
+  flags: []
+  rest: null
+  notes: 'Same handler as CP4 with force_reduced=true: reduced integration is forced (reduced_scheme="true") and the reduced-scheme token is NOT read, so the positional stream after material_tag is [thickness] [nonlinear] [penalty]. node_tags: exactly 4 node tags.'
+
+- keyword: CP4I
+  aliases: []
+  cpp: CP4I
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: thickness, type: float, req: false, default: 1.0}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 4 node tags. Incompatible-mode element; no other tokens.'
+
+- keyword: CP5
+  aliases: []
+  cpp: CP5
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: thickness, type: float, req: false, default: 1.0}
+    - {name: nonlinear, type: bool, req: false, default: false}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 5 node tags. nonlinear C++ default token is "N" (is_true("N") = false); eof-guard, an invalid token aborts creation.'
+
+- keyword: CP6
+  aliases: []
+  cpp: CP6
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: thickness, type: float, req: false, default: 1.0}
+    - {name: nonlinear, type: bool, req: false, default: false}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 6 node tags. nonlinear read via get_optional_input; invalid token aborts creation.'
+
+- keyword: CP7
+  aliases: []
+  cpp: CP7
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: thickness, type: float, req: false, default: 1.0}
+    - {name: nonlinear, type: bool, req: false, default: false}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 7 node tags (the source error message says "Five valid nodes" - it is a typo; uvec(7) is read). nonlinear C++ default token is "N" (false); eof-guard, invalid token aborts creation.'
+
+- keyword: CP8
+  aliases: [cps8]
+  cpp: CP8
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: thickness, type: float, req: false, default: 1.0}
+    - {name: reduced_scheme, type: bool, req: false, default: false}
+    - {name: nonlinear, type: bool, req: false, default: false}
+  flags: []
+  rest: null
+  notes: 'CPS8 is an alias hitting the same handler. node_tags: exactly 8 node tags. reduced_scheme and nonlinear C++ default tokens are "N" (is_true("N") = false); both read via get_optional_input; invalid tokens abort creation.'
+
+- keyword: CPE8
+  aliases: []
+  cpp: CP8
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: reduced_scheme, type: bool, req: false, default: false}
+    - {name: nonlinear, type: bool, req: false, default: false}
+  flags: []
+  rest: null
+  notes: 'Dispatches to the CP8 class with thickness hardcoded 1.0 (no thickness token). node_tags: exactly 8 node tags. reduced_scheme and nonlinear C++ default tokens are "N" (false); both use eof-guards, invalid tokens abort creation.'
+
+- keyword: CPE8R
+  aliases: []
+  cpp: CP8
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: nonlinear, type: bool, req: false, default: false}
+  flags: []
+  rest: null
+  notes: 'Dispatches to the CP8 class with thickness 1.0 and reduced integration hardcoded true (neither token is read). node_tags: exactly 8 node tags. nonlinear C++ default token is "N" (false); eof-guard, invalid token aborts creation.'
+
+- keyword: CINP4
+  aliases: []
+  cpp: CINP4
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: thickness, type: float, req: false, default: 1.0}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 4 node tags.'
+
+- keyword: CIN3D8
+  aliases: []
+  cpp: CIN3D8
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 8 node tags. No optional tokens.'
+
+- keyword: CSMT3
+  aliases: []
+  cpp: CSMT3
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: thickness, type: float, req: false, default: 1.0}
+    - {name: length, type: float, req: false, default: -1.0}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 3 node tags. length default -1. (negative sentinel, likely meaning compute from geometry).'
+
+- keyword: CSMT6
+  aliases: []
+  cpp: CSMT6
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: thickness, type: float, req: false, default: 1.0}
+    - {name: length, type: float, req: false, default: -1.0}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 6 node tags. length default -1. (negative sentinel).'
+
+- keyword: CSMQ4
+  aliases: [csmq5, csmq6, csmq7, csmq8]
+  cpp: CSMQ4 / CSMQ5 / CSMQ6 / CSMQ7 / CSMQ8
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: thickness, type: float, req: false, default: 1.0}
+    - {name: length, type: float, req: false, default: -1.0}
+  flags: []
+  rest: null
+  notes: 'One handler (new_csmq) for CSMQ4-CSMQ8; the node count equals the keyword suffix (4/5/6/7/8) and selects the class CSMQ4/CSMQ5/CSMQ6/CSMQ7/CSMQ8. The source error message always says "Four valid nodes" regardless of the actual count. length default -1. (negative sentinel).'
+
+- keyword: Damper01
+  aliases: [damper03]
+  cpp: Damper01
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: damper_tag, type: int, req: true}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 2 node tags. C++ arg dimension: Damper01 -> 2D, Damper03 -> 3D (same token stream). damper_tag references a damper material.'
+
+- keyword: Damper02
+  aliases: [damper04]
+  cpp: Damper02
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: damper_tag, type: int, req: true}
+    - {name: spring_tag, type: int, req: true}
+    - {name: use_matrix, type: bool, req: false, default: true}
+    - {name: proceed, type: int, req: false, default: 0}
+    - {name: beta, type: float, req: false, default: 0.5}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 2 node tags. C++ arg dimension: Damper02 -> 2D, Damper04 -> 3D. use_matrix C++ default token "true" (matrix formulation on); proceed is an unsigned switch defaulting to 0; beta default 0.5. All three optional params use fatal eof-guards. Constructor arg order: (tag, node_tag, damper_tag, spring_tag, use_matrix, proceed, beta, dimension).'
+
+- keyword: Damper05
+  aliases: [damper06]
+  cpp: Damper05
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: damper_tag, type: int, req: true}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 2 node tags. C++ arg dimension: Damper05 -> 2D, Damper06 -> 3D (same token stream). damper_tag references a damper material.'
+
+- keyword: DC3D4
+  aliases: [dc3d4m]
+  cpp: DC3D4
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: length, type: float, req: true}
+    - {name: rate, type: float, req: true}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 4 node tags. length is the characteristic length, rate is the energy release rate; both required with no default. C++ template arg monolithic: DC3D4 -> false, DC3D4M -> true (same token stream).'
+
+- keyword: DC3D8
+  aliases: [dc3d8m]
+  cpp: DC3D8
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: length, type: float, req: true}
+    - {name: rate, type: float, req: true}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 8 node tags (the source error message says "Four valid nodes" - typo; uvec(8) is read). length is the characteristic length, rate is the energy release rate; both required. C++ template arg monolithic: DC3D8 -> false, DC3D8M -> true.'
+
+- keyword: NonlocalC3D8
+  aliases: []
+  cpp: NonlocalC3D8
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 8 node tags (source error message says "Four valid nodes" - typo). No optional tokens.'
+
+- keyword: DCP3
+  aliases: [dcp3m]
+  cpp: DCP3
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: length, type: float, req: true}
+    - {name: rate, type: float, req: true}
+    - {name: thickness, type: float, req: false, default: 1.0}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 3 node tags. length is the characteristic length, rate is the energy release rate; both required. C++ template arg monolithic: DCP3 -> false, DCP3M -> true (same token stream).'
+
+- keyword: DCP4
+  aliases: [dcp4m]
+  cpp: DCP4
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: length, type: float, req: true}
+    - {name: rate, type: float, req: true}
+    - {name: thickness, type: float, req: false, default: 1.0}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 4 node tags. length is the characteristic length, rate is the energy release rate; both required. C++ template arg monolithic: DCP4 -> false, DCP4M -> true (same token stream).'
+
+- keyword: NonlocalCP4
+  aliases: []
+  cpp: NonlocalCP4
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: thickness, type: float, req: false, default: 1.0}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 4 node tags.'
+
+- keyword: DKT3
+  aliases: []
+  cpp: DKT3
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: thickness, type: float, req: true}
+    - {name: num_ip, type: int, req: false, default: 3}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 3 node tags. thickness is required with no default. num_ip is the number of integration points, default 3.'
+
+- keyword: DKT4
+  aliases: []
+  cpp: DKT4
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: thickness, type: float, req: true}
+    - {name: num_ip, type: int, req: false, default: 3}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 4 node tags. thickness is required with no default. num_ip default 3.'
+
+- keyword: DKTS3
+  aliases: []
+  cpp: DKTS3
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: thickness, type: float, req: true}
+    - {name: num_ip, type: int, req: false, default: 3}
+    - {name: nlgeom, type: bool, req: false, default: false}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 3 node tags. thickness required with no default; num_ip default 3; nlgeom read via get_optional_input (invalid token aborts creation).'
+
+- keyword: Embedded2D
+  aliases: [embedded3d]
+  cpp: Embedded<2u> / Embedded<3u>
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: element_tag, type: int, req: true}
+    - {name: node_tag, type: int, req: true}
+    - {name: alpha, type: float, req: false, default: 1.0E4}
+  flags: []
+  rest: null
+  notes: 'Single handler (new_embedded) with C++ template arg dof: Embedded2D -> Embedded<2u>, Embedded3D -> Embedded<3u> (same token stream). element_tag is the host element tag; node_tag is a single node tag (scalar, not a list); alpha is the penalty value, default 1E4.'
+
+- keyword: EB21
+  aliases: []
+  cpp: EB21
+  params:
+    - {name: tag, type: int, req: true}
+    - {name: node_tags, type: int_list, req: true}
+    - {name: area, type: float, req: true}
+    - {name: moment_inertia, type: float, req: true}
+    - {name: material_tag, type: int, req: true}
+    - {name: nonlinear, type: bool, req: false, default: false}
+  flags: []
+  rest: null
+  notes: 'node_tags: exactly 2 node tags. Positional order matters: material_tag is read AFTER area and moment_inertia (constructor arg order: tag, node_tag, area, moment_inertia, material_tag, nonlinear). nonlinear uses a non-fatal eof-guard: an invalid token only warns and false is kept. (The related EB31OS handler is defined at line 1417, outside the covered range.)'

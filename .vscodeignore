@@ -9,6 +9,7 @@
 examples/**
 node_modules/**
 out/test/**
+python/**
 scripts/**
 src/**
 vsc-extension-quickstart.md

@@ -1,0 +1,527 @@
+# Machine-readable parser spec extracted from suanPan Constraint/ConstraintParser.cpp
+# (source of truth, ~618 lines, rev. 2026).
+#
+# Conventions:
+#   * Keyword matching is case-insensitive everywhere (is_equal / is_equal_any).
+#   * Every dispatch reads the leading keyword token first. Constraints consume their
+#     tag inside each handler; criteria/interactions share a preamble that reads the
+#     keyword and then a tag before dispatching.
+#   * req: true  = get_input failure is fatal (parsing aborts, nothing created).
+#     req: false = guarded by (!command.eof() && !get_input) -> optional, C++ default kept.
+#   * type: dof  = token parsed by parse_dof(); may expand to multiple DOFs (e.g. E -> U1,UR1,UR2,UR3).
+#   * Created objects get start step = current step tag (set_start_step).
+
+constraints:
+  # Any constraint id not listed below is delegated to external_module::object()
+  # (external/dynamic module lookup) together with the remaining command line.
+
+  - keyword: Embed2D
+    aliases: []
+    cpp: Embed<2>
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: element_tag, type: int, req: true}
+      - {name: node_tag, type: int, req: true}
+    flags: []
+    rest: null
+    notes: 'Embeds a single node into a 2D element (new_embed<2u>).'
+
+  - keyword: Embed3D
+    aliases: []
+    cpp: Embed<3>
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: element_tag, type: int, req: true}
+      - {name: node_tag, type: int, req: true}
+    flags: []
+    rest: null
+    notes: 'Embeds a single node into a 3D element (new_embed<3u>).'
+
+  - keyword: FiniteRestitutionWall
+    aliases: [FiniteRestitutionWallPenalty]
+    cpp: 'RestitutionWallPenalty1D / RestitutionWallPenalty2D / RestitutionWallPenalty3D (by parameter count)'
+    params:
+      - {name: tag, type: int, req: true}
+    flags: []
+    rest: |
+      All remaining tokens consumed via get_remaining<double>.
+      If the raw count is 3/5/7/10 a trailing value alpha=1E4 is appended
+      automatically (it lands in the final alpha slot, RC stays user-supplied).
+      Accepted final counts (finite=true):
+        4  -> RestitutionWallPenalty1D(origin, norm, RC, alpha)
+        6  -> RestitutionWallPenalty2D(origin[2], edge[2->3], RC, alpha)
+              finite 2D form: values 3-4 are the edge vector, z=0 appended
+        8  -> RestitutionWallPenalty3D(origin[3], norm[3], RC, alpha)
+        11 -> RestitutionWallPenalty3D(origin[3], norm[3], edge[3], RC, alpha)
+      Any other count -> fatal: "A valid number of parameters is required."
+    notes: 'finite=true, penalty branch. RC = restitution coefficient, clamped to [0,1]. Amplitude tag fixed to 0. Usable in dynamic analysis only (RestitutionWallPenalty::initialize rejects static).'
+
+  - keyword: FiniteRigidWall
+    aliases: [FiniteRigidWallPenalty]
+    cpp: 'RigidWallPenalty1D / RigidWallPenalty2D / RigidWallPenalty3D (by parameter count)'
+    params:
+      - {name: tag, type: int, req: true}
+    flags: []
+    rest: |
+      All remaining tokens consumed via get_remaining<double>.
+      If the raw count is 2/4/6/9 a trailing value alpha=1E4 (penalty factor)
+      is appended automatically.
+      Accepted final counts (finite=true):
+        3  -> RigidWallPenalty1D(origin, norm, alpha)
+        5  -> RigidWallPenalty2D(origin[2], edge[2->3], alpha)
+              finite 2D form: values 3-4 are the edge vector, z=0 appended
+        7  -> RigidWallPenalty3D(origin[3], norm[3], alpha)
+        10 -> RigidWallPenalty3D(origin[3], norm[3], edge[3], alpha)
+      Any other count -> fatal: "A valid number of parameters is required."
+    notes: 'finite=true, penalty=true. Norm is normalised; with the edge form the outer normal is the normalised cross product of the edges. Amplitude tag fixed to 0.'
+
+  - keyword: FiniteRigidWallMultiplier
+    aliases: []
+    cpp: 'RigidWallMultiplier1D / RigidWallMultiplier2D / RigidWallMultiplier3D (by parameter count)'
+    params:
+      - {name: tag, type: int, req: true}
+    flags: []
+    rest: |
+      Identical token layout to FiniteRigidWall (get_remaining<double>, raw
+      count 2/4/6/9 auto-appends alpha=1E4; final counts 3/5/7/10 as there).
+    notes: 'finite=true, penalty=false (Lagrange multiplier variant). Amplitude tag fixed to 0.'
+
+  - keyword: Fix
+    aliases: [PenaltyBC]
+    cpp: PenaltyBC
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: dof, type: dof, req: true}
+      - {name: node_tags, type: int_list, req: true}
+    flags: []
+    rest: null
+    notes: 'new_bc(penalty=true, group=false). Parse order is tag, dof token, node tags (dof precedes the node list). dof token expanded by parse_dof and must yield at least one DOF; at least one node tag required (get_remaining<uword>).'
+
+  - keyword: Fix2
+    aliases: [MultiplierBC]
+    cpp: MultiplierBC
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: dof, type: dof, req: true}
+      - {name: node_tags, type: int_list, req: true}
+    flags: []
+    rest: null
+    notes: 'new_bc(penalty=false, group=false). Same token layout as Fix; multiplier-based BC.'
+
+  - keyword: FixedLength2D
+    aliases: [R2D2]
+    cpp: FixedLength<2>
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_i, type: int, req: true}
+      - {name: node_j, type: int, req: true}
+    flags: []
+    rest: null
+    notes: 'Maintains the distance between two nodes in 2D (new_fixedlength<2u>).'
+
+  - keyword: FixedLength3D
+    aliases: [R3D2]
+    cpp: FixedLength<3>
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_i, type: int, req: true}
+      - {name: node_j, type: int, req: true}
+    flags: []
+    rest: null
+    notes: 'Maintains the distance between two nodes in 3D (new_fixedlength<3u>).'
+
+  - keyword: GroupMultiplierBC
+    aliases: []
+    cpp: GroupMultiplierBC
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: dof, type: dof, req: true}
+      - {name: node_tags, type: int_list, req: true}
+    flags: []
+    rest: null
+    notes: 'new_bc(penalty=false, group=true). Same token layout as Fix2; group variant.'
+
+  - keyword: GroupPenaltyBC
+    aliases: []
+    cpp: GroupPenaltyBC
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: dof, type: dof, req: true}
+      - {name: node_tags, type: int_list, req: true}
+    flags: []
+    rest: null
+    notes: 'new_bc(penalty=true, group=true). Same token layout as Fix; group variant.'
+
+  - keyword: LinearSpring2D
+    aliases: []
+    cpp: LinearSpring2D
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: space, type: float, req: false, default: 1.0}
+      - {name: alpha, type: float, req: false, default: 1.0}
+    flags: []
+    rest: null
+    notes: 'space/alpha each guarded by (!command.eof() && !get_input) so both are optional. Handler dim argument is ignored; always instantiates the 2D class.'
+
+  - keyword: LJPotential2D
+    aliases: []
+    cpp: LJPotential2D
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: space, type: float, req: false, default: 1.0}
+      - {name: alpha, type: float, req: false, default: 1.0}
+    flags: []
+    rest: null
+    notes: 'Lennard-Jones potential in 2D. space/alpha optional (defaults 1.0) as in LinearSpring2D; handler dim argument ignored.'
+
+  - keyword: MaximumForce2D
+    aliases: [MaxForce2D]
+    cpp: MaxForce<2>
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_i, type: int, req: true}
+      - {name: node_j, type: int, req: true}
+      - {name: max_force, type: float, req: true}
+    flags: []
+    rest: null
+    notes: 'Limits the force between two nodes in 2D (new_maxforce<2u>).'
+
+  - keyword: MaximumForce3D
+    aliases: [MaxForce3D]
+    cpp: MaxForce<3>
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_i, type: int, req: true}
+      - {name: node_j, type: int, req: true}
+      - {name: max_force, type: float, req: true}
+    flags: []
+    rest: null
+    notes: 'Limits the force between two nodes in 3D (new_maxforce<3u>).'
+
+  - keyword: MaximumGap2D
+    aliases: [MaxGap2D]
+    cpp: MaximumGap<2>
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_i, type: int, req: true}
+      - {name: node_j, type: int, req: true}
+      - {name: gap, type: float, req: true}
+    flags: []
+    rest: null
+    notes: 'gap = maximum allowed gap in 2D. Note: the fatal message in the source misleadingly reads "A valid minimum gap is required." (copy-paste from new_minimumgap).'
+
+  - keyword: MaximumGap3D
+    aliases: [MaxGap3D]
+    cpp: MaximumGap<3>
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_i, type: int, req: true}
+      - {name: node_j, type: int, req: true}
+      - {name: gap, type: float, req: true}
+    flags: []
+    rest: null
+    notes: 'gap = maximum allowed gap in 3D. Same misleading source error message as MaximumGap2D.'
+
+  - keyword: MinimumGap2D
+    aliases: [MinGap2D]
+    cpp: MinimumGap<2>
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_i, type: int, req: true}
+      - {name: node_j, type: int, req: true}
+      - {name: gap, type: float, req: true}
+    flags: []
+    rest: null
+    notes: 'gap = minimum allowed gap in 2D.'
+
+  - keyword: MinimumGap3D
+    aliases: [MinGap3D]
+    cpp: MinimumGap<3>
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_i, type: int, req: true}
+      - {name: node_j, type: int, req: true}
+      - {name: gap, type: float, req: true}
+    flags: []
+    rest: null
+    notes: 'gap = minimum allowed gap in 3D.'
+
+  - keyword: MPC
+    aliases: []
+    cpp: MPC
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: amplitude, type: int, req: true}
+      - {name: magnitude, type: float, req: true}
+    flags: []
+    rest: |
+      get_remaining_as_tuple<uword, std::string, double>: repeated triples
+      (node tag, dof token, weight) consumed until end of line.
+      Each dof token is expanded by parse_dof and must resolve to exactly
+      one DOF; otherwise parsing fails ("A valid dof is required.").
+    notes: 'Multipoint constraint; each triple contributes (node, dof, weight) to the constraint pack.'
+
+  - keyword: NodeFacet
+    aliases: []
+    cpp: NodeFacet
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true}
+    flags: []
+    rest: null
+    notes: 'Reads exactly 4 node tags (fixed-size uvec(4) via get_input; fatal if fewer). Amplitude tag fixed to 0.'
+
+  - keyword: NodeLine
+    aliases: []
+    cpp: NodeLine
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: true}
+    flags: []
+    rest: null
+    notes: 'Reads exactly 3 node tags (fixed-size uvec(3) via get_input; fatal if fewer). Amplitude tag fixed to 0.'
+
+  - keyword: MolecularDynamics2D
+    aliases: []
+    cpp: MolecularDynamics2D
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: false}
+    flags: []
+    rest: null
+    notes: 'Trailing node tags via get_remaining<uword>; may be empty (no emptiness check in the parser).'
+
+  - keyword: MolecularDynamics3D
+    aliases: []
+    cpp: MolecularDynamics3D
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_tags, type: int_list, req: false}
+    flags: []
+    rest: null
+    notes: 'Trailing node tags via get_remaining<uword>; may be empty (no emptiness check in the parser).'
+
+  - keyword: ParticleCollision2D
+    aliases: []
+    cpp: ParticleCollision2D
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: space, type: float, req: false, default: 1.0}
+      - {name: alpha, type: float, req: false, default: 1.0}
+    flags: []
+    rest: null
+    notes: 'Particle-particle collision in 2D. space/alpha optional (defaults 1.0).'
+
+  - keyword: ParticleCollision3D
+    aliases: []
+    cpp: ParticleCollision3D
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: space, type: float, req: false, default: 1.0}
+      - {name: alpha, type: float, req: false, default: 1.0}
+    flags: []
+    rest: null
+    notes: 'Particle-particle collision in 3D. space/alpha optional (defaults 1.0).'
+
+  - keyword: RestitutionWall
+    aliases: [RestitutionWallPenalty]
+    cpp: 'RestitutionWallPenalty1D / RestitutionWallPenalty2D / RestitutionWallPenalty3D (by parameter count)'
+    params:
+      - {name: tag, type: int, req: true}
+    flags: []
+    rest: |
+      Identical token layout to FiniteRestitutionWall (get_remaining<double>,
+      raw count 3/5/7/10 auto-appends alpha=1E4; final counts 4/6/8/11).
+      With 6 values and finite=false the 2D norm form is used
+      (origin[2], norm[2], RC, alpha).
+    notes: 'finite=false, penalty branch. RC = restitution coefficient, clamped to [0,1]. Amplitude tag fixed to 0. Dynamic analysis only.'
+
+  - keyword: RigidWall
+    aliases: [RigidWallPenalty]
+    cpp: 'RigidWallPenalty1D / RigidWallPenalty2D / RigidWallPenalty3D (by parameter count)'
+    params:
+      - {name: tag, type: int, req: true}
+    flags: []
+    rest: |
+      Identical token layout to FiniteRigidWall except the 2D 5-value form
+      uses the norm (finite=false): RigidWallPenalty2D(origin[2], norm[2], alpha)
+      instead of the edge form. Raw count 2/4/6/9 auto-appends alpha=1E4;
+      final counts 3/5/7/10.
+    notes: 'finite=false, penalty=true. Amplitude tag fixed to 0.'
+
+  - keyword: RigidWallMultiplier
+    aliases: []
+    cpp: 'RigidWallMultiplier1D / RigidWallMultiplier2D / RigidWallMultiplier3D (by parameter count)'
+    params:
+      - {name: tag, type: int, req: true}
+    flags: []
+    rest: |
+      Identical token layout to RigidWall (get_remaining<double>, raw count
+      2/4/6/9 auto-appends alpha=1E4; final counts 3/5/7/10).
+    notes: 'finite=false, penalty=false (multiplier variant). Amplitude tag fixed to 0.'
+
+  - keyword: Sleeve2D
+    aliases: []
+    cpp: Sleeve<2>
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_i, type: int, req: true}
+      - {name: node_j, type: int, req: true}
+      - {name: min_gap, type: float, req: true}
+      - {name: max_gap, type: float, req: true}
+    flags: []
+    rest: null
+    notes: 'Enforces a gap range between two nodes in 2D.'
+
+  - keyword: Sleeve3D
+    aliases: []
+    cpp: Sleeve<3>
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node_i, type: int, req: true}
+      - {name: node_j, type: int, req: true}
+      - {name: min_gap, type: float, req: true}
+      - {name: max_gap, type: float, req: true}
+    flags: []
+    rest: null
+    notes: 'Enforces a gap range between two nodes in 3D.'
+
+criteria:
+  # Shared preamble: criterion type keyword, then tag. Unknown criterion types
+  # fall into the displacement/resistance branch, consume node/dof/limit, match
+  # none of the four names, and fail ("Fail to create new criterion").
+  # Note: any keyword starting with "Logic" (first 5 chars) enters the logic
+  # branch; only the names listed below instantiate a criterion.
+
+  - keyword: LogicAll
+    aliases: [LogicCriterionAll]
+    cpp: LogicCriterionAll
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: criterion_tags, type: int_list, req: true}
+    flags: []
+    rest: null
+    notes: 'Requires at least one criterion tag (get_remaining<unsigned>; fatal if empty). Satisfied when all listed criteria are met.'
+
+  - keyword: LogicAny
+    aliases: [LogicCriterionAny]
+    cpp: LogicCriterionAny
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: criterion_tags, type: int_list, req: true}
+    flags: []
+    rest: null
+    notes: 'Requires at least one criterion tag (get_remaining<unsigned>; fatal if empty). Satisfied when any listed criterion is met.'
+
+  - keyword: StrainEnergyEvolution
+    aliases: []
+    cpp: StrainEnergyEvolution
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: incre_level, type: int, req: true}
+      - {name: final_level, type: int, req: true}
+      - {name: weight, type: float, req: false, default: 1.0}
+      - {name: iteration, type: int, req: false, default: 2}
+      - {name: reactivation, type: int, req: false, default: 10}
+      - {name: propagation, type: float, req: false, default: 0.5}
+      - {name: tolerance, type: float, req: false, default: 1.0e-5}
+    flags: []
+    rest: null
+    notes: 'incre_level and final_level are read by a single two-argument get_input (both required, fatal together). Each optional parameter is guarded by (!command.eof() && !get_input). Source messages: weight of central element, number of iteration, reactivation ratio, propagation factor, tolerance.'
+
+  - keyword: MaxHistory
+    aliases: []
+    cpp: MaxHistory
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: type, type: str, req: true}
+      - {name: limit, type: float, req: true}
+      - {name: element_tags, type: int_list, req: false}
+    flags: []
+    rest: null
+    notes: 'type is a single token converted by to_token() (Recorder/OutputType.h) to an OutputType enumerator: uppercased, matched against enum names, unknown falls back to NL. Trailing element tags via get_remaining<uword>; may be empty. Disables elements whose recorded value exceeds limit.'
+
+  - keyword: MinHistory
+    aliases: []
+    cpp: MinHistory
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: type, type: str, req: true}
+      - {name: limit, type: float, req: true}
+      - {name: element_tags, type: int_list, req: false}
+    flags: []
+    rest: null
+    notes: 'Same token layout as MaxHistory; disables elements whose recorded value falls below limit.'
+
+  - keyword: MaxDisplacement
+    aliases: []
+    cpp: MaxDisplacement
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node, type: int, req: true}
+      - {name: dof, type: dof, req: true}
+      - {name: limit, type: float, req: true}
+    flags: []
+    rest: null
+    notes: 'dof token parsed by parse_dof and must resolve to exactly one DOF; multi-DOF expansions (e.g. E) are rejected.'
+
+  - keyword: MinDisplacement
+    aliases: []
+    cpp: MinDisplacement
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node, type: int, req: true}
+      - {name: dof, type: dof, req: true}
+      - {name: limit, type: float, req: true}
+    flags: []
+    rest: null
+    notes: 'Same token layout as MaxDisplacement; single-DOF requirement applies.'
+
+  - keyword: MaxResistance
+    aliases: []
+    cpp: MaxResistance
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node, type: int, req: true}
+      - {name: dof, type: dof, req: true}
+      - {name: limit, type: float, req: true}
+    flags: []
+    rest: null
+    notes: 'Same token layout as MaxDisplacement (resistance instead of displacement); single-DOF requirement applies.'
+
+  - keyword: MinResistance
+    aliases: []
+    cpp: MinResistance
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: node, type: int, req: true}
+      - {name: dof, type: dof, req: true}
+      - {name: limit, type: float, req: true}
+    flags: []
+    rest: null
+    notes: 'Same token layout as MaxDisplacement (resistance instead of displacement); single-DOF requirement applies.'
+
+interactions:
+  # Shared preamble: interaction type keyword, then tag.
+  # Unknown interaction types match neither branch; the local success flag stays
+  # true, so the command is a silent no-op (nothing inserted, no error raised).
+
+  - keyword: Hertzian
+    aliases: []
+    cpp: Hertzian
+    params:
+      - {name: tag, type: int, req: true}
+    flags: []
+    rest: null
+    notes: 'No additional arguments. Inserted as shared_ptr.'
+
+  - keyword: FixedParticle
+    aliases: []
+    cpp: FixedParticle
+    params:
+      - {name: tag, type: int, req: true}
+      - {name: multiplier, type: float, req: true}
+      - {name: node_tags, type: int_list, req: false}
+    flags: []
+    rest: null
+    notes: 'Trailing node tags collected with get_remaining_as_set<unsigned> into a std::set (duplicates removed); may be empty.'

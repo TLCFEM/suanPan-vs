@@ -1,0 +1,769 @@
+# suanPan MaterialParser.cpp — extraction of lines 1-1957 (handlers new_afc01 .. new_customj2).
+# Source of truth: /workspace/Material/MaterialParser.cpp lines 29-1956.
+# The keyword dispatch (create_new_material) lies BELOW line 1957, so per instructions:
+#   - 'keyword' is derived from the handler name (new_xxx -> Xxx).
+#   - 'aliases' is empty (dispatch spellings not verifiable in range).
+# 'tag' is always the first param after the keyword (int, required, fatal).
+# Optional pattern meanings:
+#   - required   : `if(!get_input(command, x)) return;`  -> missing/invalid token is fatal.
+#   - optional   : `auto x = DEF; if(command.eof()) ... else if(!get_input(...)) return;`
+#                  or `if(!command.eof() && !get_input(...)) return;` or `get_optional_input`
+#                  -> token optional; when present but invalid it is still fatal; default = DEF.
+#   - fixed lists: `vec v(N); get_input(command, v)` reads exactly N tokens, all required;
+#                  `get_optional_input(command, v)` on an initializer-list vec reads up to N
+#                  tokens, each element optional (missing tail keeps the C++ default element).
+# Numeric 'default' values are the EXACT C++ literals, quoted as strings.
+# Convention: density, when accepted, is always the LAST positional param.
+
+- keyword: AFC01
+  aliases: []
+  cpp: AFC
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: t_yield_stress, type: float, req: true, default: null}
+    - {name: t_hardening, type: float, req: true, default: null}
+    - {name: t_unloading, type: float, req: true, default: null}
+    - {name: c_yield_stress, type: float, req: true, default: null}
+    - {name: c_hardening, type: float, req: true, default: null}
+    - {name: c_unloading, type: float, req: true, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: 'AFC(tag, E, t_yield, t_hard, t_unload, c_yield, c_hard, c_unload, 0., density); the degradation argument is hardcoded to 0. (no degradation).'
+
+- keyword: AFC02
+  aliases: []
+  cpp: AFC
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: t_yield_stress, type: float, req: true, default: null}
+    - {name: t_hardening, type: float, req: true, default: null}
+    - {name: t_unloading, type: float, req: true, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: 'AFC with symmetric tension/compression: compression yield/hardening/unloading are set equal to the tension values; degradation argument hardcoded to 0..'
+
+- keyword: AFC03
+  aliases: []
+  cpp: AFC
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: t_yield_stress, type: float, req: true, default: null}
+    - {name: t_hardening, type: float, req: true, default: null}
+    - {name: t_unloading, type: float, req: true, default: null}
+    - {name: c_yield_stress, type: float, req: true, default: null}
+    - {name: c_hardening, type: float, req: true, default: null}
+    - {name: c_unloading, type: float, req: true, default: null}
+    - {name: degrade, type: float, req: false, default: '0.'}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: 'AFC with explicit degradation parameter (default 0. = linear degradation).'
+
+- keyword: ArmstrongFrederick
+  aliases: []
+  cpp: ArmstrongFrederick
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: pool, type: float_list, req: false, len: 6, default: '2E5, .2, 4E2, 0., 5E2, 1E1'}
+  flags: []
+  rest: 'float_list: all remaining doubles; interpreted as alternating (a_i, b_i) hardening pairs; if the count is odd, the LAST token is density (default 0.).'
+  notes: 'pool maps to DataArmstrongFrederick: pool(0)=elastic_modulus, pool(1)=poissons_ratio, pool(2)=yield, pool(3)=hardening, pool(4)=saturation, pool(5)=ms; parsed with get_optional_input so each element is optional keeping its default.'
+
+- keyword: ArmstrongFrederick1D
+  aliases: []
+  cpp: ArmstrongFrederick1D
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: pa, type: float_list, req: false, len: 5, default: '2E5, 4E2, 0., 5E2, 1E1'}
+    - {name: pb, type: float_list, req: false, len: 3, default: '.2, 5E2, 1E1'}
+  flags:
+    - {name: memory (dispatch arg), value_type: bool, default: false, meaning: 'when true, pb (memory, reduction, mr) is parsed (optional, defaults .2/5E2/1E1); when false, pb is zeroed'}
+  rest: 'float_list: all remaining doubles; alternating (a_i, b_i) pairs; odd count -> last token is density (default 0.).'
+  notes: 'pa maps to DataArmstrongFrederick1D: pa(0)=elastic_modulus, pa(1)=yield, pa(2)=hardening, pa(3)=saturation, pa(4)=ms; pb(0)=memory, pb(1)=reduction, pb(2)=mr. Handler signature: new_armstrongfrederick1d(..., const bool memory = false).'
+
+- keyword: Axisymmetric
+  aliases: []
+  cpp: Axisymmetric
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: full_tag, type: int, req: true, default: null}
+  flags: []
+  rest: null
+  notes: 'Wrapper: full_tag is the reference (full 3D) material tag. No density parameter.'
+
+- keyword: AxisymmetricElastic
+  aliases: []
+  cpp: AxisymmetricElastic
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: poissons_ratio, type: float, req: true, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: ''
+
+- keyword: Balloon1D
+  aliases: []
+  cpp: Balloon1D
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: p, type: float_list, req: true, len: 23, default: null}
+    - {name: density, type: float, req: true, default: null}
+  flags:
+    - {name: '-fc', value_type: 'float,float', default: null, meaning: 'pair (a, b) appended to bfc list of BalloonSaturation; repeatable'}
+    - {name: '-ac', value_type: 'float,float', default: null, meaning: 'pair (a, b) appended to bac list; repeatable'}
+    - {name: '-na', value_type: 'float,float', default: null, meaning: 'pair (a, b) appended to bna list; repeatable'}
+    - {name: '-nd', value_type: 'float,float', default: null, meaning: 'pair (a, b) appended to bnd list; repeatable'}
+    - {name: '-memory', value_type: enum(minimum|maximum|mean), default: mean, meaning: 'sets BalloonBuffer::Type (MINIMUM/MAXIMUM/MEAN) used as zr memory type; case-insensitive; invalid value is fatal'}
+  rest: null
+  notes: 'p mapping: p(0)=elastic, p(1)=kr (split ratio), p(2)=zr_size (cast to unsigned), zr_type=-memory value, bound_u={p(3),p(4),p(5),p(6)}, bound_fm={p(7),p(8),p(9),p(10)}, bound_fc={p(11),p(12),p(13),p(14)}, bound_am={p(15),p(16),p(17),p(18)}, bound_ac={p(19),p(20),p(21),p(22)}. Flag loop runs until end of command. Note: density here is parsed with bare get_input (REQUIRED, no eof guard).'
+
+- keyword: Balloon
+  aliases: []
+  cpp: Balloon
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: p, type: float_list, req: true, len: 24, default: null}
+    - {name: density, type: float, req: true, default: null}
+  flags:
+    - {name: '-fc', value_type: 'float,float', default: null, meaning: 'pair (a, b) appended to bfc list of BalloonSaturation; repeatable'}
+    - {name: '-ac', value_type: 'float,float', default: null, meaning: 'pair (a, b) appended to bac list; repeatable'}
+    - {name: '-na', value_type: 'float,float', default: null, meaning: 'pair (a, b) appended to bna list; repeatable'}
+    - {name: '-nd', value_type: 'float,float', default: null, meaning: 'pair (a, b) appended to bnd list; repeatable'}
+    - {name: '-memory', value_type: enum(minimum|maximum|mean), default: mean, meaning: 'sets BalloonBuffer::Type (MINIMUM/MAXIMUM/MEAN) used as zr memory type; case-insensitive; invalid value is fatal'}
+  rest: null
+  notes: 'p mapping: p(0)=elastic, p(1)=poisson, p(2)=kr (split ratio), p(3)=zr_size (cast to unsigned), zr_type=-memory value, bound_u={p(4),p(5),p(6),p(7)}, bound_fm={p(8),p(9),p(10),p(11)}, bound_fc={p(12),p(13),p(14),p(15)}, bound_am={p(16),p(17),p(18),p(19)}, bound_ac={p(20),p(21),p(22),p(23)}. density is REQUIRED (bare get_input).'
+
+- keyword: Bilinear1D
+  aliases: []
+  cpp: Bilinear1D
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: yield_stress, type: float, req: true, default: null}
+    - {name: hardening_ratio, type: float, req: false, default: '0.'}
+    - {name: beta, type: float, req: false, default: '1.'}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: 'beta is passed through suanpan::clamp_unit(beta) before construction (clamped to unit interval); default 1. = isotropic hardening.'
+
+- keyword: BilinearCC
+  aliases: []
+  cpp: BilinearCC
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: poissons_ratio, type: float, req: true, default: null}
+    - {name: beta, type: float, req: true, default: null}
+    - {name: m, type: float, req: true, default: null}
+    - {name: pt, type: float, req: true, default: null}
+    - {name: a, type: float, req: true, default: null}
+    - {name: a_slope, type: float, req: true, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: 'm = radius ratio, pt = tensile yield strength, a = initial size, a_slope = hardening slope.'
+
+- keyword: BilinearDP
+  aliases: []
+  cpp: BilinearDP
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: poissons_ratio, type: float, req: true, default: null}
+    - {name: eta_yield, type: float, req: true, default: null}
+    - {name: eta_flow, type: float, req: true, default: null}
+    - {name: xi, type: float, req: true, default: null}
+    - {name: cohesion, type: float, req: true, default: null}
+    - {name: cohesion_slope, type: float, req: true, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: ''
+
+- keyword: CustomDP
+  aliases: []
+  cpp: CustomDP
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: poissons_ratio, type: float, req: true, default: null}
+    - {name: eta_yield, type: float, req: true, default: null}
+    - {name: eta_flow, type: float, req: true, default: null}
+    - {name: xi, type: float, req: true, default: null}
+    - {name: expression, type: expression_tag, req: true, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: 'expression is an int tag referencing an `expression` object (cohesion function).'
+
+- keyword: BilinearElastic1D
+  aliases: []
+  cpp: BilinearElastic1D
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: yield_stress, type: float, req: true, default: null}
+    - {name: hardening_ratio, type: float, req: false, default: '0.'}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: 'Radius (transition) argument is hardcoded to 0. in this handler.'
+
+- keyword: NLE1D01
+  aliases: []
+  cpp: BilinearElastic1D
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: yield_stress, type: float, req: true, default: null}
+    - {name: hardening_ratio, type: float, req: true, default: null}
+    - {name: radius, type: float, req: true, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: 'Same class as BilinearElastic1D but with a required radius for transition (smoothed transition); hardening_ratio has NO default here (required). Handler name: new_nle1d01.'
+
+- keyword: BilinearOrthotropic
+  aliases: []
+  cpp: BilinearHoffman|BilinearTsaiWu
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: modulus, type: float_list, req: true, len: 6, default: null}
+    - {name: poissons_ratio, type: float_list, req: true, len: 3, default: null}
+    - {name: stress, type: float_list, req: true, len: 9, default: null}
+    - {name: hardening, type: float, req: false, default: '0.'}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags:
+    - {name: is_hoffman (dispatch arg), value_type: bool, default: false, meaning: 'dispatch passes a bool: true -> BilinearHoffman, false -> BilinearTsaiWu'}
+  rest: null
+  notes: 'Handler new_bilinearorthotropic(..., const bool is_hoffman). The dispatch keywords below line 1957 select the class (Hoffman vs Tsai-Wu variant); parsing is identical. stress is the yield stress vector (9 entries).'
+
+- keyword: BilinearJ2
+  aliases: []
+  cpp: BilinearJ2
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: poissons_ratio, type: float, req: true, default: null}
+    - {name: yield_stress, type: float, req: true, default: null}
+    - {name: hardening_ratio, type: float, req: false, default: '0.'}
+    - {name: beta, type: float, req: false, default: '1.'}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: 'Default beta 1. = isotropic hardening.'
+
+- keyword: NonlocalBilinearJ2
+  aliases: []
+  cpp: NonlocalBilinearJ2
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: poissons_ratio, type: float, req: true, default: null}
+    - {name: yield_stress, type: float, req: true, default: null}
+    - {name: plastic_strain_threshold, type: float, req: true, default: null}
+    - {name: evolution_rate, type: float, req: true, default: null}
+    - {name: reference_length, type: float, req: true, default: null}
+    - {name: diffusion_rate, type: float, req: true, default: null}
+    - {name: hardening_ratio, type: float, req: false, default: '0.'}
+    - {name: beta, type: float, req: false, default: '1.'}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: 'The 7 required floats are parsed in a single variadic get_input call (all fatal on failure). The trailing 3 (hardening_ratio, beta, density) are parsed in a single get_optional_input call — all-or-none: if any token remains all three must parse.'
+
+- keyword: BilinearMises1D
+  aliases: []
+  cpp: BilinearMises1D
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: yield_stress, type: float, req: true, default: null}
+    - {name: hardening_ratio, type: float, req: false, default: '0.'}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: ''
+
+- keyword: BilinearOO
+  aliases: []
+  cpp: BilinearOO
+  params:
+    - {name: tag, type: int, req: true, default: null}
+  flags: []
+  rest: 'float_list: 3 to 6 doubles required (error message: "3 to 6 parameters are required.").'
+  notes: 'Pool normalization to 6 args: 3 values [v0,v1,v2] -> [v0,v1,v2,v1,v2,0.]; 4 values [v0,v1,v2,v3] -> [v0,v1,v2,v1,v2,v3]; 5 values -> append 0.; 6 used as-is. Then BilinearOO(tag, pool[0..5]).'
+
+- keyword: BilinearPO
+  aliases: []
+  cpp: BilinearPO
+  params:
+    - {name: tag, type: int, req: true, default: null}
+  flags: []
+  rest: 'float_list: 3 to 6 doubles required (error message: "3 to 6 parameters are required.").'
+  notes: 'Identical normalization to BilinearOO: 3 -> [v0,v1,v2,v1,v2,0.]; 4 -> [v0,v1,v2,v1,v2,v3]; 5 -> append 0.; 6 as-is. Then BilinearPO(tag, pool[0..5]).'
+
+- keyword: BilinearPeric
+  aliases: []
+  cpp: BilinearPeric
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: poissons_ratio, type: float, req: true, default: null}
+    - {name: yield_stress, type: float, req: true, default: null}
+    - {name: hardening, type: float, req: true, default: null}
+    - {name: mu, type: float, req: true, default: null}
+    - {name: epsilon, type: float, req: true, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: ''
+
+- keyword: BlatzKo
+  aliases: []
+  cpp: BlatzKo
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: poissons_ratio, type: float, req: true, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: ''
+
+- keyword: BoucWen
+  aliases: []
+  cpp: BoucWen
+  params:
+    - {name: tag, type: int, req: true, default: null}
+  flags: []
+  rest: 'float_list: 6 or 7 doubles required (error message: "6 or 7 parameters are required."); a 5-token input is silently extended by a trailing 0. to make 6; the whole vec is passed to BoucWen(tag, pool).'
+  notes: ''
+
+- keyword: BWBN
+  aliases: []
+  cpp: BWBN
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: para_pool, type: float_list, req: false, len: 17, default: '2E5, 4E2, 1E-2, 5E-1, 1., 1., 0., 1., 0., 1., 0., 0., 0., 0., 0., 1., 0.'}
+  flags: []
+  rest: null
+  notes: 'Parsed with get_optional_input (per-element optional). Constructor: BWBN(tag, para_pool.head(16), para_pool(16)) — first 16 elements are the model parameters, the 17th element (default 0.) is passed as a separate trailing scalar.'
+
+- keyword: CDP
+  aliases: []
+  cpp: CDP
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: para_pool, type: float_list, req: false, len: 14, default: '3E4, .2, 3., 30., 5E-4, 5E-2, .2, 2., .5, .65, .2, 1.16, .5, 2400E-12'}
+  flags:
+    - {name: CHECK_INPUT (dispatch arg), value_type: bool, default: null, meaning: 'handler is template<bool CHECK_INPUT>; the dispatch (below line 1957) instantiates it with a compile-time bool passed as first CDP ctor argument (e.g. checked vs unchecked CDP variant)'}
+  rest: null
+  notes: 'Parsed with get_optional_input (per-element optional). Constructor: CDP(CHECK_INPUT, tag, pool(0)..pool(13)).'
+
+- keyword: CustomCDP
+  aliases: []
+  cpp: CustomCDP
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: expressions, type: int_list, req: true, len: 2, default: null}
+    - {name: pool, type: float_list, req: false, len: 8, default: '3E4, .2, 5E-4, 5E-2, .2, 1.16, .5, 2400E-12'}
+  flags: []
+  rest: null
+  notes: 'expressions: Col<unsigned>(2) — two expression tags (tension and compression damage/curve expressions), required. pool parsed with get_optional_input. Constructor: CustomCDP(tag, expressions(0), expressions(1), pool(0)..pool(7)).'
+
+- keyword: CDPM2
+  aliases: []
+  cpp: CDPM2
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: para_pool, type: float_list, req: false, len: 15, default: '3E4, .3, 3., 30., .3, .01, .85, .08, .003, 2., 1E-6, 5., 5E-4, 5E-4, 0.'}
+  flags:
+    - {name: damage_type (dispatch arg), value_type: enum(CDPM2::DamageType), default: null, meaning: 'dispatch (below line 1957) passes a CDPM2::DamageType enum (damage law variant, e.g. linear vs exponential) as ctor argument before the last pool element'}
+  rest: null
+  notes: 'Parsed with get_optional_input. Validation (fatal): pool(4) (qh0) must be in [0,1]; pool(4)+pool(5) (hp) must be <= 1. Constructor: CDPM2(tag, pool(0)..pool(13), damage_type, pool(14)).'
+
+- keyword: Concrete21
+  aliases: []
+  cpp: Concrete21
+  params:
+    - {name: tag, type: int, req: true, default: null}
+  flags: []
+  rest: 'float_list: 8 or 9 doubles required ("Eight or nine double inputs are required."); with 8 values the trailing ctor argument is 0., with 9 the 9th value fills it. Concrete21(tag, p0..p7, p8_or_0.).'
+  notes: ''
+
+- keyword: Concrete22
+  aliases: []
+  cpp: Concrete22
+  params:
+    - {name: tag, type: int, req: true, default: null}
+  flags: []
+  rest: 'float_list: 10 or 11 doubles required ("Ten or eleven double inputs are required."); with 10 values the trailing ctor argument is 0., with 11 the 11th value fills it. Concrete22(tag, p0..p9, p10_or_0.).'
+  notes: ''
+
+- keyword: ConcreteCM
+  aliases: []
+  cpp: ConcreteCM
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: peak_stress, type: float, req: true, default: null}
+    - {name: crack_stress, type: float, req: true, default: null}
+    - {name: nc, type: float, req: true, default: null}
+    - {name: nt, type: float, req: true, default: null}
+    - {name: peak_strain, type: float, req: false, default: '2E-3'}
+    - {name: crack_strain, type: float, req: false, default: '1E-4'}
+    - {name: linear_trans, type: bool, req: false, default: 'false'}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: 'nc/nt parsed in one get_input(command, nc, nt) call. linear_trans is read as a str token (default "false") and converted with is_true(). Validation (fatal): |peak_strain| must be > |peak_stress/elastic_modulus| and |crack_strain| must be > |crack_stress/elastic_modulus| (secant stiffness at peaks smaller than initial stiffness).'
+
+- keyword: ConcreteExp
+  aliases: []
+  cpp: ConcreteExp
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: f_t, type: float, req: true, default: null}
+    - {name: a_t, type: float, req: true, default: null}
+    - {name: g_t, type: float, req: true, default: null}
+    - {name: f_c, type: float, req: true, default: null}
+    - {name: a_c, type: float, req: true, default: null}
+    - {name: g_c, type: float, req: true, default: null}
+    - {name: middle_point, type: float, req: false, default: '.2'}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: 'Tension params (f_t, a_t, g_t) parsed in one get_input call; compression params (f_c, a_c, g_c) in another.'
+
+- keyword: ConcreteK4
+  aliases: []
+  cpp: ConcreteK4
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: hardening, type: float, req: true, default: null}
+    - {name: pool, type: float_list, req: true, len: 8, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags:
+    - {name: enable_damage, value_type: bool, default: true, meaning: 'positional trio after density; parsed together via one get_input call only if tokens remain — if any is given, all three are required'}
+    - {name: enable_crack_closing, value_type: bool, default: true, meaning: 'see enable_damage'}
+    - {name: objective_damage, value_type: bool, default: false, meaning: 'see enable_damage'}
+  rest: null
+  notes: 'Constructor: ConcreteK4(tag, elastic_modulus, hardening, pool, density, enable_damage, enable_crack_closing, objective_damage). elastic_modulus/hardening parsed in one get_input call. If the optional flag trio is present but incomplete, parsing fails.'
+
+- keyword: ConcreteTable
+  aliases: []
+  cpp: ConcreteTable
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: t_name, type: str, req: true, default: null}
+    - {name: c_name, type: str, req: true, default: null}
+    - {name: m_point, type: float, req: false, default: '.2'}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: 'NOTE parse order: t_name (tension table file) is read FIRST, then c_name (compression table file), in a single get_input(command, t_name, c_name) call. Both files must exist and load as raw_ascii with exactly 2 columns (fatal otherwise). Constructor: ConcreteTable(tag, -abs(c_table), abs(t_table), m_point, density) — compression table is negated, both are made positive via abs.'
+
+- keyword: ConcreteTsai
+  aliases: []
+  cpp: ConcreteTsai
+  params:
+    - {name: tag, type: int, req: true, default: null}
+  flags: []
+  rest: 'float_list: 8 or 9 doubles required ("Eight or nine double inputs are required."); the 9th value is an optional trailing ctor argument (omitted when 8 given). ConcreteTsai(tag, p0..p7[, p8]).'
+  notes: ''
+
+- keyword: CoulombFriction
+  aliases: []
+  cpp: CoulombFriction
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: max_friction, type: float, req: true, default: null}
+    - {name: factor, type: float, req: true, default: null}
+  flags: []
+  rest: null
+  notes: 'max_friction/factor parsed in one get_input call. No density parameter.'
+
+- keyword: CustomElastic1D
+  aliases: []
+  cpp: CustomElastic1D
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: expression_tag, type: expression_tag, req: true, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: 'density parsed with get_optional_input.'
+
+- keyword: CustomMises1D
+  aliases: []
+  cpp: CustomMises1D
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: k_tag, type: expression_tag, req: true, default: null}
+    - {name: h_tag, type: expression_tag, req: true, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: 'k_tag (isotropic hardening) and h_tag (kinematic hardening) are expression tags parsed in one get_input(command, k_tag, h_tag) call.'
+
+- keyword: Dhakal
+  aliases: []
+  cpp: Dhakal
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: mat_tag, type: int, req: true, default: null}
+    - {name: y_strain, type: float, req: true, default: null}
+    - {name: parameter, type: float, req: true, default: null}
+  flags: []
+  rest: null
+  notes: 'Wrapper around an existing material (mat_tag); y_strain = yield strain, parameter = bar parameter. No density parameter.'
+
+- keyword: DuncanSelig
+  aliases: []
+  cpp: DuncanSelig
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: pool, type: float_list, req: true, len: 9, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: 'pool is parsed with plain get_input (all 9 tokens required, fatal on failure), but carries in-code defaults {14.7, 400.*14.7, .6, 300*14.7, .2, .7, .1, .7, .5} i.e. {14.7, 5880., .6, 4410., .2, .7, .1, .7, .5}.'
+
+- keyword: Sinh1D
+  aliases: []
+  cpp: Sinh1D
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: ''
+
+- keyword: Tanh1D
+  aliases: []
+  cpp: Tanh1D
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: ''
+
+- keyword: TimberPD
+  aliases: []
+  cpp: TimberPD
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: modulus, type: float_list, req: true, len: 6, default: null}
+    - {name: poissons_ratio, type: float_list, req: true, len: 3, default: null}
+    - {name: stress, type: float_list, req: true, len: 9, default: null}
+    - {name: para, type: float_list, req: true, len: 7, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: 'para = hardening parameter vector (7 entries); stress = yield stress vector (9 entries).'
+
+- keyword: AsymmElastic1D
+  aliases: []
+  cpp: AsymmElastic1D
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: t_elastic_modulus, type: float, req: true, default: null}
+    - {name: c_elastic_modulus, type: float, req: true, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: 't/c elastic moduli parsed in one get_input(command, t_elastic_modulus, c_elastic_modulus) call.'
+
+- keyword: Elastic1D
+  aliases: []
+  cpp: Elastic1D
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: ''
+
+- keyword: Elastic2D
+  aliases: []
+  cpp: Elastic2D
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: poissons_ratio, type: float, req: true, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+    - {name: material_type, type: int, req: false, default: 0}
+  flags: []
+  rest: null
+  notes: 'material_type maps to PlaneType: 0 -> PlaneType::S (plane stress, default), any other value -> PlaneType::E (plane strain).'
+
+- keyword: ExpCC
+  aliases: []
+  cpp: ExpCC
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: poissons_ratio, type: float, req: true, default: null}
+    - {name: beta, type: float, req: true, default: null}
+    - {name: m, type: float, req: true, default: null}
+    - {name: pt, type: float, req: true, default: null}
+    - {name: a0, type: float, req: true, default: null}
+    - {name: e0, type: float, req: true, default: null}
+    - {name: lambda, type: float, req: true, default: null}
+    - {name: kappa, type: float, req: true, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: 'The 9 floats are parsed in a single get_input call. Validation (fatal): |lambda| must be >= |kappa| (inelastic slope vs elastic slope). All parameters are passed through fabs() at construction (as is density implicitly by sign convention of CC).'
+
+- keyword: CustomCC
+  aliases: []
+  cpp: CustomCC
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: poissons_ratio, type: float, req: true, default: null}
+    - {name: beta, type: float, req: true, default: null}
+    - {name: m, type: float, req: true, default: null}
+    - {name: pt, type: float, req: true, default: null}
+    - {name: expression, type: expression_tag, req: true, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: 'expression is an int tag referencing an `expression` object (hardening law).'
+
+- keyword: ExpDP
+  aliases: []
+  cpp: ExpDP
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: poissons_ratio, type: float, req: true, default: null}
+    - {name: eta_yield, type: float, req: true, default: null}
+    - {name: eta_flow, type: float, req: true, default: null}
+    - {name: xi, type: float, req: true, default: null}
+    - {name: cohesion, type: float, req: true, default: null}
+    - {name: cohesion_a, type: float, req: true, default: null}
+    - {name: cohesion_b, type: float, req: true, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: '(cohesion, cohesion_a, cohesion_b) parsed in one get_input call.'
+
+- keyword: ExpGurson
+  aliases: []
+  cpp: ExpGurson
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: para_pool, type: float_list, req: false, len: 10, default: '2E2, .3, .4, .2, 1., 1., 0., 1., 0., 0.'}
+  flags: []
+  rest: null
+  notes: 'Parsed with get_optional_input (per-element optional). Constructor: ExpGurson(tag, pool(0)..pool(9)).'
+
+- keyword: CustomGurson
+  aliases: []
+  cpp: CustomGurson
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: expression_tag, type: expression_tag, req: true, default: null}
+    - {name: para_pool, type: float_list, req: false, len: 8, default: '2E2, .3, 1., 1., 0., 1., 0., 0.'}
+  flags: []
+  rest: null
+  notes: 'tag and expression_tag parsed in one get_input(command, tag, expression_tag) call. para_pool parsed with get_optional_input. Constructor: CustomGurson(tag, expression_tag, pool(0)..pool(7)).'
+
+- keyword: ExpGurson1D
+  aliases: []
+  cpp: ExpGurson1D
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: para_pool, type: float_list, req: false, len: 10, default: '2E2, .3, .4, .2, 1., 1., 0., 1., 0., 0.'}
+  flags: []
+  rest: null
+  notes: 'Identical parsing/defaults to ExpGurson; 1D variant class.'
+
+- keyword: CustomGurson1D
+  aliases: []
+  cpp: CustomGurson1D
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: expression_tag, type: expression_tag, req: true, default: null}
+    - {name: para_pool, type: float_list, req: false, len: 8, default: '2E2, .3, 1., 1., 0., 1., 0., 0.'}
+  flags: []
+  rest: null
+  notes: 'Identical parsing/defaults to CustomGurson; 1D variant class.'
+
+- keyword: ExpOrthotropic
+  aliases: []
+  cpp: ExpHoffman|ExpTsaiWu
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: modulus, type: float_list, req: true, len: 6, default: null}
+    - {name: poissons_ratio, type: float_list, req: true, len: 3, default: null}
+    - {name: stress, type: float_list, req: true, len: 9, default: null}
+    - {name: a, type: float, req: true, default: null}
+    - {name: b, type: float, req: true, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags:
+    - {name: is_hoffman (dispatch arg), value_type: bool, default: false, meaning: 'dispatch passes a bool: true -> ExpHoffman, false -> ExpTsaiWu'}
+  rest: null
+  notes: 'Handler new_exporthotropic(..., const bool is_hoffman); parsing identical for both variants. stress = yield stress vector (9 entries); a/b = exponential hardening parameters.'
+
+- keyword: CustomOrthotropic
+  aliases: []
+  cpp: CustomHoffman|CustomTsaiWu
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: modulus, type: float_list, req: true, len: 6, default: null}
+    - {name: poissons_ratio, type: float_list, req: true, len: 3, default: null}
+    - {name: stress, type: float_list, req: true, len: 9, default: null}
+    - {name: expression, type: expression_tag, req: true, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags:
+    - {name: is_hoffman (dispatch arg), value_type: bool, default: false, meaning: 'dispatch passes a bool: true -> CustomHoffman, false -> CustomTsaiWu'}
+  rest: null
+  notes: 'Handler new_customorthotropic(..., const bool is_hoffman); parsing identical for both variants. expression = hardening expression tag.'
+
+- keyword: ExpJ2
+  aliases: []
+  cpp: ExpJ2
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: poissons_ratio, type: float, req: true, default: null}
+    - {name: yield_stress, type: float, req: true, default: null}
+    - {name: a, type: float, req: true, default: null}
+    - {name: b, type: float, req: true, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: '(a, b) = exponential hardening parameters, parsed in one get_input(command, a, b) call.'
+
+- keyword: CustomJ2
+  aliases: []
+  cpp: CustomJ2
+  params:
+    - {name: tag, type: int, req: true, default: null}
+    - {name: elastic_modulus, type: float, req: true, default: null}
+    - {name: poissons_ratio, type: float, req: true, default: null}
+    - {name: k_tag, type: expression_tag, req: true, default: null}
+    - {name: h_tag, type: expression_tag, req: true, default: null}
+    - {name: density, type: float, req: false, default: '0.'}
+  flags: []
+  rest: null
+  notes: 'k_tag (isotropic hardening) and h_tag (kinematic hardening) are expression tags parsed in one get_input(command, k_tag, h_tag) call. This is the last handler fully within lines 1-1957 (ctor at line 1955).'
