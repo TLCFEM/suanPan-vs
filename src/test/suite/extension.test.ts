@@ -91,6 +91,13 @@ suite('command database', () => {
         const argument = database.argumentFor('recorder', values, 4);
         assert.match(argument?.description ?? '', /DoF identifiers/);
     });
+
+    test('recognises the modal force recorder', () => {
+        assert.ok(database.findType('recorder', 'ModalForce'));
+        const values = ['recorder', '2', 'hdf5', 'ModalForce'];
+        const snippet = database.snippetFor('recorder', values);
+        assert.strictEqual(snippet?.prefix, 'modalforce');
+    });
 });
 
 suite('document model', () => {

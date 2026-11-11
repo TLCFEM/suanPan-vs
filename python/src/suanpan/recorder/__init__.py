@@ -23,6 +23,7 @@ __all__ = [
     "GroupElementRecorder",
     "GroupNodeRecorder",
     "GroupSumRecorder",
+    "ModalForceRecorder",
     "ModalRecorder",
     "NodeRecorder",
     "OutputType",
@@ -317,6 +318,27 @@ class ModalRecorder(Recorder):
 
     def to_commands(self) -> list[str]:
         return [" ".join([*self._head(), "Modal", *format_value(self.directions)])]
+
+
+class ModalForceRecorder(Recorder):
+    """``recorder <tag> hdf5 ModalForce`` (C++ ``ModalForceRecorder``).
+
+    Extracts modal elastic forces from an eigenanalysis step.  The recorder
+    writes the assembled nodal force vector and the element force vectors for
+    every extracted mode.  No DoF identifiers are required.
+    """
+
+    keyword = "ModalForce"
+    summary = "recorder of modal elastic forces"
+
+    use_hdf5: bool = Field(
+        default=True,
+        json_schema_extra={"sp_kind": "omit"},
+        description="the ModalForce recorder stores its data in HDF5 format",
+    )
+
+    def to_commands(self) -> list[str]:
+        return [" ".join([*self._head(), "ModalForce"])]
 
 
 class _VariableRecorder(Recorder):

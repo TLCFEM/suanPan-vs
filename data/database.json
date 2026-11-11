@@ -2515,6 +2515,11 @@
      "summary": "recorder of modal properties"
     },
     {
+     "name": "ModalForce",
+     "aliases": [],
+     "summary": "recorder of modal elastic forces"
+    },
+    {
      "name": "Amplitude",
      "aliases": []
     },

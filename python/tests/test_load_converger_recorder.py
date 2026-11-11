@@ -14,7 +14,13 @@ from suanpan.load import (
     Sine,
     Tabular,
 )
-from suanpan.recorder import ElementRecorder, ModalRecorder, NodeRecorder, Recorder
+from suanpan.recorder import (
+    ElementRecorder,
+    ModalForceRecorder,
+    ModalRecorder,
+    NodeRecorder,
+    Recorder,
+)
 
 
 class TestLoads:
@@ -99,6 +105,10 @@ class TestRecorders:
     def test_modal_recorder(self):
         obj = ModalRecorder(tag=3, directions=["U1", "UR3"])
         assert obj.to_commands() == ["recorder 3 hdf5 Modal U1 UR3"]
+
+    def test_modal_force_recorder(self):
+        obj = ModalForceRecorder(tag=4)
+        assert obj.to_commands() == ["recorder 4 hdf5 ModalForce"]
 
     def test_recorder_base_is_abstract(self):
         assert Recorder.sp_abstract is True

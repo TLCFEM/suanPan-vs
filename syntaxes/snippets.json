@@ -5148,6 +5148,14 @@
     "description": "recorder of modal properties",
     "prefix": "modal"
   },
+  "modalforce": {
+    "body": [
+      "recorder ${1:(1)} hdf5 ModalForce",
+      "# (1) int, unique recorder tag"
+    ],
+    "description": "recorder of modal elastic forces",
+    "prefix": "modalforce"
+  },
   "node": {
     "body": [
       "node ${1:(1)} ${2:[2...]}",
