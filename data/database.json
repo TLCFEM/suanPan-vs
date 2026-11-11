@@ -1,5 +1,5 @@
 {
- "version": "4.2.1",
+ "version": "4.3.1",
  "commands": [
   {
    "name": "acceleration",
@@ -2510,6 +2510,11 @@
      "aliases": []
     },
     {
+     "name": "Modal",
+     "aliases": [],
+     "summary": "recorder of modal properties"
+    },
+    {
      "name": "Amplitude",
      "aliases": []
     },
@@ -2986,7 +2991,7 @@
    "name": "sleep",
    "aliases": [],
    "category": null,
-   "summary": ""
+   "summary": "sleep (pause) for a given duration in milliseconds"
   },
   {
    "name": "sleeve2d",
@@ -3152,7 +3157,7 @@
     "variable"
    ],
    "category": null,
-   "summary": "define variables"
+   "summary": "define variables for substitution in later commands"
   },
   {
    "name": "version",

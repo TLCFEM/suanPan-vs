@@ -82,6 +82,15 @@ suite('command database', () => {
         assert.ok(database.designationsFor('EU3D').length > 0);
         assert.ok(database.designationsFor('US2D').length > 0);
     });
+
+    test('recognises the modal recorder and its DoF arguments', () => {
+        assert.ok(database.findType('recorder', 'Modal'));
+        const values = ['recorder', '1', 'hdf5', 'Modal', 'U1', 'U2'];
+        const snippet = database.snippetFor('recorder', values);
+        assert.strictEqual(snippet?.prefix, 'modal');
+        const argument = database.argumentFor('recorder', values, 4);
+        assert.match(argument?.description ?? '', /DoF identifiers/);
+    });
 });
 
 suite('document model', () => {

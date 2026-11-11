@@ -5139,6 +5139,15 @@
     "description": "set minimum step size",
     "prefix": "min_step_size"
   },
+  "modal": {
+    "body": [
+      "recorder ${1:(1)} hdf5 Modal ${2:(2...)}",
+      "# (1) int, unique recorder tag",
+      "# (2...) string, DoF identifiers that define the influence directions"
+    ],
+    "description": "recorder of modal properties",
+    "prefix": "modal"
+  },
   "node": {
     "body": [
       "node ${1:(1)} ${2:[2...]}",

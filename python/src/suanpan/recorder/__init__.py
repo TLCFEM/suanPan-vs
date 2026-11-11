@@ -9,7 +9,8 @@ from enum import StrEnum
 from pydantic import Field, field_validator
 
 from suanpan.base import SuanpanObject, format_value
-from suanpan.toolbox.format import IntList
+from suanpan.toolbox.dof import parse_dof
+from suanpan.toolbox.format import IntList, StrList
 
 __all__ = [
     "AmplitudeRecorder",
@@ -22,6 +23,7 @@ __all__ = [
     "GroupElementRecorder",
     "GroupNodeRecorder",
     "GroupSumRecorder",
+    "ModalRecorder",
     "NodeRecorder",
     "OutputType",
     "Recorder",
@@ -281,6 +283,40 @@ class EigenRecorder(Recorder):
 
     def to_commands(self) -> list[str]:
         return [" ".join([*self._head(), "Eigen"])]
+
+
+class ModalRecorder(Recorder):
+    """``recorder <tag> hdf5 Modal <dof...>`` (C++ ``ModalRecorder``).
+
+    Extracts frequencies, mass-normalised mode shapes, modal participation
+    factors, effective modal masses and modal force responses from an
+    eigenanalysis step.  At least one DoF identifier defining the influence
+    directions is required; duplicated directions are removed by suanPan.
+    """
+
+    keyword = "Modal"
+    summary = "recorder of modal properties"
+
+    use_hdf5: bool = Field(
+        default=True,
+        json_schema_extra={"sp_kind": "omit"},
+        description="the Modal recorder stores its data in HDF5 format",
+    )
+    directions: StrList = Field(
+        min_length=1,
+        description="DoF identifiers defining the influence directions",
+    )
+
+    @field_validator("directions")
+    @classmethod
+    def _check_directions(cls, value: list[str]) -> list[str]:
+        for token in value:
+            if not parse_dof(token):
+                raise ValueError(f"invalid DoF identifier {token!r}")
+        return value
+
+    def to_commands(self) -> list[str]:
+        return [" ".join([*self._head(), "Modal", *format_value(self.directions)])]
 
 
 class _VariableRecorder(Recorder):

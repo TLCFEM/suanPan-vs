@@ -200,6 +200,17 @@ export class CommandDatabase {
             }
         }
 
+        // Recorder types such as `recorder 1 hdf5 Modal U1` place the type
+        // keyword after the optional format word. Reuse a type-specific
+        // snippet (e.g. the Modal influence directions) when one is available.
+        const recorderTypeIndex =
+            lowerVerb === 'recorder' ? 3 : lowerVerb === 'hdf5recorder' || lowerVerb === 'plainrecorder' ? 2 : -1;
+        if (recorderTypeIndex >= 0 && tokens.length > recorderTypeIndex) {
+            for (const candidate of this.snippetsByTrigger.get(tokens[recorderTypeIndex].toLowerCase()) ?? []) {
+                if (candidate.verb === 'recorder') return candidate;
+            }
+        }
+
         if (tokens.length > 1) {
             const byType = this.snippetsByCommandType.get(`${lowerVerb}:${tokens[1].toLowerCase()}`);
             if (byType) return byType;
