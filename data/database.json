@@ -16,54 +16,73 @@
     {
      "name": "Constant",
      "aliases": [],
+     "factory": "new_tag_amplitude<Constant>",
      "summary": "constant amplitude"
     },
     {
      "name": "Ramp",
      "aliases": [],
+     "factory": "new_tag_amplitude<Ramp>",
      "summary": "ramp amplitude"
     },
     {
      "name": "Tabular",
      "aliases": [],
+     "factory": "new_tabular_amplitude",
      "summary": "amplitude using tabular data"
     },
     {
      "name": "TabularSpline",
      "aliases": [],
+     "factory": "new_tabular_spline_amplitude",
      "summary": "amplitude using tabular data with spline interpolation"
     },
     {
      "name": "Decay",
      "aliases": [],
+     "factory": "new_decay_amplitude",
      "summary": "decay amplitude"
     },
     {
      "name": "Linear",
      "aliases": [],
+     "factory": "new_linear_amplitude",
      "summary": "linear amplitude"
     },
     {
      "name": "Combine",
      "aliases": [],
+     "factory": "new_combine_amplitude",
      "summary": "amplitude combining multiple amplitudes"
     },
     {
      "name": "Custom",
      "aliases": [],
+     "factory": "new_custom_amplitude",
      "summary": "amplitude using custom function"
     },
     {
      "name": "Modulated",
-     "aliases": [
-      "Sine",
-      "Cosine"
-     ],
+     "aliases": [],
+     "factory": "new_trigonometric_amplitude<Modulated>",
      "summary": "modulated amplitude"
+    },
+    {
+     "name": "Sine",
+     "aliases": [],
+     "factory": "new_trigonometric_amplitude<Sine>",
+     "summary": "sine amplitude"
+    },
+    {
+     "name": "Cosine",
+     "aliases": [],
+     "factory": "new_trigonometric_amplitude<Cosine>",
+     "summary": "cosine amplitude"
     },
     {
      "name": "NZStrongMotion",
      "aliases": [],
+     "factory": "new_nz_strong_motion",
      "summary": "strong motion amplitude"
     }
    ]
@@ -115,34 +134,40 @@
     {
      "name": "Embed2D",
      "aliases": [],
+     "factory": "new_embed<2u>",
      "summary": "2d embed constraint"
     },
     {
      "name": "Embed3D",
      "aliases": [],
+     "factory": "new_embed<3u>",
      "summary": "3d embed constraint"
     },
     {
      "name": "FiniteRestitutionWall",
      "aliases": [
       "FiniteRestitutionWallPenalty"
-     ]
+     ],
+     "factory": "new_restitutionwall<true>"
     },
     {
      "name": "FiniteRigidWall",
      "aliases": [
       "FiniteRigidWallPenalty"
-     ]
+     ],
+     "factory": "new_rigidwall<true, true>"
     },
     {
      "name": "FiniteRigidWallMultiplier",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_rigidwall<true, false>"
     },
     {
      "name": "Fix",
      "aliases": [
       "PenaltyBC"
      ],
+     "factory": "new_bc<true, false>",
      "summary": "boundary condition"
     },
     {
@@ -150,6 +175,7 @@
      "aliases": [
       "MultiplierBC"
      ],
+     "factory": "new_bc<false, false>",
      "summary": "boundary condition"
     },
     {
@@ -157,6 +183,7 @@
      "aliases": [
       "R2D2"
      ],
+     "factory": "new_fixedlength<2u>",
      "summary": "2d fixed length constraint"
     },
     {
@@ -164,25 +191,30 @@
      "aliases": [
       "R3D2"
      ],
+     "factory": "new_fixedlength<3u>",
      "summary": "3d fixed length constraint"
     },
     {
      "name": "GroupMultiplierBC",
      "aliases": [],
+     "factory": "new_bc<false, true>",
      "summary": "boundary condition"
     },
     {
      "name": "GroupPenaltyBC",
      "aliases": [],
+     "factory": "new_bc<true, true>",
      "summary": "boundary condition"
     },
     {
      "name": "LinearSpring2D",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_linearspring"
     },
     {
      "name": "LJPotential2D",
      "aliases": [],
+     "factory": "new_ljpotential",
      "summary": "2d lj potential constraint"
     },
     {
@@ -190,6 +222,7 @@
      "aliases": [
       "MaxForce2D"
      ],
+     "factory": "new_maxforce<2u>",
      "summary": "2d maximum force constraint"
     },
     {
@@ -197,6 +230,7 @@
      "aliases": [
       "MaxForce3D"
      ],
+     "factory": "new_maxforce<3u>",
      "summary": "3d maximum force constraint"
     },
     {
@@ -204,6 +238,7 @@
      "aliases": [
       "MaxGap2D"
      ],
+     "factory": "new_maximumgap<2u>",
      "summary": "gap constraint"
     },
     {
@@ -211,6 +246,7 @@
      "aliases": [
       "MaxGap3D"
      ],
+     "factory": "new_maximumgap<3u>",
      "summary": "gap constraint"
     },
     {
@@ -218,6 +254,7 @@
      "aliases": [
       "MinGap2D"
      ],
+     "factory": "new_minimumgap<2u>",
      "summary": "gap constraint"
     },
     {
@@ -225,65 +262,78 @@
      "aliases": [
       "MinGap3D"
      ],
+     "factory": "new_minimumgap<3u>",
      "summary": "gap constraint"
     },
     {
      "name": "MPC",
      "aliases": [],
+     "factory": "new_mpc",
      "summary": "multi-point constraint"
     },
     {
      "name": "NodeFacet",
      "aliases": [],
+     "factory": "new_nodefacet",
      "summary": "node facet constraint"
     },
     {
      "name": "NodeLine",
      "aliases": [],
+     "factory": "new_nodeline",
      "summary": "node line constraint"
     },
     {
      "name": "MolecularDynamics2D",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_moleculardynamics<2u>"
     },
     {
      "name": "MolecularDynamics3D",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_moleculardynamics<3u>"
     },
     {
      "name": "ParticleCollision2D",
      "aliases": [],
+     "factory": "new_particlecollision<2>",
      "summary": "2d particle collision constraint"
     },
     {
      "name": "ParticleCollision3D",
      "aliases": [],
+     "factory": "new_particlecollision<3>",
      "summary": "3d particle collision constraint"
     },
     {
      "name": "RestitutionWall",
      "aliases": [
       "RestitutionWallPenalty"
-     ]
+     ],
+     "factory": "new_restitutionwall<false>"
     },
     {
      "name": "RigidWall",
      "aliases": [
       "RigidWallPenalty"
-     ]
+     ],
+     "factory": "new_rigidwall<false, true>"
     },
     {
      "name": "RigidWallMultiplier",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_rigidwall<false, false>"
     },
     {
      "name": "Sleeve2D",
      "aliases": [],
+     "factory": "new_sleeve<2u>",
      "summary": "2d sleeve constraint"
     },
     {
      "name": "Sleeve3D",
      "aliases": [],
+     "factory": "new_sleeve<3u>",
      "summary": "3d sleeve constraint"
     }
    ]
@@ -299,6 +349,7 @@
      "aliases": [
       "LogicConvergerAND"
      ],
+     "factory": "new_logic_converger<LogicConvergerAND>",
      "summary": "apply logical operations to two convergers"
     },
     {
@@ -306,6 +357,7 @@
      "aliases": [
       "LogicConvergerOR"
      ],
+     "factory": "new_logic_converger<LogicConvergerOR>",
      "summary": "apply logical operations to two convergers"
     },
     {
@@ -313,72 +365,86 @@
      "aliases": [
       "LogicConvergerXOR"
      ],
+     "factory": "new_logic_converger<LogicConvergerXOR>",
      "summary": "apply logical operations to two convergers"
-    },
-    {
-     "name": "FixedNumber",
-     "aliases": [],
-     "summary": "fixed number of iterations converger"
     },
     {
      "name": "AbsResidual",
      "aliases": [],
+     "factory": "new_default_converger<AbsResidual>",
      "summary": "converger absresidual"
     },
     {
      "name": "RelResidual",
      "aliases": [],
+     "factory": "new_default_converger<RelResidual>",
      "summary": "converger relresidual"
     },
     {
      "name": "AbsIncreDisp",
      "aliases": [],
+     "factory": "new_default_converger<AbsIncreDisp>",
      "summary": "converger absincredisp"
     },
     {
      "name": "RelIncreDisp",
      "aliases": [],
+     "factory": "new_default_converger<RelIncreDisp>",
      "summary": "converger relincredisp"
     },
     {
      "name": "AbsIncreAcc",
      "aliases": [],
+     "factory": "new_default_converger<AbsIncreAcc>",
      "summary": "converger absincreacc"
     },
     {
      "name": "RelIncreAcc",
      "aliases": [],
+     "factory": "new_default_converger<RelIncreAcc>",
      "summary": "converger relincreacc"
     },
     {
      "name": "AbsDisp",
      "aliases": [],
+     "factory": "new_default_converger<AbsDisp>",
      "summary": "converger absdisp"
     },
     {
      "name": "RelDisp",
      "aliases": [],
+     "factory": "new_default_converger<RelDisp>",
      "summary": "converger reldisp"
     },
     {
      "name": "AbsError",
      "aliases": [],
+     "factory": "new_default_converger<AbsError>",
      "summary": "converger abserror"
     },
     {
      "name": "RelError",
      "aliases": [],
+     "factory": "new_default_converger<RelError>",
      "summary": "converger relerror"
     },
     {
      "name": "AbsIncreEnergy",
      "aliases": [],
+     "factory": "new_default_converger<AbsIncreEnergy>",
      "summary": "converger absincreenergy"
     },
     {
      "name": "RelIncreEnergy",
      "aliases": [],
+     "factory": "new_default_converger<RelIncreEnergy>",
      "summary": "converger relincreenergy"
+    },
+    {
+     "name": "FixedNumber",
+     "aliases": [],
+     "factory": "new_fixed_number",
+     "summary": "fixed number of iterations converger"
     }
    ]
   },
@@ -393,6 +459,7 @@
      "aliases": [
       "LogicCriterionAll"
      ],
+     "factory": "new_logic_criterion<LogicCriterionAll>",
      "summary": "apply logical operations to multiple criteria"
     },
     {
@@ -400,41 +467,49 @@
      "aliases": [
       "LogicCriterionAny"
      ],
+     "factory": "new_logic_criterion<LogicCriterionAny>",
      "summary": "apply logical operations to multiple criteria"
     },
     {
      "name": "StrainEnergyEvolution",
      "aliases": [],
+     "factory": "new_strain_energy_evolution",
      "summary": "strain energy evolution criterion"
     },
     {
      "name": "MaxHistory",
      "aliases": [],
+     "factory": "new_history_criterion<MaxHistory>",
      "summary": "max history criterion"
     },
     {
      "name": "MinHistory",
      "aliases": [],
+     "factory": "new_history_criterion<MinHistory>",
      "summary": "min history criterion"
     },
     {
      "name": "MaxDisplacement",
      "aliases": [],
+     "factory": "new_displacement_criterion<MaxDisplacement>",
      "summary": "max displacement criterion"
     },
     {
      "name": "MinDisplacement",
      "aliases": [],
+     "factory": "new_displacement_criterion<MinDisplacement>",
      "summary": "min displacement criterion"
     },
     {
      "name": "MaxResistance",
      "aliases": [],
+     "factory": "new_displacement_criterion<MaxResistance>",
      "summary": "max resistance criterion"
     },
     {
      "name": "MinResistance",
      "aliases": [],
+     "factory": "new_displacement_criterion<MinResistance>",
      "summary": "min resistance criterion"
     }
    ]
@@ -490,522 +565,620 @@
     {
      "name": "Allman",
      "aliases": [],
+     "factory": "new_allman",
      "summary": "allman's triangle with drilling dofs"
     },
     {
      "name": "B21",
      "aliases": [],
+     "factory": "new_b21<0>",
      "summary": "2d displacement based bernoulli beam"
     },
     {
      "name": "B21EH",
      "aliases": [],
+     "factory": "new_b21<2>",
      "summary": "2d displacement based bernoulli beam with end moment release"
     },
     {
      "name": "B21EL",
      "aliases": [],
+     "factory": "new_b21<1>",
      "summary": "2d displacement based bernoulli beam with end moment release"
     },
     {
      "name": "B21H",
      "aliases": [],
+     "factory": "new_b21h",
      "summary": "2d displacement based bernoulli beam with lumped end hinges"
     },
     {
      "name": "B31",
      "aliases": [],
+     "factory": "new_b31<false>",
      "summary": "3d displacement based bernoulli beam"
     },
     {
      "name": "B31OS",
      "aliases": [],
+     "factory": "new_b31<true>",
      "summary": "3d displacement based beam with open section"
     },
     {
      "name": "C3D4",
      "aliases": [],
+     "factory": "new_c3d4",
      "summary": "linear tetrahedral"
     },
     {
      "name": "C3D8",
      "aliases": [],
+     "factory": "new_c3d8<false>",
      "summary": "linear cube/brick"
     },
     {
      "name": "C3D8I",
      "aliases": [],
+     "factory": "new_c3d8i",
      "summary": "linear cube/brick with incompatible modes"
     },
     {
      "name": "C3D8R",
      "aliases": [],
+     "factory": "new_c3d8<true>",
      "summary": "linear cube/brick with reduced integration"
     },
     {
      "name": "C3D20",
      "aliases": [],
+     "factory": "new_c3d20",
      "summary": "second order cube/brick"
     },
     {
      "name": "CAX3",
      "aliases": [],
+     "factory": "new_cax3",
      "summary": "axisymmetric linear triangle"
     },
     {
      "name": "CAX4",
      "aliases": [],
+     "factory": "new_cax4",
      "summary": "axisymmetric linear quadrilateral"
     },
     {
      "name": "CAX8",
      "aliases": [],
+     "factory": "new_cax8",
      "summary": "axisymmetric quadratic quadrilateral"
     },
     {
      "name": "CIN3D8",
      "aliases": [],
+     "factory": "new_cin3d8",
      "summary": "linear infinite cube/brick"
     },
     {
      "name": "CINP4",
      "aliases": [],
+     "factory": "new_cinp4",
      "summary": "bilinear infinite quadrilateral"
     },
     {
      "name": "Contact2D",
      "aliases": [],
+     "factory": "new_contact2d",
      "summary": "2d node(slave)-line(master) contact element"
     },
     {
      "name": "Contact3D",
      "aliases": [],
+     "factory": "new_contact3d",
      "summary": "3d node(slave)-triangular facet(master) contact element"
     },
     {
      "name": "CP3",
      "aliases": [],
+     "factory": "new_cp3",
      "summary": "constant strain triangle"
     },
     {
      "name": "CP4",
      "aliases": [],
+     "factory": "new_cp4<false>",
      "summary": "bilinear quadrilateral"
     },
     {
      "name": "CP4I",
      "aliases": [],
+     "factory": "new_cp4i",
      "summary": "bilinear incompatible quadrilateral"
     },
     {
      "name": "CP4R",
      "aliases": [],
+     "factory": "new_cp4<true>",
      "summary": "bilinear quadrilateral with reduced integration"
     },
     {
      "name": "CP5",
      "aliases": [],
+     "factory": "new_cp5",
      "summary": "five-point quadrilateral"
     },
     {
      "name": "CP6",
      "aliases": [],
+     "factory": "new_cp6",
      "summary": "quadratic triangle"
     },
     {
      "name": "CP7",
      "aliases": [],
+     "factory": "new_cp7",
      "summary": "seven-point quadrilateral"
     },
     {
      "name": "CP8",
-     "aliases": [],
+     "aliases": [
+      "CPS8"
+     ],
+     "factory": "new_cp8",
      "summary": "second order quadrilateral"
     },
     {
      "name": "CPE8",
      "aliases": [],
+     "factory": "new_cpe8",
      "summary": "second order quadrilateral with unit thickness"
     },
     {
      "name": "CPE8R",
      "aliases": [],
+     "factory": "new_cpe8r",
      "summary": "second order quadrilateral with unit thickness and reduced integration"
-    },
-    {
-     "name": "CPS8",
-     "aliases": [],
-     "summary": "second order quadrilateral"
     },
     {
      "name": "CSMQ4",
      "aliases": [],
+     "factory": "new_csmq<4>",
      "summary": "couple stress mixed quadrilateral"
     },
     {
      "name": "CSMQ5",
      "aliases": [],
+     "factory": "new_csmq<5>",
      "summary": "couple stress mixed quadrilateral"
     },
     {
      "name": "CSMQ6",
      "aliases": [],
+     "factory": "new_csmq<6>",
      "summary": "couple stress mixed quadrilateral"
     },
     {
      "name": "CSMQ7",
      "aliases": [],
+     "factory": "new_csmq<7>",
      "summary": "couple stress mixed quadrilateral"
     },
     {
      "name": "CSMQ8",
      "aliases": [],
+     "factory": "new_csmq<8>",
      "summary": "couple stress mixed quadrilateral"
     },
     {
      "name": "CSMT3",
      "aliases": [],
+     "factory": "new_csmt3",
      "summary": "couple stress mixed triangle"
     },
     {
      "name": "CSMT6",
      "aliases": [],
+     "factory": "new_csmt6",
      "summary": "couple stress mixed triangle"
     },
     {
      "name": "Damper01",
      "aliases": [],
+     "factory": "new_damper01<2>",
      "summary": "2d viscous damper"
     },
     {
      "name": "Damper02",
      "aliases": [],
+     "factory": "new_damper02<2>",
      "summary": "2d viscous damper using the maxwell model"
     },
     {
      "name": "Damper03",
      "aliases": [],
+     "factory": "new_damper01<3>",
      "summary": "3d viscous damper"
     },
     {
      "name": "Damper04",
      "aliases": [],
+     "factory": "new_damper02<3>",
      "summary": "3d viscous damper using the maxwell model"
     },
     {
      "name": "Damper05",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_damper05<2>"
     },
     {
      "name": "Damper06",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_damper05<3>"
     },
     {
      "name": "DC3D4",
      "aliases": [],
+     "factory": "new_dc3d4<false>",
      "summary": "linear tetrahedral with phase field damage"
     },
     {
      "name": "DC3D4M",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_dc3d4<true>"
     },
     {
      "name": "DC3D8",
      "aliases": [],
+     "factory": "new_dc3d8<false>",
      "summary": "linear cube/brick with phase field damage"
     },
     {
      "name": "DC3D8M",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_dc3d8<true>"
     },
     {
      "name": "DCP3",
      "aliases": [],
+     "factory": "new_dcp3<false>",
      "summary": "constant strain triangle with crack phase"
     },
     {
      "name": "DCP3M",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_dcp3<true>"
     },
     {
      "name": "DCP4",
      "aliases": [],
+     "factory": "new_dcp4<false>",
      "summary": "bilinear quadrilateral with crack phase"
     },
     {
      "name": "DCP4M",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_dcp4<true>"
     },
     {
      "name": "DKT3",
      "aliases": [],
+     "factory": "new_dkt3",
      "summary": "dkt triangle plate"
     },
     {
      "name": "DKT4",
      "aliases": [],
+     "factory": "new_dkt4",
      "summary": "dkt quadrilateral plate"
     },
     {
      "name": "DKTS3",
      "aliases": [],
+     "factory": "new_dkts3",
      "summary": "dkt triangle shell"
     },
     {
      "name": "EB21",
      "aliases": [],
+     "factory": "new_eb21",
      "summary": "2d elastic bernoulli beam"
     },
     {
      "name": "EB31OS",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_eb31os"
     },
     {
      "name": "Embedded2D",
      "aliases": [],
+     "factory": "new_embedded<2u>",
      "summary": "2d embedded element"
     },
     {
      "name": "Embedded3D",
      "aliases": [],
+     "factory": "new_embedded<3u>",
      "summary": "3d embedded element"
     },
     {
      "name": "F21",
      "aliases": [],
+     "factory": "new_f21",
      "summary": "2d force based bernoulli beam"
     },
     {
      "name": "F21H",
      "aliases": [],
+     "factory": "new_f21h",
      "summary": "2d force based bernoulli beam with lumped end hinges"
     },
     {
      "name": "F31",
      "aliases": [],
+     "factory": "new_f31",
      "summary": "3d displacement based bernoulli beam"
     },
     {
      "name": "GCMQ",
      "aliases": [],
+     "factory": "new_gcmq",
      "summary": "generalized conforming mixed quadrilateral with drilling dofs"
     },
     {
      "name": "GCMQG",
      "aliases": [],
+     "factory": "new_gcmq<false, 'G'>",
      "summary": "generalized conforming mixed quadrilateral with drilling dofs"
     },
     {
      "name": "GCMQI",
      "aliases": [],
+     "factory": "new_gcmq<false, 'I'>",
      "summary": "generalized conforming mixed quadrilateral with drilling dofs"
     },
     {
      "name": "GCMQL",
      "aliases": [],
+     "factory": "new_gcmq<false, 'L'>",
      "summary": "generalized conforming mixed quadrilateral with drilling dofs"
     },
     {
      "name": "GQ12",
      "aliases": [],
+     "factory": "new_gq12",
      "summary": "quadrilateral with drilling dofs"
     },
     {
      "name": "Joint",
      "aliases": [],
+     "factory": "new_joint",
      "summary": "joint element"
     },
     {
      "name": "Mass",
-     "aliases": [],
+     "aliases": [
+      "Mass3D"
+     ],
+     "factory": "new_mass<3>",
      "summary": "point mass"
     },
     {
      "name": "Mass2D",
      "aliases": [],
+     "factory": "new_mass<2>",
      "summary": "2d mass"
-    },
-    {
-     "name": "Mass3D",
-     "aliases": [],
-     "summary": "3d mass"
     },
     {
      "name": "MassPoint2D",
      "aliases": [],
+     "factory": "new_masspoint<2>",
      "summary": "uniform 2d mass point"
     },
     {
      "name": "MassPoint3D",
      "aliases": [],
+     "factory": "new_masspoint<3>",
      "summary": "uniform 3d mass point"
     },
     {
      "name": "Mindlin",
      "aliases": [],
+     "factory": "new_mindlin",
      "summary": "mindlin plate element"
     },
     {
      "name": "MVLEM",
      "aliases": [],
+     "factory": "new_mvlem",
      "summary": "multiple vertical line element model"
     },
     {
      "name": "NMB21",
      "aliases": [],
+     "factory": "new_nmb21<0>",
      "summary": "2d displacement based bernoulli beam with n-m interaction sections"
     },
     {
      "name": "NMB21EH",
      "aliases": [],
+     "factory": "new_nmb21<2>",
      "summary": "2d displacement based bernoulli beam with n-m interaction sections and high end moment release"
     },
     {
      "name": "NMB21EL",
      "aliases": [],
+     "factory": "new_nmb21<1>",
      "summary": "2d displacement based bernoulli beam with n-m interaction sections and low end moment release"
     },
     {
      "name": "NMB31",
      "aliases": [],
+     "factory": "new_nmb31",
      "summary": "3d displacement based bernoulli beam with n-m interaction sections"
     },
     {
      "name": "NonlocalC3D8",
      "aliases": [],
+     "factory": "new_nonlocalc3d8",
      "summary": "linear cube/brick with one nonlocal variable"
     },
     {
      "name": "NonlocalCP4",
      "aliases": [],
+     "factory": "new_nonlocalcp4",
      "summary": "bilinear quadrilateral with one nonlocal variable"
     },
     {
      "name": "PatchCube",
      "aliases": [],
+     "factory": "new_patchcube",
      "summary": "patch of hexahedron elements"
     },
     {
      "name": "PatchQuad",
      "aliases": [],
+     "factory": "new_patchquad",
      "summary": "patch of quadrilateral elements"
     },
     {
      "name": "PCPE4DC",
      "aliases": [],
+     "factory": "new_pcpedc<4>",
      "summary": "bilinear quadrilateral with pore pressure"
     },
     {
      "name": "PCPE4UC",
      "aliases": [],
+     "factory": "new_pcpeuc<4>",
      "summary": "bilinear quadrilateral with pore pressure"
     },
     {
      "name": "PCPE8DC",
      "aliases": [],
+     "factory": "new_pcpedc<8>",
      "summary": "quadratic quadrilateral with pore pressure"
     },
     {
      "name": "PCPE8UC",
      "aliases": [],
+     "factory": "new_pcpeuc<8>",
      "summary": "quadratic quadrilateral with pore pressure"
     },
     {
      "name": "PS",
      "aliases": [],
+     "factory": "new_ps",
      "summary": "pian-sumihara quadrilateral element"
     },
     {
      "name": "QE2",
      "aliases": [],
+     "factory": "new_qe2",
      "summary": "mixed four-node quadrilateral element"
     },
     {
      "name": "S4",
      "aliases": [],
+     "factory": "new_s4",
      "summary": "four node shell element"
     },
     {
      "name": "SGCMQG",
      "aliases": [],
+     "factory": "new_gcmq<true, 'G'>",
      "summary": "simplified generalized conforming mixed quadrilateral with objective drilling dofs"
     },
     {
      "name": "SGCMQI",
      "aliases": [],
+     "factory": "new_gcmq<true, 'I'>",
      "summary": "simplified generalized conforming mixed quadrilateral with objective drilling dofs"
     },
     {
      "name": "SGCMQL",
      "aliases": [],
+     "factory": "new_gcmq<true, 'L'>",
      "summary": "simplified generalized conforming mixed quadrilateral with objective drilling dofs"
     },
     {
      "name": "SGCMS",
      "aliases": [],
+     "factory": "new_sgcms",
      "summary": "simplified generalized conforming mixed shell element"
     },
     {
      "name": "SingleSection2D",
      "aliases": [],
+     "factory": "new_singlesection<SingleSection2D>",
      "summary": "2d single section"
     },
     {
      "name": "SingleSection3D",
      "aliases": [],
+     "factory": "new_singlesection<SingleSection3D>",
      "summary": "3d single section"
     },
     {
      "name": "SphericalParticle2D",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_sphericalparticle<2u>"
     },
     {
      "name": "SphericalParticle3D",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_sphericalparticle<3u>"
     },
     {
      "name": "Spring01",
      "aliases": [],
+     "factory": "new_spring01",
      "summary": "spring using displacement"
     },
     {
      "name": "Spring02",
      "aliases": [],
+     "factory": "new_spring02",
      "summary": "spring using strain"
     },
     {
      "name": "T2D2",
      "aliases": [],
+     "factory": "new_t2d2",
      "summary": "2d linear truss"
     },
     {
      "name": "T2D2S",
      "aliases": [],
+     "factory": "new_t2d2s",
      "summary": "2d linear truss using section"
     },
     {
      "name": "T3D2",
      "aliases": [],
+     "factory": "new_t3d2",
      "summary": "3d linear truss"
     },
     {
      "name": "T3D2S",
      "aliases": [],
+     "factory": "new_t3d2s",
      "summary": "3d linear truss using section"
     },
     {
      "name": "Tie",
      "aliases": [],
+     "factory": "new_tie",
      "summary": "tie constraint"
     },
     {
      "name": "TranslationConnector2D",
      "aliases": [],
+     "factory": "new_translationconnector<2u>",
      "summary": "define 2d translation connector"
     },
     {
      "name": "TranslationConnector3D",
      "aliases": [],
+     "factory": "new_translationconnector<3u>",
      "summary": "define 3d translation connector"
     }
    ]
@@ -1058,11 +1231,13 @@
    "types": [
     {
      "name": "SimpleScalar",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_simplescalar"
     },
     {
      "name": "SimpleVector",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_simplevector"
     }
    ]
   },
@@ -1157,41 +1332,49 @@
     {
      "name": "nodegroup",
      "aliases": [],
+     "factory": "new_nodegroup",
      "summary": "define node group"
     },
     {
      "name": "customnodegroup",
      "aliases": [],
+     "factory": "new_customnodegroup",
      "summary": "node group based on custom rule"
     },
     {
      "name": "elementgroup",
      "aliases": [],
+     "factory": "new_elementgroup",
      "summary": "element group"
     },
     {
      "name": "groupgroup",
      "aliases": [],
+     "factory": "new_groupgroup",
      "summary": "group of groups"
     },
     {
      "name": "generate",
      "aliases": [],
+     "factory": "new_generate",
      "summary": "generate groups"
     },
     {
      "name": "generatebyrule",
      "aliases": [],
+     "factory": "new_generatebyrule",
      "summary": "generate node groups by rule"
     },
     {
      "name": "generatebypoint",
      "aliases": [],
+     "factory": "new_generatebypoint",
      "summary": "generate node groups based on the line segment"
     },
     {
      "name": "generatebyplane",
      "aliases": [],
+     "factory": "new_generatebyplane",
      "summary": "generate node groups based on plane"
     }
    ]
@@ -1321,61 +1504,73 @@
     {
      "name": "Newmark",
      "aliases": [],
+     "factory": "new_newmark",
      "summary": "newmark time integration"
     },
     {
      "name": "RayleighNewmark",
      "aliases": [],
+     "factory": "new_rayleigh_newmark",
      "summary": "newmark time integration with rayleigh damping model"
     },
     {
      "name": "LeeNewmark",
      "aliases": [],
+     "factory": "new_lee_newmark",
      "summary": "newmark with lee's damping model"
     },
     {
      "name": "LeeNewmarkIterative",
      "aliases": [],
+     "factory": "new_lee_newmark_iterative",
      "summary": "newmark with lee's damping model (full mode) with iterative solving"
     },
     {
      "name": "LeeElementalNewmark",
      "aliases": [],
+     "factory": "new_lee_elemental_newmark",
      "summary": "elemental damping using lee's method"
     },
     {
      "name": "LeeNewmarkFullTrial",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_lee_newmark_full<LeeNewmarkBase::StiffnessType::TRIAL>"
     },
     {
      "name": "LeeNewmarkFullCurrent",
      "aliases": [
       "LeeNewmarkFull"
      ],
+     "factory": "new_lee_newmark_full<LeeNewmarkBase::StiffnessType::CURRENT>",
      "summary": "newmark with lee's damping model (full mode)"
     },
     {
      "name": "LeeNewmarkFullInitial",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_lee_newmark_full<LeeNewmarkBase::StiffnessType::INITIAL>"
     },
     {
      "name": "WilsonPenzienNewmark",
      "aliases": [],
+     "factory": "new_wilson_penzien_newmark",
      "summary": "newmark time integration with wilson penzien damping model"
     },
     {
      "name": "NonviscousNewmark",
      "aliases": [],
+     "factory": "new_nonviscous_newmark",
      "summary": "newmark method with nonviscous damping"
     },
     {
      "name": "UDDNewmark",
      "aliases": [],
+     "factory": "new_udd_newmark",
      "summary": "newmark method with uniform/universal damping (displacement)"
     },
     {
      "name": "UDANewmark",
      "aliases": [],
+     "factory": "new_uda_newmark",
      "summary": "newmark method with uniform/universal damping (acceleration)"
     },
     {
@@ -1383,56 +1578,67 @@
      "aliases": [
       "GeneralisedAlpha"
      ],
+     "factory": "new_generalized_alpha",
      "summary": "generalized-alpha time integration"
     },
     {
      "name": "GSSSSU0",
      "aliases": [],
+     "factory": "new_gssss<GSSSSU0>",
      "summary": "u0 family scheme for gssss"
     },
     {
      "name": "GSSSSV0",
      "aliases": [],
+     "factory": "new_gssss<GSSSSV0>",
      "summary": "v0 family scheme for gssss"
     },
     {
      "name": "GSSSSOptimal",
      "aliases": [],
+     "factory": "new_radius_integrator<GSSSSOptimal>",
      "summary": "optimal scheme for gssss"
     },
     {
      "name": "OALTS",
      "aliases": [],
+     "factory": "new_radius_integrator<OALTS>",
      "summary": "oalts doi:10.1002/nme.6188"
     },
     {
      "name": "BatheTwoStep",
      "aliases": [],
+     "factory": "new_bathe_two_step",
      "summary": "two-step bathe time integration method"
     },
     {
      "name": "Tchamwa",
      "aliases": [],
+     "factory": "new_radius_integrator<Tchamwa>",
      "summary": "tchamwa explicit time integration"
     },
     {
      "name": "BatheExplicit",
      "aliases": [],
+     "factory": "new_radius_integrator<BatheExplicit>",
      "summary": "explicit bathe time integration method"
     },
     {
      "name": "ICL",
      "aliases": [],
+     "factory": "new_icl",
      "summary": "icl explicit time integration"
     },
     {
      "name": "GSSE",
      "aliases": [],
+     "factory": "new_radius_integrator<GSSE>",
      "summary": "gsse explicit time integration"
     },
     {
      "name": "WAT2",
      "aliases": [],
+     "factory": "new_wat2",
      "summary": "generalized explicit RKN time integration"
     },
     {
@@ -1440,6 +1646,7 @@
      "aliases": [
       "GeneralisedAlphaExplicit"
      ],
+     "factory": "new_radius_integrator<GeneralizedAlphaExplicit>",
      "summary": "explicit generalized-alpha time integration"
     }
    ]
@@ -1452,11 +1659,13 @@
    "types": [
     {
      "name": "Hertzian",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_hertzian"
     },
     {
      "name": "FixedParticle",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_fixed_particle"
     }
    ]
   },
@@ -1493,16 +1702,19 @@
     {
      "name": "Acceleration",
      "aliases": [],
+     "factory": "new_acceleration",
      "summary": "acceleration load"
     },
     {
      "name": "BodyForce",
      "aliases": [],
+     "factory": "new_bodyforce<false>",
      "summary": "body force load"
     },
     {
      "name": "Cload",
      "aliases": [],
+     "factory": "new_cload<false>",
      "summary": "concentrated nodal load"
     },
     {
@@ -1511,16 +1723,19 @@
       "Displacement",
       "DispLoad"
      ],
+     "factory": "new_displacement<false>",
      "summary": "prescribed displacement"
     },
     {
      "name": "GroupBodyForce",
      "aliases": [],
+     "factory": "new_bodyforce<true>",
      "summary": "body force load"
     },
     {
      "name": "GroupCload",
      "aliases": [],
+     "factory": "new_cload<true>",
      "summary": "concentrated nodal load"
     },
     {
@@ -1529,16 +1744,19 @@
       "GroupDisplacement",
       "GroupDispLoad"
      ],
+     "factory": "new_displacement<true>",
      "summary": "prescribed displacement"
     },
     {
      "name": "LineUDL2D",
      "aliases": [],
+     "factory": "new_lineudl<2>",
      "summary": "2d linear udl"
     },
     {
      "name": "LineUDL3D",
      "aliases": [],
+     "factory": "new_lineudl<3>",
      "summary": "3d linear udl"
     },
     {
@@ -1547,6 +1765,7 @@
       "RefLoad",
       "RefForce"
      ],
+     "factory": "new_refload<false>",
      "summary": "reference nodal load"
     },
     {
@@ -1554,21 +1773,25 @@
      "aliases": [
       "GroupRefLoad",
       "GroupRefForce"
-     ]
+     ],
+     "factory": "new_refload<true>"
     },
     {
      "name": "SupportAcceleration",
      "aliases": [],
+     "factory": "new_supportmotion<2>",
      "summary": "acceleration load on support"
     },
     {
      "name": "SupportDisplacement",
      "aliases": [],
+     "factory": "new_supportmotion<0>",
      "summary": "displacement load on support"
     },
     {
      "name": "SupportVelocity",
      "aliases": [],
+     "factory": "new_supportmotion<1>",
      "summary": "velocity load on support"
     }
    ]
@@ -1588,6 +1811,7 @@
     {
      "name": "AbaqusCDP",
      "aliases": [],
+     "factory": "new_tablecdp<true>",
      "summary": "abaqus' cdp model with tabular data support"
     },
     {
@@ -1595,6 +1819,7 @@
      "aliases": [
       "AFC01"
      ],
+     "factory": "new_afc01",
      "summary": "asymmetrical friction connection"
     },
     {
@@ -1602,6 +1827,7 @@
      "aliases": [
       "AFCS"
      ],
+     "factory": "new_afc02",
      "summary": "symmetrical friction connection"
     },
     {
@@ -1609,130 +1835,156 @@
      "aliases": [
       "AFCN"
      ],
+     "factory": "new_afc03",
      "summary": "asymmetrical friction connection"
     },
     {
      "name": "AFCO1D",
      "aliases": [],
+     "factory": "new_armstrongfrederick1d<true>",
      "summary": "uniaxial armstrong frederick material with chaboche type strain memory"
     },
     {
      "name": "ArmstrongFrederick",
      "aliases": [],
+     "factory": "new_armstrongfrederick",
      "summary": "armstrong frederick material (v3.6 and later)"
     },
     {
      "name": "ArmstrongFrederick1D",
      "aliases": [],
+     "factory": "new_armstrongfrederick1d<false>",
      "summary": "uniaxial armstrong frederick material (v3.6 and later)"
     },
     {
      "name": "AsymmElastic1D",
      "aliases": [],
+     "factory": "new_asymmelastic1d",
      "summary": "uniaxial asymmetric elastic material"
     },
     {
      "name": "Axisymmetric",
      "aliases": [],
+     "factory": "new_axisymmetric",
      "summary": "axisymmetric wrapper"
     },
     {
      "name": "AxisymmetricElastic",
      "aliases": [],
+     "factory": "new_axisymmetricelastic",
      "summary": "axisymmetric elastic material"
     },
     {
      "name": "Balloon",
      "aliases": [],
+     "factory": "new_balloon",
      "summary": "balloon-v1 model"
     },
     {
      "name": "Balloon1D",
      "aliases": [],
+     "factory": "new_balloon1d",
      "summary": "uniaxial balloon-v1 model"
     },
     {
      "name": "Bilinear1D",
      "aliases": [],
+     "factory": "new_bilinear1d",
      "summary": "uniaxial bilinear material"
     },
     {
      "name": "BilinearCC",
      "aliases": [],
+     "factory": "new_bilinearcc",
      "summary": "cam-clay model with bilinear hardening model"
     },
     {
      "name": "BilinearDP",
      "aliases": [],
+     "factory": "new_bilineardp",
      "summary": "dp model with bilinear hardening function"
     },
     {
      "name": "BilinearElastic1D",
      "aliases": [],
+     "factory": "new_bilinearelastic1d",
      "summary": "uniaxial bilinear elastic material"
     },
     {
      "name": "BilinearHoffman",
      "aliases": [],
+     "factory": "new_bilinearorthotropic<true>",
      "summary": "bilinear hoffman material"
     },
     {
      "name": "BilinearJ2",
      "aliases": [],
+     "factory": "new_bilinearj2",
      "summary": "bilinear j2 material"
     },
     {
      "name": "NonlocalBilinearJ2",
      "aliases": [],
+     "factory": "new_nonlocalbilinearj2",
      "summary": "bilinear j2 material with nonlocal damage"
     },
     {
      "name": "BilinearMises1D",
      "aliases": [],
+     "factory": "new_bilinearmises1d",
      "summary": "uniaxial bilinear material with no kinematic hardening"
     },
     {
      "name": "BilinearOO",
      "aliases": [],
+     "factory": "new_bilinearoo",
      "summary": "bilinear origin oriented model"
     },
     {
      "name": "BilinearPeric",
      "aliases": [],
+     "factory": "new_bilinearperic",
      "summary": "bilinear peric viscoplastic material"
     },
     {
      "name": "BilinearPO",
      "aliases": [],
+     "factory": "new_bilinearpo",
      "summary": "bilinear peak oriented model"
     },
     {
      "name": "BilinearTsaiWu",
      "aliases": [],
+     "factory": "new_bilinearorthotropic<false>",
      "summary": "bilinear tsai-wu material"
     },
     {
      "name": "BilinearViscosity",
      "aliases": [],
+     "factory": "new_bilinearviscosity",
      "summary": "viscosity with bilinear hardening"
     },
     {
      "name": "BlatzKo",
      "aliases": [],
+     "factory": "new_blatzko",
      "summary": "blatz ko hyperelastic material"
     },
     {
      "name": "BoucWen",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_boucwen"
     },
     {
      "name": "BWBN",
      "aliases": [],
+     "factory": "new_bwbn",
      "summary": "bouc-wen-baber-noori model"
     },
     {
      "name": "CDP",
      "aliases": [],
+     "factory": "new_cdp<true>",
      "summary": "concrete damage plasticity material"
     },
     {
@@ -1740,144 +1992,173 @@
      "aliases": [
       "CDPM2ISO"
      ],
+     "factory": "new_cdpm2<CDPM2::DamageType::ISOTROPIC>",
      "summary": "cdpm2 isotropic damage"
     },
     {
      "name": "CDPM2ANISO",
      "aliases": [],
+     "factory": "new_cdpm2<CDPM2::DamageType::ANISOTROPIC>",
      "summary": "cdpm2 anisotropic damage"
     },
     {
      "name": "CDPM2NO",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_cdpm2<CDPM2::DamageType::NODAMAGE>"
     },
     {
      "name": "Concrete21",
      "aliases": [],
+     "factory": "new_concrete21",
      "summary": "rotating crack concrete material"
     },
     {
      "name": "Concrete22",
      "aliases": [],
+     "factory": "new_concrete22",
      "summary": "fixed crack concrete material"
     },
     {
      "name": "ConcreteCM",
      "aliases": [],
+     "factory": "new_concretecm",
      "summary": "chang-mander concrete model"
     },
     {
      "name": "ConcreteExp",
      "aliases": [],
+     "factory": "new_concreteexp",
      "summary": "objective concrete model"
     },
     {
      "name": "ConcreteK4",
      "aliases": [],
+     "factory": "new_concretek4",
      "summary": "k4 concrete model"
     },
     {
      "name": "ConcreteTable",
      "aliases": [],
+     "factory": "new_concretetable",
      "summary": "concrete material with table input"
     },
     {
      "name": "ConcreteTsai",
      "aliases": [],
+     "factory": "new_concretetsai",
      "summary": "uniaxial concrete model using tsai's equation"
     },
     {
      "name": "CoulombFriction",
      "aliases": [],
+     "factory": "new_coulombfriction",
      "summary": "Coulomb friction material"
     },
     {
      "name": "CustomCC",
      "aliases": [],
+     "factory": "new_customcc",
      "summary": "cam-clay model with custom hardening function"
     },
     {
      "name": "CustomCDP",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_customcdp"
     },
     {
      "name": "CustomDP",
      "aliases": [],
+     "factory": "new_customdp",
      "summary": "dp model with custom hardening function"
     },
     {
      "name": "CustomElastic1D",
      "aliases": [],
+     "factory": "new_customelastic1d",
      "summary": "uniaxial elastic material with custom function"
     },
     {
      "name": "CustomGurson",
      "aliases": [],
+     "factory": "new_customgurson",
      "summary": "gurson model using custom hardening function"
     },
     {
      "name": "CustomGurson1D",
      "aliases": [],
+     "factory": "new_customgurson1d",
      "summary": "uniaxial gurson model using custom hardening function"
     },
     {
      "name": "CustomHoffman",
      "aliases": [],
+     "factory": "new_customorthotropic<true>",
      "summary": "hoffman model with custom isotropic hardening"
     },
     {
      "name": "CustomJ2",
      "aliases": [],
+     "factory": "new_customj2",
      "summary": "j2 model with exponential isotropic hardening"
     },
     {
      "name": "CustomMises1D",
      "aliases": [],
+     "factory": "new_custommises1d",
      "summary": "uniaxial j2 model with custom hardening function"
     },
     {
      "name": "CustomStrainDegradation",
      "aliases": [],
+     "factory": "new_customdegradation<true>",
      "summary": "uniaxial degradation with custom rules"
     },
     {
      "name": "CustomStressDegradation",
      "aliases": [],
+     "factory": "new_customdegradation<false>",
      "summary": "uniaxial degradation with custom rules"
     },
     {
      "name": "CustomTsaiWu",
      "aliases": [],
+     "factory": "new_customorthotropic<false>",
      "summary": "tsai-wu model with custom isotropic hardening"
     },
     {
      "name": "CustomViscosity",
      "aliases": [],
+     "factory": "new_customviscosity",
      "summary": "viscosity with custom hardening"
     },
     {
      "name": "DafaliasManzari",
      "aliases": [],
+     "factory": "new_dafaliasmanzari",
      "summary": "dafalias manzari sand material"
     },
     {
      "name": "Dhakal",
      "aliases": [],
+     "factory": "new_dhakal",
      "summary": "dhakal rebar degradation model"
     },
     {
      "name": "DuncanSelig",
      "aliases": [],
+     "factory": "new_duncanselig",
      "summary": "duncan selig plane strain soil model"
     },
     {
      "name": "Elastic1D",
      "aliases": [],
+     "factory": "new_elastic1d",
      "summary": "uniaxial elastic material"
     },
     {
      "name": "Elastic2D",
      "aliases": [],
+     "factory": "new_elastic2d",
      "summary": "2d elastic material"
     },
     {
@@ -1885,6 +2166,7 @@
      "aliases": [
       "IsotropicElastic3D"
      ],
+     "factory": "new_isotropicelastic3d",
      "summary": "3d isotropic elastic material"
     },
     {
@@ -1892,347 +2174,417 @@
      "aliases": [
       "NonlocalIsotropicElastic3D"
      ],
+     "factory": "new_nonlocalisotropicelastic3d",
      "summary": "3d isotropic elastic material with one nonlocal variable"
     },
     {
      "name": "ElasticOS",
      "aliases": [],
+     "factory": "new_elasticos",
      "summary": "elastic material or beam sections"
     },
     {
      "name": "ExpCC",
      "aliases": [],
+     "factory": "new_expcc",
      "summary": "cam-clay model with exponential hardening"
     },
     {
      "name": "ExpDP",
      "aliases": [],
+     "factory": "new_expdp",
      "summary": "dp model with exponential hardening function"
     },
     {
      "name": "ExpGurson",
      "aliases": [],
+     "factory": "new_expgurson",
      "summary": "gurson model using exponential hardening function"
     },
     {
      "name": "ExpGurson1D",
      "aliases": [],
+     "factory": "new_expgurson1d",
      "summary": "uniaxial gurson model using exponential hardening function"
     },
     {
      "name": "ExpHoffman",
      "aliases": [],
+     "factory": "new_exporthotropic<true>",
      "summary": "hoffman model with exponential isotropic hardening"
     },
     {
      "name": "ExpJ2",
      "aliases": [],
+     "factory": "new_expj2",
      "summary": "j2 model with exponential isotropic hardening"
     },
     {
      "name": "ExpMises1D",
      "aliases": [],
+     "factory": "new_expmises1d",
      "summary": "uniaxial j2 material with exponential isotropic hardening"
     },
     {
      "name": "ExpTsaiWu",
      "aliases": [],
+     "factory": "new_exporthotropic<false>",
      "summary": "tsai-wu model with exponential isotropic hardening"
     },
     {
      "name": "Flag01",
      "aliases": [],
+     "factory": "new_flag01",
      "summary": "flag shaped material"
     },
     {
      "name": "Flag02",
      "aliases": [],
+     "factory": "new_flag02",
      "summary": "flag shaped material"
     },
     {
      "name": "Fluid",
      "aliases": [],
+     "factory": "new_fluid",
      "summary": "fluid material"
     },
     {
      "name": "Gap01",
      "aliases": [],
+     "factory": "new_gap01",
      "summary": "a gap material"
     },
     {
      "name": "Kelvin",
      "aliases": [],
+     "factory": "new_kelvin",
      "summary": "kelvin material"
     },
     {
      "name": "Laminated",
      "aliases": [],
+     "factory": "new_laminated",
      "summary": "parallel wrapper for 2d material models"
     },
     {
      "name": "LinearDamage",
      "aliases": [],
+     "factory": "new_lineardamage",
      "summary": "linear damage model"
     },
     {
      "name": "Maxwell",
      "aliases": [],
+     "factory": "new_maxwell",
      "summary": "maxwell material"
     },
     {
      "name": "MooneyRivlin",
      "aliases": [],
+     "factory": "new_mooneyrivlin",
      "summary": "mooney rivlin rubber material"
     },
     {
      "name": "MPF",
      "aliases": [],
+     "factory": "new_mpf",
      "summary": "menegotto-pinto-filippou steel model"
     },
     {
      "name": "MultilinearElastic1D",
      "aliases": [],
+     "factory": "new_multilinearelastic1d",
      "summary": "uniaxial multilinear elastic material"
     },
     {
      "name": "MultilinearJ2",
      "aliases": [],
+     "factory": "new_multilinearj2",
      "summary": "multilinear j2 material"
     },
     {
      "name": "MultilinearMises1D",
      "aliases": [],
+     "factory": "new_multilinearmises1d",
      "summary": "uniaxial multilinear j2 material"
     },
     {
      "name": "MultilinearOO",
      "aliases": [],
+     "factory": "new_multilinearoo",
      "summary": "multilinear origin oriented hysteresis model"
     },
     {
      "name": "MultilinearPO",
      "aliases": [],
+     "factory": "new_multilinearpo",
      "summary": "multilinear peak oriented hysteresis model"
     },
     {
      "name": "MultiSubloading1D",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_multisubloading1d"
     },
     {
      "name": "NLE1D01",
      "aliases": [],
+     "factory": "new_nle1d01",
      "summary": "nonlinear elastic 1d type 01"
     },
     {
      "name": "NLE3D01",
      "aliases": [],
+     "factory": "new_nle3d01",
      "summary": "3d nonlinear elastic material"
     },
     {
      "name": "Nonviscous01",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_nonviscous01"
     },
     {
      "name": "OrthotropicElastic3D",
      "aliases": [],
+     "factory": "new_orthotropicelastic3d",
      "summary": "3d orthotropic elastic material"
     },
     {
      "name": "OS146",
      "aliases": [],
+     "factory": "new_wrapper<OS146>",
      "summary": "wrapper 3d -> os"
     },
     {
      "name": "OS146S",
      "aliases": [],
+     "factory": "new_os146s",
      "summary": "wrapper 1d -> os"
     },
     {
      "name": "ParabolicCC",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_paraboliccc"
     },
     {
      "name": "Parallel",
      "aliases": [],
+     "factory": "new_parallel",
      "summary": "parallel wrapper for 1d material models"
     },
     {
      "name": "PlaneStrain",
      "aliases": [],
+     "factory": "new_planestrain<0>",
      "summary": "plane strain wrapper"
     },
     {
      "name": "PlaneStress",
      "aliases": [],
+     "factory": "new_wrapper<PlaneStress>",
      "summary": "plane stress wrapper"
     },
     {
      "name": "PlaneSymmetric13",
      "aliases": [],
+     "factory": "new_planestrain<1>",
      "summary": "plane wrapper"
     },
     {
      "name": "PlaneSymmetric23",
      "aliases": [],
+     "factory": "new_planestrain<2>",
      "summary": "plane wrapper"
     },
     {
      "name": "PolyElastic1D",
      "aliases": [],
+     "factory": "new_polyelastic1d",
      "summary": "polynomial based uniaxial nonlinear elastic"
     },
     {
      "name": "PolyJ2",
      "aliases": [],
+     "factory": "new_polyj2",
      "summary": "j2 material with polynomial hardening"
     },
     {
      "name": "Prestrain",
      "aliases": [],
+     "factory": "new_prestrain",
      "summary": "prestrain wrapper for uniaxial materials"
     },
     {
      "name": "RambergOsgood",
      "aliases": [],
+     "factory": "new_rambergosgood",
      "summary": "ramberg-osgood steel model"
     },
     {
      "name": "Rebar2D",
      "aliases": [],
+     "factory": "new_rebar2d",
      "summary": "2d rebar layer"
     },
     {
      "name": "Rebar3D",
      "aliases": [],
+     "factory": "new_rebar3d",
      "summary": "3d rebar layer"
     },
     {
      "name": "Rotation2D",
      "aliases": [],
+     "factory": "new_rotation2d",
      "summary": "2d rotation wrapper"
     },
     {
      "name": "Rotation3D",
      "aliases": [],
+     "factory": "new_rotation3d",
      "summary": "3d rotation wrapper"
     },
     {
      "name": "Sequential",
      "aliases": [],
+     "factory": "new_sequential",
      "summary": "uniaxial wrapper"
     },
     {
      "name": "SimpleSand",
      "aliases": [],
+     "factory": "new_simplesand",
      "summary": "simple sand material"
     },
     {
      "name": "Sinh1D",
      "aliases": [],
+     "factory": "new_sinh1d",
      "summary": "uniaxial nonlinear elastic material using sinh"
     },
     {
      "name": "SlipLock",
      "aliases": [],
+     "factory": "new_sliplock",
      "summary": "slip-lock material"
     },
     {
      "name": "Stacked",
      "aliases": [],
+     "factory": "new_stacked",
      "summary": "parallel wrapper for 3d material models"
     },
     {
      "name": "SteelBRB",
      "aliases": [],
+     "factory": "new_steelbrb",
      "summary": "steel model for modelling brb"
     },
     {
      "name": "Subloading",
      "aliases": [],
+     "factory": "new_subloading",
      "summary": "3d subloading surface model for metal"
     },
     {
      "name": "Subloading1D",
      "aliases": [],
+     "factory": "new_subloading1d",
      "summary": "uniaxial subloading surface model for metal"
     },
     {
      "name": "SubloadingViscous1D",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_subloadingviscous1d"
     },
     {
      "name": "Substepping",
      "aliases": [],
+     "factory": "new_substepping",
      "summary": "substepping wrapper"
     },
     {
      "name": "TableCDP",
      "aliases": [],
+     "factory": "new_tablecdp<false>",
      "summary": "cdp model with tabular data support"
     },
     {
      "name": "TableGurson",
      "aliases": [],
+     "factory": "new_tablegurson",
      "summary": "gurson material with table hardening"
     },
     {
      "name": "Tanh1D",
      "aliases": [],
+     "factory": "new_tanh1d",
      "summary": "uniaxial nonlinear elastic material using tanh"
     },
     {
      "name": "TimberPD",
      "aliases": [],
+     "factory": "new_timberpd",
      "summary": "plastic damage model for timber"
     },
     {
      "name": "TrilinearStrainDegradation",
      "aliases": [],
+     "factory": "new_trilinearstraindegradation",
      "summary": "trilinear strain degradation"
     },
     {
      "name": "Trivial",
      "aliases": [],
+     "factory": "new_trivial",
      "summary": "trivial material"
     },
     {
      "name": "Uniaxial",
      "aliases": [],
+     "factory": "new_wrapper<Uniaxial>",
      "summary": "uniaxial wrapper"
     },
     {
      "name": "VAFCRP",
      "aliases": [],
+     "factory": "new_vafcrp",
      "summary": "vafcrp material (v3.6 and later)"
     },
     {
      "name": "VAFCRP1D",
      "aliases": [],
+     "factory": "new_vafcrp1d",
      "summary": "uniaxial vafcrp material (v3.6 and later)"
     },
     {
      "name": "Viscosity01",
      "aliases": [],
+     "factory": "new_viscosity01",
      "summary": "linear viscosity material"
     },
     {
      "name": "Viscosity02",
      "aliases": [],
+     "factory": "new_viscosity02",
      "summary": "nonlinear viscosity material"
     },
     {
      "name": "Yeoh",
      "aliases": [],
+     "factory": "new_yeoh",
      "summary": "yeoh material"
     },
     {
      "name": "YLD0418P",
      "aliases": [],
+     "factory": "new_yld0418p<false>",
      "summary": "anisotropic yld0418p material"
     },
     {
      "name": "YLD0418PISO",
      "aliases": [],
+     "factory": "new_yld0418p<true>",
      "summary": "isotropic yld0418p material"
     }
    ]
@@ -2330,38 +2682,48 @@
     {
      "name": "LumpedSimple",
      "aliases": [],
+     "factory": "new_lumped_simple",
      "summary": "lumped mass simple"
     },
     {
      "name": "LumpedScale",
      "aliases": [],
+     "factory": "new_lumped_scale",
      "summary": "lumped mass by scaling diagonals"
     },
     {
      "name": "Rayleigh",
      "aliases": [],
+     "factory": "new_rayleigh_modifier",
      "summary": "rayleigh damping"
     },
     {
      "name": "ElementalLee",
      "aliases": [],
+     "factory": "new_elemental_lee",
      "summary": "lee's elemental damping"
     },
     {
      "name": "LinearViscosity",
      "aliases": [],
+     "factory": "new_linear_viscosity",
      "summary": "linear viscosity modifier"
     },
     {
      "name": "ElementalModal",
      "aliases": [],
+     "factory": "new_elemental_modal",
      "summary": "wilson penzien elemental damping"
     },
     {
      "name": "ElementalNonviscous",
-     "aliases": [
-      "ElementalNonviscousGroup"
-     ]
+     "aliases": [],
+     "factory": "new_elemental_nonviscous<false>"
+    },
+    {
+     "name": "ElementalNonviscousGroup",
+     "aliases": [],
+     "factory": "new_elemental_nonviscous<true>"
     }
    ]
   },
@@ -2426,21 +2788,25 @@
     {
      "name": "B3DL",
      "aliases": [],
+     "factory": "new_orientation_object<B3DL>",
      "summary": "linear transformation for 3d beam elements"
     },
     {
      "name": "B3DC",
      "aliases": [],
+     "factory": "new_orientation_object<B3DC>",
      "summary": "corotational transformation for 3d beam elements"
     },
     {
      "name": "B3DOSL",
      "aliases": [],
+     "factory": "new_orientation_object<B3DOSL>",
      "summary": "linear transformation for 3d beam elements with open sections"
     },
     {
      "name": "B3DOSC",
      "aliases": [],
+     "factory": "new_orientation_object<B3DOSC>",
      "summary": "corotational transformation for 3d beam elements with open sections"
     }
    ]
@@ -2507,58 +2873,71 @@
    "types": [
     {
      "name": "Eigen",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_eigen_recorder"
     },
     {
      "name": "Modal",
      "aliases": [],
+     "factory": "new_modal_recorder",
      "summary": "recorder of modal properties"
     },
     {
      "name": "ModalForce",
      "aliases": [],
+     "factory": "new_modal_force_recorder",
      "summary": "recorder of modal elastic forces"
     },
     {
-     "name": "Amplitude",
-     "aliases": []
-    },
-    {
      "name": "Frame",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_frame_recorder"
     },
     {
      "name": "Visualisation",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_visualisation_recorder"
     },
     {
      "name": "Node",
      "aliases": [],
+     "factory": "new_tag_recorder<NodeRecorder>",
      "summary": "define node"
     },
     {
      "name": "GroupNode",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_tag_recorder<GroupNodeRecorder>"
     },
     {
      "name": "Sum",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_tag_recorder<SumRecorder>"
     },
     {
      "name": "GroupSum",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_tag_recorder<GroupSumRecorder>"
     },
     {
      "name": "Element",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_tag_recorder<ElementRecorder>"
     },
     {
      "name": "GroupElement",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_tag_recorder<GroupElementRecorder>"
+    },
+    {
+     "name": "Amplitude",
+     "aliases": [],
+     "factory": "new_amplitude_recorder"
     },
     {
      "name": "Global",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_global_recorder"
     }
    ]
   },
@@ -2641,11 +3020,13 @@
     {
      "name": "Box2D",
      "aliases": [],
+     "factory": "new_box2d",
      "summary": "2d box section"
     },
     {
      "name": "Box3D",
      "aliases": [],
+     "factory": "new_box3d",
      "summary": "3d box section"
     },
     {
@@ -2653,6 +3034,7 @@
      "aliases": [
       "Bar2D"
      ],
+     "factory": "new_cell2d",
      "summary": "2d reinforcing bar section"
     },
     {
@@ -2660,190 +3042,230 @@
      "aliases": [
       "Bar3D"
      ],
+     "factory": "new_cell3d",
      "summary": "3d reinforcing bar section"
     },
     {
      "name": "Cell3DOS",
      "aliases": [],
+     "factory": "new_cell3dos",
      "summary": "3d fibre open section building block"
     },
     {
      "name": "Circle1D",
      "aliases": [],
+     "factory": "new_circle1d",
      "summary": "1d circle section"
     },
     {
      "name": "Circle2D",
      "aliases": [],
+     "factory": "new_circle2d",
      "summary": "2d circle section"
     },
     {
      "name": "Circle3D",
      "aliases": [],
+     "factory": "new_circle3d",
      "summary": "3d circle section"
     },
     {
      "name": "CircularHollow2D",
      "aliases": [],
+     "factory": "new_circularhollow2D",
      "summary": "2d hollow circular section"
     },
     {
      "name": "CircularHollow3D",
      "aliases": [],
+     "factory": "new_circularhollow3D",
      "summary": "3d hollow circular section"
     },
     {
      "name": "Fibre1D",
      "aliases": [],
+     "factory": "new_fibre1d",
      "summary": "1d fibre section"
     },
     {
      "name": "Fibre2D",
      "aliases": [],
+     "factory": "new_fibre2d",
      "summary": "2d fibre section"
     },
     {
      "name": "Fibre3D",
      "aliases": [],
+     "factory": "new_fibre3d<false>",
      "summary": "3d fibre section"
     },
     {
      "name": "Fibre3DOS",
      "aliases": [],
+     "factory": "new_fibre3d<true>",
      "summary": "3d fibre open section"
     },
     {
      "name": "HSection2D",
      "aliases": [],
+     "factory": "new_hsection2d",
      "summary": "2d h-section"
     },
     {
      "name": "ISection2D",
      "aliases": [],
+     "factory": "new_isection2d<false>",
      "summary": "2d i-section"
     },
     {
      "name": "ISection3D",
      "aliases": [],
+     "factory": "new_isection3d<false>",
      "summary": "3d i-section"
     },
     {
      "name": "ISection2DC",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_isection2d<true>"
     },
     {
      "name": "ISection3DC",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_isection3d<true>"
     },
     {
      "name": "Rectangle1D",
      "aliases": [],
+     "factory": "new_rectangle1d",
      "summary": "1d rectangle section"
     },
     {
      "name": "Rectangle2D",
      "aliases": [],
+     "factory": "new_rectangle2d",
      "summary": "2d rectangle section"
     },
     {
      "name": "Rectangle3D",
      "aliases": [],
+     "factory": "new_rectangle3d",
      "summary": "3d rectangle section"
     },
     {
      "name": "TrussSection",
      "aliases": [],
+     "factory": "new_trusssection",
      "summary": "1d truss section"
     },
     {
      "name": "TSection2D",
      "aliases": [],
+     "factory": "new_tsection2d<false>",
      "summary": "2d t-section"
     },
     {
      "name": "TSection3D",
      "aliases": [],
+     "factory": "new_tsection3d<false>",
      "summary": "3d t-section"
     },
     {
      "name": "TSection2DC",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_tsection2d<true>"
     },
     {
      "name": "TSection3DC",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_tsection3d<true>"
     },
     {
      "name": "NM2D1",
      "aliases": [],
+     "factory": "new_nm2d<3>",
      "summary": "n-m interaction elastic section"
     },
     {
      "name": "NM2D2",
      "aliases": [],
+     "factory": "new_nm2d<8>",
      "summary": "n-m interaction inelastic section with linear hardening"
     },
     {
      "name": "NM2D3",
      "aliases": [],
+     "factory": "new_nm2d<11>",
      "summary": "n-m interaction inelastic section with nonlinear hardening"
     },
     {
      "name": "NM3D1",
      "aliases": [],
+     "factory": "new_nm3d<4>",
      "summary": "n-m interaction elastic section"
     },
     {
      "name": "NM3D2",
      "aliases": [],
+     "factory": "new_nm3d<10>",
      "summary": "n-m interaction inelastic section with linear hardening"
     },
     {
      "name": "NM3D3",
      "aliases": [],
+     "factory": "new_nm3d<13>",
      "summary": "n-m interaction inelastic section with nonlinear hardening"
     },
     {
      "name": "NM2D3K",
      "aliases": [],
+     "factory": "new_nmk<13>",
      "summary": "n-m interaction inelastic section with nonlinear hardening"
     },
     {
      "name": "NM3D3K",
      "aliases": [],
+     "factory": "new_nmk<17>",
      "summary": "n-m interaction inelastic section with nonlinear hardening"
     },
     {
      "name": "EU2D",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_eu2d"
     },
     {
      "name": "EU3D",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_eu3d"
     },
     {
      "name": "NZ2D",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_nz2d"
     },
     {
      "name": "NZ3D",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_nz3d"
     },
     {
      "name": "US2D",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_us2d<false>"
     },
     {
      "name": "US3D",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_us3d<false>"
     },
     {
      "name": "US2DC",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_us2d<true>"
     },
     {
      "name": "US3DC",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_us3d<true>"
     }
    ]
   },
@@ -3014,45 +3436,56 @@
    "types": [
     {
      "name": "Newton",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_newton"
     },
     {
      "name": "modifiedNewton",
      "aliases": [
       "mNewton"
-     ]
+     ],
+     "factory": "new_modified_newton"
     },
     {
      "name": "AICN",
      "aliases": [],
+     "factory": "new_aicn",
      "summary": "aicn solver"
     },
     {
      "name": "BFGS",
-     "aliases": []
+     "aliases": [],
+     "factory": "new_bfgs"
     },
     {
      "name": "LBFGS",
      "aliases": [],
+     "factory": "new_lbfgs",
      "summary": "lbfgs solver"
     },
     {
      "name": "FEAST",
-     "aliases": [
-      "QuadraticFEAST"
-     ],
+     "aliases": [],
+     "factory": "new_feast<false>",
      "summary": "feast eigen solver"
+    },
+    {
+     "name": "QuadraticFEAST",
+     "aliases": [],
+     "factory": "new_feast<true>"
     },
     {
      "name": "DisplacementControl",
      "aliases": [
       "MPDC"
      ],
+     "factory": "new_mpdc",
      "summary": "displacement controlled solver"
     },
     {
      "name": "Ramm",
      "aliases": [],
+     "factory": "new_ramm",
      "summary": "ramm's arc-length algorithm"
     }
    ]
@@ -3066,6 +3499,7 @@
     {
      "name": "Frequency",
      "aliases": [],
+     "factory": "new_frequency",
      "summary": "frequency step"
     },
     {
@@ -3073,6 +3507,7 @@
      "aliases": [
       "Buckle"
      ],
+     "factory": "new_buckle",
      "summary": "buckling step"
     },
     {
@@ -3080,11 +3515,13 @@
      "aliases": [
       "Optimisation"
      ],
+     "factory": "new_time_step<Optimization>",
      "summary": "optimisation step"
     },
     {
      "name": "Static",
      "aliases": [],
+     "factory": "new_time_step<Static>",
      "summary": "static step"
     },
     {
@@ -3092,16 +3529,19 @@
      "aliases": [
       "ImplicitDynamic"
      ],
+     "factory": "new_dynamic<Integrator::Type::Implicit>",
      "summary": "dynamic step"
     },
     {
      "name": "ExplicitDynamic",
      "aliases": [],
+     "factory": "new_dynamic<Integrator::Type::Explicit>",
      "summary": "explicit dynamic step"
     },
     {
      "name": "ArcLength",
      "aliases": [],
+     "factory": "new_arclength",
      "summary": "arc-length step"
     }
    ]

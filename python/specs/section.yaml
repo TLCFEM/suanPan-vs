@@ -2,7 +2,7 @@
 # suanPan Section parsing spec — extracted from /workspace/Section/SectionParser.cpp
 # (3076 lines, read in full)
 #
-# - All keywords are matched case-insensitively (is_equal / is_equal_any).
+# - All keywords are matched case-insensitively by the TokenRegistry.
 # - create_new_section reads the section type token first, then dispatches.
 # - Unlike other suanPan parsers, this file contains NO mid-stream option flags
 #   (verified: no is_equal(para, ...), is_true, get_optional_input or to_token
@@ -53,7 +53,7 @@
     - {name: eccentricity, type: float, req: false, default: 0.}
   flags: []
   rest: null
-  notes: 'Handler new_cell2d. Dispatched via is_equal_any(section_id, "Cell2D", "Bar2D") — Bar2D is an exact alias keyword producing the identical Cell2D object.'
+  notes: 'Handler new_cell2d. Registered as "Cell2D" and "Bar2D", both mapping to new_cell2d; Bar2D is an exact alias producing the identical Cell2D object.'
 
 - keyword: Cell3D
   aliases: [bar3d]
@@ -66,7 +66,7 @@
     - {name: eccentricity_b, type: float, req: false, default: 0.}
   flags: []
   rest: null
-  notes: 'Handler new_cell3d. Dispatched via is_equal_any(section_id, "Cell3D", "Bar3D") — Bar3D is an exact alias keyword producing the identical Cell3D object.'
+  notes: 'Handler new_cell3d. Registered as "Cell3D" and "Bar3D", both mapping to new_cell3d; Bar3D is an exact alias producing the identical Cell3D object.'
 
 - keyword: Cell3DOS
   aliases: []

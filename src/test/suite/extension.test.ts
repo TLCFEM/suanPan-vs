@@ -65,6 +65,49 @@ suite('command database', () => {
         assert.ok(buckling?.aliases?.includes('Buckle'));
     });
 
+    test('reads aliases and factories from the unified registry', () => {
+        const afc = database.findType('material', 'AFC');
+        assert.ok(afc?.aliases?.includes('AFC01'));
+        assert.strictEqual(afc?.factory, 'new_afc01');
+        assert.strictEqual(database.findType('material', 'CDPM2ISO')?.name, 'CDPM2');
+
+        assert.strictEqual(database.findType('element', 'CPS8')?.name, 'CP8');
+        assert.strictEqual(database.findType('element', 'Mass3D')?.name, 'Mass');
+        assert.strictEqual(database.findType('section', 'Bar2D')?.name, 'Cell2D');
+        assert.strictEqual(database.findType('constraint', 'PenaltyBC')?.name, 'Fix');
+        assert.strictEqual(database.findType('constraint', 'MultiplierBC')?.name, 'Fix2');
+
+        const disp = database.findType('load', 'Displacement');
+        assert.strictEqual(disp?.name, 'Disp');
+        assert.ok(disp?.aliases?.includes('DispLoad'));
+    });
+
+    test('every typed category exposes registry types', () => {
+        for (const name of [
+            'amplitude',
+            'constraint',
+            'converger',
+            'criterion',
+            'element',
+            'expression',
+            'group',
+            'integrator',
+            'interaction',
+            'load',
+            'material',
+            'modifier',
+            'orientation',
+            'recorder',
+            'section',
+            'solver',
+            'step',
+        ]) {
+            const command = database.findCommand(name);
+            assert.ok(command, `missing command ${name}`);
+            assert.ok((command?.types?.length ?? 0) > 0, `${name} has no types`);
+        }
+    });
+
     test('exposes set properties', () => {
         assert.ok(database.findType('set', 'num_threads'));
         assert.strictEqual(database.typeTokenIndex('set'), 1);

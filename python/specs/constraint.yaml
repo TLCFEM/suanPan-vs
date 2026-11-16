@@ -2,7 +2,7 @@
 # (source of truth, ~618 lines, rev. 2026).
 #
 # Conventions:
-#   * Keyword matching is case-insensitive everywhere (is_equal / is_equal_any).
+#   * Keyword matching is case-insensitive everywhere (TokenRegistry).
 #   * Every dispatch reads the leading keyword token first. Constraints consume their
 #     tag inside each handler; criteria/interactions share a preamble that reads the
 #     keyword and then a tag before dispatching.

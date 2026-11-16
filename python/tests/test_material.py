@@ -3,7 +3,10 @@
 import pytest
 
 from suanpan.material import (
+    AFC,
+    AFC01,
     CDPM2,
+    CDPM2ISO,
     OS146,
     Balloon,
     Balloon1D,
@@ -186,3 +189,27 @@ class TestCDPM2:
 
         assert CDPM2ANISO.keyword == "CDPM2ANISO"
         assert CDPM2NO.keyword == "CDPM2NO"
+
+
+class TestRegistryAliases:
+    def test_afc01_alternate_spelling(self):
+        assert AFC.keyword == "AFC"
+        assert AFC.aliases == ("AFC01",)
+        assert AFC01.keyword == "AFC01"
+        assert issubclass(AFC01, AFC)
+        obj = AFC01(
+            tag=1,
+            elastic_modulus=100,
+            t_yield_stress=5,
+            t_hardening=0.2,
+            t_unloading=0.1,
+            c_yield_stress=4,
+            c_hardening=0.2,
+            c_unloading=0.1,
+        )
+        assert obj.to_commands() == ["AFC01 1 100 5 0.2 0.1 4 0.2 0.1"]
+
+    def test_cdpm2iso_alternate_spelling(self):
+        assert CDPM2.aliases == ("CDPM2ISO",)
+        assert issubclass(CDPM2ISO, CDPM2)
+        assert CDPM2ISO(tag=2).to_commands() == ["CDPM2ISO 2"]

@@ -83,9 +83,9 @@ This reproduces `Example/Material/Bilinear1D.supan` of the C++ repository.
   values that are eof-guarded in C++ (`get_optional_input`) are omitted
   when they still carry their default, and once a later value is set all
   earlier positional tokens are kept.
-* `is_true` accepts `true/1/on/yes/y/t`, `is_equal` is case-insensitive --
-  exports use the canonical C++ dispatch spelling (`B21`, `Disp`,
-  `modifiedNewton`, ...).
+* `is_true` accepts `true/1/on/yes/y/t`; keyword matching is case-insensitive
+  (`TokenRegistry`) -- exports use the canonical C++ dispatch spelling (`B21`,
+  `Disp`, `modifiedNewton`, ...).
 * Validation mirrors the C++ semantics: fixed node counts (`CSMQ5` needs
   five nodes), fixed `dim` vector lengths (I sections need six), DOF token
   expansion (`E`, `P`, `X`, `Y`, `Z`, `FU1`, ...), clamped values (wall
@@ -139,15 +139,20 @@ More examples live in [`examples/`](examples/).
 ## Regenerating the bulk families
 
 The material, element and section families (270+ classes) are generated
-from machine-readable specs in `specs/` (extracted from the C++ parsers)
-by `tools/generate.py`:
+from the unified `TokenRegistry` dispatch tables of the C++ parsers and
+the machine-readable specs in `specs/` by `tools/generate.py`:
 
 ```bash
 pip install pyyaml        # only needed for regeneration
-python tools/generate.py
+python tools/generate.py --source ../../suanPan
+python tools/generate.py --source ../../suanPan --check
 ```
 
 This rewrites `src/suanpan/{material,element,section}/_generated.py`.
+Keywords that share one factory expression become aliases of the first
+spelling; compatibility subclasses keep the alternate spellings
+importable (for example `AFC01`, `CPS8`, `Bar2D`). `--check` fails when
+the committed files are out of date.
 Hand-written specials (`Balloon`, `PatchQuad`, step/runner/model logic,
 ...) live beside them in `_special.py` / their own modules.
 

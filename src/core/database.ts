@@ -7,6 +7,8 @@ export interface TypeInfo {
     name: string;
     aliases?: string[];
     summary?: string;
+    /** C++ factory expression from the unified ``TokenRegistry`` dispatch table. */
+    factory?: string;
 }
 
 export interface CommandInfo {

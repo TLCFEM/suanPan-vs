@@ -8,8 +8,9 @@
 #   - Trailing tag lists are consumed by get_remaining<uword>() (never fatal at parse time) and
 #     are recorded as the final positional param per the requested schema example; an empty
 #     list is not rejected by the parser itself but yields an invalid load downstream.
-#   - Keyword matching is case-insensitive (is_equal / is_equal_any). Variants sharing a
-#     handler are unfolded: primary keyword is the first in the dispatch, the rest are aliases.
+#   - Keyword matching is case-insensitive (TokenRegistry). Keywords mapping to the same
+#     factory expression share one handler: primary keyword is the first registration, the
+#     rest are aliases.
 #   - FLAGS: this version contains NO mid-stream flag checks (no is_equal(para, "-XXX")).
 #     There is no "-generate" option for Tabular and no "-fitting" for Decay here, so
 #     flags is [] for every keyword.
@@ -193,7 +194,7 @@ loads:
       - {name: node_tags, type: int_list, req: true}
     flags: []
     rest: null
-    notes: 'Dispatched via is_equal_any(Disp, Displacement, DispLoad); dof token must expand to a non-empty DOF pool; node tags from remaining tokens.'
+    notes: 'Registered as Disp, Displacement and DispLoad, all mapping to new_displacement<false>; dof token must expand to a non-empty DOF pool; node tags from remaining tokens.'
 
   - keyword: GroupBodyForce
     aliases: []
@@ -232,7 +233,7 @@ loads:
       - {name: group_tags, type: int_list, req: true}
     flags: []
     rest: null
-    notes: 'Dispatched via is_equal_any(GroupDisp, GroupDisplacement, GroupDispLoad); same handler as Disp (flag=true branch); trailing tags are group tags.'
+    notes: 'Registered as GroupDisp, GroupDisplacement and GroupDispLoad, all mapping to new_displacement<true>; same handler as Disp (flag=true branch); trailing tags are group tags.'
 
   - keyword: LineUDL2D
     aliases: []

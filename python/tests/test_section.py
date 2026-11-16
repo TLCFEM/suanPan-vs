@@ -5,6 +5,7 @@ import pytest
 from suanpan.section import (
     EU2D,
     NM3D3,
+    Bar2D,
     Box3D,
     Cell2D,
     Cell3D,
@@ -27,6 +28,11 @@ class TestCells:
     def test_cell2d_bar_alias(self):
         # Cell2D == Bar2D in the dispatch table
         assert Cell2D.keyword == "Cell2D"
+        assert Cell2D.aliases == ("Bar2D",)
+        assert issubclass(Bar2D, Cell2D)
+        assert Bar2D(tag=1, area=10.0, material_tag=2).to_commands() == [
+            "Bar2D 1 10 2"
+        ]
 
     def test_cell3dos_example(self):
         # `section Cell3DOS 1 10. 1. 1. 1. 2 10. 10.` from the examples
