@@ -69,6 +69,13 @@ are still read from the legacy `is_equal` chains in `Toolbox/command.cpp`.
 The shared registry reader lives in `scripts/suanpan_parser.py`; the Python
 generator (`python/tools/generate.py`) uses the same reader.
 
+The reader also reports how the object tag is consumed. Since suanPan #410
+most dispatchers read the tag before dispatch and pass it to the handler,
+which appends `unsigned` to the registry value type; sections and groups
+still read the tag inside each handler. Both layouts keep the command line
+`<command> <type> <tag> ...`, so the generated database is unchanged, while
+the Python generator records the ownership in each generated module header.
+
 The result is `data/database.json`. Regenerate it whenever suanPan changes:
 
 ```bash

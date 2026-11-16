@@ -11,6 +11,8 @@
 #   - node_tags is read as one uvec(N) via get_input(): exactly N space-separated node tags, in order.
 #   - Keyword matching is case-insensitive (the TokenRegistry compares with _strcmpi);
 #     `aliases` lists the other registered spellings that hit the same factory.
+#   - create_new_element() reads the object tag and passes it to the handler
+#     (suanPan #410); `tag` below documents the command line, not a handler token.
 #   - No handler in this range uses is_equal(para, "XXX") body flags or get_remaining, hence
 #     flags: [] and rest: null throughout. Enumerated tokens are described in params/notes.
 

@@ -1,7 +1,7 @@
 # suanPan material parser spec (part B)
 # Source of truth: /workspace/Material/MaterialParser.cpp
-# Covers handler functions defined at lines 1958-3828, dispatched by
-# create_new_material() (lines 3676-3828).
+# Covers the handlers below create_new_material(), which reads the object tag and
+# passes it to the selected handler (suanPan #410).
 #
 # Conventions:
 #   req: true  -> parsed with get_input(); missing/invalid token aborts parsing (fatal) => required.

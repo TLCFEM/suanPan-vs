@@ -2,9 +2,11 @@
 #   - Domain/Group/GroupParser.cpp  (the `group` command family, dispatcher: create_new_group)
 #   - Toolbox/ExpressionParser.cpp  (the `expression` command, dispatcher: create_new_expression)
 #
-# All keyword matching is done via is_equal() => case-insensitive.
+# All keyword matching is done via TokenRegistry => case-insensitive.
 # All handlers are dispatched on the FIRST token of the command line (group/expression type);
 # there are NO dash-style flags (-node, -generate, ...) anywhere in either file => flags is [] for every entry.
+# The group dispatcher leaves tag extraction to each handler; the expression dispatcher
+# reads the object tag and passes it to the handler (suanPan #410).
 
 groups:
   - keyword: nodegroup

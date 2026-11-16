@@ -14,10 +14,12 @@
 #   - FLAGS: this version contains NO mid-stream flag checks (no is_equal(para, "-XXX")).
 #     There is no "-generate" option for Tabular and no "-fitting" for Decay here, so
 #     flags is [] for every keyword.
-#   - Both dispatches read a leading type token: amplitude type (str) then tag (int) for
-#     create_new_amplitude; load type (str, variable misleadingly named load_id) for
-#     create_new_load. Unknown amplitude types are silently ignored; unknown load types fall
-#     through to external_module::object() (external modules may register more load types).
+#   - Both dispatches read a leading type token and the object tag, then pass the tag to
+#     the handler (suanPan #410): amplitude type (str) then tag (int) for
+#     create_new_amplitude; load type (str, variable misleadingly named load_id) then tag
+#     for create_new_load. Unknown amplitude types are silently ignored; unknown load types
+#     fall through to external_module::object() (external modules may register more load
+#     types).
 #   - After successful load creation the load's start step is set to the current step tag:
 #     new_load->set_start_step(domain->get_current_step_tag()).
 

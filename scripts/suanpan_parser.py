@@ -35,6 +35,18 @@ The registry is the authoritative list of accepted keywords, their aliases
 parses the remaining tokens.  Both the VS Code database generator and the
 Python class generator consume this module, so neither has to infer dispatch
 from ``is_equal`` chains or hand-maintained temporary files.
+
+Since suanPan #410 most dispatchers also read the object tag before dispatch
+and pass it to the handler, which changes the registry value type to
+
+.. code-block:: cpp
+
+    TokenRegistry<void (*)(unique_ptr<Material>&, std::istringstream&, unsigned)>
+
+Sections and groups still let each handler read the tag itself, so their value
+type stops at ``std::istringstream&``.  ``registry_tag_in_dispatcher()`` reports
+which layout a dispatch table uses; the command line is ``<command> <type>
+<tag> ...`` either way.
 """
 
 from __future__ import annotations
@@ -69,6 +81,8 @@ REGISTRY_FUNCTIONS: dict[str, tuple[str, str]] = {
 
 REGISTRY_ENTRY = re.compile(r'\{\s*"([^"]+)"\s*,\s*([^{}]+?)\s*\}')
 IDENTIFIER = re.compile(r"[A-Za-z_]")
+#: registry value type that consumes the object tag before dispatch (#410)
+TAG_IN_DISPATCHER = re.compile(r"istringstream\s*&\s*,\s*(?:const\s+)?unsigned\b")
 
 
 @dataclass(frozen=True)
@@ -161,6 +175,24 @@ def registry_entries(text: str, signature: str) -> list[RegistryEntry]:
     return entries
 
 
+def registry_tag_in_dispatcher(text: str, signature: str) -> bool:
+    """Whether the dispatcher reads the object tag before calling a handler.
+
+    suanPan #410 moved tag extraction out of most handlers into the dispatcher,
+    whose ``TokenRegistry`` value type gained a trailing ``unsigned`` parameter.
+    Sections and groups keep ``void (*)(..., std::istringstream&)`` and read the
+    tag inside each handler.
+    """
+    body = function_body(text, signature)
+    if not body:
+        return False
+
+    declaration = re.search(r"TokenRegistry\s*<[^;]*?>\s*\w+\s*\{", body, re.S)
+    if declaration is None:
+        return False
+    return TAG_IN_DISPATCHER.search(declaration.group(0)) is not None
+
+
 def read_registry(source: Path, category: str) -> list[RegistryEntry]:
     """Read the dispatch table of ``category`` from a suanPan checkout."""
     relative, signature = REGISTRY_FUNCTIONS[category]
@@ -168,6 +200,15 @@ def read_registry(source: Path, category: str) -> list[RegistryEntry]:
     if not path.exists():
         raise FileNotFoundError(f"cannot locate suanPan parser source at {path}")
     return registry_entries(path.read_text(), signature)
+
+
+def read_registry_tag_in_dispatcher(source: Path, category: str) -> bool:
+    """Report the tag ownership of ``category`` in a suanPan checkout."""
+    relative, signature = REGISTRY_FUNCTIONS[category]
+    path = source / relative
+    if not path.exists():
+        raise FileNotFoundError(f"cannot locate suanPan parser source at {path}")
+    return registry_tag_in_dispatcher(path.read_text(), signature)
 
 
 def grouped_registry(
@@ -203,14 +244,17 @@ def main() -> None:
     payload = {}
     for category in categories:
         groups = grouped_registry(read_registry(source, category))
-        payload[category] = [
-            {
-                "name": entries[0].keyword,
-                "aliases": [entry.keyword for entry in entries[1:]],
-                "factory": factory,
-            }
-            for factory, entries in groups.items()
-        ]
+        payload[category] = {
+            "tag_in_dispatcher": read_registry_tag_in_dispatcher(source, category),
+            "types": [
+                {
+                    "name": entries[0].keyword,
+                    "aliases": [entry.keyword for entry in entries[1:]],
+                    "factory": factory,
+                }
+                for factory, entries in groups.items()
+            ],
+        }
     print(json.dumps(payload, indent=1))
 
 

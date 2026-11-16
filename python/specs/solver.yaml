@@ -11,6 +11,9 @@
 #     (pairs/quadruples) returning one list per position.
 #   - is_equal/is_equal_any: case-insensitive (_strcmpi). if_contain on
 #     uppercased strings: case-insensitive substring test.
+# Both dispatches read the object tag after the type token and pass it to the
+# handler (suanPan #410); `tag` below documents the command line, not a handler
+# token.
 # Common post-processing on successful insert (both dispatches): if the current
 # step tag != 0, step->set_integrator_tag/set_solver_tag(tag) is called, then
 # domain->set_current_integrator_tag/set_current_solver_tag(tag). On failure an

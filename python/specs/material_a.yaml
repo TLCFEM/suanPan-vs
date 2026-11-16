@@ -3,7 +3,9 @@
 # The keyword dispatch (create_new_material) lies BELOW line 1957, so per instructions:
 #   - 'keyword' is derived from the handler name (new_xxx -> Xxx).
 #   - 'aliases' is empty (dispatch spellings not verifiable in range).
-# 'tag' is always the first param after the keyword (int, required, fatal).
+# 'tag' is always the first param after the keyword (int, required, fatal). Since
+# suanPan #410 create_new_material() reads it and passes it to the handler, so it is
+# part of the command line but not of the handler's token stream.
 # Optional pattern meanings:
 #   - required   : `if(!get_input(command, x)) return;`  -> missing/invalid token is fatal.
 #   - optional   : `auto x = DEF; if(command.eof()) ... else if(!get_input(...)) return;`

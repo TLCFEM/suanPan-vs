@@ -3,9 +3,9 @@
 #
 # Conventions:
 #   * Keyword matching is case-insensitive everywhere (TokenRegistry).
-#   * Every dispatch reads the leading keyword token first. Constraints consume their
-#     tag inside each handler; criteria/interactions share a preamble that reads the
-#     keyword and then a tag before dispatching.
+#   * Every dispatch reads the leading keyword token and the object tag, then passes
+#     the tag to the selected handler (suanPan #410). The tag is the first command-line
+#     argument after the keyword but is no longer read by the handlers themselves.
 #   * req: true  = get_input failure is fatal (parsing aborts, nothing created).
 #     req: false = guarded by (!command.eof() && !get_input) -> optional, C++ default kept.
 #   * type: dof  = token parsed by parse_dof(); may expand to multiple DOFs (e.g. E -> U1,UR1,UR2,UR3).
