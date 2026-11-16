@@ -92,6 +92,16 @@ class TestRunner:
         input_path = runner.prepare(model, tmp_path / "case")
         assert input_path.read_text() == "# t\n"
 
+    def test_prepare_custom_input_name(self, tmp_path):
+        runner = Runner(executable="true")
+        input_path = runner.prepare(
+            "node 1 0 0",
+            tmp_path / "case",
+            ExecutionOptions(input_file="custom.sup"),
+        )
+        assert input_path.name == "custom.sup"
+        assert input_path.read_text() == "node 1 0 0"
+
     def test_run_fake(self, tmp_path):
         script = (
             "#!/bin/sh\n"
@@ -142,6 +152,23 @@ class TestRunner:
         assert os.path.realpath(result.stdout.strip()) == os.path.realpath(
             tmp_path / "case"
         )
+
+    def test_run_many_empty(self, tmp_path):
+        runner = Runner(executable="true", work_root=tmp_path / "runs")
+        assert runner.run_many([]) == []
+
+    def test_run_many_models(self, tmp_path):
+        runner = Runner(executable="true", work_root=tmp_path / "runs")
+        jobs = [(Model(title=f"m{index}"), tmp_path / f"case{index}") for index in range(3)]
+        results = runner.run_many(jobs, parallel=2)
+        assert [result.folder.name for result in results] == [
+            "case0",
+            "case1",
+            "case2",
+        ]
+        for index, result in enumerate(results):
+            assert result.ok
+            assert result.input_file.read_text() == f"# m{index}\n"
 
     def test_run_many_order(self, tmp_path):
         script = "#!/bin/sh\nexit 0\n"

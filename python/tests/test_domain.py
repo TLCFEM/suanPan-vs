@@ -15,6 +15,9 @@ from suanpan.domain import (
     Node,
     NodeGroup,
     NodeGroupGenerate,
+    NodeGroupGenerateByPlane,
+    NodeGroupGenerateByPoint,
+    NodeGroupGenerateByRule,
     Orientation,
 )
 
@@ -64,6 +67,8 @@ class TestGroup:
 
     def test_missing_tags_allowed(self):
         assert NodeGroup(tag=7).to_commands() == ["nodegroup 7"]
+        assert ElementGroup(tag=7).to_commands() == ["elementgroup 7"]
+        assert GroupGroup(tag=7).to_commands() == ["groupgroup 7"]
 
 
 class TestGenerate:
@@ -71,6 +76,51 @@ class TestGenerate:
         # C++ new_generate: `generate <type> <tag> <start> <interval> <end>`
         group = NodeGroupGenerate(tag=1, start=1, end=3)
         assert group.to_commands() == ["generate nodegroup 1 1 1 3"]
+
+    def test_generate_elementgroup(self):
+        group = NodeGroupGenerate(
+            tag=2, generated_type="elementgroup", start=3, interval=2, end=9
+        )
+        assert group.to_commands() == ["generate elementgroup 2 3 2 9"]
+
+    def test_export_pool(self):
+        assert NodeGroupGenerate(tag=1, start=1, end=5).export_pool() == [1, 2, 3, 4, 5]
+        assert NodeGroupGenerate(tag=1, start=1, interval=2, end=7).export_pool() == [
+            1,
+            3,
+            5,
+            7,
+        ]
+        # an interval of zero means unit steps
+        assert NodeGroupGenerate(tag=1, start=1, interval=0, end=3).export_pool() == [
+            1,
+            2,
+            3,
+        ]
+        # start > end is an empty range, just like the C++ implementation
+        assert NodeGroupGenerate(tag=1, start=5, end=1).export_pool() == []
+        # omitted interval and end collapse to the start tag
+        assert NodeGroupGenerate(tag=1, start=4).export_pool() == [4]
+
+    def test_invalid_generated_type(self):
+        with pytest.raises(Exception):
+            NodeGroupGenerate(tag=1, generated_type="bogus", start=1, end=2)
+
+    def test_generate_by_rule(self):
+        group = NodeGroupGenerateByRule(tag=1, dof="U1", rule=[0, 1, 0])
+        assert group.to_commands() == ["generatebyrule nodegroup 1 U1 0 1 0"]
+
+    def test_generate_by_point(self):
+        group = NodeGroupGenerateByPoint(tag=2, values=[0, 0, 1, 1])
+        assert group.to_commands() == ["generatebypoint nodegroup 2 0 0 1 1"]
+        with pytest.raises(Exception):
+            NodeGroupGenerateByPoint(tag=2, values=[0, 1, 2])
+
+    def test_generate_by_plane(self):
+        group = NodeGroupGenerateByPlane(tag=3, values=[0, 0, 0, 1])
+        assert group.to_commands() == ["generatebyplane nodegroup 3 0 0 0 1"]
+        with pytest.raises(Exception):
+            NodeGroupGenerateByPlane(tag=3, values=[])
 
 
 class TestOrientation:
