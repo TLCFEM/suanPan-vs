@@ -108,6 +108,40 @@ suite('command database', () => {
         }
     });
 
+    test('classifies shorthand commands in their real category', () => {
+        assert.strictEqual(database.findCommand('nodegroup')?.category, 'group');
+        assert.strictEqual(database.findCommand('supportvelocity')?.category, 'load');
+        assert.strictEqual(database.findCommand('fix')?.category, 'constraint');
+    });
+
+    test('aligns snippets with shorthand and canonical spellings', () => {
+        const cload = database.snippetFor('load', ['load', 'cload', '1', '0', '1', '1', '2']);
+        assert.strictEqual(cload?.args.find(argument => argument.num === 1)?.tokenIndex, 2);
+        const shorthand = database.snippetFor('cload', ['cload', '1', '0', '1', '1', '2']);
+        assert.strictEqual(shorthand?.args.find(argument => argument.num === 1)?.tokenIndex, 1);
+
+        const nodegroup = database.snippetFor('nodegroup', ['nodegroup', '3', '1', '2']);
+        assert.match(nodegroup?.templates[0] ?? '', /^nodegroup /);
+        assert.strictEqual(nodegroup?.args.find(argument => argument.num === 1)?.tokenIndex, 1);
+
+        const embed = database.snippetFor('embed2d', ['embed2d', '1', '2', '3']);
+        assert.match(embed?.templates[0] ?? '', /^Embed2D /);
+        assert.strictEqual(embed?.args.find(argument => argument.num === 2)?.tokenIndex, 2);
+    });
+
+    test('maps ranged and variadic arguments to every covered token', () => {
+        const element = ['element', 'CPS8', '1', '1', '2', '3', '4', '5', '6', '7', '8', '2', '1'];
+        assert.match(database.argumentFor('element', element, 6)?.description ?? '', /node/);
+        assert.match(database.argumentFor('element', element, 11)?.description ?? '', /material/);
+
+        const nodes = ['nodegroup', '3', '1', '2', '4'];
+        assert.match(database.argumentFor('nodegroup', nodes, 4)?.description ?? '', /nodes?/);
+
+        const section = ['section', 'NM2D3K', ...Array.from({ length: 15 }, (_, index) => `${index + 1}`)];
+        assert.strictEqual(database.argumentFor('section', section, 5)?.num, 4);
+        assert.strictEqual(database.argumentFor('section', section, 16)?.num, 15);
+    });
+
     test('exposes set properties', () => {
         assert.ok(database.findType('set', 'num_threads'));
         assert.strictEqual(database.typeTokenIndex('set'), 1);
@@ -164,6 +198,41 @@ suite('document model', () => {
     test('handles section designations before the tag', () => {
         const model = buildModel(parseDocument('section NZ2D 1000WB215 6 5'), database);
         assert.ok(model.symbols.get('section')?.has(6));
+    });
+
+    test('collects tags from shorthand commands', () => {
+        const source = [
+            'fix 1 E 1 2',
+            'displacement 2 0 1 1 1',
+            'nodegroup 3 1 2',
+            'generate nodegroup 4 1 5',
+            'supportvelocity 5 0 1 1 1',
+            'group generate nodegroup 6 1 5',
+        ].join('\n');
+        const model = buildModel(parseDocument(source), database);
+        assert.ok(model.symbols.get('constraint')?.has(1));
+        assert.ok(model.symbols.get('load')?.has(2));
+        assert.ok(model.symbols.get('group')?.has(3));
+        assert.ok(model.symbols.get('group')?.has(4));
+        assert.ok(model.symbols.get('load')?.has(5));
+        assert.ok(model.symbols.get('group')?.has(6));
+        assert.strictEqual(model.symbols.get('constraint')?.get(1)?.typeName, 'Fix');
+        assert.strictEqual(model.symbols.get('group')?.get(4)?.typeName, 'nodegroup');
+        assert.strictEqual(model.symbols.get('group')?.get(6)?.typeName, 'generate');
+    });
+
+    test('resolves references from shorthand load commands', () => {
+        const parsed = parseDocument('node 1 0 0\ncload 1 0 1 2 1');
+        const cload = parsed.statements.find(statement => statement.verb === 'cload');
+        assert.ok(cload);
+        const reference = referenceAt(cload, 5, database);
+        assert.deepStrictEqual([reference?.category, reference?.tag], ['node', 1]);
+    });
+
+    test('resolves group references from a groupgroup command', () => {
+        const statement = parseDocument('groupgroup 4 1 2 3').statements[0];
+        const reference = referenceAt(statement, 3, database);
+        assert.deepStrictEqual([reference?.category, reference?.tag], ['group', 2]);
     });
 
     test('resolves a material reference from element arguments', () => {

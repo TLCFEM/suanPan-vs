@@ -46,6 +46,9 @@ const OBJECT_TYPES: Record<string, string> = {
 
 const OBJECT_COMMANDS = new Set(['peek', 'delete', 'erase', 'remove', 'enable', 'disable', 'mute', 'protect', 'suspend']);
 
+/** Group generators take an extra `nodegroup`/`elementgroup` token before the tag. */
+const GROUP_GENERATOR_COMMANDS = new Set(['generate', 'generatebyrule', 'generatebypoint', 'generatebyplane']);
+
 function integerValue(token: SourceToken | undefined): number | undefined {
     if (!token || !/^\d+$/.test(token.value)) return undefined;
     const value = Number(token.value);
@@ -61,8 +64,22 @@ export function tagTokenIndex(statement: Statement, database: CommandDatabase): 
         return 1;
     }
 
-    if (command.name === command.category && command.types?.length && TYPED_CATEGORIES.has(command.category ?? '')) {
+    if (command.category && TYPED_CATEGORIES.has(command.category)) {
         const numeric = (index: number) => !!statement.tokens[index] && /^\d+$/.test(statement.tokens[index].value);
+        // Shorthand commands (`fix`, `cload`, `nodegroup`, ...) use their own
+        // name in place of the type keyword, so the tag follows immediately.
+        if (command.name !== command.category) {
+            return GROUP_GENERATOR_COMMANDS.has(command.name) ? 2 : 1;
+        }
+        if (!command.types?.length) return undefined;
+        // `group generate nodegroup 4 ...` names the generator first and the
+        // generated object type second, so the tag is the third token.
+        if (
+            command.category === 'group' &&
+            GROUP_GENERATOR_COMMANDS.has(statement.tokens[1]?.value.toLowerCase() ?? '')
+        ) {
+            return 3;
+        }
         // `section NZ2D 1000WB215 5 ...` inserts a designation before the tag.
         if (command.category === 'section') {
             if (numeric(2)) return 2;
@@ -112,7 +129,19 @@ export function buildModel(parsed: ParsedDocument, database: CommandDatabase): M
         if (tag === undefined || !token) continue;
 
         const typeIndex = database.typeTokenIndex(statement.verb);
-        const typeName = typeIndex === undefined ? undefined : statement.tokens[typeIndex]?.value;
+        let typeName = typeIndex === undefined ? undefined : statement.tokens[typeIndex]?.value;
+        if (
+            typeName === undefined &&
+            command.category &&
+            TYPED_CATEGORIES.has(command.category) &&
+            command.name !== command.category
+        ) {
+            // Shorthand commands (`fix`, `cload`, `nodegroup`) name the type
+            // themselves; generators take it from the following token.
+            typeName = GROUP_GENERATOR_COMMANDS.has(command.name)
+                ? statement.tokens[1]?.value
+                : database.findType(command.category, command.name)?.name ?? command.name;
+        }
 
         add({ category: command.category, tag, typeName, statement, token });
     }
@@ -161,15 +190,16 @@ export function referenceAt(
     const mapping: Array<[RegExp, string]> = [
         [/\bmaterial tag\b/, 'material'],
         [/\bsection tag\b/, 'section'],
-        [/\bnode i\b|\bnode j\b|\bnode tag\b|\bnodes?\b/, 'node'],
-        [/\belement tag\b|\belements?\b/, 'element'],
         [/\bamplitude tag\b/, 'amplitude'],
-        [/\bgroup tag\b|\bgroup\b/, 'group'],
+        // `node group tags` / `element group tags` refer to group objects.
+        [/\bgroup tags?\b|\bgroups?\b/, 'group'],
         [/\bstep tag\b/, 'step'],
         [/\bsolver tag\b/, 'solver'],
         [/\bintegrator tag\b/, 'integrator'],
         [/\bconverger tag\b/, 'converger'],
         [/\bcriterion tag\b/, 'criterion'],
+        [/\bnode i\b|\bnode j\b|\bnode tag\b|\bnodes?\b/, 'node'],
+        [/\belement tags?\b|\bhost element tag\b|\belements? to be\b|\belements?\/nodes?\b/, 'element'],
     ];
     for (const [pattern, category] of mapping) {
         if (pattern.test(description)) return { category, tag, token };

@@ -2770,7 +2770,7 @@
   {
    "name": "nodegroup",
    "aliases": [],
-   "category": "load",
+   "category": "group",
    "summary": "define node group"
   },
   {
@@ -3567,7 +3567,7 @@
   {
    "name": "supportvelocity",
    "aliases": [],
-   "category": "constraint",
+   "category": "load",
    "summary": "velocity load on support"
   },
   {

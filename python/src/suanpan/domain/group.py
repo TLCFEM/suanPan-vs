@@ -47,6 +47,7 @@ class Group(SuanpanObject):
 class NodeGroup(Group):
     """A plain list of node tags (C++ ``NodeGroup``)."""
 
+    keyword = "nodegroup"
     summary = "group of node tags"
 
     node_tags: IntList = Field(default_factory=list, description="node tags")

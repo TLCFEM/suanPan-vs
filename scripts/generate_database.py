@@ -158,9 +158,16 @@ def parse_first_level_commands(source: Path) -> dict[str, dict]:
     for index, (position, names) in enumerate(comparisons):
         if len(names) > 1:
             groups.append(names)
-        end = (
+        # Each dispatch is a single statement. Stop at the end of the line so
+        # that lambdas declared for the *next* command family are not mistaken
+        # for this command's factory.
+        line_end = process.find("\n", position)
+        if line_end < 0:
+            line_end = len(process)
+        next_position = (
             comparisons[index + 1][0] if index + 1 < len(comparisons) else len(process)
         )
+        end = min(line_end, next_position)
         segment = process[position:end]
         factory = re.search(r"\b(create_new_\w+)\s*\(", segment)
         callee = factory.group(1) if factory else None

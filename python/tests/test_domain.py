@@ -42,6 +42,11 @@ class TestGroup:
             "nodegroup 1 1 2 3"
         ]
 
+    def test_node_group_is_registered(self):
+        from suanpan.base import find_class
+
+        assert find_class("nodegroup", "group") is NodeGroup
+
     def test_element_group(self):
         assert ElementGroup(tag=2, element_tags=[9]).to_commands() == [
             "elementgroup 2 9"
