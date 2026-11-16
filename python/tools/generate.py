@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """Generate bulk pydantic classes for materials, elements and sections
-from the machine-readable parser specs in ``specs/``.
+from the unified C++ dispatch tables and the machine-readable parser
+specs in ``specs/``.
 
-The generator iterates over the *dispatch keywords* extracted directly
-from the C++ dispatchers (MaterialParser.cpp, ElementParser.cpp,
-SectionParser.cpp) -- the ground truth -- and looks up the parameter
-layout of each keyword in the corresponding YAML spec.
+The keyword, alias and factory information is read from the
+``TokenRegistry`` initializer lists of ``MaterialParser.cpp``,
+``ElementParser.cpp`` and ``SectionParser.cpp`` -- the ground truth of
+dispatch.  The parameter layout and defaults of each handler come from
+the corresponding YAML spec.
 
 The result is written as real Python sources:
 
@@ -19,75 +21,35 @@ reported as skipped and hand written later in ``<family>/_special.py``.
 
 Usage::
 
-    PYTHONPATH=src python3 tools/generate.py
+    PYTHONPATH=src python3 tools/generate.py --source ../../suanPan
 """
 
 from __future__ import annotations
 
+import argparse
 import keyword as py_keyword
+import os
 import re
+import shutil
+import subprocess
+import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
 import yaml
 
-ROOT = Path(__file__).resolve().parent.parent  # suanpan-py/
+ROOT = Path(__file__).resolve().parent.parent  # suanPan-vs/python/
 SPECS = ROOT / "specs"
 SRC = ROOT / "src" / "suanpan"
+REPO = ROOT.parent
+sys.path.insert(0, str(REPO / "scripts"))
 
-
-# --------------------------------------------------------------------------- #
-# dispatch tables, extracted verbatim from the C++ dispatchers                 #
-# --------------------------------------------------------------------------- #
-def load_dispatch(path: str) -> list[tuple[str, list[str]]]:
-    """Return [(first keyword, other keywords...)] lines."""
-    lines: list[tuple[str, list[str]]] = []
-    for line in Path(path).read_text().splitlines():
-        entries = re.findall(r'"([A-Za-z0-9_]+)"', line)
-        if entries:
-            lines.append((entries[0], entries[1:]))
-    return lines
-
-
-ELEMENT_DISPATCH = load_dispatch("/tmp/opencode/element_dispatch.txt")
-SECTION_DISPATCH = load_dispatch("/tmp/opencode/section_dispatch.txt")
-MATERIAL_DISPATCH = load_dispatch("/tmp/opencode/material_dispatch.txt")
-
-
-# dispatch keywords whose parameters come from another spec entry
-PROVIDER: dict[str, str] = {
-    # elements sharing one handler with a which/variant argument
-    "B21EH": "B21",
-    "B21EL": "B21",
-    "B31OS": "B31",
-    "NMB21EH": "NMB21",
-    "NMB21EL": "NMB21",
-    "CPS8": "CP8",
-    "CSMQ5": "CSMQ4",
-    "CSMQ6": "CSMQ4",
-    "CSMQ7": "CSMQ4",
-    "CSMQ8": "CSMQ4",
-    "Damper03": "Damper01",
-    "Damper04": "Damper01",
-    "Damper06": "Damper01",
-    # monolithic template variants share the identical token stream
-    "DC3D4M": "DC3D4",
-    "DC3D8M": "DC3D8",
-    "DCP3M": "DCP3",
-    "DCP4M": "DCP4",
-    # materials sharing handlers across dispatch spellings
-    "AFC": "AFC01",
-    "AFCO1D": "ArmstrongFrederick1D",
-    "CDPM2ANISO": "CDPM2",
-    "CDPM2NO": "CDPM2",
-    # orthotropic handlers shared by the Hoffman and TsaiWu spellings
-    "BilinearHoffman": "BilinearOrthotropic",
-    "BilinearTsaiWu": "BilinearOrthotropic",
-    "ExpHoffman": "ExpOrthotropic",
-    "ExpTsaiWu": "ExpOrthotropic",
-    "CustomHoffman": "CustomOrthotropic",
-    "CustomTsaiWu": "CustomOrthotropic",
-}
+from suanpan_parser import (  # noqa: E402
+    REGISTRY_FUNCTIONS,
+    RegistryEntry,
+    grouped_registry,
+    read_registry,
+)
 
 # elements whose node count equals the keyword suffix (new_csmq(size))
 NODE_COUNT: dict[str, int] = {"CSMQ5": 5, "CSMQ6": 6, "CSMQ7": 7, "CSMQ8": 8}
@@ -110,13 +72,6 @@ SPECIALS: dict[str, set[str]] = {
     "material": {"Balloon", "Balloon1D", "ConcreteK4", "MultiSubloading1D"},
     "element": {"PatchQuad", "PatchCube"},
     "section": set(),
-}
-
-# orthotropic spec entries: the handler is dispatched for both spellings
-ORTHOTROPIC = {
-    "BilinearOrthotropic": ("BilinearHoffman", "BilinearTsaiWu"),
-    "ExpOrthotropic": ("ExpHoffman", "ExpTsaiWu"),
-    "CustomOrthotropic": ("CustomHoffman", "CustomTsaiWu"),
 }
 
 
@@ -435,6 +390,7 @@ def emit_class(
     rest: Param | None,
     extra: dict | None = None,
     node_count: int | None = None,
+    factory: str | None = None,
 ) -> str:
     params = [p for p in entry.params if p.name.lower() != "tag"]
     designation_first = (
@@ -443,7 +399,7 @@ def emit_class(
         and len(entry.params) > 1
         and entry.params[1].name.lower() == "tag"
     )
-    cpp = (entry.cpp.split()[0] if entry.cpp else keyword).split("(")[0]
+    cpp = (factory or entry.cpp or keyword).split("<", 1)[0]
     lines: list[str] = []
     lines.append(f"class {class_name(keyword)}({family}):")
     lines.append(f'    """``{family.lower()} {keyword}`` (C++ ``{cpp}``).')
@@ -496,10 +452,7 @@ from __future__ import annotations
 
 from typing import ClassVar
 
-from pydantic import Field, field_validator
-
-from suanpan.base import SuanpanObject, format_value, format_float
-from suanpan.toolbox.format import IntList, FloatList, StrList
+{imports}
 
 
 class {family}(SuanpanObject):
@@ -569,10 +522,56 @@ class {family}(SuanpanObject):
 '''
 
 
+def format_source(content: str) -> str:
+    """Run ``ruff format`` on the generated source when it is available.
+
+    Formatting here keeps ``--check`` deterministic: the committed files
+    are produced by exactly the same code path as the comparison input.
+    """
+    ruff = shutil.which("ruff")
+    if ruff is None:
+        return content
+    try:
+        result = subprocess.run(
+            [ruff, "format", "--stdin-filename", "generated.py", "-"],
+            input=content,
+            text=True,
+            capture_output=True,
+            check=True,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return content
+    return result.stdout
+
+
 def render(family: str, cpp: str, classes: list[str]) -> str:
     word = family.lower()
-    header = TEMPLATE.format(family=family, cpp=cpp, word=word, plural=word + "s")
-    return header + "\n\n" + "\n\n".join(classes)
+    body = "\n\n".join(classes)
+
+    pydantic = []
+    if re.search(r"\bField\(", body):
+        pydantic.append("Field")
+    if "@field_validator" in body:
+        pydantic.append("field_validator")
+
+    formats = [name for name in ("FloatList", "IntList", "StrList") if name in body]
+
+    imports = []
+    if pydantic:
+        imports.append("from pydantic import " + ", ".join(pydantic))
+        imports.append("")
+    imports.append("from suanpan.base import SuanpanObject, format_value")
+    if formats:
+        imports.append("from suanpan.toolbox.format import " + ", ".join(formats))
+
+    header = TEMPLATE.format(
+        family=family,
+        cpp=cpp,
+        word=word,
+        plural=word + "s",
+        imports="\n".join(imports),
+    )
+    return header + "\n\n" + body
 
 
 def merge_specs(*specs: dict[str, Entry]) -> dict[str, Entry]:
@@ -585,7 +584,100 @@ def merge_specs(*specs: dict[str, Entry]) -> dict[str, Entry]:
     return merged
 
 
+def is_stub(entry: Entry) -> bool:
+    """Whether a spec entry only records an out-of-range handler."""
+    return not entry.params and not entry.rest and "outside assigned range" in entry.notes
+
+
+def spec_lookup(specs: dict[str, Entry], keyword: str) -> str | None:
+    """Find a spec keyword case-insensitively."""
+    if keyword in specs:
+        return keyword
+    return next((key for key in specs if key.lower() == keyword.lower()), None)
+
+
+def build_base_layouts(
+    groups: dict[str, list[RegistryEntry]], specs: dict[str, Entry]
+) -> dict[str, str]:
+    """Map a factory name without template arguments to a spec entry.
+
+    Template variants such as ``new_b21<0>``/``new_b21<2>`` and monolithic
+    switches such as ``new_dc3d4<false>``/``<true>`` share one command-line
+    layout.  The registry groups expose that relation directly.
+    """
+    layouts: dict[str, str] = {}
+    for entries in groups.values():
+        base = entries[0].base_factory
+        if base in layouts:
+            continue
+
+        for entry in entries:
+            keyword = spec_lookup(specs, entry.keyword)
+            if keyword is not None and not is_stub(specs[keyword]):
+                layouts[base] = keyword
+                break
+        if base in layouts:
+            continue
+
+        bare = base[4:] if base.startswith("new_") else base
+        for keyword, spec in specs.items():
+            if keyword.lower() == bare and not is_stub(spec):
+                layouts[base] = keyword
+                break
+    return layouts
+
+
+def resolve_spec(
+    specs: dict[str, Entry],
+    layouts: dict[str, str],
+    entries: list[RegistryEntry],
+) -> str | None:
+    """Resolve the spec entry describing the token stream of a keyword group."""
+    for entry in entries:
+        keyword = spec_lookup(specs, entry.keyword)
+        if keyword is not None and not is_stub(specs[keyword]):
+            return keyword
+    return layouts.get(entries[0].base_factory)
+
+
+def emit_alias_class(
+    alias: str, canonical: str, family: str, factory: str | None
+) -> str:
+    """Emit a compatibility spelling that is not registered separately."""
+    cpp = (factory or "").split("<", 1)[0]
+    lines = [
+        f"class {class_name(alias)}({class_name(canonical)}):",
+        f'    """Alternative spelling of ``{canonical}`` (C++ ``{cpp}``)."""',
+        "",
+        f"    keyword = {alias!r}",
+        "    aliases = ()",
+        "    sp_abstract = True",
+        "",
+        "",
+    ]
+    return "\n".join(lines)
+
+
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--source",
+        default=os.environ.get("SUANPAN_SOURCE", str(REPO.parent / "suanPan")),
+        type=Path,
+        help="path to the suanPan checkout",
+    )
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="fail if the generated files are out of date instead of writing them",
+    )
+    args = parser.parse_args()
+
+    source = args.source.resolve()
+    for category in ("material", "element", "section"):
+        if not (source / REGISTRY_FUNCTIONS[category][0]).exists():
+            raise SystemExit(f"cannot locate suanPan parser source at {source}")
+
     material_specs = merge_specs(
         load_spec("material_a.yaml"), load_spec("material_b.yaml")
     )
@@ -597,66 +689,57 @@ def main() -> None:
     jobs = [
         (
             "Material",
-            "Material",
             "material",
-            MATERIAL_DISPATCH,
+            "material",
             material_specs,
             "Material/MaterialParser.cpp",
         ),
         (
             "Element",
-            "Element",
             "element",
-            ELEMENT_DISPATCH,
+            "element",
             element_specs,
             "Element/ElementParser.cpp",
         ),
         (
             "Section",
-            "Section",
             "section",
-            SECTION_DISPATCH,
+            "section",
             section_specs,
             "Section/SectionParser.cpp",
         ),
     ]
 
-    for family, _, folder, dispatch, specs, cpp in jobs:
-        # merge dispatch duplicates (first occurrence wins)
-        ordered: dict[str, list[str]] = {}
-        for canonical, aliases in dispatch:
-            ordered.setdefault(canonical, [])
-            for alias in aliases:
-                if alias not in ordered[canonical] and alias != canonical:
-                    ordered[canonical].extend([alias])
+    stale: list[Path] = []
+    for family, folder, category, specs, cpp in jobs:
+        groups = grouped_registry(read_registry(source, category))
+        layouts = build_base_layouts(groups, specs)
 
         special = SPECIALS.get(folder, set())
         emitted: list[str] = []
         handled: set[str] = set()
         skipped: list[str] = []
 
-        for canonical, aliases in ordered.items():
+        for factory, entries in groups.items():
+            canonical = entries[0].keyword
+            aliases = [entry.keyword for entry in entries[1:]]
+
             if canonical in special:
-                handled.add(canonical)
+                handled.update(entry.keyword for entry in entries)
                 continue
-            # a PROVIDER mapping wins: spec sets may contain stub entries
-            # (e.g. element_b aliases) with empty parameter lists
-            spec_keyword = PROVIDER.get(canonical)
+
+            spec_keyword = resolve_spec(specs, layouts, entries)
             if spec_keyword is None:
-                spec_keyword = (
-                    canonical
-                    if canonical in specs
-                    else next(
-                        (k for k in specs if k.lower() == canonical.lower()), None
-                    )
-                )
-            if spec_keyword is None:
-                skipped.append(canonical)
+                skipped.append(f"{canonical} (no spec entry)")
+                handled.update(entry.keyword for entry in entries)
                 continue
+
             entry = specs[spec_keyword]
             if has_real_flags(entry):
                 skipped.append(f"{canonical} (flag options)")
+                handled.update(item.keyword for item in entries)
                 continue
+
             rest = parse_rest(entry.rest)
             if rest is not None and any(
                 p.name.lower() == rest.name.lower() and p.name != rest.name
@@ -666,56 +749,45 @@ def main() -> None:
                 entry.params = [
                     p for p in entry.params if p.name.lower() != rest.name.lower()
                 ]
-            alias_list = [a for a in aliases if a.lower() != canonical.lower()]
+
             emitted.append(
                 emit_class(
                     entry,
                     canonical,
-                    alias_list,
+                    aliases,
                     family,
                     rest,
                     node_count=NODE_COUNT.get(canonical),
+                    factory=factory,
                 )
             )
-            handled.add(canonical)
+            for alias in aliases:
+                emitted.append(emit_alias_class(alias, canonical, family, factory))
+            handled.update(item.keyword for item in entries)
 
-        # orthotropic expansions
-        for spec_keyword, (hoffman, tsaiwu) in ORTHOTROPIC.items():
-            if spec_keyword not in specs or hoffman in handled:
-                continue
-            entry = specs[spec_keyword]
-            entry.params = [p for p in entry.params if "dispatch" not in str(p.name)]
-            for keyword in (hoffman, tsaiwu):
-                if keyword in special:
-                    handled.add(keyword)
-                    continue
-                emitted.append(emit_class(entry, keyword, [], family, None))
-                handled.add(keyword)
-
-        # spec entries that are not dispatched anywhere: report only
-        for spec_keyword in specs:
-            if (
-                spec_keyword not in handled
-                and spec_keyword not in PROVIDER
-                and spec_keyword not in ORTHOTROPIC
-            ):
-                dispatched_as = [
-                    c
-                    for c, a in ((c, [c, *a]) for c, a in ordered.items())
-                    if spec_keyword in a[1:]
-                ]
-                if not dispatched_as and spec_keyword not in handled:
-                    pass
         out_dir = SRC / folder
         out_dir.mkdir(parents=True, exist_ok=True)
         out = out_dir / "_generated.py"
-        out.write_text(render(family, cpp, emitted))
+        content = format_source(render(family, cpp, emitted))
+
+        if args.check:
+            if not out.exists() or out.read_text() != content:
+                stale.append(out)
+        else:
+            out.write_text(content)
+
         print(
-            f"{family}: {len(handled)} dispatched, {len(emitted)} emitted, "
+            f"{family}: {len(handled)} keywords, {len(emitted)} emitted, "
             f"{len(skipped)} skipped -> {out}"
         )
         for item in skipped:
             print(f"  skipped: {item}")
+
+    if stale:
+        print("generated files are out of date:")
+        for path in stale:
+            print(f"  {path}")
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":

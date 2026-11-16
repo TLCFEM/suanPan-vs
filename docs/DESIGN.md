@@ -53,19 +53,26 @@ data/database.json          syntaxes/*.json (argument templates, snippets)
 
 ### Generated command database
 
-`scripts/generate_database.py` reads `Toolbox/command.cpp` and the parser files
-(`Element/ElementParser.cpp`, `Material/MaterialParser.cpp`, ...). It extracts
+`scripts/generate_database.py` reads `Toolbox/command.cpp` and the unified
+parser dispatch tables (`Element/ElementParser.cpp`, `Material/MaterialParser.cpp`,
+...). It extracts
 
-* first-level commands from every `is_equal(command_id, ...)` check,
+* first-level commands,
 * descriptions from `print_command()`,
-* second-level type keywords from the `is_equal(<type>, ...)` dispatch inside
-  `create_new_*` factories, including `is_equal_any` alias groups,
+* second-level type keywords from the `TokenRegistry` initializer lists used
+  by the `create_new_*` and `dispatch_new_recorder` factories; keywords that
+  name the same factory expression become aliases of the first spelling,
 * the suanPan version from `Toolbox/command.h`.
+
+`set` and `initial` have not migrated to `TokenRegistry` yet; their keywords
+are still read from the legacy `is_equal` chains in `Toolbox/command.cpp`.
+The shared registry reader lives in `scripts/suanpan_parser.py`; the Python
+generator (`python/tools/generate.py`) uses the same reader.
 
 The result is `data/database.json`. Regenerate it whenever suanPan changes:
 
 ```bash
-python scripts/generate_database.py --source ../suanPan
+python scripts/generate_database.py --source ../suanPan --output data/database.json
 ```
 
 Argument templates and their documentation stay in `syntaxes/*.json`. They are

@@ -1197,7 +1197,7 @@ mass:
   notes: 'standalone nodal mass command create_new_mass (lines 2419-2448); always inserts Mass3D(tag, node, magnitude, dof list) regardless of dimension; dof indices limited to 1-6'
 
 dispatch_notes:
-  create_new_element: 'lines 2615-2736; first token = element type string matched case-sensitively by is_equal against 107 keywords above; unknown type delegates to external_module::object(new_element, domain, element_id, command); failure (nullptr or insert failure) logs error'
+  create_new_element: 'lines 2615-2736; first token = element type string matched case-insensitively by the TokenRegistry against 107 keywords above; unknown type delegates to external_module::object(new_element, domain, element_id, command); failure (nullptr or insert failure) logs error'
   create_new_modifier: 'lines 2450-2586; first token = modifier type; unknown type is treated as an external library/cpp module name: loaded via ExternalModule and invoked with I->new_object(new_modifier, command)'
   create_new_orientation: 'lines 2588-2613; first token = orientation type (B3DL/B3DC/B3DOSL/B3DOSC only); unrecognized types do nothing and return SUANPAN_SUCCESS'
   create_new_mass: 'lines 2419-2448; fixed syntax: mass <tag> <node> <magnitude> <dof...>; always Mass3D'

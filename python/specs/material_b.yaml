@@ -106,7 +106,7 @@
     - {name: density, type: float, req: false, default: 0.0}
   flags: []
   rest: null
-  notes: 'Dispatch: is_equal_any(material_id, "Elastic3D", "IsotropicElastic3D"). Handler: new_isotropicelastic3d (line 2166).'
+  notes: 'Registered in the TokenRegistry as "Elastic3D" and "IsotropicElastic3D", both mapping to new_isotropicelastic3d. Handler: new_isotropicelastic3d (line 2166).'
 
 - keyword: NonlocalElastic3D
   aliases: [nonlocalisotropicelastic3d]

@@ -90,13 +90,13 @@ class Element(SuanpanObject):
 
 
 class Allman(Element):
-    """``element Allman`` (C++ ``Allman``).
+    """``element Allman`` (C++ ``new_allman``).
 
     node_tags: exactly 3 node tags (uvec(3)). thickness uses a non-fatal eof-guard: if omitted, unit thickness assumed; if present but invalid, only a warning is printed and the default 1.0 is kept (element still created).
     """
 
     keyword = "Allman"
-    summary = "Allman"
+    summary = "new_allman"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -111,13 +111,13 @@ class Allman(Element):
 
 
 class B21(Element):
-    """``element B21`` (C++ ``B21``).
+    """``element B21`` (C++ ``new_b21``).
 
     node_tags: exactly 2 node tags. Variant selected by C++ arg which: B21 -> B21 (which=0), B21EL -> B21E (which=1), B21EH -> B21E (which=2). All three keywords share the identical token stream. nonlinear parsed with is_true.
     """
 
     keyword = "B21"
-    summary = "B21"
+    summary = "new_b21"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     section_tag: int = Field(description="section_tag")
@@ -133,13 +133,13 @@ class B21(Element):
 
 
 class B21EH(Element):
-    """``element B21EH`` (C++ ``B21``).
+    """``element B21EH`` (C++ ``new_b21``).
 
     node_tags: exactly 2 node tags. Variant selected by C++ arg which: B21 -> B21 (which=0), B21EL -> B21E (which=1), B21EH -> B21E (which=2). All three keywords share the identical token stream. nonlinear parsed with is_true.
     """
 
     keyword = "B21EH"
-    summary = "B21"
+    summary = "new_b21"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     section_tag: int = Field(description="section_tag")
@@ -155,13 +155,13 @@ class B21EH(Element):
 
 
 class B21EL(Element):
-    """``element B21EL`` (C++ ``B21``).
+    """``element B21EL`` (C++ ``new_b21``).
 
     node_tags: exactly 2 node tags. Variant selected by C++ arg which: B21 -> B21 (which=0), B21EL -> B21E (which=1), B21EH -> B21E (which=2). All three keywords share the identical token stream. nonlinear parsed with is_true.
     """
 
     keyword = "B21EL"
-    summary = "B21"
+    summary = "new_b21"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     section_tag: int = Field(description="section_tag")
@@ -177,13 +177,13 @@ class B21EL(Element):
 
 
 class B21H(Element):
-    """``element B21H`` (C++ ``B21H``).
+    """``element B21H`` (C++ ``new_b21h``).
 
     node_tags: exactly 2 node tags. elastic_length is optional (eof-guard); an invalid token aborts creation. Its error message mentions integration points but it actually reads the elastic length. nonlinear parsed with is_true.
     """
 
     keyword = "B21H"
-    summary = "B21H"
+    summary = "new_b21h"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     section_tag: int = Field(description="section_tag")
@@ -199,13 +199,13 @@ class B21H(Element):
 
 
 class B31(Element):
-    """``element B31`` (C++ ``B31``).
+    """``element B31`` (C++ ``new_b31``).
 
     node_tags: exactly 2 node tags. C++ arg if_os selects the class: B31 -> B31, B31OS -> B31OS. Same token stream for both keywords. nonlinear parsed with is_true.
     """
 
     keyword = "B31"
-    summary = "B31"
+    summary = "new_b31"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     section_tag: int = Field(description="section_tag")
@@ -222,13 +222,13 @@ class B31(Element):
 
 
 class B31OS(Element):
-    """``element B31OS`` (C++ ``B31``).
+    """``element B31OS`` (C++ ``new_b31``).
 
     node_tags: exactly 2 node tags. C++ arg if_os selects the class: B31 -> B31, B31OS -> B31OS. Same token stream for both keywords. nonlinear parsed with is_true.
     """
 
     keyword = "B31OS"
-    summary = "B31"
+    summary = "new_b31"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     section_tag: int = Field(description="section_tag")
@@ -245,13 +245,13 @@ class B31OS(Element):
 
 
 class C3D4(Element):
-    """``element C3D4`` (C++ ``C3D4``).
+    """``element C3D4`` (C++ ``new_c3d4``).
 
     node_tags: exactly 4 node tags. nonlinear uses a non-fatal eof-guard: an invalid token only warns and false is kept.
     """
 
     keyword = "C3D4"
-    summary = "C3D4"
+    summary = "new_c3d4"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -266,13 +266,13 @@ class C3D4(Element):
 
 
 class C3D8(Element):
-    """``element C3D8`` (C++ ``C3D8``).
+    """``element C3D8`` (C++ ``new_c3d8``).
 
     node_tags: exactly 8 node tags. reduced_scheme: only the first character is uppercased and forwarded to the constructor (default 'I'; source debug message: standard 4-point Gaussian integration scheme assumed). C3D8R (separate entry) forces 'R' and does not read this token. Invalid optional tokens abort creation.
     """
 
     keyword = "C3D8"
-    summary = "C3D8"
+    summary = "new_c3d8"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -289,13 +289,13 @@ class C3D8(Element):
 
 
 class C3D8I(Element):
-    """``element C3D8I`` (C++ ``C3D8I``).
+    """``element C3D8I`` (C++ ``new_c3d8i``).
 
     node_tags: exactly 8 node tags. No optional tokens.
     """
 
     keyword = "C3D8I"
-    summary = "C3D8I"
+    summary = "new_c3d8i"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -309,13 +309,13 @@ class C3D8I(Element):
 
 
 class C3D8R(Element):
-    """``element C3D8R`` (C++ ``C3D8``).
+    """``element C3D8R`` (C++ ``new_c3d8``).
 
     Same handler as C3D8 with force_reduced=true: reduced integration ('R') is forced and the integration-switch token is NOT read, so the positional stream after material_tag is [nonlinear] then [penalty]. node_tags: exactly 8 node tags.
     """
 
     keyword = "C3D8R"
-    summary = "C3D8"
+    summary = "new_c3d8"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -331,13 +331,13 @@ class C3D8R(Element):
 
 
 class C3D20(Element):
-    """``element C3D20`` (C++ ``C3D20``).
+    """``element C3D20`` (C++ ``new_c3d20``).
 
     node_tags: exactly 20 node tags (uvec(20)). reduced_scheme C++ default token is 'true'; when omitted a debug message notes the standard Irons 14-point integration scheme. Both switches use a non-fatal eof-guard: an invalid token only warns and the default is kept.
     """
 
     keyword = "C3D20"
-    summary = "C3D20"
+    summary = "new_c3d20"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -353,13 +353,13 @@ class C3D20(Element):
 
 
 class CAX3(Element):
-    """``element CAX3`` (C++ ``CAX3``).
+    """``element CAX3`` (C++ ``new_cax3``).
 
     node_tags: exactly 3 node tags. nonlinear uses a non-fatal eof-guard: an invalid token only warns and false is kept.
     """
 
     keyword = "CAX3"
-    summary = "CAX3"
+    summary = "new_cax3"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -374,13 +374,13 @@ class CAX3(Element):
 
 
 class CAX4(Element):
-    """``element CAX4`` (C++ ``CAX4``).
+    """``element CAX4`` (C++ ``new_cax4``).
 
     node_tags: exactly 4 node tags. No user-facing nonlinear switch: the constructor is invoked with a hardcoded false.
     """
 
     keyword = "CAX4"
-    summary = "CAX4"
+    summary = "new_cax4"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -394,13 +394,13 @@ class CAX4(Element):
 
 
 class CAX8(Element):
-    """``element CAX8`` (C++ ``CAX8``).
+    """``element CAX8`` (C++ ``new_cax8``).
 
     node_tags: exactly 8 node tags. No user-facing nonlinear switch: the constructor is invoked with a hardcoded false.
     """
 
     keyword = "CAX8"
-    summary = "CAX8"
+    summary = "new_cax8"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -414,13 +414,13 @@ class CAX8(Element):
 
 
 class CIN3D8(Element):
-    """``element CIN3D8`` (C++ ``CIN3D8``).
+    """``element CIN3D8`` (C++ ``new_cin3d8``).
 
     node_tags: exactly 8 node tags. No optional tokens.
     """
 
     keyword = "CIN3D8"
-    summary = "CIN3D8"
+    summary = "new_cin3d8"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -434,13 +434,13 @@ class CIN3D8(Element):
 
 
 class CINP4(Element):
-    """``element CINP4`` (C++ ``CINP4``).
+    """``element CINP4`` (C++ ``new_cinp4``).
 
     node_tags: exactly 4 node tags.
     """
 
     keyword = "CINP4"
-    summary = "CINP4"
+    summary = "new_cinp4"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -455,13 +455,13 @@ class CINP4(Element):
 
 
 class Contact2D(Element):
-    """``element Contact2D`` (C++ ``Contact2D``).
+    """``element Contact2D`` (C++ ``new_contact2d``).
 
     master_tag and slave_tag are group tags (master read first). alpha is the penalty multiplier, default 1E6.
     """
 
     keyword = "Contact2D"
-    summary = "Contact2D"
+    summary = "new_contact2d"
     tag: int = Field(description="tag")
     master_tag: int = Field(description="master_tag")
     slave_tag: int = Field(description="slave_tag")
@@ -469,13 +469,13 @@ class Contact2D(Element):
 
 
 class Contact3D(Element):
-    """``element Contact3D`` (C++ ``Contact3D``).
+    """``element Contact3D`` (C++ ``new_contact3d``).
 
     master_tag and slave_tag are group tags (master read first). alpha is the penalty multiplier, default 1E6.
     """
 
     keyword = "Contact3D"
-    summary = "Contact3D"
+    summary = "new_contact3d"
     tag: int = Field(description="tag")
     master_tag: int = Field(description="master_tag")
     slave_tag: int = Field(description="slave_tag")
@@ -483,13 +483,13 @@ class Contact3D(Element):
 
 
 class CP3(Element):
-    """``element CP3`` (C++ ``CP3``).
+    """``element CP3`` (C++ ``new_cp3``).
 
     node_tags: exactly 3 node tags. nonlinear uses a non-fatal eof-guard: an invalid token only warns and false is kept.
     """
 
     keyword = "CP3"
-    summary = "CP3"
+    summary = "new_cp3"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -505,13 +505,13 @@ class CP3(Element):
 
 
 class CP4(Element):
-    """``element CP4`` (C++ ``CP4``).
+    """``element CP4`` (C++ ``new_cp4``).
 
     node_tags: exactly 4 node tags. reduced_scheme default token 'false' means full integration (source debug message: full integration assumed); CP4R (separate entry) forces true and skips this token. Constructor arg order: (tag, node_tag, material_tag, thickness, penalty, reduced, nonlinear). Invalid optional tokens a...
     """
 
     keyword = "CP4"
-    summary = "CP4"
+    summary = "new_cp4"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -529,13 +529,13 @@ class CP4(Element):
 
 
 class CP4I(Element):
-    """``element CP4I`` (C++ ``CP4I``).
+    """``element CP4I`` (C++ ``new_cp4i``).
 
     node_tags: exactly 4 node tags. Incompatible-mode element; no other tokens.
     """
 
     keyword = "CP4I"
-    summary = "CP4I"
+    summary = "new_cp4i"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -550,13 +550,13 @@ class CP4I(Element):
 
 
 class CP4R(Element):
-    """``element CP4R`` (C++ ``CP4``).
+    """``element CP4R`` (C++ ``new_cp4``).
 
     Same handler as CP4 with force_reduced=true: reduced integration is forced (reduced_scheme='true') and the reduced-scheme token is NOT read, so the positional stream after material_tag is [thickness] [nonlinear] [penalty]. node_tags: exactly 4 node tags.
     """
 
     keyword = "CP4R"
-    summary = "CP4"
+    summary = "new_cp4"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -573,13 +573,13 @@ class CP4R(Element):
 
 
 class CP5(Element):
-    """``element CP5`` (C++ ``CP5``).
+    """``element CP5`` (C++ ``new_cp5``).
 
     node_tags: exactly 5 node tags. nonlinear C++ default token is 'N' (is_true('N') = false); eof-guard, an invalid token aborts creation.
     """
 
     keyword = "CP5"
-    summary = "CP5"
+    summary = "new_cp5"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -595,13 +595,13 @@ class CP5(Element):
 
 
 class CP6(Element):
-    """``element CP6`` (C++ ``CP6``).
+    """``element CP6`` (C++ ``new_cp6``).
 
     node_tags: exactly 6 node tags. nonlinear read via get_optional_input; invalid token aborts creation.
     """
 
     keyword = "CP6"
-    summary = "CP6"
+    summary = "new_cp6"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -617,13 +617,13 @@ class CP6(Element):
 
 
 class CP7(Element):
-    """``element CP7`` (C++ ``CP7``).
+    """``element CP7`` (C++ ``new_cp7``).
 
     node_tags: exactly 7 node tags (the source error message says 'Five valid nodes' - it is a typo; uvec(7) is read). nonlinear C++ default token is 'N' (false); eof-guard, invalid token aborts creation.
     """
 
     keyword = "CP7"
-    summary = "CP7"
+    summary = "new_cp7"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -639,13 +639,14 @@ class CP7(Element):
 
 
 class CP8(Element):
-    """``element CP8`` (C++ ``CP8``).
+    """``element CP8`` (C++ ``new_cp8``).
 
     CPS8 is an alias hitting the same handler. node_tags: exactly 8 node tags. reduced_scheme and nonlinear C++ default tokens are 'N' (is_true('N') = false); both read via get_optional_input; invalid tokens abort creation.
     """
 
     keyword = "CP8"
-    summary = "CP8"
+    aliases = ("CPS8",)
+    summary = "new_cp8"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -661,14 +662,22 @@ class CP8(Element):
         return value
 
 
+class CPS8(CP8):
+    """Alternative spelling of ``CP8`` (C++ ``new_cp8``)."""
+
+    keyword = "CPS8"
+    aliases = ()
+    sp_abstract = True
+
+
 class CPE8(Element):
-    """``element CPE8`` (C++ ``CP8``).
+    """``element CPE8`` (C++ ``new_cpe8``).
 
     Dispatches to the CP8 class with thickness hardcoded 1.0 (no thickness token). node_tags: exactly 8 node tags. reduced_scheme and nonlinear C++ default tokens are 'N' (false); both use eof-guards, invalid tokens abort creation.
     """
 
     keyword = "CPE8"
-    summary = "CP8"
+    summary = "new_cpe8"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -684,39 +693,16 @@ class CPE8(Element):
 
 
 class CPE8R(Element):
-    """``element CPE8R`` (C++ ``CP8``).
+    """``element CPE8R`` (C++ ``new_cpe8r``).
 
     Dispatches to the CP8 class with thickness 1.0 and reduced integration hardcoded true (neither token is read). node_tags: exactly 8 node tags. nonlinear C++ default token is 'N' (false); eof-guard, invalid token aborts creation.
     """
 
     keyword = "CPE8R"
-    summary = "CP8"
+    summary = "new_cpe8r"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
-    nonlinear: bool = Field(default=False, description="nonlinear")
-
-    @field_validator("node_tags")
-    @classmethod
-    def _check_node_tags(cls, value: IntList) -> IntList:
-        if len(value) != 8:
-            raise ValueError("node_tags" + " requires exactly 8 node tags")
-        return value
-
-
-class CPS8(Element):
-    """``element CPS8`` (C++ ``CP8``).
-
-    CPS8 is an alias hitting the same handler. node_tags: exactly 8 node tags. reduced_scheme and nonlinear C++ default tokens are 'N' (is_true('N') = false); both read via get_optional_input; invalid tokens abort creation.
-    """
-
-    keyword = "CPS8"
-    summary = "CP8"
-    tag: int = Field(description="tag")
-    node_tags: IntList = Field(description="node_tags")
-    material_tag: int = Field(description="material_tag")
-    thickness: float = Field(default=1.0, description="thickness")
-    reduced_scheme: bool = Field(default=False, description="reduced_scheme")
     nonlinear: bool = Field(default=False, description="nonlinear")
 
     @field_validator("node_tags")
@@ -728,13 +714,13 @@ class CPS8(Element):
 
 
 class CSMQ4(Element):
-    """``element CSMQ4`` (C++ ``CSMQ4``).
+    """``element CSMQ4`` (C++ ``new_csmq``).
 
     One handler (new_csmq) for CSMQ4-CSMQ8; the node count equals the keyword suffix (4/5/6/7/8) and selects the class CSMQ4/CSMQ5/CSMQ6/CSMQ7/CSMQ8. The source error message always says 'Four valid nodes' regardless of the actual count. length default -1. (negative sentinel).
     """
 
     keyword = "CSMQ4"
-    summary = "CSMQ4"
+    summary = "new_csmq"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -743,13 +729,13 @@ class CSMQ4(Element):
 
 
 class CSMQ5(Element):
-    """``element CSMQ5`` (C++ ``CSMQ4``).
+    """``element CSMQ5`` (C++ ``new_csmq``).
 
     One handler (new_csmq) for CSMQ4-CSMQ8; the node count equals the keyword suffix (4/5/6/7/8) and selects the class CSMQ4/CSMQ5/CSMQ6/CSMQ7/CSMQ8. The source error message always says 'Four valid nodes' regardless of the actual count. length default -1. (negative sentinel).
     """
 
     keyword = "CSMQ5"
-    summary = "CSMQ4"
+    summary = "new_csmq"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -765,13 +751,13 @@ class CSMQ5(Element):
 
 
 class CSMQ6(Element):
-    """``element CSMQ6`` (C++ ``CSMQ4``).
+    """``element CSMQ6`` (C++ ``new_csmq``).
 
     One handler (new_csmq) for CSMQ4-CSMQ8; the node count equals the keyword suffix (4/5/6/7/8) and selects the class CSMQ4/CSMQ5/CSMQ6/CSMQ7/CSMQ8. The source error message always says 'Four valid nodes' regardless of the actual count. length default -1. (negative sentinel).
     """
 
     keyword = "CSMQ6"
-    summary = "CSMQ4"
+    summary = "new_csmq"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -787,13 +773,13 @@ class CSMQ6(Element):
 
 
 class CSMQ7(Element):
-    """``element CSMQ7`` (C++ ``CSMQ4``).
+    """``element CSMQ7`` (C++ ``new_csmq``).
 
     One handler (new_csmq) for CSMQ4-CSMQ8; the node count equals the keyword suffix (4/5/6/7/8) and selects the class CSMQ4/CSMQ5/CSMQ6/CSMQ7/CSMQ8. The source error message always says 'Four valid nodes' regardless of the actual count. length default -1. (negative sentinel).
     """
 
     keyword = "CSMQ7"
-    summary = "CSMQ4"
+    summary = "new_csmq"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -809,13 +795,13 @@ class CSMQ7(Element):
 
 
 class CSMQ8(Element):
-    """``element CSMQ8`` (C++ ``CSMQ4``).
+    """``element CSMQ8`` (C++ ``new_csmq``).
 
     One handler (new_csmq) for CSMQ4-CSMQ8; the node count equals the keyword suffix (4/5/6/7/8) and selects the class CSMQ4/CSMQ5/CSMQ6/CSMQ7/CSMQ8. The source error message always says 'Four valid nodes' regardless of the actual count. length default -1. (negative sentinel).
     """
 
     keyword = "CSMQ8"
-    summary = "CSMQ4"
+    summary = "new_csmq"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -831,13 +817,13 @@ class CSMQ8(Element):
 
 
 class CSMT3(Element):
-    """``element CSMT3`` (C++ ``CSMT3``).
+    """``element CSMT3`` (C++ ``new_csmt3``).
 
     node_tags: exactly 3 node tags. length default -1. (negative sentinel, likely meaning compute from geometry).
     """
 
     keyword = "CSMT3"
-    summary = "CSMT3"
+    summary = "new_csmt3"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -853,13 +839,13 @@ class CSMT3(Element):
 
 
 class CSMT6(Element):
-    """``element CSMT6`` (C++ ``CSMT6``).
+    """``element CSMT6`` (C++ ``new_csmt6``).
 
     node_tags: exactly 6 node tags. length default -1. (negative sentinel).
     """
 
     keyword = "CSMT6"
-    summary = "CSMT6"
+    summary = "new_csmt6"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -875,13 +861,13 @@ class CSMT6(Element):
 
 
 class Damper01(Element):
-    """``element Damper01`` (C++ ``Damper01``).
+    """``element Damper01`` (C++ ``new_damper01``).
 
     node_tags: exactly 2 node tags. C++ arg dimension: Damper01 -> 2D, Damper03 -> 3D (same token stream). damper_tag references a damper material.
     """
 
     keyword = "Damper01"
-    summary = "Damper01"
+    summary = "new_damper01"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     damper_tag: int = Field(description="damper_tag")
@@ -895,13 +881,13 @@ class Damper01(Element):
 
 
 class Damper02(Element):
-    """``element Damper02`` (C++ ``Damper02``).
+    """``element Damper02`` (C++ ``new_damper02``).
 
     node_tags: exactly 2 node tags. C++ arg dimension: Damper02 -> 2D, Damper04 -> 3D. use_matrix C++ default token 'true' (matrix formulation on); proceed is an unsigned switch defaulting to 0; beta default 0.5. All three optional params use fatal eof-guards. Constructor arg order: (tag, node_tag, damper_tag, spring_ta...
     """
 
     keyword = "Damper02"
-    summary = "Damper02"
+    summary = "new_damper02"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     damper_tag: int = Field(description="damper_tag")
@@ -919,13 +905,13 @@ class Damper02(Element):
 
 
 class Damper03(Element):
-    """``element Damper03`` (C++ ``Damper01``).
+    """``element Damper03`` (C++ ``new_damper01``).
 
     node_tags: exactly 2 node tags. C++ arg dimension: Damper01 -> 2D, Damper03 -> 3D (same token stream). damper_tag references a damper material.
     """
 
     keyword = "Damper03"
-    summary = "Damper01"
+    summary = "new_damper01"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     damper_tag: int = Field(description="damper_tag")
@@ -939,16 +925,20 @@ class Damper03(Element):
 
 
 class Damper04(Element):
-    """``element Damper04`` (C++ ``Damper01``).
+    """``element Damper04`` (C++ ``new_damper02``).
 
-    node_tags: exactly 2 node tags. C++ arg dimension: Damper01 -> 2D, Damper03 -> 3D (same token stream). damper_tag references a damper material.
+    node_tags: exactly 2 node tags. C++ arg dimension: Damper02 -> 2D, Damper04 -> 3D. use_matrix C++ default token 'true' (matrix formulation on); proceed is an unsigned switch defaulting to 0; beta default 0.5. All three optional params use fatal eof-guards. Constructor arg order: (tag, node_tag, damper_tag, spring_ta...
     """
 
     keyword = "Damper04"
-    summary = "Damper01"
+    summary = "new_damper02"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     damper_tag: int = Field(description="damper_tag")
+    spring_tag: int = Field(description="spring_tag")
+    use_matrix: bool = Field(default=True, description="use_matrix")
+    proceed: int = Field(default=0, description="proceed")
+    beta: float = Field(default=0.5, description="beta")
 
     @field_validator("node_tags")
     @classmethod
@@ -959,13 +949,13 @@ class Damper04(Element):
 
 
 class Damper05(Element):
-    """``element Damper05`` (C++ ``Damper05``).
+    """``element Damper05`` (C++ ``new_damper05``).
 
     node_tags: exactly 2 node tags. C++ arg dimension: Damper05 -> 2D, Damper06 -> 3D (same token stream). damper_tag references a damper material.
     """
 
     keyword = "Damper05"
-    summary = "Damper05"
+    summary = "new_damper05"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     damper_tag: int = Field(description="damper_tag")
@@ -979,13 +969,13 @@ class Damper05(Element):
 
 
 class Damper06(Element):
-    """``element Damper06`` (C++ ``Damper01``).
+    """``element Damper06`` (C++ ``new_damper05``).
 
-    node_tags: exactly 2 node tags. C++ arg dimension: Damper01 -> 2D, Damper03 -> 3D (same token stream). damper_tag references a damper material.
+    node_tags: exactly 2 node tags. C++ arg dimension: Damper05 -> 2D, Damper06 -> 3D (same token stream). damper_tag references a damper material.
     """
 
     keyword = "Damper06"
-    summary = "Damper01"
+    summary = "new_damper05"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     damper_tag: int = Field(description="damper_tag")
@@ -999,13 +989,13 @@ class Damper06(Element):
 
 
 class DC3D4(Element):
-    """``element DC3D4`` (C++ ``DC3D4``).
+    """``element DC3D4`` (C++ ``new_dc3d4``).
 
     node_tags: exactly 4 node tags. length is the characteristic length, rate is the energy release rate; both required with no default. C++ template arg monolithic: DC3D4 -> false, DC3D4M -> true (same token stream).
     """
 
     keyword = "DC3D4"
-    summary = "DC3D4"
+    summary = "new_dc3d4"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1021,13 +1011,13 @@ class DC3D4(Element):
 
 
 class DC3D4M(Element):
-    """``element DC3D4M`` (C++ ``DC3D4``).
+    """``element DC3D4M`` (C++ ``new_dc3d4``).
 
     node_tags: exactly 4 node tags. length is the characteristic length, rate is the energy release rate; both required with no default. C++ template arg monolithic: DC3D4 -> false, DC3D4M -> true (same token stream).
     """
 
     keyword = "DC3D4M"
-    summary = "DC3D4"
+    summary = "new_dc3d4"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1043,13 +1033,13 @@ class DC3D4M(Element):
 
 
 class DC3D8(Element):
-    """``element DC3D8`` (C++ ``DC3D8``).
+    """``element DC3D8`` (C++ ``new_dc3d8``).
 
     node_tags: exactly 8 node tags (the source error message says 'Four valid nodes' - typo; uvec(8) is read). length is the characteristic length, rate is the energy release rate; both required. C++ template arg monolithic: DC3D8 -> false, DC3D8M -> true.
     """
 
     keyword = "DC3D8"
-    summary = "DC3D8"
+    summary = "new_dc3d8"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1065,13 +1055,13 @@ class DC3D8(Element):
 
 
 class DC3D8M(Element):
-    """``element DC3D8M`` (C++ ``DC3D8``).
+    """``element DC3D8M`` (C++ ``new_dc3d8``).
 
     node_tags: exactly 8 node tags (the source error message says 'Four valid nodes' - typo; uvec(8) is read). length is the characteristic length, rate is the energy release rate; both required. C++ template arg monolithic: DC3D8 -> false, DC3D8M -> true.
     """
 
     keyword = "DC3D8M"
-    summary = "DC3D8"
+    summary = "new_dc3d8"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1087,13 +1077,13 @@ class DC3D8M(Element):
 
 
 class DCP3(Element):
-    """``element DCP3`` (C++ ``DCP3``).
+    """``element DCP3`` (C++ ``new_dcp3``).
 
     node_tags: exactly 3 node tags. length is the characteristic length, rate is the energy release rate; both required. C++ template arg monolithic: DCP3 -> false, DCP3M -> true (same token stream).
     """
 
     keyword = "DCP3"
-    summary = "DCP3"
+    summary = "new_dcp3"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1110,13 +1100,13 @@ class DCP3(Element):
 
 
 class DCP3M(Element):
-    """``element DCP3M`` (C++ ``DCP3``).
+    """``element DCP3M`` (C++ ``new_dcp3``).
 
     node_tags: exactly 3 node tags. length is the characteristic length, rate is the energy release rate; both required. C++ template arg monolithic: DCP3 -> false, DCP3M -> true (same token stream).
     """
 
     keyword = "DCP3M"
-    summary = "DCP3"
+    summary = "new_dcp3"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1133,13 +1123,13 @@ class DCP3M(Element):
 
 
 class DCP4(Element):
-    """``element DCP4`` (C++ ``DCP4``).
+    """``element DCP4`` (C++ ``new_dcp4``).
 
     node_tags: exactly 4 node tags. length is the characteristic length, rate is the energy release rate; both required. C++ template arg monolithic: DCP4 -> false, DCP4M -> true (same token stream).
     """
 
     keyword = "DCP4"
-    summary = "DCP4"
+    summary = "new_dcp4"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1156,13 +1146,13 @@ class DCP4(Element):
 
 
 class DCP4M(Element):
-    """``element DCP4M`` (C++ ``DCP4``).
+    """``element DCP4M`` (C++ ``new_dcp4``).
 
     node_tags: exactly 4 node tags. length is the characteristic length, rate is the energy release rate; both required. C++ template arg monolithic: DCP4 -> false, DCP4M -> true (same token stream).
     """
 
     keyword = "DCP4M"
-    summary = "DCP4"
+    summary = "new_dcp4"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1179,13 +1169,13 @@ class DCP4M(Element):
 
 
 class DKT3(Element):
-    """``element DKT3`` (C++ ``DKT3``).
+    """``element DKT3`` (C++ ``new_dkt3``).
 
     node_tags: exactly 3 node tags. thickness is required with no default. num_ip is the number of integration points, default 3.
     """
 
     keyword = "DKT3"
-    summary = "DKT3"
+    summary = "new_dkt3"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1201,13 +1191,13 @@ class DKT3(Element):
 
 
 class DKT4(Element):
-    """``element DKT4`` (C++ ``DKT4``).
+    """``element DKT4`` (C++ ``new_dkt4``).
 
     node_tags: exactly 4 node tags. thickness is required with no default. num_ip default 3.
     """
 
     keyword = "DKT4"
-    summary = "DKT4"
+    summary = "new_dkt4"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1223,13 +1213,13 @@ class DKT4(Element):
 
 
 class DKTS3(Element):
-    """``element DKTS3`` (C++ ``DKTS3``).
+    """``element DKTS3`` (C++ ``new_dkts3``).
 
     node_tags: exactly 3 node tags. thickness required with no default; num_ip default 3; nlgeom read via get_optional_input (invalid token aborts creation).
     """
 
     keyword = "DKTS3"
-    summary = "DKTS3"
+    summary = "new_dkts3"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1246,13 +1236,13 @@ class DKTS3(Element):
 
 
 class EB21(Element):
-    """``element EB21`` (C++ ``EB21``).
+    """``element EB21`` (C++ ``new_eb21``).
 
     node_tags: exactly 2 node tags. Positional order matters: material_tag is read AFTER area and moment_inertia (constructor arg order: tag, node_tag, area, moment_inertia, material_tag, nonlinear). nonlinear uses a non-fatal eof-guard: an invalid token only warns and false is kept. (The related EB31OS handler is defin...
     """
 
     keyword = "EB21"
-    summary = "EB21"
+    summary = "new_eb21"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     area: float = Field(description="area")
@@ -1269,13 +1259,13 @@ class EB21(Element):
 
 
 class EB31OS(Element):
-    """``element EB31OS`` (C++ ``EB31OS``).
+    """``element EB31OS`` (C++ ``new_eb31os``).
 
     new_eb31os (lines 1417-1449); property is a 7-component section/material property vector
     """
 
     keyword = "EB31OS"
-    summary = "EB31OS"
+    summary = "new_eb31os"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     property: FloatList = Field(description="property")
@@ -1284,13 +1274,13 @@ class EB31OS(Element):
 
 
 class Embedded2D(Element):
-    """``element Embedded2D`` (C++ ``Embedded<2u>``).
+    """``element Embedded2D`` (C++ ``new_embedded``).
 
     Single handler (new_embedded) with C++ template arg dof: Embedded2D -> Embedded<2u>, Embedded3D -> Embedded<3u> (same token stream). element_tag is the host element tag; node_tag is a single node tag (scalar, not a list); alpha is the penalty value, default 1E4.
     """
 
     keyword = "Embedded2D"
-    summary = "Embedded<2u>"
+    summary = "new_embedded"
     tag: int = Field(description="tag")
     element_tag: int = Field(description="element_tag")
     node_tag: int = Field(description="node_tag")
@@ -1298,13 +1288,13 @@ class Embedded2D(Element):
 
 
 class Embedded3D(Element):
-    """``element Embedded3D`` (C++ ``Embedded<3u>``).
+    """``element Embedded3D`` (C++ ``new_embedded``).
 
     template handler new_embedded<3u> (lines 1349-1375); same body as Embedded2D; constructor Embedded<dof>(tag, element_tag, node_tag, alpha)
     """
 
     keyword = "Embedded3D"
-    summary = "Embedded<3u>"
+    summary = "new_embedded"
     tag: int = Field(description="tag")
     element_tag: int = Field(description="element_tag")
     node: int = Field(description="node")
@@ -1312,13 +1302,13 @@ class Embedded3D(Element):
 
 
 class F21(Element):
-    """``element F21`` (C++ ``F21``).
+    """``element F21`` (C++ ``new_f21``).
 
     new_f21 (lines 1451-1483); int_pt via get_optional_input
     """
 
     keyword = "F21"
-    summary = "F21"
+    summary = "new_f21"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     section_id: int = Field(description="section_id")
@@ -1327,13 +1317,13 @@ class F21(Element):
 
 
 class F21H(Element):
-    """``element F21H`` (C++ ``F21H``).
+    """``element F21H`` (C++ ``new_f21h``).
 
     new_f21h (lines 1485-1517); elastic_length guarded by !command.eof() && !get_input (fatal on bad token)
     """
 
     keyword = "F21H"
-    summary = "F21H"
+    summary = "new_f21h"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     section_id: int = Field(description="section_id")
@@ -1342,13 +1332,13 @@ class F21H(Element):
 
 
 class F31(Element):
-    """``element F31`` (C++ ``F31``).
+    """``element F31`` (C++ ``new_f31``).
 
     new_f31 (lines 1519-1557); int_pt and nonlinear guarded by !command.eof() && !get_input
     """
 
     keyword = "F31"
-    summary = "F31"
+    summary = "new_f31"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     section_id: int = Field(description="section_id")
@@ -1358,13 +1348,13 @@ class F31(Element):
 
 
 class GCMQ(Element):
-    """``element GCMQ`` (C++ ``GCMQ``).
+    """``element GCMQ`` (C++ ``new_gcmq``).
 
     non-template new_gcmq (lines 1559-1589); objective_length fixed at -1.0; first char of int_scheme uppercased (suanpan::to_upper(int_scheme[0]))
     """
 
     keyword = "GCMQ"
-    summary = "GCMQ"
+    summary = "new_gcmq"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1373,13 +1363,13 @@ class GCMQ(Element):
 
 
 class GCMQG(Element):
-    """``element GCMQG`` (C++ ``GCMQ``).
+    """``element GCMQG`` (C++ ``new_gcmq``).
 
     template new_gcmq<simplified=false>(int_type='G') (lines 1591-1622); both optional params via get_optional_input
     """
 
     keyword = "GCMQG"
-    summary = "GCMQ"
+    summary = "new_gcmq"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1388,13 +1378,13 @@ class GCMQG(Element):
 
 
 class GCMQI(Element):
-    """``element GCMQI`` (C++ ``GCMQ``).
+    """``element GCMQI`` (C++ ``new_gcmq``).
 
     template new_gcmq<simplified=false>(int_type='I') (lines 1591-1622)
     """
 
     keyword = "GCMQI"
-    summary = "GCMQ"
+    summary = "new_gcmq"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1403,13 +1393,13 @@ class GCMQI(Element):
 
 
 class GCMQL(Element):
-    """``element GCMQL`` (C++ ``GCMQ``).
+    """``element GCMQL`` (C++ ``new_gcmq``).
 
     template new_gcmq<simplified=false>(int_type='L') (lines 1591-1622)
     """
 
     keyword = "GCMQL"
-    summary = "GCMQ"
+    summary = "new_gcmq"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1418,13 +1408,13 @@ class GCMQL(Element):
 
 
 class GQ12(Element):
-    """``element GQ12`` (C++ ``GQ12``).
+    """``element GQ12`` (C++ ``new_gq12``).
 
     new_gq12 (lines 1658-1684); thickness uses eof-guard pattern (no return on bad token)
     """
 
     keyword = "GQ12"
-    summary = "GQ12"
+    summary = "new_gq12"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1432,64 +1422,60 @@ class GQ12(Element):
 
 
 class Joint(Element):
-    """``element Joint`` (C++ ``Joint``).
+    """``element Joint`` (C++ ``new_joint``).
 
     new_joint (lines 1686-1700); Joint(tag, node_tag(2), dof list)
     """
 
     keyword = "Joint"
-    summary = "Joint"
+    summary = "new_joint"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
 
 
 class Mass(Element):
-    """``element Mass`` (C++ ``Mass3D``).
+    """``element Mass`` (C++ ``new_mass``).
 
     new_mass(which=3) (lines 1702-1734); Mass is a synonym of Mass3D (which=3); dof indices limited to 1-6
     """
 
     keyword = "Mass"
-    summary = "Mass3D"
+    aliases = ("Mass3D",)
+    summary = "new_mass"
     tag: int = Field(description="tag")
     node: int = Field(description="node")
     magnitude: float = Field(description="magnitude")
 
 
+class Mass3D(Mass):
+    """Alternative spelling of ``Mass`` (C++ ``new_mass``)."""
+
+    keyword = "Mass3D"
+    aliases = ()
+    sp_abstract = True
+
+
 class Mass2D(Element):
-    """``element Mass2D`` (C++ ``Mass2D``).
+    """``element Mass2D`` (C++ ``new_mass``).
 
     new_mass(which=2) (lines 1702-1734); dof indices limited to 1-3, else fatal
     """
 
     keyword = "Mass2D"
-    summary = "Mass2D"
-    tag: int = Field(description="tag")
-    node: int = Field(description="node")
-    magnitude: float = Field(description="magnitude")
-
-
-class Mass3D(Element):
-    """``element Mass3D`` (C++ ``Mass3D``).
-
-    new_mass(which=3) (lines 1702-1734); dof indices limited to 1-6
-    """
-
-    keyword = "Mass3D"
-    summary = "Mass3D"
+    summary = "new_mass"
     tag: int = Field(description="tag")
     node: int = Field(description="node")
     magnitude: float = Field(description="magnitude")
 
 
 class MassPoint2D(Element):
-    """``element MassPoint2D`` (C++ ``MassPoint2D``).
+    """``element MassPoint2D`` (C++ ``new_masspoint``).
 
     new_masspoint(which=2) (lines 1736-1768); rotational_magnitude parsed only if tokens remain; 3-arg ctor when omitted
     """
 
     keyword = "MassPoint2D"
-    summary = "MassPoint2D"
+    summary = "new_masspoint"
     tag: int = Field(description="tag")
     node: int = Field(description="node")
     translational_magnitude: float = Field(description="translational_magnitude")
@@ -1499,13 +1485,13 @@ class MassPoint2D(Element):
 
 
 class MassPoint3D(Element):
-    """``element MassPoint3D`` (C++ ``MassPoint3D``).
+    """``element MassPoint3D`` (C++ ``new_masspoint``).
 
     new_masspoint(which=3) (lines 1736-1768); same optional rotational magnitude as MassPoint2D
     """
 
     keyword = "MassPoint3D"
-    summary = "MassPoint3D"
+    summary = "new_masspoint"
     tag: int = Field(description="tag")
     node: int = Field(description="node")
     translational_magnitude: float = Field(description="translational_magnitude")
@@ -1515,13 +1501,13 @@ class MassPoint3D(Element):
 
 
 class Mindlin(Element):
-    """``element Mindlin`` (C++ ``Mindlin``).
+    """``element Mindlin`` (C++ ``new_mindlin``).
 
     new_mindlin (lines 1770-1802); num_ip guarded by !command.eof() && !get_input
     """
 
     keyword = "Mindlin"
-    summary = "Mindlin"
+    summary = "new_mindlin"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1530,13 +1516,13 @@ class Mindlin(Element):
 
 
 class MVLEM(Element):
-    """``element MVLEM`` (C++ ``MVLEM``).
+    """``element MVLEM`` (C++ ``new_mvlem``).
 
     new_mvlem (lines 1804-1832); ctor MVLEM(tag, node_tag, B, H, R, CT, ST, shear_tag, c_height)
     """
 
     keyword = "MVLEM"
-    summary = "MVLEM"
+    summary = "new_mvlem"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     shear_tag: int = Field(description="shear_tag")
@@ -1544,13 +1530,13 @@ class MVLEM(Element):
 
 
 class NMB21(Element):
-    """``element NMB21`` (C++ ``NMB21``).
+    """``element NMB21`` (C++ ``new_nmb21``).
 
     node_tags: exactly 2 node tags. C++ arg which: NMB21 -> NMB21 (which=0), NMB21EL -> NMB21E (which=1), NMB21EH -> NMB21E (which=2). Same token stream. nonlinear parsed with is_true.
     """
 
     keyword = "NMB21"
-    summary = "NMB21"
+    summary = "new_nmb21"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     section_tag: int = Field(description="section_tag")
@@ -1565,13 +1551,13 @@ class NMB21(Element):
 
 
 class NMB21EH(Element):
-    """``element NMB21EH`` (C++ ``NMB21``).
+    """``element NMB21EH`` (C++ ``new_nmb21``).
 
     node_tags: exactly 2 node tags. C++ arg which: NMB21 -> NMB21 (which=0), NMB21EL -> NMB21E (which=1), NMB21EH -> NMB21E (which=2). Same token stream. nonlinear parsed with is_true.
     """
 
     keyword = "NMB21EH"
-    summary = "NMB21"
+    summary = "new_nmb21"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     section_tag: int = Field(description="section_tag")
@@ -1586,13 +1572,13 @@ class NMB21EH(Element):
 
 
 class NMB21EL(Element):
-    """``element NMB21EL`` (C++ ``NMB21``).
+    """``element NMB21EL`` (C++ ``new_nmb21``).
 
     node_tags: exactly 2 node tags. C++ arg which: NMB21 -> NMB21 (which=0), NMB21EL -> NMB21E (which=1), NMB21EH -> NMB21E (which=2). Same token stream. nonlinear parsed with is_true.
     """
 
     keyword = "NMB21EL"
-    summary = "NMB21"
+    summary = "new_nmb21"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     section_tag: int = Field(description="section_tag")
@@ -1607,13 +1593,13 @@ class NMB21EL(Element):
 
 
 class NMB31(Element):
-    """``element NMB31`` (C++ ``NMB31``).
+    """``element NMB31`` (C++ ``new_nmb31``).
 
     node_tags: exactly 2 node tags. nonlinear parsed with is_true.
     """
 
     keyword = "NMB31"
-    summary = "NMB31"
+    summary = "new_nmb31"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     section_tag: int = Field(description="section_tag")
@@ -1629,13 +1615,13 @@ class NMB31(Element):
 
 
 class NonlocalC3D8(Element):
-    """``element NonlocalC3D8`` (C++ ``NonlocalC3D8``).
+    """``element NonlocalC3D8`` (C++ ``new_nonlocalc3d8``).
 
     node_tags: exactly 8 node tags (source error message says 'Four valid nodes' - typo). No optional tokens.
     """
 
     keyword = "NonlocalC3D8"
-    summary = "NonlocalC3D8"
+    summary = "new_nonlocalc3d8"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1649,13 +1635,13 @@ class NonlocalC3D8(Element):
 
 
 class NonlocalCP4(Element):
-    """``element NonlocalCP4`` (C++ ``NonlocalCP4``).
+    """``element NonlocalCP4`` (C++ ``new_nonlocalcp4``).
 
     node_tags: exactly 4 node tags.
     """
 
     keyword = "NonlocalCP4"
-    summary = "NonlocalCP4"
+    summary = "new_nonlocalcp4"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1670,13 +1656,13 @@ class NonlocalCP4(Element):
 
 
 class PCPE4DC(Element):
-    """``element PCPE4DC`` (C++ ``PCPE4DC``).
+    """``element PCPE4DC`` (C++ ``new_pcpedc``).
 
     new_pcpedc(node=4) (lines 1834-1866); alpha/n/k parsed in one get_input(command, alpha, n, k) call
     """
 
     keyword = "PCPE4DC"
-    summary = "PCPE4DC"
+    summary = "new_pcpedc"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     solid_tag: int = Field(description="solid_tag")
@@ -1687,13 +1673,13 @@ class PCPE4DC(Element):
 
 
 class PCPE4UC(Element):
-    """``element PCPE4UC`` (C++ ``PCPE4UC``).
+    """``element PCPE4UC`` (C++ ``new_pcpeuc``).
 
     new_pcpeuc(node=4) (lines 1868-1900); alpha/n parsed in one get_input(command, alpha, n) call
     """
 
     keyword = "PCPE4UC"
-    summary = "PCPE4UC"
+    summary = "new_pcpeuc"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     solid_tag: int = Field(description="solid_tag")
@@ -1703,13 +1689,13 @@ class PCPE4UC(Element):
 
 
 class PCPE8DC(Element):
-    """``element PCPE8DC`` (C++ ``PCPE8DC``).
+    """``element PCPE8DC`` (C++ ``new_pcpedc``).
 
     new_pcpedc(node=8) (lines 1834-1866); 8-node version
     """
 
     keyword = "PCPE8DC"
-    summary = "PCPE8DC"
+    summary = "new_pcpedc"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     solid_tag: int = Field(description="solid_tag")
@@ -1720,13 +1706,13 @@ class PCPE8DC(Element):
 
 
 class PCPE8UC(Element):
-    """``element PCPE8UC`` (C++ ``PCPE8UC``).
+    """``element PCPE8UC`` (C++ ``new_pcpeuc``).
 
     new_pcpeuc(node=8) (lines 1868-1900); 8-node version
     """
 
     keyword = "PCPE8UC"
-    summary = "PCPE8UC"
+    summary = "new_pcpeuc"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     solid_tag: int = Field(description="solid_tag")
@@ -1736,13 +1722,13 @@ class PCPE8UC(Element):
 
 
 class PS(Element):
-    """``element PS`` (C++ ``PS``).
+    """``element PS`` (C++ ``new_ps``).
 
     new_ps (lines 1902-1928); thickness uses eof-guard pattern (no return on bad token)
     """
 
     keyword = "PS"
-    summary = "PS"
+    summary = "new_ps"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1750,13 +1736,13 @@ class PS(Element):
 
 
 class QE2(Element):
-    """``element QE2`` (C++ ``QE2``).
+    """``element QE2`` (C++ ``new_qe2``).
 
     new_qe2 (lines 1930-1956); same shape as PS
     """
 
     keyword = "QE2"
-    summary = "QE2"
+    summary = "new_qe2"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1764,13 +1750,13 @@ class QE2(Element):
 
 
 class S4(Element):
-    """``element S4`` (C++ ``S4``).
+    """``element S4`` (C++ ``new_s4``).
 
     new_s4 (lines 1958-1990); thickness guarded by !command.eof() && !get_input; nlgeom via get_optional_input
     """
 
     keyword = "S4"
-    summary = "S4"
+    summary = "new_s4"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1779,13 +1765,13 @@ class S4(Element):
 
 
 class SGCMQG(Element):
-    """``element SGCMQG`` (C++ ``SGCMQ``).
+    """``element SGCMQG`` (C++ ``new_gcmq``).
 
     template new_gcmq<simplified=true>(int_type='G') (lines 1591-1622); simplified variant instantiates SGCMQ
     """
 
     keyword = "SGCMQG"
-    summary = "SGCMQ"
+    summary = "new_gcmq"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1794,13 +1780,13 @@ class SGCMQG(Element):
 
 
 class SGCMQI(Element):
-    """``element SGCMQI`` (C++ ``SGCMQ``).
+    """``element SGCMQI`` (C++ ``new_gcmq``).
 
     template new_gcmq<simplified=true>(int_type='I') (lines 1591-1622)
     """
 
     keyword = "SGCMQI"
-    summary = "SGCMQ"
+    summary = "new_gcmq"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1809,13 +1795,13 @@ class SGCMQI(Element):
 
 
 class SGCMQL(Element):
-    """``element SGCMQL`` (C++ ``SGCMQ``).
+    """``element SGCMQL`` (C++ ``new_gcmq``).
 
     template new_gcmq<simplified=true>(int_type='L') (lines 1591-1622)
     """
 
     keyword = "SGCMQL"
-    summary = "SGCMQ"
+    summary = "new_gcmq"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1824,13 +1810,13 @@ class SGCMQL(Element):
 
 
 class SGCMS(Element):
-    """``element SGCMS`` (C++ ``SGCMS``).
+    """``element SGCMS`` (C++ ``new_sgcms``).
 
     new_sgcms (lines 1624-1656); thickness guarded by !command.eof() && !get_input; nlgeom via get_optional_input
     """
 
     keyword = "SGCMS"
-    summary = "SGCMS"
+    summary = "new_sgcms"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1839,89 +1825,89 @@ class SGCMS(Element):
 
 
 class SingleSection2D(Element):
-    """``element SingleSection2D`` (C++ ``SingleSection2D``).
+    """``element SingleSection2D`` (C++ ``new_singlesection``).
 
     template new_singlesection<SingleSection2D> (lines 1992-2012); single-node element
     """
 
     keyword = "SingleSection2D"
-    summary = "SingleSection2D"
+    summary = "new_singlesection"
     tag: int = Field(description="tag")
     node: int = Field(description="node")
     section_tag: int = Field(description="section_tag")
 
 
 class SingleSection3D(Element):
-    """``element SingleSection3D`` (C++ ``SingleSection3D``).
+    """``element SingleSection3D`` (C++ ``new_singlesection``).
 
     template new_singlesection<SingleSection3D> (lines 1992-2012); single-node element
     """
 
     keyword = "SingleSection3D"
-    summary = "SingleSection3D"
+    summary = "new_singlesection"
     tag: int = Field(description="tag")
     node: int = Field(description="node")
     section_tag: int = Field(description="section_tag")
 
 
 class SphericalParticle2D(Element):
-    """``element SphericalParticle2D`` (C++ ``SphericalParticle2D``).
+    """``element SphericalParticle2D`` (C++ ``new_sphericalparticle``).
 
     template new_sphericalparticle<2u> (lines 2014-2045); 5 values -> SphericalParticle2D, 6 values -> InertialSphericalParticle2D; otherwise fatal
     """
 
     keyword = "SphericalParticle2D"
-    summary = "SphericalParticle2D"
+    summary = "new_sphericalparticle"
     tag: int = Field(description="tag")
     node: int = Field(description="node")
 
 
 class SphericalParticle3D(Element):
-    """``element SphericalParticle3D`` (C++ ``SphericalParticle3D``).
+    """``element SphericalParticle3D`` (C++ ``new_sphericalparticle``).
 
     template new_sphericalparticle<3u> (lines 2014-2045); 5 values -> SphericalParticle3D, 6 values -> InertialSphericalParticle3D
     """
 
     keyword = "SphericalParticle3D"
-    summary = "SphericalParticle3D"
+    summary = "new_sphericalparticle"
     tag: int = Field(description="tag")
     node: int = Field(description="node")
 
 
 class Spring01(Element):
-    """``element Spring01`` (C++ ``Spring01``).
+    """``element Spring01`` (C++ ``new_spring01``).
 
     new_spring01 (lines 2046-2066)
     """
 
     keyword = "Spring01"
-    summary = "Spring01"
+    summary = "new_spring01"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
 
 
 class Spring02(Element):
-    """``element Spring02`` (C++ ``Spring02``).
+    """``element Spring02`` (C++ ``new_spring02``).
 
     new_spring02 (lines 2068-2088); same shape as Spring01
     """
 
     keyword = "Spring02"
-    summary = "Spring02"
+    summary = "new_spring02"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
 
 
 class T2D2(Element):
-    """``element T2D2`` (C++ ``T2D2``).
+    """``element T2D2`` (C++ ``new_t2d2``).
 
     new_t2d2 (lines 2090-2139); all four optional switches use eof-guard pattern without return (defaults: linear geometry, constant area, engineering strain, no buckling check)
     """
 
     keyword = "T2D2"
-    summary = "T2D2"
+    summary = "new_t2d2"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1933,13 +1919,13 @@ class T2D2(Element):
 
 
 class T2D2S(Element):
-    """``element T2D2S`` (C++ ``T2D2S``).
+    """``element T2D2S`` (C++ ``new_t2d2s``).
 
     new_t2d2s (lines 2141-2173); section/material tag; eof-guard pattern
     """
 
     keyword = "T2D2S"
-    summary = "T2D2S"
+    summary = "new_t2d2s"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     section_tag: int = Field(description="section_tag")
@@ -1948,13 +1934,13 @@ class T2D2S(Element):
 
 
 class T3D2(Element):
-    """``element T3D2`` (C++ ``T3D2``).
+    """``element T3D2`` (C++ ``new_t3d2``).
 
     new_t3d2 (lines 2175-2218); like T2D2 but no rigidity/buckling parameter
     """
 
     keyword = "T3D2"
-    summary = "T3D2"
+    summary = "new_t3d2"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     material_tag: int = Field(description="material_tag")
@@ -1965,13 +1951,13 @@ class T3D2(Element):
 
 
 class T3D2S(Element):
-    """``element T3D2S`` (C++ ``T3D2S``).
+    """``element T3D2S`` (C++ ``new_t3d2s``).
 
     new_t3d2s (lines 2220-2252); same shape as T2D2S
     """
 
     keyword = "T3D2S"
-    summary = "T3D2S"
+    summary = "new_t3d2s"
     tag: int = Field(description="tag")
     node_tags: IntList = Field(description="node_tags")
     section_tag: int = Field(description="section_tag")
@@ -1980,39 +1966,39 @@ class T3D2S(Element):
 
 
 class Tie(Element):
-    """``element Tie`` (C++ ``Tie``).
+    """``element Tie`` (C++ ``new_tie``).
 
     new_tie (lines 2254-2270); ctor Tie(tag, node_tag, dof_tag, weight_tag, magnitude, penalty)
     """
 
     keyword = "Tie"
-    summary = "Tie"
+    summary = "new_tie"
     tag: int = Field(description="tag")
     magnitude: float = Field(description="magnitude")
     penalty: float = Field(description="penalty")
 
 
 class TranslationConnector2D(Element):
-    """``element TranslationConnector2D`` (C++ ``TranslationConnector2D``).
+    """``element TranslationConnector2D`` (C++ ``new_translationconnector``).
 
     new_translationconnector(S=2) (lines 2272-2293); three nodes
     """
 
     keyword = "TranslationConnector2D"
-    summary = "TranslationConnector2D"
+    summary = "new_translationconnector"
     tag: int = Field(description="tag")
     nodes: IntList = Field(description="nodes")
     penalty: float = Field(description="penalty")
 
 
 class TranslationConnector3D(Element):
-    """``element TranslationConnector3D`` (C++ ``TranslationConnector3D``).
+    """``element TranslationConnector3D`` (C++ ``new_translationconnector``).
 
     new_translationconnector(S=3) (lines 2272-2293); three nodes
     """
 
     keyword = "TranslationConnector3D"
-    summary = "TranslationConnector3D"
+    summary = "new_translationconnector"
     tag: int = Field(description="tag")
     nodes: IntList = Field(description="nodes")
     penalty: float = Field(description="penalty")

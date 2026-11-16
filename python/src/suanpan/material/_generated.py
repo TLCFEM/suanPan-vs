@@ -90,13 +90,13 @@ class Material(SuanpanObject):
 
 
 class AbaqusCDP(Material):
-    """``material AbaqusCDP`` (C++ ``TableCDP``).
+    """``material AbaqusCDP`` (C++ ``new_tablecdp``).
 
     Dispatch: new_tablecdp(new_material, command, true) (abaqus=true). Full default pool: {3E4, .2, .6, 1.16, 2/3, 0, 2400E-12}; ctor TableCDP(tag, p0, p1, t_table, c_table, dt_table, dc_table, g_t, g_c, p2, p3, p4, p5, p6). Each table must exist, load via raw_ascii, have >= 2 cols and >= 2 rows, and start with zero pla...
     """
 
     keyword = "AbaqusCDP"
-    summary = "TableCDP"
+    summary = "new_tablecdp"
     tag: int = Field(description="tag")
     leading_parameters: FloatList = Field(
         default=[30000.0, 0.2], description="leading_parameters (exactly 2 values)"
@@ -112,14 +112,14 @@ class AbaqusCDP(Material):
 
 
 class AFC(Material):
-    """``material AFC`` (C++ ``AFC``).
+    """``material AFC`` (C++ ``new_afc01``).
 
     AFC(tag, E, t_yield, t_hard, t_unload, c_yield, c_hard, c_unload, 0., density); the degradation argument is hardcoded to 0. (no degradation).
     """
 
     keyword = "AFC"
     aliases = ("AFC01",)
-    summary = "AFC"
+    summary = "new_afc01"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     t_yield_stress: float = Field(description="t_yield_stress")
@@ -131,15 +131,23 @@ class AFC(Material):
     density: float = Field(default=0.0, description="density")
 
 
+class AFC01(AFC):
+    """Alternative spelling of ``AFC`` (C++ ``new_afc01``)."""
+
+    keyword = "AFC01"
+    aliases = ()
+    sp_abstract = True
+
+
 class AFC02(Material):
-    """``material AFC02`` (C++ ``AFC``).
+    """``material AFC02`` (C++ ``new_afc02``).
 
     AFC with symmetric tension/compression: compression yield/hardening/unloading are set equal to the tension values; degradation argument hardcoded to 0..
     """
 
     keyword = "AFC02"
     aliases = ("AFCS",)
-    summary = "AFC"
+    summary = "new_afc02"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     t_yield_stress: float = Field(description="t_yield_stress")
@@ -148,15 +156,23 @@ class AFC02(Material):
     density: float = Field(default=0.0, description="density")
 
 
+class AFCS(AFC02):
+    """Alternative spelling of ``AFC02`` (C++ ``new_afc02``)."""
+
+    keyword = "AFCS"
+    aliases = ()
+    sp_abstract = True
+
+
 class AFC03(Material):
-    """``material AFC03`` (C++ ``AFC``).
+    """``material AFC03`` (C++ ``new_afc03``).
 
     AFC with explicit degradation parameter (default 0. = linear degradation).
     """
 
     keyword = "AFC03"
     aliases = ("AFCN",)
-    summary = "AFC"
+    summary = "new_afc03"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     t_yield_stress: float = Field(description="t_yield_stress")
@@ -169,14 +185,22 @@ class AFC03(Material):
     density: float = Field(default=0.0, description="density")
 
 
+class AFCN(AFC03):
+    """Alternative spelling of ``AFC03`` (C++ ``new_afc03``)."""
+
+    keyword = "AFCN"
+    aliases = ()
+    sp_abstract = True
+
+
 class AFCO1D(Material):
-    """``material AFCO1D`` (C++ ``ArmstrongFrederick1D``).
+    """``material AFCO1D`` (C++ ``new_armstrongfrederick1d``).
 
     pa maps to DataArmstrongFrederick1D: pa(0)=elastic_modulus, pa(1)=yield, pa(2)=hardening, pa(3)=saturation, pa(4)=ms; pb(0)=memory, pb(1)=reduction, pb(2)=mr. Handler signature: new_armstrongfrederick1d(..., const bool memory = false).
     """
 
     keyword = "AFCO1D"
-    summary = "ArmstrongFrederick1D"
+    summary = "new_armstrongfrederick1d"
     tag: int = Field(description="tag")
     pa: FloatList = Field(
         default=[200000.0, 400.0, 0.0, 500.0, 10.0], description="pa (exactly 5 values)"
@@ -191,13 +215,13 @@ class AFCO1D(Material):
 
 
 class ArmstrongFrederick(Material):
-    """``material ArmstrongFrederick`` (C++ ``ArmstrongFrederick``).
+    """``material ArmstrongFrederick`` (C++ ``new_armstrongfrederick``).
 
     pool maps to DataArmstrongFrederick: pool(0)=elastic_modulus, pool(1)=poissons_ratio, pool(2)=yield, pool(3)=hardening, pool(4)=saturation, pool(5)=ms; parsed with get_optional_input so each element is optional keeping its default.
     """
 
     keyword = "ArmstrongFrederick"
-    summary = "ArmstrongFrederick"
+    summary = "new_armstrongfrederick"
     tag: int = Field(description="tag")
     pool: FloatList = Field(
         default=[200000.0, 0.2, 400.0, 0.0, 500.0, 10.0],
@@ -210,13 +234,13 @@ class ArmstrongFrederick(Material):
 
 
 class ArmstrongFrederick1D(Material):
-    """``material ArmstrongFrederick1D`` (C++ ``ArmstrongFrederick1D``).
+    """``material ArmstrongFrederick1D`` (C++ ``new_armstrongfrederick1d``).
 
     pa maps to DataArmstrongFrederick1D: pa(0)=elastic_modulus, pa(1)=yield, pa(2)=hardening, pa(3)=saturation, pa(4)=ms; pb(0)=memory, pb(1)=reduction, pb(2)=mr. Handler signature: new_armstrongfrederick1d(..., const bool memory = false).
     """
 
     keyword = "ArmstrongFrederick1D"
-    summary = "ArmstrongFrederick1D"
+    summary = "new_armstrongfrederick1d"
     tag: int = Field(description="tag")
     pa: FloatList = Field(
         default=[200000.0, 400.0, 0.0, 500.0, 10.0], description="pa (exactly 5 values)"
@@ -231,13 +255,13 @@ class ArmstrongFrederick1D(Material):
 
 
 class AsymmElastic1D(Material):
-    """``material AsymmElastic1D`` (C++ ``AsymmElastic1D``).
+    """``material AsymmElastic1D`` (C++ ``new_asymmelastic1d``).
 
     t/c elastic moduli parsed in one get_input(command, t_elastic_modulus, c_elastic_modulus) call.
     """
 
     keyword = "AsymmElastic1D"
-    summary = "AsymmElastic1D"
+    summary = "new_asymmelastic1d"
     tag: int = Field(description="tag")
     t_elastic_modulus: float = Field(description="t_elastic_modulus")
     c_elastic_modulus: float = Field(description="c_elastic_modulus")
@@ -245,22 +269,22 @@ class AsymmElastic1D(Material):
 
 
 class Axisymmetric(Material):
-    """``material Axisymmetric`` (C++ ``Axisymmetric``).
+    """``material Axisymmetric`` (C++ ``new_axisymmetric``).
 
     Wrapper: full_tag is the reference (full 3D) material tag. No density parameter.
     """
 
     keyword = "Axisymmetric"
-    summary = "Axisymmetric"
+    summary = "new_axisymmetric"
     tag: int = Field(description="tag")
     full_tag: int = Field(description="full_tag")
 
 
 class AxisymmetricElastic(Material):
-    """``material AxisymmetricElastic`` (C++ ``AxisymmetricElastic``)."""
+    """``material AxisymmetricElastic`` (C++ ``new_axisymmetricelastic``)."""
 
     keyword = "AxisymmetricElastic"
-    summary = "AxisymmetricElastic"
+    summary = "new_axisymmetricelastic"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     poissons_ratio: float = Field(description="poissons_ratio")
@@ -268,13 +292,13 @@ class AxisymmetricElastic(Material):
 
 
 class Bilinear1D(Material):
-    """``material Bilinear1D`` (C++ ``Bilinear1D``).
+    """``material Bilinear1D`` (C++ ``new_bilinear1d``).
 
     beta is passed through suanpan::clamp_unit(beta) before construction (clamped to unit interval); default 1. = isotropic hardening.
     """
 
     keyword = "Bilinear1D"
-    summary = "Bilinear1D"
+    summary = "new_bilinear1d"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     yield_stress: float = Field(description="yield_stress")
@@ -284,13 +308,13 @@ class Bilinear1D(Material):
 
 
 class BilinearCC(Material):
-    """``material BilinearCC`` (C++ ``BilinearCC``).
+    """``material BilinearCC`` (C++ ``new_bilinearcc``).
 
     m = radius ratio, pt = tensile yield strength, a = initial size, a_slope = hardening slope.
     """
 
     keyword = "BilinearCC"
-    summary = "BilinearCC"
+    summary = "new_bilinearcc"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     poissons_ratio: float = Field(description="poissons_ratio")
@@ -303,10 +327,10 @@ class BilinearCC(Material):
 
 
 class BilinearDP(Material):
-    """``material BilinearDP`` (C++ ``BilinearDP``)."""
+    """``material BilinearDP`` (C++ ``new_bilineardp``)."""
 
     keyword = "BilinearDP"
-    summary = "BilinearDP"
+    summary = "new_bilineardp"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     poissons_ratio: float = Field(description="poissons_ratio")
@@ -319,13 +343,13 @@ class BilinearDP(Material):
 
 
 class BilinearElastic1D(Material):
-    """``material BilinearElastic1D`` (C++ ``BilinearElastic1D``).
+    """``material BilinearElastic1D`` (C++ ``new_bilinearelastic1d``).
 
     Radius (transition) argument is hardcoded to 0. in this handler.
     """
 
     keyword = "BilinearElastic1D"
-    summary = "BilinearElastic1D"
+    summary = "new_bilinearelastic1d"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     yield_stress: float = Field(description="yield_stress")
@@ -334,13 +358,13 @@ class BilinearElastic1D(Material):
 
 
 class BilinearHoffman(Material):
-    """``material BilinearHoffman`` (C++ ``BilinearHoffman|BilinearTsaiWu``).
+    """``material BilinearHoffman`` (C++ ``new_bilinearorthotropic``).
 
     Handler new_bilinearorthotropic(..., const bool is_hoffman). The dispatch keywords below line 1957 select the class (Hoffman vs Tsai-Wu variant); parsing is identical. stress is the yield stress vector (9 entries).
     """
 
     keyword = "BilinearHoffman"
-    summary = "BilinearHoffman|BilinearTsaiWu"
+    summary = "new_bilinearorthotropic"
     tag: int = Field(description="tag")
     modulus: FloatList = Field(description="modulus (exactly 6 values)")
     poissons_ratio: FloatList = Field(description="poissons_ratio (exactly 3 values)")
@@ -350,13 +374,13 @@ class BilinearHoffman(Material):
 
 
 class BilinearJ2(Material):
-    """``material BilinearJ2`` (C++ ``BilinearJ2``).
+    """``material BilinearJ2`` (C++ ``new_bilinearj2``).
 
     Default beta 1. = isotropic hardening.
     """
 
     keyword = "BilinearJ2"
-    summary = "BilinearJ2"
+    summary = "new_bilinearj2"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     poissons_ratio: float = Field(description="poissons_ratio")
@@ -367,13 +391,13 @@ class BilinearJ2(Material):
 
 
 class NonlocalBilinearJ2(Material):
-    """``material NonlocalBilinearJ2`` (C++ ``NonlocalBilinearJ2``).
+    """``material NonlocalBilinearJ2`` (C++ ``new_nonlocalbilinearj2``).
 
     The 7 required floats are parsed in a single variadic get_input call (all fatal on failure). The trailing 3 (hardening_ratio, beta, density) are parsed in a single get_optional_input call — all-or-none: if any token remains all three must parse.
     """
 
     keyword = "NonlocalBilinearJ2"
-    summary = "NonlocalBilinearJ2"
+    summary = "new_nonlocalbilinearj2"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     poissons_ratio: float = Field(description="poissons_ratio")
@@ -388,10 +412,10 @@ class NonlocalBilinearJ2(Material):
 
 
 class BilinearMises1D(Material):
-    """``material BilinearMises1D`` (C++ ``BilinearMises1D``)."""
+    """``material BilinearMises1D`` (C++ ``new_bilinearmises1d``)."""
 
     keyword = "BilinearMises1D"
-    summary = "BilinearMises1D"
+    summary = "new_bilinearmises1d"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     yield_stress: float = Field(description="yield_stress")
@@ -400,13 +424,13 @@ class BilinearMises1D(Material):
 
 
 class BilinearOO(Material):
-    """``material BilinearOO`` (C++ ``BilinearOO``).
+    """``material BilinearOO`` (C++ ``new_bilinearoo``).
 
     Pool normalization to 6 args: 3 values [v0,v1,v2] -> [v0,v1,v2,v1,v2,0.]; 4 values [v0,v1,v2,v3] -> [v0,v1,v2,v1,v2,v3]; 5 values -> append 0.; 6 used as-is. Then BilinearOO(tag, pool[0..5]).
     """
 
     keyword = "BilinearOO"
-    summary = "BilinearOO"
+    summary = "new_bilinearoo"
     tag: int = Field(description="tag")
     rest_values: FloatList = Field(
         default=[],
@@ -415,10 +439,10 @@ class BilinearOO(Material):
 
 
 class BilinearPeric(Material):
-    """``material BilinearPeric`` (C++ ``BilinearPeric``)."""
+    """``material BilinearPeric`` (C++ ``new_bilinearperic``)."""
 
     keyword = "BilinearPeric"
-    summary = "BilinearPeric"
+    summary = "new_bilinearperic"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     poissons_ratio: float = Field(description="poissons_ratio")
@@ -430,13 +454,13 @@ class BilinearPeric(Material):
 
 
 class BilinearPO(Material):
-    """``material BilinearPO`` (C++ ``BilinearPO``).
+    """``material BilinearPO`` (C++ ``new_bilinearpo``).
 
     Identical normalization to BilinearOO: 3 -> [v0,v1,v2,v1,v2,0.]; 4 -> [v0,v1,v2,v1,v2,v3]; 5 -> append 0.; 6 as-is. Then BilinearPO(tag, pool[0..5]).
     """
 
     keyword = "BilinearPO"
-    summary = "BilinearPO"
+    summary = "new_bilinearpo"
     tag: int = Field(description="tag")
     rest_values: FloatList = Field(
         default=[],
@@ -445,13 +469,13 @@ class BilinearPO(Material):
 
 
 class BilinearTsaiWu(Material):
-    """``material BilinearTsaiWu`` (C++ ``BilinearHoffman|BilinearTsaiWu``).
+    """``material BilinearTsaiWu`` (C++ ``new_bilinearorthotropic``).
 
     Handler new_bilinearorthotropic(..., const bool is_hoffman). The dispatch keywords below line 1957 select the class (Hoffman vs Tsai-Wu variant); parsing is identical. stress is the yield stress vector (9 entries).
     """
 
     keyword = "BilinearTsaiWu"
-    summary = "BilinearHoffman|BilinearTsaiWu"
+    summary = "new_bilinearorthotropic"
     tag: int = Field(description="tag")
     modulus: FloatList = Field(description="modulus (exactly 6 values)")
     poissons_ratio: FloatList = Field(description="poissons_ratio (exactly 3 values)")
@@ -461,13 +485,13 @@ class BilinearTsaiWu(Material):
 
 
 class BilinearViscosity(Material):
-    """``material BilinearViscosity`` (C++ ``BilinearViscosity``).
+    """``material BilinearViscosity`` (C++ ``new_bilinearviscosity``).
 
     Handler: new_bilinearviscosity (line 3564).
     """
 
     keyword = "BilinearViscosity"
-    summary = "BilinearViscosity"
+    summary = "new_bilinearviscosity"
     tag: int = Field(description="tag")
     damping: float = Field(description="damping")
     yield_stress: float = Field(description="yield_stress")
@@ -475,10 +499,10 @@ class BilinearViscosity(Material):
 
 
 class BlatzKo(Material):
-    """``material BlatzKo`` (C++ ``BlatzKo``)."""
+    """``material BlatzKo`` (C++ ``new_blatzko``)."""
 
     keyword = "BlatzKo"
-    summary = "BlatzKo"
+    summary = "new_blatzko"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     poissons_ratio: float = Field(description="poissons_ratio")
@@ -486,10 +510,10 @@ class BlatzKo(Material):
 
 
 class BoucWen(Material):
-    """``material BoucWen`` (C++ ``BoucWen``)."""
+    """``material BoucWen`` (C++ ``new_boucwen``)."""
 
     keyword = "BoucWen"
-    summary = "BoucWen"
+    summary = "new_boucwen"
     tag: int = Field(description="tag")
     rest_values: FloatList = Field(
         default=[],
@@ -498,13 +522,13 @@ class BoucWen(Material):
 
 
 class BWBN(Material):
-    """``material BWBN`` (C++ ``BWBN``).
+    """``material BWBN`` (C++ ``new_bwbn``).
 
     Parsed with get_optional_input (per-element optional). Constructor: BWBN(tag, para_pool.head(16), para_pool(16)) — first 16 elements are the model parameters, the 17th element (default 0.) is passed as a separate trailing scalar.
     """
 
     keyword = "BWBN"
-    summary = "BWBN"
+    summary = "new_bwbn"
     tag: int = Field(description="tag")
     para_pool: FloatList = Field(
         default=[
@@ -531,13 +555,13 @@ class BWBN(Material):
 
 
 class CDP(Material):
-    """``material CDP`` (C++ ``CDP``).
+    """``material CDP`` (C++ ``new_cdp``).
 
     Parsed with get_optional_input (per-element optional). Constructor: CDP(CHECK_INPUT, tag, pool(0)..pool(13)).
     """
 
     keyword = "CDP"
-    summary = "CDP"
+    summary = "new_cdp"
     tag: int = Field(description="tag")
     para_pool: FloatList = Field(
         default=[
@@ -561,14 +585,14 @@ class CDP(Material):
 
 
 class CDPM2(Material):
-    """``material CDPM2`` (C++ ``CDPM2``).
+    """``material CDPM2`` (C++ ``new_cdpm2``).
 
     Parsed with get_optional_input. Validation (fatal): pool(4) (qh0) must be in [0,1]; pool(4)+pool(5) (hp) must be <= 1. Constructor: CDPM2(tag, pool(0)..pool(13), damage_type, pool(14)).
     """
 
     keyword = "CDPM2"
     aliases = ("CDPM2ISO",)
-    summary = "CDPM2"
+    summary = "new_cdpm2"
     tag: int = Field(description="tag")
     para_pool: FloatList = Field(
         default=[
@@ -592,14 +616,22 @@ class CDPM2(Material):
     )
 
 
+class CDPM2ISO(CDPM2):
+    """Alternative spelling of ``CDPM2`` (C++ ``new_cdpm2``)."""
+
+    keyword = "CDPM2ISO"
+    aliases = ()
+    sp_abstract = True
+
+
 class CDPM2ANISO(Material):
-    """``material CDPM2ANISO`` (C++ ``CDPM2``).
+    """``material CDPM2ANISO`` (C++ ``new_cdpm2``).
 
     Parsed with get_optional_input. Validation (fatal): pool(4) (qh0) must be in [0,1]; pool(4)+pool(5) (hp) must be <= 1. Constructor: CDPM2(tag, pool(0)..pool(13), damage_type, pool(14)).
     """
 
     keyword = "CDPM2ANISO"
-    summary = "CDPM2"
+    summary = "new_cdpm2"
     tag: int = Field(description="tag")
     para_pool: FloatList = Field(
         default=[
@@ -624,13 +656,13 @@ class CDPM2ANISO(Material):
 
 
 class CDPM2NO(Material):
-    """``material CDPM2NO`` (C++ ``CDPM2``).
+    """``material CDPM2NO`` (C++ ``new_cdpm2``).
 
     Parsed with get_optional_input. Validation (fatal): pool(4) (qh0) must be in [0,1]; pool(4)+pool(5) (hp) must be <= 1. Constructor: CDPM2(tag, pool(0)..pool(13), damage_type, pool(14)).
     """
 
     keyword = "CDPM2NO"
-    summary = "CDPM2"
+    summary = "new_cdpm2"
     tag: int = Field(description="tag")
     para_pool: FloatList = Field(
         default=[
@@ -655,10 +687,10 @@ class CDPM2NO(Material):
 
 
 class Concrete21(Material):
-    """``material Concrete21`` (C++ ``Concrete21``)."""
+    """``material Concrete21`` (C++ ``new_concrete21``)."""
 
     keyword = "Concrete21"
-    summary = "Concrete21"
+    summary = "new_concrete21"
     tag: int = Field(description="tag")
     rest_values: FloatList = Field(
         default=[],
@@ -667,10 +699,10 @@ class Concrete21(Material):
 
 
 class Concrete22(Material):
-    """``material Concrete22`` (C++ ``Concrete22``)."""
+    """``material Concrete22`` (C++ ``new_concrete22``)."""
 
     keyword = "Concrete22"
-    summary = "Concrete22"
+    summary = "new_concrete22"
     tag: int = Field(description="tag")
     rest_values: FloatList = Field(
         default=[],
@@ -679,13 +711,13 @@ class Concrete22(Material):
 
 
 class ConcreteCM(Material):
-    """``material ConcreteCM`` (C++ ``ConcreteCM``).
+    """``material ConcreteCM`` (C++ ``new_concretecm``).
 
     nc/nt parsed in one get_input(command, nc, nt) call. linear_trans is read as a str token (default 'false') and converted with is_true(). Validation (fatal): |peak_strain| must be > |peak_stress/elastic_modulus| and |crack_strain| must be > |crack_stress/elastic_modulus| (secant stiffness at peaks smaller than initia...
     """
 
     keyword = "ConcreteCM"
-    summary = "ConcreteCM"
+    summary = "new_concretecm"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     peak_stress: float = Field(description="peak_stress")
@@ -699,13 +731,13 @@ class ConcreteCM(Material):
 
 
 class ConcreteExp(Material):
-    """``material ConcreteExp`` (C++ ``ConcreteExp``).
+    """``material ConcreteExp`` (C++ ``new_concreteexp``).
 
     Tension params (f_t, a_t, g_t) parsed in one get_input call; compression params (f_c, a_c, g_c) in another.
     """
 
     keyword = "ConcreteExp"
-    summary = "ConcreteExp"
+    summary = "new_concreteexp"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     f_t: float = Field(description="f_t")
@@ -719,13 +751,13 @@ class ConcreteExp(Material):
 
 
 class ConcreteTable(Material):
-    """``material ConcreteTable`` (C++ ``ConcreteTable``).
+    """``material ConcreteTable`` (C++ ``new_concretetable``).
 
     NOTE parse order: t_name (tension table file) is read FIRST, then c_name (compression table file), in a single get_input(command, t_name, c_name) call. Both files must exist and load as raw_ascii with exactly 2 columns (fatal otherwise). Constructor: ConcreteTable(tag, -abs(c_table), abs(t_table), m_point, density) ...
     """
 
     keyword = "ConcreteTable"
-    summary = "ConcreteTable"
+    summary = "new_concretetable"
     tag: int = Field(description="tag")
     t_name: str = Field(description="t_name")
     c_name: str = Field(description="c_name")
@@ -734,10 +766,10 @@ class ConcreteTable(Material):
 
 
 class ConcreteTsai(Material):
-    """``material ConcreteTsai`` (C++ ``ConcreteTsai``)."""
+    """``material ConcreteTsai`` (C++ ``new_concretetsai``)."""
 
     keyword = "ConcreteTsai"
-    summary = "ConcreteTsai"
+    summary = "new_concretetsai"
     tag: int = Field(description="tag")
     rest_values: FloatList = Field(
         default=[],
@@ -746,26 +778,26 @@ class ConcreteTsai(Material):
 
 
 class CoulombFriction(Material):
-    """``material CoulombFriction`` (C++ ``CoulombFriction``).
+    """``material CoulombFriction`` (C++ ``new_coulombfriction``).
 
     max_friction/factor parsed in one get_input call. No density parameter.
     """
 
     keyword = "CoulombFriction"
-    summary = "CoulombFriction"
+    summary = "new_coulombfriction"
     tag: int = Field(description="tag")
     max_friction: float = Field(description="max_friction")
     factor: float = Field(description="factor")
 
 
 class CustomCC(Material):
-    """``material CustomCC`` (C++ ``CustomCC``).
+    """``material CustomCC`` (C++ ``new_customcc``).
 
     expression is an int tag referencing an `expression` object (hardening law).
     """
 
     keyword = "CustomCC"
-    summary = "CustomCC"
+    summary = "new_customcc"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     poissons_ratio: float = Field(description="poissons_ratio")
@@ -777,13 +809,13 @@ class CustomCC(Material):
 
 
 class CustomCDP(Material):
-    """``material CustomCDP`` (C++ ``CustomCDP``).
+    """``material CustomCDP`` (C++ ``new_customcdp``).
 
     expressions: Col<unsigned>(2) — two expression tags (tension and compression damage/curve expressions), required. pool parsed with get_optional_input. Constructor: CustomCDP(tag, expressions(0), expressions(1), pool(0)..pool(7)).
     """
 
     keyword = "CustomCDP"
-    summary = "CustomCDP"
+    summary = "new_customcdp"
     tag: int = Field(description="tag")
     expressions: IntList = Field(description="expressions (exactly 2 values)")
     pool: FloatList = Field(
@@ -793,13 +825,13 @@ class CustomCDP(Material):
 
 
 class CustomDP(Material):
-    """``material CustomDP`` (C++ ``CustomDP``).
+    """``material CustomDP`` (C++ ``new_customdp``).
 
     expression is an int tag referencing an `expression` object (cohesion function).
     """
 
     keyword = "CustomDP"
-    summary = "CustomDP"
+    summary = "new_customdp"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     poissons_ratio: float = Field(description="poissons_ratio")
@@ -811,26 +843,26 @@ class CustomDP(Material):
 
 
 class CustomElastic1D(Material):
-    """``material CustomElastic1D`` (C++ ``CustomElastic1D``).
+    """``material CustomElastic1D`` (C++ ``new_customelastic1d``).
 
     density parsed with get_optional_input.
     """
 
     keyword = "CustomElastic1D"
-    summary = "CustomElastic1D"
+    summary = "new_customelastic1d"
     tag: int = Field(description="tag")
     expression_tag: int = Field(description="expression_tag")
     density: float = Field(default=0.0, description="density")
 
 
 class CustomGurson(Material):
-    """``material CustomGurson`` (C++ ``CustomGurson``).
+    """``material CustomGurson`` (C++ ``new_customgurson``).
 
     tag and expression_tag parsed in one get_input(command, tag, expression_tag) call. para_pool parsed with get_optional_input. Constructor: CustomGurson(tag, expression_tag, pool(0)..pool(7)).
     """
 
     keyword = "CustomGurson"
-    summary = "CustomGurson"
+    summary = "new_customgurson"
     tag: int = Field(description="tag")
     expression_tag: int = Field(description="expression_tag")
     para_pool: FloatList = Field(
@@ -840,13 +872,13 @@ class CustomGurson(Material):
 
 
 class CustomGurson1D(Material):
-    """``material CustomGurson1D`` (C++ ``CustomGurson1D``).
+    """``material CustomGurson1D`` (C++ ``new_customgurson1d``).
 
     Identical parsing/defaults to CustomGurson; 1D variant class.
     """
 
     keyword = "CustomGurson1D"
-    summary = "CustomGurson1D"
+    summary = "new_customgurson1d"
     tag: int = Field(description="tag")
     expression_tag: int = Field(description="expression_tag")
     para_pool: FloatList = Field(
@@ -856,13 +888,13 @@ class CustomGurson1D(Material):
 
 
 class CustomHoffman(Material):
-    """``material CustomHoffman`` (C++ ``CustomHoffman|CustomTsaiWu``).
+    """``material CustomHoffman`` (C++ ``new_customorthotropic``).
 
     Handler new_customorthotropic(..., const bool is_hoffman); parsing identical for both variants. expression = hardening expression tag.
     """
 
     keyword = "CustomHoffman"
-    summary = "CustomHoffman|CustomTsaiWu"
+    summary = "new_customorthotropic"
     tag: int = Field(description="tag")
     modulus: FloatList = Field(description="modulus (exactly 6 values)")
     poissons_ratio: FloatList = Field(description="poissons_ratio (exactly 3 values)")
@@ -872,13 +904,13 @@ class CustomHoffman(Material):
 
 
 class CustomJ2(Material):
-    """``material CustomJ2`` (C++ ``CustomJ2``).
+    """``material CustomJ2`` (C++ ``new_customj2``).
 
     k_tag (isotropic hardening) and h_tag (kinematic hardening) are expression tags parsed in one get_input(command, k_tag, h_tag) call. This is the last handler fully within lines 1-1957 (ctor at line 1955).
     """
 
     keyword = "CustomJ2"
-    summary = "CustomJ2"
+    summary = "new_customj2"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     poissons_ratio: float = Field(description="poissons_ratio")
@@ -888,13 +920,13 @@ class CustomJ2(Material):
 
 
 class CustomMises1D(Material):
-    """``material CustomMises1D`` (C++ ``CustomMises1D``).
+    """``material CustomMises1D`` (C++ ``new_custommises1d``).
 
     k_tag (isotropic hardening) and h_tag (kinematic hardening) are expression tags parsed in one get_input(command, k_tag, h_tag) call.
     """
 
     keyword = "CustomMises1D"
-    summary = "CustomMises1D"
+    summary = "new_custommises1d"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     k_tag: int = Field(description="k_tag")
@@ -903,13 +935,13 @@ class CustomMises1D(Material):
 
 
 class CustomStrainDegradation(Material):
-    """``material CustomStrainDegradation`` (C++ ``CustomStrainDegradation``).
+    """``material CustomStrainDegradation`` (C++ ``new_customdegradation``).
 
     Dispatch: new_customdegradation(new_material, command, true). If no 4th tag is given, n_expression_tag defaults to p_expression_tag. Handler: new_customdegradation (line 3389).
     """
 
     keyword = "CustomStrainDegradation"
-    summary = "CustomStrainDegradation"
+    summary = "new_customdegradation"
     tag: int = Field(description="tag")
     mat_tag: int = Field(description="mat_tag")
     p_expression_tag: int = Field(description="p_expression_tag")
@@ -917,13 +949,13 @@ class CustomStrainDegradation(Material):
 
 
 class CustomStressDegradation(Material):
-    """``material CustomStressDegradation`` (C++ ``CustomStressDegradation``).
+    """``material CustomStressDegradation`` (C++ ``new_customdegradation``).
 
     Dispatch: new_customdegradation(new_material, command, false); same parsing as CustomStrainDegradation. Handler: new_customdegradation (line 3389).
     """
 
     keyword = "CustomStressDegradation"
-    summary = "CustomStressDegradation"
+    summary = "new_customdegradation"
     tag: int = Field(description="tag")
     mat_tag: int = Field(description="mat_tag")
     p_expression_tag: int = Field(description="p_expression_tag")
@@ -931,13 +963,13 @@ class CustomStressDegradation(Material):
 
 
 class CustomTsaiWu(Material):
-    """``material CustomTsaiWu`` (C++ ``CustomHoffman|CustomTsaiWu``).
+    """``material CustomTsaiWu`` (C++ ``new_customorthotropic``).
 
     Handler new_customorthotropic(..., const bool is_hoffman); parsing identical for both variants. expression = hardening expression tag.
     """
 
     keyword = "CustomTsaiWu"
-    summary = "CustomHoffman|CustomTsaiWu"
+    summary = "new_customorthotropic"
     tag: int = Field(description="tag")
     modulus: FloatList = Field(description="modulus (exactly 6 values)")
     poissons_ratio: FloatList = Field(description="poissons_ratio (exactly 3 values)")
@@ -947,25 +979,25 @@ class CustomTsaiWu(Material):
 
 
 class CustomViscosity(Material):
-    """``material CustomViscosity`` (C++ ``CustomViscosity``).
+    """``material CustomViscosity`` (C++ ``new_customviscosity``).
 
     Both tags read in one get_input call. Handler: new_customviscosity (line 3592).
     """
 
     keyword = "CustomViscosity"
-    summary = "CustomViscosity"
+    summary = "new_customviscosity"
     tag: int = Field(description="tag")
     expression_tag: int = Field(description="expression_tag")
 
 
 class DafaliasManzari(Material):
-    """``material DafaliasManzari`` (C++ ``DafaliasManzari``).
+    """``material DafaliasManzari`` (C++ ``new_dafaliasmanzari``).
 
     18-element vec read via get_optional_input (per-element optional; missing tokens keep defaults). Ctor passes p(0)..p(17) individually. Handler: new_dafaliasmanzari (line 1990).
     """
 
     keyword = "DafaliasManzari"
-    summary = "DafaliasManzari"
+    summary = "new_dafaliasmanzari"
     tag: int = Field(description="tag")
     parameters: FloatList = Field(
         default=[
@@ -993,13 +1025,13 @@ class DafaliasManzari(Material):
 
 
 class Dhakal(Material):
-    """``material Dhakal`` (C++ ``Dhakal``).
+    """``material Dhakal`` (C++ ``new_dhakal``).
 
     Wrapper around an existing material (mat_tag); y_strain = yield strain, parameter = bar parameter. No density parameter.
     """
 
     keyword = "Dhakal"
-    summary = "Dhakal"
+    summary = "new_dhakal"
     tag: int = Field(description="tag")
     mat_tag: int = Field(description="mat_tag")
     y_strain: float = Field(description="y_strain")
@@ -1007,36 +1039,36 @@ class Dhakal(Material):
 
 
 class DuncanSelig(Material):
-    """``material DuncanSelig`` (C++ ``DuncanSelig``).
+    """``material DuncanSelig`` (C++ ``new_duncanselig``).
 
     pool is parsed with plain get_input (all 9 tokens required, fatal on failure), but carries in-code defaults {14.7, 400.*14.7, .6, 300*14.7, .2, .7, .1, .7, .5} i.e. {14.7, 5880., .6, 4410., .2, .7, .1, .7, .5}.
     """
 
     keyword = "DuncanSelig"
-    summary = "DuncanSelig"
+    summary = "new_duncanselig"
     tag: int = Field(description="tag")
     pool: FloatList = Field(description="pool (exactly 9 values)")
     density: float = Field(default=0.0, description="density")
 
 
 class Elastic1D(Material):
-    """``material Elastic1D`` (C++ ``Elastic1D``)."""
+    """``material Elastic1D`` (C++ ``new_elastic1d``)."""
 
     keyword = "Elastic1D"
-    summary = "Elastic1D"
+    summary = "new_elastic1d"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     density: float = Field(default=0.0, description="density")
 
 
 class Elastic2D(Material):
-    """``material Elastic2D`` (C++ ``Elastic2D``).
+    """``material Elastic2D`` (C++ ``new_elastic2d``).
 
     material_type maps to PlaneType: 0 -> PlaneType::S (plane stress, default), any other value -> PlaneType::E (plane strain).
     """
 
     keyword = "Elastic2D"
-    summary = "Elastic2D"
+    summary = "new_elastic2d"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     poissons_ratio: float = Field(description="poissons_ratio")
@@ -1045,29 +1077,37 @@ class Elastic2D(Material):
 
 
 class Elastic3D(Material):
-    """``material Elastic3D`` (C++ ``IsotropicElastic3D``).
+    """``material Elastic3D`` (C++ ``new_isotropicelastic3d``).
 
-    Dispatch: is_equal_any(material_id, 'Elastic3D', 'IsotropicElastic3D'). Handler: new_isotropicelastic3d (line 2166).
+    Registered in the TokenRegistry as 'Elastic3D' and 'IsotropicElastic3D', both mapping to new_isotropicelastic3d. Handler: new_isotropicelastic3d (line 2166).
     """
 
     keyword = "Elastic3D"
     aliases = ("IsotropicElastic3D",)
-    summary = "IsotropicElastic3D"
+    summary = "new_isotropicelastic3d"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     poissons_ratio: float = Field(description="poissons_ratio")
     density: float = Field(default=0.0, description="density")
 
 
+class IsotropicElastic3D(Elastic3D):
+    """Alternative spelling of ``Elastic3D`` (C++ ``new_isotropicelastic3d``)."""
+
+    keyword = "IsotropicElastic3D"
+    aliases = ()
+    sp_abstract = True
+
+
 class NonlocalElastic3D(Material):
-    """``material NonlocalElastic3D`` (C++ ``NonlocalIsotropicElastic3D``).
+    """``material NonlocalElastic3D`` (C++ ``new_nonlocalisotropicelastic3d``).
 
     Six parameters after tag read in one get_input call. Energy type fixed to NonlocalIsotropicElastic3D::EnergyType::DEV_TENSILE. Handler: new_nonlocalisotropicelastic3d (line 2196).
     """
 
     keyword = "NonlocalElastic3D"
     aliases = ("NonlocalIsotropicElastic3D",)
-    summary = "NonlocalIsotropicElastic3D"
+    summary = "new_nonlocalisotropicelastic3d"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     poissons_ratio: float = Field(description="poissons_ratio")
@@ -1078,14 +1118,22 @@ class NonlocalElastic3D(Material):
     density: float = Field(default=0.0, description="density")
 
 
+class NonlocalIsotropicElastic3D(NonlocalElastic3D):
+    """Alternative spelling of ``NonlocalElastic3D`` (C++ ``new_nonlocalisotropicelastic3d``)."""
+
+    keyword = "NonlocalIsotropicElastic3D"
+    aliases = ()
+    sp_abstract = True
+
+
 class ElasticOS(Material):
-    """``material ElasticOS`` (C++ ``ElasticOS``).
+    """``material ElasticOS`` (C++ ``new_elasticos``).
 
     Handler: new_elasticos (line 2220).
     """
 
     keyword = "ElasticOS"
-    summary = "ElasticOS"
+    summary = "new_elasticos"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     poissons_ratio: float = Field(description="poissons_ratio")
@@ -1093,13 +1141,13 @@ class ElasticOS(Material):
 
 
 class ExpCC(Material):
-    """``material ExpCC`` (C++ ``ExpCC``).
+    """``material ExpCC`` (C++ ``new_expcc``).
 
     The 9 floats are parsed in a single get_input call. Validation (fatal): |lambda| must be >= |kappa| (inelastic slope vs elastic slope). All parameters are passed through fabs() at construction (as is density implicitly by sign convention of CC).
     """
 
     keyword = "ExpCC"
-    summary = "ExpCC"
+    summary = "new_expcc"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     poissons_ratio: float = Field(description="poissons_ratio")
@@ -1114,13 +1162,13 @@ class ExpCC(Material):
 
 
 class ExpDP(Material):
-    """``material ExpDP`` (C++ ``ExpDP``).
+    """``material ExpDP`` (C++ ``new_expdp``).
 
     (cohesion, cohesion_a, cohesion_b) parsed in one get_input call.
     """
 
     keyword = "ExpDP"
-    summary = "ExpDP"
+    summary = "new_expdp"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     poissons_ratio: float = Field(description="poissons_ratio")
@@ -1134,13 +1182,13 @@ class ExpDP(Material):
 
 
 class ExpGurson(Material):
-    """``material ExpGurson`` (C++ ``ExpGurson``).
+    """``material ExpGurson`` (C++ ``new_expgurson``).
 
     Parsed with get_optional_input (per-element optional). Constructor: ExpGurson(tag, pool(0)..pool(9)).
     """
 
     keyword = "ExpGurson"
-    summary = "ExpGurson"
+    summary = "new_expgurson"
     tag: int = Field(description="tag")
     para_pool: FloatList = Field(
         default=[200.0, 0.3, 0.4, 0.2, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0],
@@ -1149,13 +1197,13 @@ class ExpGurson(Material):
 
 
 class ExpGurson1D(Material):
-    """``material ExpGurson1D`` (C++ ``ExpGurson1D``).
+    """``material ExpGurson1D`` (C++ ``new_expgurson1d``).
 
     Identical parsing/defaults to ExpGurson; 1D variant class.
     """
 
     keyword = "ExpGurson1D"
-    summary = "ExpGurson1D"
+    summary = "new_expgurson1d"
     tag: int = Field(description="tag")
     para_pool: FloatList = Field(
         default=[200.0, 0.3, 0.4, 0.2, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0],
@@ -1164,13 +1212,13 @@ class ExpGurson1D(Material):
 
 
 class ExpHoffman(Material):
-    """``material ExpHoffman`` (C++ ``ExpHoffman|ExpTsaiWu``).
+    """``material ExpHoffman`` (C++ ``new_exporthotropic``).
 
     Handler new_exporthotropic(..., const bool is_hoffman); parsing identical for both variants. stress = yield stress vector (9 entries); a/b = exponential hardening parameters.
     """
 
     keyword = "ExpHoffman"
-    summary = "ExpHoffman|ExpTsaiWu"
+    summary = "new_exporthotropic"
     tag: int = Field(description="tag")
     modulus: FloatList = Field(description="modulus (exactly 6 values)")
     poissons_ratio: FloatList = Field(description="poissons_ratio (exactly 3 values)")
@@ -1181,13 +1229,13 @@ class ExpHoffman(Material):
 
 
 class ExpJ2(Material):
-    """``material ExpJ2`` (C++ ``ExpJ2``).
+    """``material ExpJ2`` (C++ ``new_expj2``).
 
     (a, b) = exponential hardening parameters, parsed in one get_input(command, a, b) call.
     """
 
     keyword = "ExpJ2"
-    summary = "ExpJ2"
+    summary = "new_expj2"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     poissons_ratio: float = Field(description="poissons_ratio")
@@ -1198,13 +1246,13 @@ class ExpJ2(Material):
 
 
 class ExpMises1D(Material):
-    """``material ExpMises1D`` (C++ ``ExpMises1D``).
+    """``material ExpMises1D`` (C++ ``new_expmises1d``).
 
     a/b/c are read in one get_input(command, a, b, c) call. Handler: new_expmises1d (line 1958).
     """
 
     keyword = "ExpMises1D"
-    summary = "ExpMises1D"
+    summary = "new_expmises1d"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     yield_stress: float = Field(description="yield_stress")
@@ -1215,13 +1263,13 @@ class ExpMises1D(Material):
 
 
 class ExpTsaiWu(Material):
-    """``material ExpTsaiWu`` (C++ ``ExpHoffman|ExpTsaiWu``).
+    """``material ExpTsaiWu`` (C++ ``new_exporthotropic``).
 
     Handler new_exporthotropic(..., const bool is_hoffman); parsing identical for both variants. stress = yield stress vector (9 entries); a/b = exponential hardening parameters.
     """
 
     keyword = "ExpTsaiWu"
-    summary = "ExpHoffman|ExpTsaiWu"
+    summary = "new_exporthotropic"
     tag: int = Field(description="tag")
     modulus: FloatList = Field(description="modulus (exactly 6 values)")
     poissons_ratio: FloatList = Field(description="poissons_ratio (exactly 3 values)")
@@ -1232,13 +1280,13 @@ class ExpTsaiWu(Material):
 
 
 class Flag01(Material):
-    """``material Flag01`` (C++ ``Flag``).
+    """``material Flag01`` (C++ ``new_flag01``).
 
     Single-surface flag model. Ctor: Flag(tag, E, yield, residual, hardening_ratio, density). Handler: new_flag01 (line 2006).
     """
 
     keyword = "Flag01"
-    summary = "Flag"
+    summary = "new_flag01"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     yield_stress: float = Field(description="yield_stress")
@@ -1248,13 +1296,13 @@ class Flag01(Material):
 
 
 class Flag02(Material):
-    """``material Flag02`` (C++ ``Flag``).
+    """``material Flag02`` (C++ ``new_flag02``).
 
     Tension/compression asymmetric flag model, same Flag class. Handler: new_flag02 (line 2050).
     """
 
     keyword = "Flag02"
-    summary = "Flag"
+    summary = "new_flag02"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     t_yield_stress: float = Field(description="t_yield_stress")
@@ -1267,26 +1315,26 @@ class Flag02(Material):
 
 
 class Fluid(Material):
-    """``material Fluid`` (C++ ``Fluid``).
+    """``material Fluid`` (C++ ``new_fluid``).
 
     Handler: new_fluid (line 2110).
     """
 
     keyword = "Fluid"
-    summary = "Fluid"
+    summary = "new_fluid"
     tag: int = Field(description="tag")
     bulk_modulus: float = Field(description="bulk_modulus")
     density: float = Field(description="density")
 
 
 class Gap01(Material):
-    """``material Gap01`` (C++ ``Gap01``).
+    """``material Gap01`` (C++ ``new_gap01``).
 
     Handler: new_gap01 (line 2132).
     """
 
     keyword = "Gap01"
-    summary = "Gap01"
+    summary = "new_gap01"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     yield_stress: float = Field(description="yield_stress")
@@ -1295,26 +1343,26 @@ class Gap01(Material):
 
 
 class Kelvin(Material):
-    """``material Kelvin`` (C++ ``Kelvin``).
+    """``material Kelvin`` (C++ ``new_kelvin``).
 
     damper_tag/spring_tag read in one get_input(command, damper_tag, spring_tag) call; reference existing damper/spring materials. Handler: new_kelvin (line 2250).
     """
 
     keyword = "Kelvin"
-    summary = "Kelvin"
+    summary = "new_kelvin"
     tag: int = Field(description="tag")
     damper_tag: int = Field(description="damper_tag")
     spring_tag: int = Field(description="spring_tag")
 
 
 class Laminated(Material):
-    """``material Laminated`` (C++ ``Laminated``).
+    """``material Laminated`` (C++ ``new_laminated``).
 
     Handler: new_laminated (line 2296).
     """
 
     keyword = "Laminated"
-    summary = "Laminated"
+    summary = "new_laminated"
     tag: int = Field(description="tag")
     object_tags: IntList = Field(
         default=[],
@@ -1323,13 +1371,13 @@ class Laminated(Material):
 
 
 class LinearDamage(Material):
-    """``material LinearDamage`` (C++ ``LinearDamage``).
+    """``material LinearDamage`` (C++ ``new_lineardamage``).
 
     mat_tag = base material to degrade; values stored in vec(3, zeros), end damage optional. Handler: new_lineardamage (line 2266).
     """
 
     keyword = "LinearDamage"
-    summary = "LinearDamage"
+    summary = "new_lineardamage"
     tag: int = Field(description="tag")
     mat_tag: int = Field(description="mat_tag")
     start_strain: float = Field(description="start_strain")
@@ -1338,13 +1386,13 @@ class LinearDamage(Material):
 
 
 class Maxwell(Material):
-    """``material Maxwell`` (C++ ``Maxwell``).
+    """``material Maxwell`` (C++ ``new_maxwell``).
 
     matrix parsed with is_true(); all three tags read in one get_input call. Handler: new_maxwell (line 2306).
     """
 
     keyword = "Maxwell"
-    summary = "Maxwell"
+    summary = "new_maxwell"
     tag: int = Field(description="tag")
     damper_tag: int = Field(description="damper_tag")
     spring_tag: int = Field(description="spring_tag")
@@ -1354,13 +1402,13 @@ class Maxwell(Material):
 
 
 class MooneyRivlin(Material):
-    """``material MooneyRivlin`` (C++ ``MooneyRivlin``).
+    """``material MooneyRivlin`` (C++ ``new_mooneyrivlin``).
 
     Handler: new_mooneyrivlin (line 2334).
     """
 
     keyword = "MooneyRivlin"
-    summary = "MooneyRivlin"
+    summary = "new_mooneyrivlin"
     tag: int = Field(description="tag")
     bulk_modulus: float = Field(description="bulk_modulus")
     a10: float = Field(description="a10")
@@ -1369,13 +1417,13 @@ class MooneyRivlin(Material):
 
 
 class MPF(Material):
-    """``material MPF`` (C++ ``MPF``).
+    """``material MPF`` (C++ ``new_mpf``).
 
     iso/con parsed with is_true() (isotropic hardening switch / constant radius switch). Handler: new_mpf (line 2370).
     """
 
     keyword = "MPF"
-    summary = "MPF"
+    summary = "new_mpf"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     yield_stress: float = Field(description="yield_stress")
@@ -1391,13 +1439,13 @@ class MPF(Material):
 
 
 class MultilinearElastic1D(Material):
-    """``material MultilinearElastic1D`` (C++ ``MultilinearElastic1D``).
+    """``material MultilinearElastic1D`` (C++ ``new_multilinearelastic1d``).
 
     Handler: new_multilinearelastic1d (line 2508).
     """
 
     keyword = "MultilinearElastic1D"
-    summary = "MultilinearElastic1D"
+    summary = "new_multilinearelastic1d"
     tag: int = Field(description="tag")
     rest_values: FloatList = Field(
         default=[],
@@ -1406,13 +1454,13 @@ class MultilinearElastic1D(Material):
 
 
 class MultilinearJ2(Material):
-    """``material MultilinearJ2`` (C++ ``MultilinearJ2``).
+    """``material MultilinearJ2`` (C++ ``new_multilinearj2``).
 
     Note: density is REQUIRED here (no eof guard). Handler: new_multilinearj2 (line 2533).
     """
 
     keyword = "MultilinearJ2"
-    summary = "MultilinearJ2"
+    summary = "new_multilinearj2"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     poissons_ratio: float = Field(description="poissons_ratio")
@@ -1424,13 +1472,13 @@ class MultilinearJ2(Material):
 
 
 class MultilinearMises1D(Material):
-    """``material MultilinearMises1D`` (C++ ``MultilinearMises1D``).
+    """``material MultilinearMises1D`` (C++ ``new_multilinearmises1d``).
 
     Note: density is REQUIRED here (no eof guard). Handler: new_multilinearmises1d (line 2563).
     """
 
     keyword = "MultilinearMises1D"
-    summary = "MultilinearMises1D"
+    summary = "new_multilinearmises1d"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     density: float = Field(description="density")
@@ -1441,13 +1489,13 @@ class MultilinearMises1D(Material):
 
 
 class MultilinearOO(Material):
-    """``material MultilinearOO`` (C++ ``MultilinearOO``).
+    """``material MultilinearOO`` (C++ ``new_multilinearoo``).
 
     Backbone files loaded with mat::load(name, raw_ascii) and must be non-empty; first row dropped when its second column is 0; ctor takes abs(t_backbone), -abs(c_backbone). Handler: new_multilinearoo (line 2446).
     """
 
     keyword = "MultilinearOO"
-    summary = "MultilinearOO"
+    summary = "new_multilinearoo"
     tag: int = Field(description="tag")
     tension_backbone_file: str = Field(description="tension_backbone_file")
     compression_backbone_file: str = Field(description="compression_backbone_file")
@@ -1455,13 +1503,13 @@ class MultilinearOO(Material):
 
 
 class MultilinearPO(Material):
-    """``material MultilinearPO`` (C++ ``MultilinearPO``).
+    """``material MultilinearPO`` (C++ ``new_multilinearpo``).
 
     Same file handling as MultilinearOO. Handler: new_multilinearpo (line 2477).
     """
 
     keyword = "MultilinearPO"
-    summary = "MultilinearPO"
+    summary = "new_multilinearpo"
     tag: int = Field(description="tag")
     tension_backbone_file: str = Field(description="tension_backbone_file")
     compression_backbone_file: str = Field(description="compression_backbone_file")
@@ -1469,13 +1517,13 @@ class MultilinearPO(Material):
 
 
 class NLE1D01(Material):
-    """``material NLE1D01`` (C++ ``BilinearElastic1D``).
+    """``material NLE1D01`` (C++ ``new_nle1d01``).
 
     Same class as BilinearElastic1D but with a required radius for transition (smoothed transition); hardening_ratio has NO default here (required). Handler name: new_nle1d01.
     """
 
     keyword = "NLE1D01"
-    summary = "BilinearElastic1D"
+    summary = "new_nle1d01"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     yield_stress: float = Field(description="yield_stress")
@@ -1485,26 +1533,26 @@ class NLE1D01(Material):
 
 
 class NLE3D01(Material):
-    """``material NLE3D01`` (C++ ``NLE3D01``).
+    """``material NLE3D01`` (C++ ``new_nle3d01``).
 
     4-element vec read in one get_input(command, pool) call (all 4 values required); ctor takes pool(0)..pool(3). Handler: new_nle3d01 (line 2587).
     """
 
     keyword = "NLE3D01"
-    summary = "NLE3D01"
+    summary = "new_nle3d01"
     tag: int = Field(description="tag")
     pool: FloatList = Field(description="pool (exactly 4 values)")
     density: float = Field(default=0.0, description="density")
 
 
 class Nonviscous01(Material):
-    """``material Nonviscous01`` (C++ ``Nonviscous01``).
+    """``material Nonviscous01`` (C++ ``new_nonviscous01``).
 
     Validation: imaginary parts must cancel (|sum| <= 1E-10, conjugate pairs) and sum(m % exp(-1E8*s)) must vanish (kernel decays to zero). Handler: new_nonviscous01 (line 2611).
     """
 
     keyword = "Nonviscous01"
-    summary = "Nonviscous01"
+    summary = "new_nonviscous01"
     tag: int = Field(description="tag")
     rest_values: FloatList = Field(
         default=[],
@@ -1513,13 +1561,13 @@ class Nonviscous01(Material):
 
 
 class OrthotropicElastic3D(Material):
-    """``material OrthotropicElastic3D`` (C++ ``OrthotropicElastic3D``).
+    """``material OrthotropicElastic3D`` (C++ ``new_orthotropicelastic3d``).
 
     6 moduli then 3 Poisson ratios, each vec read in one get_input call. Handler: new_orthotropicelastic3d (line 2636).
     """
 
     keyword = "OrthotropicElastic3D"
-    summary = "OrthotropicElastic3D"
+    summary = "new_orthotropicelastic3d"
     tag: int = Field(description="tag")
     modulus: FloatList = Field(description="modulus (exactly 6 values)")
     poissons_ratio: FloatList = Field(description="poissons_ratio (exactly 3 values)")
@@ -1527,39 +1575,39 @@ class OrthotropicElastic3D(Material):
 
 
 class OS146(Material):
-    """``material OS146`` (C++ ``OS146``).
+    """``material OS146`` (C++ ``new_wrapper``).
 
     Instantiated via new_wrapper<OS146> (template handler, line 2742); wrapper over reference material full_tag.
     """
 
     keyword = "OS146"
-    summary = "OS146"
+    summary = "new_wrapper"
     tag: int = Field(description="tag")
     full_tag: int = Field(description="full_tag")
     max_iteration: int = Field(default=1, description="max_iteration")
 
 
 class OS146S(Material):
-    """``material OS146S`` (C++ ``OS146S``).
+    """``material OS146S`` (C++ ``new_os146s``).
 
     Distinct handler from OS146 (adds shear_modulus). Handler: new_os146s (line 2764).
     """
 
     keyword = "OS146S"
-    summary = "OS146S"
+    summary = "new_os146s"
     tag: int = Field(description="tag")
     full_tag: int = Field(description="full_tag")
     shear_modulus: float = Field(description="shear_modulus")
 
 
 class ParabolicCC(Material):
-    """``material ParabolicCC`` (C++ ``ParabolicCC``).
+    """``material ParabolicCC`` (C++ ``new_paraboliccc``).
 
     Parabolic Cam-clay. beta/m/pt/a/a_slope each read with separate fatal get_input. Handler: new_paraboliccc (line 2666).
     """
 
     keyword = "ParabolicCC"
-    summary = "ParabolicCC"
+    summary = "new_paraboliccc"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     poissons_ratio: float = Field(description="poissons_ratio")
@@ -1572,13 +1620,13 @@ class ParabolicCC(Material):
 
 
 class Parallel(Material):
-    """``material Parallel`` (C++ ``Parallel``).
+    """``material Parallel`` (C++ ``new_parallel``).
 
     Handler: new_parallel (line 2716).
     """
 
     keyword = "Parallel"
-    summary = "Parallel"
+    summary = "new_parallel"
     tag: int = Field(description="tag")
     object_tags: IntList = Field(
         default=[],
@@ -1587,62 +1635,62 @@ class Parallel(Material):
 
 
 class PlaneStrain(Material):
-    """``material PlaneStrain`` (C++ ``PlaneStrain``).
+    """``material PlaneStrain`` (C++ ``new_planestrain``).
 
     Dispatch: new_planestrain(new_material, command, 0); internal constraint type = 0. full_tag = reference 3D material. Handler: new_planestrain (line 2726).
     """
 
     keyword = "PlaneStrain"
-    summary = "PlaneStrain"
+    summary = "new_planestrain"
     tag: int = Field(description="tag")
     full_tag: int = Field(description="full_tag")
 
 
 class PlaneStress(Material):
-    """``material PlaneStress`` (C++ ``PlaneStress``).
+    """``material PlaneStress`` (C++ ``new_wrapper``).
 
     Instantiated via new_wrapper<PlaneStress> (template handler, line 2742); wrapper over reference 3D material full_tag.
     """
 
     keyword = "PlaneStress"
-    summary = "PlaneStress"
+    summary = "new_wrapper"
     tag: int = Field(description="tag")
     full_tag: int = Field(description="full_tag")
     max_iteration: int = Field(default=1, description="max_iteration")
 
 
 class PlaneSymmetric13(Material):
-    """``material PlaneSymmetric13`` (C++ ``PlaneStrain``).
+    """``material PlaneSymmetric13`` (C++ ``new_planestrain``).
 
     Same handler as PlaneStrain but constraint type = 1. Handler: new_planestrain (line 2726).
     """
 
     keyword = "PlaneSymmetric13"
-    summary = "PlaneStrain"
+    summary = "new_planestrain"
     tag: int = Field(description="tag")
     full_tag: int = Field(description="full_tag")
 
 
 class PlaneSymmetric23(Material):
-    """``material PlaneSymmetric23`` (C++ ``PlaneStrain``).
+    """``material PlaneSymmetric23`` (C++ ``new_planestrain``).
 
     Same handler as PlaneStrain but constraint type = 2. Handler: new_planestrain (line 2726).
     """
 
     keyword = "PlaneSymmetric23"
-    summary = "PlaneStrain"
+    summary = "new_planestrain"
     tag: int = Field(description="tag")
     full_tag: int = Field(description="full_tag")
 
 
 class PolyElastic1D(Material):
-    """``material PolyElastic1D`` (C++ ``PolyElastic1D``).
+    """``material PolyElastic1D`` (C++ ``new_polyelastic1d``).
 
     Ctor: PolyElastic1D(tag, coefficients, 0.) - second argument fixed to 0. Handler: new_polyelastic1d (line 2786).
     """
 
     keyword = "PolyElastic1D"
-    summary = "PolyElastic1D"
+    summary = "new_polyelastic1d"
     tag: int = Field(description="tag")
     rest_values: FloatList = Field(
         default=[],
@@ -1651,13 +1699,13 @@ class PolyElastic1D(Material):
 
 
 class PolyJ2(Material):
-    """``material PolyJ2`` (C++ ``PolyJ2``).
+    """``material PolyJ2`` (C++ ``new_polyj2``).
 
     Note: density is REQUIRED here (no eof guard). Handler: new_polyj2 (line 2796).
     """
 
     keyword = "PolyJ2"
-    summary = "PolyJ2"
+    summary = "new_polyj2"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     poissons_ratio: float = Field(description="poissons_ratio")
@@ -1669,13 +1717,13 @@ class PolyJ2(Material):
 
 
 class Prestrain(Material):
-    """``material Prestrain`` (C++ ``Prestrain``).
+    """``material Prestrain`` (C++ ``new_prestrain``).
 
     tag/base_tag/amplitude_tag read in one get_input call; amplitude_tag references an Amplitude object. Handler: new_prestrain (line 2831).
     """
 
     keyword = "Prestrain"
-    summary = "Prestrain"
+    summary = "new_prestrain"
     tag: int = Field(description="tag")
     base_tag: int = Field(description="base_tag")
     amplitude_tag: int = Field(description="amplitude_tag")
@@ -1683,13 +1731,13 @@ class Prestrain(Material):
 
 
 class RambergOsgood(Material):
-    """``material RambergOsgood`` (C++ ``RambergOsgood``).
+    """``material RambergOsgood`` (C++ ``new_rambergosgood``).
 
     Handler: new_rambergosgood (line 2847).
     """
 
     keyword = "RambergOsgood"
-    summary = "RambergOsgood"
+    summary = "new_rambergosgood"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     yield_stress: float = Field(description="yield_stress")
@@ -1699,13 +1747,13 @@ class RambergOsgood(Material):
 
 
 class Rebar2D(Material):
-    """``material Rebar2D`` (C++ ``Rebar2D``).
+    """``material Rebar2D`` (C++ ``new_rebar2d``).
 
     major/minor material tags read in one get_input, then both reinforcement ratios in one get_input. Handler: new_rebar2d (line 2887).
     """
 
     keyword = "Rebar2D"
-    summary = "Rebar2D"
+    summary = "new_rebar2d"
     tag: int = Field(description="tag")
     major_tag: int = Field(description="major_tag")
     minor_tag: int = Field(description="minor_tag")
@@ -1714,13 +1762,13 @@ class Rebar2D(Material):
 
 
 class Rebar3D(Material):
-    """``material Rebar3D`` (C++ ``Rebar3D``).
+    """``material Rebar3D`` (C++ ``new_rebar3d``).
 
     x/y/z material tags in one get_input, then x/y/z reinforcement ratios in one get_input. Handler: new_rebar3d (line 2909).
     """
 
     keyword = "Rebar3D"
-    summary = "Rebar3D"
+    summary = "new_rebar3d"
     tag: int = Field(description="tag")
     tag_x: int = Field(description="tag_x")
     tag_y: int = Field(description="tag_y")
@@ -1731,26 +1779,26 @@ class Rebar3D(Material):
 
 
 class Rotation2D(Material):
-    """``material Rotation2D`` (C++ ``Rotation2D``).
+    """``material Rotation2D`` (C++ ``new_rotation2d``).
 
     Rotates reference material full_tag by a single in-plane angle. Handler: new_rotation2d (line 3163).
     """
 
     keyword = "Rotation2D"
-    summary = "Rotation2D"
+    summary = "new_rotation2d"
     tag: int = Field(description="tag")
     full_tag: int = Field(description="full_tag")
     angle: float = Field(description="angle")
 
 
 class Rotation3D(Material):
-    """``material Rotation3D`` (C++ ``Rotation3D``).
+    """``material Rotation3D`` (C++ ``new_rotation3d``).
 
     Three rotation angles read in one get_input(command, a, b, c) call. Handler: new_rotation3d (line 3225).
     """
 
     keyword = "Rotation3D"
-    summary = "Rotation3D"
+    summary = "new_rotation3d"
     tag: int = Field(description="tag")
     full_tag: int = Field(description="full_tag")
     angle_a: float = Field(description="angle_a")
@@ -1759,13 +1807,13 @@ class Rotation3D(Material):
 
 
 class Sequential(Material):
-    """``material Sequential`` (C++ ``Sequential``).
+    """``material Sequential`` (C++ ``new_sequential``).
 
     Handler: new_sequential (line 2931).
     """
 
     keyword = "Sequential"
-    summary = "Sequential"
+    summary = "new_sequential"
     tag: int = Field(description="tag")
     object_tags: IntList = Field(
         default=[],
@@ -1774,13 +1822,13 @@ class Sequential(Material):
 
 
 class SimpleSand(Material):
-    """``material SimpleSand`` (C++ ``SimpleSand``).
+    """``material SimpleSand`` (C++ ``new_simplesand``).
 
     13-element vec via get_optional_input; ctor passes pool(0)..pool(12) individually. Handler: new_simplesand (line 3185).
     """
 
     keyword = "SimpleSand"
-    summary = "SimpleSand"
+    summary = "new_simplesand"
     tag: int = Field(description="tag")
     parameters: FloatList = Field(
         default=[
@@ -1803,23 +1851,23 @@ class SimpleSand(Material):
 
 
 class Sinh1D(Material):
-    """``material Sinh1D`` (C++ ``Sinh1D``)."""
+    """``material Sinh1D`` (C++ ``new_sinh1d``)."""
 
     keyword = "Sinh1D"
-    summary = "Sinh1D"
+    summary = "new_sinh1d"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     density: float = Field(default=0.0, description="density")
 
 
 class SlipLock(Material):
-    """``material SlipLock`` (C++ ``SlipLock``).
+    """``material SlipLock`` (C++ ``new_sliplock``).
 
     Handler: new_sliplock (line 2948).
     """
 
     keyword = "SlipLock"
-    summary = "SlipLock"
+    summary = "new_sliplock"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     yield_strain: float = Field(description="yield_strain")
@@ -1829,13 +1877,13 @@ class SlipLock(Material):
 
 
 class Stacked(Material):
-    """``material Stacked`` (C++ ``Stacked``).
+    """``material Stacked`` (C++ ``new_stacked``).
 
     Handler: new_stacked (line 2988).
     """
 
     keyword = "Stacked"
-    summary = "Stacked"
+    summary = "new_stacked"
     tag: int = Field(description="tag")
     object_tags: IntList = Field(
         default=[],
@@ -1844,13 +1892,13 @@ class Stacked(Material):
 
 
 class SteelBRB(Material):
-    """``material SteelBRB`` (C++ ``SteelBRB``).
+    """``material SteelBRB`` (C++ ``new_steelbrb``).
 
     Normalization: 6 -> duplicate pool[3..5] appended then 0.0 appended (symmetric hardening); 7 -> copy of pool[3..5] inserted before the last element (density); 9 -> 0.0 appended. Handler: new_steelbrb (line 3201).
     """
 
     keyword = "SteelBRB"
-    summary = "SteelBRB"
+    summary = "new_steelbrb"
     tag: int = Field(description="tag")
     rest_values: FloatList = Field(
         default=[],
@@ -1859,13 +1907,13 @@ class SteelBRB(Material):
 
 
 class Subloading(Material):
-    """``material Subloading`` (C++ ``Subloading``).
+    """``material Subloading`` (C++ ``new_subloading``).
 
     3D subloading surface. Mapping: p(0)=elastic; p(1)=poisson; p(2..5)=iso_bound{initial,linear,saturation,rate}; p(6..9)=kin_bound{initial,linear,saturation,rate}; p(10)=u; b={p(11),1}; c={p(12),min(1-eps,p(13))}. Validation: rates >= 0. Handler: new_subloading (line 3113).
     """
 
     keyword = "Subloading"
-    summary = "Subloading"
+    summary = "new_subloading"
     tag: int = Field(description="tag")
     parameters: FloatList = Field(
         default=[
@@ -1890,13 +1938,13 @@ class Subloading(Material):
 
 
 class Subloading1D(Material):
-    """``material Subloading1D`` (C++ ``Subloading1D``).
+    """``material Subloading1D`` (C++ ``new_subloading1d``).
 
     Mapping: p(0)=elastic; p(1..4)=iso_bound{initial,linear,saturation,rate}; p(5..8)=kin_bound{initial,linear,saturation,rate}; p(9)=u; cv=1 (fixed); b={p(10),1}; c={p(11),min(1-eps,p(12))}. Validation: iso/kin evolution rates must be >= 0. Handler: new_subloading1d (line 2998).
     """
 
     keyword = "Subloading1D"
-    summary = "Subloading1D"
+    summary = "new_subloading1d"
     tag: int = Field(description="tag")
     parameters: FloatList = Field(
         default=[
@@ -1920,13 +1968,13 @@ class Subloading1D(Material):
 
 
 class SubloadingViscous1D(Material):
-    """``material SubloadingViscous1D`` (C++ ``Subloading1D``).
+    """``material SubloadingViscous1D`` (C++ ``new_subloadingviscous1d``).
 
     Same Subloading1D class; viscous variant. Mapping: p(0)=elastic; p(1..4)=iso_bound; p(5..8)=kin_bound; p(9)=u; p(10)=cv; p(11)=mu; p(12)=nv; b={p(13),1}; c={p(14),min(1-eps,p(15))}. Validation: rates >= 0 and cv >= 1. Handler: new_subloadingviscous1d (line 3030).
     """
 
     keyword = "SubloadingViscous1D"
-    summary = "Subloading1D"
+    summary = "new_subloadingviscous1d"
     tag: int = Field(description="tag")
     parameters: FloatList = Field(
         default=[
@@ -1953,26 +2001,26 @@ class SubloadingViscous1D(Material):
 
 
 class Substepping(Material):
-    """``material Substepping`` (C++ ``Substepping``).
+    """``material Substepping`` (C++ ``new_substepping``).
 
     max_iteration read via get_optional_input (unsigned). Handler: new_substepping (line 3141).
     """
 
     keyword = "Substepping"
-    summary = "Substepping"
+    summary = "new_substepping"
     tag: int = Field(description="tag")
     material_tag: int = Field(description="material_tag")
     max_iteration: int = Field(default=20, description="max_iteration")
 
 
 class TableCDP(Material):
-    """``material TableCDP`` (C++ ``TableCDP``).
+    """``material TableCDP`` (C++ ``new_tablecdp``).
 
     Dispatch: new_tablecdp(new_material, command, false). Full default pool: {3E4, .2, .2, 1.16, .5, 2400E-12}; ctor TableCDP(tag, p0, p1, t_table, c_table, dt_table, dc_table, g_t, g_c, p2, p3, 1., p4, p5) - one parameter fixed to 1.0 (vs AbaqusCDP). Same table validation/conversion as AbaqusCDP. Handler: new_tablecdp ...
     """
 
     keyword = "TableCDP"
-    summary = "TableCDP"
+    summary = "new_tablecdp"
     tag: int = Field(description="tag")
     leading_parameters: FloatList = Field(
         default=[30000.0, 0.2], description="leading_parameters (exactly 2 values)"
@@ -1988,13 +2036,13 @@ class TableCDP(Material):
 
 
 class TableGurson(Material):
-    """``material TableGurson`` (C++ ``TableGurson``).
+    """``material TableGurson`` (C++ ``new_tablegurson``).
 
     Full default pool: {2E2, .3, 1., 1., 0., 1., 0., 0.}. Hardening table must exist and load via raw_ascii with >= 2 columns (no row minimum). Ctor: TableGurson(tag, p0, p1, hardening_table, p2..p7). Handler: new_tablegurson (line 3327).
     """
 
     keyword = "TableGurson"
-    summary = "TableGurson"
+    summary = "new_tablegurson"
     tag: int = Field(description="tag")
     leading_parameters: FloatList = Field(
         default=[200.0, 0.3], description="leading_parameters (exactly 2 values)"
@@ -2007,23 +2055,23 @@ class TableGurson(Material):
 
 
 class Tanh1D(Material):
-    """``material Tanh1D`` (C++ ``Tanh1D``)."""
+    """``material Tanh1D`` (C++ ``new_tanh1d``)."""
 
     keyword = "Tanh1D"
-    summary = "Tanh1D"
+    summary = "new_tanh1d"
     tag: int = Field(description="tag")
     elastic_modulus: float = Field(description="elastic_modulus")
     density: float = Field(default=0.0, description="density")
 
 
 class TimberPD(Material):
-    """``material TimberPD`` (C++ ``TimberPD``).
+    """``material TimberPD`` (C++ ``new_timberpd``).
 
     para = hardening parameter vector (7 entries); stress = yield stress vector (9 entries).
     """
 
     keyword = "TimberPD"
-    summary = "TimberPD"
+    summary = "new_timberpd"
     tag: int = Field(description="tag")
     modulus: FloatList = Field(description="modulus (exactly 6 values)")
     poissons_ratio: FloatList = Field(description="poissons_ratio (exactly 3 values)")
@@ -2033,13 +2081,13 @@ class TimberPD(Material):
 
 
 class TrilinearStrainDegradation(Material):
-    """``material TrilinearStrainDegradation`` (C++ ``TrilinearStrainDegradation``).
+    """``material TrilinearStrainDegradation`` (C++ ``new_trilinearstraindegradation``).
 
     mat_tag = base material; all three degradation values required (unlike LinearDamage). Handler: new_trilinearstraindegradation (line 3359).
     """
 
     keyword = "TrilinearStrainDegradation"
-    summary = "TrilinearStrainDegradation"
+    summary = "new_trilinearstraindegradation"
     tag: int = Field(description="tag")
     mat_tag: int = Field(description="mat_tag")
     s_strain: float = Field(description="s_strain")
@@ -2048,37 +2096,37 @@ class TrilinearStrainDegradation(Material):
 
 
 class Trivial(Material):
-    """``material Trivial`` (C++ ``Trivial``).
+    """``material Trivial`` (C++ ``new_trivial``).
 
     Does-nothing material. Handler: new_trivial (line 3406).
     """
 
     keyword = "Trivial"
-    summary = "Trivial"
+    summary = "new_trivial"
     tag: int = Field(description="tag")
 
 
 class Uniaxial(Material):
-    """``material Uniaxial`` (C++ ``Uniaxial``).
+    """``material Uniaxial`` (C++ ``new_wrapper``).
 
     Instantiated via new_wrapper<Uniaxial> (template handler, line 2742); wrapper over reference material full_tag.
     """
 
     keyword = "Uniaxial"
-    summary = "Uniaxial"
+    summary = "new_wrapper"
     tag: int = Field(description="tag")
     full_tag: int = Field(description="full_tag")
     max_iteration: int = Field(default=1, description="max_iteration")
 
 
 class VAFCRP(Material):
-    """``material VAFCRP`` (C++ ``VAFCRP``).
+    """``material VAFCRP`` (C++ ``new_vafcrp``).
 
     Viscoelastic Armstrong-Frederick with creep recovery. Handler: new_vafcrp (line 3416).
     """
 
     keyword = "VAFCRP"
-    summary = "VAFCRP"
+    summary = "new_vafcrp"
     tag: int = Field(description="tag")
     parameters: FloatList = Field(
         default=[200000.0, 0.2, 400.0, 0.0, 500.0, 10.0, 0.0, 0.0],
@@ -2091,13 +2139,13 @@ class VAFCRP(Material):
 
 
 class VAFCRP1D(Material):
-    """``material VAFCRP1D`` (C++ ``VAFCRP1D``).
+    """``material VAFCRP1D`` (C++ ``new_vafcrp1d``).
 
     1D variant. Handler: new_vafcrp1d (line 3447).
     """
 
     keyword = "VAFCRP1D"
-    summary = "VAFCRP1D"
+    summary = "new_vafcrp1d"
     tag: int = Field(description="tag")
     parameters: FloatList = Field(
         default=[200000.0, 400.0, 0.0, 100.0, 10.0, 0.0, 0.0],
@@ -2110,13 +2158,13 @@ class VAFCRP1D(Material):
 
 
 class Viscosity01(Material):
-    """``material Viscosity01`` (C++ ``Viscosity01``).
+    """``material Viscosity01`` (C++ ``new_viscosity01``).
 
     Handler: new_viscosity01 (line 3478).
     """
 
     keyword = "Viscosity01"
-    summary = "Viscosity01"
+    summary = "new_viscosity01"
     tag: int = Field(description="tag")
     alpha: float = Field(description="alpha")
     damping: float = Field(description="damping")
@@ -2124,13 +2172,13 @@ class Viscosity01(Material):
 
 
 class Viscosity02(Material):
-    """``material Viscosity02`` (C++ ``Viscosity02``).
+    """``material Viscosity02`` (C++ ``new_viscosity02``).
 
     Per-quadrant damping coefficients default to damping_a; gap_a = gap size for strain axis, gap_b = gap size for strain rate axis. Handler: new_viscosity02 (line 3506).
     """
 
     keyword = "Viscosity02"
-    summary = "Viscosity02"
+    summary = "new_viscosity02"
     tag: int = Field(description="tag")
     alpha: float = Field(description="alpha")
     damping_a: float = Field(description="damping_a")
@@ -2143,13 +2191,13 @@ class Viscosity02(Material):
 
 
 class Yeoh(Material):
-    """``material Yeoh`` (C++ ``Yeoh``).
+    """``material Yeoh`` (C++ ``new_yeoh``).
 
     No size check in parser. Handler: new_yeoh (line 3602).
     """
 
     keyword = "Yeoh"
-    summary = "Yeoh"
+    summary = "new_yeoh"
     tag: int = Field(description="tag")
     rest_values: FloatList = Field(
         default=[],
@@ -2158,13 +2206,13 @@ class Yeoh(Material):
 
 
 class YLD0418P(Material):
-    """``material YLD0418P`` (C++ ``YLD0418P``).
+    """``material YLD0418P`` (C++ ``new_yld0418p``).
 
     Dispatch: new_yld0418p(new_material, command, false) (orthotropic: 6 moduli, 3 Poisson ratios). hardening parsed as unsigned expression tag ('A valid hardening expression tag is required.'). kin_rate/kin_bound read in one get_input. Handler: new_yld0418p (line 3617).
     """
 
     keyword = "YLD0418P"
-    summary = "YLD0418P"
+    summary = "new_yld0418p"
     tag: int = Field(description="tag")
     modulus: FloatList = Field(description="modulus (exactly 6 values)")
     poissons_ratio: FloatList = Field(description="poissons_ratio (exactly 3 values)")
@@ -2178,13 +2226,13 @@ class YLD0418P(Material):
 
 
 class YLD0418PISO(Material):
-    """``material YLD0418PISO`` (C++ ``YLD0418P``).
+    """``material YLD0418PISO`` (C++ ``new_yld0418p``).
 
     Dispatch: new_yld0418p(new_material, command, true) (isotropic: 1 modulus, 1 Poisson ratio); rest identical to YLD0418P. Handler: new_yld0418p (line 3617).
     """
 
     keyword = "YLD0418PISO"
-    summary = "YLD0418P"
+    summary = "new_yld0418p"
     tag: int = Field(description="tag")
     modulus: FloatList = Field(description="modulus (exactly 1 values)")
     poissons_ratio: FloatList = Field(description="poissons_ratio (exactly 1 values)")

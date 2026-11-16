@@ -4,6 +4,7 @@
 import pytest
 
 from suanpan.base import find_class
+from suanpan.constraint import Fix, LogicCriteriaAll
 from suanpan.converger import RelIncreDisp
 from suanpan.load import Cload
 from suanpan.recorder import NodeRecorder
@@ -25,6 +26,7 @@ from suanpan.solver import (
     Tchamwa,
 )
 from suanpan.step import (
+    SYSTEM_SOLVERS,
     ArcLengthStep,
     BuckleStep,
     DynamicStep,
@@ -179,6 +181,67 @@ class TestSteps:
     def test_unknown_system_solver_rejected(self):
         with pytest.raises(Exception):
             StaticStep(tag=1, system_solver="bogus")
+        with pytest.raises(Exception):
+            StaticStep(tag=1, sub_system_solver="bogus")
+        with pytest.raises(Exception):
+            StaticStep(tag=1, precision="half")
+
+    @pytest.mark.parametrize("solver", SYSTEM_SOLVERS)
+    def test_accepts_every_system_solver(self, solver):
+        step = StaticStep(tag=1, system_solver=solver.lower(), sub_system_solver=solver)
+        lines = step.to_commands()
+        assert f"set system_solver {solver}" in lines
+        assert f"set sub_system_solver {solver}" in lines
+
+    @pytest.mark.parametrize("precision", ["full", "single", "mixed"])
+    def test_accepts_every_precision(self, precision):
+        assert f"set precision {precision.upper()}" in StaticStep(
+            tag=1, precision=precision
+        ).to_commands()
+
+    def test_set_property_export_order(self):
+        step = StaticStep(
+            tag=1,
+            linear_system=True,
+            fixed_step_size=True,
+            symm_mat=False,
+            band_mat=True,
+            sparse_mat=False,
+            iterative_refinement=2,
+            precision="single",
+            system_solver="mumps",
+            sub_system_solver="lis",
+            tolerance=1e-8,
+            ini_step_size=0.1,
+            min_step_size=0.01,
+            max_step_size=0.5,
+            max_iteration=5,
+        )
+        assert step.to_commands() == [
+            "step Static 1",
+            "set linear_system",
+            "set fixed_step_size true",
+            "set symm_mat false",
+            "set band_mat true",
+            "set sparse_mat false",
+            "set iterative_refinement 2",
+            "set precision SINGLE",
+            "set system_solver MUMPS",
+            "set sub_system_solver LIS",
+            "set tolerance 1e-08",
+            "set ini_step_size 0.1",
+            "set min_step_size 0.01",
+            "set max_step_size 0.5",
+            "set max_iteration 5",
+        ]
+
+    def test_frequency_type_token(self):
+        assert FrequencyStep(tag=2, eigen_number=3).to_commands() == [
+            "step Frequency 2 3"
+        ]
+        assert FrequencyStep(tag=2, eigen_number=3, type="l").to_commands() == [
+            "step Frequency 2 3 L"
+        ]
 
     def test_linear_system(self):
         step = StaticStep(tag=1, linear_system=True)
@@ -213,3 +276,16 @@ class TestStepCell:
 
     def test_cell_empty(self):
         assert cell_commands(StaticStep(tag=1)) == ["step Static 1"]
+
+    def test_cell_exports_criteria_and_constraints(self):
+        step = StaticStep(
+            tag=1,
+            criteria=[LogicCriteriaAll(tag=2, criterion_tags=[1])],
+            constraints=[Fix(tag=3, dof="E", node_tags=[1])],
+        )
+        assert step.to_commands() == ["step Static 1"]
+        assert cell_commands(step) == [
+            "step Static 1",
+            "criterion LogicAll 2 1",
+            "constraint Fix 3 E 1",
+        ]

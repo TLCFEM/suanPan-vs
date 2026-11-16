@@ -9,8 +9,8 @@
 #   - req: false -> optional (eof-guard pattern or get_optional_input); C++ default in `default`.
 #   - bool params are parsed with is_true(str); C++ default tokens are "false"/"true"/"N" ("N" parses to false).
 #   - node_tags is read as one uvec(N) via get_input(): exactly N space-separated node tags, in order.
-#   - Keyword matching is case-insensitive (is_equal uses _strcmpi); `aliases` lists the other matched
-#     spellings (lowercased) that hit the same handler.
+#   - Keyword matching is case-insensitive (the TokenRegistry compares with _strcmpi);
+#     `aliases` lists the other registered spellings that hit the same factory.
 #   - No handler in this range uses is_equal(para, "XXX") body flags or get_remaining, hence
 #     flags: [] and rest: null throughout. Enumerated tokens are described in params/notes.
 

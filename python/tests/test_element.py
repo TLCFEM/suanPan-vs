@@ -10,6 +10,8 @@ from suanpan.element import (
     B31OS,
     C3D8,
     C3D8R,
+    CP8,
+    CPS8,
     CSMQ5,
     DCP4,
     DCP4M,
@@ -17,6 +19,7 @@ from suanpan.element import (
     T2D2S,
     T3D2,
     Mass,
+    Mass3D,
     PatchCube,
     PatchQuad,
 )
@@ -154,3 +157,18 @@ class TestPatches:
         tokens = obj.to_commands()[0].split()
         assert tokens[:3] == ["element", "PatchCube", "1"]
         assert "-knotz" in tokens and "-thickness" not in tokens
+
+
+class TestRegistryAliases:
+    def test_cps8_alternate_spelling(self):
+        assert CP8.aliases == ("CPS8",)
+        assert issubclass(CPS8, CP8)
+        obj = CPS8(tag=1, node_tags=list(range(1, 9)), material_tag=2)
+        assert obj.to_commands()[0].startswith("CPS8 1 1 2 3 4 5 6 7 8 2")
+
+    def test_mass3d_alternate_spelling(self):
+        assert Mass.aliases == ("Mass3D",)
+        assert issubclass(Mass3D, Mass)
+        assert Mass3D(tag=1, node=2, magnitude=10).to_commands() == [
+            "Mass3D 1 2 10"
+        ]

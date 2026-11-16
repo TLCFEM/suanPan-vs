@@ -90,13 +90,13 @@ class Section(SuanpanObject):
 
 
 class Box2D(Section):
-    """``section Box2D`` (C++ ``Box2D``).
+    """``section Box2D`` (C++ ``new_box2d``).
 
     Handler new_box2d. Ctor Box2D(tag, B=width, H=height, TH=thickness, M=material, S=int_pt, EC=eccentricity). int_pt default 6 announced via suanpan_debug('Six integration points assumed.').
     """
 
     keyword = "Box2D"
-    summary = "Box2D"
+    summary = "new_box2d"
     tag: int = Field(description="tag")
     width: float = Field(description="width")
     height: float = Field(description="height")
@@ -107,13 +107,13 @@ class Box2D(Section):
 
 
 class Box3D(Section):
-    """``section Box3D`` (C++ ``Box3D``).
+    """``section Box3D`` (C++ ``new_box3d``).
 
     Handler new_box3d. Same as Box2D plus two eccentricity components (passed as eccentricity_a, eccentricity_b).
     """
 
     keyword = "Box3D"
-    summary = "Box3D"
+    summary = "new_box3d"
     tag: int = Field(description="tag")
     width: float = Field(description="width")
     height: float = Field(description="height")
@@ -125,29 +125,37 @@ class Box3D(Section):
 
 
 class Cell2D(Section):
-    """``section Cell2D`` (C++ ``Cell2D``).
+    """``section Cell2D`` (C++ ``new_cell2d``).
 
-    Handler new_cell2d. Dispatched via is_equal_any(section_id, 'Cell2D', 'Bar2D') — Bar2D is an exact alias keyword producing the identical Cell2D object.
+    Handler new_cell2d. Registered as 'Cell2D' and 'Bar2D', both mapping to new_cell2d; Bar2D is an exact alias producing the identical Cell2D object.
     """
 
     keyword = "Cell2D"
     aliases = ("Bar2D",)
-    summary = "Cell2D"
+    summary = "new_cell2d"
     tag: int = Field(description="tag")
     area: float = Field(description="area")
     material_tag: int = Field(description="material_tag")
     eccentricity: float = Field(default=0.0, description="eccentricity")
 
 
-class Cell3D(Section):
-    """``section Cell3D`` (C++ ``Cell3D``).
+class Bar2D(Cell2D):
+    """Alternative spelling of ``Cell2D`` (C++ ``new_cell2d``)."""
 
-    Handler new_cell3d. Dispatched via is_equal_any(section_id, 'Cell3D', 'Bar3D') — Bar3D is an exact alias keyword producing the identical Cell3D object.
+    keyword = "Bar2D"
+    aliases = ()
+    sp_abstract = True
+
+
+class Cell3D(Section):
+    """``section Cell3D`` (C++ ``new_cell3d``).
+
+    Handler new_cell3d. Registered as 'Cell3D' and 'Bar3D', both mapping to new_cell3d; Bar3D is an exact alias producing the identical Cell3D object.
     """
 
     keyword = "Cell3D"
     aliases = ("Bar3D",)
-    summary = "Cell3D"
+    summary = "new_cell3d"
     tag: int = Field(description="tag")
     area: float = Field(description="area")
     material_tag: int = Field(description="material_tag")
@@ -155,14 +163,22 @@ class Cell3D(Section):
     eccentricity_b: float = Field(default=0.0, description="eccentricity_b")
 
 
+class Bar3D(Cell3D):
+    """Alternative spelling of ``Cell3D`` (C++ ``new_cell3d``)."""
+
+    keyword = "Bar3D"
+    aliases = ()
+    sp_abstract = True
+
+
 class Cell3DOS(Section):
-    """``section Cell3DOS`` (C++ ``Cell3DOS``).
+    """``section Cell3DOS`` (C++ ``new_cell3dos``).
 
     Handler new_cell3dos. area/omega/py/pz are read by ONE get_input(command, area, omega, py, pz) call — all four required together ('A valid parameter is required.'). omega = warping constant, py/pz = shear centre coordinates.
     """
 
     keyword = "Cell3DOS"
-    summary = "Cell3DOS"
+    summary = "new_cell3dos"
     tag: int = Field(description="tag")
     area: float = Field(description="area")
     omega: float = Field(description="omega")
@@ -174,26 +190,26 @@ class Cell3DOS(Section):
 
 
 class Circle1D(Section):
-    """``section Circle1D`` (C++ ``Circle1D``).
+    """``section Circle1D`` (C++ ``new_circle1d``).
 
     Handler new_circle1d. No optional arguments.
     """
 
     keyword = "Circle1D"
-    summary = "Circle1D"
+    summary = "new_circle1d"
     tag: int = Field(description="tag")
     radius: float = Field(description="radius")
     material_tag: int = Field(description="material_tag")
 
 
 class Circle2D(Section):
-    """``section Circle2D`` (C++ ``Circle2D``).
+    """``section Circle2D`` (C++ ``new_circle2d``).
 
     Handler new_circle2d. Ctor Circle2D(tag, radius, material, int_pt, eccentricity).
     """
 
     keyword = "Circle2D"
-    summary = "Circle2D"
+    summary = "new_circle2d"
     tag: int = Field(description="tag")
     radius: float = Field(description="radius")
     material_tag: int = Field(description="material_tag")
@@ -202,13 +218,13 @@ class Circle2D(Section):
 
 
 class Circle3D(Section):
-    """``section Circle3D`` (C++ ``Circle3D``).
+    """``section Circle3D`` (C++ ``new_circle3d``).
 
     Handler new_circle3d. Eccentricity components are packed into vec{eccentricity_y, eccentricity_z} for the ctor.
     """
 
     keyword = "Circle3D"
-    summary = "Circle3D"
+    summary = "new_circle3d"
     tag: int = Field(description="tag")
     radius: float = Field(description="radius")
     material_tag: int = Field(description="material_tag")
@@ -218,13 +234,13 @@ class Circle3D(Section):
 
 
 class CircularHollow2D(Section):
-    """``section CircularHollow2D`` (C++ ``CircularHollow2D``).
+    """``section CircularHollow2D`` (C++ ``new_circularhollow2D``).
 
     Handler new_circularhollow2D. Note: the thickness parse error message is a copy-paste of the radius one ('A valid radius is required.') but the parameter is thickness.
     """
 
     keyword = "CircularHollow2D"
-    summary = "CircularHollow2D"
+    summary = "new_circularhollow2D"
     tag: int = Field(description="tag")
     radius: float = Field(description="radius")
     thickness: float = Field(description="thickness")
@@ -234,13 +250,13 @@ class CircularHollow2D(Section):
 
 
 class CircularHollow3D(Section):
-    """``section CircularHollow3D`` (C++ ``CircularHollow3D``).
+    """``section CircularHollow3D`` (C++ ``new_circularhollow3D``).
 
     Handler new_circularhollow3D. Eccentricity components packed into vec{eccentricity_y, eccentricity_z}.
     """
 
     keyword = "CircularHollow3D"
-    summary = "CircularHollow3D"
+    summary = "new_circularhollow3D"
     tag: int = Field(description="tag")
     radius: float = Field(description="radius")
     thickness: float = Field(description="thickness")
@@ -251,13 +267,13 @@ class CircularHollow3D(Section):
 
 
 class Fibre1D(Section):
-    """``section Fibre1D`` (C++ ``Fibre1D``).
+    """``section Fibre1D`` (C++ ``new_fibre1d``).
 
     Handler new_fibre1d. Only the tag is validated; the remaining tokens are consumed wholesale as uword (unsigned) section tags.
     """
 
     keyword = "Fibre1D"
-    summary = "Fibre1D"
+    summary = "new_fibre1d"
     tag: int = Field(description="tag")
     object_tags: IntList = Field(
         default=[],
@@ -266,13 +282,13 @@ class Fibre1D(Section):
 
 
 class Fibre2D(Section):
-    """``section Fibre2D`` (C++ ``Fibre2D``).
+    """``section Fibre2D`` (C++ ``new_fibre2d``).
 
     Handler new_fibre2d. Same shape as Fibre1D.
     """
 
     keyword = "Fibre2D"
-    summary = "Fibre2D"
+    summary = "new_fibre2d"
     tag: int = Field(description="tag")
     object_tags: IntList = Field(
         default=[],
@@ -281,13 +297,13 @@ class Fibre2D(Section):
 
 
 class Fibre3D(Section):
-    """``section Fibre3D`` (C++ ``Fibre3D``).
+    """``section Fibre3D`` (C++ ``new_fibre3d``).
 
     Handler new_fibre3d(new_section, command, if_os=false) — shares the handler with Fibre3DOS; the variant arg selects Fibre3D (non-OS) vs Fibre3DOS. Identical parsing.
     """
 
     keyword = "Fibre3D"
-    summary = "Fibre3D"
+    summary = "new_fibre3d"
     tag: int = Field(description="tag")
     object_tags: IntList = Field(
         default=[],
@@ -296,13 +312,13 @@ class Fibre3D(Section):
 
 
 class Fibre3DOS(Section):
-    """``section Fibre3DOS`` (C++ ``Fibre3DOS``).
+    """``section Fibre3DOS`` (C++ ``new_fibre3d``).
 
     Handler new_fibre3d(new_section, command, if_os=true). OS = open-section variant; parses identically to Fibre3D.
     """
 
     keyword = "Fibre3DOS"
-    summary = "Fibre3DOS"
+    summary = "new_fibre3d"
     tag: int = Field(description="tag")
     object_tags: IntList = Field(
         default=[],
@@ -311,13 +327,13 @@ class Fibre3DOS(Section):
 
 
 class HSection2D(Section):
-    """``section HSection2D`` (C++ ``HSection2D``).
+    """``section HSection2D`` (C++ ``new_hsection2d``).
 
     Handler new_hsection2d. dim is a vec(6) read in one get_input call (exactly 6 floats required). Order: [0]=top/left flange width (TFW), [1]=top/left flange thickness (TFT), [2]=bottom/right flange width (BFW), [3]=bottom/right flange thickness (BFT), [4]=web height (WH), [5]=web thickness (WT).
     """
 
     keyword = "HSection2D"
-    summary = "HSection2D"
+    summary = "new_hsection2d"
     tag: int = Field(description="tag")
     dim: FloatList = Field(description="dim")
     material_tag: int = Field(description="material_tag")
@@ -333,13 +349,13 @@ class HSection2D(Section):
 
 
 class ISection2D(Section):
-    """``section ISection2D`` (C++ ``ISection2D``).
+    """``section ISection2D`` (C++ ``new_isection2d``).
 
     Handler new_isection2d(..., recenter=false). dim = vec(6): [TFW, TFT, BFW, BFT, WH, WT] (top flange width/thickness, bottom flange width/thickness, web height, web thickness). Shares handler with ISection2DC (recenter=true).
     """
 
     keyword = "ISection2D"
-    summary = "ISection2D"
+    summary = "new_isection2d"
     tag: int = Field(description="tag")
     dim: FloatList = Field(description="dim")
     material_tag: int = Field(description="material_tag")
@@ -355,13 +371,13 @@ class ISection2D(Section):
 
 
 class ISection3D(Section):
-    """``section ISection3D`` (C++ ``ISection3D``).
+    """``section ISection3D`` (C++ ``new_isection3d``).
 
     Handler new_isection3d(..., recenter=false). dim = vec(6): [TFW, TFT, BFW, BFT, WH, WT]. Eccentricities packed into vec{eccentricity_y, eccentricity_z}. Shares handler with ISection3DC.
     """
 
     keyword = "ISection3D"
-    summary = "ISection3D"
+    summary = "new_isection3d"
     tag: int = Field(description="tag")
     dim: FloatList = Field(description="dim")
     material_tag: int = Field(description="material_tag")
@@ -378,13 +394,13 @@ class ISection3D(Section):
 
 
 class ISection2DC(Section):
-    """``section ISection2DC`` (C++ ``ISection2D``).
+    """``section ISection2DC`` (C++ ``new_isection2d``).
 
     Handler new_isection2d(..., recenter=true). 'C' = recenter: eccentricity is NOT parsed from input; it is computed as barycenter(dim) (elastic centroid of the I profile: -.5*(Af_t*(t_f+ h_w) + Af_b*(t_fb + h_w)) / (Af_t + Af_b + h_w*t_w) with dim(0..5) = [TFW, TFT, BFW, BFT, WH, WT]).
     """
 
     keyword = "ISection2DC"
-    summary = "ISection2D"
+    summary = "new_isection2d"
     tag: int = Field(description="tag")
     dim: FloatList = Field(description="dim")
     material_tag: int = Field(description="material_tag")
@@ -399,13 +415,13 @@ class ISection2DC(Section):
 
 
 class ISection3DC(Section):
-    """``section ISection3DC`` (C++ ``ISection3D``).
+    """``section ISection3DC`` (C++ ``new_isection3d``).
 
     Handler new_isection3d(..., recenter=true). eccentricity_y = barycenter(dim) (computed), eccentricity_z stays 0; neither is read from input.
     """
 
     keyword = "ISection3DC"
-    summary = "ISection3D"
+    summary = "new_isection3d"
     tag: int = Field(description="tag")
     dim: FloatList = Field(description="dim")
     material_tag: int = Field(description="material_tag")
@@ -420,13 +436,13 @@ class ISection3DC(Section):
 
 
 class Rectangle1D(Section):
-    """``section Rectangle1D`` (C++ ``Rectangle1D``).
+    """``section Rectangle1D`` (C++ ``new_rectangle1d``).
 
     Handler new_rectangle1d. No optional arguments.
     """
 
     keyword = "Rectangle1D"
-    summary = "Rectangle1D"
+    summary = "new_rectangle1d"
     tag: int = Field(description="tag")
     width: float = Field(description="width")
     height: float = Field(description="height")
@@ -434,13 +450,13 @@ class Rectangle1D(Section):
 
 
 class Rectangle2D(Section):
-    """``section Rectangle2D`` (C++ ``Rectangle2D``).
+    """``section Rectangle2D`` (C++ ``new_rectangle2d``).
 
     Handler new_rectangle2d. int_pt default 6 announced via suanpan_debug('Six integration points assumed.').
     """
 
     keyword = "Rectangle2D"
-    summary = "Rectangle2D"
+    summary = "new_rectangle2d"
     tag: int = Field(description="tag")
     width: float = Field(description="width")
     height: float = Field(description="height")
@@ -450,13 +466,13 @@ class Rectangle2D(Section):
 
 
 class Rectangle3D(Section):
-    """``section Rectangle3D`` (C++ ``Rectangle3D``).
+    """``section Rectangle3D`` (C++ ``new_rectangle3d``).
 
     Handler new_rectangle3d. Two eccentricity components (a, b).
     """
 
     keyword = "Rectangle3D"
-    summary = "Rectangle3D"
+    summary = "new_rectangle3d"
     tag: int = Field(description="tag")
     width: float = Field(description="width")
     height: float = Field(description="height")
@@ -467,26 +483,26 @@ class Rectangle3D(Section):
 
 
 class TrussSection(Section):
-    """``section TrussSection`` (C++ ``TrussSection``).
+    """``section TrussSection`` (C++ ``new_trusssection``).
 
     Handler new_trusssection. No optional arguments.
     """
 
     keyword = "TrussSection"
-    summary = "TrussSection"
+    summary = "new_trusssection"
     tag: int = Field(description="tag")
     area: float = Field(description="area")
     material_tag: int = Field(description="material_tag")
 
 
 class TSection2D(Section):
-    """``section TSection2D`` (C++ ``TSection2D``).
+    """``section TSection2D`` (C++ ``new_tsection2d``).
 
     Handler new_tsection2d(..., recenter=false). dim = vec(4): [0]=flange width, [1]=flange thickness, [2]=web height, [3]=web thickness (per barycenter() comments). Shares handler with TSection2DC.
     """
 
     keyword = "TSection2D"
-    summary = "TSection2D"
+    summary = "new_tsection2d"
     tag: int = Field(description="tag")
     dim: FloatList = Field(description="dim")
     material_tag: int = Field(description="material_tag")
@@ -502,13 +518,13 @@ class TSection2D(Section):
 
 
 class TSection3D(Section):
-    """``section TSection3D`` (C++ ``TSection3D``).
+    """``section TSection3D`` (C++ ``new_tsection3d``).
 
     Handler new_tsection3d(..., recenter=false). dim = vec(4): [flange width, flange thickness, web height, web thickness]. Shares handler with TSection3DC.
     """
 
     keyword = "TSection3D"
-    summary = "TSection3D"
+    summary = "new_tsection3d"
     tag: int = Field(description="tag")
     dim: FloatList = Field(description="dim")
     material_tag: int = Field(description="material_tag")
@@ -525,13 +541,13 @@ class TSection3D(Section):
 
 
 class TSection2DC(Section):
-    """``section TSection2DC`` (C++ ``TSection2D``).
+    """``section TSection2DC`` (C++ ``new_tsection2d``).
 
     Handler new_tsection2d(..., recenter=true). eccentricity = barycenter(dim) = -.5*Af*(t_f + h_w)/(Af + h_w*t_w); not read from input.
     """
 
     keyword = "TSection2DC"
-    summary = "TSection2D"
+    summary = "new_tsection2d"
     tag: int = Field(description="tag")
     dim: FloatList = Field(description="dim")
     material_tag: int = Field(description="material_tag")
@@ -546,13 +562,13 @@ class TSection2DC(Section):
 
 
 class TSection3DC(Section):
-    """``section TSection3DC`` (C++ ``TSection3D``).
+    """``section TSection3DC`` (C++ ``new_tsection3d``).
 
     Handler new_tsection3d(..., recenter=true). eccentricity_y = barycenter(dim) (computed), eccentricity_z = 0; neither read from input.
     """
 
     keyword = "TSection3DC"
-    summary = "TSection3D"
+    summary = "new_tsection3d"
     tag: int = Field(description="tag")
     dim: FloatList = Field(description="dim")
     material_tag: int = Field(description="material_tag")
@@ -567,13 +583,13 @@ class TSection3DC(Section):
 
 
 class NM2D1(Section):
-    """``section NM2D1`` (C++ ``NM2D1``).
+    """``section NM2D1`` (C++ ``new_nm2d``).
 
     Handler new_nm2d(..., size=3). P = vec(3) read in one get_input call (fatal if incomplete). Maps to SectionNM2D(tag, EA, EIS, LD): ea = axial stiffness, eis = bending stiffness, linear_density. Returns before any poly-set parsing — no trailing arguments accepted.
     """
 
     keyword = "NM2D1"
-    summary = "NM2D1"
+    summary = "new_nm2d"
     tag: int = Field(description="tag")
     ea: float = Field(description="ea")
     eis: float = Field(description="eis")
@@ -581,13 +597,13 @@ class NM2D1(Section):
 
 
 class NM2D2(Section):
-    """``section NM2D2`` (C++ ``NM2D2``).
+    """``section NM2D2`` (C++ ``new_nm2d``).
 
     Handler new_nm2d(..., size=8). P(0..7) = [EA, EIS, NP, MP, c, h, k, linear density] per NM2D2.h. Linear-hardening NM surface.
     """
 
     keyword = "NM2D2"
-    summary = "NM2D2"
+    summary = "new_nm2d"
     tag: int = Field(description="tag")
     ea: float = Field(description="ea")
     eis: float = Field(description="eis")
@@ -604,13 +620,13 @@ class NM2D2(Section):
 
 
 class NM2D3(Section):
-    """``section NM2D3`` (C++ ``NM2D3``).
+    """``section NM2D3`` (C++ ``new_nm2d``).
 
     Handler new_nm2d(..., size=11). P(0..7) = [EA, EIS, NP, MP, c, h, h, h]; k1 is broadcast to vec{P(8), P(8)} and k2 to vec{P(9), P(9)} (NM2D3 takes two 2-component k vectors); P(10) = linear density. VAF hardening. Shares handler with NM2D3 (K variant below uses new_nmk instead).
     """
 
     keyword = "NM2D3"
-    summary = "NM2D3"
+    summary = "new_nm2d"
     tag: int = Field(description="tag")
     ea: float = Field(description="ea")
     eis: float = Field(description="eis")
@@ -630,13 +646,13 @@ class NM2D3(Section):
 
 
 class NM3D1(Section):
-    """``section NM3D1`` (C++ ``NM3D1``).
+    """``section NM3D1`` (C++ ``new_nm3d``).
 
     Handler new_nm3d(..., size=4). P = vec(4) = [EA, EIS, EIW, LD] (SectionNM3D ctor): axial, strong-axis bending, weak-axis bending stiffnesses, linear density. Returns before poly-set parsing — no trailing arguments accepted.
     """
 
     keyword = "NM3D1"
-    summary = "NM3D1"
+    summary = "new_nm3d"
     tag: int = Field(description="tag")
     ea: float = Field(description="ea")
     eis: float = Field(description="eis")
@@ -645,13 +661,13 @@ class NM3D1(Section):
 
 
 class NM3D2(Section):
-    """``section NM3D2`` (C++ ``NM3D2``).
+    """``section NM3D2`` (C++ ``new_nm3d``).
 
     Handler new_nm3d(..., size=10). P(0..9) = [EA, EIS, EIW, NP, MPS, MPW, c, h, k, linear density] per NM3D2.h.
     """
 
     keyword = "NM3D2"
-    summary = "NM3D2"
+    summary = "new_nm3d"
     tag: int = Field(description="tag")
     ea: float = Field(description="ea")
     eis: float = Field(description="eis")
@@ -670,13 +686,13 @@ class NM3D2(Section):
 
 
 class NM3D3(Section):
-    """``section NM3D3`` (C++ ``NM3D3``).
+    """``section NM3D3`` (C++ ``new_nm3d``).
 
     Handler new_nm3d(..., size=13). P(0..9) = [EA, EIS, EIW, NP, MPS, MPW, c, h, h, h]; k1 broadcast to vec{P(10),P(10),P(10)}, k2 to vec{P(11),P(11),P(11)}; P(12) = linear density.
     """
 
     keyword = "NM3D3"
-    summary = "NM3D3"
+    summary = "new_nm3d"
     tag: int = Field(description="tag")
     ea: float = Field(description="ea")
     eis: float = Field(description="eis")
@@ -698,13 +714,13 @@ class NM3D3(Section):
 
 
 class NM2D3K(Section):
-    """``section NM2D3K`` (C++ ``NM2D3``).
+    """``section NM2D3K`` (C++ ``new_nmk``).
 
     Handler new_nmk(..., size=13). Builds NM2D3 with independent k components: k vec1 = {P(8), P(9)}, k vec2 = {P(10), P(11)}, P(12) = linear density. 'K' = per-component kinematic/hardening weights (unlike NM2D3 where each k vector is filled with one repeated scalar).
     """
 
     keyword = "NM2D3K"
-    summary = "NM2D3"
+    summary = "new_nmk"
     tag: int = Field(description="tag")
     ea: float = Field(description="ea")
     eis: float = Field(description="eis")
@@ -726,13 +742,13 @@ class NM2D3K(Section):
 
 
 class NM3D3K(Section):
-    """``section NM3D3K`` (C++ ``NM3D3``).
+    """``section NM3D3K`` (C++ ``new_nmk``).
 
     Handler new_nmk(..., size=17). Builds NM3D3 with independent k components: k vec1 = {P(10), P(11), P(12)}, k vec2 = {P(13), P(14), P(15)}, P(16) = linear density.
     """
 
     keyword = "NM3D3K"
-    summary = "NM3D3"
+    summary = "new_nmk"
     tag: int = Field(description="tag")
     ea: float = Field(description="ea")
     eis: float = Field(description="eis")
@@ -758,13 +774,13 @@ class NM3D3K(Section):
 
 
 class EU2D(Section):
-    """``section EU2D`` (C++ ``ISection2D``).
+    """``section EU2D`` (C++ ``new_eu2d``).
 
     Handler new_eu2d. NOTE: the designation string is parsed BEFORE the tag. Looks up euisection(designation) (case-insensitive); fatal 'Cannot identify section type.' if unknown. Table rows = [TFW, TFT, BFW, BFT, WH, WT], scaled by `scale`, built into ISection2D(tag, scale*dim, material, int_pt, eccentricity). Supporte...
     """
 
     keyword = "EU2D"
-    summary = "ISection2D"
+    summary = "new_eu2d"
     designation_first = True
     designation: str = Field(description="designation")
     tag: int = Field(description="tag")
@@ -775,13 +791,13 @@ class EU2D(Section):
 
 
 class EU3D(Section):
-    """``section EU3D`` (C++ ``ISection3D``).
+    """``section EU3D`` (C++ ``new_eu3d``).
 
     Handler new_eu3d. Same euisection() table as EU2D; builds ISection3D(tag, scale*dim, material, int_pt, vec{ecc_y, ecc_z}).
     """
 
     keyword = "EU3D"
-    summary = "ISection3D"
+    summary = "new_eu3d"
     designation_first = True
     designation: str = Field(description="designation")
     tag: int = Field(description="tag")
@@ -793,13 +809,13 @@ class EU3D(Section):
 
 
 class NZ2D(Section):
-    """``section NZ2D`` (C++ ``ISection2D``).
+    """``section NZ2D`` (C++ ``new_nz2d``).
 
     Handler new_nz2d. Designation parsed BEFORE tag; matched case-insensitively against four tables in order: (1) nzisection (e.g. 1200WB455, 900WB282, 700WB150, 500WC440, 610UB125, 250UB37.3, 320UC158, 150UC30.0, 100UC14.8) -> ISection2D(tag, scale*dim[6], ...); (2) nzchsection (e.g. 610.0X12.7CHS, 48.3X3.2CHS; row = [...
     """
 
     keyword = "NZ2D"
-    summary = "ISection2D"
+    summary = "new_nz2d"
     designation_first = True
     designation: str = Field(description="designation")
     tag: int = Field(description="tag")
@@ -810,13 +826,13 @@ class NZ2D(Section):
 
 
 class NZ3D(Section):
-    """``section NZ3D`` (C++ ``ISection3D``).
+    """``section NZ3D`` (C++ ``new_nz3d``).
 
     Handler new_nz3d. Same tables/fallback order as NZ2D but produces ISection3D / CircularHollow3D / Box3D; eccentricities packed into vec{ecc_y, ecc_z}.
     """
 
     keyword = "NZ3D"
-    summary = "ISection3D"
+    summary = "new_nz3d"
     designation_first = True
     designation: str = Field(description="designation")
     tag: int = Field(description="tag")
@@ -828,13 +844,13 @@ class NZ3D(Section):
 
 
 class US2D(Section):
-    """``section US2D`` (C++ ``ISection2D``).
+    """``section US2D`` (C++ ``new_us2d``).
 
     Handler new_us2d(..., recenter=false). Designation parsed BEFORE tag; tables in order: (1) usisection (W/S/M/HP designations, e.g. W44X408, W14X873, S24X121, M12X11.8, HP18X204; row = [TFW, TFT, BFW, BFT, WH, WT]) -> ISection2D; (2) usrhssection (HSS AxBxc, e.g. HSS34X10X1, HSS12X3X3/16; row = [half-width-ish dim, h...
     """
 
     keyword = "US2D"
-    summary = "ISection2D"
+    summary = "new_us2d"
     designation_first = True
     designation: str = Field(description="designation")
     tag: int = Field(description="tag")
@@ -845,13 +861,13 @@ class US2D(Section):
 
 
 class US3D(Section):
-    """``section US3D`` (C++ ``ISection3D``).
+    """``section US3D`` (C++ ``new_us3d``).
 
     Handler new_us3d(..., recenter=false). Same tables/fallback order as US2D but produces ISection3D / Box3D / CircularHollow3D / TSection3D. Shares handler with US3DC (recenter=true): eccentricity_y = barycenter(scale*dim) only in the T-section branch, eccentricity_z stays 0.
     """
 
     keyword = "US3D"
-    summary = "ISection3D"
+    summary = "new_us3d"
     designation_first = True
     designation: str = Field(description="designation")
     tag: int = Field(description="tag")
@@ -863,13 +879,13 @@ class US3D(Section):
 
 
 class US2DC(Section):
-    """``section US2DC`` (C++ ``ISection2D``).
+    """``section US2DC`` (C++ ``new_us2d``).
 
     Handler new_us2d(..., recenter=true). 'C' = recenter. NO eccentricity argument is parsed at all; it is computed as barycenter of the scaled dims only when the designation resolves to a T-section (ustsection); otherwise 0.
     """
 
     keyword = "US2DC"
-    summary = "ISection2D"
+    summary = "new_us2d"
     designation_first = True
     designation: str = Field(description="designation")
     tag: int = Field(description="tag")
@@ -879,13 +895,13 @@ class US2DC(Section):
 
 
 class US3DC(Section):
-    """``section US3DC`` (C++ ``ISection3D``).
+    """``section US3DC`` (C++ ``new_us3d``).
 
     Handler new_us3d(..., recenter=true). NO eccentricity arguments parsed; barycenter assigned to eccentricity_y only in the T-section branch; eccentricity_z = 0.
     """
 
     keyword = "US3DC"
-    summary = "ISection3D"
+    summary = "new_us3d"
     designation_first = True
     designation: str = Field(description="designation")
     tag: int = Field(description="tag")

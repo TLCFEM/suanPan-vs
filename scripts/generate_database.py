@@ -16,8 +16,14 @@
 """Generate the command database used by the suanPan VS Code extension.
 
 The suanPan C++ source code is the single source of truth. This script extracts
-the first-level commands and the second-level type keywords directly from the
-parser implementation so that the extension never drifts from the interpreter.
+the first-level commands from ``Toolbox/command.cpp`` and the second-level type
+keywords from the unified ``TokenRegistry`` dispatch tables of the parser
+files. Keywords that share the identical factory expression are emitted as
+aliases; the registry itself is the authority, so no ``is_equal`` heuristics or
+hand-maintained alias lists are involved.
+
+A few commands (``set`` and ``initial``) still use the legacy ``is_equal``
+chains and are read with the fallback extractor.
 
 Usage::
 
@@ -33,6 +39,8 @@ import argparse
 import json
 import re
 from pathlib import Path
+
+from suanpan_parser import REGISTRY_FUNCTIONS, grouped_registry, registry_entries
 
 # Maps the ``create_new_*`` factory to a logical category.
 FACTORY_CATEGORY = {
@@ -60,43 +68,6 @@ FACTORY_CATEGORY = {
     "create_new_external_module": "import",
 }
 
-# Which factory function in which source file decides the concrete type keyword.
-CATEGORY_TYPES = {
-    "element": [("Element/ElementParser.cpp", "create_new_element", "element_id")],
-    "material": [("Material/MaterialParser.cpp", "create_new_material", "material_id")],
-    "section": [("Section/SectionParser.cpp", "create_new_section", "section_id")],
-    "constraint": [
-        ("Constraint/ConstraintParser.cpp", "create_new_constraint", "constraint_id")
-    ],
-    "criterion": [
-        ("Constraint/ConstraintParser.cpp", "create_new_criterion", "criterion_type")
-    ],
-    "interaction": [
-        ("Constraint/ConstraintParser.cpp", "create_new_interaction", "criterion_type")
-    ],
-    "load": [("Load/LoadParser.cpp", "create_new_load", "load_id")],
-    "amplitude": [("Load/LoadParser.cpp", "create_new_amplitude", "amplitude_type")],
-    "solver": [("Solver/SolverParser.cpp", "create_new_solver", "solver_type")],
-    "integrator": [
-        ("Solver/SolverParser.cpp", "create_new_integrator", "integrator_type")
-    ],
-    "converger": [
-        ("Converger/ConvergerParser.cpp", "create_new_converger", "converger_id")
-    ],
-    "step": [("Step/StepParser.cpp", "create_new_step", "step_type")],
-    "expression": [
-        ("Toolbox/ExpressionParser.cpp", "create_new_expression", "expression_type")
-    ],
-    "group": [("Domain/Group/GroupParser.cpp", "create_new_group", "group_id")],
-    "modifier": [("Element/ElementParser.cpp", "create_new_modifier", "modifier_type")],
-    "orientation": [
-        ("Element/ElementParser.cpp", "create_new_orientation", "file_type")
-    ],
-    "recorder": [
-        ("Recorder/RecorderParser.cpp", "process_recorder_command", "object_type")
-    ],
-}
-
 # Commands that do not follow the standard "command type tag ..." layout.
 EXTRA_COMMAND_TYPES = {
     "set": [("Toolbox/command.cpp", "set_property", "property_id")],
@@ -110,7 +81,6 @@ SNIPPET_FILES = (
     "us_sections.json",
 )
 
-IS_EQUAL_ANY = re.compile(r"is_equal_any\(\s*{var}\s*,\s*([^)]*)\)")
 QUOTED = re.compile(r'"([^"]+)"')
 
 
@@ -188,9 +158,16 @@ def parse_first_level_commands(source: Path) -> dict[str, dict]:
     for index, (position, names) in enumerate(comparisons):
         if len(names) > 1:
             groups.append(names)
-        end = (
+        # Each dispatch is a single statement. Stop at the end of the line so
+        # that lambdas declared for the *next* command family are not mistaken
+        # for this command's factory.
+        line_end = process.find("\n", position)
+        if line_end < 0:
+            line_end = len(process)
+        next_position = (
             comparisons[index + 1][0] if index + 1 < len(comparisons) else len(process)
         )
+        end = min(line_end, next_position)
         segment = process[position:end]
         factory = re.search(r"\b(create_new_\w+)\s*\(", segment)
         callee = factory.group(1) if factory else None
@@ -230,7 +207,23 @@ def parse_first_level_commands(source: Path) -> dict[str, dict]:
     return commands
 
 
-def parse_types(source: Path, mapping) -> list[dict]:
+def parse_registry_types(source: Path, category: str) -> list[dict]:
+    """Extract canonical keywords and exact aliases from the dispatch table."""
+    relative, signature = REGISTRY_FUNCTIONS[category]
+    text = (source / relative).read_text()
+    groups = grouped_registry(registry_entries(text, signature))
+    return [
+        {
+            "name": entries[0].keyword,
+            "aliases": [entry.keyword for entry in entries[1:]],
+            "factory": factory,
+        }
+        for factory, entries in groups.items()
+    ]
+
+
+def parse_legacy_types(source: Path, mapping) -> list[dict]:
+    """Fallback for commands that still dispatch through ``is_equal``."""
     types: list[dict] = []
     for rel, factory, var in mapping:
         path = source / rel
@@ -304,10 +297,10 @@ def main():
 
     for name, entry in commands.items():
         category = entry.get("category")
-        if category and name == category and category in CATEGORY_TYPES:
-            entry["types"] = parse_types(source, CATEGORY_TYPES[category])
+        if category and name == category and category in REGISTRY_FUNCTIONS:
+            entry["types"] = parse_registry_types(source, category)
         elif name in EXTRA_COMMAND_TYPES:
-            entry["types"] = parse_types(source, EXTRA_COMMAND_TYPES[name])
+            entry["types"] = parse_legacy_types(source, EXTRA_COMMAND_TYPES[name])
 
     snippets = load_snippets([args.snippets.resolve()])
 
