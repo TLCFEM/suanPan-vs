@@ -105,7 +105,36 @@ suite('suanPan parser', () => {
 
         const comments = parseDocument(['  # first', '\t# second', '! bang', '   '].join('\n'));
         assert.deepStrictEqual(comments.statements, []);
-        assert.deepStrictEqual(comments.commentLines, [0, 1]);
+        assert.deepStrictEqual(comments.commentLines, [0, 1, 2]);
+    });
+
+    test('strips a UTF-8 byte order mark without shifting columns', () => {
+        const parsed = parseDocument('node 1 2 3'.replace('node', '\ufeffnode'));
+        const statement = parsed.statements[0];
+        assert.strictEqual(statement.text, 'node 1 2 3');
+        assert.strictEqual(statement.tokens[0].value, 'node');
+        assert.strictEqual(statement.tokens[0].start, 1);
+    });
+
+    test('reports a dangling continuation even without a partial token', () => {
+        const parsed = parseDocument(['node 1 0 0', '\\'].join('\n'));
+        assert.deepStrictEqual(
+            parsed.statements.map(statement => statement.text),
+            ['node 1 0 0']
+        );
+        assert.strictEqual(parsed.danglingContinuation, 1);
+    });
+
+    test('keeps a continuation across comment and blank lines', () => {
+        const parsed = parseDocument(['node 1 2 \\', '# comment', '', '3 4'].join('\n'));
+        assert.strictEqual(parsed.statements.length, 1);
+        assert.strictEqual(parsed.statements[0].text, 'node 1 2 3 4');
+        assert.strictEqual(parsed.statements[0].endLine, 3);
+    });
+
+    test('allows an inline comment after a continuation marker', () => {
+        const parsed = parseDocument('node 1 2 \\ ! trailing comment\n3');
+        assert.strictEqual(parsed.statements[0].text, 'node 1 2 3');
     });
 
     test('accepts CRLF and bare carriage return line endings', () => {
@@ -283,6 +312,24 @@ suite('command database', () => {
         assert.ok(database.designationsFor('NZ2D').length > 0);
         assert.ok(database.designationsFor('EU3D').length > 0);
         assert.ok(database.designationsFor('US2D').length > 0);
+    });
+
+    test('reads adjusted coded-section designations from the C++ tables', () => {
+        assert.ok(database.designationNamesFor('EU2D').includes('HEA200'));
+        assert.ok(database.designationNamesFor('NZ3DA').length > 0);
+        // WT22X204 is only listed in the adjusted US T-section registry.
+        assert.ok(database.designationNamesFor('US3DA').includes('WT22X204'));
+        assert.ok(!database.designationNamesFor('US3D').includes('WT22X204'));
+
+        const snippet = database.snippetFor('section', ['section', 'US2DA', 'WT22X204', '4', '1', '10']);
+        assert.ok(snippet);
+        assert.match(snippet?.templates[0] ?? '', /^section US2DA WT22X204 /);
+    });
+
+    test('rejects unknown coded-section designations in diagnostics data', () => {
+        assert.ok(database.designationNamesFor('EU2DA').includes('IPE300'));
+        assert.ok(!database.designationNamesFor('EU2DA').includes('not-a-shape'));
+        assert.strictEqual(database.designationNamesFor('TrussSection').length, 0);
     });
 
     test('recognises the modal recorder and its DoF arguments', () => {

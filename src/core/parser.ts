@@ -76,12 +76,17 @@ function tokenize(buffer: string, positions: CharPosition[], startLine: number):
 /** Parse a suanPan model document. */
 export function parseDocument(text: string): ParsedDocument {
     const lines = text.split(/\r\n|\n|\r/);
+    // A UTF-8 BOM is not part of the command. Replacing it with a space keeps
+    // every column of the first line aligned with the source text.
+    if (lines.length > 0 && lines[0].startsWith('\ufeff')) lines[0] = ` ${lines[0].slice(1)}`;
+
     const statements: Statement[] = [];
     const commentLines: number[] = [];
 
     let buffer = '';
     let positions: CharPosition[] = [];
     let startLine = -1;
+    let pendingContinuation = -1;
 
     const flush = () => {
         const statement = tokenize(buffer, positions, startLine);
@@ -89,6 +94,7 @@ export function parseDocument(text: string): ParsedDocument {
         buffer = '';
         positions = [];
         startLine = -1;
+        pendingContinuation = -1;
     };
 
     for (let line = 0; line < lines.length; line++) {
@@ -101,6 +107,11 @@ export function parseDocument(text: string): ParsedDocument {
 
         const bang = raw.indexOf('!');
         let code = bang >= 0 ? raw.slice(0, bang) : raw;
+        if (bang >= 0 && code.trim() === '' && raw.trim().startsWith('!')) {
+            // A line that only carries an inline comment is still a comment
+            // line for folding, even though suanPan treats `!` as inline.
+            commentLines.push(line);
+        }
         // Commas and tabs are delimiters. Replacing a single character keeps
         // the column mapping intact.
         code = code.replace(/[,\t\r]/g, ' ');
@@ -116,6 +127,7 @@ export function parseDocument(text: string): ParsedDocument {
         }
 
         if (startLine < 0) startLine = line;
+        if (continuation) pendingContinuation = startLine;
         for (let column = 0; column < code.length; column++) {
             buffer += code[column];
             positions.push({ line, column });
@@ -124,10 +136,15 @@ export function parseDocument(text: string): ParsedDocument {
         if (!continuation) flush();
     }
 
-    if (buffer.trim() !== '') {
+    if (pendingContinuation >= 0 || buffer.trim() !== '') {
         const statement = tokenize(buffer, positions, startLine);
         if (statement) statements.push(statement);
-        return { lines, statements, commentLines, danglingContinuation: startLine };
+        return {
+            lines,
+            statements,
+            commentLines,
+            danglingContinuation: pendingContinuation >= 0 ? pendingContinuation : startLine,
+        };
     }
 
     return { lines, statements, commentLines };

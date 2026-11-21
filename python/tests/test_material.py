@@ -30,22 +30,22 @@ class TestElastic:
     def test_elastic1d(self):
         # C++: tag, elastic_modulus, density(0)
         assert Elastic1D(tag=1, elastic_modulus=2e5).to_commands() == [
-            "Elastic1D 1 200000"
+            "material Elastic1D 1 200000"
         ]
         assert Elastic1D(tag=1, elastic_modulus=2e5, density=7850).to_commands() == [
-            "Elastic1D 1 200000 7850"
+            "material Elastic1D 1 200000 7850"
         ]
 
     def test_elastic3d_alias(self):
         # Elastic3D == IsotropicElastic3D in the dispatch table
         assert Elastic3D(
             tag=2, elastic_modulus=1e4, poissons_ratio=0.3
-        ).to_commands() == ["Elastic3D 2 10000 0.3"]
+        ).to_commands() == ["material Elastic3D 2 10000 0.3"]
 
     def test_custom_elastic1d(self):
         # C++: tag, expression_tag, density(0)
         assert CustomElastic1D(tag=1, expression_tag=2).to_commands() == [
-            "CustomElastic1D 1 2"
+            "material CustomElastic1D 1 2"
         ]
 
 
@@ -54,7 +54,7 @@ class TestBilinear:
         # example file: `material Bilinear1D 1 100 5 .2`
         assert Bilinear1D(
             tag=1, elastic_modulus=100, yield_stress=5, hardening_ratio=0.2
-        ).to_commands() == ["Bilinear1D 1 100 5 0.2"]
+        ).to_commands() == ["material Bilinear1D 1 100 5 0.2"]
 
     def test_bilinear1d_beta_and_density(self):
         obj = Bilinear1D(
@@ -65,7 +65,7 @@ class TestBilinear:
             beta=0.8,
             density=1.5,
         )
-        assert obj.to_commands() == ["Bilinear1D 1 100 5 0.2 0.8 1.5"]
+        assert obj.to_commands() == ["material Bilinear1D 1 100 5 0.2 0.8 1.5"]
 
     def test_orthotropic_flavours(self):
         # the C++ dispatcher has no `BilinearOrthotropic` keyword: the
@@ -78,32 +78,32 @@ class TestBilinear:
 class TestWrappers:
     def test_uniaxial(self):
         assert Uniaxial(tag=3, full_tag=1, max_iteration=5).to_commands() == [
-            "Uniaxial 3 1 5"
+            "material Uniaxial 3 1 5"
         ]
 
     def test_os146(self):
         # max_iteration is optional (default one) and trailing -> trimmed
-        assert OS146(tag=4, full_tag=2).to_commands() == ["OS146 4 2"]
+        assert OS146(tag=4, full_tag=2).to_commands() == ["material OS146 4 2"]
         assert OS146(tag=4, full_tag=2, max_iteration=5).to_commands() == [
-            "OS146 4 2 5"
+            "material OS146 4 2 5"
         ]
 
     def test_parallel(self):
         assert Parallel(tag=1, object_tags=[1, 2, 3]).to_commands() == [
-            "Parallel 1 1 2 3"
+            "material Parallel 1 1 2 3"
         ]
 
     def test_laminated(self):
-        assert Laminated(tag=1, object_tags=[4, 5]).to_commands() == ["Laminated 1 4 5"]
+        assert Laminated(tag=1, object_tags=[4, 5]).to_commands() == ["material Laminated 1 4 5"]
 
     def test_plane_strain(self):
-        assert PlaneStrain(tag=1, full_tag=7).to_commands() == ["PlaneStrain 1 7"]
+        assert PlaneStrain(tag=1, full_tag=7).to_commands() == ["material PlaneStrain 1 7"]
 
 
 class TestMultilinear:
     def test_strain_stress_pairs(self):
         obj = MultilinearElastic1D(tag=1, rest_values=[0, 0, 0.002, 400])
-        assert obj.to_commands() == ["MultilinearElastic1D 1 0 0 0.002 400"]
+        assert obj.to_commands() == ["material MultilinearElastic1D 1 0 0 0.002 400"]
 
 
 class TestSpecials:
@@ -160,7 +160,7 @@ class TestSpecials:
 class TestCDPM2:
     def test_default_pool_omitted(self):
         # the optional 15 value pool re-parses to the C++ default when omitted
-        assert CDPM2(tag=1).to_commands() == ["CDPM2 1"]
+        assert CDPM2(tag=1).to_commands() == ["material CDPM2 1"]
 
     def test_pool_exported_when_given(self):
         pool = [
@@ -182,7 +182,7 @@ class TestCDPM2:
         ]
         obj = CDPM2(tag=1, para_pool=pool)
         tokens = obj.to_commands()[0].split()
-        assert tokens[0] == "CDPM2" and tokens[1] == "1" and len(tokens) == 2 + 15
+        assert tokens[0] == "material" and tokens[1] == "CDPM2" and tokens[2] == "1" and len(tokens) == 3 + 15
 
     def test_aniso_spelling(self):
         from suanpan.material import CDPM2ANISO, CDPM2NO
@@ -207,9 +207,9 @@ class TestRegistryAliases:
             c_hardening=0.2,
             c_unloading=0.1,
         )
-        assert obj.to_commands() == ["AFC01 1 100 5 0.2 0.1 4 0.2 0.1"]
+        assert obj.to_commands() == ["material AFC01 1 100 5 0.2 0.1 4 0.2 0.1"]
 
     def test_cdpm2iso_alternate_spelling(self):
         assert CDPM2.aliases == ("CDPM2ISO",)
         assert issubclass(CDPM2ISO, CDPM2)
-        assert CDPM2ISO(tag=2).to_commands() == ["CDPM2ISO 2"]
+        assert CDPM2ISO(tag=2).to_commands() == ["material CDPM2ISO 2"]

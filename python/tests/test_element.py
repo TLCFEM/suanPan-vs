@@ -29,33 +29,33 @@ class TestTruss:
     def test_t2d2_example(self):
         # `element T2D2 1 1 2 1 10` from Example/Material/Bilinear1D.supan
         obj = T2D2(tag=1, node_tags=[1, 2], material_tag=1, area=10)
-        assert obj.to_commands() == ["T2D2 1 1 2 1 10"]
+        assert obj.to_commands() == ["element T2D2 1 1 2 1 10"]
 
     def test_t2d2_switches(self):
         obj = T2D2(tag=1, node_tags=[1, 2], material_tag=1, area=10, nonlinear=True)
-        assert obj.to_commands() == ["T2D2 1 1 2 1 10 true"]
+        assert obj.to_commands() == ["element T2D2 1 1 2 1 10 true"]
 
     def test_t3d2(self):
         assert T3D2(tag=1, node_tags=[1, 2], material_tag=1, area=1).to_commands() == [
-            "T3D2 1 1 2 1 1"
+            "element T3D2 1 1 2 1 1"
         ]
 
     def test_t2d2s(self):
         assert T2D2S(tag=1, node_tags=[1, 2], section_tag=3).to_commands() == [
-            "T2D2S 1 1 2 3"
+            "element T2D2S 1 1 2 3"
         ]
 
 
 class TestBeam:
     def test_b21(self):
         obj = B21(tag=1, node_tags=[1, 2], section_tag=1, int_pt=8, nonlinear=True)
-        assert obj.to_commands() == ["B21 1 1 2 1 8 true"]
+        assert obj.to_commands() == ["element B21 1 1 2 1 8 true"]
 
     def test_b21_default(self):
         # section_tag is required, so the export keeps it; the int_pt (6)
         # and nonlinear (false) defaults are eof-guarded and trimmed
         assert B21(tag=1, node_tags=[1, 2], section_tag=1).to_commands() == [
-            "B21 1 1 2 1"
+            "element B21 1 1 2 1"
         ]
 
     def test_shared_layout(self):
@@ -74,17 +74,17 @@ class TestSolid:
         obj = C3D8(
             tag=1, node_tags=list(range(1, 9)), material_tag=1, reduced_scheme="G"
         )
-        assert obj.to_commands() == ["C3D8 1 1 2 3 4 5 6 7 8 1 G"]
+        assert obj.to_commands() == ["element C3D8 1 1 2 3 4 5 6 7 8 1 G"]
 
     def test_c3d8_default_scheme(self):
         # the optional 'I' token re-parses to the default when omitted
         assert C3D8(
             tag=1, node_tags=list(range(1, 9)), material_tag=1
-        ).to_commands() == ["C3D8 1 1 2 3 4 5 6 7 8 1"]
+        ).to_commands() == ["element C3D8 1 1 2 3 4 5 6 7 8 1"]
 
     def test_c3d8r_forces_reduced(self):
         obj = C3D8R(tag=1, node_tags=list(range(1, 9)), material_tag=1)
-        assert obj.to_commands()[0].startswith("C3D8R ")
+        assert obj.to_commands()[0].startswith("element C3D8R ")
 
     def test_c3d8_node_count_enforced(self):
         with pytest.raises(Exception):
@@ -100,7 +100,7 @@ class TestSolid:
             rate=5,
             thickness=50,
         )
-        assert obj.to_commands() == ["DCP4 1 1 15 205 50 1 5 5 50"]
+        assert obj.to_commands() == ["element DCP4 1 1 15 205 50 1 5 5 50"]
 
     def test_dcp4m_shared_layout(self):
         assert DCP4M.model_fields.keys() == DCP4.model_fields.keys()
@@ -113,14 +113,14 @@ class TestCSMQ:
             CSMQ5(tag=1, node_tags=[1, 2, 3], material_tag=1)
         assert CSMQ5(
             tag=1, node_tags=[1, 2, 3, 4, 5], material_tag=1
-        ).to_commands() == ["CSMQ5 1 1 2 3 4 5 1"]
+        ).to_commands() == ["element CSMQ5 1 1 2 3 4 5 1"]
 
 
 class TestMass:
     def test_mass_point(self):
         # C++: tag, node, magnitude
         assert (
-            Mass(tag=1, node=2, magnitude=10.0).to_commands()[0].startswith("Mass 1 2")
+            Mass(tag=1, node=2, magnitude=10.0).to_commands()[0].startswith("element Mass 1 2")
         )
 
 
@@ -164,11 +164,11 @@ class TestRegistryAliases:
         assert CP8.aliases == ("CPS8",)
         assert issubclass(CPS8, CP8)
         obj = CPS8(tag=1, node_tags=list(range(1, 9)), material_tag=2)
-        assert obj.to_commands()[0].startswith("CPS8 1 1 2 3 4 5 6 7 8 2")
+        assert obj.to_commands()[0].startswith("element CPS8 1 1 2 3 4 5 6 7 8 2")
 
     def test_mass3d_alternate_spelling(self):
         assert Mass.aliases == ("Mass3D",)
         assert issubclass(Mass3D, Mass)
         assert Mass3D(tag=1, node=2, magnitude=10).to_commands() == [
-            "Mass3D 1 2 10"
+            "element Mass3D 1 2 10"
         ]

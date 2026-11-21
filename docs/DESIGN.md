@@ -71,10 +71,18 @@ generator (`python/tools/generate.py`) uses the same reader.
 
 The reader also reports how the object tag is consumed. Since suanPan #410
 most dispatchers read the tag before dispatch and pass it to the handler,
-which appends `unsigned` to the registry value type; sections and groups
-still read the tag inside each handler. Both layouts keep the command line
+which appends `unsigned` to the registry value type; groups still read the
+tag inside each handler. Both layouts keep the command line
 `<command> <type> <tag> ...`, so the generated database is unchanged, while
 the Python generator records the ownership in each generated module header.
+
+Coded section commands (`EU2D`, `NZ2D`, `US3DA`, ...) insert a designation
+between the type and the tag. The reader also extracts the
+`TokenRegistry<vec>` designation tables from `Section/SectionParser.cpp`; the
+database stores each table once under `section_designations.tables` and maps a
+container to the tables its handler searches under
+`section_designations.containers`. Completion, hover and diagnostics use that
+mapping, so the editor never relies on a hand-copied shape list.
 
 The result is `data/database.json`. Regenerate it whenever suanPan changes:
 
@@ -93,7 +101,8 @@ snippet data in the generated database.
 
 * `#` comment lines and `!` inline comments,
 * commas and tabs as delimiters,
-* trailing `\` continuations,
+* trailing `\` continuations, including a continuation on the final line,
+* a UTF-8 byte order mark is ignored without shifting columns,
 * case-insensitive keywords (lookups are lower case).
 
 It records original source positions for every token, so all providers can
@@ -120,7 +129,7 @@ documentation says so.
 | Completion | Commands at line start; type keywords after `element`, `material`, `section`, `step`, ...; section designations such as `NZ2D 1000WB215`; `set` properties; tag values for arguments documented as `material tag`, `node i`, etc.; boolean literals; `$variables`. Selecting a type inserts the documented argument template. |
 | Hover | Command summary and syntax, type summary and argument table, argument description, `$variable` value, and the definition of referenced tags. |
 | Signature help | Argument list with the active argument highlighted, using the template stored in the syntax files. |
-| Diagnostics | Unknown commands; unknown type keywords (can be disabled for external modules); optional warnings for tags that are not defined in the same file; dangling line continuations. |
+| Diagnostics | Unknown commands; unknown type keywords (can be disabled for external modules); unknown coded-section designations; optional warnings for tags that are not defined in the same file; dangling line continuations. |
 | Outline | Every defined object as `category tag` with its type. |
 | Go to definition | Material/section/node/... tags resolve to their definition. |
 | Find references | All uses of a tag across the document. |

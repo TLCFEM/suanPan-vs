@@ -3,10 +3,15 @@
 # (3076 lines, read in full)
 #
 # - All keywords are matched case-insensitively by the TokenRegistry.
-# - create_new_section reads the section type token first, then dispatches.
-# - Unlike most other families (suanPan #410 moved tag extraction into the
-#   dispatcher there), each section handler still reads the object tag itself,
-#   so `tag` is the first handler argument in the entries below.
+# - create_new_section reads the section type token and the object tag, then
+#   dispatches to the handler (suanPan #410 moved tag extraction out of the
+#   handlers), so `tag` documents the command-line token rather than a token
+#   read by the handler.
+# - Coded sections (EU2D, NZ3D, US2DA, ...) additionally take a designation
+#   string between the type and the tag.
+# - The adjusted registries (EU2DA, EU3DA, NZ2DA, NZ3DA, US2DA, US3DA, US2DAC,
+#   US3DAC) share the command-line layout of their nominal counterparts, so the
+#   generator reuses those entries for them.
 # - Unlike other suanPan parsers, this file contains NO mid-stream option flags
 #   (verified: no is_equal(para, ...), is_true, get_optional_input or to_token
 #   anywhere in the file). Every argument is strictly positional, so every

@@ -19,9 +19,17 @@ export interface CommandInfo {
     types?: TypeInfo[];
 }
 
+interface SectionDesignations {
+    /** Designation table name -> accepted designations, in source order. */
+    tables: Record<string, string[]>;
+    /** Coded section command -> tables searched by its handler. */
+    containers: Record<string, string[]>;
+}
+
 interface DatabaseFile {
     version: string;
     commands: CommandInfo[];
+    section_designations?: SectionDesignations;
 }
 
 interface RawSnippet {
@@ -53,6 +61,21 @@ export const TYPED_CATEGORIES = new Set([
 const SNIPPET_FILES = ['snippets.json', 'nz_sections.json', 'eu_sections.json', 'us_sections.json'];
 
 const PLACEHOLDER = /\$\{\d+/;
+
+/**
+ * Coded section containers without a dedicated snippet fall back to the
+ * template of the equivalent nominal container.
+ */
+const SECTION_PROTOTYPES: Record<string, string> = {
+    eu2da: 'eu2d',
+    eu3da: 'eu3d',
+    nz2da: 'nz2d',
+    nz3da: 'nz3d',
+    us2da: 'us2d',
+    us3da: 'us3d',
+    us2dac: 'us2dc',
+    us3dac: 'us3dc',
+};
 
 /**
  * Align snippet argument positions with the tokens of a concrete statement.
@@ -116,6 +139,11 @@ export class CommandDatabase {
     private readonly snippetsByTrigger = new Map<string, SnippetEntry[]>();
     private readonly designations = new Map<string, SnippetEntry[]>();
 
+    /** Coded-section designation tables read from the C++ parser. */
+    private readonly sectionTables = new Map<string, string[]>();
+    private readonly sectionContainers = new Map<string, string[]>();
+    private readonly designationEntries = new Map<string, SnippetEntry>();
+
     private constructor(version: string) {
         this.version = version;
     }
@@ -140,6 +168,16 @@ export class CommandDatabase {
             if (!fs.existsSync(location)) continue;
             const snippets = JSON.parse(fs.readFileSync(location, 'utf8')) as Record<string, RawSnippet>;
             for (const raw of Object.values(snippets)) result.addSnippet(raw);
+        }
+
+        const designations = database.section_designations;
+        if (designations) {
+            for (const [name, values] of Object.entries(designations.tables)) {
+                result.sectionTables.set(name.toLowerCase(), values);
+            }
+            for (const [container, tables] of Object.entries(designations.containers)) {
+                result.sectionContainers.set(container.toLowerCase(), tables);
+            }
         }
 
         return result;
@@ -262,6 +300,12 @@ export class CommandDatabase {
                     return alignSnippet(candidate, tokens, equivalents);
                 }
             }
+            // Designations documented only in the C++ tables (newly added
+            // shapes, adjusted registries) reuse the container template.
+            if (this.designationNamesFor(tokens[1]).some(name => name.toLowerCase() === tokens[2].toLowerCase())) {
+                const entry = this.designationEntry(tokens[1], tokens[2]);
+                if (entry) return alignSnippet(entry, tokens, equivalents);
+            }
         }
 
         // Recorder types such as `recorder 1 hdf5 Modal U1` place the type
@@ -310,9 +354,85 @@ export class CommandDatabase {
         return fallback ? alignSnippet(fallback, tokens, equivalents) : undefined;
     }
 
+    /** Every designation accepted by a coded section container. */
+    designationNamesFor(container: string): string[] {
+        const key = container.toLowerCase();
+        const names: string[] = [];
+        const seen = new Set<string>();
+        const add = (name: string) => {
+            const lower = name.toLowerCase();
+            if (!lower || seen.has(lower)) return;
+            seen.add(lower);
+            names.push(name);
+        };
+
+        for (const table of this.sectionContainers.get(key) ?? []) {
+            for (const name of this.sectionTables.get(table.toLowerCase()) ?? []) add(name);
+        }
+        // Keep manual snippets even if the C++ table no longer lists them.
+        for (const entry of this.designations.get(key) ?? []) add(entry.prefix);
+        return names;
+    }
+
     /** Named section designations for a container such as `NZ2D`. */
     designationsFor(container: string): SnippetEntry[] {
-        return this.designations.get(container.toLowerCase()) ?? [];
+        const names = this.designationNamesFor(container);
+        if (names.length === 0) return this.designations.get(container.toLowerCase()) ?? [];
+        const entries: SnippetEntry[] = [];
+        for (const name of names) {
+            const entry = this.designationEntry(container, name);
+            if (entry) entries.push(entry);
+        }
+        return entries;
+    }
+
+    /** A rich designation snippet, or one derived from the container template. */
+    private designationEntry(container: string, designation: string): SnippetEntry | undefined {
+        const key = `${container.toLowerCase()}:${designation.toLowerCase()}`;
+        const cached = this.designationEntries.get(key);
+        if (cached) return cached;
+
+        const documented = (this.designations.get(container.toLowerCase()) ?? []).find(
+            entry => entry.prefix.toLowerCase() === designation.toLowerCase()
+        );
+        if (documented) {
+            this.designationEntries.set(key, documented);
+            return documented;
+        }
+
+        const prototype = this.designationPrototype(container);
+        if (!prototype) return undefined;
+
+        const templates = prototype.templates.map(template => {
+            const words = template.split(/\s+/);
+            // `section <container> <designation> <tag> ...`
+            if (words.length > 2) {
+                words[1] = container;
+                words[2] = designation;
+            }
+            return words.join(' ');
+        });
+        const entry: SnippetEntry = {
+            prefix: designation,
+            summary: `${container} section ${designation}`,
+            verb: 'section',
+            typeName: container,
+            templates,
+            args: prototype.args,
+        };
+        this.designationEntries.set(key, entry);
+        return entry;
+    }
+
+    private designationPrototype(container: string): SnippetEntry | undefined {
+        const key = container.toLowerCase();
+        const exact = this.snippetsByCommandType.get(`section:${key}`);
+        if (exact) return exact;
+        const base = SECTION_PROTOTYPES[key];
+        if (!base) return undefined;
+        return (
+            this.snippetsByCommandType.get(`section:${base}`) ?? this.designations.get(base)?.[0]
+        );
     }
 
     /** All snippets whose template starts with the given verb. */

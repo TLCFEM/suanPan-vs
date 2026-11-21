@@ -1,8 +1,8 @@
 """The shared parser reader reports object-tag ownership.
 
 suanPan #410 moved tag extraction from most handlers into the dispatcher.
-Sections and groups were left untouched, so the registry value type is the
-reliable way to tell the two layouts apart.
+Groups were left untouched, so the registry value type is the reliable way
+to tell the two layouts apart.
 """
 
 import sys
@@ -16,6 +16,9 @@ if str(SCRIPTS) not in sys.path:
 
 from suanpan_parser import (  # noqa: E402
     REGISTRY_FUNCTIONS,
+    function_body,
+    read_section_designations,
+    registry_keywords,
     registry_tag_in_dispatcher,
 )
 
@@ -37,12 +40,12 @@ int create_new_material(const shared_ptr<DomainBase>& domain, std::istringstream
 """
 
 HANDLER_OWNED = """\
-int create_new_section(const shared_ptr<DomainBase>& domain, std::istringstream& command) {
-    std::string section_type;
-    if(!get_input(command, section_type)) return SUANPAN_SUCCESS;
+int create_new_group(const shared_ptr<DomainBase>& domain, std::istringstream& command) {
+    std::string group_type;
+    if(!get_input(command, group_type)) return SUANPAN_SUCCESS;
 
-    static const TokenRegistry<void (*)(unique_ptr<Section>&, std::istringstream&)> registry{
-        {"Box2D", new_box2d},
+    static const TokenRegistry<void (*)(unique_ptr<Group>&, std::istringstream&)> registry{
+        {"NodeGroup", new_node_group},
     };
 
     return SUANPAN_SUCCESS;
@@ -51,8 +54,20 @@ int create_new_section(const shared_ptr<DomainBase>& domain, std::istringstream&
 
 SOURCE = SCRIPTS.parent.parent / "suanPan"
 EXPECTED = {
-    category: category not in {"group", "section"} for category in REGISTRY_FUNCTIONS
+    category: category != "group" for category in REGISTRY_FUNCTIONS
 }
+
+COMMENTED_SOURCE = """\
+// vec euisection(const std::string_view type) { return {}; }
+/* a comment with a brace { and a "string" } */
+vec euisection(const std::string_view type) {
+    static const TokenRegistry<vec> registry{
+        {"HEA100", {100.0, 8.0}}, // trailing comment
+        {"IPE300", {300.0, 10.0, /* nested } */ 150.0}},
+    };
+    return {};
+}
+"""
 
 
 def test_dispatcher_reads_tag():
@@ -60,11 +75,39 @@ def test_dispatcher_reads_tag():
 
 
 def test_handler_reads_tag():
-    assert not registry_tag_in_dispatcher(HANDLER_OWNED, "int create_new_section(")
+    assert not registry_tag_in_dispatcher(HANDLER_OWNED, "int create_new_group(")
 
 
 def test_missing_dispatcher():
     assert not registry_tag_in_dispatcher("", "int create_new_material(")
+
+
+def test_ignores_signatures_and_braces_in_comments_and_strings():
+    body = function_body(COMMENTED_SOURCE, "vec euisection(")
+    assert body.startswith("{")
+    assert body.rstrip().endswith("}")
+    assert registry_keywords(COMMENTED_SOURCE, "vec euisection(") == [
+        "HEA100",
+        "IPE300",
+    ]
+
+
+@pytest.mark.skipif(
+    not (SOURCE / "Section/SectionParser.cpp").exists(),
+    reason="suanPan checkout not available",
+)
+def test_reads_coded_section_designations():
+    designations = read_section_designations(SOURCE)
+    assert designations["containers"]["US2DA"] == [
+        "usisection_adjusted",
+        "usrhssection_adjusted",
+        "uschssection_adjusted",
+        "ustsection_adjusted",
+    ]
+    assert "IPE300" in designations["tables"]["euisection_adjusted"]
+    # Only the adjusted US T-section table contains the extra WT shapes.
+    assert "WT22X204" in designations["tables"]["ustsection_adjusted"]
+    assert "WT22X204" not in designations["tables"]["ustsection"]
 
 
 @pytest.mark.skipif(

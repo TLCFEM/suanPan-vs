@@ -1813,6 +1813,64 @@
     "description": "2d elastic bernoulli beam",
     "prefix": "EB21"
   },
+  "EU2D": {
+    "body": [
+      "section EU2D ${1:(designation)} ${2:(tag)} ${3:(material)} ${4:[scale]} ${5:[int_pt]} ${6:[eccentricity]}",
+      "# (1) string, designation",
+      "# (2) int, unique tag",
+      "# (3) int, material tag",
+      "# [4] double, scale, default: 1.0",
+      "# [5] int, number of integration points, default: 6",
+      "# [6] double, eccentricity, default: 0.0",
+      ""
+    ],
+    "description": "EU 2D section with designation",
+    "prefix": "EU2D"
+  },
+  "EU2DA": {
+    "body": [
+      "section EU2DA ${1:(designation)} ${2:(tag)} ${3:(material)} ${4:[scale]} ${5:[int_pt]} ${6:[eccentricity]}",
+      "# (1) string, designation",
+      "# (2) int, unique tag",
+      "# (3) int, material tag",
+      "# [4] double, scale, default: 1.0",
+      "# [5] int, number of integration points, default: 6",
+      "# [6] double, eccentricity, default: 0.0",
+      ""
+    ],
+    "description": "EU 2D section with adjusted designation",
+    "prefix": "EU2DA"
+  },
+  "EU3D": {
+    "body": [
+      "section EU3D ${1:(designation)} ${2:(tag)} ${3:(material)} ${4:[scale]} ${5:[int_pt]} ${6:[eccentricity_y]} ${7:[eccentricity_z]}",
+      "# (1) string, designation",
+      "# (2) int, unique tag",
+      "# (3) int, material tag",
+      "# [4] double, scale, default: 1.0",
+      "# [5] int, number of integration points, default: 6",
+      "# [6] double, eccentricity of y axis, default: 0.0",
+      "# [7] double, eccentricity of z axis, default: 0.0",
+      ""
+    ],
+    "description": "EU 3D section with designation",
+    "prefix": "EU3D"
+  },
+  "EU3DA": {
+    "body": [
+      "section EU3DA ${1:(designation)} ${2:(tag)} ${3:(material)} ${4:[scale]} ${5:[int_pt]} ${6:[eccentricity_y]} ${7:[eccentricity_z]}",
+      "# (1) string, designation",
+      "# (2) int, unique tag",
+      "# (3) int, material tag",
+      "# [4] double, scale, default: 1.0",
+      "# [5] int, number of integration points, default: 6",
+      "# [6] double, eccentricity of y axis, default: 0.0",
+      "# [7] double, eccentricity of z axis, default: 0.0",
+      ""
+    ],
+    "description": "EU 3D section with adjusted designation",
+    "prefix": "EU3DA"
+  },
   "Elastic1D": {
     "body": [
       "material Elastic1D ${1:(1)} ${2:(2)} ${3:[3]}",
@@ -3349,6 +3407,64 @@
     "description": "3d displacement based bernoulli beam with n-m interaction sections",
     "prefix": "NMB31"
   },
+  "NZ2D": {
+    "body": [
+      "section NZ2D ${1:(designation)} ${2:(tag)} ${3:(material)} ${4:[scale]} ${5:[int_pt]} ${6:[eccentricity]}",
+      "# (1) string, designation",
+      "# (2) int, unique tag",
+      "# (3) int, material tag",
+      "# [4] double, scale, default: 1.0",
+      "# [5] int, number of integration points, default: 6",
+      "# [6] double, eccentricity, default: 0.0",
+      ""
+    ],
+    "description": "NZ 2D section with designation",
+    "prefix": "NZ2D"
+  },
+  "NZ2DA": {
+    "body": [
+      "section NZ2DA ${1:(designation)} ${2:(tag)} ${3:(material)} ${4:[scale]} ${5:[int_pt]} ${6:[eccentricity]}",
+      "# (1) string, designation",
+      "# (2) int, unique tag",
+      "# (3) int, material tag",
+      "# [4] double, scale, default: 1.0",
+      "# [5] int, number of integration points, default: 6",
+      "# [6] double, eccentricity, default: 0.0",
+      ""
+    ],
+    "description": "NZ 2D section with adjusted designation",
+    "prefix": "NZ2DA"
+  },
+  "NZ3D": {
+    "body": [
+      "section NZ3D ${1:(designation)} ${2:(tag)} ${3:(material)} ${4:[scale]} ${5:[int_pt]} ${6:[eccentricity_y]} ${7:[eccentricity_z]}",
+      "# (1) string, designation",
+      "# (2) int, unique tag",
+      "# (3) int, material tag",
+      "# [4] double, scale, default: 1.0",
+      "# [5] int, number of integration points, default: 6",
+      "# [6] double, eccentricity of y axis, default: 0.0",
+      "# [7] double, eccentricity of z axis, default: 0.0",
+      ""
+    ],
+    "description": "NZ 3D section with designation",
+    "prefix": "NZ3D"
+  },
+  "NZ3DA": {
+    "body": [
+      "section NZ3DA ${1:(designation)} ${2:(tag)} ${3:(material)} ${4:[scale]} ${5:[int_pt]} ${6:[eccentricity_y]} ${7:[eccentricity_z]}",
+      "# (1) string, designation",
+      "# (2) int, unique tag",
+      "# (3) int, material tag",
+      "# [4] double, scale, default: 1.0",
+      "# [5] int, number of integration points, default: 6",
+      "# [6] double, eccentricity of y axis, default: 0.0",
+      "# [7] double, eccentricity of z axis, default: 0.0",
+      ""
+    ],
+    "description": "NZ 3D section with adjusted designation",
+    "prefix": "NZ3DA"
+  },
   "NZStrongMotion": {
     "body": [
       "amplitude NZStrongMotion ${1:(1)} ${2:(2)}",
@@ -4546,6 +4662,116 @@
     ],
     "description": "newmark method with uniform/universal damping (displacement)",
     "prefix": "UDDNewmark"
+  },
+  "US2D": {
+    "body": [
+      "section US2D ${1:(designation)} ${2:(tag)} ${3:(material)} ${4:[scale]} ${5:[int_pt]} ${6:[eccentricity]}",
+      "# (1) string, designation",
+      "# (2) int, unique tag",
+      "# (3) int, material tag",
+      "# [4] double, scale, default: 1.0",
+      "# [5] int, number of integration points, default: 6",
+      "# [6] double, eccentricity, default: 0.0",
+      ""
+    ],
+    "description": "US 2D section with designation",
+    "prefix": "US2D"
+  },
+  "US2DA": {
+    "body": [
+      "section US2DA ${1:(designation)} ${2:(tag)} ${3:(material)} ${4:[scale]} ${5:[int_pt]} ${6:[eccentricity]}",
+      "# (1) string, designation",
+      "# (2) int, unique tag",
+      "# (3) int, material tag",
+      "# [4] double, scale, default: 1.0",
+      "# [5] int, number of integration points, default: 6",
+      "# [6] double, eccentricity, default: 0.0",
+      ""
+    ],
+    "description": "US 2D section with adjusted designation",
+    "prefix": "US2DA"
+  },
+  "US2DAC": {
+    "body": [
+      "section US2DAC ${1:(designation)} ${2:(tag)} ${3:(material)} ${4:[scale]} ${5:[int_pt]}",
+      "# (1) string, designation",
+      "# (2) int, unique tag",
+      "# (3) int, material tag",
+      "# [4] double, scale, default: 1.0",
+      "# [5] int, number of integration points, default: 6",
+      ""
+    ],
+    "description": "US 2D section with adjusted designation (recentered)",
+    "prefix": "US2DAC"
+  },
+  "US2DC": {
+    "body": [
+      "section US2DC ${1:(designation)} ${2:(tag)} ${3:(material)} ${4:[scale]} ${5:[int_pt]}",
+      "# (1) string, designation",
+      "# (2) int, unique tag",
+      "# (3) int, material tag",
+      "# [4] double, scale, default: 1.0",
+      "# [5] int, number of integration points, default: 6",
+      ""
+    ],
+    "description": "US 2D section with designation (recentered)",
+    "prefix": "US2DC"
+  },
+  "US3D": {
+    "body": [
+      "section US3D ${1:(designation)} ${2:(tag)} ${3:(material)} ${4:[scale]} ${5:[int_pt]} ${6:[eccentricity_y]} ${7:[eccentricity_z]}",
+      "# (1) string, designation",
+      "# (2) int, unique tag",
+      "# (3) int, material tag",
+      "# [4] double, scale, default: 1.0",
+      "# [5] int, number of integration points, default: 6",
+      "# [6] double, eccentricity of y axis, default: 0.0",
+      "# [7] double, eccentricity of z axis, default: 0.0",
+      ""
+    ],
+    "description": "US 3D section with designation",
+    "prefix": "US3D"
+  },
+  "US3DA": {
+    "body": [
+      "section US3DA ${1:(designation)} ${2:(tag)} ${3:(material)} ${4:[scale]} ${5:[int_pt]} ${6:[eccentricity_y]} ${7:[eccentricity_z]}",
+      "# (1) string, designation",
+      "# (2) int, unique tag",
+      "# (3) int, material tag",
+      "# [4] double, scale, default: 1.0",
+      "# [5] int, number of integration points, default: 6",
+      "# [6] double, eccentricity of y axis, default: 0.0",
+      "# [7] double, eccentricity of z axis, default: 0.0",
+      ""
+    ],
+    "description": "US 3D section with adjusted designation",
+    "prefix": "US3DA"
+  },
+  "US3DAC": {
+    "body": [
+      "section US3DAC ${1:(designation)} ${2:(tag)} ${3:(material)} ${4:[scale]} ${5:[int_pt]}",
+      "# (1) string, designation",
+      "# (2) int, unique tag",
+      "# (3) int, material tag",
+      "# [4] double, scale, default: 1.0",
+      "# [5] int, number of integration points, default: 6",
+      ""
+    ],
+    "description": "US 3D section with adjusted designation (recentered)",
+    "prefix": "US3DAC"
+  },
+  "US3DC": {
+    "body": [
+      "section US3DC ${1:(designation)} ${2:(tag)} ${3:(material)} ${4:[scale]} ${5:[int_pt]}",
+      "# (1) string, designation",
+      "# (2) int, unique tag",
+      "# (3) int, material tag",
+      "# [4] double, scale, default: 1.0",
+      "# [5] int, number of integration points, default: 6",
+      ""
+    ],
+    "description": "US 3D section with designation (recentered)",
+    "prefix": "US3DC"
   },
   "Uniaxial": {
     "body": [

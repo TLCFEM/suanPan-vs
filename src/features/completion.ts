@@ -60,14 +60,20 @@ function markdownForSnippet(snippet: SnippetEntry | undefined): vscode.MarkdownS
 
 function tailOfTemplate(snippet: SnippetEntry | undefined, keyword: string): string | undefined {
     if (!snippet) return undefined;
-    const template = snippet.templates.find(line => {
-        const tokens = line.split(/\s+/);
-        return tokens.some(token => token.toLowerCase() === keyword.toLowerCase());
-    }) ?? snippet.templates[0];
+    const lower = keyword.toLowerCase();
+    for (const template of snippet.templates) {
+        // Match a whole token: a designation may be a prefix of another one,
+        // and a keyword may also occur inside an argument description.
+        for (const match of template.matchAll(/\S+/g)) {
+            if (match[0].toLowerCase() === lower) {
+                return template.slice((match.index ?? 0) + match[0].length);
+            }
+        }
+    }
+    const template = snippet.templates[0];
     if (!template) return undefined;
-    const index = template.toLowerCase().indexOf(keyword.toLowerCase());
-    if (index < 0) return undefined;
-    return template.slice(index + keyword.length);
+    const index = template.toLowerCase().indexOf(lower);
+    return index < 0 ? undefined : template.slice(index + keyword.length);
 }
 
 /** Register context aware completion. */

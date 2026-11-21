@@ -153,8 +153,8 @@ Keywords that share one factory expression become aliases of the first
 spelling; compatibility subclasses keep the alternate spellings
 importable (for example `AFC01`, `CPS8`, `Bar2D`). `--check` fails when
 the committed files are out of date. Since suanPan #410 the object tag is
-read by the dispatcher for materials and elements, and by the handler for
-sections; each generated module header records which applies.
+read by the dispatcher for materials, elements and sections, and by the
+handler only for groups; each generated module header records which applies.
 Hand-written specials (`Balloon`, `PatchQuad`, step/runner/model logic,
 ...) live beside them in `_special.py` / their own modules.
 
