@@ -19,7 +19,18 @@ SYNTAX = ROOT / "syntaxes" / "syntax.json"
 DATABASE = ROOT / "data" / "database.json"
 
 #: categories whose grammar pattern enumerates every keyword
-EXACT_CATEGORIES = ("amplitude", "element", "integrator", "material", "modifier")
+EXACT_CATEGORIES = (
+    "amplitude",
+    "converger",
+    "element",
+    "initial",
+    "integrator",
+    "material",
+    "modifier",
+    "orientation",
+    "set",
+    "solver",
+)
 
 PATTERN = re.compile(r"\(\?i\)\^\((\w+)\)\\s\+\(([^)]*)\)")
 

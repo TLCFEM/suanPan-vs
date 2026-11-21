@@ -6,7 +6,7 @@
 2. read coded-section designations from the C++ `TokenRegistry<vec>` tables so completion, hover and diagnostics cover every accepted shape, including the adjusted registries,
 3. fix the Python exporters to emit the command word (`section EU2D IPE300 9 ...`) and to place a designation between the keyword and the tag,
 4. harden the shared C++ registry reader against signatures and braces in comments and string literals, and add duplicate-keyword validation to the database generator,
-5. tolerate UTF-8 BOMs and report dangling continuations that contain no partial token, and keep the language grammar in sync with the registry (missing `DC3D4M`/`DCP4M`/`ExpHoffman`/`NonlocalIsotropicElastic3D` and the `LeeElementalNewmark` spelling).
+5. tolerate UTF-8 BOMs and report dangling continuations that contain no partial token, and keep the language grammar in sync with the registry (missing `DC3D4M`/`DCP4M`/`ExpHoffman`/`NonlocalIsotropicElastic3D`, the `LeeElementalNewmark` spelling and the logic converger aliases).
 
 ## v0.2.1
 

@@ -537,7 +537,7 @@
           ]
         },
         {
-          "begin": "(?i)^(converger)\\s+(fixednumber|logicand|logicor|logicxor|\\$\\S+)\\s+(\\d+)\\b",
+          "begin": "(?i)^(converger)\\s+(fixednumber|logicand|logicconvergerand|logicor|logicconvergeror|logicxor|logicconvergerxor|\\$\\S+)\\s+(\\d+)\\b",
           "beginCaptures": {
             "1": {
               "name": "entity.name.tag"
@@ -834,7 +834,7 @@
               "name": "variable"
             }
           },
-          "match": "(?i)^(converger)\\s+(absresidual|relresidual|absincredisp|relincredisp|absincreacc|relincreacc|absdisp|reldisp|abserror|relerror|absincreenergy|relincreenergy|\\$\\S+)\\s+(\\d+)\\b"
+          "match": "(?i)^(converger)\\s+(absresidual|relresidual|absincredisp|relincredisp|absincreacc|relincreacc|absdisp|reldisp|abserror|relerror|absincreenergy|relincreenergy|fixednumber|logicand|logicconvergerand|logicor|logicconvergeror|logicxor|logicconvergerxor|\\$\\S+)\\s+(\\d+)\\b"
         },
         {
           "captures": {

@@ -91,7 +91,8 @@ python scripts/generate_database.py --source ../suanPan
 ```
 
 See [docs/DESIGN.md](docs/DESIGN.md) for the architecture and the list of
-implemented and deliberately omitted features.
+implemented and deliberately omitted features, and [SYNC.md](SYNC.md) for the
+routine upstream sync checklist.
 
 ## Demo
 
