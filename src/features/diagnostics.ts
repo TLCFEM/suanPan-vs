@@ -68,6 +68,32 @@ export function registerDiagnostics(context: vscode.ExtensionContext, runtime: R
                 }
             }
 
+            // Coded sections (`EU2D`, `US2DA`, ...) accept only the
+            // designations listed in the C++ tables. A misspelled container is
+            // already reported as an unknown type above.
+            const containerType =
+                statement.verb === 'section' && statement.tokens.length > 2
+                    ? runtime.database.findType('section', statement.tokens[1].value)
+                    : undefined;
+            if (unknownType && containerType) {
+                const container = statement.tokens[1].value;
+                const designation = statement.tokens[2];
+                const names = runtime.database.designationNamesFor(container);
+                if (
+                    names.length > 0 &&
+                    !designation.value.startsWith('$') &&
+                    !names.some(name => name.toLowerCase() === designation.value.toLowerCase())
+                ) {
+                    const diagnostic = new vscode.Diagnostic(
+                        new vscode.Range(designation.line, designation.start, designation.endLine, designation.end),
+                        `Unknown ${container} section designation "${designation.value}".`,
+                        vscode.DiagnosticSeverity.Warning
+                    );
+                    diagnostic.source = `suanPan ${runtime.database.version}`;
+                    diagnostics.push(diagnostic);
+                }
+            }
+
             if (unknownReference) {
                 for (let index = 1; index < statement.tokens.length; index++) {
                     const reference = referenceAt(statement, index, runtime.database);

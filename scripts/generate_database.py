@@ -25,6 +25,12 @@ hand-maintained alias lists are involved.
 A few commands (``set`` and ``initial``) still use the legacy ``is_equal``
 chains and are read with the fallback extractor.
 
+Coded section commands (``EU2D``, ``NZ2D``, ``US2DA``, ...) additionally accept
+a designation before the tag.  Their designation tables are read from
+``Section/SectionParser.cpp`` and stored once, with a container-to-table map, so
+the editor can complete and validate designations without a hand-maintained
+list.
+
 Usage::
 
     python scripts/generate_database.py --source ../suanPan --output data/database.json
@@ -40,7 +46,12 @@ import json
 import re
 from pathlib import Path
 
-from suanpan_parser import REGISTRY_FUNCTIONS, grouped_registry, registry_entries
+from suanpan_parser import (
+    REGISTRY_FUNCTIONS,
+    grouped_registry,
+    read_section_designations,
+    registry_entries,
+)
 
 # Maps the ``create_new_*`` factory to a logical category.
 FACTORY_CATEGORY = {
@@ -272,6 +283,26 @@ def attach_snippet(items: list[dict], snippets: dict):
                     break
 
 
+def validate_types(entry: dict) -> None:
+    """Reject a dispatch table that accepts the same spelling twice.
+
+    The registry groups aliases by factory expression.  A keyword repeated with
+    a different factory would make lookup order dependent, so treat it as a
+    parser source error instead of silently keeping the first entry.
+    """
+    spellings: dict[str, str] = {}
+    for type_info in entry.get("types", []):
+        for spelling in (type_info["name"], *type_info.get("aliases", [])):
+            key = spelling.lower()
+            previous = spellings.get(key)
+            if previous is not None:
+                raise SystemExit(
+                    f"duplicate {entry['name']} keyword {spelling!r} "
+                    f"({previous} / {type_info['name']})"
+                )
+            spellings[key] = type_info["name"]
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", default="../suanPan", type=Path)
@@ -307,10 +338,15 @@ def main():
     attach_snippet(list(commands.values()), snippets)
     for entry in commands.values():
         attach_snippet(entry.get("types", []), snippets)
+        validate_types(entry)
 
     payload = {
         "version": version,
         "commands": sorted(commands.values(), key=lambda x: x["name"].lower()),
+        # Coded sections (`EU2D`, `US2DA`, ...) take a designation between the
+        # type and the tag. The tables are shared, so store them once and let
+        # each container name the tables it searches.
+        "section_designations": read_section_designations(source),
     }
 
     args.output.parent.mkdir(parents=True, exist_ok=True)

@@ -10,7 +10,8 @@ handler (suanPan #410); it is not part of the handler's token stream.
 The generic export emits ``material <keyword> <tag> <required parameters>
 <optional parameters up to the last one that differs from its default>
 <trailing list>``, mirroring the eof-guarded token consumption of the
-C++ handlers.
+C++ handlers.  Coded sections put the designation between the keyword
+and the tag: ``section EU2D IPE300 9 ...``.
 """
 
 from __future__ import annotations
@@ -40,12 +41,14 @@ class Material(SuanpanObject):
                 last = index
         parts = []
         if self.designation_first:
-            parts += [self.designation, self.keyword, str(self.tag)]
+            # C++ command line: ``section EU2D IPE300 9 ...``. The
+            # designation follows the keyword and precedes the tag.
+            parts += [self.command, self.keyword, self.designation, str(self.tag)]
             fields = [n for n in fields if n != "designation"]
             # indices shift down by one once the designation is removed
             last -= 1
         else:
-            parts += [self.keyword, str(self.tag)]
+            parts += [self.command, self.keyword, str(self.tag)]
         for name in fields[: last + 1]:
             parts += self._tokens(name)
         return [" ".join(parts)]

@@ -262,9 +262,9 @@ class TestExport:
         # initials export in the middle of the file, constraints last
         assert lines == [
             "node 1 0 0",
-            "Bilinear1D 1 100 5 0.2",
-            "TrussSection 1 10 1",
-            "T2D2S 1 1 2 1",
+            "material Bilinear1D 1 100 5 0.2",
+            "section TrussSection 1 10 1",
+            "element T2D2S 1 1 2 1",
             "initial disp 0.01 1 1",
             "constraint Fix 1 E 1",
         ]
@@ -312,10 +312,10 @@ class TestExport:
         assert [line.split()[0] for line in commands] == [
             "node",
             "node",
-            "Bilinear1D",
+            "material",
             "expression",
-            "TrussSection",
-            "T2D2S",
+            "section",
+            "element",
             "amplitude",
             "nodegroup",
             "orientation",

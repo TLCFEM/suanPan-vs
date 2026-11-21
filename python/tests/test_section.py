@@ -22,7 +22,7 @@ class TestCells:
     def test_cell3d(self):
         # the optional eccentricities re-parse to zero when omitted
         assert Cell3D(tag=1, area=10.0, material_tag=2).to_commands() == [
-            "Cell3D 1 10 2"
+            "section Cell3D 1 10 2"
         ]
 
     def test_cell2d_bar_alias(self):
@@ -31,7 +31,7 @@ class TestCells:
         assert Cell2D.aliases == ("Bar2D",)
         assert issubclass(Bar2D, Cell2D)
         assert Bar2D(tag=1, area=10.0, material_tag=2).to_commands() == [
-            "Bar2D 1 10 2"
+            "section Bar2D 1 10 2"
         ]
 
     def test_cell3dos_example(self):
@@ -46,7 +46,7 @@ class TestCells:
             eccentricity_a=10.0,
             eccentricity_b=10.0,
         )
-        assert obj.to_commands() == ["Cell3DOS 1 10 1 1 1 2 10 10"]
+        assert obj.to_commands() == ["section Cell3DOS 1 10 1 1 1 2 10 10"]
 
 
 class TestIShape:
@@ -55,11 +55,11 @@ class TestIShape:
         obj = ISection2D(
             tag=1, dim=[200, 25, 100, 25, 150, 25], material_tag=1, int_pt=8
         )
-        assert obj.to_commands() == ["ISection2D 1 200 25 100 25 150 25 1 8"]
+        assert obj.to_commands() == ["section ISection2D 1 200 25 100 25 150 25 1 8"]
 
     def test_isection3d(self):
         obj = ISection3D(tag=1, dim=[200, 25, 100, 25, 150, 25], material_tag=1)
-        assert obj.to_commands() == ["ISection3D 1 200 25 100 25 150 25 1"]
+        assert obj.to_commands() == ["section ISection3D 1 200 25 100 25 150 25 1"]
 
     def test_dim_has_six_components(self):
         # the C++ handler reads vec(6); fewer components are fatal
@@ -72,7 +72,7 @@ class TestIShape:
         obj = ISection2D(
             tag=1, dim=[200, 25, 100, 25, 150, 25], material_tag=1, eccentricity=5.0
         )
-        assert obj.to_commands() == ["ISection2D 1 200 25 100 25 150 25 1 6 5"]
+        assert obj.to_commands() == ["section ISection2D 1 200 25 100 25 150 25 1 6 5"]
 
 
 class TestEurocode:
@@ -80,17 +80,17 @@ class TestEurocode:
         # designation precedes the tag in the C++ parser; the scale (1.),
         # int_pt (6) and eccentricity (0.) defaults are trimmed
         obj = EU2D(tag=9, designation="IPE300", material_tag=1)
-        assert obj.to_commands() == ["IPE300 EU2D 9 1"]
+        assert obj.to_commands() == ["section EU2D IPE300 9 1"]
 
     def test_eu2d_scale(self):
         obj = EU2D(tag=9, designation="HEA200", material_tag=1, scale=2.0)
-        assert obj.to_commands()[0].split()[:5] == ["HEA200", "EU2D", "9", "1", "2"]
+        assert obj.to_commands()[0].split()[:6] == ["section", "EU2D", "HEA200", "9", "1", "2"]
 
 
 class TestFibre:
     def test_fibre3d(self):
         assert Fibre3D(tag=3, object_tags=[1, 2, 4]).to_commands() == [
-            "Fibre3D 3 1 2 4"
+            "section Fibre3D 3 1 2 4"
         ]
 
 
@@ -112,20 +112,20 @@ class TestNM:
             k2=6.0,
             linear_density=1.0,
         )
-        assert obj.to_commands()[0].startswith("NM3D3 1 ")
+        assert obj.to_commands()[0].startswith("section NM3D3 1 ")
 
 
 class TestPrimitives:
     def test_box3d(self):
         assert Box3D(
             tag=1, width=1.0, height=2.0, thickness=0.1, material_tag=2
-        ).to_commands() == ["Box3D 1 1 2 0.1 2"]
+        ).to_commands() == ["section Box3D 1 1 2 0.1 2"]
 
     def test_circle1d(self):
         assert Circle1D(tag=1, radius=5.0, material_tag=2).to_commands() == [
-            "Circle1D 1 5 2"
+            "section Circle1D 1 5 2"
         ]
 
     def test_truss_section(self):
         obj = TrussSection(tag=1, area=100.0, material_tag=1)
-        assert obj.to_commands()[0].startswith("TrussSection 1 100 1")
+        assert obj.to_commands()[0].startswith("section TrussSection 1 100 1")

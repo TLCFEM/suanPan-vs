@@ -109,15 +109,15 @@ class TestFormat:
 
     def test_bool_object(self):
         obj = Bilinear1D(tag=1, elastic_modulus=2e3, yield_stress=4)
-        assert obj.to_commands() == ["Bilinear1D 1 2000 4"]
+        assert obj.to_commands() == ["material Bilinear1D 1 2000 4"]
 
     def test_trailing_defaults_trimmed(self):
         assert Bilinear1D(
             tag=1, elastic_modulus=100, yield_stress=5, hardening_ratio=0.2
-        ).to_commands() == ["Bilinear1D 1 100 5 0.2"]
+        ).to_commands() == ["material Bilinear1D 1 100 5 0.2"]
         # all defaults -> nothing exported beyond the required fields
         assert Bilinear1D(tag=1, elastic_modulus=100, yield_stress=5).to_commands() == [
-            "Bilinear1D 1 100 5"
+            "material Bilinear1D 1 100 5"
         ]
 
     def test_negative_zero_and_scientific(self):
@@ -151,7 +151,7 @@ class TestFormat:
         from suanpan.step import StaticStep
 
         assert Bilinear1D(tag=1, elastic_modulus=1, yield_stress=1).to_line() == (
-            "Bilinear1D 1 1 1"
+            "material Bilinear1D 1 1 1"
         )
         with pytest.raises(ValueError):
             StaticStep(tag=1, fixed_step_size=True).to_line()
