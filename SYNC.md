@@ -199,6 +199,8 @@ and are not part of the VS Code runtime. Do not commit their output here.
 
 - Add or update tests for new commands, keywords, aliases, coded-section
   designations, and changed tag ownership.
+- When upstream retires a keyword or handler mode, regenerate the database and
+  remove it from the specs, hand-written classes, tests and grammar.
 - Keep `python/tests/test_parser_metadata.py` aligned with the current
   dispatcher layout; `test_current_suanpan_layout` fails when upstream moves
   tag extraction between dispatcher and handler.

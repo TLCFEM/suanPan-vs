@@ -330,18 +330,7 @@ solvers:
       - {name: radius, type: float, req: false, default: null, meaning: 'radius of the search interval; optional via get_optional_input; C++ default is the value of centre'}
     flags: []
     rest: null
-    notes: 'Quadratic flag = false (ctor FEAST(tag, eigen_number, centre, radius, false)).'
-  - keyword: QuadraticFEAST
-    aliases: []
-    cpp: FEAST
-    params:
-      - {name: tag, type: int, req: true}
-      - {name: eigen_number, type: int, req: true, meaning: 'number of frequencies to extract; fatal if missing'}
-      - {name: centre, type: float, req: true, meaning: 'centre of the search interval; fatal if missing (error text says "A valid radius is required.")'}
-      - {name: radius, type: float, req: false, default: null, meaning: 'radius of the search interval; optional via get_optional_input; C++ default is the value of centre'}
-    flags: []
-    rest: null
-    notes: 'Shares handler with FEAST; Quadratic flag = true (ctor FEAST(tag, eigen_number, centre, radius, true)).'
+    notes: 'C++ ctor FEAST(tag, eigen_number, centre, radius).'
   - keyword: DisplacementControl
     aliases: [MPDC]
     cpp: MPDC

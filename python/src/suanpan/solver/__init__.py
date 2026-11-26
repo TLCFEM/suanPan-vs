@@ -45,7 +45,6 @@ __all__ = [
     "Newmark",
     "NonviscousKernel",
     "NonviscousNewmark",
-    "QuadraticFEAST",
     "Ramm",
     "RayleighNewmark",
     "Solver",
@@ -651,8 +650,6 @@ class FEAST(Solver):
     centre: float = Field(description="centre of the search interval")
     radius: float | None = Field(default=None, description="radius of the interval")
 
-    quadratic: bool = Field(default=False, json_schema_extra={"sp_kind": "omit"})
-
     def to_commands(self) -> list[str]:
         radius = self.radius if self.radius is not None else self.centre
         return [
@@ -667,15 +664,6 @@ class FEAST(Solver):
                 ]
             )
         ]
-
-
-class QuadraticFEAST(FEAST):
-    """``solver QuadraticFEAST`` (C++ ``FEAST`` in quadratic mode)."""
-
-    keyword = "QuadraticFEAST"
-    summary = "quadratic FEAST eigenvalue solver"
-
-    quadratic: bool = Field(default=True, json_schema_extra={"sp_kind": "omit"})
 
 
 class DisplacementControl(Solver):

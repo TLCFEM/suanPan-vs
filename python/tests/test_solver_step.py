@@ -20,7 +20,6 @@ from suanpan.solver import (
     ModifiedNewton,
     Newmark,
     Newton,
-    QuadraticFEAST,
     Ramm,
     Solver,
     Tchamwa,
@@ -111,11 +110,6 @@ class TestSolvers:
         # the radius defaults to the centre when omitted
         assert FEAST(tag=1, eigen_number=5, centre=100).to_commands() == [
             "solver FEAST 1 5 100 100"
-        ]
-
-    def test_quadratic_feast(self):
-        assert QuadraticFEAST(tag=1, eigen_number=5, centre=100).to_commands() == [
-            "solver QuadraticFEAST 1 5 100 100"
         ]
 
     def test_solver_base_is_abstract(self):

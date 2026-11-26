@@ -3522,13 +3522,8 @@
     {
      "name": "FEAST",
      "aliases": [],
-     "factory": "new_feast<false>",
+     "factory": "new_feast",
      "summary": "feast eigen solver"
-    },
-    {
-     "name": "QuadraticFEAST",
-     "aliases": [],
-     "factory": "new_feast<true>"
     },
     {
      "name": "DisplacementControl",
