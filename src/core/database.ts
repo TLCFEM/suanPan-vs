@@ -38,44 +38,16 @@ interface RawSnippet {
     body?: string[];
 }
 
-/** Categories whose `command <Type> <tag> ...` layout has a type keyword. */
-export const TYPED_CATEGORIES = new Set([
-    'amplitude',
-    'constraint',
-    'converger',
-    'criterion',
-    'element',
-    'expression',
-    'group',
-    'integrator',
-    'interaction',
-    'load',
-    'material',
-    'modifier',
-    'orientation',
-    'section',
-    'solver',
-    'step',
-]);
+/**
+ * Categories whose `command <Type> <tag> ...` layout has a type keyword.
+ * Populated from the database by `CommandDatabase.load()`.
+ */
+export const TYPED_CATEGORIES = new Set<string>();
 
-const SNIPPET_FILES = ['snippets.json', 'nz_sections.json', 'eu_sections.json', 'us_sections.json'];
+/** Commands with a tag layout outside the typed `command <Type> <tag>` form. */
+const SPECIAL_TAG_CATEGORIES = new Set(['initial', 'recorder']);
 
 const PLACEHOLDER = /\$\{\d+/;
-
-/**
- * Coded section containers without a dedicated snippet fall back to the
- * template of the equivalent nominal container.
- */
-const SECTION_PROTOTYPES: Record<string, string> = {
-    eu2da: 'eu2d',
-    eu3da: 'eu3d',
-    nz2da: 'nz2d',
-    nz3da: 'nz3d',
-    us2da: 'us2d',
-    us3da: 'us3d',
-    us2dac: 'us2dc',
-    us3dac: 'us3dc',
-};
 
 /**
  * Align snippet argument positions with the tokens of a concrete statement.
@@ -156,17 +128,25 @@ export class CommandDatabase {
 
         const result = new CommandDatabase(database.version);
 
+        TYPED_CATEGORIES.clear();
         for (const command of database.commands) {
             result.all.push(command);
             result.commands.set(command.name.toLowerCase(), command);
             for (const alias of command.aliases) result.commands.set(alias.toLowerCase(), command);
+            if (
+                command.types?.length &&
+                command.category &&
+                command.name === command.category &&
+                !SPECIAL_TAG_CATEGORIES.has(command.category)
+            ) {
+                TYPED_CATEGORIES.add(command.category);
+            }
         }
         result.all.sort((a, b) => a.name.localeCompare(b.name));
 
-        for (const file of SNIPPET_FILES) {
-            const location = path.join(extensionRoot, 'syntaxes', file);
-            if (!fs.existsSync(location)) continue;
-            const snippets = JSON.parse(fs.readFileSync(location, 'utf8')) as Record<string, RawSnippet>;
+        const snippetFolder = path.join(extensionRoot, 'syntaxes');
+        for (const file of fs.readdirSync(snippetFolder).filter(name => name.endsWith('.json')).sort()) {
+            const snippets = JSON.parse(fs.readFileSync(path.join(snippetFolder, file), 'utf8')) as Record<string, RawSnippet>;
             for (const raw of Object.values(snippets)) result.addSnippet(raw);
         }
 
@@ -260,23 +240,25 @@ export class CommandDatabase {
 
     /** Resolve a type keyword for the given command. */
     findType(commandName: string, token: string): TypeInfo | undefined {
-        const command = this.findCommand(commandName);
-        if (!command) return undefined;
-        // `hdf5recorder`/`plainrecorder` share the object types of `recorder`.
-        const types = command.types ?? (command.category === 'recorder' ? this.findCommand('recorder')?.types : undefined);
-        if (!types) return undefined;
         const lower = token.toLowerCase();
-        return types.find(
+        return this.typesFor(commandName).find(
             type => type.name.toLowerCase() === lower || type.aliases?.some(alias => alias.toLowerCase() === lower)
         );
+    }
+
+    /** Index of the recorder type keyword, or -1 for other commands. */
+    private recorderTypeIndex(commandName: string): number {
+        if (commandName === 'recorder') return 3;
+        if (commandName === 'hdf5recorder' || commandName === 'plainrecorder') return 2;
+        return -1;
     }
 
     /** The token index at which the type keyword is expected. */
     typeTokenIndex(commandName: string): number | undefined {
         const command = this.findCommand(commandName);
         if (!command) return undefined;
-        if (command.name === 'recorder') return 3;
-        if (command.name === 'hdf5recorder' || command.name === 'plainrecorder') return 2;
+        const recorderIndex = this.recorderTypeIndex(command.name);
+        if (recorderIndex >= 0) return recorderIndex;
         if (!command.types?.length) return undefined;
         return 1;
     }
@@ -311,8 +293,7 @@ export class CommandDatabase {
         // Recorder types such as `recorder 1 hdf5 Modal U1` place the type
         // keyword after the optional format word. Reuse a type-specific
         // snippet (e.g. the Modal influence directions) when one is available.
-        const recorderTypeIndex =
-            lowerVerb === 'recorder' ? 3 : lowerVerb === 'hdf5recorder' || lowerVerb === 'plainrecorder' ? 2 : -1;
+        const recorderTypeIndex = this.recorderTypeIndex(lowerVerb);
         if (recorderTypeIndex >= 0 && tokens.length > recorderTypeIndex) {
             for (const candidate of this.snippetsByTrigger.get(tokens[recorderTypeIndex].toLowerCase()) ?? []) {
                 if (candidate.verb === 'recorder') return alignSnippet(candidate, tokens, equivalents);
@@ -428,8 +409,9 @@ export class CommandDatabase {
         const key = container.toLowerCase();
         const exact = this.snippetsByCommandType.get(`section:${key}`);
         if (exact) return exact;
-        const base = SECTION_PROTOTYPES[key];
-        if (!base) return undefined;
+        // Adjusted coded sections append `A` to the nominal container name.
+        const base = key.replace('a', '');
+        if (base === key || !this.sectionContainers.has(base)) return undefined;
         return (
             this.snippetsByCommandType.get(`section:${base}`) ?? this.designations.get(base)?.[0]
         );

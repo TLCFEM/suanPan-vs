@@ -847,9 +847,6 @@ class Hertzian(Interaction):
     keyword = "Hertzian"
     summary = "Hertzian contact interaction"
 
-    def to_commands(self) -> list[str]:
-        return [" ".join(["interaction", "Hertzian", *format_value(self.tag)])]
-
 
 class FixedParticle(Interaction):
     """``interaction FixedParticle <tag> <multiplier> [nodes...]``."""

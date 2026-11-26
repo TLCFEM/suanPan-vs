@@ -77,7 +77,7 @@ class TestRunner:
     def test_prepare_writes_input(self, tmp_path):
         runner = Runner(executable="true", work_root=tmp_path / "runs")
         input_path = runner.prepare("node 1 0 0", tmp_path / "case1")
-        assert input_path.read_text() == "node 1 0 0\n" or input_path.read_text()
+        assert input_path.read_text() == "node 1 0 0"
         assert (tmp_path / "case1" / "model.supan").exists()
 
     def test_prepare_rejects_existing(self, tmp_path):

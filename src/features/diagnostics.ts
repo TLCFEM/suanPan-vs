@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 
 import { Runtime } from '../core/cache';
 import { findSymbol, referenceAt } from '../core/model';
+import { warnToken } from './util';
 
 /** Register model diagnostics. */
 export function registerDiagnostics(context: vscode.ExtensionContext, runtime: Runtime): void {
@@ -37,13 +38,7 @@ export function registerDiagnostics(context: vscode.ExtensionContext, runtime: R
 
             if (!command && /^[a-z]/i.test(statement.verb)) {
                 const token = statement.tokens[0];
-                diagnostics.push(
-                    new vscode.Diagnostic(
-                        new vscode.Range(token.line, token.start, token.endLine, token.end),
-                        `Unknown command "${token.value}".`,
-                        vscode.DiagnosticSeverity.Warning
-                    )
-                );
+                diagnostics.push(warnToken(token, `Unknown command "${token.value}".`));
                 continue;
             }
 
@@ -58,13 +53,13 @@ export function registerDiagnostics(context: vscode.ExtensionContext, runtime: R
                     !token.value.startsWith('$') &&
                     !runtime.database.findType(statement.verb, token.value)
                 ) {
-                    const diagnostic = new vscode.Diagnostic(
-                        new vscode.Range(token.line, token.start, token.endLine, token.end),
-                        `Unknown ${command.category ?? 'object'} type "${token.value}".`,
-                        vscode.DiagnosticSeverity.Warning
+                    diagnostics.push(
+                        warnToken(
+                            token,
+                            `Unknown ${command.category ?? 'object'} type "${token.value}".`,
+                            `suanPan ${runtime.database.version}`
+                        )
                     );
-                    diagnostic.source = `suanPan ${runtime.database.version}`;
-                    diagnostics.push(diagnostic);
                 }
             }
 
@@ -84,13 +79,13 @@ export function registerDiagnostics(context: vscode.ExtensionContext, runtime: R
                     !designation.value.startsWith('$') &&
                     !names.some(name => name.toLowerCase() === designation.value.toLowerCase())
                 ) {
-                    const diagnostic = new vscode.Diagnostic(
-                        new vscode.Range(designation.line, designation.start, designation.endLine, designation.end),
-                        `Unknown ${container} section designation "${designation.value}".`,
-                        vscode.DiagnosticSeverity.Warning
+                    diagnostics.push(
+                        warnToken(
+                            designation,
+                            `Unknown ${container} section designation "${designation.value}".`,
+                            `suanPan ${runtime.database.version}`
+                        )
                     );
-                    diagnostic.source = `suanPan ${runtime.database.version}`;
-                    diagnostics.push(diagnostic);
                 }
             }
 
@@ -100,15 +95,9 @@ export function registerDiagnostics(context: vscode.ExtensionContext, runtime: R
                     if (!reference) continue;
                     if (findSymbol(model, reference.category, reference.tag)) continue;
                     diagnostics.push(
-                        new vscode.Diagnostic(
-                            new vscode.Range(
-                                reference.token.line,
-                                reference.token.start,
-                                reference.token.endLine,
-                                reference.token.end
-                            ),
-                            `Undefined ${reference.category} ${reference.tag}.`,
-                            vscode.DiagnosticSeverity.Warning
+                        warnToken(
+                            reference.token,
+                            `Undefined ${reference.category} ${reference.tag}.`
                         )
                     );
                 }

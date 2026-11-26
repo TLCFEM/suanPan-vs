@@ -3,6 +3,7 @@ import * as vscode from 'vscode';
 import { Runtime } from '../core/cache';
 import { statementAt } from '../core/parser';
 import { SnippetEntry, SnippetArg, plainTemplate } from '../core/snippets';
+import { tokensBefore } from './util';
 
 function pickTemplate(snippet: SnippetEntry, values: string[]): string {
     const lower = values.map(value => value.toLowerCase());
@@ -31,12 +32,7 @@ export function registerSignatureHelp(context: vscode.ExtensionContext, runtime:
             const snippet = runtime.database.snippetFor(statement.verb, values);
             if (!snippet || snippet.args.length === 0) return undefined;
 
-            const before = statement.tokens.filter(
-                token =>
-                    token.line < position.line ||
-                    (token.line === position.line && token.start < position.character)
-            );
-            const index = before.length;
+            const index = tokensBefore(statement, position).length;
 
             const typeIndex = runtime.database.typeTokenIndex(statement.verb) ?? 0;
             if (index <= typeIndex) return undefined;

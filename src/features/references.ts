@@ -3,6 +3,7 @@ import * as vscode from 'vscode';
 import { Runtime } from '../core/cache';
 import { findSymbol, referenceAt, tagTokenIndex } from '../core/model';
 import { Statement, statementAt, tokenAt, tokenIndex } from '../core/parser';
+import { tokenRange } from './util';
 
 interface Target {
     category: string;
@@ -22,10 +23,7 @@ function resolveTarget(statement: Statement, index: number, runtime: Runtime): T
 
 function locationOf(document: vscode.TextDocument, statement: Statement, index: number): vscode.Location {
     const token = statement.tokens[index];
-    return new vscode.Location(
-        document.uri,
-        new vscode.Range(token.line, token.start, token.endLine, token.end)
-    );
+    return new vscode.Location(document.uri, tokenRange(token));
 }
 
 /** Register find-all-references for tags. */
@@ -66,9 +64,12 @@ export function registerReferences(context: vscode.ExtensionContext, runtime: Ru
                 }
             }
 
-            return locations.filter((location, index) => {
+            const seen = new Set<string>();
+            return locations.filter(location => {
                 const key = `${location.range.start.line}:${location.range.start.character}`;
-                return locations.findIndex(other => `${other.range.start.line}:${other.range.start.character}` === key) === index;
+                if (seen.has(key)) return false;
+                seen.add(key);
+                return true;
             });
         },
     };

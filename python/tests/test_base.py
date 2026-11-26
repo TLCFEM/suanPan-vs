@@ -105,7 +105,7 @@ class TestFormat:
     def test_values(self):
         assert format_value([1, 2]) == ["1", "2"]
         assert format_value(3) == ["3"]
-        assert format_value(True)  # booleans are exported as objects, not floats
+        assert format_value(True) == ["true"]
 
     def test_bool_object(self):
         obj = Bilinear1D(tag=1, elastic_modulus=2e3, yield_stress=4)

@@ -83,8 +83,7 @@ export function tagTokenIndex(statement: Statement, database: CommandDatabase): 
         // `section NZ2D 1000WB215 5 ...` inserts a designation before the tag.
         if (command.category === 'section') {
             if (numeric(2)) return 2;
-            if (!numeric(2) && numeric(3)) return 3;
-            return undefined;
+            return numeric(3) ? 3 : undefined;
         }
         return numeric(2) ? 2 : undefined;
     }

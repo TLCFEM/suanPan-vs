@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 
 import { Runtime } from '../core/cache';
+import { tokenRange } from './util';
 
 const SYMBOL_KIND: Record<string, vscode.SymbolKind> = {
     node: vscode.SymbolKind.Number,
@@ -46,12 +47,7 @@ export function registerSymbols(context: vscode.ExtensionContext, runtime: Runti
                         definition.statement.endLine,
                         model.parsed.lines[definition.statement.endLine]?.length ?? line.length
                     ),
-                    new vscode.Range(
-                        definition.token.line,
-                        definition.token.start,
-                        definition.token.endLine,
-                        definition.token.end
-                    )
+                    tokenRange(definition.token)
                 );
                 symbols.push(symbol);
             }

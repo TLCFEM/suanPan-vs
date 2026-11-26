@@ -50,20 +50,6 @@ def _unique(kind: str, objects: list) -> None:
         seen.add(tag)
 
 
-def _iter_all(obj: object):
-    """Depth-first walk over pydantic sub-models of ``obj``."""
-    if isinstance(obj, BaseModel):
-        yield obj
-        for name in type(obj).model_fields:
-            value = getattr(obj, name, None)
-            if isinstance(value, BaseModel):
-                yield from _iter_all(value)
-            elif isinstance(value, (list, tuple)):
-                for item in value:
-                    if isinstance(item, BaseModel):
-                        yield from _iter_all(item)
-
-
 class Model(BaseModel):
     """A complete suanPan model.
 
@@ -131,7 +117,6 @@ class Model(BaseModel):
 
         def check(
             tag_owner: SuanpanObject,
-            field_name: str,
             tag: int | None,
             known: set[int],
             kind: str,
@@ -146,7 +131,6 @@ class Model(BaseModel):
         for section in self.sections:
             check(
                 section,
-                "material_tag",
                 getattr(section, "material_tag", None),
                 material_tags,
                 "material",
@@ -154,14 +138,12 @@ class Model(BaseModel):
         for element in self.elements:
             check(
                 element,
-                "material_tag",
                 getattr(element, "material_tag", None),
                 material_tags,
                 "material",
             )
             check(
                 element,
-                "section_tag",
                 getattr(element, "section_tag", None),
                 section_tags,
                 "section",
@@ -172,7 +154,6 @@ class Model(BaseModel):
         ):
             check(
                 pool,
-                "amplitude_tag",
                 getattr(pool, "amplitude_tag", None),
                 amplitude_tags,
                 "amplitude",
@@ -180,7 +161,6 @@ class Model(BaseModel):
         for amplitude in self.amplitudes:
             check(
                 amplitude,
-                "expression_tag",
                 getattr(amplitude, "expression_tag", None),
                 expression_tags,
                 "expression",
@@ -203,24 +183,6 @@ class Model(BaseModel):
                     f"constraint {constraint.tag} references missing element {ref}"
                 )
         return self
-
-    def _all_objects(self) -> list[SuanpanObject]:
-        collected: list[SuanpanObject] = []
-        for pool in (
-            *self.nodes,
-            *self.materials,
-            *self.expressions,
-            *self.sections,
-            *self.elements,
-            *self.amplitudes,
-            *self.groups,
-            *self.orientations,
-            *self.modifiers,
-            *(c for step in self.steps for c in step.constraints),
-            *self.constraints,
-        ):
-            collected.extend(_iter_all(pool))
-        return collected
 
     # ------------------------------------------------------------------ #
     # builder helpers                                                    #

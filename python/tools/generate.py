@@ -84,7 +84,6 @@ class Param:
     default: object
     length: int | None
     note: str = ""
-    size_note: str = ""
 
 
 @dataclass
@@ -258,13 +257,6 @@ def field_annotation(ptype: str) -> str:
     }.get(ptype, ptype)
 
 
-def parse_scalar_type(ptype: str, value: object) -> object:
-    """Convert a raw YAML scalar into a Python value of the field type."""
-    if ptype in ("expression_tag", "int"):
-        return None if value is None else int(value)
-    return value
-
-
 def literal(value: object) -> str:
     if value is None:
         return "None"
@@ -287,20 +279,13 @@ def emit_fields(
         doc_names.append(param.name)
         annotation = field_annotation(param.type)
         field_name = safe_name(param.name)
-        try:
-            required = param.required and param.default is None
-        except Exception:
-            required = param.required
-        count_note = ""
-        if param.length and param.type in ("float_list", "int_list"):
-            count_note = f"exactly {param.length} values"
-        if param.length:
-            note = param.size_note or param.note or count_note
-            if count_note and not note:
-                note = count_note
-            note = count_note
-        else:
-            note = param.size_note or param.note or ""
+        required = param.required and param.default is None
+        count_note = (
+            f"exactly {param.length} values"
+            if param.length and param.type in ("float_list", "int_list")
+            else ""
+        )
+        note = count_note if param.length else param.note
         if required:
             assert param.default is None
             description = param.name + (f" ({note})" if note else "")
@@ -448,83 +433,19 @@ the only source of truth.
 The generic export emits ``{word} <keyword> <tag> <required parameters>
 <optional parameters up to the last one that differs from its default>
 <trailing list>``, mirroring the eof-guarded token consumption of the
-C++ handlers.  Coded sections put the designation between the keyword
-and the tag: ``section EU2D IPE300 9 ...``.
+C++ handlers.{section_note}
 """
 
 from __future__ import annotations
 
-from typing import ClassVar
-
 {imports}
 
 
-class {family}(SuanpanObject):
+class {family}(PositionalObject):
     """Base class of {plural} (the ``{word}`` command)."""
 
     command = "{word}"
     sp_abstract = True
-    #: whether a leading designation token precedes the tag
-    designation_first: ClassVar[bool] = False
-
-    def to_commands(self) -> list[str]:
-        fields = self._ordered_fields()
-        last = -1
-        for index, name in enumerate(fields):
-            value, required = self._value_and_required(name)
-            if required or self._differs(name, value):
-                last = index
-        parts = []
-        if self.designation_first:
-            # C++ command line: ``section EU2D IPE300 9 ...``. The
-            # designation follows the keyword and precedes the tag.
-            parts += [self.command, self.keyword, self.designation, str(self.tag)]
-            fields = [n for n in fields if n != "designation"]
-            # indices shift down by one once the designation is removed
-            last -= 1
-        else:
-            parts += [self.command, self.keyword, str(self.tag)]
-        for name in fields[: last + 1]:
-            parts += self._tokens(name)
-        return [" ".join(parts)]
-
-    def _ordered_fields(self) -> list[str]:
-        from suanpan.base import sp_kind
-
-        return [name for name, fout in type(self).model_fields.items()
-                if name not in ("tag",) and sp_kind(fout) != "omit"]
-
-    def _value_and_required(self, name: str):
-        from pydantic.fields import FieldInfo
-
-        fout: FieldInfo = type(self).model_fields[name]
-        value = getattr(self, name)
-        return value, fout.is_required()
-
-    def _differs(self, name: str, value) -> bool:
-        from pydantic.fields import FieldInfo
-
-        fout: FieldInfo = type(self).model_fields[name]
-        if fout.is_required():
-            return True
-        default = fout.get_default(call_default_factory=True)
-        if isinstance(value, bool) or isinstance(default, bool):
-            if (value or False) == (default or False):
-                return False
-            return bool(value) != bool(default)
-        if isinstance(default, (list, tuple)) and not default:
-            return bool(value)
-        if default is None:
-            return value is not None
-        return value != default
-
-    def _tokens(self, name: str) -> list[str]:
-        value = getattr(self, name)
-        if value is None:
-            return []
-        if isinstance(value, bool):
-            return ["true" if value else "false"]
-        return format_value(value)
 '''
 
 
@@ -566,7 +487,7 @@ def render(family: str, cpp: str, classes: list[str], tag_note: str) -> str:
     if pydantic:
         imports.append("from pydantic import " + ", ".join(pydantic))
         imports.append("")
-    imports.append("from suanpan.base import SuanpanObject, format_value")
+    imports.append("from suanpan.base import PositionalObject, format_value")
     if formats:
         imports.append("from suanpan.toolbox.format import " + ", ".join(formats))
 
@@ -576,6 +497,12 @@ def render(family: str, cpp: str, classes: list[str], tag_note: str) -> str:
         word=word,
         plural=word + "s",
         tag_note=tag_note,
+        section_note=(
+            "  Coded sections put the designation between the keyword\n"
+            "and the tag: ``section EU2D IPE300 9 ...``."
+            if family == "Section"
+            else ""
+        ),
         imports="\n".join(imports),
     )
     return header + "\n\n" + body
@@ -693,32 +620,16 @@ def main() -> None:
     )
     section_specs = load_spec("section.yaml")
 
-    jobs = [
-        (
-            "Material",
-            "material",
-            "material",
-            material_specs,
-            "Material/MaterialParser.cpp",
-        ),
-        (
-            "Element",
-            "element",
-            "element",
-            element_specs,
-            "Element/ElementParser.cpp",
-        ),
-        (
-            "Section",
-            "section",
-            "section",
-            section_specs,
-            "Section/SectionParser.cpp",
-        ),
-    ]
+    specs_by_family = {
+        "Material": material_specs,
+        "Element": element_specs,
+        "Section": section_specs,
+    }
 
     stale: list[Path] = []
-    for family, folder, category, specs, cpp in jobs:
+    for family, specs in specs_by_family.items():
+        folder = category = family.lower()
+        cpp = REGISTRY_FUNCTIONS[category][0]
         groups = grouped_registry(read_registry(source, category))
         layouts = build_base_layouts(groups, specs)
 

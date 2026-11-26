@@ -2,8 +2,9 @@ import * as vscode from 'vscode';
 
 import { Runtime } from '../core/cache';
 import { findSymbol, referenceAt, tagTokenIndex } from '../core/model';
-import { SourceToken, statementAt, tokenAt, tokenIndex } from '../core/parser';
+import { statementAt, tokenAt, tokenIndex } from '../core/parser';
 import { SnippetArg, SnippetEntry, plainTemplate } from '../core/snippets';
+import { tokenRange } from './util';
 
 function formatArgument(argument: SnippetArg): string {
     const number = argument.optional ? `[${argument.num}]` : `(${argument.num})`;
@@ -160,8 +161,4 @@ export function registerHover(context: vscode.ExtensionContext, runtime: Runtime
     context.subscriptions.push(
         vscode.languages.registerHoverProvider({ language: 'suanPan' }, provider)
     );
-}
-
-function tokenRange(token: SourceToken): vscode.Range {
-    return new vscode.Range(token.line, token.start, token.endLine, token.end);
 }

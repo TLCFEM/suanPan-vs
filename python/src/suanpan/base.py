@@ -28,6 +28,7 @@ __all__ = [
     "GROUP",
     "OMIT",
     "POSITIONAL",
+    "PositionalObject",
     "SP_KIND",
     "SuanpanObject",
     "find_class",
@@ -137,13 +138,6 @@ def format_value(value: Any, field: Any = None) -> list[str]:
     if isinstance(value, SuanpanObject):
         return [str(value.tag)]
     raise TypeError(f"cannot export value {value!r}")
-
-
-def register_class(cls: type[SuanpanObject]) -> type[SuanpanObject]:
-    """Explicitly register a class."""
-    if not cls.sp_abstract:
-        _register(cls)
-    return cls
 
 
 # --------------------------------------------------------------------------- #
@@ -256,6 +250,64 @@ class SuanpanObject(BaseModel):
             return self.to_line()
         except Exception:
             return super().__str__()
+
+
+class PositionalObject(SuanpanObject):
+    """Exporter for commands with a leading keyword and object tag.
+
+    Generated material, element and section classes share this implementation:
+    fields are emitted in definition order up to the last non-default value.
+    """
+
+    sp_abstract = True
+    designation_first: ClassVar[bool] = False
+
+    def to_commands(self) -> list[str]:
+        fields = self._ordered_fields()
+        last = -1
+        for index, name in enumerate(fields):
+            value, required = self._value_and_required(name)
+            if required or self._differs(name, value):
+                last = index
+        parts: list[str] = []
+        if self.designation_first:
+            # Coded sections put the designation between keyword and tag.
+            parts += [self.command, self.keyword, self.designation, str(self.tag)]
+            fields = [name for name in fields if name != "designation"]
+            last -= 1
+        else:
+            parts += [self.command, self.keyword, str(self.tag)]
+        for name in fields[: last + 1]:
+            parts += format_value(getattr(self, name))
+        return [" ".join(parts)]
+
+    def _ordered_fields(self) -> list[str]:
+        return [
+            name
+            for name, field in type(self).model_fields.items()
+            if name != "tag" and sp_kind(field) != OMIT
+        ]
+
+    def _value_and_required(self, name: str):
+        field = type(self).model_fields[name]
+        return getattr(self, name), field.is_required()
+
+    def _differs(self, name: str, value) -> bool:
+        from pydantic.fields import FieldInfo
+
+        field: FieldInfo = type(self).model_fields[name]
+        if field.is_required():
+            return True
+        default = field.get_default(call_default_factory=True)
+        if isinstance(value, bool) or isinstance(default, bool):
+            if (value or False) == (default or False):
+                return False
+            return bool(value) != bool(default)
+        if isinstance(default, (list, tuple)) and not default:
+            return bool(value)
+        if default is None:
+            return value is not None
+        return value != default
 
 
 # --------------------------------------------------------------------------- #

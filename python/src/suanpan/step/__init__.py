@@ -273,10 +273,6 @@ class ArcLengthStep(Step):
         return ["step", "ArcLength", *format_value(self.tag)]
 
 
-def _step_line(step: Step) -> str:
-    return " ".join(step._step_head())
-
-
 def cell_commands(step: Step) -> list[str]:
     """Export a full step cell: the step line, its ``set`` properties and
     then every attached analysis object, in the order the C++ parser

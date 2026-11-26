@@ -4,6 +4,7 @@ import { Runtime } from '../core/cache';
 import { symbolsOf } from '../core/model';
 import { Statement, statementAt } from '../core/parser';
 import { SnippetEntry, plainTemplate } from '../core/snippets';
+import { tokensBefore } from './util';
 
 interface Context {
     verb: string;
@@ -16,11 +17,7 @@ interface Context {
 }
 
 function resolveContext(document: vscode.TextDocument, statement: Statement | undefined, position: vscode.Position): Context {
-    const tokens = statement?.tokens.filter(
-        token =>
-            token.line < position.line ||
-            (token.line === position.line && token.start < position.character)
-    ) ?? [];
+    const tokens = tokensBefore(statement, position);
 
     const inside = tokens.length > 0 ? tokens[tokens.length - 1] : undefined;
     const insideToken =
@@ -100,8 +97,8 @@ export function registerCompletion(context: vscode.ExtensionContext, runtime: Ru
                     item.detail = canonical
                         ? command.summary || command.category || 'command'
                         : `alias of ${command.name}`;
-                    item.documentation = markdownForSnippet(database.snippetFor(name, [name]));
                     const snippet = database.snippetFor(name, [name]);
+                    item.documentation = markdownForSnippet(snippet);
                     if (snippet?.templates[0]?.toLowerCase().startsWith(name.toLowerCase())) {
                         item.insertText = new vscode.SnippetString(snippet.templates[0]);
                     }

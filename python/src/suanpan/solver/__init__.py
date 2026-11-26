@@ -55,12 +55,6 @@ __all__ = [
 ]
 
 
-class SolverTypeToken(str):
-    """Verbatim string token."""
-
-    __slots__ = ()
-
-
 # --------------------------------------------------------------------------- #
 # valuation helpers                                                           #
 # --------------------------------------------------------------------------- #
@@ -247,11 +241,6 @@ class _KernelNewmark(Newmark):
         for kernel in self.kernels:
             parts += kernel.to_tokens()
         return [" ".join(parts)]
-
-    def export_kernels(self) -> list[float]:
-        """Flatten kernel terms into the interleaved command line form."""
-        return [v for k in self.kernels for v in k.to_tokens()]
-
 
 class NonviscousNewmark(_KernelNewmark):
     """``integrator NonviscousNewmark`` (C++ ``NonviscousNewmark``)."""
@@ -595,9 +584,6 @@ class Newton(Solver):
     keyword = "Newton"
     summary = "full Newton solver"
 
-    def to_commands(self) -> list[str]:
-        return [" ".join(["solver", self.keyword, *format_value(self.tag)])]
-
 
 class ModifiedNewton(Solver):
     """``solver modifiedNewton`` (C++ ``Newton`` with constant stiffness)."""
@@ -605,9 +591,6 @@ class ModifiedNewton(Solver):
     keyword = "modifiedNewton"
     aliases = ("mNewton",)
     summary = "modified Newton solver (constant stiffness)"
-
-    def to_commands(self) -> list[str]:
-        return [" ".join(["solver", self.keyword, *format_value(self.tag)])]
 
 
 class AICN(Solver):

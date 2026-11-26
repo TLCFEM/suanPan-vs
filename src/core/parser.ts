@@ -107,7 +107,7 @@ export function parseDocument(text: string): ParsedDocument {
 
         const bang = raw.indexOf('!');
         let code = bang >= 0 ? raw.slice(0, bang) : raw;
-        if (bang >= 0 && code.trim() === '' && raw.trim().startsWith('!')) {
+        if (bang >= 0 && code.trim() === '') {
             // A line that only carries an inline comment is still a comment
             // line for folding, even though suanPan treats `!` as inline.
             commentLines.push(line);

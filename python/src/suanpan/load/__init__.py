@@ -55,19 +55,6 @@ class Amplitude(SuanpanObject):
     command = "amplitude"
     sp_abstract = True
 
-    def to_commands(self) -> list[str]:
-        from suanpan.base import sp_kind
-
-        parts = [self.command, self.keyword, *format_value(self.tag)]
-        for name, field in type(self).model_fields.items():
-            if name == "tag" or sp_kind(field) != "positional":
-                continue
-            value = getattr(self, name)
-            if value is None or value == []:
-                continue
-            parts.extend(format_value(value, field))
-        return [" ".join(parts)]
-
 
 class Constant(Amplitude):
     """``amplitude Constant`` (C++ ``Constant``) -- constant amplitude."""

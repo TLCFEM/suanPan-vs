@@ -3,6 +3,7 @@ import * as vscode from 'vscode';
 import { Runtime } from '../core/cache';
 import { findSymbol, referenceAt, tagTokenIndex } from '../core/model';
 import { statementAt, tokenAt, tokenIndex } from '../core/parser';
+import { tokenRange } from './util';
 
 /** Register go-to-definition for tags and variables. */
 export function registerDefinition(context: vscode.ExtensionContext, runtime: Runtime): void {
@@ -18,10 +19,7 @@ export function registerDefinition(context: vscode.ExtensionContext, runtime: Ru
             if (token.value.startsWith('$')) {
                 const variable = model.variables.get(token.value.slice(1).toLowerCase());
                 if (!variable) return undefined;
-                return new vscode.Location(
-                    document.uri,
-                    new vscode.Range(variable.token.line, variable.token.start, variable.token.endLine, variable.token.end)
-                );
+                return new vscode.Location(document.uri, tokenRange(variable.token));
             }
 
             const index = tokenIndex(statement, token);
@@ -32,10 +30,7 @@ export function registerDefinition(context: vscode.ExtensionContext, runtime: Ru
 
             const symbol = findSymbol(model, reference.category, reference.tag);
             if (!symbol) return undefined;
-            return new vscode.Location(
-                document.uri,
-                new vscode.Range(symbol.token.line, symbol.token.start, symbol.token.endLine, symbol.token.end)
-            );
+            return new vscode.Location(document.uri, tokenRange(symbol.token));
         },
     };
 

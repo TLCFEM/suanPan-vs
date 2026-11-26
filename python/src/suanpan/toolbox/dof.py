@@ -8,7 +8,7 @@ from typing import Annotated
 
 from pydantic import AfterValidator
 
-__all__ = ["DOF", "DOF_TOKENS", "DofToken", "dof_token_validator", "parse_dof"]
+__all__ = ["DOF", "DOF_TOKENS", "DofToken", "parse_dof"]
 
 
 class DOF(IntEnum):
@@ -108,5 +108,3 @@ def validate_dof_token(value: str) -> str:
 
 #: annotated string type validating a DOF token
 DofToken = Annotated[str, AfterValidator(validate_dof_token)]
-
-dof_token_validator = validate_dof_token

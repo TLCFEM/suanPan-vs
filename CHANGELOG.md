@@ -8,7 +8,8 @@
 4. harden the shared C++ registry reader against signatures and braces in comments and string literals, and add duplicate-keyword validation to the database generator,
 5. tolerate UTF-8 BOMs and report dangling continuations that contain no partial token, and keep the language grammar in sync with the registry (missing `DC3D4M`/`DCP4M`/`ExpHoffman`/`NonlocalIsotropicElastic3D`, the `LeeElementalNewmark` spelling and the logic converger aliases),
 6. drop the removed `QuadraticFEAST` keyword from the database, grammar, Python API and tests, and align `FEAST` with the four-argument C++ handler,
-7. derive command categories, legacy type keywords, coded-section designation tables and snippet discovery from the C++ source instead of hardcoded tables.
+7. derive command categories, legacy type keywords, coded-section designation tables and snippet discovery from the C++ source instead of hardcoded tables,
+8. share the positional exporter across generated families, derive editor metadata from the database, and remove duplicated and dead code.
 
 ## v0.2.1
 
