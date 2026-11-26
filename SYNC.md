@@ -91,22 +91,22 @@ Notes:
 
 - A duplicate keyword is a hard error in the generator. Do not work around it
   by editing the JSON; inspect the upstream registry or the reader.
-- New `create_new_*` dispatchers need a category in `FACTORY_CATEGORY` in
-  `scripts/generate_database.py`. If the command category is new to the editor,
-  also update `TYPED_CATEGORIES` in `src/core/database.ts`.
-- `set` and `initial` still use legacy `is_equal` chains (`EXTRA_COMMAND_TYPES`
-  in the generator). If upstream migrates them to `TokenRegistry`, remove the
-  fallback and verify their types are read by the registry path.
-- Coded-section designations are read automatically from
-  `TokenRegistry<vec>` tables. Inspect them with:
+- Categories come from the `create_new_*` factory name; add a divergent name to
+  `CATEGORY_OVERRIDES` in `scripts/generate_database.py`. If the command
+  category is new to the editor, also update `TYPED_CATEGORIES` in
+  `src/core/database.ts`.
+- Legacy `is_equal` dispatchers are detected from the handler body, so a command
+  that migrates to `TokenRegistry` is picked up by the registry path
+  automatically.
+- Coded-section designations and each container's lookup order are read from the
+  `TokenRegistry<vec>` tables and section handlers. Inspect them with:
 
   ```bash
   python3 scripts/suanpan_parser.py --source ../suanPan --designations
   ```
 
-  If the table functions or the container-to-table search order change
-  upstream, update `read_section_designations()` in
-  `scripts/suanpan_parser.py` and its tests.
+  If the reader misses a table or a lookup branch, fix the extraction in
+  `scripts/suanpan_parser.py` and its tests rather than editing the JSON.
 
 ## 2. Regenerate the Python classes
 

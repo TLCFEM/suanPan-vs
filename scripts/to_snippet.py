@@ -3,7 +3,7 @@ from pathlib import Path
 
 
 def process(file: Path):
-    with open(file, "r") as f:
+    with open(file) as f:
         data = json.load(f)
 
     item_list = []

@@ -25,7 +25,7 @@ def sort_json(a, sort_list: bool):
 
 
 def sort_file(file: str, sort_list: bool):
-    with open(file, "r") as f:
+    with open(file) as f:
         data = json.load(f)
 
     with open(file, "w") as f:

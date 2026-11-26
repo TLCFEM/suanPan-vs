@@ -53,46 +53,25 @@ from suanpan_parser import (
     registry_entries,
 )
 
-# Maps the ``create_new_*`` factory to a logical category.
-FACTORY_CATEGORY = {
-    "create_new_element": "element",
-    "create_new_material": "material",
-    "create_new_section": "section",
-    "create_new_constraint": "constraint",
-    "create_new_criterion": "criterion",
-    "create_new_interaction": "interaction",
-    "create_new_load": "load",
-    "create_new_amplitude": "amplitude",
-    "create_new_solver": "solver",
-    "create_new_integrator": "integrator",
-    "create_new_converger": "converger",
-    "create_new_step": "step",
-    "create_new_expression": "expression",
-    "create_new_group": "group",
-    "create_new_modifier": "modifier",
-    "create_new_orientation": "orientation",
-    "create_new_recorder": "recorder",
-    "create_new_initial": "initial",
-    "create_new_node": "node",
-    "create_new_mass": "mass",
-    "create_new_domain": "domain",
-    "create_new_external_module": "import",
-}
+# Factories whose logical category is not the suffix of ``create_new_*``.
+CATEGORY_OVERRIDES = {"create_new_external_module": "import"}
 
-# Commands that do not follow the standard "command type tag ..." layout.
-EXTRA_COMMAND_TYPES = {
-    "set": [("Toolbox/command.cpp", "set_property", "property_id")],
-    "initial": [("Toolbox/command.cpp", "create_new_initial", "variable_type")],
-}
-
-SNIPPET_FILES = (
-    "snippets.json",
-    "nz_sections.json",
-    "eu_sections.json",
-    "us_sections.json",
+# First string token of a legacy dispatch, e.g. ``std::string property_id;
+# if(!get_input(command, property_id))``.
+LEGACY_TYPE_VAR = re.compile(
+    r"std::string\s+(\w+)\s*;\s*if\s*\(\s*!get_input\(command,\s*\1"
 )
 
+FACTORY_CALL = re.compile(r"\b((?:create_new_|set_)\w*)\s*\(")
 QUOTED = re.compile(r'"([^"]+)"')
+
+
+def category_from_factory(factory: str | None) -> str | None:
+    """Return the command category implied by a C++ factory name."""
+    if not factory or not factory.startswith("create_new_"):
+        return None
+    name = factory.removeprefix("create_new_")
+    return CATEGORY_OVERRIDES.get(factory, name)
 
 
 def function_region(text: str, signature: str) -> str:
@@ -180,17 +159,23 @@ def parse_first_level_commands(source: Path) -> dict[str, dict]:
         )
         end = min(line_end, next_position)
         segment = process[position:end]
-        factory = re.search(r"\b(create_new_\w+)\s*\(", segment)
+        factory = FACTORY_CALL.search(segment)
         callee = factory.group(1) if factory else None
         if callee is None:
             handler = re.search(r"return\s+(\w+)\s*\(\s*\)", segment)
             if handler:
                 callee = handlers.get(handler.group(1))
-        category = FACTORY_CATEGORY.get(callee) if callee else None
+        category = category_from_factory(callee)
         for name in names:
             entry = commands.setdefault(
                 name.lower(),
-                {"name": name, "aliases": [], "category": category, "summary": ""},
+                {
+                    "name": name,
+                    "aliases": [],
+                    "category": category,
+                    "summary": "",
+                    "factory": callee,
+                },
             )
             if category and not entry["category"]:
                 entry["category"] = category
@@ -206,6 +191,8 @@ def parse_first_level_commands(source: Path) -> dict[str, dict]:
                 continue
             if not canonical["category"]:
                 canonical["category"] = alias["category"]
+            if not canonical["factory"]:
+                canonical["factory"] = alias["factory"]
             if not canonical["summary"]:
                 canonical["summary"] = alias["summary"]
             canonical["aliases"].append(alias["name"])
@@ -233,30 +220,31 @@ def parse_registry_types(source: Path, category: str) -> list[dict]:
     ]
 
 
-def parse_legacy_types(source: Path, mapping) -> list[dict]:
-    """Fallback for commands that still dispatch through ``is_equal``."""
+def parse_legacy_types(source: Path, factory: str) -> list[dict]:
+    """Read type keywords from a legacy ``is_equal`` dispatch handler."""
+    text = (source / "Toolbox/command.cpp").read_text()
+    body = function_region(text, f"int {factory}(")
+    match = LEGACY_TYPE_VAR.search(body)
+    if match is None:
+        return []
     types: list[dict] = []
-    for rel, factory, var in mapping:
-        path = source / rel
-        if not path.exists():
+    for aliases in extract_symbols(body, match.group(1)):
+        if any(t["name"].lower() == aliases[0].lower() for t in types):
             continue
-        text = function_region(path.read_text(), f"int {factory}(")
-        for aliases in extract_symbols(text, var):
-            if any(t["name"].lower() == aliases[0].lower() for t in types):
-                continue
-            types.append({"name": aliases[0], "aliases": aliases[1:]})
+        types.append({"name": aliases[0], "aliases": aliases[1:]})
     return types
 
 
 def load_snippets(folders) -> dict[str, list[dict]]:
     index: dict[str, list[dict]] = {}
     for folder in folders:
-        for name in SNIPPET_FILES:
-            path = folder / name
-            if not path.exists():
-                continue
+        for path in sorted(folder.glob("*.json")):
             data = json.loads(path.read_text())
+            if not isinstance(data, dict):
+                continue
             for item in data.values():
+                if not isinstance(item, dict) or "body" not in item:
+                    continue
                 body = item.get("body", [])
                 if not body:
                     continue
@@ -330,8 +318,11 @@ def main():
         category = entry.get("category")
         if category and name == category and category in REGISTRY_FUNCTIONS:
             entry["types"] = parse_registry_types(source, category)
-        elif name in EXTRA_COMMAND_TYPES:
-            entry["types"] = parse_legacy_types(source, EXTRA_COMMAND_TYPES[name])
+        elif entry.get("factory"):
+            types = parse_legacy_types(source, entry["factory"])
+            if types:
+                entry["types"] = types
+        entry.pop("factory", None)
 
     snippets = load_snippets([args.snippets.resolve()])
 

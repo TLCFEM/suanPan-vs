@@ -86,49 +86,19 @@ REGISTRY_FUNCTIONS: dict[str, tuple[str, str]] = {
     "recorder": ("Recorder/RecorderParser.cpp", "int dispatch_new_recorder("),
 }
 
-#: section command -> designation tables, in handler lookup order
-SECTION_DESIGNATION_TABLES: dict[str, tuple[str, ...]] = {
-    "EU2D": ("euisection",),
-    "EU3D": ("euisection",),
-    "EU2DA": ("euisection_adjusted",),
-    "EU3DA": ("euisection_adjusted",),
-    "NZ2D": ("nzisection", "nzchsection", "nzrhsection", "nzshsection"),
-    "NZ3D": ("nzisection", "nzchsection", "nzrhsection", "nzshsection"),
-    "NZ2DA": ("nzisection_adjusted",),
-    "NZ3DA": ("nzisection_adjusted",),
-    "US2D": ("usisection", "usrhssection", "uschssection", "ustsection"),
-    "US3D": ("usisection", "usrhssection", "uschssection", "ustsection"),
-    "US2DC": ("usisection", "usrhssection", "uschssection", "ustsection"),
-    "US3DC": ("usisection", "usrhssection", "uschssection", "ustsection"),
-    "US2DA": (
-        "usisection_adjusted",
-        "usrhssection_adjusted",
-        "uschssection_adjusted",
-        "ustsection_adjusted",
-    ),
-    "US3DA": (
-        "usisection_adjusted",
-        "usrhssection_adjusted",
-        "uschssection_adjusted",
-        "ustsection_adjusted",
-    ),
-    "US2DAC": (
-        "usisection_adjusted",
-        "usrhssection_adjusted",
-        "uschssection_adjusted",
-        "ustsection_adjusted",
-    ),
-    "US3DAC": (
-        "usisection_adjusted",
-        "usrhssection_adjusted",
-        "uschssection_adjusted",
-        "ustsection_adjusted",
-    ),
-}
-
 SECTION_SOURCE = "Section/SectionParser.cpp"
+SECTION_DISPATCH = "int create_new_section("
 
 IDENTIFIER = re.compile(r"[A-Za-z_]")
+QUOTED = re.compile(r'"([^"]+)"')
+DESIGNATION_TABLE = re.compile(r"vec\s+(\w+)\s*\(\s*const std::string_view")
+DESIGNATION_INPUT = re.compile(r"is_equal_any\(\s*section_id\s*,\s*([^)]*)\)")
+TERNARY_CALL = re.compile(
+    r"(\w+)\s*\?\s*(\w+)\s*\(\s*type\s*\)\s*:\s*(\w+)\s*\(\s*type\s*\)"
+)
+TABLE_CALL = re.compile(r"\b(\w+)\s*\(\s*type\s*\)")
+BOOL_PARAM = re.compile(r"bool\s+(\w+)")
+EARLY_RETURN = re.compile(r"if\s*\(\s*(\w+)\s*\)\s*\{")
 #: registry value type that consumes the object tag before dispatch (#410)
 TAG_IN_DISPATCHER = re.compile(r"istringstream\s*&\s*,\s*(?:const\s+)?unsigned\b")
 
@@ -369,7 +339,7 @@ def read_registry_tag_in_dispatcher(source: Path, category: str) -> bool:
 
 def grouped_registry(
     entries: list[RegistryEntry],
-) -> "OrderedDict[str, list[RegistryEntry]]":
+) -> OrderedDict[str, list[RegistryEntry]]:
     """Group entries by identical factory expression (true aliases)."""
     groups: OrderedDict[str, list[RegistryEntry]] = OrderedDict()
     for entry in entries:
@@ -377,31 +347,121 @@ def grouped_registry(
     return groups
 
 
+def _template_flags(text: str, factory: str) -> dict[str, bool]:
+    """Resolve the boolean template arguments of a section handler."""
+    base, _, arguments = factory.partition("<")
+    signature = re.search(
+        r"template\s*<([^>]*)>\s*void\s+" + re.escape(base) + r"\s*\(", text
+    )
+    if signature is None:
+        return {}
+    values = [
+        argument.strip() == "true"
+        for argument in arguments.rstrip(">").split(",")
+        if argument.strip()
+    ]
+    return dict(zip(BOOL_PARAM.findall(signature.group(1)), values, strict=False))
+
+
+def _block(text: str, opening: int) -> tuple[int, int]:
+    """Return the span of the brace block starting at ``opening``."""
+    depth = 0
+    for index in range(opening, len(text)):
+        if text[index] == "{":
+            depth += 1
+        elif text[index] == "}":
+            depth -= 1
+            if depth == 0:
+                return opening, index + 1
+    return opening, len(text)
+
+
+def _handler_tables(body: str, tables: set[str], flags: dict[str, bool]) -> list[str]:
+    """List the designation tables a handler consults, in source order."""
+    selected: list[str] = []
+    seen: set[str] = set()
+    ternary_spans: list[tuple[int, int]] = []
+
+    for match in TERNARY_CALL.finditer(body):
+        ternary_spans.append(match.span())
+        condition, yes, no = match.groups()
+        if condition not in flags:
+            continue
+        chosen = yes if flags[condition] else no
+        if chosen in tables and chosen not in seen:
+            seen.add(chosen)
+            selected.append(chosen)
+
+    early_spans: list[tuple[int, int, bool]] = []
+    taken = False
+    for match in EARLY_RETURN.finditer(body):
+        condition = match.group(1)
+        if condition not in flags:
+            continue
+        opening = body.find("{", match.end() - 1)
+        start, end = _block(body, opening)
+        if "return;" not in body[start:end]:
+            continue
+        early_spans.append((start, end, flags[condition]))
+        if flags[condition]:
+            taken = True
+
+    for match in TABLE_CALL.finditer(body):
+        position = match.start()
+        if any(start <= position < end for start, end in ternary_spans):
+            continue
+        inside = [
+            flag for start, end, flag in early_spans if start <= position < end
+        ]
+        if inside and not any(inside):
+            continue
+        name = match.group(1)
+        if name in tables and name not in seen and (any(inside) or not taken):
+            seen.add(name)
+            selected.append(name)
+    return selected
+
+
 def read_section_designations(source: Path) -> dict[str, object]:
-    """Read the coded-section designation tables of a suanPan checkout.
+    """Read coded-section designation tables and their per-command lookup order.
 
     Returns ``{"tables": {table: [designation, ...]}, "containers":
-    {section: [table, ...]}}``.  Containers map to their lookup tables so the
-    editor can resolve a designation without duplicating the table contents.
+    {section: [table, ...]}}``.  Both the table contents and the container
+    mapping come from ``Section/SectionParser.cpp``.
     """
     path = source / SECTION_SOURCE
     if not path.exists():
         raise FileNotFoundError(f"cannot locate suanPan parser source at {path}")
     text = path.read_text()
 
-    tables: dict[str, list[str]] = {}
-    for table in sorted({name for names in SECTION_DESIGNATION_TABLES.values() for name in names}):
-        tables[table] = registry_keywords(text, f"vec {table}(")
-        if not tables[table]:
-            raise ValueError(f"no designations found in {SECTION_SOURCE}:{table}")
-
-    return {
-        "tables": tables,
-        "containers": {
-            container: list(names)
-            for container, names in SECTION_DESIGNATION_TABLES.items()
-        },
+    tables = {
+        name: registry_keywords(text, f"vec {name}(")
+        for name in sorted(set(DESIGNATION_TABLE.findall(text)))
     }
+    for name, keywords in tables.items():
+        if not keywords:
+            raise ValueError(f"no designations found in {SECTION_SOURCE}:{name}")
+
+    dispatch = function_body(text, SECTION_DISPATCH)
+    match = DESIGNATION_INPUT.search(dispatch)
+    if match is None:
+        raise ValueError(f"no coded sections found in {SECTION_SOURCE}")
+    factories = {
+        entry.keyword: entry.factory for entry in registry_entries(text, SECTION_DISPATCH)
+    }
+
+    containers: dict[str, list[str]] = {}
+    for container in QUOTED.findall(match.group(1)):
+        factory = factories.get(container)
+        if factory is None:
+            raise ValueError(f"no handler found for coded section {container}")
+        body = function_body(text, f"void {factory.partition('<')[0]}(")
+        if not body:
+            raise ValueError(f"no handler body found for coded section {container}")
+        containers[container] = _handler_tables(
+            body, set(tables), _template_flags(text, factory)
+        )
+    return {"tables": tables, "containers": containers}
 
 
 def read_all(source: Path) -> dict[str, list[RegistryEntry]]:

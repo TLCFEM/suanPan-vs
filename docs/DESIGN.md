@@ -64,8 +64,9 @@ parser dispatch tables (`Element/ElementParser.cpp`, `Material/MaterialParser.cp
   name the same factory expression become aliases of the first spelling,
 * the suanPan version from `Toolbox/command.h`.
 
-`set` and `initial` have not migrated to `TokenRegistry` yet; their keywords
-are still read from the legacy `is_equal` chains in `Toolbox/command.cpp`.
+`set` and `initial` have not migrated to `TokenRegistry` yet; the generator
+detects their first string token and reads the legacy `is_equal` chains in
+`Toolbox/command.cpp`.
 The shared registry reader lives in `scripts/suanpan_parser.py`; the Python
 generator (`python/tools/generate.py`) uses the same reader.
 
