@@ -1,6 +1,5 @@
 # =============================================================================
-# suanPan Section parsing spec — extracted from /workspace/Section/SectionParser.cpp
-# (3076 lines, read in full)
+# suanPan Section parsing spec — extracted from Section/SectionParser.cpp
 #
 # - All keywords are matched case-insensitively by the TokenRegistry.
 # - create_new_section reads the section type token and the object tag, then

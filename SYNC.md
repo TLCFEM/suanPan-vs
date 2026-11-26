@@ -11,7 +11,7 @@ reviewed by hand.
 | Artefact | Source | Regenerate with |
 | --- | --- | --- |
 | `data/database.json` | C++ command and `TokenRegistry` tables, plus snippet summaries | `scripts/generate_database.py` |
-| `python/src/suanpan/{material,element,section}/_generated.py` | C++ registries plus `python/specs/*.yaml` | `python/tools/generate.py` |
+| `python/src/suanpan/{material,element,section}/_generated.py` | C++ registries plus `python/specs/{material,element,section}*.yaml` | `python/tools/generate.py` |
 | `syntaxes/syntax.json` | hand-maintained TextMate grammar; keyword alternations must follow the database | manual |
 | `syntaxes/snippets.json`, `syntaxes/{eu,nz,us}_sections.json` | hand-maintained argument templates from the manual | manual |
 | `python/specs/*.yaml` | hand-maintained handler layouts and defaults | manual |
@@ -50,7 +50,8 @@ reviewed by hand.
    npm install
    ```
 
-   The CI workflow uses Node 24; the extension tests also need an X server (see
+   CI uses Node 24 and the repository pins Node 26.13.0 via Volta for local
+   development; the extension tests also need an X server (see
    [Verification](#verification)).
 
 ## 1. Regenerate the command database
@@ -135,7 +136,7 @@ When adding a spec entry:
 - keep `tag` as the first command-line parameter,
 - put a coded-section `designation` between the keyword and the tag,
 - copy defaults and optional/required rules from the C++ handler,
-- do not maintain aliases in the spec; aliases come from the registry,
+- spec aliases are informational; the generator takes aliases only from `TokenRegistry`,
 - refresh the spec file header if it documents a superseded dispatch layout.
 
 ## 3. Update the hand-written Python families

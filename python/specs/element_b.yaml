@@ -1,15 +1,11 @@
-# Machine-readable parser spec extracted from suanPan /workspace/Element/ElementParser.cpp
-# Range: lines 1400-2736 (handlers new_eb21..new_patchcube + dispatch entry points
-# create_new_element, create_new_modifier, create_new_orientation, create_new_mass).
+# Machine-readable parser spec extracted from suanPan Element/ElementParser.cpp.
 # Conventions: req: true = fatal get_input; req: false = optional (eof guard or
 # get_optional_input) with the C++ default recorded in `default`.
 # create_new_element() reads the object tag and passes it to the handler
 # (suanPan #410); `tag` below documents the command line, not a handler token.
-# NOTE: element keyword entries whose handler body lies BEFORE line 1400 are listed in
-# dispatch order with params: [] (handler outside this extraction range; see part A).
+# Entries without a handler layout here are listed in element_a.yaml.
 
 elements:
-  # ---- handlers defined before line 1400 (listed for dispatch completeness) ----
   - keyword: Allman
     aliases: []
     cpp: Allman

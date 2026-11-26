@@ -1,5 +1,5 @@
 # Machine-readable parser spec extracted from suanPan Constraint/ConstraintParser.cpp
-# (source of truth, ~618 lines, rev. 2026).
+# (source of truth).
 #
 # Conventions:
 #   * Keyword matching is case-insensitive everywhere (TokenRegistry).

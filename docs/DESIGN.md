@@ -147,8 +147,8 @@ documentation says so.
   cost without enabling any of the features above.
 * **Round-trip formatting.** Reflowing commands is risky (backslash continuations,
   `$variables`, file names) and provides little value compared with the above.
-* **Editing `suanPan` or `suanPan-manual`.** The extension consumes both as
-  read-only sources; the generator lives in this repository.
+* **Editing the C++ sources.** Generation reads `suanPan` as read-only; the
+  optional Sublime helpers write to `../suanPan/Enhancement`.
 
 ## Adding a feature
 

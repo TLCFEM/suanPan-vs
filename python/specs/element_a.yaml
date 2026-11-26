@@ -1,8 +1,5 @@
 # suanPan element parser spec — machine-readable extraction
-# Source of truth: /workspace/Element/ElementParser.cpp
-#   - Handler definitions: lines 1-1400 (new_eb21 spans lines 1377-1415; its tail was read to complete the entry)
-#   - Dispatch strings confirmed in create_new_element() (~lines 2624-2681)
-# NOT covered here: new_eb31os ("EB31OS"), defined at line 1417 (outside the assigned range).
+# Source of truth: Element/ElementParser.cpp
 #
 # Conventions encoded below:
 #   - req: true  -> read via get_input(); missing token is fatal (element not created).

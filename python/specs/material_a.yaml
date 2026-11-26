@@ -1,8 +1,6 @@
-# suanPan MaterialParser.cpp — extraction of lines 1-1957 (handlers new_afc01 .. new_customj2).
-# Source of truth: /workspace/Material/MaterialParser.cpp lines 29-1956.
-# The keyword dispatch (create_new_material) lies BELOW line 1957, so per instructions:
-#   - 'keyword' is derived from the handler name (new_xxx -> Xxx).
-#   - 'aliases' is empty (dispatch spellings not verifiable in range).
+# suanPan MaterialParser.cpp extraction — handlers new_afc01 .. new_customj2.
+# Source of truth: Material/MaterialParser.cpp.
+# Keywords follow the handler name (new_xxx -> Xxx); aliases come from the C++ registry.
 # 'tag' is always the first param after the keyword (int, required, fatal). Since
 # suanPan #410 create_new_material() reads it and passes it to the handler, so it is
 # part of the command line but not of the handler's token stream.

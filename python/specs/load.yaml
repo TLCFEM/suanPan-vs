@@ -1,4 +1,4 @@
-# Machine-readable parser spec extracted from suanPan /workspace/Load/LoadParser.cpp (414 lines, v2017-2026).
+# Machine-readable parser spec extracted from suanPan Load/LoadParser.cpp.
 #
 # Conventions applied:
 #   - req: true  => missing/malformed token is fatal (get_input).

@@ -14,7 +14,7 @@ Field definition order == command line argument order.  Optional arguments
 are simply ``None`` (or carry a default) and are omitted when exporting.
 The C++ source of truth for every keyword is the corresponding
 ``*Parser.cpp`` file; the machine readable extraction lives in
-``suanpan-py/specs``.
+``python/specs``.
 """
 
 from __future__ import annotations

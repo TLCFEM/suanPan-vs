@@ -1,8 +1,8 @@
 # suanpan-py
 
 A Python object model for the [suanPan](https://github.com/TLCFEM/suanPan)
-finite element program: every parsable command of the C++ application is
-represented by a pydantic model class, objects export valid suanPan input
+finite element program: object-defining commands of the supported families are
+represented by pydantic model classes, objects export valid suanPan input
 files, and a runner utility invokes the executable for analyses under
 customisable folders.
 
@@ -134,7 +134,7 @@ print(result.ok, result.returncode, result.stdout)
   `criteria`, `constraints`, `loads` and `recorders` into a complete
   step cell.
 
-More examples live in [`examples/`](examples/).
+More examples live in the C++ repository's [`Example/`](https://github.com/TLCFEM/suanPan/tree/dev/Example) tree.
 
 ## Regenerating the bulk families
 
